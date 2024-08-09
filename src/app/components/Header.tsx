@@ -10,6 +10,7 @@ export const Header = () => {
     return (
         <Flex style={{top: '0'}}
             as="header"
+            zIndex={9}
             position="sticky"
             fillWidth padding="8"
             justifyContent="center">

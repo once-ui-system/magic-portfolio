@@ -1,7 +1,9 @@
 import { Flex, IconButton, Text } from "@/once-ui/components"
-import { content } from '@/app/resources'
+import { person, social } from '@/app/resources'
 
 export const Footer = () => {
+    const currentYear = new Date().getFullYear();
+
     return (
         <Flex
             as="footer"
@@ -14,35 +16,22 @@ export const Footer = () => {
                     variant="body-default-s"
                     onBackground="neutral-strong">
                     <Text onBackground="neutral-weak">
-                        © 2024 /
-                    </Text> {content.name}
+                        © {currentYear} /
+                    </Text> {person.name}
                 </Text>
                 <Flex
                     gap="16">
-                    { content.social.github && (
-                        <IconButton
-                            href={content.social.github}
-                            icon="github"
-                            tooltip="GitHub"
-                            size="s"
-                            variant="ghost"/>
-                    )}
-                    { content.social.linkedin && (
-                        <IconButton
-                            href={content.social.linkedin}
-                            icon="linkedin"
-                            tooltip="LinkedIn"
-                            size="s"
-                            variant="ghost"/>
-                    )}
-                    { content.social.x && (
-                        <IconButton
-                            href={content.social.x}
-                            icon="x"
-                            tooltip="X"
-                            size="s"
-                            variant="ghost"/>
-                    )}
+                    {social.map((item) => (
+                        item.link && (
+                            <IconButton
+                                key={item.name}
+                                href={item.link}
+                                icon={item.icon}
+                                tooltip={item.name}
+                                size="s"
+                                variant="ghost"/>
+                        )
+                    ))}
                 </Flex>
             </Flex>
         </Flex>

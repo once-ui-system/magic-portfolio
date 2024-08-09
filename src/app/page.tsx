@@ -3,7 +3,7 @@
 import React from 'react';
 
 import { Heading, Flex, Text, Button, SmartImage, Avatar } from '@/once-ui/components';
-import { content } from '@/app/resources'
+import { home } from '@/app/resources'
 
 export default function Home() {
 	return (
@@ -18,13 +18,13 @@ export default function Home() {
 				<Heading
 					wrap="balance"
 					variant="display-strong-l">
-					{content.home.headline}
+					{home.headline}
 				</Heading>
 				<Text
 					wrap="balance" 
 					onBackground="neutral-weak"
 					variant="body-default-l">
-					{content.home.subline}
+					{home.subline}
 				</Text>
 				<Button
 					data-border="rounded"
@@ -49,12 +49,12 @@ export default function Home() {
 					radius="l"
 					alt="Project 1"
 					aspectRatio="1 / 1"
-					src="/images/projects/project-cover-01.jpg"/>
+					src="/images/projects/project-01/cover.jpg"/>
 				<SmartImage
 					radius="l"
 					alt="Project 1"
 					aspectRatio="1 / 1"
-					src="/images/projects/project-cover-01.jpg"/>
+					src="/images/projects/project-01/cover.jpg"/>
 			</Flex>
 		</Flex>
 	);

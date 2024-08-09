@@ -1,2 +1,2 @@
 export { config } from '@/app/resources/config'
-export { content } from '@/app/resources/content'
+export { person, home, about, social } from '@/app/resources/content'

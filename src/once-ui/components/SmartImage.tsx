@@ -1,6 +1,6 @@
 "use client";
 
-import React, { CSSProperties } from 'react';
+import React, { CSSProperties, useState, useRef, useEffect } from 'react';
 import Image, { ImageProps } from 'next/image';
 import classNames from 'classnames';
 
@@ -15,6 +15,7 @@ type SmartImageProps = ImageProps & {
     alt?: string;
     isLoading?: boolean;
     objectFit?: CSSProperties['objectFit'];
+    enlarge?: boolean; // New prop to enable enlargement
 };
 
 const SmartImage: React.FC<SmartImageProps> = ({
@@ -26,27 +27,120 @@ const SmartImage: React.FC<SmartImageProps> = ({
     alt = '',
     isLoading = false,
     objectFit = 'cover',
+    enlarge = false, // Default to false
     ...props
 }) => {
+    const [isEnlarged, setIsEnlarged] = useState(false);
+    const imageRef = useRef<HTMLDivElement>(null);
+
+    const handleClick = () => {
+        if (enlarge) {
+            setIsEnlarged(!isEnlarged);
+        }
+    };
+
+    // Lock and unlock scroll when the image is enlarged or closed
+    useEffect(() => {
+        if (isEnlarged) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'auto';
+        }
+
+        return () => {
+            document.body.style.overflow = 'auto';
+        };
+    }, [isEnlarged]);
+
+    const calculateTransform = () => {
+        if (!imageRef.current) return {};
+
+        const rect = imageRef.current.getBoundingClientRect();
+        const scaleX = window.innerWidth / rect.width;
+        const scaleY = window.innerHeight / rect.height;
+        const scale = Math.min(scaleX, scaleY) * 0.9;
+
+        const translateX = (window.innerWidth - rect.width) / 2 - rect.left;
+        const translateY = (window.innerHeight - rect.height) / 2 - rect.top;
+
+        return {
+            transform: isEnlarged
+                ? `translate(${translateX}px, ${translateY}px) scale(${scale})`
+                : 'translate(0, 0) scale(1)',
+            transition: 'all 0.3s ease-in-out',
+            zIndex: isEnlarged ? 2 : 1,
+        };
+    };
+
     return (
-        <Flex
-            fillWidth
-            position="relative"
-            background="neutral-medium"
-            style={{ outline: 'none', overflow: 'hidden', ...style, height: height ? `${height}rem` : '100%', aspectRatio }}
-            className={classNames(className, { [`radius-${radius}`]: radius })}>
-            { isLoading && (
-                <Skeleton
-                    shape="block"/>
+        <>
+            <Flex
+                ref={imageRef}
+                fillWidth
+                position="relative"
+                background="neutral-medium"
+                style={{
+                    outline: 'none',
+                    overflow: 'hidden',
+                    ...style,
+                    height: height ? `${height}rem` : '100%',
+                    aspectRatio,
+                    cursor: enlarge ? 'pointer' : 'default',
+                    borderRadius: isEnlarged ? '0' : radius ? `var(--radius-${radius})` : undefined,
+                    ...calculateTransform(),
+                }}
+                className={classNames(className)}
+                onClick={handleClick}>
+                {isLoading && (
+                    <Skeleton shape="block" />
+                )}
+                {!isLoading && (
+                    <Image
+                        {...props}
+                        alt={alt}
+                        fill
+                        style={{ 
+                            objectFit: isEnlarged ? 'contain' : objectFit,
+                        }}
+                    />
+                )}
+            </Flex>
+
+            {isEnlarged && enlarge && (
+                <Flex
+                    justifyContent="center"
+                    alignItems="center"
+                    position="fixed"
+                    zIndex={1}
+                    onClick={handleClick}
+                    style={{
+                        top: 0,
+                        left: 0,
+                        width: '100vw',
+                        height: '100vh',
+                        background: 'var(--backdrop)',
+                        cursor: 'pointer',
+                        transition: 'opacity 0.3s ease-in-out',
+                        opacity: isEnlarged ? 1 : 0,
+                    }}>
+                    <Flex
+                        position="relative"
+                        style={{
+                            height: '100vh',
+                            transform: 'translate(-50%, -50%)',
+                        }}
+                        onClick={(e) => e.stopPropagation()}>
+                        <Image
+                            {...props}
+                            alt={alt}
+                            fill
+                            sizes="90vw"
+                            style={{ objectFit: 'contain' }}
+                        />
+                    </Flex>
+                </Flex>
             )}
-            { !isLoading && (
-                <Image
-                    {...props}
-                    alt={alt}
-                    fill
-                    style={{ objectFit }}/>
-            )}
-        </Flex>
+        </>
     );
 };
 

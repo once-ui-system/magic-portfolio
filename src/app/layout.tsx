@@ -40,7 +40,7 @@ export default function RootLayout({ children } : RootLayoutProps) {
 	return (
 		<Flex
 			as="html" lang="en"
-			fillHeight background="page"
+			background="page"
 			data-neutral="gray" data-brand="blue" data-accent="violet"
 			data-solid="contrast" data-solid-style="flat"
 			data-theme="dark"
@@ -54,15 +54,21 @@ export default function RootLayout({ children } : RootLayoutProps) {
 				code.variable)}>
 			<Flex
 				as="body"
-				style={{ backgroundImage: 'radial-gradient(ellipse at top left, var(--brand-background-strong) 0%, rgba(0,0,0,0) 50%)' }}
-				fillWidth fillHeight margin="0" padding="0"
+				fillWidth margin="0" padding="0"
 				direction="column">
+				<div style={{
+					position: 'fixed',
+					zIndex: '0',
+					width: '100%',
+					height: '100%',
+					backgroundImage: 'radial-gradient(ellipse at top left, var(--brand-background-strong) 0%, rgba(0,0,0,0) 50%)' }}></div>
 				<Flex
 					fillWidth
 					minHeight="16">
 				</Flex>
 				<Header/>
 				<Flex
+					zIndex={0}
 					fillWidth paddingY="l" paddingX="l"
 					justifyContent="center" flex={1}>
 					<Flex

@@ -1,17 +1,119 @@
 import { InlineCode } from "@/once-ui/components";
 
-const content = {
+const person = {
     name: 'John Doe',
     role: 'Design Engineer',
-    home: {
-        headline: <>Design engineer by day, creative by night</>,
-        subline: <>I'm John, design engineer at <InlineCode>❖ Once UI</InlineCode>, working on my AI graphic novel after working hours.</>
+    avatar: '/images/avatar.png',
+    location: 'Vienna, AU',
+    languages: [ 'English', 'German' ]
+}
+
+const home = {
+    headline: <>Design engineer by day, creative by night</>,
+    subline: <>I'm John, design engineer at <InlineCode>Once UI</InlineCode>, working on my AI graphic novel after working hours.</>
+}
+
+const about = {
+    intro: {
+        title: 'Introduction',
+        description: <>Write a short introduction for your CV, start with your job title or main skill, followed by your key achievements or experiences, and then your career goals. Make sure it's concise, typically 2-3 sentences, and tailored to the role you're applying for, highlighting how your skills and experiences make you a perfect fit for the position.</>
     },
-    social: {
-        github: 'https://github.com/once-ui-system/nextjs-starter',
-        linkedin: 'https://www.linkedin.com/company/once-ui/',
-        x: '',
+    work: {
+        title: 'Work experience',
+        experiences: [
+            {
+                company: 'Once UI',
+                timeframe: '2022 - present',
+                role: 'Senior designer',
+                achievements: [
+                    <>Include a concise overview of your key responsibilities, highlighting your direct impact on the organization, such as improved processes, cost savings, or revenue generation.</>,
+                    <>Include a concise overview of your key responsibilities, highlighting your direct impact on the organization, such as improved processes, cost savings, or revenue generation.</>
+                ],
+                images: [
+                    {
+                        src: '/images/projects/project-01/cover.jpg',
+                        alt: 'Project image',
+                        width: 12,
+                        height: 8
+                    }
+                ]
+            },
+            {
+                company: 'Once UI 2',
+                timeframe: '2022 - present',
+                role: 'Senior designer',
+                achievements: [
+                    <>Include a concise overview of your key responsibilities, highlighting your direct impact on the organization, such as improved processes, cost savings, or revenue generation.</>,
+                    <>Include a concise overview of your key responsibilities, highlighting your direct impact on the organization, such as improved processes, cost savings, or revenue generation.</>
+                ],
+                images: [ ]
+            }
+        ]
+    },
+    technical: {
+        title: 'Technical skills',
+        skills: [
+            {
+                title: 'Figma',
+                description: <>Include a concise overview of your key responsibilities, highlighting your direct impact on the organization, such as improved processes, cost savings, or revenue generation.</>,
+                images: [
+                    {
+                        src: '/images/projects/project-01/cover.jpg',
+                        alt: 'Project image',
+                        width: 12,
+                        height: 8
+                    },
+                    {
+                        src: '/images/projects/project-01/cover.jpg',
+                        alt: 'Project image',
+                        width: 12,
+                        height: 8
+                    },
+                    {
+                        src: '/images/projects/project-01/cover.jpg',
+                        alt: 'Project image',
+                        width: 12,
+                        height: 8
+                    },
+                    {
+                        src: '/images/projects/project-01/cover.jpg',
+                        alt: 'Project image',
+                        width: 12,
+                        height: 8
+                    },
+                    {
+                        src: '/images/projects/project-01/cover.jpg',
+                        alt: 'Project image',
+                        width: 12,
+                        height: 8
+                    },
+                ]
+            }
+        ]
     }
 }
 
-export { content };
+const social = [
+    {
+        name: 'GitHub',
+        icon: 'github',
+        link: 'https://github.com/once-ui-system/nextjs-starter',
+    },
+    {
+        name: 'LinkedIn',
+        icon: 'linkedin',
+        link: 'https://www.linkedin.com/company/once-ui/',
+    },
+    {
+        name: 'X',
+        icon: 'x',
+        link: '',
+    },
+    {
+        name: 'Email',
+        icon: 'email',
+        link: 'mailto:example@gmail.com',
+    },
+]
+
+export { person, home, about, social };
