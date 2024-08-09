@@ -40,21 +40,19 @@ export default function About() {
             <Flex
                 style={{ left: '0', top: '50%', transform: 'translateY(-50%)' }}
                 position="fixed"
-                paddingLeft="24"
-                direction="column"
-                gap="8"
-                hide="s">
+                paddingLeft="24" gap="32"
+                direction="column" hide="s">
                 {structure.map((section, sectionIndex) => (
-                    <Flex key={sectionIndex} gap="8" direction="column">
+                    <Flex key={sectionIndex} gap="12" direction="column">
                         <Flex gap="8" alignItems="center">
-                            <Flex height="1" width="24" background="neutral-strong"></Flex>
+                            <Flex height="1" width="20" background="neutral-strong"></Flex>
                             <Text onClick={() => scrollTo(section.title, 80)}>
                                 {section.title}
                             </Text>
                         </Flex>
                         {section.items.map((item, itemIndex) => (
-                            <Flex key={itemIndex} gap="8" alignItems="center">
-                                <Flex height="1" width="24" background="neutral-strong"></Flex>
+                            <Flex key={itemIndex} gap="12" paddingLeft="12" alignItems="center">
+                                <Flex height="1" width="20" background="neutral-strong"></Flex>
                                 <Text onClick={() => scrollTo(item, 80)}>
                                     {item}
                                 </Text>
