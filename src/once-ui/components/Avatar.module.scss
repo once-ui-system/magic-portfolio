@@ -1,0 +1,60 @@
+.avatar {
+    &.xs {
+        width: var(--static-space-20);
+        height: var(--static-space-20);
+        min-width: var(--static-space-20);
+        min-height: var(--static-space-20);
+    }
+
+    &.s {
+        width: var(--static-space-24);
+        height: var(--static-space-24);
+        min-width: var(--static-space-24);
+        min-height: var(--static-space-24);
+    }
+
+    &.m {
+        width: var(--static-space-32);
+        height: var(--static-space-32);
+        min-width: var(--static-space-32);
+        min-height: var(--static-space-32);
+    }
+
+    &.l {
+        width: var(--static-space-48);
+        height: var(--static-space-48);
+        min-width: var(--static-space-48);
+        min-height: var(--static-space-48);
+    }
+
+    &.xl {
+        width: var(--static-space-160);
+        height: var(--static-space-160);
+        min-width: var(--static-space-160);
+        min-height: var(--static-space-160);
+
+        .position {
+            bottom: var(--static-space-16);
+            right: var(--static-space-16);
+        }
+    }
+
+    .value {
+        white-space: nowrap;
+        overflow: hidden;
+        user-select: none;
+    }
+}
+
+.indicator {
+    box-sizing: content-box;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    transform: translateX(var(--static-space-2)) translateY(var(--static-space-2));
+}
+
+.image {
+    border-radius: var(--radius-999);
+    object-position: center;
+}

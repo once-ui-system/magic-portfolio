@@ -1,0 +1,36 @@
+.statusIndicator {
+    display: flex;
+    border: 2px solid var(--page-background);
+    border-radius: var(--radius-999);
+
+    &.s {
+        width: var(--static-space-4);
+        height: var(--static-space-4);
+    }
+
+    &.m {
+        width: var(--static-space-8);
+        height: var(--static-space-8);
+    }
+
+    &.l {
+        width: var(--static-space-16);
+        height: var(--static-space-16);
+    }
+
+    &.green {
+        background-color: var(--scheme-green-700);
+    }
+
+    &.yellow {
+        background-color: var(--scheme-yellow-700);
+    }
+
+    &.red {
+        background-color: var(--scheme-red-700);
+    }
+
+    &.gray {
+        background-color: var(--scheme-gray-700);
+    }
+}

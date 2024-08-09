@@ -1,0 +1,47 @@
+.top {
+	bottom: calc(100% + var(--static-space-2));
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.bottom {
+	top: calc(100% + var(--static-space-2));
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.left {
+	right: calc(100% + var(--static-space-2));
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.right {
+	left: calc(100% + var(--static-space-2));
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.s {
+	border-radius: var(--radius-s);
+	min-height: var(--static-space-24);
+	min-width: var(--static-space-24);
+	height: var(--static-space-24);
+	width: var(--static-space-24);
+}
+
+.m {
+	border-radius: var(--radius-m);
+	min-height: var(--static-space-32);
+	min-width: var(--static-space-32);
+	height: var(--static-space-32);
+	width: var(--static-space-32);
+}
+
+.l {
+	border-radius: var(--radius-l);
+	min-height: var(--static-space-40);
+	min-width: var(--static-space-40);
+	height: var(--static-space-40);
+	width: var(--static-space-40);
+}

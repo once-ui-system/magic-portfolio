@@ -1,0 +1,685 @@
+:root {
+    /* FUNCTION */
+    /* info */
+    --function-info-100:  var(--scheme-blue-100);
+    --function-info-200:  var(--scheme-blue-200);
+    --function-info-300:  var(--scheme-blue-300);
+    --function-info-400:  var(--scheme-blue-400);
+    --function-info-500:  var(--scheme-blue-500);
+    --function-info-600:  var(--scheme-blue-600);
+    --function-info-700:  var(--scheme-blue-700);
+    --function-info-800:  var(--scheme-blue-800);
+    --function-info-900:  var(--scheme-blue-900);
+    --function-info-1000: var(--scheme-blue-1000);
+    --function-info-1100: var(--scheme-blue-1100);
+    --function-info-1200: var(--scheme-blue-1200);
+
+    --function-info-600-10: var(--scheme-blue-600-10);
+    --function-info-600-30: var(--scheme-blue-600-30);
+    --function-info-600-50: var(--scheme-blue-600-50);
+
+    /* warning */
+    --function-warning-100:  var(--scheme-yellow-100);
+    --function-warning-200:  var(--scheme-yellow-200);
+    --function-warning-300:  var(--scheme-yellow-300);
+    --function-warning-400:  var(--scheme-yellow-400);
+    --function-warning-500:  var(--scheme-yellow-500);
+    --function-warning-600:  var(--scheme-yellow-600);
+    --function-warning-700:  var(--scheme-yellow-700);
+    --function-warning-800:  var(--scheme-yellow-800);
+    --function-warning-900:  var(--scheme-yellow-900);
+    --function-warning-1000: var(--scheme-yellow-1000);
+    --function-warning-1100: var(--scheme-yellow-1100);
+    --function-warning-1200: var(--scheme-yellow-1200);
+
+    --function-warning-600-10: var(--scheme-yellow-600-10);
+    --function-warning-600-30: var(--scheme-yellow-600-30);
+    --function-warning-600-50: var(--scheme-yellow-600-50);
+
+    /* danger */
+    --function-danger-100:  var(--scheme-red-100);
+    --function-danger-200:  var(--scheme-red-200);
+    --function-danger-300:  var(--scheme-red-300);
+    --function-danger-400:  var(--scheme-red-400);
+    --function-danger-500:  var(--scheme-red-500);
+    --function-danger-600:  var(--scheme-red-600);
+    --function-danger-700:  var(--scheme-red-700);
+    --function-danger-800:  var(--scheme-red-800);
+    --function-danger-900:  var(--scheme-red-900);
+    --function-danger-1000: var(--scheme-red-1000);
+    --function-danger-1100: var(--scheme-red-1100);
+    --function-danger-1200: var(--scheme-red-1200);
+
+    --function-danger-600-10: var(--scheme-red-600-10);
+    --function-danger-600-30: var(--scheme-red-600-30);
+    --function-danger-600-50: var(--scheme-red-600-50);
+
+    /* success */
+    --function-success-100:  var(--scheme-green-100);
+    --function-success-200:  var(--scheme-green-200);
+    --function-success-300:  var(--scheme-green-300);
+    --function-success-400:  var(--scheme-green-400);
+    --function-success-500:  var(--scheme-green-500);
+    --function-success-600:  var(--scheme-green-600);
+    --function-success-700:  var(--scheme-green-700);
+    --function-success-800:  var(--scheme-green-800);
+    --function-success-900:  var(--scheme-green-900);
+    --function-success-1000: var(--scheme-green-1000);
+    --function-success-1100: var(--scheme-green-1100);
+    --function-success-1200: var(--scheme-green-1200);
+
+    --function-success-600-10: var(--scheme-green-600-10);
+    --function-success-600-30: var(--scheme-green-600-30);
+    --function-success-600-50: var(--scheme-green-600-50);
+}
+
+/* brand */
+[data-brand="custom"] {
+    --function-brand-100:  var(--scheme-brand-100);
+    --function-brand-200:  var(--scheme-brand-200);
+    --function-brand-300:  var(--scheme-brand-300);
+    --function-brand-400:  var(--scheme-brand-400);
+    --function-brand-500:  var(--scheme-brand-500);
+    --function-brand-600:  var(--scheme-brand-600);
+    --function-brand-700:  var(--scheme-brand-700);
+    --function-brand-800:  var(--scheme-brand-800);
+    --function-brand-900:  var(--scheme-brand-900);
+    --function-brand-1000: var(--scheme-brand-1000);
+    --function-brand-1100: var(--scheme-brand-1100);
+    --function-brand-1200: var(--scheme-brand-1200);
+
+    --function-brand-600-10: var(--scheme-brand-600-10);
+    --function-brand-600-30: var(--scheme-brand-600-30);
+    --function-brand-600-50: var(--scheme-brand-600-50);
+}
+
+[data-brand="red"] {
+    --function-brand-100:  var(--scheme-red-100);
+    --function-brand-200:  var(--scheme-red-200);
+    --function-brand-300:  var(--scheme-red-300);
+    --function-brand-400:  var(--scheme-red-400);
+    --function-brand-500:  var(--scheme-red-500);
+    --function-brand-600:  var(--scheme-red-600);
+    --function-brand-700:  var(--scheme-red-700);
+    --function-brand-800:  var(--scheme-red-800);
+    --function-brand-900:  var(--scheme-red-900);
+    --function-brand-1000: var(--scheme-red-1000);
+    --function-brand-1100: var(--scheme-red-1100);
+    --function-brand-1200: var(--scheme-red-1200);
+
+    --function-brand-600-10: var(--scheme-red-600-10);
+    --function-brand-600-30: var(--scheme-red-600-30);
+    --function-brand-600-50: var(--scheme-red-600-50);
+}
+
+[data-brand="orange"] {
+    --function-brand-100:  var(--scheme-orange-100);
+    --function-brand-200:  var(--scheme-orange-200);
+    --function-brand-300:  var(--scheme-orange-300);
+    --function-brand-400:  var(--scheme-orange-400);
+    --function-brand-500:  var(--scheme-orange-500);
+    --function-brand-600:  var(--scheme-orange-600);
+    --function-brand-700:  var(--scheme-orange-700);
+    --function-brand-800:  var(--scheme-orange-800);
+    --function-brand-900:  var(--scheme-orange-900);
+    --function-brand-1000: var(--scheme-orange-1000);
+    --function-brand-1100: var(--scheme-orange-1100);
+    --function-brand-1200: var(--scheme-orange-1200);
+
+    --function-brand-600-10: var(--scheme-orange-600-10);
+    --function-brand-600-30: var(--scheme-orange-600-30);
+    --function-brand-600-50: var(--scheme-orange-600-50);
+}
+
+[data-brand="yellow"] {
+    --function-brand-100:  var(--scheme-yellow-100);
+    --function-brand-200:  var(--scheme-yellow-200);
+    --function-brand-300:  var(--scheme-yellow-300);
+    --function-brand-400:  var(--scheme-yellow-400);
+    --function-brand-500:  var(--scheme-yellow-500);
+    --function-brand-600:  var(--scheme-yellow-600);
+    --function-brand-700:  var(--scheme-yellow-700);
+    --function-brand-800:  var(--scheme-yellow-800);
+    --function-brand-900:  var(--scheme-yellow-900);
+    --function-brand-1000: var(--scheme-yellow-1000);
+    --function-brand-1100: var(--scheme-yellow-1100);
+    --function-brand-1200: var(--scheme-yellow-1200);
+
+    --function-brand-600-10: var(--scheme-yellow-600-10);
+    --function-brand-600-30: var(--scheme-yellow-600-30);
+    --function-brand-600-50: var(--scheme-yellow-600-50);
+}
+
+[data-brand="moss"] {
+    --function-brand-100:  var(--scheme-moss-100);
+    --function-brand-200:  var(--scheme-moss-200);
+    --function-brand-300:  var(--scheme-moss-300);
+    --function-brand-400:  var(--scheme-moss-400);
+    --function-brand-500:  var(--scheme-moss-500);
+    --function-brand-600:  var(--scheme-moss-600);
+    --function-brand-700:  var(--scheme-moss-700);
+    --function-brand-800:  var(--scheme-moss-800);
+    --function-brand-900:  var(--scheme-moss-900);
+    --function-brand-1000: var(--scheme-moss-1000);
+    --function-brand-1100: var(--scheme-moss-1100);
+    --function-brand-1200: var(--scheme-moss-1200);
+
+    --function-brand-600-10: var(--scheme-moss-600-10);
+    --function-brand-600-30: var(--scheme-moss-600-30);
+    --function-brand-600-50: var(--scheme-moss-600-50);
+}
+
+[data-brand="green"] {
+    --function-brand-100:  var(--scheme-green-100);
+    --function-brand-200:  var(--scheme-green-200);
+    --function-brand-300:  var(--scheme-green-300);
+    --function-brand-400:  var(--scheme-green-400);
+    --function-brand-500:  var(--scheme-green-500);
+    --function-brand-600:  var(--scheme-green-600);
+    --function-brand-700:  var(--scheme-green-700);
+    --function-brand-800:  var(--scheme-green-800);
+    --function-brand-900:  var(--scheme-green-900);
+    --function-brand-1000: var(--scheme-green-1000);
+    --function-brand-1100: var(--scheme-green-1100);
+    --function-brand-1200: var(--scheme-green-1200);
+
+    --function-brand-600-10: var(--scheme-green-600-10);
+    --function-brand-600-30: var(--scheme-green-600-30);
+    --function-brand-600-50: var(--scheme-green-600-50);
+}
+
+[data-brand="emerald"] {
+    --function-brand-100:  var(--scheme-emerald-100);
+    --function-brand-200:  var(--scheme-emerald-200);
+    --function-brand-300:  var(--scheme-emerald-300);
+    --function-brand-400:  var(--scheme-emerald-400);
+    --function-brand-500:  var(--scheme-emerald-500);
+    --function-brand-600:  var(--scheme-emerald-600);
+    --function-brand-700:  var(--scheme-emerald-700);
+    --function-brand-800:  var(--scheme-emerald-800);
+    --function-brand-900:  var(--scheme-emerald-900);
+    --function-brand-1000: var(--scheme-emerald-1000);
+    --function-brand-1100: var(--scheme-emerald-1100);
+    --function-brand-1200: var(--scheme-emerald-1200);
+
+    --function-brand-600-10: var(--scheme-emerald-600-10);
+    --function-brand-600-30: var(--scheme-emerald-600-30);
+    --function-brand-600-50: var(--scheme-emerald-600-50);
+}
+
+[data-brand="aqua"] {
+    --function-brand-100:  var(--scheme-aqua-100);
+    --function-brand-200:  var(--scheme-aqua-200);
+    --function-brand-300:  var(--scheme-aqua-300);
+    --function-brand-400:  var(--scheme-aqua-400);
+    --function-brand-500:  var(--scheme-aqua-500);
+    --function-brand-600:  var(--scheme-aqua-600);
+    --function-brand-700:  var(--scheme-aqua-700);
+    --function-brand-800:  var(--scheme-aqua-800);
+    --function-brand-900:  var(--scheme-aqua-900);
+    --function-brand-1000: var(--scheme-aqua-1000);
+    --function-brand-1100: var(--scheme-aqua-1100);
+    --function-brand-1200: var(--scheme-aqua-1200);
+
+    --function-brand-600-10: var(--scheme-aqua-600-10);
+    --function-brand-600-30: var(--scheme-aqua-600-30);
+    --function-brand-600-50: var(--scheme-aqua-600-50);
+}
+
+[data-brand="cyan"] {
+    --function-brand-100:  var(--scheme-cyan-100);
+    --function-brand-200:  var(--scheme-cyan-200);
+    --function-brand-300:  var(--scheme-cyan-300);
+    --function-brand-400:  var(--scheme-cyan-400);
+    --function-brand-500:  var(--scheme-cyan-500);
+    --function-brand-600:  var(--scheme-cyan-600);
+    --function-brand-700:  var(--scheme-cyan-700);
+    --function-brand-800:  var(--scheme-cyan-800);
+    --function-brand-900:  var(--scheme-cyan-900);
+    --function-brand-1000: var(--scheme-cyan-1000);
+    --function-brand-1100: var(--scheme-cyan-1100);
+    --function-brand-1200: var(--scheme-cyan-1200);
+
+    --function-brand-600-10: var(--scheme-cyan-600-10);
+    --function-brand-600-30: var(--scheme-cyan-600-30);
+    --function-brand-600-50: var(--scheme-cyan-600-50);
+}
+
+[data-brand="blue"] {
+    --function-brand-100:  var(--scheme-blue-100);
+    --function-brand-200:  var(--scheme-blue-200);
+    --function-brand-300:  var(--scheme-blue-300);
+    --function-brand-400:  var(--scheme-blue-400);
+    --function-brand-500:  var(--scheme-blue-500);
+    --function-brand-600:  var(--scheme-blue-600);
+    --function-brand-700:  var(--scheme-blue-700);
+    --function-brand-800:  var(--scheme-blue-800);
+    --function-brand-900:  var(--scheme-blue-900);
+    --function-brand-1000: var(--scheme-blue-1000);
+    --function-brand-1100: var(--scheme-blue-1100);
+    --function-brand-1200: var(--scheme-blue-1200);
+
+    --function-brand-600-10: var(--scheme-blue-600-10);
+    --function-brand-600-30: var(--scheme-blue-600-30);
+    --function-brand-600-50: var(--scheme-blue-600-50);
+}
+
+[data-brand="indigo"] {
+    --function-brand-100:  var(--scheme-indigo-100);
+    --function-brand-200:  var(--scheme-indigo-200);
+    --function-brand-300:  var(--scheme-indigo-300);
+    --function-brand-400:  var(--scheme-indigo-400);
+    --function-brand-500:  var(--scheme-indigo-500);
+    --function-brand-600:  var(--scheme-indigo-600);
+    --function-brand-700:  var(--scheme-indigo-700);
+    --function-brand-800:  var(--scheme-indigo-800);
+    --function-brand-900:  var(--scheme-indigo-900);
+    --function-brand-1000: var(--scheme-indigo-1000);
+    --function-brand-1100: var(--scheme-indigo-1100);
+    --function-brand-1200: var(--scheme-indigo-1200);
+
+    --function-brand-600-10: var(--scheme-indigo-600-10);
+    --function-brand-600-30: var(--scheme-indigo-600-30);
+    --function-brand-600-50: var(--scheme-indigo-600-50);
+}
+
+[data-brand="violet"] {
+    --function-brand-100:  var(--scheme-violet-100);
+    --function-brand-200:  var(--scheme-violet-200);
+    --function-brand-300:  var(--scheme-violet-300);
+    --function-brand-400:  var(--scheme-violet-400);
+    --function-brand-500:  var(--scheme-violet-500);
+    --function-brand-600:  var(--scheme-violet-600);
+    --function-brand-700:  var(--scheme-violet-700);
+    --function-brand-800:  var(--scheme-violet-800);
+    --function-brand-900:  var(--scheme-violet-900);
+    --function-brand-1000: var(--scheme-violet-1000);
+    --function-brand-1100: var(--scheme-violet-1100);
+    --function-brand-1200: var(--scheme-violet-1200);
+
+    --function-brand-600-10: var(--scheme-violet-600-10);
+    --function-brand-600-30: var(--scheme-violet-600-30);
+    --function-brand-600-50: var(--scheme-violet-600-50);
+}
+
+[data-brand="magenta"] {
+    --function-brand-100:  var(--scheme-magenta-100);
+    --function-brand-200:  var(--scheme-magenta-200);
+    --function-brand-300:  var(--scheme-magenta-300);
+    --function-brand-400:  var(--scheme-magenta-400);
+    --function-brand-500:  var(--scheme-magenta-500);
+    --function-brand-600:  var(--scheme-magenta-600);
+    --function-brand-700:  var(--scheme-magenta-700);
+    --function-brand-800:  var(--scheme-magenta-800);
+    --function-brand-900:  var(--scheme-magenta-900);
+    --function-brand-1000: var(--scheme-magenta-1000);
+    --function-brand-1100: var(--scheme-magenta-1100);
+    --function-brand-1200: var(--scheme-magenta-1200);
+
+    --function-brand-600-10: var(--scheme-magenta-600-10);
+    --function-brand-600-30: var(--scheme-magenta-600-30);
+    --function-brand-600-50: var(--scheme-magenta-600-50);
+}
+
+[data-brand="pink"] {
+    --function-brand-100:  var(--scheme-pink-100);
+    --function-brand-200:  var(--scheme-pink-200);
+    --function-brand-300:  var(--scheme-pink-300);
+    --function-brand-400:  var(--scheme-pink-400);
+    --function-brand-500:  var(--scheme-pink-500);
+    --function-brand-600:  var(--scheme-pink-600);
+    --function-brand-700:  var(--scheme-pink-700);
+    --function-brand-800:  var(--scheme-pink-800);
+    --function-brand-900:  var(--scheme-pink-900);
+    --function-brand-1000: var(--scheme-pink-1000);
+    --function-brand-1100: var(--scheme-pink-1100);
+    --function-brand-1200: var(--scheme-pink-1200);
+
+    --function-brand-600-10: var(--scheme-pink-600-10);
+    --function-brand-600-30: var(--scheme-pink-600-30);
+    --function-brand-600-50: var(--scheme-pink-600-50);
+}
+
+/* accent */
+[data-accent="custom"] {
+    --function-accent-100:  var(--scheme-accent-100);
+    --function-accent-200:  var(--scheme-accent-200);
+    --function-accent-300:  var(--scheme-accent-300);
+    --function-accent-400:  var(--scheme-accent-400);
+    --function-accent-500:  var(--scheme-accent-500);
+    --function-accent-600:  var(--scheme-accent-600);
+    --function-accent-700:  var(--scheme-accent-700);
+    --function-accent-800:  var(--scheme-accent-800);
+    --function-accent-900:  var(--scheme-accent-900);
+    --function-accent-1000: var(--scheme-accent-1000);
+    --function-accent-1100: var(--scheme-accent-1100);
+    --function-accent-1200: var(--scheme-accent-1200);
+
+    --function-accent-600-10: var(--scheme-accent-600-10);
+    --function-accent-600-30: var(--scheme-accent-600-30);
+    --function-accent-600-50: var(--scheme-accent-600-50);
+}
+
+[data-accent="red"] {
+    --function-accent-100:  var(--scheme-red-100);
+    --function-accent-200:  var(--scheme-red-200);
+    --function-accent-300:  var(--scheme-red-300);
+    --function-accent-400:  var(--scheme-red-400);
+    --function-accent-500:  var(--scheme-red-500);
+    --function-accent-600:  var(--scheme-red-600);
+    --function-accent-700:  var(--scheme-red-700);
+    --function-accent-800:  var(--scheme-red-800);
+    --function-accent-900:  var(--scheme-red-900);
+    --function-accent-1000: var(--scheme-red-1000);
+    --function-accent-1100: var(--scheme-red-1100);
+    --function-accent-1200: var(--scheme-red-1200);
+
+    --function-accent-600-10: var(--scheme-red-600-10);
+    --function-accent-600-30: var(--scheme-red-600-30);
+    --function-accent-600-50: var(--scheme-red-600-50);
+}
+
+[data-accent="orange"] {
+    --function-accent-100:  var(--scheme-orange-100);
+    --function-accent-200:  var(--scheme-orange-200);
+    --function-accent-300:  var(--scheme-orange-300);
+    --function-accent-400:  var(--scheme-orange-400);
+    --function-accent-500:  var(--scheme-orange-500);
+    --function-accent-600:  var(--scheme-orange-600);
+    --function-accent-700:  var(--scheme-orange-700);
+    --function-accent-800:  var(--scheme-orange-800);
+    --function-accent-900:  var(--scheme-orange-900);
+    --function-accent-1000: var(--scheme-orange-1000);
+    --function-accent-1100: var(--scheme-orange-1100);
+    --function-accent-1200: var(--scheme-orange-1200);
+
+    --function-accent-600-10: var(--scheme-orange-600-10);
+    --function-accent-600-30: var(--scheme-orange-600-30);
+    --function-accent-600-50: var(--scheme-orange-600-50);
+}
+
+[data-accent="yellow"] {
+    --function-accent-100:  var(--scheme-yellow-100);
+    --function-accent-200:  var(--scheme-yellow-200);
+    --function-accent-300:  var(--scheme-yellow-300);
+    --function-accent-400:  var(--scheme-yellow-400);
+    --function-accent-500:  var(--scheme-yellow-500);
+    --function-accent-600:  var(--scheme-yellow-600);
+    --function-accent-700:  var(--scheme-yellow-700);
+    --function-accent-800:  var(--scheme-yellow-800);
+    --function-accent-900:  var(--scheme-yellow-900);
+    --function-accent-1000: var(--scheme-yellow-1000);
+    --function-accent-1100: var(--scheme-yellow-1100);
+    --function-accent-1200: var(--scheme-yellow-1200);
+
+    --function-accent-600-10: var(--scheme-yellow-600-10);
+    --function-accent-600-30: var(--scheme-yellow-600-30);
+    --function-accent-600-50: var(--scheme-yellow-600-50);
+}
+
+[data-accent="moss"] {
+    --function-accent-100:  var(--scheme-moss-100);
+    --function-accent-200:  var(--scheme-moss-200);
+    --function-accent-300:  var(--scheme-moss-300);
+    --function-accent-400:  var(--scheme-moss-400);
+    --function-accent-500:  var(--scheme-moss-500);
+    --function-accent-600:  var(--scheme-moss-600);
+    --function-accent-700:  var(--scheme-moss-700);
+    --function-accent-800:  var(--scheme-moss-800);
+    --function-accent-900:  var(--scheme-moss-900);
+    --function-accent-1000: var(--scheme-moss-1000);
+    --function-accent-1100: var(--scheme-moss-1100);
+    --function-accent-1200: var(--scheme-moss-1200);
+
+    --function-accent-600-10: var(--scheme-moss-600-10);
+    --function-accent-600-30: var(--scheme-moss-600-30);
+    --function-accent-600-50: var(--scheme-moss-600-50);
+}
+
+[data-accent="green"] {
+    --function-accent-100:  var(--scheme-green-100);
+    --function-accent-200:  var(--scheme-green-200);
+    --function-accent-300:  var(--scheme-green-300);
+    --function-accent-400:  var(--scheme-green-400);
+    --function-accent-500:  var(--scheme-green-500);
+    --function-accent-600:  var(--scheme-green-600);
+    --function-accent-700:  var(--scheme-green-700);
+    --function-accent-800:  var(--scheme-green-800);
+    --function-accent-900:  var(--scheme-green-900);
+    --function-accent-1000: var(--scheme-green-1000);
+    --function-accent-1100: var(--scheme-green-1100);
+    --function-accent-1200: var(--scheme-green-1200);
+
+    --function-accent-600-10: var(--scheme-green-600-10);
+    --function-accent-600-30: var(--scheme-green-600-30);
+    --function-accent-600-50: var(--scheme-green-600-50);
+}
+
+[data-accent="emerald"] {
+    --function-accent-100:  var(--scheme-emerald-100);
+    --function-accent-200:  var(--scheme-emerald-200);
+    --function-accent-300:  var(--scheme-emerald-300);
+    --function-accent-400:  var(--scheme-emerald-400);
+    --function-accent-500:  var(--scheme-emerald-500);
+    --function-accent-600:  var(--scheme-emerald-600);
+    --function-accent-700:  var(--scheme-emerald-700);
+    --function-accent-800:  var(--scheme-emerald-800);
+    --function-accent-900:  var(--scheme-emerald-900);
+    --function-accent-1000: var(--scheme-emerald-1000);
+    --function-accent-1100: var(--scheme-emerald-1100);
+    --function-accent-1200: var(--scheme-emerald-1200);
+
+    --function-accent-600-10: var(--scheme-emerald-600-10);
+    --function-accent-600-30: var(--scheme-emerald-600-30);
+    --function-accent-600-50: var(--scheme-emerald-600-50);
+}
+
+[data-accent="aqua"] {
+    --function-accent-100:  var(--scheme-aqua-100);
+    --function-accent-200:  var(--scheme-aqua-200);
+    --function-accent-300:  var(--scheme-aqua-300);
+    --function-accent-400:  var(--scheme-aqua-400);
+    --function-accent-500:  var(--scheme-aqua-500);
+    --function-accent-600:  var(--scheme-aqua-600);
+    --function-accent-700:  var(--scheme-aqua-700);
+    --function-accent-800:  var(--scheme-aqua-800);
+    --function-accent-900:  var(--scheme-aqua-900);
+    --function-accent-1000: var(--scheme-aqua-1000);
+    --function-accent-1100: var(--scheme-aqua-1100);
+    --function-accent-1200: var(--scheme-aqua-1200);
+
+    --function-accent-600-10: var(--scheme-aqua-600-10);
+    --function-accent-600-30: var(--scheme-aqua-600-30);
+    --function-accent-600-50: var(--scheme-aqua-600-50);
+}
+
+[data-accent="cyan"] {
+    --function-accent-100:  var(--scheme-cyan-100);
+    --function-accent-200:  var(--scheme-cyan-200);
+    --function-accent-300:  var(--scheme-cyan-300);
+    --function-accent-400:  var(--scheme-cyan-400);
+    --function-accent-500:  var(--scheme-cyan-500);
+    --function-accent-600:  var(--scheme-cyan-600);
+    --function-accent-700:  var(--scheme-cyan-700);
+    --function-accent-800:  var(--scheme-cyan-800);
+    --function-accent-900:  var(--scheme-cyan-900);
+    --function-accent-1000: var(--scheme-cyan-1000);
+    --function-accent-1100: var(--scheme-cyan-1100);
+    --function-accent-1200: var(--scheme-cyan-1200);
+
+    --function-accent-600-10: var(--scheme-cyan-600-10);
+    --function-accent-600-30: var(--scheme-cyan-600-30);
+    --function-accent-600-50: var(--scheme-cyan-600-50);
+}
+
+[data-accent="blue"] {
+    --function-accent-100:  var(--scheme-blue-100);
+    --function-accent-200:  var(--scheme-blue-200);
+    --function-accent-300:  var(--scheme-blue-300);
+    --function-accent-400:  var(--scheme-blue-400);
+    --function-accent-500:  var(--scheme-blue-500);
+    --function-accent-600:  var(--scheme-blue-600);
+    --function-accent-700:  var(--scheme-blue-700);
+    --function-accent-800:  var(--scheme-blue-800);
+    --function-accent-900:  var(--scheme-blue-900);
+    --function-accent-1000: var(--scheme-blue-1000);
+    --function-accent-1100: var(--scheme-blue-1100);
+    --function-accent-1200: var(--scheme-blue-1200);
+
+    --function-accent-600-10: var(--scheme-blue-600-10);
+    --function-accent-600-30: var(--scheme-blue-600-30);
+    --function-accent-600-50: var(--scheme-blue-600-50);
+}
+
+[data-accent="indigo"] {
+    --function-accent-100:  var(--scheme-indigo-100);
+    --function-accent-200:  var(--scheme-indigo-200);
+    --function-accent-300:  var(--scheme-indigo-300);
+    --function-accent-400:  var(--scheme-indigo-400);
+    --function-accent-500:  var(--scheme-indigo-500);
+    --function-accent-600:  var(--scheme-indigo-600);
+    --function-accent-700:  var(--scheme-indigo-700);
+    --function-accent-800:  var(--scheme-indigo-800);
+    --function-accent-900:  var(--scheme-indigo-900);
+    --function-accent-1000: var(--scheme-indigo-1000);
+    --function-accent-1100: var(--scheme-indigo-1100);
+    --function-accent-1200: var(--scheme-indigo-1200);
+
+    --function-accent-600-10: var(--scheme-indigo-600-10);
+    --function-accent-600-30: var(--scheme-indigo-600-30);
+    --function-accent-600-50: var(--scheme-indigo-600-50);
+}
+
+[data-accent="violet"] {
+    --function-accent-100:  var(--scheme-violet-100);
+    --function-accent-200:  var(--scheme-violet-200);
+    --function-accent-300:  var(--scheme-violet-300);
+    --function-accent-400:  var(--scheme-violet-400);
+    --function-accent-500:  var(--scheme-violet-500);
+    --function-accent-600:  var(--scheme-violet-600);
+    --function-accent-700:  var(--scheme-violet-700);
+    --function-accent-800:  var(--scheme-violet-800);
+    --function-accent-900:  var(--scheme-violet-900);
+    --function-accent-1000: var(--scheme-violet-1000);
+    --function-accent-1100: var(--scheme-violet-1100);
+    --function-accent-1200: var(--scheme-violet-1200);
+
+    --function-accent-600-10: var(--scheme-violet-600-10);
+    --function-accent-600-30: var(--scheme-violet-600-30);
+    --function-accent-600-50: var(--scheme-violet-600-50);
+}
+
+[data-accent="magenta"] {
+    --function-accent-100:  var(--scheme-magenta-100);
+    --function-accent-200:  var(--scheme-magenta-200);
+    --function-accent-300:  var(--scheme-magenta-300);
+    --function-accent-400:  var(--scheme-magenta-400);
+    --function-accent-500:  var(--scheme-magenta-500);
+    --function-accent-600:  var(--scheme-magenta-600);
+    --function-accent-700:  var(--scheme-magenta-700);
+    --function-accent-800:  var(--scheme-magenta-800);
+    --function-accent-900:  var(--scheme-magenta-900);
+    --function-accent-1000: var(--scheme-magenta-1000);
+    --function-accent-1100: var(--scheme-magenta-1100);
+    --function-accent-1200: var(--scheme-magenta-1200);
+
+    --function-accent-600-10: var(--scheme-magenta-600-10);
+    --function-accent-600-30: var(--scheme-magenta-600-30);
+    --function-accent-600-50: var(--scheme-magenta-600-50);
+}
+
+[data-accent="pink"] {
+    --function-accent-100:  var(--scheme-pink-100);
+    --function-accent-200:  var(--scheme-pink-200);
+    --function-accent-300:  var(--scheme-pink-300);
+    --function-accent-400:  var(--scheme-pink-400);
+    --function-accent-500:  var(--scheme-pink-500);
+    --function-accent-600:  var(--scheme-pink-600);
+    --function-accent-700:  var(--scheme-pink-700);
+    --function-accent-800:  var(--scheme-pink-800);
+    --function-accent-900:  var(--scheme-pink-900);
+    --function-accent-1000: var(--scheme-pink-1000);
+    --function-accent-1100: var(--scheme-pink-1100);
+    --function-accent-1200: var(--scheme-pink-1200);
+
+    --function-accent-600-10: var(--scheme-pink-600-10);
+    --function-accent-600-30: var(--scheme-pink-600-30);
+    --function-accent-600-50: var(--scheme-pink-600-50);
+}
+
+/* neutral */
+[data-neutral="custom"] {
+    --function-neutral-100:  var(--scheme-neutral-100);
+    --function-neutral-200:  var(--scheme-neutral-200);
+    --function-neutral-300:  var(--scheme-neutral-300);
+    --function-neutral-400:  var(--scheme-neutral-400);
+    --function-neutral-500:  var(--scheme-neutral-500);
+    --function-neutral-600:  var(--scheme-neutral-600);
+    --function-neutral-700:  var(--scheme-neutral-700);
+    --function-neutral-800:  var(--scheme-neutral-800);
+    --function-neutral-900:  var(--scheme-neutral-900);
+    --function-neutral-1000: var(--scheme-neutral-1000);
+    --function-neutral-1100: var(--scheme-neutral-1100);
+    --function-neutral-1200: var(--scheme-neutral-1200);
+
+    --function-neutral-600-10: var(--scheme-neutral-600-10);
+    --function-neutral-600-30: var(--scheme-neutral-600-30);
+    --function-neutral-600-50: var(--scheme-neutral-600-50);
+}
+
+[data-neutral="slate"] {
+    --function-neutral-100:  var(--scheme-slate-100);
+    --function-neutral-200:  var(--scheme-slate-200);
+    --function-neutral-300:  var(--scheme-slate-300);
+    --function-neutral-400:  var(--scheme-slate-400);
+    --function-neutral-500:  var(--scheme-slate-500);
+    --function-neutral-600:  var(--scheme-slate-600);
+    --function-neutral-700:  var(--scheme-slate-700);
+    --function-neutral-800:  var(--scheme-slate-800);
+    --function-neutral-900:  var(--scheme-slate-900);
+    --function-neutral-1000: var(--scheme-slate-1000);
+    --function-neutral-1100: var(--scheme-slate-1100);
+    --function-neutral-1200: var(--scheme-slate-1200);
+
+    --function-neutral-600-10: var(--scheme-slate-600-10);
+    --function-neutral-600-30: var(--scheme-slate-600-30);
+    --function-neutral-600-50: var(--scheme-slate-600-50);
+}
+
+[data-neutral="gray"] {
+    --function-neutral-100:  var(--scheme-gray-100);
+    --function-neutral-200:  var(--scheme-gray-200);
+    --function-neutral-300:  var(--scheme-gray-300);
+    --function-neutral-400:  var(--scheme-gray-400);
+    --function-neutral-500:  var(--scheme-gray-500);
+    --function-neutral-600:  var(--scheme-gray-600);
+    --function-neutral-700:  var(--scheme-gray-700);
+    --function-neutral-800:  var(--scheme-gray-800);
+    --function-neutral-900:  var(--scheme-gray-900);
+    --function-neutral-1000: var(--scheme-gray-1000);
+    --function-neutral-1100: var(--scheme-gray-1100);
+    --function-neutral-1200: var(--scheme-gray-1200);
+
+    --function-neutral-600-10: var(--scheme-gray-600-10);
+    --function-neutral-600-30: var(--scheme-gray-600-30);
+    --function-neutral-600-50: var(--scheme-gray-600-50);
+}
+
+[data-neutral="sand"] {
+    --function-neutral-100:  var(--scheme-sand-100);
+    --function-neutral-200:  var(--scheme-sand-200);
+    --function-neutral-300:  var(--scheme-sand-300);
+    --function-neutral-400:  var(--scheme-sand-400);
+    --function-neutral-500:  var(--scheme-sand-500);
+    --function-neutral-600:  var(--scheme-sand-600);
+    --function-neutral-700:  var(--scheme-sand-700);
+    --function-neutral-800:  var(--scheme-sand-800);
+    --function-neutral-900:  var(--scheme-sand-900);
+    --function-neutral-1000: var(--scheme-sand-1000);
+    --function-neutral-1100: var(--scheme-sand-1100);
+    --function-neutral-1200: var(--scheme-sand-1200);
+
+    --function-neutral-600-10: var(--scheme-sand-600-10);
+    --function-neutral-600-30: var(--scheme-sand-600-30);
+    --function-neutral-600-50: var(--scheme-sand-600-50);
+}

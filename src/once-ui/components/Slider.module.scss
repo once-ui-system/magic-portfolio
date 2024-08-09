@@ -1,0 +1,32 @@
+.wrapper {
+    position: relative;
+    width: 100%;
+    height: var(--static-space-8);
+    background: var(--neutral-background-weak);
+    border: 1px solid var(--neutral-border-medium);
+    border-radius: var(--radius-999);
+}
+
+.track {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: var(--brand-background-strong);
+    border: 1px solid var(--brand-border-strong);
+    border-radius: var(--radius-999);
+    transition: width 0.2s ease-in-out;
+}
+
+.thumb {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: var(--static-space-24);
+    height: var(--static-space-24);
+    background: var(--brand-background-strong);
+    border: 1px solid var(--brand-border-strong);
+    border-radius: var(--radius-999);
+    cursor: pointer;
+    transition: left 0.2s ease-in-out;
+}

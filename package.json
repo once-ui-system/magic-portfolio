@@ -1,0 +1,32 @@
+{
+	"name": "@once-ui-system/nextjs-starter",
+	"version": "0.3.0",
+	"scripts": {
+		"dev": "next dev",
+		"export": "next export",
+		"build": "next build",
+		"start": "next start",
+		"lint": "next lint"
+	},
+	"dependencies": {
+		"@floating-ui/react-dom": "^2.1.1",
+		"classnames": "^2.5.1",
+		"next": "^14.2.4",
+		"postcss": "^8.4.39",
+		"postcss-preset-env": "^9.5.15",
+		"react": "^18.3.1",
+		"react-dom": "^18.3.1",
+		"react-icons": "^5.2.1",
+		"sass": "^1.77.6",
+		"sharp": "^0.33.4"
+	},
+	"devDependencies": {
+		"@csstools/postcss-global-data": "^2.1.1",
+		"@types/node": "^20",
+		"@types/react": "^18",
+		"@types/react-dom": "^18",
+		"postcss-custom-media": "^10.0.7",
+		"postcss-flexbugs-fixes": "^5.0.2",
+		"typescript": "^5"
+	}
+}

@@ -1,0 +1,131 @@
+"use client";
+
+import React, { forwardRef } from 'react';
+
+import { Skeleton, Icon, Text, StatusIndicator, Flex, SmartImage } from '.';
+import styles from './Avatar.module.scss';
+
+interface AvatarProps {
+    size?: 'xs' | 's' | 'm' | 'l' | 'xl';
+    value?: string;
+    src?: string;
+    loading?: boolean;
+    empty?: boolean;
+    statusIndicator?: {
+        color: 'green' | 'yellow' | 'red' | 'gray';
+    };
+    style?: React.CSSProperties;
+    className?: string;
+}
+
+const sizeMapping: Record<'xs' | 's' | 'm' | 'l' | 'xl', number> = {
+    xs: 20,
+    s: 24,
+    m: 32,
+    l: 48,
+    xl: 160,
+};
+
+const statusIndicatorSizeMapping: Record<'xs' | 's' | 'm' | 'l' | 'xl', 's' | 'm' | 'l'> = {
+    xs: 's',
+    s: 's',
+    m: 'm',
+    l: 'm',
+    xl: 'l',
+};
+
+const Avatar: React.FC<AvatarProps> = forwardRef<HTMLDivElement, AvatarProps>(({
+    size = 'm',
+    value,
+    src,
+    loading,
+    empty,
+    statusIndicator,
+    style,
+    className
+}, ref) => {
+    const isEmpty = empty || (!src && !value);
+
+    if (value && src) {
+        throw new Error("Avatar cannot have both 'value' and 'src' props.");
+    }
+
+    if (loading) {
+        return (
+            <Skeleton
+                style={{border: '1px solid var(--neutral-border-medium)'}}
+                shape="circle"
+                width={size}
+                height={size}
+                className={`${styles.avatar} ${className}`}
+                aria-busy="true"
+                aria-label="Loading avatar"/>
+        );
+    }
+
+    const renderContent = () => {
+        if (isEmpty) {
+            return <Icon
+                onBackground="neutral-medium"
+                name="person"
+                size={size as 'xs' | 's' | 'm' | 'l' | 'xl'}
+                className={styles.icon}
+                aria-label="Empty avatar"/>;
+        }
+
+        if (src) {
+            return (
+                <SmartImage
+                    src={src}
+                    fill
+                    alt="Avatar"
+                    sizes={`${sizeMapping[size]}px`}
+                    className={styles.image}/>
+            );
+        }
+
+        if (value) {
+            return (
+                <Text
+                    as="span"
+                    onBackground="neutral-weak"
+                    variant={`body-default-${size}`}
+                    className={styles.value}
+                    aria-label={`Avatar with initials ${value}`}>
+                    {value}
+                </Text>
+            );
+        }
+
+        return null;
+    };
+
+    return (
+        <Flex
+            ref={ref}
+            position="relative"
+            justifyContent="center"
+            alignItems="center"
+            radius="full"
+            border="neutral-strong"
+            borderStyle="solid-1"
+            background="surface"
+            style={style}
+            role="img"
+            className={`${styles.avatar} ${styles[size]} ${className || ''}`}>
+            {renderContent()}
+            {statusIndicator && (
+                <StatusIndicator
+                    size={statusIndicatorSizeMapping[size]}
+                    color={statusIndicator.color}
+                    className={`${styles.className || ''} ${styles.indicator} ${size === 'xl' ? styles.position : ''}`}
+                    aria-label={`Status: ${statusIndicator.color}`}/>
+            )}
+        </Flex>
+    );
+});
+
+Avatar.displayName = "Avatar";
+
+export { Avatar };
+export type { AvatarProps };

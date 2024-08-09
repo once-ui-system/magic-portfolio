@@ -1,0 +1,14 @@
+.wrapper {
+    border: 1px solid var(--static-transparent);
+    transition: var(--transition-property) var(--transition-duration-micro-medium) var(--transition-timing-function);
+
+    &:hover {
+        background-color: var(--neutral-alpha-weak);
+        border: 1px solid var(--neutral-alpha-medium);
+    }
+
+    &.selected:hover {
+        background-color: var(--neutral-background-strong);
+        border: 1px solid var(--neutral-border-strong);
+    }
+}

@@ -1,0 +1,12 @@
+.type {
+	content: var(--type);
+}
+
+.icon {
+	content: var(--icon);
+}
+
+.type, .icon {
+    user-select: none;
+    display: block;
+}

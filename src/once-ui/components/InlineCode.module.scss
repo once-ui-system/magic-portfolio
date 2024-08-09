@@ -1,0 +1,11 @@
+.inlineCode {
+    display: inline;
+    padding: var(--static-space-1) var(--static-space-4);
+    border-radius: var(--radius-s);
+    background: var(--neutral-alpha-weak);
+    border: 1px solid var(--neutral-alpha-medium);
+    font-family: var(--font-family-code);
+    font-size: 80%;
+    margin: 0 var(--static-space-2);
+    vertical-align: middle;
+}

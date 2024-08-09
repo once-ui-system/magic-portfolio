@@ -1,0 +1,43 @@
+.chip {
+    cursor: pointer;
+    white-space: nowrap;
+    user-select: none;
+    height: fit-content;
+    width: fit-content;
+    transition: var(--transition-property) var(--transition-duration-micro-medium) var(--transition-timing-function);
+
+    &.selected {
+        background: var(--brand-alpha-medium);
+        color: var(--brand-on-background-medium);
+
+        &:hover,
+        &:focus {
+            background: var(--brand-alpha-medium);
+        }
+
+        &:active {
+            background: var(--brand-alpha-weak);
+            color: var(--brand-on-background-weak);
+        }
+    }
+
+    &.unselected {
+        background: var(--neutral-alpha-weak);
+        color: var(--neutral-on-background-medium);
+
+        &:hover,
+        &:focus {
+            background: var(--neutral-alpha-medium);
+        }
+
+        &:active {
+            background: var(--neutral-alpha-weak);
+            color: var(--neutral-on-background-weak);
+        }
+    }
+
+    &:disabled {
+        background: var(--neutral-solid-weak);
+        cursor: not-allowed;
+    }
+}
