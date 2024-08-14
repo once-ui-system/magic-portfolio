@@ -1,0 +1,24 @@
+.control {
+    cursor: pointer;
+
+    &:hover {
+        .visibility {
+            opacity: 1;
+        }
+
+        .text {
+            text-decoration-line: underline;
+        }
+    }
+}
+
+.text {
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.25em;
+    text-decoration-color: var(--neutral-border-strong);
+}
+
+.visibility {
+    opacity: 0;
+    transform: scale(0.875);
+}

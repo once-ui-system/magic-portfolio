@@ -3,7 +3,7 @@ const config = {
         '/': true,
         '/about': true,
         '/projects': true,
-        '/blog': true
+        '/blog': true,
     },
 }
 

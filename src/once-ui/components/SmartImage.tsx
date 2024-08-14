@@ -6,7 +6,7 @@ import classNames from 'classnames';
 
 import { Flex, Skeleton } from '@/once-ui/components';
 
-type SmartImageProps = ImageProps & {
+export type SmartImageProps = ImageProps & {
     className?: string;
     style?: React.CSSProperties;
     aspectRatio?: string;
@@ -15,7 +15,7 @@ type SmartImageProps = ImageProps & {
     alt?: string;
     isLoading?: boolean;
     objectFit?: CSSProperties['objectFit'];
-    enlarge?: boolean; // New prop to enable enlargement
+    enlarge?: boolean;
 };
 
 const SmartImage: React.FC<SmartImageProps> = ({
@@ -27,7 +27,7 @@ const SmartImage: React.FC<SmartImageProps> = ({
     alt = '',
     isLoading = false,
     objectFit = 'cover',
-    enlarge = false, // Default to false
+    enlarge = false,
     ...props
 }) => {
     const [isEnlarged, setIsEnlarged] = useState(false);
@@ -39,7 +39,6 @@ const SmartImage: React.FC<SmartImageProps> = ({
         }
     };
 
-    // Lock and unlock scroll when the image is enlarged or closed
     useEffect(() => {
         if (isEnlarged) {
             document.body.style.overflow = 'hidden';

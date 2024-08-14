@@ -8,6 +8,29 @@ const person = {
     languages: [ 'English', 'German' ]
 }
 
+const social = [
+    {
+        name: 'GitHub',
+        icon: 'github',
+        link: 'https://github.com/once-ui-system/nextjs-starter',
+    },
+    {
+        name: 'LinkedIn',
+        icon: 'linkedin',
+        link: 'https://www.linkedin.com/company/once-ui/',
+    },
+    {
+        name: 'X',
+        icon: 'x',
+        link: '',
+    },
+    {
+        name: 'Email',
+        icon: 'email',
+        link: 'mailto:example@gmail.com',
+    },
+]
+
 const home = {
     headline: <>Design engineer by day, creative by night</>,
     subline: <>I'm John, design engineer at <InlineCode>Once UI</InlineCode>, working on my AI graphic novel after working hours.</>
@@ -93,27 +116,8 @@ const about = {
     }
 }
 
-const social = [
-    {
-        name: 'GitHub',
-        icon: 'github',
-        link: 'https://github.com/once-ui-system/nextjs-starter',
-    },
-    {
-        name: 'LinkedIn',
-        icon: 'linkedin',
-        link: 'https://www.linkedin.com/company/once-ui/',
-    },
-    {
-        name: 'X',
-        icon: 'x',
-        link: '',
-    },
-    {
-        name: 'Email',
-        icon: 'email',
-        link: 'mailto:example@gmail.com',
-    },
-]
+const blog = {
+    title: 'I write about design and tech'
+}
 
-export { person, home, about, social };
+export { person, social, home, about, blog };

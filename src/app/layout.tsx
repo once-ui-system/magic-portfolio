@@ -72,6 +72,7 @@ export default function RootLayout({ children } : RootLayoutProps) {
 					fillWidth paddingY="l" paddingX="l"
 					justifyContent="center" flex={1}>
 					<Flex
+						justifyContent="center"
 						fillWidth maxWidth={64} minHeight="0">
 						<RouteGuard>
 							{children}

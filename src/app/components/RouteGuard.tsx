@@ -14,7 +14,12 @@ const RouteGuard: React.FC<RouteGuard> = ({ children }) => {
     const [isRouteEnabled, setIsRouteEnabled] = useState(false);
 
     useEffect(() => {
-        setIsRouteEnabled(config.routes[pathname as keyof typeof config.routes]);
+        if (config.routes[pathname as keyof typeof config.routes]) {
+            setIsRouteEnabled(true);
+        } else {
+            const isBlogRoute = pathname?.startsWith('/blog');
+            setIsRouteEnabled(isBlogRoute && config.routes['/blog']);
+        }
     }, [pathname]);
 
     if (!isRouteEnabled) {

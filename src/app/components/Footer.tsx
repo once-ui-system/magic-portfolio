@@ -7,6 +7,7 @@ export const Footer = () => {
     return (
         <Flex
             as="footer"
+            position="relative"
             fillWidth padding="8"
             justifyContent="center">
             <Flex
