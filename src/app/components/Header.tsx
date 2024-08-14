@@ -1,59 +1,119 @@
 "use client";
 
-import { Flex, SmartLink } from "@/once-ui/components"
 import { usePathname } from "next/navigation";
-import { config } from '@/app/resources'
+import { useEffect, useState } from "react";
+
+import { Flex, ToggleButton } from "@/once-ui/components"
+import styles from '@/app/components/Header.module.scss'
+
+import { routes, display } from '@/app/resources/config'
+import { person, home, about, blog, projects } from '@/app/resources/content'
+
+type TimeDisplayProps = {
+    timeZone: string; // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
+    locale?: string;  // Optionally allow locale, defaulting to 'en-GB'
+};
+
+const TimeDisplay: React.FC<TimeDisplayProps> = ({ timeZone, locale = 'en-GB' }) => {
+    const [currentTime, setCurrentTime] = useState('');
+
+    useEffect(() => {
+        const updateTime = () => {
+            const now = new Date();
+            const options: Intl.DateTimeFormatOptions = {
+                timeZone,
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: false,
+            };
+            const timeString = new Intl.DateTimeFormat(locale, options).format(now);
+            setCurrentTime(timeString);
+        };
+
+        updateTime();
+        const intervalId = setInterval(updateTime, 1000);
+
+        return () => clearInterval(intervalId);
+    }, [timeZone, locale]);
+
+    return (
+        <>
+            {currentTime}
+        </>
+    );
+};
+
+export default TimeDisplay;
 
 export const Header = () => {
     const pathname = usePathname() ?? '';
 
     return (
-        <Flex style={{top: '0'}}
+        <Flex style={{height: 'fit-content'}}
+            className={styles.position}
             as="header"
             zIndex={9}
-            position="sticky"
             fillWidth padding="8"
             justifyContent="center">
             <Flex
-                background="surface" border="surface" borderStyle="solid-1" radius="l" shadow="l"
-                paddingY="12" paddingX="16"
+                hide="s"
+                paddingLeft="12" fillWidth
+                alignItems="center"
+                textVariant="body-default-s">
+                { display.location && (
+                    <>{person.location}</>
+                )}
+            </Flex>
+            <Flex
+                background="surface" border="neutral-medium" borderStyle="solid-1" radius="m-4" shadow="l"
+                padding="4"
                 justifyContent="center">
                 <Flex
-                    gap="16"
+                    gap="4"
                     textVariant="body-default-s">
-                    { config.routes['/'] && (
-                        <SmartLink
+                    { routes['/'] && (
+                        <ToggleButton
                             prefixIcon="home"
                             href="/"
                             selected={pathname === "/"}>
-                            Home
-                        </SmartLink>
+                            <Flex hide="s">{home.label}</Flex>
+                        </ToggleButton>
                     )}
-                    { config.routes['/about'] && (
-                        <SmartLink
+                    { routes['/about'] && (
+                        <ToggleButton
                             prefixIcon="person"
                             href="/about"
                             selected={pathname === "/about"}>
-                            About
-                        </SmartLink>
+                            <Flex hide="s">{about.label}</Flex>
+                        </ToggleButton>
                     )}
-                    { config.routes['/projects'] && (
-                        <SmartLink
+                    { routes['/projects'] && (
+                        <ToggleButton
                             prefixIcon="grid"
                             href="/projects"
                             selected={pathname === "/projects"}>
-                            Projects
-                        </SmartLink>
+                            <Flex hide="s">{projects.label}</Flex>
+                        </ToggleButton>
                     )}
-                    { config.routes['/blog'] && (
-                        <SmartLink
+                    { routes['/blog'] && (
+                        <ToggleButton
                             prefixIcon="book"
                             href="/blog"
-                            selected={pathname === "/blog"}>
-                            Blog
-                        </SmartLink>
+                            selected={pathname.startsWith('/blog')}>
+                            <Flex hide="s">{blog.label}</Flex>
+                        </ToggleButton>
                     )}
                 </Flex>
+            </Flex>
+            <Flex
+                hide="s"
+                paddingRight="12" fillWidth
+                justifyContent="flex-end" alignItems="center"
+                textVariant="body-default-s">
+                { display.time && (
+                    <TimeDisplay timeZone="Europe/Vienna"/>
+                )}
             </Flex>
         </Flex>
     )

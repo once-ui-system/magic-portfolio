@@ -1,7 +1,15 @@
 import { notFound } from 'next/navigation'
 import { CustomMDX } from '@/app/blog/components/mdx'
 import { formatDate, getBlogPosts } from '@/app/blog/utils'
-import { Flex, Heading, Text } from '@/once-ui/components'
+import { Avatar, Button, Flex, Heading, Text } from '@/once-ui/components'
+
+import { person } from '@/app/resources/content'
+
+interface BlogParams {
+    params: {
+        slug: string;
+    };
+}
 
 export async function generateStaticParams() {
 	let posts = getBlogPosts()
@@ -11,7 +19,7 @@ export async function generateStaticParams() {
 	}))
 }
 
-export function generateMetadata({ params }) {
+export function generateMetadata({ params }: BlogParams) {
 	let post = getBlogPosts().find((post) => post.slug === params.slug)
 	if (!post) {
 		return
@@ -40,7 +48,7 @@ export function generateMetadata({ params }) {
 	}
 }
 
-export default function Blog({ params }) {
+export default function Blog({ params }: BlogParams) {
 	let post = getBlogPosts().find((post) => post.slug === params.slug)
 
 	if (!post) {
@@ -70,12 +78,28 @@ export default function Blog({ params }) {
 					}),
 				}}
 			/>
+			<Button
+				href="/blog"
+				variant="tertiary"
+				size="s"
+				prefixIcon="chevronLeft">
+				All posts
+			</Button>
 			<Heading
 				variant="display-strong-s">
 				{post.metadata.title}
 			</Heading>
-			<Flex>
-				<Text>
+			<Flex
+				gap="12"
+				alignItems="center">
+				{ person.avatar && (
+					<Avatar
+						size="s"
+						src={person.avatar}/>
+				)}
+				<Text
+					variant="body-default-s"
+					onBackground="neutral-weak">
 					{formatDate(post.metadata.publishedAt)}
 				</Text>
 			</Flex>

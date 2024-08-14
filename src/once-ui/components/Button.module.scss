@@ -54,7 +54,7 @@
     color: var(--neutral-on-background-strong);
 
     &:hover, &:focus {
-        background: var(--neutral-background-medium);
+        background: var(--neutral-alpha-weak);
         border-color: var(--neutral-border-strong);
     }
 }

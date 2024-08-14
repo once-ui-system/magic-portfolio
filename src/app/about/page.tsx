@@ -37,31 +37,54 @@ export default function About() {
         <Flex
             fillWidth
             direction="column">
-            <Flex
-                style={{ left: '0', top: '50%', transform: 'translateY(-50%)' }}
-                position="fixed"
-                paddingLeft="24" gap="32"
-                direction="column" hide="s">
-                {structure.map((section, sectionIndex) => (
-                    <Flex key={sectionIndex} gap="12" direction="column">
-                        <Flex gap="8" alignItems="center">
-                            <Flex height="1" width="20" background="neutral-strong"></Flex>
-                            <Text onClick={() => scrollTo(section.title, 80)}>
-                                {section.title}
-                            </Text>
-                        </Flex>
-                        {section.items.map((item, itemIndex) => (
-                            <Flex key={itemIndex} gap="12" paddingLeft="12" alignItems="center">
-                                <Flex height="1" width="20" background="neutral-strong"></Flex>
-                                <Text onClick={() => scrollTo(item, 80)}>
-                                    {item}
+            { about.tableOfContent.display && (
+                <Flex
+                    style={{ left: '0', top: '50%', transform: 'translateY(-50%)' }}
+                    position="fixed"
+                    paddingLeft="24" gap="32"
+                    direction="column" hide="s">
+                    {structure.map((section, sectionIndex) => (
+                        <Flex key={sectionIndex}
+                            gap="12" direction="column">
+                            <Flex
+                                style={{cursor: 'pointer'}}
+                                className={styles.hover}
+                                gap="8" alignItems="center"
+                                onClick={() => scrollTo(section.title, 80)}>
+                                <Flex
+                                    height="1" width="16"
+                                    background="neutral-strong">
+                                </Flex>
+                                <Text>
+                                    {section.title}
                                 </Text>
                             </Flex>
-                        ))}
-                    </Flex>
-                ))}
-            </Flex>
+                            { about.tableOfContent.subItems && (
+                                <>
+                                    {section.items.map((item, itemIndex) => (
+                                        <Flex
+                                            style={{cursor: 'pointer'}}
+                                            className={styles.hover}
+                                            key={itemIndex}
+                                            gap="12" paddingLeft="24" alignItems="center"
+                                            onClick={() => scrollTo(item, 80)}>
+                                            <Flex
+                                                height="1" width="8"
+                                                background="neutral-strong">
+                                            </Flex>
+                                            <Text>
+                                                {item}
+                                            </Text>
+                                        </Flex>
+                                    ))}
+                                </>
+                            )}
+                        </Flex>
+                    ))}
+                </Flex>
+            )}
             <Flex
+                fillWidth
                 mobileDirection="column">
                 { person.avatar && (
                     <Flex
@@ -94,7 +117,7 @@ export default function About() {
                 )}
                 <Flex
                     className={styles.blockAlign}
-                    flex={9} maxWidth={40} direction="column">
+                    fillWidth flex={9} maxWidth={40} direction="column">
                     <Flex
                         id={about.intro.title}
                         fillWidth minHeight="160"

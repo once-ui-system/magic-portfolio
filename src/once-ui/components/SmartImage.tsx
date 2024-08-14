@@ -77,16 +77,20 @@ const SmartImage: React.FC<SmartImageProps> = ({
                 ref={imageRef}
                 fillWidth
                 position="relative"
-                background="neutral-medium"
+                {...(!isEnlarged && { background: 'neutral-medium' })}
                 style={{
                     outline: 'none',
                     overflow: 'hidden',
-                    ...style,
-                    height: height ? `${height}rem` : '100%',
+                    height: aspectRatio
+                        ? undefined
+                        : height
+                        ? `${height}rem`
+                        : '100%',
                     aspectRatio,
                     cursor: enlarge ? 'pointer' : 'default',
                     borderRadius: isEnlarged ? '0' : radius ? `var(--radius-${radius})` : undefined,
                     ...calculateTransform(),
+                    ...style,
                 }}
                 className={classNames(className)}
                 onClick={handleClick}>

@@ -1,2 +1,2 @@
-export { config } from '@/app/resources/config'
-export { person, home, about, social } from '@/app/resources/content'
+export { routes, effects, display, mailchimp } from '@/app/resources/config'
+export { person, social, newsletter, home, about, blog, projects } from '@/app/resources/content'

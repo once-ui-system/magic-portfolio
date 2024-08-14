@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
-import { config } from '@/app/resources';
+import { routes } from '@/app/resources/config';
 import { Flex, Spinner } from '@/once-ui/components';
 
 interface RouteGuard {
@@ -14,11 +14,11 @@ const RouteGuard: React.FC<RouteGuard> = ({ children }) => {
     const [isRouteEnabled, setIsRouteEnabled] = useState(false);
 
     useEffect(() => {
-        if (config.routes[pathname as keyof typeof config.routes]) {
+        if (routes[pathname as keyof typeof routes]) {
             setIsRouteEnabled(true);
         } else {
             const isBlogRoute = pathname?.startsWith('/blog');
-            setIsRouteEnabled(isBlogRoute && config.routes['/blog']);
+            setIsRouteEnabled(isBlogRoute && routes['/blog']);
         }
     }, [pathname]);
 

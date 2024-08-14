@@ -6,6 +6,7 @@ import classNames from 'classnames';
 import { Inter } from 'next/font/google'
 import { Source_Code_Pro } from 'next/font/google';
 import { Footer, Header, RouteGuard } from "./components";
+import { Background } from "@/once-ui/components/Background";
 
 const primary = Inter({
 	variable: '--font-primary',
@@ -52,16 +53,11 @@ export default function RootLayout({ children } : RootLayoutProps) {
 				secondary ? secondary.variable : '',
 				tertiary ? tertiary.variable : '',
 				code.variable)}>
-			<Flex
+			<Flex style={{minHeight: '100vh'}}
 				as="body"
 				fillWidth margin="0" padding="0"
 				direction="column">
-				<div style={{
-					position: 'fixed',
-					zIndex: '0',
-					width: '100%',
-					height: '100%',
-					backgroundImage: 'radial-gradient(ellipse at top left, var(--brand-background-strong) 0%, rgba(0,0,0,0) 50%)' }}></div>
+				<Background/>
 				<Flex
 					fillWidth
 					minHeight="16">

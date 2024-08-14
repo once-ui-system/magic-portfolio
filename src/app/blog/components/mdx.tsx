@@ -59,8 +59,22 @@ function CustomLink({ href, children, ...props }: CustomLinkProps) {
     );
 }
 
-function createImage({ alt, ...props }: SmartImageProps) {
-    return <SmartImage className="my-20" enlarge radius="m" height={24} alt={alt} {...props} />;
+function createImage({ alt, src, ...props }: SmartImageProps & { src: string }) {
+    if (!src) {
+        console.error("SmartImage requires a valid 'src' property.");
+        return null;
+    }
+
+    return (
+        <SmartImage
+            className="my-20"
+            enlarge
+            radius="m"
+            aspectRatio="16 / 9"
+            alt={alt}
+            src={src}
+            {...props}/>
+        )
 }
 
 function slugify(str: string): string {
@@ -106,15 +120,15 @@ function createParagraph({ children }: TextProps) {
 };
 
 const components = {
-    p: createParagraph,
-    h1: createHeading(1),
-    h2: createHeading(2),
-    h3: createHeading(3),
-    h4: createHeading(4),
-    h5: createHeading(5),
-    h6: createHeading(6),
-    img: createImage,
-    a: CustomLink,
+    p: createParagraph as any,
+    h1: createHeading(1) as any,
+    h2: createHeading(2) as any,
+    h3: createHeading(3) as any,
+    h4: createHeading(4) as any,
+    h5: createHeading(5) as any,
+    h6: createHeading(6) as any,
+    img: createImage as any,
+    a: CustomLink as any,
     Table,
 };
 
