@@ -50,7 +50,7 @@ export function Mailchimp() {
 
     return (
         <Flex
-            fillWidth maxWidth={48} padding="l"  radius="l" marginBottom="m"
+            fillWidth padding="l"  radius="l" marginBottom="m"
             direction="column" alignItems="center" align="center"
             background="surface" border="neutral-medium" borderStyle="solid-1">
             <Heading

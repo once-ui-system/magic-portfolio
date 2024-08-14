@@ -2,17 +2,18 @@
 
 import React from 'react';
 
-import { Heading, Flex, Text, Button, SmartImage, Avatar } from '@/once-ui/components';
+import { Heading, Flex, Text, Button, SmartImage, Avatar, IconButton } from '@/once-ui/components';
 import { home } from '@/app/resources'
+import { ProjectCard } from './components/ProjectCard';
 
 export default function Home() {
 	return (
 		<Flex
+			maxWidth={56}
 			fillWidth gap="24"
-			direction="column">
+			direction="column" alignItems="center">
 			<Flex
 				fillWidth
-				maxWidth={64}
 				direction="column"
 				gap="m">
 				<Heading
@@ -44,17 +45,11 @@ export default function Home() {
 				</Button>
 			</Flex>
 			<Flex
+				position="relative"
+				direction="column"
 				fillWidth paddingTop="l" gap="m">
-				<SmartImage
-					radius="l"
-					alt="Project 1"
-					aspectRatio="1 / 1"
-					src="/images/projects/project-01/cover.jpg"/>
-				<SmartImage
-					radius="l"
-					alt="Project 1"
-					aspectRatio="1 / 1"
-					src="/images/projects/project-01/cover.jpg"/>
+				<ProjectCard/>
+				<ProjectCard/>
 			</Flex>
 		</Flex>
 	);
