@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation'
 import { CustomMDX } from '@/app/components/mdx'
 import { formatDate, getPosts } from '@/app/utils'
-import { Avatar, Button, Flex, Heading, Text } from '@/once-ui/components'
+import { Avatar, AvatarGroup, Button, Flex, Heading, SmartImage, Text } from '@/once-ui/components'
 
 import { person } from '@/app/resources/content'
 
@@ -29,18 +29,22 @@ export function generateMetadata({ params }: WorkParams) {
 		title,
 		publishedAt: publishedTime,
 		summary: description,
+		image,
+		team,
 	} = post.metadata
 
 	return {
 		title,
 		description,
+		image,
+		team,
 		openGraph: {
-		title,
-		description,
-		type: 'article',
-		publishedTime,
+			title,
+			description,
+			type: 'article',
+			publishedTime,
 		},
-			twitter: {
+		twitter: {
 			card: 'summary_large_image',
 			title,
 			description,
@@ -54,6 +58,10 @@ export default function Project({ params }: WorkParams) {
 	if (!post) {
 		notFound()
 	}
+
+	const avatars = post.metadata.team?.map((person) => ({
+        src: person.avatar,
+    })) || [];
 
 	return (
 		<Flex as="section"
@@ -89,13 +97,18 @@ export default function Project({ params }: WorkParams) {
 				variant="display-strong-s">
 				{post.metadata.title}
 			</Heading>
+			<SmartImage
+				aspectRatio="16 / 9"
+				radius="m"
+				src={post.metadata.image}/>
 			<Flex
 				gap="12"
 				alignItems="center">
-				{ person.avatar && (
-					<Avatar
-						size="s"
-						src={person.avatar}/>
+				{ post.metadata.team && (
+					<AvatarGroup
+						avatars={avatars}
+						size="m"
+					/>
 				)}
 				<Text
 					variant="body-default-s"

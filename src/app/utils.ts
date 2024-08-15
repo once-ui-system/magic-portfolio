@@ -1,11 +1,19 @@
 import fs from 'fs';
 import path from 'path';
 
+type Team = {
+    name: string;
+    role: string;
+    avatar: string;
+    linkedIn: string;
+};
+
 type Metadata = {
     title: string;
     publishedAt: string;
     summary: string;
     image?: string;
+    team?: Team[];
 };
 
 function parseFrontmatter(fileContent: string) {
@@ -25,10 +33,19 @@ function parseFrontmatter(fileContent: string) {
         const [key, ...valueArr] = line.split(': ');
         let value = valueArr.join(': ').trim();
         value = value.replace(/^['"](.*)['"]$/, '$1');
-        metadata[key.trim() as keyof Metadata] = value;
+
+        if (key.trim() === 'team') {
+            try {
+                metadata[key.trim() as keyof Metadata] = JSON.parse(value) as any;
+            } catch (error) {
+                throw new Error(`Error parsing team metadata: ${error.message}`);
+            }
+        } else {
+            metadata[key.trim() as keyof Metadata] = value as any;
+        }
     });
 
-  return { metadata: metadata as Metadata, content };
+    return { metadata: metadata as Metadata, content };
 }
 
 function getMDXFiles(dir: string) {

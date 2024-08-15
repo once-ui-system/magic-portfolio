@@ -7,11 +7,6 @@ export default function Work() {
         <Flex
 			fillWidth maxWidth="s"
 			direction="column">
-            <Heading
-                marginBottom="l"
-                variant="display-strong-s">
-                {work.title}
-            </Heading>
             <Projects/>
         </Flex>
     );

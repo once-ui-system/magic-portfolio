@@ -77,7 +77,7 @@ export const Header = () => {
                             prefixIcon="home"
                             href="/"
                             selected={pathname === "/"}>
-                            <Flex hide="s">{home.label}</Flex>
+                            <Flex paddingX="2" hide="s">{home.label}</Flex>
                         </ToggleButton>
                     )}
                     { routes['/about'] && (
@@ -85,15 +85,15 @@ export const Header = () => {
                             prefixIcon="person"
                             href="/about"
                             selected={pathname === "/about"}>
-                            <Flex hide="s">{about.label}</Flex>
+                            <Flex paddingX="2" hide="s">{about.label}</Flex>
                         </ToggleButton>
                     )}
                     { routes['/work'] && (
                         <ToggleButton
                             prefixIcon="grid"
                             href="/work"
-                            selected={pathname === "/work"}>
-                            <Flex hide="s">{work.label}</Flex>
+                            selected={pathname.startsWith('/work')}>
+                            <Flex paddingX="2" hide="s">{work.label}</Flex>
                         </ToggleButton>
                     )}
                     { routes['/blog'] && (
@@ -101,7 +101,7 @@ export const Header = () => {
                             prefixIcon="book"
                             href="/blog"
                             selected={pathname.startsWith('/blog')}>
-                            <Flex hide="s">{blog.label}</Flex>
+                            <Flex paddingX="2" hide="s">{blog.label}</Flex>
                         </ToggleButton>
                     )}
                 </Flex>

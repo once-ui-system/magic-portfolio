@@ -134,12 +134,7 @@ const blog = {
 
 const work = {
     label: 'Work',
-    title: 'My projects',
-    projects: [
-        {
-            title: '',
-        }
-    ]
+    title: 'My projects'
 }
 
 export { person, social, newsletter, home, about, blog, work };

@@ -1,12 +1,14 @@
-"use client";
-
 import React from 'react';
 
-import { Heading, Flex, Text, Button, SmartImage, Avatar, IconButton } from '@/once-ui/components';
-import { home } from '@/app/resources'
+import { getPosts } from '@/app/utils'
+import { Heading, Flex, Text, Button,  Avatar } from '@/once-ui/components';
 import { ProjectCard } from './components/ProjectCard';
 
+import { home } from '@/app/resources'
+
 export default function Home() {
+	let allProjects = getPosts(['src', 'app', 'work', 'projects'])
+
 	return (
 		<Flex
 			maxWidth={56}
@@ -48,8 +50,24 @@ export default function Home() {
 				position="relative"
 				direction="column"
 				fillWidth paddingTop="l" gap="m">
-				<ProjectCard/>
-				<ProjectCard/>
+					{allProjects
+						.sort((a, b) => {
+							if (new Date(a.metadata.publishedAt) > new Date(b.metadata.publishedAt)) {
+								return -1;
+							}
+							return 1;
+						})
+						.map((post) => (
+							<ProjectCard
+								key={post.slug}
+								href={`/work/${post.slug}`}
+								src={post.metadata.image}
+								title={post.metadata.title}
+								description={post.metadata.summary}
+								avatars={post.metadata.team?.map(member => ({ src: member.avatar })) || []}
+							/>
+						))
+					}
 			</Flex>
 		</Flex>
 	);
