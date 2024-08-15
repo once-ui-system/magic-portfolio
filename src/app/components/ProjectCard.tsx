@@ -1,9 +1,12 @@
+"use client";
+
 import { AvatarGroup, Flex, Heading, SmartImage, SmartLink, Text } from "@/once-ui/components";
 import styles from '@/app/components/ProjectCard.module.scss';
+import { useState } from "react";
 
 interface ProjectCardProps {
     href: string;
-    src: string;
+    images: string[];
     title: string;
     description: string;
     avatars: { src: string }[];
@@ -11,11 +14,24 @@ interface ProjectCardProps {
 
 export const ProjectCard: React.FC<ProjectCardProps> = ({
     href,
-    src,
+    images = [],
     title,
     description,
     avatars
 }) => {
+    const [activeIndex, setActiveIndex] = useState(0);
+
+    const handleImageClick = () => {
+        const nextIndex = (activeIndex + 1) % images.length;
+        setActiveIndex(nextIndex);
+    };
+
+    const handleControlClick = (index: number) => {
+        setActiveIndex(index);
+    };
+
+    const shouldShowControls = images.length > 1;
+
     return (
         <Flex
             fillWidth gap="m"
@@ -24,7 +40,32 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
                 radius="l"
                 alt={title}
                 aspectRatio="16 / 9"
-                src={src} />
+                src={images[activeIndex]}
+                onClick={handleImageClick}
+                style={{ cursor: 'pointer' }}
+            />
+            {shouldShowControls && (
+                <Flex
+                    gap="4" paddingX="s"
+                    fillWidth maxWidth={32}
+                    justifyContent="center">
+                    {images.map((_, index) => (
+                        <Flex
+                            key={index}
+                            onClick={() => handleControlClick(index)}
+                            style={{
+                                background: activeIndex === index 
+                                    ? 'var(--neutral-on-solid-strong)' 
+                                    : 'var(--neutral-alpha-medium)',
+                                cursor: 'pointer',
+                                transition: 'background 0.3s ease',
+                            }}
+                            fillWidth
+                            height="2"
+                        ></Flex>
+                    ))}
+                </Flex>
+            )}
             <Flex
                 mobileDirection="column"
                 fillWidth paddingX="l" paddingY="m" gap="l">

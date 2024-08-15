@@ -21,7 +21,7 @@ export function Projects() {
                     <ProjectCard
                         key={post.slug}
                         href={`/work/${post.slug}`}
-                        src={post.metadata.image}
+                        images={post.metadata.images}
                         title={post.metadata.title}
                         description={post.metadata.summary}
                         avatars={post.metadata.team?.map(member => ({ src: member.avatar })) || []}

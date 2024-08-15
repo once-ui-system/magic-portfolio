@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import matter from 'gray-matter';
 
 type Team = {
     name: string;
@@ -13,6 +14,7 @@ type Metadata = {
     publishedAt: string;
     summary: string;
     image?: string;
+    images?: string[];
     team?: Team[];
 };
 
@@ -37,8 +39,14 @@ function parseFrontmatter(fileContent: string) {
         if (key.trim() === 'team') {
             try {
                 metadata[key.trim() as keyof Metadata] = JSON.parse(value) as any;
-            } catch (error) {
+            } catch (error: any) {
                 throw new Error(`Error parsing team metadata: ${error.message}`);
+            }
+        } else if (key.trim() === 'images') {
+            try {
+                metadata[key.trim() as keyof Metadata] = JSON.parse(value) as any;
+            } catch (error: any) {
+                throw new Error(`Error parsing images metadata: ${error.message}`);
             }
         } else {
             metadata[key.trim() as keyof Metadata] = value as any;
@@ -62,7 +70,17 @@ function readMDXFile(filePath: string) {
     }
 
     const rawContent = fs.readFileSync(filePath, 'utf-8');
-    return parseFrontmatter(rawContent);
+    const { data, content } = matter(rawContent); // Automatically handles frontmatter parsing
+
+    const metadata: Metadata = {
+        title: data.title,
+        publishedAt: data.publishedAt,
+        summary: data.summary,
+        images: data.images || [], // Safeguard against undefined images
+        team: data.team || [], // Ensure the team is an array (not a JSON string)
+    };
+
+    return { metadata, content };
 }
 
 function getMDXData(dir: string) {

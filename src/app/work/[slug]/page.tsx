@@ -29,14 +29,14 @@ export function generateMetadata({ params }: WorkParams) {
 		title,
 		publishedAt: publishedTime,
 		summary: description,
-		image,
+		images,
 		team,
 	} = post.metadata
 
 	return {
 		title,
 		description,
-		image,
+		images,
 		team,
 		openGraph: {
 			title,
@@ -100,7 +100,8 @@ export default function Project({ params }: WorkParams) {
 			<SmartImage
 				aspectRatio="16 / 9"
 				radius="m"
-				src={post.metadata.image}/>
+				alt="image"
+				src={post.metadata.images[0]}/>
 			<Flex
 				gap="12"
 				alignItems="center">
