@@ -1,7 +1,7 @@
 const routes = {
     '/': true,
     '/about': true,
-    '/projects': true,
+    '/work': true,
     '/blog': true,
 }
 

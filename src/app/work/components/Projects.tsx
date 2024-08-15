@@ -1,17 +1,17 @@
 import { formatDate, getPosts } from '@/app/utils'
 import { Flex, Heading, SmartLink, Text } from '@/once-ui/components'
 
-import styles from '@/app/blog/components/Posts.module.scss'
+import styles from '@/app/work/components/Projects.module.scss'
 
-export function BlogPosts() {
-    let allBlogs = getPosts(['src', 'app', 'blog', 'posts'])
+export function Projects() {
+    let allProjects = getPosts(['src', 'app', 'work', 'projects'])
 
     return (
         <Flex
             fillWidth flex={1} justifyContent="flex-start"
             marginBottom="40"
             paddingX="l">
-            {allBlogs
+            {allProjects
                 .sort((a, b) => {
                     if (
                         new Date(a.metadata.publishedAt) > new Date(b.metadata.publishedAt)
@@ -24,7 +24,7 @@ export function BlogPosts() {
                 <SmartLink style={{textDecoration: 'none', margin: '0', height: 'fit-content'}}
                     className={styles.hover}
                     key={post.slug}
-                    href={`/blog/${post.slug}`}>
+                    href={`/work/${post.slug}`}>
                     <Flex
                         position="relative"
                         paddingX="16" paddingY="12" gap="8"

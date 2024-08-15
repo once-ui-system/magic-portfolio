@@ -1,8 +1,9 @@
 import { Flex, Heading } from '@/once-ui/components';
+import { Mailchimp } from '@/app/components';
 import { BlogPosts } from '@/app/blog/components/Posts';
+
 import { blog } from '@/app/resources/content'
 import { mailchimp } from '@/app/resources/config'
-import { Mailchimp } from './components/Mailchimp';
 
 export default function Blog() {
 

@@ -6,10 +6,6 @@
             opacity: 1;
             transform: translateY(-50%) translateX(var(--static-space-24));
         }
-
-        .details {
-            height: 4rem;
-        }
     }
 }
 
@@ -18,9 +14,5 @@
     right: 0;
     opacity: 0;
     transform: translateY(-50%);
-    transition: var(--transition-property) var(--transition-duration-micro-medium) var(--transition-timing-function);
-}
-
-.details {
     transition: var(--transition-property) var(--transition-duration-micro-medium) var(--transition-timing-function);
 }

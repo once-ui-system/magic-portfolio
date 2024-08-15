@@ -132,9 +132,14 @@ const blog = {
     title: 'I write about design and tech'
 }
 
-const projects = {
-    label: 'Projects',
-    title: 'My projects'
+const work = {
+    label: 'Work',
+    title: 'My projects',
+    projects: [
+        {
+            title: '',
+        }
+    ]
 }
 
-export { person, social, newsletter, home, about, blog, projects };
+export { person, social, newsletter, home, about, blog, work };

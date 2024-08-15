@@ -14,7 +14,7 @@ function debounce<T extends (...args: any[]) => void>(func: T, delay: number): T
     }) as T;
 }
 
-export function Mailchimp() {
+export const Mailchimp = () => {
     const [email, setEmail] = useState<string>('');
     const [error, setError] = useState<string>('');
     const [touched, setTouched] = useState<boolean>(false);

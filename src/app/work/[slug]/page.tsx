@@ -5,22 +5,22 @@ import { Avatar, Button, Flex, Heading, Text } from '@/once-ui/components'
 
 import { person } from '@/app/resources/content'
 
-interface BlogParams {
+interface WorkParams {
     params: {
         slug: string;
     };
 }
 
 export async function generateStaticParams() {
-	let posts = getPosts(['src', 'app', 'blog', 'posts'])
+	let posts = getPosts(['src', 'app', 'work', 'projects']);
 
 	return posts.map((post) => ({
 		slug: post.slug,
 	}))
 }
 
-export function generateMetadata({ params }: BlogParams) {
-	let post = getPosts().find((post) => post.slug === params.slug)
+export function generateMetadata({ params }: WorkParams) {
+	let post = getPosts(['src', 'app', 'work', 'projects']).find((post) => post.slug === params.slug)
 	if (!post) {
 		return
 	}
@@ -48,8 +48,8 @@ export function generateMetadata({ params }: BlogParams) {
 	}
 }
 
-export default function Blog({ params }: BlogParams) {
-	let post = getPosts(['src', 'app', 'blog', 'posts']).find((post) => post.slug === params.slug)
+export default function Project({ params }: WorkParams) {
+	let post = getPosts(['src', 'app', 'work', 'projects']).find((post) => post.slug === params.slug)
 
 	if (!post) {
 		notFound()
@@ -79,11 +79,11 @@ export default function Blog({ params }: BlogParams) {
 				}}
 			/>
 			<Button
-				href="/blog"
+				href="/work"
 				variant="tertiary"
 				size="s"
 				prefixIcon="chevronLeft">
-				All posts
+				All works
 			</Button>
 			<Heading
 				variant="display-strong-s">

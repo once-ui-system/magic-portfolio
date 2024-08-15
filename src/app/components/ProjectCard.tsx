@@ -3,7 +3,7 @@ import { Flex, Heading, IconButton, SmartImage, Text } from "@/once-ui/component
 import styles from '@/app/components/ProjectCard.module.scss'
 import Link from "next/link";
 
-export function ProjectCard() {
+export const ProjectCard = () => {
     return (
         <Link
             style={{
@@ -39,7 +39,6 @@ export function ProjectCard() {
                     </Flex>
                 </Flex>
                 <Flex
-                    className={styles.details}
                     direction="column"
                     fillWidth paddingX="l" gap="8">
                     <Heading

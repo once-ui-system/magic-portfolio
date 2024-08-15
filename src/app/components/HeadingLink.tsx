@@ -3,7 +3,7 @@
 import React, { useState, useCallback } from 'react';
 import { Heading, Flex, IconButton, Toaster } from '@/once-ui/components';
 
-import styles from '@/app/blog/components/HeadingLink.module.scss';
+import styles from '@/app/components/HeadingLink.module.scss';
 
 interface HeadingLinkProps {
     id: string;
@@ -12,7 +12,7 @@ interface HeadingLinkProps {
     style?: React.CSSProperties;
 }
 
-const HeadingLink: React.FC<HeadingLinkProps> = ({
+export const HeadingLink: React.FC<HeadingLinkProps> = ({
     id,
     level,
     children,
@@ -85,5 +85,3 @@ const HeadingLink: React.FC<HeadingLinkProps> = ({
         </Flex>
     );
 };
-
-export default HeadingLink;

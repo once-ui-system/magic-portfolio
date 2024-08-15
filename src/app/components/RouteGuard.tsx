@@ -14,12 +14,22 @@ const RouteGuard: React.FC<RouteGuard> = ({ children }) => {
     const [isRouteEnabled, setIsRouteEnabled] = useState(false);
 
     useEffect(() => {
-        if (routes[pathname as keyof typeof routes]) {
-            setIsRouteEnabled(true);
-        } else {
-            const isBlogRoute = pathname?.startsWith('/blog');
-            setIsRouteEnabled(isBlogRoute && routes['/blog']);
-        }
+        const checkRouteEnabled = () => {
+            if (pathname in routes) {
+                return routes[pathname as keyof typeof routes];
+            }
+
+            const dynamicRoutes = ['/blog', '/work'] as const;
+            for (const route of dynamicRoutes) {
+                if (pathname?.startsWith(route) && routes[route]) {
+                    return true;
+                }
+            }
+
+            return false;
+        };
+
+        setIsRouteEnabled(checkRouteEnabled());
     }, [pathname]);
 
     if (!isRouteEnabled) {
