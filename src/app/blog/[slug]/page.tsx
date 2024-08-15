@@ -57,7 +57,7 @@ export default function Blog({ params }: BlogParams) {
 
 	return (
 		<Flex as="section"
-			fillWidth maxWidth={40}
+			fillWidth maxWidth="xs"
 			direction="column"
 			gap="m">
 			<script
@@ -83,7 +83,7 @@ export default function Blog({ params }: BlogParams) {
 				variant="tertiary"
 				size="s"
 				prefixIcon="chevronLeft">
-				All posts
+				Posts
 			</Button>
 			<Heading
 				variant="display-strong-s">

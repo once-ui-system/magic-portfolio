@@ -6,8 +6,6 @@ import { blog } from '@/app/resources/content'
 import { mailchimp } from '@/app/resources/config'
 
 export default function Blog() {
-
-
     return (
         <Flex
 			fillWidth maxWidth="s"

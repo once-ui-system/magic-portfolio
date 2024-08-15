@@ -11,8 +11,7 @@ export default function Home() {
 
 	return (
 		<Flex
-			maxWidth={56}
-			fillWidth gap="24"
+			maxWidth="m" fillWidth gap="24"
 			direction="column" alignItems="center">
 			<Flex
 				fillWidth
@@ -63,6 +62,7 @@ export default function Home() {
 								href={`/work/${post.slug}`}
 								images={post.metadata.images}
 								title={post.metadata.title}
+								content={post.content}
 								description={post.metadata.summary}
 								avatars={post.metadata.team?.map(member => ({ src: member.avatar })) || []}
 							/>

@@ -21,6 +21,7 @@
 		"react": "^18.3.1",
 		"react-dom": "^18.3.1",
 		"react-icons": "^5.2.1",
+		"react-masonry-css": "^1.0.16",
 		"remark": "^15.0.1",
 		"remark-html": "^16.0.1",
 		"sass": "^1.77.6",

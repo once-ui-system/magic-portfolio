@@ -14,47 +14,9 @@ type Metadata = {
     publishedAt: string;
     summary: string;
     image?: string;
-    images?: string[];
-    team?: Team[];
+    images: string[];
+    team: Team[];
 };
-
-function parseFrontmatter(fileContent: string) {
-    const frontmatterRegex = /---\s*([\s\S]*?)\s*---/;
-    const match = frontmatterRegex.exec(fileContent);
-
-    if (!match) {
-        throw new Error('Frontmatter not found');
-    }
-
-    const frontMatterBlock = match[1];
-    const content = fileContent.replace(frontmatterRegex, '').trim();
-    const frontMatterLines = frontMatterBlock.trim().split('\n');
-    const metadata: Partial<Metadata> = {};
-
-    frontMatterLines.forEach((line) => {
-        const [key, ...valueArr] = line.split(': ');
-        let value = valueArr.join(': ').trim();
-        value = value.replace(/^['"](.*)['"]$/, '$1');
-
-        if (key.trim() === 'team') {
-            try {
-                metadata[key.trim() as keyof Metadata] = JSON.parse(value) as any;
-            } catch (error: any) {
-                throw new Error(`Error parsing team metadata: ${error.message}`);
-            }
-        } else if (key.trim() === 'images') {
-            try {
-                metadata[key.trim() as keyof Metadata] = JSON.parse(value) as any;
-            } catch (error: any) {
-                throw new Error(`Error parsing images metadata: ${error.message}`);
-            }
-        } else {
-            metadata[key.trim() as keyof Metadata] = value as any;
-        }
-    });
-
-    return { metadata: metadata as Metadata, content };
-}
 
 function getMDXFiles(dir: string) {
     if (!fs.existsSync(dir)) {
@@ -70,14 +32,14 @@ function readMDXFile(filePath: string) {
     }
 
     const rawContent = fs.readFileSync(filePath, 'utf-8');
-    const { data, content } = matter(rawContent); // Automatically handles frontmatter parsing
+    const { data, content } = matter(rawContent);
 
     const metadata: Metadata = {
-        title: data.title,
+        title: data.title || '',
         publishedAt: data.publishedAt,
-        summary: data.summary,
-        images: data.images || [], // Safeguard against undefined images
-        team: data.team || [], // Ensure the team is an array (not a JSON string)
+        summary: data.summary || '',
+        images: data.images || [],
+        team: data.team || [],
     };
 
     return { metadata, content };

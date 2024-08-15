@@ -8,7 +8,7 @@ export function Projects() {
 
     return (
         <Flex
-            fillWidth
+            fillWidth direction="column" gap="l"
             marginBottom="40" paddingX="l">
             {allProjects
                 .sort((a, b) => {
@@ -24,8 +24,8 @@ export function Projects() {
                         images={post.metadata.images}
                         title={post.metadata.title}
                         description={post.metadata.summary}
-                        avatars={post.metadata.team?.map(member => ({ src: member.avatar })) || []}
-                    />
+                        content={post.content}
+                        avatars={post.metadata.team?.map(member => ({ src: member.avatar })) || []}/>
                 ))
             }
         </Flex>

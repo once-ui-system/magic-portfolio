@@ -35,7 +35,7 @@ const structure = [
 export default function About() {
     return (
         <Flex
-            fillWidth
+            fillWidth maxWidth="m"
             direction="column">
             { about.tableOfContent.display && (
                 <Flex

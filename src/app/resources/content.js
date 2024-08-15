@@ -137,4 +137,46 @@ const work = {
     title: 'My projects'
 }
 
-export { person, social, newsletter, home, about, blog, work };
+const gallery = {
+    label: 'Gallery',
+    title: 'Gallery',
+    images: [
+        { 
+            src: '/images/projects/project-01/cover.jpg', 
+            alt: 'image',
+            orientation: 'horizontal'
+        },
+        { 
+            src: '/images/projects/project-01/cover.jpg', 
+            alt: 'image',
+            orientation: 'vertical'
+        },
+        { 
+            src: '/images/projects/project-01/cover.jpg', 
+            alt: 'image',
+            orientation: 'vertical'
+        },
+        { 
+            src: '/images/projects/project-01/cover.jpg', 
+            alt: 'image',
+            orientation: 'horizontal'
+        },
+        { 
+            src: '/images/projects/project-01/cover.jpg', 
+            alt: 'image',
+            orientation: 'horizontal'
+        },
+        { 
+            src: '/images/projects/project-01/cover.jpg', 
+            alt: 'image',
+            orientation: 'vertical'
+        },
+        { 
+            src: '/images/projects/project-01/cover.jpg', 
+            alt: 'image',
+            orientation: 'vertical'
+        },
+    ]
+}
+
+export { person, social, newsletter, home, about, blog, work, gallery };
