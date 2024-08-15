@@ -3,6 +3,7 @@
 import { mailchimp } from '@/app/resources/config'
 import { newsletter } from '@/app/resources/content'
 import { Button, Flex, Heading, Input, Text } from '@/once-ui/components';
+import { Background } from '@/once-ui/components/Background';
 import { useState } from 'react';
 
 
@@ -50,15 +51,26 @@ export const Mailchimp = () => {
 
     return (
         <Flex
+            style={{overflow: 'hidden'}}
+            position="relative"
             fillWidth padding="l"  radius="l" marginBottom="m"
             direction="column" alignItems="center" align="center"
             background="surface" border="neutral-medium" borderStyle="solid-1">
-            <Heading
+            <Background
+                gradient={true}
+                dots={false}
+                lines={true}/>
+            <Heading style={{position: 'relative'}}
                 marginBottom="s"
                 variant="display-strong-xs">
                 {newsletter.title}
             </Heading>
             <Text
+                style={{
+                    position: 'relative',
+                    maxWidth: 'var(--responsive-width-xs)'
+                }}
+                wrap="balance"
                 marginBottom="l"
                 onBackground="neutral-medium">
                 {newsletter.description}

@@ -152,7 +152,7 @@ export default function About() {
                             </Flex>
                         )}
                     </Flex>
-                    { about.intro && (
+                    { about.intro.display && (
                         <Text
                             variant="body-default-l"
                             marginBottom="xl">
@@ -160,7 +160,7 @@ export default function About() {
                         </Text>
                     )}
 
-                    { about.work && (
+                    { about.work.display && (
                         <>
                             <Heading
                                 as="h2"
@@ -175,7 +175,7 @@ export default function About() {
                                 marginBottom="l">
                                 {about.work.experiences.map((experience, index) => (
                                     <Flex
-                                        key={index}
+                                        key={`${experience.company}-${experience.role}-${index}`}
                                         fillWidth
                                         direction="column">
                                         <Flex
@@ -203,11 +203,11 @@ export default function About() {
                                         <Flex
                                             as="ul"
                                             direction="column" gap="16">
-                                            {experience.achievements.map((achievement, i) => (
+                                            {experience.achievements.map((achievement, index) => (
                                                 <Text
                                                     as="li"
                                                     variant="body-default-m"
-                                                    key={i}>
+                                                    key={`${experience.company}-${index}`}>
                                                     {achievement}
                                                 </Text>
                                             ))}
@@ -238,7 +238,7 @@ export default function About() {
                         </>
                     )}
 
-                    { about.technical && (
+                    { about.technical.display && (
                         <>
                             <Heading
                                 as="h2"
@@ -252,7 +252,7 @@ export default function About() {
                                 fillWidth gap="l">
                                 {about.technical.skills.map((skill, index) => (
                                     <Flex
-                                        key={index}
+                                        key={`${skill}-${index}`}
                                         fillWidth
                                         direction="column">
                                         <Flex

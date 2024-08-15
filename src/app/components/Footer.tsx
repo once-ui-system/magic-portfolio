@@ -1,4 +1,4 @@
-import { Flex, IconButton, Text } from "@/once-ui/components"
+import { Flex, IconButton, SmartLink, Text } from "@/once-ui/components"
 import { person, social } from '@/app/resources'
 
 export const Footer = () => {
@@ -16,9 +16,16 @@ export const Footer = () => {
                 <Text
                     variant="body-default-s"
                     onBackground="neutral-strong">
-                    <Text onBackground="neutral-weak">
+                    <Text
+                        onBackground="neutral-weak">
                         © {currentYear} /
-                    </Text> {person.name}
+                    </Text>
+                    <Text paddingX="4">
+                        {person.name}
+                    </Text>
+                    <Text onBackground="neutral-weak">
+                        / Build your portfolio with <SmartLink style={{marginLeft: '-0.125rem'}} href="https://once-ui.com/template/magic-portfolio">Once UI</SmartLink>
+                    </Text>
                 </Text>
                 <Flex
                     gap="16">

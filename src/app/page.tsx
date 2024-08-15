@@ -5,6 +5,7 @@ import { Heading, Flex, Text, Button,  Avatar } from '@/once-ui/components';
 import { ProjectCard } from './components/ProjectCard';
 
 import { home } from '@/app/resources'
+import { Mailchimp } from './components';
 
 export default function Home() {
 	let allProjects = getPosts(['src', 'app', 'work', 'projects'])
@@ -48,7 +49,7 @@ export default function Home() {
 			<Flex
 				position="relative"
 				direction="column"
-				fillWidth paddingTop="l" gap="m">
+				fillWidth paddingTop="l" paddingX="l" gap="xl">
 					{allProjects
 						.sort((a, b) => {
 							if (new Date(a.metadata.publishedAt) > new Date(b.metadata.publishedAt)) {
@@ -69,6 +70,7 @@ export default function Home() {
 						))
 					}
 			</Flex>
+			<Mailchimp/>
 		</Flex>
 	);
 }

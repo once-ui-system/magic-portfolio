@@ -8,6 +8,8 @@ import { Source_Code_Pro } from 'next/font/google';
 import { Footer, Header, RouteGuard } from "./components";
 import { Background } from "@/once-ui/components/Background";
 
+import { effects } from '@/app/resources'
+
 const primary = Inter({
 	variable: '--font-primary',
 	subsets: ['latin'],
@@ -42,7 +44,7 @@ export default function RootLayout({ children } : RootLayoutProps) {
 		<Flex
 			as="html" lang="en"
 			background="page"
-			data-neutral="gray" data-brand="blue" data-accent="violet"
+			data-neutral="gray" data-brand="aqua" data-accent="yellow"
 			data-solid="contrast" data-solid-style="flat"
 			data-theme="dark"
 			data-border="playful"
@@ -57,7 +59,10 @@ export default function RootLayout({ children } : RootLayoutProps) {
 				as="body"
 				fillWidth margin="0" padding="0"
 				direction="column">
-				<Background/>
+				<Background
+					gradient={effects.gradient}
+					dots={effects.dots}
+					lines={effects.lines}/>
 				<Flex
 					fillWidth
 					minHeight="16">

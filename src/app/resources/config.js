@@ -8,7 +8,8 @@ const routes = {
 
 const effects = {
     gradient: true,
-    dots: true
+    dots: true,
+    lines: false,
 }
 
 const display = {

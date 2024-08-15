@@ -90,6 +90,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
                         flex={5}>
                         <Heading
                             as="h2"
+                            wrap="balance"
                             variant="display-strong-xs">
                             {title}
                         </Heading>
@@ -107,6 +108,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
                         )}
                         {description?.trim() && (
                             <Text
+                                wrap="balance"
                                 variant="body-default-s"
                                 onBackground="neutral-weak">
                                 {description}

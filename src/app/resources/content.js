@@ -1,19 +1,21 @@
 import { InlineCode } from "@/once-ui/components";
 
 const person = {
-    name: 'John Doe',
+    name: 'Alex Müller',
     role: 'Design Engineer',
     avatar: '/images/avatar.png',
-    location: 'Europe/Vienna',
-    languages: [ 'English', 'German' ]
+    location: 'Europe/Vienna', // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
+    languages: [ 'English', 'German' ] // optional: Leave the array empty if you don't want to display languages
 }
 
 const newsletter = {
-    title: <>Subscribe to my newsletter</>,
-    description: <>I ocassionally write about design, tech and sometimes share random thoughts.</>
+    title: <>Subscribe to Alex's Newsletter</>,
+    description: <>I occasionally write about design, technology, and share thoughts on the intersection of creativity and engineering.</>
 }
 
 const social = [
+    // Links are automatically displayed.
+    // Import new icons in /once-ui/icons.ts
     {
         name: 'GitHub',
         icon: 'github',
@@ -39,7 +41,7 @@ const social = [
 const home = {
     label: 'Home',
     headline: <>Design engineer by day, creative by night</>,
-    subline: <>I'm John, design engineer at <InlineCode>Once UI</InlineCode>, working on my AI graphic novel after working hours.</>
+    subline: <>I'm Alex, a design engineer at <InlineCode>Once UI</InlineCode>, where I craft intuitive user experiences. After hours, I experiment with creative projects, blending technology and art.</>
 }
 
 const about = {
@@ -49,42 +51,45 @@ const about = {
         subItems: true
     },
     intro: {
+        display: true,
         title: 'Introduction',
-        description: <>Write a short introduction for your CV, start with your job title or main skill, followed by your key achievements or experiences, and then your career goals. Make sure it's concise, typically 2-3 sentences, and tailored to the role you're applying for, highlighting how your skills and experiences make you a perfect fit for the position.</>
+        description: <>I’m a Vienna-based design engineer with a passion for solving complex problems through simple, elegant design solutions. My work spans digital interfaces, interactive experiences, and the convergence of design and technology.</>
     },
     work: {
-        title: 'Work experience',
+        display: true, // set to false to hide this section
+        title: 'Work Experience',
         experiences: [
             {
                 company: 'Once UI',
-                timeframe: '2022 - present',
-                role: 'Senior designer',
+                timeframe: '2022 - Present',
+                role: 'Senior Design Engineer',
                 achievements: [
-                    <>Include a concise overview of your key responsibilities, highlighting your direct impact on the organization, such as improved processes, cost savings, or revenue generation.</>,
-                    <>Include a concise overview of your key responsibilities, highlighting your direct impact on the organization, such as improved processes, cost savings, or revenue generation.</>
+                    <>Redesigned the UI/UX for the Once UI platform, resulting in a 20% increase in user engagement and 30% faster load times.</>,
+                    <>Spearheaded the integration of AI tools into design workflows, enabling designers to iterate 50% faster.</>
                 ],
-                images: [
+                images: [ // optional: leave the array empty if you don't want to display images
                     {
                         src: '/images/projects/project-01/cover.jpg',
-                        alt: 'Project image',
+                        alt: 'Once UI Project',
                         width: 16,
                         height: 9
                     }
                 ]
             },
             {
-                company: 'Once UI 2',
-                timeframe: '2022 - present',
-                role: 'Senior designer',
+                company: 'Creative Labs',
+                timeframe: '2018 - 2022',
+                role: 'Lead Designer',
                 achievements: [
-                    <>Include a concise overview of your key responsibilities, highlighting your direct impact on the organization, such as improved processes, cost savings, or revenue generation.</>,
-                    <>Include a concise overview of your key responsibilities, highlighting your direct impact on the organization, such as improved processes, cost savings, or revenue generation.</>
+                    <>Developed a design system that unified the brand across multiple platforms, improving design consistency by 40%.</>,
+                    <>Led a cross-functional team to launch a new product line, contributing to a 15% increase in overall company revenue.</>
                 ],
                 images: [ ]
             }
         ]
     },
     technical: {
+        display: true, // set to false to hide this section
         title: 'Technical skills',
         skills: [
             {
@@ -98,25 +103,7 @@ const about = {
                         height: 9
                     },
                     {
-                        src: '/images/projects/project-01/cover.jpg',
-                        alt: 'Project image',
-                        width: 16,
-                        height: 9
-                    },
-                    {
-                        src: '/images/projects/project-01/cover.jpg',
-                        alt: 'Project image',
-                        width: 16,
-                        height: 9
-                    },
-                    {
-                        src: '/images/projects/project-01/cover.jpg',
-                        alt: 'Project image',
-                        width: 16,
-                        height: 9
-                    },
-                    {
-                        src: '/images/projects/project-01/cover.jpg',
+                        src: '/images/projects/project-02/cover.jpg',
                         alt: 'Project image',
                         width: 16,
                         height: 9
@@ -129,12 +116,16 @@ const about = {
 
 const blog = {
     label: 'Blog',
-    title: 'I write about design and tech'
+    title: 'Writing about design and tech...'
+    // Create new blog posts by adding a new .mdx file to app/blog/posts
+    // All posts will be listed on the /blog route
 }
 
 const work = {
     label: 'Work',
     title: 'My projects'
+    // Create new project pages by adding a new .mdx file to app/blog/posts
+    // All projects will be listed on the /home and /work routes
 }
 
 const gallery = {
@@ -144,16 +135,6 @@ const gallery = {
         { 
             src: '/images/projects/project-01/cover.jpg', 
             alt: 'image',
-            orientation: 'horizontal'
-        },
-        { 
-            src: '/images/projects/project-01/cover.jpg', 
-            alt: 'image',
-            orientation: 'vertical'
-        },
-        { 
-            src: '/images/projects/project-01/cover.jpg', 
-            alt: 'image',
             orientation: 'vertical'
         },
         { 
@@ -164,6 +145,16 @@ const gallery = {
         { 
             src: '/images/projects/project-01/cover.jpg', 
             alt: 'image',
+            orientation: 'vertical'
+        },
+        { 
+            src: '/images/projects/project-01/cover.jpg', 
+            alt: 'image',
+            orientation: 'horizontal'
+        },
+        { 
+            src: '/images/projects/project-01/cover.jpg', 
+            alt: 'image',
             orientation: 'horizontal'
         },
         { 
@@ -174,7 +165,42 @@ const gallery = {
         { 
             src: '/images/projects/project-01/cover.jpg', 
             alt: 'image',
+            orientation: 'horizontal'
+        },
+        { 
+            src: '/images/projects/project-01/cover.jpg', 
+            alt: 'image',
             orientation: 'vertical'
+        },
+        { 
+            src: '/images/projects/project-01/cover.jpg', 
+            alt: 'image',
+            orientation: 'horizontal'
+        },
+        { 
+            src: '/images/projects/project-01/cover.jpg', 
+            alt: 'image',
+            orientation: 'horizontal'
+        },
+        { 
+            src: '/images/projects/project-01/cover.jpg', 
+            alt: 'image',
+            orientation: 'vertical'
+        },
+        { 
+            src: '/images/projects/project-01/cover.jpg', 
+            alt: 'image',
+            orientation: 'horizontal'
+        },
+        { 
+            src: '/images/projects/project-01/cover.jpg', 
+            alt: 'image',
+            orientation: 'horizontal'
+        },
+        { 
+            src: '/images/projects/project-01/cover.jpg', 
+            alt: 'image',
+            orientation: 'horizontal'
         },
     ]
 }

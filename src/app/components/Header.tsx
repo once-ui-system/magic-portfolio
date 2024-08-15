@@ -10,7 +10,7 @@ import { routes, display } from '@/app/resources/config'
 import { person, home, about, blog, work, gallery } from '@/app/resources/content'
 
 type TimeDisplayProps = {
-    timeZone: string; // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
+    timeZone: string;
     locale?: string;  // Optionally allow locale, defaulting to 'en-GB'
 };
 
@@ -106,7 +106,7 @@ export const Header = () => {
                     )}
                     { routes['/gallery'] && (
                         <ToggleButton
-                            prefixIcon="book"
+                            prefixIcon="gallery"
                             href="/gallery"
                             selected={pathname.startsWith('/gallery')}>
                             <Flex paddingX="2" hide="s">{gallery.label}</Flex>
