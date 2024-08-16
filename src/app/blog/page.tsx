@@ -1,6 +1,6 @@
 import { Flex, Heading } from '@/once-ui/components';
 import { Mailchimp } from '@/app/components';
-import { BlogPosts } from '@/app/blog/components/Posts';
+import { Posts } from '@/app/blog/components/Posts';
 
 import { blog } from '@/app/resources/content'
 import { mailchimp } from '@/app/resources/config'
@@ -15,7 +15,8 @@ export default function Blog() {
                 variant="display-strong-s">
                 {blog.title}
             </Heading>
-            <BlogPosts/>
+            <Posts range={[1,3]}/>
+            <Posts range={[4]} direction="row"/>
             {mailchimp && (
                 <Mailchimp/>
             )}

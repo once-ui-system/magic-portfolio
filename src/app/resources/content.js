@@ -97,13 +97,13 @@ const about = {
                 description: <>Include a concise overview of your key responsibilities, highlighting your direct impact on the organization, such as improved processes, cost savings, or revenue generation.</>,
                 images: [
                     {
-                        src: '/images/projects/project-01/cover.jpg',
+                        src: '/images/projects/project-01/image-01.jpg',
                         alt: 'Project image',
                         width: 16,
                         height: 9
                     },
                     {
-                        src: '/images/projects/project-02/cover.jpg',
+                        src: '/images/projects/project-01/image-03.jpg',
                         alt: 'Project image',
                         width: 16,
                         height: 9
@@ -133,72 +133,72 @@ const gallery = {
     title: 'Gallery',
     images: [
         { 
-            src: '/images/projects/project-01/cover.jpg', 
+            src: '/images/gallery/img-01.jpg', 
             alt: 'image',
             orientation: 'vertical'
         },
         { 
-            src: '/images/projects/project-01/cover.jpg', 
+            src: '/images/gallery/img-02.jpg', 
             alt: 'image',
             orientation: 'horizontal'
         },
         { 
-            src: '/images/projects/project-01/cover.jpg', 
+            src: '/images/gallery/img-03.jpg', 
             alt: 'image',
             orientation: 'vertical'
         },
         { 
-            src: '/images/projects/project-01/cover.jpg', 
+            src: '/images/gallery/img-04.jpg', 
             alt: 'image',
             orientation: 'horizontal'
         },
         { 
-            src: '/images/projects/project-01/cover.jpg', 
+            src: '/images/gallery/img-05.jpg', 
             alt: 'image',
             orientation: 'horizontal'
         },
         { 
-            src: '/images/projects/project-01/cover.jpg', 
+            src: '/images/gallery/img-06.jpg', 
             alt: 'image',
             orientation: 'vertical'
         },
         { 
-            src: '/images/projects/project-01/cover.jpg', 
+            src: '/images/gallery/img-07.jpg', 
             alt: 'image',
             orientation: 'horizontal'
         },
         { 
-            src: '/images/projects/project-01/cover.jpg', 
+            src: '/images/gallery/img-08.jpg', 
             alt: 'image',
             orientation: 'vertical'
         },
         { 
-            src: '/images/projects/project-01/cover.jpg', 
+            src: '/images/gallery/img-09.jpg', 
             alt: 'image',
             orientation: 'horizontal'
         },
         { 
-            src: '/images/projects/project-01/cover.jpg', 
+            src: '/images/gallery/img-01.jpg', 
             alt: 'image',
             orientation: 'horizontal'
         },
         { 
-            src: '/images/projects/project-01/cover.jpg', 
+            src: '/images/gallery/img-01.jpg', 
             alt: 'image',
             orientation: 'vertical'
         },
         { 
-            src: '/images/projects/project-01/cover.jpg', 
+            src: '/images/gallery/img-01.jpg', 
             alt: 'image',
             orientation: 'horizontal'
         },
         { 
-            src: '/images/projects/project-01/cover.jpg', 
+            src: '/images/gallery/img-01.jpg', 
             alt: 'image',
             orientation: 'horizontal'
         },
         { 
-            src: '/images/projects/project-01/cover.jpg', 
+            src: '/images/gallery/img-01.jpg', 
             alt: 'image',
             orientation: 'horizontal'
         },

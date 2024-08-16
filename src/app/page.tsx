@@ -2,14 +2,13 @@ import React from 'react';
 
 import { getPosts } from '@/app/utils'
 import { Heading, Flex, Text, Button,  Avatar } from '@/once-ui/components';
-import { ProjectCard } from './components/ProjectCard';
+import { Projects } from '@/app/work/components/Projects';
 
 import { home } from '@/app/resources'
 import { Mailchimp } from './components';
+import { Posts } from './blog/components/Posts';
 
 export default function Home() {
-	let allProjects = getPosts(['src', 'app', 'work', 'projects'])
-
 	return (
 		<Flex
 			maxWidth="m" fillWidth gap="24"
@@ -17,6 +16,7 @@ export default function Home() {
 			<Flex
 				fillWidth
 				direction="column"
+				marginBottom="l"
 				gap="m">
 				<Heading
 					wrap="balance"
@@ -46,30 +46,9 @@ export default function Home() {
 					</Flex>
 				</Button>
 			</Flex>
-			<Flex
-				position="relative"
-				direction="column"
-				fillWidth paddingTop="l" paddingX="l" gap="xl">
-					{allProjects
-						.sort((a, b) => {
-							if (new Date(a.metadata.publishedAt) > new Date(b.metadata.publishedAt)) {
-								return -1;
-							}
-							return 1;
-						})
-						.map((post) => (
-							<ProjectCard
-								key={post.slug}
-								href={`/work/${post.slug}`}
-								images={post.metadata.images}
-								title={post.metadata.title}
-								content={post.content}
-								description={post.metadata.summary}
-								avatars={post.metadata.team?.map(member => ({ src: member.avatar })) || []}
-							/>
-						))
-					}
-			</Flex>
+			<Projects range={[1,1]}/>
+			<Posts range={[1,2]} direction="row"/>
+			<Projects range={[2]}/>
 			<Mailchimp/>
 		</Flex>
 	);

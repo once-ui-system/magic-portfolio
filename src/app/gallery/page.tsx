@@ -7,9 +7,10 @@ import styles from "@/app/gallery/Gallery.module.scss";
 
 export default function Gallery() {
     const breakpointColumnsObj = {
-        default: 3,
+        default: 4,
+        1440: 3,
         1024: 2,
-        768: 1
+        560: 1
     };
 
     return (
