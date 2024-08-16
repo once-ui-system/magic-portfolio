@@ -1,12 +1,11 @@
 import React from 'react';
 
-import { getPosts } from '@/app/utils'
 import { Heading, Flex, Text, Button,  Avatar } from '@/once-ui/components';
 import { Projects } from '@/app/work/components/Projects';
 
 import { home } from '@/app/resources'
-import { Mailchimp } from './components';
-import { Posts } from './blog/components/Posts';
+import { Mailchimp } from '@/app/components';
+import { Posts } from '@/app/blog/components/Posts';
 
 export default function Home() {
 	return (
@@ -47,7 +46,9 @@ export default function Home() {
 				</Button>
 			</Flex>
 			<Projects range={[1,1]}/>
-			<Posts range={[1,2]} direction="row"/>
+			<Flex fillWidth paddingX="20">
+				<Posts range={[1,2]} direction="row"/>
+			</Flex>
 			<Projects range={[2]}/>
 			<Mailchimp/>
 		</Flex>

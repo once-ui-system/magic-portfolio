@@ -25,7 +25,7 @@ export function Posts({ range, direction = 'column' }: PostsProps) {
         <>
             { displayedBlogs.length > 1 && (
                 <Flex
-                    flex={1} direction={direction} justifyContent="flex-start"
+                    flex={1} direction={direction} mobileDirection="column" justifyContent="flex-start"
                     fillWidth marginBottom="40" gap="m" paddingX="l">
                     {displayedBlogs.map((post) => (
                         <SmartLink
@@ -39,20 +39,19 @@ export function Posts({ range, direction = 'column' }: PostsProps) {
                             href={`/blog/${post.slug}`}>
                             <Flex
                                 position="relative"
-                                paddingX="16"
-                                paddingY="12"
-                                gap="8"
-                                direction="column"
-                                justifyContent="center">
+                                paddingX="16" paddingY="12" gap="8"
+                                direction="column" justifyContent="center">
                                 <Flex
                                     position="absolute"
                                     className={styles.indicator}
-                                    width="20"
-                                    height="2"
-                                    background="neutral-strong"
-                                />
-                                <Heading as="h2">{post.metadata.title}</Heading>
-                                <Text variant="body-default-s" onBackground="neutral-weak">
+                                    width="20" height="2"
+                                    background="neutral-strong"/>
+                                <Heading as="h2">
+                                    {post.metadata.title}
+                                </Heading>
+                                <Text
+                                    variant="body-default-s"
+                                    onBackground="neutral-weak">
                                     {formatDate(post.metadata.publishedAt, false)}
                                 </Text>
                             </Flex>
