@@ -21,6 +21,6 @@ const mailchimp = {
     action: 'https://once-ui.us21.list-manage.com/subscribe/post?u=c1a5a210340eb6c7bff33b2ba&amp;id=0462d244aa&amp;f_id=00cd5fe1f0',
 }
 
-const baseURL = 'localhost:3000'
+const baseURL = 'nextjs-portfolio.up.railway.app'
 
 export { routes, effects, display, mailchimp, baseURL };

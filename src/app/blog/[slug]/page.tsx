@@ -20,7 +20,8 @@ export async function generateStaticParams() {
 }
 
 export function generateMetadata({ params }: BlogParams) {
-	let post = getPosts().find((post) => post.slug === params.slug)
+	let post = getPosts(['src', 'app', 'blog', 'posts']).find((post) => post.slug === params.slug)
+
 	if (!post) {
 		return
 	}

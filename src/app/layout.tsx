@@ -13,7 +13,7 @@ import { Source_Code_Pro } from 'next/font/google';
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-	metadataBase: new URL(baseURL),
+	metadataBase: new URL('https://' + baseURL),
 	title: {
 		default: `${person.name}'s Portfolio`,
 		template: `%s | ${person.name}'s Portfolio`,
