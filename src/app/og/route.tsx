@@ -8,12 +8,10 @@ export function GET(request: Request) {
 
     return new ImageResponse(
         (
-            <div>
-                <div>
-                    <h2>
-                        {title}
-                    </h2>
-                </div>
+            <div style={{ display: 'flex', width: '100%', height: '100%', padding: '4rem' }}>
+                <h1 style={{ fontSize: '3rem', fontWeight: '800' }}>
+                    {title}
+                </h1>
             </div>
         ),
         {
