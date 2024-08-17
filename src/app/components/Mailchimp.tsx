@@ -57,6 +57,7 @@ export const Mailchimp = () => {
             direction="column" alignItems="center" align="center"
             background="surface" border="neutral-medium" borderStyle="solid-1">
             <Background
+                position="absolute"
                 gradient={true}
                 dots={false}
                 lines={true}/>

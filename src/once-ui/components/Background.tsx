@@ -1,8 +1,9 @@
 "use client";
 
-import React, { forwardRef } from 'react';
+import React, { CSSProperties, forwardRef } from 'react';
 
 interface BackgroundProps {
+    position?: CSSProperties['position'];
     gradient?: boolean;
     dots?: boolean;
     lines?: boolean;
@@ -10,7 +11,8 @@ interface BackgroundProps {
     style?: React.CSSProperties;
 }
 
-const Background = forwardRef<HTMLDivElement, BackgroundProps>(({ 
+const Background = forwardRef<HTMLDivElement, BackgroundProps>(({
+    position = 'fixed',
     gradient = true,
     dots = true,
     lines = true,
@@ -24,7 +26,7 @@ const Background = forwardRef<HTMLDivElement, BackgroundProps>(({
                     ref={ref}
                     className={className}
                     style={{
-                        position: 'fixed',
+                        position: position,
                         top: '0',
                         left: '0',
                         zIndex: '0',
@@ -41,7 +43,7 @@ const Background = forwardRef<HTMLDivElement, BackgroundProps>(({
                     ref={ref}
                     className={className}
                     style={{
-                        position: 'fixed',
+                        position: position,
                         zIndex: '0',
                         top: '0',
                         left: '0',
@@ -59,7 +61,7 @@ const Background = forwardRef<HTMLDivElement, BackgroundProps>(({
                     ref={ref}
                     className={className}
                     style={{
-                        position: 'fixed',
+                        position: position,
                         zIndex: '0',
                         top: '0',
                         left: '0',

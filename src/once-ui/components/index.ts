@@ -3,6 +3,7 @@ export { Avatar } from './Avatar';
 export type { AvatarProps } from './Avatar';
 export { AvatarGroup } from './AvatarGroup';
 export type { AvatarGroupProps } from './AvatarGroup';
+export { Background } from './Background';
 export { Button } from './Button';
 export type { ButtonProps } from './Button';
 export type { AnchorProps } from './Button';

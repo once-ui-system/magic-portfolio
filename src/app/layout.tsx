@@ -1,14 +1,44 @@
 import "@/once-ui/styles/index.scss";
 import "@/once-ui/tokens/index.scss";
 
-import { Flex } from '@/once-ui/components'
 import classNames from 'classnames';
+
+import { Flex, Background } from '@/once-ui/components'
+import { Footer, Header, RouteGuard } from "@/app/components";
+import { baseURL, effects, person } from '@/app/resources'
+
 import { Inter } from 'next/font/google'
 import { Source_Code_Pro } from 'next/font/google';
-import { Footer, Header, RouteGuard } from "./components";
-import { Background } from "@/once-ui/components/Background";
 
-import { effects } from '@/app/resources'
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+	metadataBase: new URL(baseURL),
+	title: {
+		default: `${person.name}'s Portfolio`,
+		template: `%s | ${person.name}'s Portfolio`,
+	},
+	description: 'Portfolio website showcasing my work.',
+	openGraph: {
+		title: `${person.name}'s Portfolio`,
+		description: 'Portfolio website showcasing my work.',
+		url: baseURL,
+		siteName: `${person.name}'s Portfolio`,
+		locale: 'en_US',
+		type: 'website',
+	},
+	robots: {
+		index: true,
+		follow: true,
+		googleBot: {
+			index: true,
+			follow: true,
+			'max-video-preview': -1,
+			'max-image-preview': 'large',
+			'max-snippet': -1,
+		},
+	},
+}
 
 const primary = Inter({
 	variable: '--font-primary',
