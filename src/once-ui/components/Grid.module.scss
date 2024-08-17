@@ -6,7 +6,7 @@
     width: 100%;
 }
   
-@media (--s) {
+@media (--m) {
     .tablet-1col {
         grid-template-columns: 1fr !important;
     }
@@ -20,7 +20,7 @@
     }
 }
   
-@media (--m) {
+@media (--s) {
     .mobile-1col {
         grid-template-columns: 1fr !important;
     }

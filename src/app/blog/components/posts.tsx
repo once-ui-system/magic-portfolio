@@ -1,13 +1,16 @@
 import { formatDate, getPosts } from '@/app/utils';
-import { Flex, Heading, SmartLink, Text } from '@/once-ui/components';
+import { Flex, Grid, Heading, SmartLink, Text } from '@/once-ui/components';
 import styles from '@/app/blog/components/Posts.module.scss';
 
 interface PostsProps {
     range?: [number] | [number, number];
-    direction?: 'column' | 'row';
+    columns?: '1' | '2' | '3';
 }
 
-export function Posts({ range, direction = 'column' }: PostsProps) {
+export function Posts({
+    range,
+    columns = '1'
+}: PostsProps) {
     let allBlogs = getPosts(['src', 'app', 'blog', 'posts']);
 
     const sortedBlogs = allBlogs.sort((a, b) => {
@@ -24,8 +27,8 @@ export function Posts({ range, direction = 'column' }: PostsProps) {
     return (
         <>
             { displayedBlogs.length > 1 && (
-                <Flex
-                    flex={1} direction={direction} mobileDirection="column" justifyContent="flex-start"
+                <Grid
+                    columns={`repeat(${columns}, 1fr)`} mobileColumns="1col"
                     fillWidth marginBottom="40" gap="m" paddingX="l">
                     {displayedBlogs.map((post) => (
                         <SmartLink
@@ -57,7 +60,7 @@ export function Posts({ range, direction = 'column' }: PostsProps) {
                             </Flex>
                         </SmartLink>
                     ))}
-                </Flex>
+                </Grid>
             )}
         </>
     );

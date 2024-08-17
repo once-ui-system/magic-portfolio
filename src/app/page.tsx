@@ -47,7 +47,7 @@ export default function Home() {
 			</Flex>
 			<Projects range={[1,1]}/>
 			<Flex fillWidth paddingX="20">
-				<Posts range={[1,2]} direction="row"/>
+				<Posts range={[1,2]} columns="2"/>
 			</Flex>
 			<Projects range={[2]}/>
 			<Mailchimp/>

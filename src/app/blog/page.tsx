@@ -16,7 +16,7 @@ export default function Blog() {
                 {blog.title}
             </Heading>
             <Posts range={[1,3]}/>
-            <Posts range={[4]} direction="row"/>
+            <Posts range={[4]} columns="2"/>
             {mailchimp && (
                 <Mailchimp/>
             )}

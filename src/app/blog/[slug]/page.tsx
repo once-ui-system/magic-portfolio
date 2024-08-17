@@ -3,7 +3,7 @@ import { CustomMDX } from '@/app/components/mdx'
 import { formatDate, getPosts } from '@/app/utils'
 import { Avatar, Button, Flex, Heading, Text } from '@/once-ui/components'
 
-import { person } from '@/app/resources/content'
+import { person, baseURL } from '@/app/resources'
 
 interface BlogParams {
     params: {
@@ -29,21 +29,32 @@ export function generateMetadata({ params }: BlogParams) {
 		title,
 		publishedAt: publishedTime,
 		summary: description,
-	} = post.metadata
+		image,
+	} = post.metadata;
+	let ogImage = image
+		? `https://${baseURL}${image}`
+		: `https://${baseURL}/og?title=${title}`;
 
 	return {
 		title,
 		description,
 		openGraph: {
-		title,
-		description,
-		type: 'article',
-		publishedTime,
+			title,
+			description,
+			type: 'article',
+			publishedTime,
+			url: `https://${baseURL}/blog/${post.slug}`,
+			images: [
+				{
+					url: ogImage,
+				},
+			],
 		},
 			twitter: {
 			card: 'summary_large_image',
 			title,
 			description,
+			images: [ogImage],
 		},
 	}
 }
@@ -72,8 +83,16 @@ export default function Blog({ params }: BlogParams) {
 						dateModified: post.metadata.publishedAt,
 						description: post.metadata.summary,
 						author: {
-						'@type': 'Person',
-						name: 'My Portfolio',
+							'@type': 'Person',
+							name: person.name,
+						image: post.metadata.image
+						? `https://${baseURL}${post.metadata.image}`
+						: `https://${baseURL}/og?title=${post.metadata.title}`,
+						url: `https://${baseURL}/blog/${post.slug}`,
+						author: {
+							'@type': 'Person',
+							name: person.name,
+            			},
 						},
 					}),
 				}}
