@@ -19,12 +19,14 @@ export async function GET(request: Request) {
                     display: 'flex',
                     width: '100%',
                     height: '100%',
-                    padding: '6rem 12rem',
+                    padding: '12rem 12rem 6rem 12rem',
                     backgroundImage: `url(https://${baseURL}/og/template.jpg)`
                 }}>
                 <div
                     style={{
                         display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'space-between',
                         fontFamily: 'Inter',
                         fontStyle: 'normal',
                         color: 'white',
@@ -32,8 +34,8 @@ export async function GET(request: Request) {
                     <span
                         style={{
                             fontSize: '8rem',
+                            lineHeight: '8rem',
                             letterSpacing: '-0.05em',
-                            lineHeight: '120px',
                             whiteSpace: 'pre-wrap',
                             textWrap: 'balance',
                         }}>
@@ -45,12 +47,13 @@ export async function GET(request: Request) {
                             alignItems: 'center',
                             gap: '5rem'
                         }}>
-                        <div style={{
-                            minWidth: '12rem',
-                            minHeight: '12rem',
-                            borderRadius: '100%',
-                            backgroundImage: `url(https://${baseURL}${person.avatar})`
-                        }}></div>
+                        <img src={'https://' + baseURL + person.avatar}
+                            style={{
+                                width: '12rem',
+                                height: '12rem',
+                                objectFit: 'cover',
+                                borderRadius: '100%',
+                            }}/>
                         <div
                             style={{
                                 display: 'flex',
@@ -60,7 +63,7 @@ export async function GET(request: Request) {
                             <span
                                 style={{
                                     fontSize: '4.5rem',
-                                    lineHeight: '120px',
+                                    lineHeight: '4.5rem',
                                     whiteSpace: 'pre-wrap',
                                     textWrap: 'balance',
                                 }}>
@@ -68,8 +71,8 @@ export async function GET(request: Request) {
                             </span>
                             <span
                                 style={{
-                                    fontSize: '3rem',
-                                    lineHeight: '120px',
+                                    fontSize: '2.5rem',
+                                    lineHeight: '2.5rem',
                                     whiteSpace: 'pre-wrap',
                                     textWrap: 'balance',
                                     opacity: '0.6'
