@@ -19,6 +19,8 @@ const RouteGuard: React.FC<RouteGuard> = ({ children }) => {
 
     useEffect(() => {
         const checkRouteEnabled = () => {
+            if (!pathname) return false;
+            
             if (pathname in routes) {
                 return routes[pathname as keyof typeof routes];
             }
