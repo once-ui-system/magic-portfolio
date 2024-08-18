@@ -16,7 +16,8 @@ import {
 	HiExclamationCircle,
 	HiCheckCircle,
 	HiMiniGlobeAsiaAustralia,
-	HiEnvelope
+	HiEnvelope,
+	HiCalendarDays
 } from "react-icons/hi2";
 
 import {
@@ -54,6 +55,7 @@ export const iconLibrary: Record<string, IconType> = {
 	book: PiBookBookmarkDuotone,
 	close: HiMiniXMark,
 	openLink: HiOutlineLink,
+	calendar: HiCalendarDays,
 	home: PiHouseDuotone,
 	gallery: PiImageDuotone,
 	discord: FaDiscord,

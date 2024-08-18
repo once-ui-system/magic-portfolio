@@ -1,4 +1,5 @@
 import { InlineCode } from "@/once-ui/components";
+import { display } from "./config";
 
 const person = {
     name: 'Alex Müller',
@@ -49,6 +50,13 @@ const about = {
     tableOfContent: {
         display: true,
         subItems: true
+    },
+    avatar: {
+        display: true
+    },
+    calendar: {
+        display: true,
+        link: 'https://cal.com'
     },
     intro: {
         display: true,

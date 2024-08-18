@@ -1,6 +1,6 @@
 "use client";
 
-import { Avatar, Button, Flex, Heading, Icon, SmartImage, SmartLink, Tag, Text } from '@/once-ui/components';
+import { Avatar, Button, Flex, Heading, Icon, IconButton, SmartImage, SmartLink, Tag, Text } from '@/once-ui/components';
 import { person, about, social } from '@/app/resources'
 import styles from '@/app/about/about.module.scss'
 
@@ -86,7 +86,7 @@ export default function About() {
             <Flex
                 fillWidth
                 mobileDirection="column">
-                { person.avatar && (
+                { about.avatar.display && (
                     <Flex
                         minWidth="160" paddingX="l" paddingBottom="xl" gap="m"
                         flex={3} direction="column" alignItems="center">
@@ -105,8 +105,9 @@ export default function About() {
                             <Flex
                                 wrap
                                 gap="8">
-                                {person.languages.map((language) => (
+                                {person.languages.map((language, index) => (
                                     <Tag
+                                        key={index}
                                         size="l">
                                         {language}
                                     </Tag>
@@ -123,6 +124,32 @@ export default function About() {
                         fillWidth minHeight="160"
                         direction="column" justifyContent="center"
                         marginBottom="32">
+                        {about.calendar.display && (
+                            <Flex
+                                className={styles.blockAlign}
+                                style={{
+                                    border: '1px solid var(--brand-alpha-medium)',
+                                    width: 'fit-content'
+                                }}
+                                alpha="brand-weak" radius="full"
+                                fillWidth padding="4" gap="8" marginBottom="m"
+                                alignItems="center">
+                                <Flex paddingLeft="12">
+                                    <Icon
+                                        name="calendar"
+                                        onBackground="brand-weak"/>
+                                </Flex>
+                                <Flex
+                                    paddingX="8">
+                                    Schedule a call
+                                </Flex>
+                                <IconButton
+                                    href={about.calendar.link}
+                                    data-border="rounded"
+                                    variant="tertiary"
+                                    icon="chevronRight"/>
+                            </Flex>
+                        )}
                         <Heading
                             className={styles.textAlign}
                             variant="display-strong-xl">
@@ -216,8 +243,9 @@ export default function About() {
                                             <Flex
                                                 fillWidth paddingTop="m" paddingLeft="40" gap="12"
                                                 wrap>
-                                                {experience.images.map((image, i) => (
+                                                {experience.images.map((image, index) => (
                                                     <Flex
+                                                        key={index}
                                                         border="neutral-medium"
                                                         borderStyle="solid-1"
                                                         radius="m"
@@ -272,8 +300,9 @@ export default function About() {
                                             <Flex
                                                 fillWidth paddingY="m" gap="12"
                                                 wrap>
-                                                {skill.images.map((image, i) => (
+                                                {skill.images.map((image, index) => (
                                                     <Flex
+                                                        key={index}
                                                         border="neutral-medium"
                                                         borderStyle="solid-1"
                                                         radius="m"

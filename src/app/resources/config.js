@@ -6,6 +6,11 @@ const routes = {
     '/gallery': true,
 }
 
+// Enable password protection on selected routes
+const protectedRoutes = {
+    '/about': true
+}
+
 const effects = {
     gradient: true,
     dots: true,
@@ -23,4 +28,4 @@ const mailchimp = {
 
 const baseURL = 'nextjs-portfolio.up.railway.app'
 
-export { routes, effects, display, mailchimp, baseURL };
+export { routes, protectedRoutes, effects, display, mailchimp, baseURL };
