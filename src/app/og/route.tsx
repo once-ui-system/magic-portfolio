@@ -1,5 +1,6 @@
 import { ImageResponse } from 'next/og'
 import { baseURL } from '@/app/resources';
+import { person } from '@/app/resources'; 
 
 export const runtime = 'edge';
 
@@ -18,23 +19,65 @@ export async function GET(request: Request) {
                     display: 'flex',
                     width: '100%',
                     height: '100%',
-                    paddingTop: '12rem',
+                    padding: '6rem 12rem',
                     backgroundImage: `url(https://${baseURL}/og/template.jpg)`
                 }}>
                 <div
                     style={{
-                        marginLeft: 190,
-                        marginRight: 190,
                         display: 'flex',
-                        fontSize: 130,
                         fontFamily: 'Inter',
-                        letterSpacing: '-0.05em',
                         fontStyle: 'normal',
                         color: 'white',
-                        lineHeight: '120px',
-                        whiteSpace: 'pre-wrap',
                     }}>
-                {title}
+                    <span
+                        style={{
+                            fontSize: '8rem',
+                            letterSpacing: '-0.05em',
+                            lineHeight: '120px',
+                            whiteSpace: 'pre-wrap',
+                            textWrap: 'balance',
+                        }}>
+                        {title}
+                    </span>
+                    <div
+                        style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '5rem'
+                        }}>
+                        <div style={{
+                            minWidth: '12rem',
+                            minHeight: '12rem',
+                            borderRadius: '100%',
+                            backgroundImage: `url(https://${baseURL}${person.avatar})`
+                        }}></div>
+                        <div
+                            style={{
+                                display: 'flex',
+                                flexDirection: 'column',
+                                gap: '0.75rem'
+                            }}>
+                            <span
+                                style={{
+                                    fontSize: '4.5rem',
+                                    lineHeight: '120px',
+                                    whiteSpace: 'pre-wrap',
+                                    textWrap: 'balance',
+                                }}>
+                                {person.name}
+                            </span>
+                            <span
+                                style={{
+                                    fontSize: '3rem',
+                                    lineHeight: '120px',
+                                    whiteSpace: 'pre-wrap',
+                                    textWrap: 'balance',
+                                    opacity: '0.6'
+                                }}>
+                                {person.role}
+                            </span>
+                        </div>
+                    </div>
                 </div>
             </div>
         ),
