@@ -7,8 +7,9 @@ const routes = {
 }
 
 // Enable password protection on selected routes
+// Set password in pages/api/authenticate.ts
 const protectedRoutes = {
-    '/about': true
+    '/work/customizable-design-system': true
 }
 
 const effects = {

@@ -86,14 +86,14 @@ export default function Blog({ params }: BlogParams) {
 						author: {
 							'@type': 'Person',
 							name: person.name,
-						image: post.metadata.image
-						? `https://${baseURL}${post.metadata.image}`
-						: `https://${baseURL}/og?title=${post.metadata.title}`,
-						url: `https://${baseURL}/blog/${post.slug}`,
-						author: {
-							'@type': 'Person',
-							name: person.name,
-            			},
+							image: post.metadata.image
+							? `https://${baseURL}${post.metadata.image}`
+							: `https://${baseURL}/og?title=${post.metadata.title}`,
+							url: `https://${baseURL}/blog/${post.slug}`,
+							author: {
+								'@type': 'Person',
+								name: person.name,
+							},
 						},
 					}),
 				}}

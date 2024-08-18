@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation'
 import { CustomMDX } from '@/app/components/mdx'
 import { formatDate, getPosts } from '@/app/utils'
 import { AvatarGroup, Button, Flex, Heading, SmartImage, Text } from '@/once-ui/components'
+import { baseURL, person } from '@/app/resources';
 
 interface WorkParams {
     params: {
@@ -19,6 +20,7 @@ export async function generateStaticParams() {
 
 export function generateMetadata({ params }: WorkParams) {
 	let post = getPosts(['src', 'app', 'work', 'projects']).find((post) => post.slug === params.slug)
+	
 	if (!post) {
 		return
 	}
@@ -28,8 +30,12 @@ export function generateMetadata({ params }: WorkParams) {
 		publishedAt: publishedTime,
 		summary: description,
 		images,
+		image,
 		team,
 	} = post.metadata
+	let ogImage = image
+		? `https://${baseURL}${image}`
+		: `https://${baseURL}/og?title=${title}`;
 
 	return {
 		title,
@@ -41,11 +47,18 @@ export function generateMetadata({ params }: WorkParams) {
 			description,
 			type: 'article',
 			publishedTime,
+			url: `https://${baseURL}/work/${post.slug}`,
+			images: [
+				{
+					url: ogImage,
+				},
+			],
 		},
 		twitter: {
 			card: 'summary_large_image',
 			title,
 			description,
+			images: [ogImage],
 		},
 	}
 }
@@ -77,9 +90,13 @@ export default function Project({ params }: WorkParams) {
 						datePublished: post.metadata.publishedAt,
 						dateModified: post.metadata.publishedAt,
 						description: post.metadata.summary,
+						image: post.metadata.image
+							? `https://${baseURL}${post.metadata.image}`
+							: `https://${baseURL}/og?title=${post.metadata.title}`,
+							url: `https://${baseURL}/work/${post.slug}`,
 						author: {
-						'@type': 'Person',
-						name: 'My Portfolio',
+							'@type': 'Person',
+							name: person.name,
 						},
 					}),
 				}}
