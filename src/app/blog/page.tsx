@@ -53,6 +53,10 @@ export default function Blog() {
 						author: {
 							'@type': 'Person',
 							name: person.name,
+                            image: {
+								'@type': 'ImageObject',
+								url: `${baseURL}/images/avatar.png`,
+							},
 						},
 					}),
 				}}

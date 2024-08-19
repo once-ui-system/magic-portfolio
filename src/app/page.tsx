@@ -3,15 +3,66 @@ import React from 'react';
 import { Heading, Flex, Text, Button,  Avatar } from '@/once-ui/components';
 import { Projects } from '@/app/work/components/Projects';
 
-import { home } from '@/app/resources'
+import { baseURL, home, person } from '@/app/resources'
 import { Mailchimp } from '@/app/components';
 import { Posts } from '@/app/blog/components/Posts';
+
+export function generateMetadata() {
+	const title = home.title;
+	const description = home.description;
+	const ogImage = `https://${baseURL}/og?title=${encodeURIComponent(title)}`;
+
+	return {
+		title,
+		description,
+		openGraph: {
+			title,
+			description,
+			type: 'website',
+			url: `https://${baseURL}/blog`,
+			images: [
+				{
+					url: ogImage,
+					alt: title,
+				},
+			],
+		},
+		twitter: {
+			card: 'summary_large_image',
+			title,
+			description,
+			images: [ogImage],
+		},
+	};
+}
 
 export default function Home() {
 	return (
 		<Flex
 			maxWidth="m" fillWidth gap="24"
 			direction="column" alignItems="center">
+			<script
+				type="application/ld+json"
+				suppressHydrationWarning
+				dangerouslySetInnerHTML={{
+					__html: JSON.stringify({
+						'@context': 'https://schema.org',
+						'@type': 'WebPage',
+						name: home.title,
+						description: home.description,
+						url: `https://${baseURL}`,
+						image: `${baseURL}/og?title=${encodeURIComponent(home.title)}`,
+						publisher: {
+							'@type': 'Person',
+							name: person.name,
+							image: {
+								'@type': 'ImageObject',
+								url: `${baseURL}/images/avatar.png`,
+							},
+						},
+					}),
+				}}
+			/>
 			<Flex
 				fillWidth
 				direction="column"

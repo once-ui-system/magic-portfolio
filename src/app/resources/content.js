@@ -143,7 +143,8 @@ const work = {
 
 const gallery = {
     label: 'Gallery',
-    title: 'Gallery',
+    title: 'My photo gallery',
+    description: `A photo collection by ${person.name}`,
     images: [
         { 
             src: '/images/gallery/img-01.jpg', 
