@@ -1,12 +1,11 @@
 import { InlineCode } from "@/once-ui/components";
-import { display } from "./config";
 
 const person = {
-    name: 'Alex Müller',
-    role: 'Design Engineer',
-    avatar: '/images/avatar.png',
-    location: 'Europe/Vienna', // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
-    languages: [ 'English', 'German' ] // optional: Leave the array empty if you don't want to display languages
+    name:      'Alex Müller',
+    role:      'Design Engineer',
+    avatar:    '/images/avatar.png',
+    location:  'Europe/Vienna',       // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
+    languages: ['English', 'German']  // optional: Leave the array empty if you don't want to display languages
 }
 
 const newsletter = {
@@ -41,12 +40,16 @@ const social = [
 
 const home = {
     label: 'Home',
+    title: `${person.name}'s Portfolio`,
+    description: `Portfolio website showcasing my work as a ${person.role}`,
     headline: <>Design engineer by day, creative by night</>,
     subline: <>I'm Alex, a design engineer at <InlineCode>Once UI</InlineCode>, where I craft intuitive user experiences. After hours, I experiment with creative projects, blending technology and art.</>
 }
 
 const about = {
     label: 'About',
+    title: 'About me',
+    description: `Meet ${person.name}, ${person.role} from ${person.location}`,
     tableOfContent: {
         display: true,
         subItems: true
@@ -124,14 +127,16 @@ const about = {
 
 const blog = {
     label: 'Blog',
-    title: 'Writing about design and tech...'
+    title: 'Writing about design and tech...',
+    description: `Read what ${person.name} has been up to recently`
     // Create new blog posts by adding a new .mdx file to app/blog/posts
     // All posts will be listed on the /blog route
 }
 
 const work = {
     label: 'Work',
-    title: 'My projects'
+    title: 'My projects',
+    description: `Design and dev projects by ${person.name}`
     // Create new project pages by adding a new .mdx file to app/blog/posts
     // All projects will be listed on the /home and /work routes
 }

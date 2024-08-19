@@ -83,17 +83,13 @@ export default function Blog({ params }: BlogParams) {
 						datePublished: post.metadata.publishedAt,
 						dateModified: post.metadata.publishedAt,
 						description: post.metadata.summary,
-						author: {
-							'@type': 'Person',
-							name: person.name,
-							image: post.metadata.image
+						image: post.metadata.image
 							? `https://${baseURL}${post.metadata.image}`
 							: `https://${baseURL}/og?title=${post.metadata.title}`,
 							url: `https://${baseURL}/blog/${post.slug}`,
-							author: {
-								'@type': 'Person',
-								name: person.name,
-							},
+						author: {
+							'@type': 'Person',
+							name: person.name,
 						},
 					}),
 				}}

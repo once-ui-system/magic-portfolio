@@ -4,7 +4,7 @@ import { Flex } from '@/once-ui/components';
 import { ProjectCard } from '@/app/components';
 
 interface ProjectsProps {
-    range?: [number, number?]; // Optional end index
+    range?: [number, number?];
 }
 
 export function Projects({ range }: ProjectsProps) {

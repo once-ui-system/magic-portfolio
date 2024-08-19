@@ -5,7 +5,7 @@ import classNames from 'classnames';
 
 import { Flex, Background } from '@/once-ui/components'
 import { Footer, Header, RouteGuard } from "@/app/components";
-import { baseURL, effects, person } from '@/app/resources'
+import { baseURL, effects, home, person, style } from '@/app/resources'
 
 import { Inter } from 'next/font/google'
 import { Source_Code_Pro } from 'next/font/google';
@@ -14,11 +14,8 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
 	metadataBase: new URL('https://' + baseURL),
-	title: {
-		default: `${person.name}'s Portfolio`,
-		template: `%s | ${person.name}'s Portfolio`,
-	},
-	description: 'Portfolio website showcasing my work.',
+	title: home.title,
+	description: home.description,
 	openGraph: {
 		title: `${person.name}'s Portfolio`,
 		description: 'Portfolio website showcasing my work.',
@@ -74,12 +71,12 @@ export default function RootLayout({ children } : RootLayoutProps) {
 		<Flex
 			as="html" lang="en"
 			background="page"
-			data-neutral="gray" data-brand="aqua" data-accent="yellow"
-			data-solid="contrast" data-solid-style="flat"
-			data-theme="dark"
-			data-border="playful"
-			data-surface="translucent"
-			data-transition="all"
+			data-neutral={style.neutral} data-brand={style.brand} data-accent={style.accent}
+			data-solid={style.solid} data-solid-style={style.solidStyle}
+			data-theme={style.theme}
+			data-border={style.border}
+			data-surface={style.surface}
+			data-transition={style.transition}
 			className={classNames(
 				primary.variable,
 				secondary ? secondary.variable : '',

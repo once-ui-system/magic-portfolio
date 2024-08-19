@@ -1,8 +1,36 @@
-"use client";
-
-import { Avatar, Button, Flex, Heading, Icon, IconButton, SmartImage, SmartLink, Tag, Text } from '@/once-ui/components';
-import { person, about, social } from '@/app/resources'
+import { Avatar, Button, Flex, Heading, Icon, IconButton, SmartImage, Tag, Text } from '@/once-ui/components';
+import { person, about, social, baseURL } from '@/app/resources'
 import styles from '@/app/about/about.module.scss'
+import TableOfContents from './components/TableOfContents';
+
+export function generateMetadata() {
+	const title = about.title;
+	const description = about.description;
+	const ogImage = `https://${baseURL}/og?title=${encodeURIComponent(title)}`;
+
+	return {
+		title,
+		description,
+		openGraph: {
+			title,
+			description,
+			type: 'website',
+			url: `https://${baseURL}/blog`,
+			images: [
+				{
+					url: ogImage,
+					alt: title,
+				},
+			],
+		},
+		twitter: {
+			card: 'summary_large_image',
+			title,
+			description,
+			images: [ogImage],
+		},
+	};
+}
 
 function scrollTo(id: string, offset: number) {
     const element = document.getElementById(id);
@@ -37,50 +65,37 @@ export default function About() {
         <Flex
             fillWidth maxWidth="m"
             direction="column">
+            <script
+                type="application/ld+json"
+                suppressHydrationWarning
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify({
+                        '@context': 'https://schema.org',
+                        '@type': 'Person',
+                        name: person.name,
+                        jobTitle: person.role,
+                        description: about.intro,
+                        url: `https://${baseURL}/about`,
+                        image: `${baseURL}/images/${person.avatar}`,
+                        sameAs: social
+                            .filter((item) => item.link && !item.link.startsWith('mailto:')) // Filter out empty links and email links
+                            .map((item) => item.link),
+                        worksFor: {
+                            '@type': 'Organization',
+                            name: about.work.experiences[0].company || ''
+                        },
+                    }),
+                }}
+            />
             { about.tableOfContent.display && (
                 <Flex
                     style={{ left: '0', top: '50%', transform: 'translateY(-50%)' }}
                     position="fixed"
                     paddingLeft="24" gap="32"
                     direction="column" hide="s">
-                    {structure.map((section, sectionIndex) => (
-                        <Flex key={sectionIndex}
-                            gap="12" direction="column">
-                            <Flex
-                                style={{cursor: 'pointer'}}
-                                className={styles.hover}
-                                gap="8" alignItems="center"
-                                onClick={() => scrollTo(section.title, 80)}>
-                                <Flex
-                                    height="1" width="16"
-                                    background="neutral-strong">
-                                </Flex>
-                                <Text>
-                                    {section.title}
-                                </Text>
-                            </Flex>
-                            { about.tableOfContent.subItems && (
-                                <>
-                                    {section.items.map((item, itemIndex) => (
-                                        <Flex
-                                            style={{cursor: 'pointer'}}
-                                            className={styles.hover}
-                                            key={itemIndex}
-                                            gap="12" paddingLeft="24" alignItems="center"
-                                            onClick={() => scrollTo(item, 80)}>
-                                            <Flex
-                                                height="1" width="8"
-                                                background="neutral-strong">
-                                            </Flex>
-                                            <Text>
-                                                {item}
-                                            </Text>
-                                        </Flex>
-                                    ))}
-                                </>
-                            )}
-                        </Flex>
-                    ))}
+                    <TableOfContents
+                        structure={structure}
+                        about={about} />
                 </Flex>
             )}
             <Flex

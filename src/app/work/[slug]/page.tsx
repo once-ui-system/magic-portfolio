@@ -132,6 +132,7 @@ export default function Project({ params }: WorkParams) {
 					alignItems="center">
 					{ post.metadata.team && (
 						<AvatarGroup
+							reverseOrder
 							avatars={avatars}
 							size="m"/>
 					)}
