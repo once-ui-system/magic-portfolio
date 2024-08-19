@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import React, { CSSProperties, useState, useRef, useEffect } from 'react';
 import Image, { ImageProps } from 'next/image';
@@ -16,6 +16,7 @@ export type SmartImageProps = ImageProps & {
     isLoading?: boolean;
     objectFit?: CSSProperties['objectFit'];
     enlarge?: boolean;
+    src: string;
 };
 
 const SmartImage: React.FC<SmartImageProps> = ({
@@ -28,6 +29,7 @@ const SmartImage: React.FC<SmartImageProps> = ({
     isLoading = false,
     objectFit = 'cover',
     enlarge = false,
+    src,
     ...props
 }) => {
     const [isEnlarged, setIsEnlarged] = useState(false);
@@ -71,6 +73,8 @@ const SmartImage: React.FC<SmartImageProps> = ({
         };
     };
 
+    const isVideo = src.endsWith('.mp4');
+
     return (
         <>
             <Flex
@@ -97,9 +101,24 @@ const SmartImage: React.FC<SmartImageProps> = ({
                 {isLoading && (
                     <Skeleton shape="block" />
                 )}
-                {!isLoading && (
+                {!isLoading && isVideo && (
+                    <video
+                        src={src}
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        style={{
+                            width: '100%',
+                            height: '100%',
+                            objectFit: isEnlarged ? 'contain' : objectFit,
+                        }}
+                    />
+                )}
+                {!isLoading && !isVideo && (
                     <Image
                         {...props}
+                        src={src}
                         alt={alt}
                         fill
                         style={{ 
@@ -133,13 +152,29 @@ const SmartImage: React.FC<SmartImageProps> = ({
                             transform: 'translate(-50%, -50%)',
                         }}
                         onClick={(e) => e.stopPropagation()}>
-                        <Image
-                            {...props}
-                            alt={alt}
-                            fill
-                            sizes="90vw"
-                            style={{ objectFit: 'contain' }}
-                        />
+                        {isVideo ? (
+                            <video
+                                src={src}
+                                autoPlay
+                                loop
+                                muted
+                                playsInline
+                                style={{ 
+                                    width: '90vw',
+                                    height: 'auto',
+                                    objectFit: 'contain',
+                                }}
+                            />
+                        ) : (
+                            <Image
+                                {...props}
+                                src={src}
+                                alt={alt}
+                                fill
+                                sizes="90vw"
+                                style={{ objectFit: 'contain' }}
+                            />
+                        )}
                     </Flex>
                 </Flex>
             )}

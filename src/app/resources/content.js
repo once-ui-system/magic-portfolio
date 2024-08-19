@@ -192,27 +192,27 @@ const gallery = {
             orientation: 'horizontal'
         },
         { 
-            src: '/images/gallery/img-01.jpg', 
+            src: '/images/gallery/img-10.jpg', 
             alt: 'image',
             orientation: 'horizontal'
         },
         { 
-            src: '/images/gallery/img-01.jpg', 
+            src: '/images/gallery/img-11.jpg', 
             alt: 'image',
             orientation: 'vertical'
         },
         { 
-            src: '/images/gallery/img-01.jpg', 
+            src: '/images/gallery/img-12.jpg', 
             alt: 'image',
             orientation: 'horizontal'
         },
         { 
-            src: '/images/gallery/img-01.jpg', 
+            src: '/images/gallery/img-13.jpg', 
             alt: 'image',
             orientation: 'horizontal'
         },
         { 
-            src: '/images/gallery/img-01.jpg', 
+            src: '/images/gallery/img-14.jpg', 
             alt: 'image',
             orientation: 'horizontal'
         },
