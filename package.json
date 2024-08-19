@@ -1,6 +1,6 @@
 {
-	"name": "@once-ui-system/nextjs-starter",
-	"version": "0.3.0",
+	"name": "@once-ui-system/magic-portfolio",
+	"version": "0.1.0",
 	"scripts": {
 		"dev": "next dev",
 		"export": "next export",

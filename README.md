@@ -1,30 +1,81 @@
-Build your portfolio with Once UI's Magic Portfolio template:
-* **Config:** Render necessary pages dynamically.
-* **Content:** Manage content in a separate file.
+# **Build your portfolio with Once UI's Magic Portfolio**
 
-## Authors
+Magic Portfolio was built with [Once UI](https://once-ui.com) for [Next.js](https://nextjs.org). It requires Node.js v18.17+.
+
+**1. Clone the repository**
+```
+git clone https://github.com/once-ui-system/magic-portfolio.git
+```
+
+**2. Install dependencies**
+```
+npm install
+```
+
+**3. Run dev server**
+```
+npm run dev
+```
+
+**4. Edit config**
+```
+src/app/resources/config
+```
+
+**5. Edit content**
+```
+src/app/resources/content
+```
+
+**6. Create blog posts / projects**
+```
+Add a new .mdx file to src/app/blog/posts or src/app/work/projects
+```
+
+# **Features**
+
+## **Once UI**
+- All tokens, components & features of [Once UI](https://once-ui.com) (v0.3.1)
+
+## **SEO**
+- Automatic open-graph and X image generation with next/og
+- Automatic schema and metadata generation based on the content file
+
+## **Design**
+- Responsive layout optimized for all screen sizes
+- Timeless design without heavy animations and motion
+- Endless customization options through [data attributes](https://once-ui.com/docs/theming)
+
+TIP:
+You try pre-built designs by changing the imports for the config and content in src/app/resources/index.ts
+
+## **Content**
+- Render sections conditionally based on the content file
+- Enable or disable pages for blog, work, gallery and about / CV
+- Generate and display social links automatically
+- Set up password protection for URLs
+
+# **Authors**
+
 Connect with us on X or LinkedIn.
 
-Lorant Toth - [X](https://x.com/lorant_one), [LinkedIn](https://www.linkedin.com/in/tothlorant/)  
-Zsofia Komaromi - [X](https://x.com/zsofiakomaromi), [LinkedIn](https://www.linkedin.com/in/zsofiakomaromi/)
+Lorant Toth: [X](https://x.com/lorant_one), [LinkedIn](https://www.linkedin.com/in/tothlorant/)  
+Zsofia Komaromi: [X](https://x.com/zsofiakomaromi), [LinkedIn](https://www.linkedin.com/in/zsofiakomaromi/)
 
-## Get involved
-- Join the [Once UI Discord server](https://discord.com/invite/5EyAQ4eNdS) to connect with designers, developers and share your projects.
-- Report a [bug](https://github.com/once-ui-system/nextjs-starter/issues/new?labels=bug&template=bug_report.md).
-- Submit a [feature request](https://github.com/once-ui-system/nextjs-starter/issues/new?labels=feature%20request&template=feature_request.md).
+# **Get involved**
 
-## License
+- Join the [Once UI Discord server](https://discord.com/invite/5EyAQ4eNdS) and share your portfolio with designers and developers!
+- Report a [bug](https://github.com/once-ui-system/magic-portfolio/issues/new?labels=bug&template=bug_report.md).
 
-Distributed under the MIT License. See `LICENSE.txt` for more information.
+# **License**
 
-## Figma library
+Distributed under the CC BY-NC 4.0 License.
+- Commercial usage is not allowed.
+- Attribution is required.
 
-Once UI is also available for Figma.  
-Design and prototype entire products from scratch in hours. Use the same tokens and components as the Next.js design system.
+See `LICENSE.txt` for more information.
 
-Grab a copy from the [Figma Community](https://figma.com/).
-
-## Deploy your project
+# **Deploy your project**
 
 [![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/template/76DR9Q?referralCode=QW2HBC)
 
