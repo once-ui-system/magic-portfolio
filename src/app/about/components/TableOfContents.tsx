@@ -7,6 +7,7 @@ import styles from '@/app/about/about.module.scss';
 interface TableOfContentsProps {
     structure: {
         title: string;
+        display: boolean;
         items: string[];
     }[];
     about: {
@@ -44,7 +45,9 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({ structure, about }) =
             position="fixed"
             paddingLeft="24" gap="32"
             direction="column" hide="s">
-            {structure.map((section, sectionIndex) => (
+            {structure
+                .filter(section => section.display)
+                .map((section, sectionIndex) => (
                 <Flex key={sectionIndex} gap="12" direction="column">
                     <Flex
                         style={{ cursor: 'pointer' }}

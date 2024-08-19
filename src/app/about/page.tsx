@@ -47,15 +47,18 @@ function scrollTo(id: string, offset: number) {
 
 const structure = [
     { 
-        title: about.intro.title, 
+        title: about.intro.title,
+        display: about.intro.display,
         items: []
     },
     { 
-        title: about.work.title, 
+        title: about.work.title,
+        display: about.work.display,
         items: about.work.experiences.map(experience => experience.company)
     },
     { 
-        title: about.technical.title, 
+        title: about.technical.title,
+        display: about.technical.display,
         items: about.technical.skills.map(skill => skill.title)
     },
 ]
