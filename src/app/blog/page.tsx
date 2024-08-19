@@ -2,8 +2,8 @@ import { Flex, Heading } from '@/once-ui/components';
 import { Mailchimp } from '@/app/components';
 import { Posts } from '@/app/blog/components/Posts';
 
-import { blog, person } from '@/app/resources/content'
-import { baseURL, mailchimp } from '@/app/resources/config'
+import { blog, person } from '@/app/resources'
+import { baseURL, mailchimp } from '@/app/resources'
 
 export function generateMetadata() {
 	const title = blog.title;

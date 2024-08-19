@@ -3,7 +3,7 @@ import React from 'react';
 import { Heading, Flex, Text, Button,  Avatar } from '@/once-ui/components';
 import { Projects } from '@/app/work/components/Projects';
 
-import { baseURL, home, person } from '@/app/resources'
+import { about, baseURL, home, person } from '@/app/resources'
 import { Mailchimp } from '@/app/components';
 import { Posts } from '@/app/blog/components/Posts';
 
@@ -88,11 +88,13 @@ export default function Home() {
 					<Flex
 						gap="8"
 						alignItems="center">
-						<Avatar
-							style={{marginLeft: '-0.25rem'}}
-							src="/images/avatar.png"
-							size="xs"/>
-						About me
+						{about.avatar.display && (
+							<Avatar
+								style={{marginLeft: '-0.25rem'}}
+								src="/images/avatar.png"
+								size="xs"/>
+							)}
+							About me
 					</Flex>
 				</Button>
 			</Flex>

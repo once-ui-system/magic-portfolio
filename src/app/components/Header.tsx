@@ -6,8 +6,8 @@ import { useEffect, useState } from "react";
 import { Flex, ToggleButton } from "@/once-ui/components"
 import styles from '@/app/components/Header.module.scss'
 
-import { routes, display } from '@/app/resources/config'
-import { person, home, about, blog, work, gallery } from '@/app/resources/content'
+import { routes, display } from '@/app/resources'
+import { person, home, about, blog, work, gallery } from '@/app/resources'
 
 type TimeDisplayProps = {
     timeZone: string;

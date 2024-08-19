@@ -71,7 +71,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
                             onClick={() => handleControlClick(index)}
                             style={{
                                 background: activeIndex === index 
-                                    ? 'var(--neutral-on-solid-strong)' 
+                                    ? 'var(--neutral-on-background-strong)' 
                                     : 'var(--neutral-alpha-medium)',
                                 cursor: 'pointer',
                                 transition: 'background 0.3s ease',
@@ -84,7 +84,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
             )}
             <Flex
                 mobileDirection="column"
-                fillWidth paddingX="l" paddingY="m" gap="l">
+                fillWidth paddingX="l" paddingTop="xs" paddingBottom="m" gap="l">
                 {title && (
                     <Flex
                         flex={5}>

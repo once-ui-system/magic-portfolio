@@ -1,7 +1,7 @@
 "use client";
 
-import { mailchimp } from '@/app/resources/config'
-import { newsletter } from '@/app/resources/content'
+import { mailchimp } from '@/app/resources'
+import { newsletter } from '@/app/resources'
 import { Button, Flex, Heading, Input, Text } from '@/once-ui/components';
 import { Background } from '@/once-ui/components/Background';
 import { useState } from 'react';
@@ -58,9 +58,9 @@ export const Mailchimp = () => {
             background="surface" border="neutral-medium" borderStyle="solid-1">
             <Background
                 position="absolute"
-                gradient={true}
-                dots={false}
-                lines={true}/>
+                gradient={mailchimp.effects.gradient}
+                dots={mailchimp.effects.dots}
+                lines={mailchimp.effects.lines}/>
             <Heading style={{position: 'relative'}}
                 marginBottom="s"
                 variant="display-strong-xs">

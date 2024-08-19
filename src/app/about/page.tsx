@@ -74,7 +74,7 @@ export default function About() {
                         '@type': 'Person',
                         name: person.name,
                         jobTitle: person.role,
-                        description: about.intro,
+                        description: about.intro.description,
                         url: `https://${baseURL}/about`,
                         image: `${baseURL}/images/${person.avatar}`,
                         sameAs: social
@@ -100,7 +100,7 @@ export default function About() {
             )}
             <Flex
                 fillWidth
-                mobileDirection="column">
+                mobileDirection="column" justifyContent="center">
                 { about.avatar.display && (
                     <Flex
                         minWidth="160" paddingX="l" paddingBottom="xl" gap="m"
@@ -195,11 +195,12 @@ export default function About() {
                         )}
                     </Flex>
                     { about.intro.display && (
-                        <Text
-                            variant="body-default-l"
-                            marginBottom="xl">
+                        <Flex
+                            direction="column"
+                            textVariant="body-default-l"
+                            fillWidth gap="m" marginBottom="xl">
                             {about.intro.description}
-                        </Text>
+                        </Flex>
                     )}
 
                     { about.work.display && (

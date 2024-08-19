@@ -5,42 +5,42 @@ const routes = {
     '/about':   true,
     '/work':    true,
     '/blog':    true,
-    '/gallery': true,
+    '/gallery': false,
 }
 
 // Enable password protection on selected routes
 // Set password in pages/api/authenticate.ts
 const protectedRoutes = {
-    '/work/customizable-design-system': true
+    
 }
 
 const effects = {
-    gradient: true,
-    dots:     true,
+    gradient: false,
+    dots:     false,
     lines:    false,
 }
 
 const style = {
-    theme:       'dark',         // dark | light
+    theme:       'light',        // dark | light
     neutral:     'gray',         // sand | gray | slate
-    brand:       'aqua',         // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan
-    accent:      'yellow',       // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan
+    brand:       'blue',         // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan
+    accent:      'blue',         // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan
     solid:       'contrast',     // color | contrast
     solidStyle:  'flat',         // flat | plastic
-    border:      'playful',      // rounded | playful | conservative
-    surface:     'translucent',  // filled | translucent
+    border:      'conservative', // rounded | playful | conservative
+    surface:     'filled',       // filled | translucent
     transition:  'all'           // all | micro | macro
 }
 
 const display = {
-    location: true,
-    time:     true
+    location: false,
+    time:     false
 }
 
 const mailchimp = {
     action: 'https://url/subscribe/post?parameters',
     effects: {
-        gradient: true,
+        gradient: false,
         dots:     false,
         lines:    true,
     }
