@@ -32,19 +32,6 @@ export function generateMetadata() {
 	};
 }
 
-function scrollTo(id: string, offset: number) {
-    const element = document.getElementById(id);
-    if (element) {
-        const elementPosition = element.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.scrollY - offset;
-
-        window.scrollTo({
-            top: offsetPosition,
-            behavior: 'smooth'
-        });
-    }
-}
-
 const structure = [
     { 
         title: about.intro.title,
@@ -146,6 +133,7 @@ export default function About() {
                             <Flex
                                 className={styles.blockAlign}
                                 style={{
+                                    backdropFilter: 'blur(var(--static-space-1))',
                                     border: '1px solid var(--brand-alpha-medium)',
                                     width: 'fit-content'
                                 }}

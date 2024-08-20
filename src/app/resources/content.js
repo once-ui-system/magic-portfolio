@@ -1,7 +1,11 @@
 import { InlineCode } from "@/once-ui/components";
 
 const person = {
-    name:      'Alex Müller',
+    firstName: 'Alex',
+    lastName:  'Müller',
+    get name() {
+        return `${this.firstName} ${this.lastName}`;
+    },
     role:      'Design Engineer',
     avatar:    '/images/avatar.png',
     location:  'Europe/Vienna',       // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
@@ -9,7 +13,7 @@ const person = {
 }
 
 const newsletter = {
-    title: <>Subscribe to Alex's Newsletter</>,
+    title: <>Subscribe to {person.firstName}'s Newsletter</>,
     description: <>I occasionally write about design, technology, and share thoughts on the intersection of creativity and engineering.</>
 }
 
@@ -145,6 +149,7 @@ const gallery = {
     label: 'Gallery',
     title: 'My photo gallery',
     description: `A photo collection by ${person.name}`,
+    // Images from https://pexels.com
     images: [
         { 
             src: '/images/gallery/img-01.jpg', 
