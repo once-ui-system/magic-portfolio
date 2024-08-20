@@ -3,7 +3,7 @@ import React from 'react';
 import { Heading, Flex, Text, Button,  Avatar } from '@/once-ui/components';
 import { Projects } from '@/app/work/components/Projects';
 
-import { about, baseURL, home, person } from '@/app/resources'
+import { about, baseURL, home, person, routes } from '@/app/resources'
 import { Mailchimp } from '@/app/components';
 import { Posts } from '@/app/blog/components/Posts';
 
@@ -99,9 +99,11 @@ export default function Home() {
 				</Button>
 			</Flex>
 			<Projects range={[1,1]}/>
-			<Flex fillWidth paddingX="20">
-				<Posts range={[1,2]} columns="2"/>
-			</Flex>
+			{routes['/blog'] && (
+				<Flex fillWidth paddingX="20">
+					<Posts range={[1,2]} columns="2"/>
+				</Flex>
+			)}
 			<Projects range={[2]}/>
 			<Mailchimp/>
 		</Flex>
