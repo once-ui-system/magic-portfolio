@@ -103,14 +103,12 @@ const SmartImage: React.FC<SmartImageProps> = ({
                 )}
                 {!isLoading && isVideo && (
                     <video
-                        onClick={handleClick}
                         src={src}
                         autoPlay
                         loop
                         muted
                         playsInline
                         style={{
-                            pointerEvents: 'none',
                             width: '100%',
                             height: '100%',
                             objectFit: isEnlarged ? 'contain' : objectFit,
