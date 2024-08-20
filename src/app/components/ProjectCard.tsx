@@ -46,21 +46,21 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
         <Flex
             fillWidth gap="m"
             direction="column">
-                <Flex onClick={handleImageClick}>
-            <SmartImage
-                tabIndex={0}
-                radius="l"
-                alt={title}
-                aspectRatio="16 / 9"
-                src={images[activeIndex]}
-                style={{
-                    ...(images.length > 1 && {
-                        cursor: 'pointer',
-                        opacity: isTransitioning ? 0.2 : 1,
-                        transition: 'opacity 0.2s ease',
-                    }),
-                }}/>
-                </Flex>
+            <Flex onClick={handleImageClick}>
+                <SmartImage
+                    tabIndex={0}
+                    radius="l"
+                    alt={title}
+                    aspectRatio="16 / 9"
+                    src={images[activeIndex]}
+                    style={{
+                        ...(images.length > 1 && {
+                            cursor: 'pointer',
+                            opacity: isTransitioning ? 0.2 : 1,
+                            transition: 'opacity 0.2s ease',
+                        }),
+                    }}/>
+            </Flex>
             {images.length > 1 && (
                 <Flex
                     gap="4" paddingX="s"
