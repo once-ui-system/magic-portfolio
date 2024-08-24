@@ -1,7 +1,7 @@
 import { Avatar, Button, Flex, Heading, Icon, IconButton, SmartImage, Tag, Text } from '@/once-ui/components';
 import { person, about, social, baseURL } from '@/app/resources'
+import TableOfContents from '@/app/about/components/TableOfContents';
 import styles from '@/app/about/about.module.scss'
-import TableOfContents from './components/TableOfContents';
 
 export function generateMetadata() {
 	const title = about.title;
@@ -201,7 +201,7 @@ export default function About() {
                                 id={about.work.title}
                                 variant="display-strong-s"
                                 marginBottom="m">
-                                Work experience
+                                {about.work.title}
                             </Heading>
                             <Flex
                                 direction="column"
@@ -280,7 +280,7 @@ export default function About() {
                                 id={about.technical.title}
                                 variant="display-strong-s"
                                 marginBottom="m">
-                                Technical skills
+                                {about.technical.title}
                             </Heading>
                             <Flex
                                 direction="column"

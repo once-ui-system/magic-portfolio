@@ -17,10 +17,10 @@ export const metadata: Metadata = {
 	title: home.title,
 	description: home.description,
 	openGraph: {
-		title: `${person.name}'s Portfolio`,
+		title: `${person.firstName}'s Portfolio`,
 		description: 'Portfolio website showcasing my work.',
 		url: baseURL,
-		siteName: `${person.name}'s Portfolio`,
+		siteName: `${person.firstName}'s Portfolio`,
 		locale: 'en_US',
 		type: 'website',
 	},

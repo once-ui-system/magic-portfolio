@@ -19,7 +19,7 @@ export async function GET(request: Request) {
                     display: 'flex',
                     width: '100%',
                     height: '100%',
-                    padding: '10rem 10rem 16rem 10rem',
+                    padding: '6rem 6rem 10rem 6rem',
                     backgroundImage: `url(https://${baseURL}/og/template.jpg)`
                 }}>
                 <div
@@ -33,8 +33,8 @@ export async function GET(request: Request) {
                     }}>
                     <span
                         style={{
-                            fontSize: '9rem',
-                            lineHeight: '9rem',
+                            fontSize: '8rem',
+                            lineHeight: '8rem',
                             letterSpacing: '-0.05em',
                             whiteSpace: 'pre-wrap',
                             textWrap: 'balance',
