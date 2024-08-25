@@ -55,7 +55,7 @@ export default function Blog() {
 							name: person.name,
                             image: {
 								'@type': 'ImageObject',
-								url: `${baseURL}/images/avatar.png`,
+								url: `${baseURL}/images/avatar.jpg`,
 							},
 						},
 					}),

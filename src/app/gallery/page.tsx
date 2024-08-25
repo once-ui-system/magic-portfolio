@@ -54,7 +54,7 @@ export default function Gallery() {
 							name: person.name,
                             image: {
 								'@type': 'ImageObject',
-								url: `${baseURL}/images/avatar.png`,
+								url: `${baseURL}/images/avatar.jpg`,
 							},
 						},
 					}),

@@ -120,7 +120,7 @@ export const Header = () => {
                 justifyContent="flex-end" alignItems="center"
                 textVariant="body-default-s">
                 { display.time && (
-                    <TimeDisplay timeZone="Europe/Vienna"/>
+                    <TimeDisplay timeZone={person.location}/>
                 )}
             </Flex>
         </Flex>

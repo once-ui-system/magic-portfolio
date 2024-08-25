@@ -1,16 +1,19 @@
 import { InlineCode } from "@/once-ui/components";
-import Link from 'next/link';
 
 const person = {
-    name:      'Alex Müller',
-    role:      'Devops engineer',
-    avatar:    '/images/avatar.png',
-    location:  'Europe/Vienna',       // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
-    languages: ['English']            // optional: Leave the array empty if you don't want to display languages
+    firstName: 'Selene',
+    lastName:  'Yu',
+    get name() {
+        return `${this.firstName} ${this.lastName}`;
+    },
+    role:      'Design Engineer',
+    avatar:    '/images/avatar.jpg',
+    location:  'Asia/Jakarta',        // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
+    languages: ['English', 'Bahasa']  // optional: Leave the array empty if you don't want to display languages
 }
 
 const newsletter = {
-    title: <>Subscribe to Alex's Newsletter</>,
+    title: <>Subscribe to {person.firstName}'s Newsletter</>,
     description: <>I occasionally write about design, technology, and share thoughts on the intersection of creativity and engineering.</>
 }
 
@@ -43,8 +46,12 @@ const home = {
     label: 'Home',
     title: `${person.name}'s Portfolio`,
     description: `Portfolio website showcasing my work as a ${person.role}`,
-    headline: <>Design engineer by day, creative by night</>,
-    subline: <>I'm Alex, a design engineer at <InlineCode>Once UI</InlineCode>, where I craft intuitive user experiences. After hours, I experiment with creative projects, blending technology and art.</>
+    headline: <>Design engineer and builder</>,
+    subline:
+    <>
+        <p>I'm Selene, a design engineer at <InlineCode>FLY</InlineCode>, where I craft intuitive user experiences. After hours, I build my own projects.</p>
+        <p>My work spans a diverse range of disciplines, from crafting <Link href="/work">intuitive digital interfaces</Link> to designing immersive interactive experiences. I’m particularly interested in the intersection of design and engineering, where aesthetics meet functionality. I believe that the best solutions arise from a balance of creativity and technical rigor, and I enjoy the challenge of finding that balance in every project I undertake.</p>
+    </>
 }
 
 const about = {
@@ -65,28 +72,23 @@ const about = {
     intro: {
         display: true,
         title: 'Introduction',
-        description: <>
-            <p>I’m a <InlineCode>Vienna-based</InlineCode> design engineer with a passion for solving complex problems through simple, elegant design solutions. With a strong foundation in both design and technology, I strive to create seamless and meaningful experiences that resonate with users and drive business outcomes.</p>
-            <p>My work spans a diverse range of disciplines, from crafting <Link href="/work">intuitive digital interfaces</Link> to designing immersive interactive experiences. I’m particularly interested in the intersection of design and engineering, where aesthetics meet functionality. I believe that the best solutions arise from a balance of creativity and technical rigor, and I enjoy the challenge of finding that balance in every project I undertake.</p>
-            <p>Throughout my career, I’ve had the opportunity to collaborate with cross-functional teams, bringing together design thinking, engineering precision, and user-centered methodologies. Whether it’s building a scalable design system, prototyping an interactive interface, or solving complex design challenges, I approach each project with curiosity, a commitment to excellence, and a focus on delivering results.</p>
-            <p>Beyond my technical skills, I’m driven by a desire to continuously learn and explore new ways to push the boundaries of what’s possible. Based in the vibrant city of Vienna, I’m inspired by the rich cultural heritage and innovative spirit that surrounds me. I’m always eager to connect with others who share a passion for design, technology, and making a positive impact through creative solutions.</p>
-        </>
+        description: <>Selene is a Jakarta-based design engineer with a passion for transforming complex challenges into simple, elegant design solutions. Her work spans digital interfaces, interactive experiences, and the convergence of design and technology.</>
     },
     work: {
-        display: false, // set to false to hide this section
+        display: true, // set to false to hide this section
         title: 'Work Experience',
         experiences: [
             {
-                company: 'Once UI',
+                company: 'FLY',
                 timeframe: '2022 - Present',
                 role: 'Senior Design Engineer',
                 achievements: [
-                    <>Redesigned the UI/UX for the Once UI platform, resulting in a 20% increase in user engagement and 30% faster load times.</>,
+                    <>Redesigned the UI/UX for the FLY platform, resulting in a 20% increase in user engagement and 30% faster load times.</>,
                     <>Spearheaded the integration of AI tools into design workflows, enabling designers to iterate 50% faster.</>
                 ],
                 images: [ // optional: leave the array empty if you don't want to display images
                     {
-                        src: '/images/projects/project-01/cover.jpg',
+                        src: '/images/projects/project-01/cover-01.jpg',
                         alt: 'Once UI Project',
                         width: 16,
                         height: 9
@@ -94,7 +96,7 @@ const about = {
                 ]
             },
             {
-                company: 'Creative Labs',
+                company: 'Creativ3',
                 timeframe: '2018 - 2022',
                 role: 'Lead Designer',
                 achievements: [
@@ -105,22 +107,48 @@ const about = {
             }
         ]
     },
+    studies: {
+        display: true, // set to false to hide this section
+        title: 'Studies',
+        institutions: [
+            {
+                name: 'University of Jakarta',
+                description: <>Studied software engineering.</>,
+            },
+            {
+                name: 'Build the Future',
+                description: <>Studied online marketing and personal branding.</>,
+            }
+        ]
+    },
     technical: {
         display: false, // set to false to hide this section
         title: 'Technical skills',
         skills: [
             {
                 title: 'Figma',
-                description: <>Include a concise overview of your key responsibilities, highlighting your direct impact on the organization, such as improved processes, cost savings, or revenue generation.</>,
+                description: <>Able to prototype in Figma with Once UI with unnatural speed.</>,
                 images: [
                     {
-                        src: '/images/projects/project-01/image-01.jpg',
+                        src: '/images/projects/project-01/cover-02.jpg',
                         alt: 'Project image',
                         width: 16,
                         height: 9
                     },
                     {
-                        src: '/images/projects/project-01/image-03.jpg',
+                        src: '/images/projects/project-01/cover-03.jpg',
+                        alt: 'Project image',
+                        width: 16,
+                        height: 9
+                    },
+                ]
+            },
+            {
+                title: 'Next.js',
+                description: <>Building next gen apps with Next.js + Once UI + Supabase.</>,
+                images: [
+                    {
+                        src: '/images/projects/project-01/cover-04.jpg',
                         alt: 'Project image',
                         width: 16,
                         height: 9
@@ -151,6 +179,7 @@ const gallery = {
     label: 'Gallery',
     title: 'My photo gallery',
     description: `A photo collection by ${person.name}`,
+    // Images from https://pexels.com
     images: [
         { 
             src: '/images/gallery/img-01.jpg', 

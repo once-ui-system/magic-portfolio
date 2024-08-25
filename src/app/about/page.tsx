@@ -44,6 +44,11 @@ const structure = [
         items: about.work.experiences.map(experience => experience.company)
     },
     { 
+        title: about.studies.title,
+        display: about.studies.display,
+        items: about.studies.institutions.map(institution => institution.name)
+    },
+    { 
         title: about.technical.title,
         display: about.technical.display,
         items: about.technical.skills.map(skill => skill.title)
@@ -185,6 +190,7 @@ export default function About() {
                             </Flex>
                         )}
                     </Flex>
+
                     { about.intro.display && (
                         <Flex
                             direction="column"
@@ -205,8 +211,7 @@ export default function About() {
                             </Heading>
                             <Flex
                                 direction="column"
-                                fillWidth gap="l"
-                                marginBottom="l">
+                                fillWidth gap="l" marginBottom="40">
                                 {about.work.experiences.map((experience, index) => (
                                     <Flex
                                         key={`${experience.company}-${experience.role}-${index}`}
@@ -248,7 +253,7 @@ export default function About() {
                                         </Flex>
                                         {experience.images.length > 0 && (
                                             <Flex
-                                                fillWidth paddingTop="m" paddingLeft="40" gap="12"
+                                                fillWidth paddingTop="m" paddingLeft="40"
                                                 wrap>
                                                 {experience.images.map((image, index) => (
                                                     <Flex
@@ -273,13 +278,45 @@ export default function About() {
                         </>
                     )}
 
+                    { about.studies.display && (
+                        <>
+                            <Heading
+                                as="h2"
+                                id={about.studies.title}
+                                variant="display-strong-s"
+                                marginBottom="m">
+                                {about.studies.title}
+                            </Heading>
+                            <Flex
+                                direction="column"
+                                fillWidth gap="l" marginBottom="40">
+                                {about.studies.institutions.map((institution, index) => (
+                                    <Flex
+                                        key={`${institution.name}-${index}`}
+                                        fillWidth gap="4"
+                                        direction="column">
+                                        <Text
+                                            id={institution.name}
+                                            variant="heading-strong-l">
+                                            {institution.name}
+                                        </Text>
+                                        <Text
+                                            variant="heading-default-xs"
+                                            onBackground="neutral-weak">
+                                            {institution.description}
+                                        </Text>
+                                    </Flex>
+                                ))}
+                            </Flex>
+                        </>
+                    )}
+
                     { about.technical.display && (
                         <>
                             <Heading
                                 as="h2"
                                 id={about.technical.title}
-                                variant="display-strong-s"
-                                marginBottom="m">
+                                variant="display-strong-s" marginBottom="40">
                                 {about.technical.title}
                             </Heading>
                             <Flex
@@ -288,24 +325,20 @@ export default function About() {
                                 {about.technical.skills.map((skill, index) => (
                                     <Flex
                                         key={`${skill}-${index}`}
-                                        fillWidth
+                                        fillWidth gap="4"
                                         direction="column">
-                                        <Flex
-                                            fillWidth
-                                            justifyContent="space-between"
-                                            alignItems="flex-end"
-                                            marginBottom="4">
-                                            <Text variant="heading-strong-l">
-                                                {skill.title}
-                                            </Text>
-                                        </Flex>
                                         <Text
-                                            variant="body-default-m">
+                                            variant="heading-strong-l">
+                                            {skill.title}
+                                        </Text>
+                                        <Text
+                                            variant="body-default-m"
+                                            onBackground="neutral-weak">
                                             {skill.description}
                                         </Text>
                                         {skill.images.length > 0 && (
                                             <Flex
-                                                fillWidth paddingY="m" gap="12"
+                                                fillWidth paddingTop="m" gap="12"
                                                 wrap>
                                                 {skill.images.map((image, index) => (
                                                     <Flex
