@@ -19,14 +19,15 @@ export async function GET(request: Request) {
                     display: 'flex',
                     width: '100%',
                     height: '100%',
-                    padding: '6rem 6rem 10rem 6rem',
+                    padding: '8rem',
                     backgroundImage: `url(https://${baseURL}/og/template.jpg)`
                 }}>
                 <div
                     style={{
                         display: 'flex',
                         flexDirection: 'column',
-                        justifyContent: 'space-between',
+                        justifyContent: 'center',
+                        gap: '4rem',
                         fontFamily: 'Inter',
                         fontStyle: 'normal',
                         color: 'white',

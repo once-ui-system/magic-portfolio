@@ -20,6 +20,23 @@ li {
     }
 }
 
+blockquote {
+    display: flex;
+    margin: var(--static-space-16) 0;
+    border-radius: var(--radius-m);
+    background: var(--brand-alpha-weak);
+    overflow: hidden;
+    text-wrap: balance;
+    backdrop-filter: blur(var(--static-space-2));
+    border: 1px dashed var(--brand-alpha-medium);
+
+    span {
+        margin: 0 !important;
+        padding: var(--static-space-16) var(--static-space-24);
+        color: var(--brand-on-background-medium) !important;
+    }
+}
+
 img {
     user-select: none;
 }

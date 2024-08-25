@@ -26,7 +26,7 @@ export function Posts({
 
     return (
         <>
-            { displayedBlogs.length > 1 && (
+            { displayedBlogs.length > 0 && (
                 <Grid
                     columns={`repeat(${columns}, 1fr)`} mobileColumns="1col"
                     fillWidth marginBottom="40" gap="m" paddingX="l">
