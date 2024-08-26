@@ -57,7 +57,7 @@ export default function Home() {
 							name: person.name,
 							image: {
 								'@type': 'ImageObject',
-								url: `${baseURL}/images/avatar.jpg`,
+								url: `${baseURL}${person.avatar}`,
 							},
 						},
 					}),
@@ -91,7 +91,7 @@ export default function Home() {
 						{about.avatar.display && (
 							<Avatar
 								style={{marginLeft: '-0.25rem'}}
-								src="/images/avatar.jpg"
+								src={person.avatar}
 								size="xs"/>
 							)}
 							About me
