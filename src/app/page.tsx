@@ -3,7 +3,7 @@ import React from 'react';
 import { Heading, Flex, Text, Button,  Avatar } from '@/once-ui/components';
 import { Projects } from '@/app/work/components/Projects';
 
-import { about, baseURL, home, person, routes } from '@/app/resources'
+import { about, baseURL, home, newsletter, person, routes } from '@/app/resources'
 import { Mailchimp } from '@/app/components';
 import { Posts } from '@/app/blog/components/Posts';
 
@@ -105,7 +105,9 @@ export default function Home() {
 				</Flex>
 			)}
 			<Projects range={[2]}/>
-			<Mailchimp/>
+			{ newsletter.display &&
+				<Mailchimp/>
+			}
 		</Flex>
 	);
 }
