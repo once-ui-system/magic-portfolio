@@ -19,7 +19,7 @@ export function generateMetadata() {
 			title,
 			description,
 			type: 'website',
-			url: `https://${baseURL}/blog`,
+			url: `https://${baseURL}`,
 			images: [
 				{
 					url: ogImage,
