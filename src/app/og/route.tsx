@@ -20,7 +20,7 @@ export async function GET(request: Request) {
                     width: '100%',
                     height: '100%',
                     padding: '8rem',
-                    backgroundImage: `url(https://${baseURL}/og/template.jpg)`
+                    background: '#151515',
                 }}>
                 <div
                     style={{
