@@ -49,7 +49,7 @@ export function Posts({
                                     className={styles.indicator}
                                     width="20" height="2"
                                     background="neutral-strong"/>
-                                <Heading as="h2">
+                                <Heading as="h2" wrap="balance">
                                     {post.metadata.title}
                                 </Heading>
                                 <Text
