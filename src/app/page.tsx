@@ -64,9 +64,9 @@ export default function Home() {
 				}}
 			/>
 			<Flex
-				fillWidth maxWidth="s"
+				fillWidth
 				direction="column"
-				marginBottom="l"
+				paddingY="l"
 				gap="m">
 				<Heading
 					wrap="balance"
