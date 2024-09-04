@@ -56,6 +56,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
                     style={{
                         ...(images.length > 1 && {
                             cursor: 'pointer',
+                            border: '1px solid var(--neutral-alpha-weak)',
                             opacity: isTransitioning ? 0.2 : 1,
                             transition: 'opacity 0.2s ease',
                         }),
