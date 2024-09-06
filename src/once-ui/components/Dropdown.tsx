@@ -10,7 +10,7 @@ interface DropdownOptions {
     value: string;
     hasPrefix?: React.ReactNode;
     hasSuffix?: React.ReactNode;
-    description?: string;
+    description?: React.ReactNode;
     dividerAfter?: boolean;
     danger?: boolean;
 }

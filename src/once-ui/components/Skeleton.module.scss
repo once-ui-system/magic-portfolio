@@ -10,8 +10,34 @@
     }
 }
 
+.delay-1 {
+    animation-delay: 0.1s;
+}
+
+.delay-2 {
+    animation-delay: 0.2s;
+}
+
+.delay-3 {
+    animation-delay: 0.3s;
+}
+
+.delay-4 {
+    animation-delay: 0.4s;
+}
+
+.delay-5 {
+    animation-delay: 0.5s;
+}
+
+.delay-6 {
+    animation-delay: 0.6s;
+}
+
 .skeleton {
-    animation: skeleton-loading 1.5s infinite;
+    animation-name: skeleton-loading;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
     border-radius: var(--radius-l);
 
     &.block {

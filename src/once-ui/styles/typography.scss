@@ -166,3 +166,7 @@ h1, h2, h3, h4, h5, h6, p {
         line-height: calc(var(--line-height-label-s) * var(--line-height-label-multiplier));
     }
 }
+
+.font-code {
+    font-family: var(--font-family-code);
+}

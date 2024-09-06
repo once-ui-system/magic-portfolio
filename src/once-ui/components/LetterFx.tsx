@@ -1,12 +1,13 @@
 'use client';
 
-import React, { useState, useRef, useCallback, useEffect, ReactNode } from 'react';
+import React, { useState, useRef, useCallback, useEffect, forwardRef, ReactNode } from 'react';
+import classNames from 'classnames';
 
-const allowedCharacters = ['X', '$', '@', 'a', 'H', 'z', 'o', '0', 'y', '#', '?', '*', '0', '1', '+'];
+const defaultAllowedCharacters = ['X', '$', '@', 'a', 'H', 'z', 'o', '0', 'y', '#', '?', '*', '0', '1', '+'];
 
-function getRandomCharacter(): string {
-	const randomIndex = Math.floor(Math.random() * allowedCharacters.length);
-	return allowedCharacters[randomIndex];
+function getRandomCharacter(charset: string[]): string {
+	const randomIndex = Math.floor(Math.random() * charset.length);
+	return charset[randomIndex];
 }
 
 function createEventHandler(
@@ -15,6 +16,7 @@ function createEventHandler(
 	inProgress: boolean,
 	setInProgress: React.Dispatch<React.SetStateAction<boolean>>,
 	speed: 'fast' | 'medium' | 'slow',
+	charset: string[],
 	setHasAnimated?: React.Dispatch<React.SetStateAction<boolean>>
 ) {
 	const speedSettings = {
@@ -28,7 +30,7 @@ function createEventHandler(
 	const generateRandomText = () =>
 		originalText
 		.split('')
-		.map((char) => (char === ' ' ? ' ' : getRandomCharacter()))
+		.map((char) => (char === ' ' ? ' ' : getRandomCharacter(charset)))
 		.join('');
 
 	return async () => {
@@ -60,13 +62,24 @@ function createEventHandler(
 }
 
 type LetterFxProps = {
-	children: ReactNode; 
+	children: ReactNode;
 	trigger?: 'hover' | 'instant' | 'custom';
 	speed?: 'fast' | 'medium' | 'slow';
+	charset?: string[];
 	onTrigger?: (triggerFn: () => void) => void;
+	className?: string;
+	style?: React.CSSProperties;
 };
 
-function LetterFx({ children, trigger = 'hover', speed = 'medium', onTrigger }: LetterFxProps) {
+const LetterFx = forwardRef<HTMLSpanElement, LetterFxProps>(({
+	children,
+	trigger = 'hover',
+	speed = 'medium',
+	charset = defaultAllowedCharacters,
+	onTrigger,
+	className,
+	style,
+}, ref) => {
 	const [text, setText] = useState<string>(typeof children === 'string' ? children : '');
 	const [inProgress, setInProgress] = useState<boolean>(false);
 	const [hasAnimated, setHasAnimated] = useState<boolean>(false);
@@ -78,8 +91,9 @@ function LetterFx({ children, trigger = 'hover', speed = 'medium', onTrigger }: 
 		inProgress,
 		setInProgress,
 		speed,
+		charset,
 		trigger === 'instant' ? setHasAnimated : undefined
-	), [inProgress, trigger, speed]);
+	), [inProgress, trigger, speed, charset]);
 
 	useEffect(() => {
 		if (typeof children === 'string') {
@@ -99,10 +113,17 @@ function LetterFx({ children, trigger = 'hover', speed = 'medium', onTrigger }: 
 	}, [trigger, onTrigger, eventHandler]);
 
 	return (
-		<span onMouseOver={trigger === 'hover' ? eventHandler : undefined}>
+		<span
+			ref={ref}
+			className={classNames(className)}
+			style={style}
+			onMouseOver={trigger === 'hover' ? eventHandler : undefined}
+		>
 			{text}
 		</span>
 	);
-}
+});
+
+LetterFx.displayName = 'LetterFx';
 
 export { LetterFx };

@@ -25,7 +25,6 @@ const Tag = forwardRef<HTMLDivElement, TagProps>(({
     children,
     ...props
 }, ref) => {
-    const labelSize = size === 's' ? 'label-default-s' : 'label-default-s';
     const paddingSize = size === 's' ? '2' : '4';
 
     return (
@@ -42,7 +41,7 @@ const Tag = forwardRef<HTMLDivElement, TagProps>(({
                 alignItems="center">
                 <Text
                     as="span"
-                    variant={labelSize}>
+                    variant="label-default-s">
                     {label || children}
                 </Text>
             </Flex>

@@ -5,7 +5,6 @@ import classNames from 'classnames';
 import { IconType } from 'react-icons';
 import { iconLibrary } from '../icons';
 import { ColorScheme, ColorWeight } from '../types';
-import { Flex } from '.';
 
 const sizeMap: Record<string, string> = {
     xs: 'var(--static-space-16)',

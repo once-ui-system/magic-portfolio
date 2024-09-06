@@ -29,19 +29,19 @@ export type { InputProps } from './Input';
 export { InteractiveDetails } from './InteractiveDetails';
 export type { InteractiveDetailsProps } from './InteractiveDetails';
 export { Kbd } from './Kbd';
-export { LetterFx } from './LetterFx'
+export { LetterFx } from './LetterFx';
 export { Logo } from './Logo';
 export { NavIcon } from './NavIcon';
 export { RadioButton } from './RadioButton';
 export type { RadioButtonProps } from './RadioButton';
-export { RevealFx } from './RevealFx'
+export { RevealFx } from './RevealFx';
 export { Scroller } from './Scroller';
 export { SegmentedControl } from './SegmentedControl';
 export { Select } from './Select';
 export { Skeleton } from './Skeleton';
-export { Slider } from './Slider';
 export { SmartImage } from './SmartImage';
 export { SmartLink } from './SmartLink';
+export { SparkleFx } from './SparkleFx';
 export { Spinner } from './Spinner';
 export { StatusIndicator } from './StatusIndicator';
 export { Switch } from './Switch';
