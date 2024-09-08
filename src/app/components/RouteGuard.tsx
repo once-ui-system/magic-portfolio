@@ -96,7 +96,7 @@ const RouteGuard: React.FC<RouteGuardProps> = ({ children }) => {
         <Flex
             fillWidth paddingY="128" maxWidth={24} gap="24"
             justifyContent="center" direction="column" alignItems="center">
-            <Heading align="center">
+            <Heading align="center" wrap="balance">
                 This page is password protected
             </Heading>
             <Input

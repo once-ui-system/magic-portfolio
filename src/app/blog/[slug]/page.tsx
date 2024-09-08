@@ -6,7 +6,7 @@ import { Avatar, Button, Flex, Heading, Text } from '@/once-ui/components'
 import { person, baseURL } from '@/app/resources'
 
 interface BlogParams {
-    params: {
+    params: { 
         slug: string;
     };
 }
