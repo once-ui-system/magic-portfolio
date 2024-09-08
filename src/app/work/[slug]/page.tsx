@@ -76,7 +76,7 @@ export default function Project({ params }: WorkParams) {
 
 	return (
 		<Flex as="section"
-			fillWidth maxWidth="s"
+			fillWidth maxWidth="m"
 			direction="column" alignItems="center"
 			gap="l">
 			<script

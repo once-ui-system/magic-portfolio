@@ -25,6 +25,7 @@
     --static-width-1024: 64rem;
     --static-width-880:  55rem;
     --static-width-768:  48rem;
+    --static-width-640:  40rem;
     --static-width-560:  35rem;
     --static-width-400:  25rem;
     --static-width-320:  20rem;
@@ -43,7 +44,7 @@
     --responsive-width-l:  var(--static-width-1200);
     --responsive-width-m:  var(--static-width-1024);
     --responsive-width-s:  var(--static-width-768);
-    --responsive-width-xs: var(--static-width-400);
+    --responsive-width-xs: var(--static-width-640);
 
     --responsive-height-xl: var(--static-height-560);
     --responsive-height-l:  var(--static-height-480);
@@ -64,7 +65,7 @@
         --responsive-width-l:  var(--static-width-1024);
         --responsive-width-m:  var(--static-width-880);
         --responsive-width-s:  var(--static-width-768);
-        --responsive-width-xs: var(--static-width-320);
+        --responsive-width-xs: var(--static-width-640);
 
         --responsive-height-xl: var(--static-height-480);
         --responsive-height-l:  var(--static-height-400);
@@ -86,7 +87,7 @@
         --responsive-width-l:  var(--static-width-1024);
         --responsive-width-m:  var(--static-width-880);
         --responsive-width-s:  var(--static-width-768);
-        --responsive-width-xs: var(--static-width-320);
+        --responsive-width-xs: var(--static-width-640);
 
         --responsive-height-xl: var(--static-height-320);
         --responsive-height-l:  var(--static-height-280);
