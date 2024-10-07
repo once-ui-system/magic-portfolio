@@ -11,36 +11,44 @@ import { Inter } from 'next/font/google'
 import { Source_Code_Pro } from 'next/font/google';
 
 import { NextIntlClientProvider } from 'next-intl';
-import { getMessages, unstable_setRequestLocale } from 'next-intl/server';
+import { getMessages, getTranslations, unstable_setRequestLocale } from 'next-intl/server';
 
 import { Metadata } from "next";
 import { routing } from "@/i18n/routing";
+import { createContent } from "../resources/content";
 
-// TODO: re-enable this?
-// export const metadata: Metadata = {
-// 	metadataBase: new URL('https://' + baseURL),
-// 	title: home.title,
-// 	description: home.description,
-// 	openGraph: {
-// 		title: `${person.firstName}'s Portfolio`,
-// 		description: 'Portfolio website showcasing my work.',
-// 		url: baseURL,
-// 		siteName: `${person.firstName}'s Portfolio`,
-// 		locale: 'en_US',
-// 		type: 'website',
-// 	},
-// 	robots: {
-// 		index: true,
-// 		follow: true,
-// 		googleBot: {
-// 			index: true,
-// 			follow: true,
-// 			'max-video-preview': -1,
-// 			'max-image-preview': 'large',
-// 			'max-snippet': -1,
-// 		},
-// 	},
-// }
+export async function generateMetadata(
+	{ params: { locale }}: { params: { locale: string }}
+) {
+
+	const t = await getTranslations();
+	const { person, home } = createContent(t);
+
+	return {
+		metadataBase: new URL(`https://${baseURL}/${locale}`),
+		title: home.title,
+		description: home.description,
+		openGraph: {
+			title: `${person.firstName}'s Portfolio`,
+			description: 'Portfolio website showcasing my work.',
+			url: baseURL,
+			siteName: `${person.firstName}'s Portfolio`,
+			locale: 'en_US',
+			type: 'website',
+		},
+		robots: {
+			index: true,
+			follow: true,
+			googleBot: {
+				index: true,
+				follow: true,
+				'max-video-preview': -1,
+				'max-image-preview': 'large',
+				'max-snippet': -1,
+			},
+		},
+	}
+};
 
 const primary = Inter({
 	variable: '--font-primary',
