@@ -1,6 +1,6 @@
 import { formatDate, getPosts } from '@/app/utils';
 import { Flex, Grid, Heading, SmartLink, Text } from '@/once-ui/components';
-import styles from '@/app/blog/components/Posts.module.scss';
+import styles from '@/components/blog/Posts.module.scss';
 
 interface PostsProps {
     range?: [number] | [number, number];

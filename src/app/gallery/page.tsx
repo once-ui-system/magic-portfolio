@@ -1,5 +1,5 @@
 import { Flex } from "@/once-ui/components";
-import MasonryGrid from "./components/MasonryGrid";
+import MasonryGrid from "@/components/gallery/MasonryGrid";
 import { baseURL, gallery, person } from "../resources";
 
 export function generateMetadata() {

@@ -1,6 +1,6 @@
 import { Avatar, Button, Flex, Heading, Icon, IconButton, SmartImage, Tag, Text } from '@/once-ui/components';
 import { person, about, social, baseURL } from '@/app/resources'
-import TableOfContents from '@/app/about/components/TableOfContents';
+import TableOfContents from '@/components/about/TableOfContents';
 import styles from '@/app/about/about.module.scss'
 
 export function generateMetadata() {

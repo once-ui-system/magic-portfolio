@@ -1,7 +1,7 @@
 import { getPosts } from '@/app/utils';
 import { Flex } from '@/once-ui/components';
 
-import { ProjectCard } from '@/app/components';
+import { ProjectCard } from '@/components';
 
 interface ProjectsProps {
     range?: [number, number?];

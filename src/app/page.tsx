@@ -1,11 +1,11 @@
 import React from 'react';
 
 import { Heading, Flex, Text, Button,  Avatar, RevealFx } from '@/once-ui/components';
-import { Projects } from '@/app/work/components/Projects';
+import { Projects } from '@/components/work/Projects';
 
 import { about, baseURL, home, newsletter, person, routes } from '@/app/resources'
-import { Mailchimp } from '@/app/components';
-import { Posts } from '@/app/blog/components/Posts';
+import { Mailchimp } from '@/components';
+import { Posts } from '@/components/blog/Posts';
 
 export function generateMetadata() {
 	const title = home.title;
