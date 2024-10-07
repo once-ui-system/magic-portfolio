@@ -2,13 +2,19 @@ import { Flex, Heading } from '@/once-ui/components';
 import { Mailchimp } from '@/components';
 import { Posts } from '@/components/blog/Posts';
 
-import { blog, newsletter, person } from '@/app/resources'
+// import { blog, newsletter, person } from '@/app/resources'
 import { baseURL, mailchimp } from '@/app/resources'
-import { unstable_setRequestLocale } from 'next-intl/server';
+import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
+import { useTranslations } from 'next-intl';
+import { createContent } from '@/app/resources/content';
 
-export function generateMetadata(
+export async function generateMetadata(
 	{params: {locale}}: { params: { locale: string }}
 ) {
+
+	const t = await getTranslations();
+	const { blog } = createContent(t);
+
 	const title = blog.title;
 	const description = blog.description;
 	const ogImage = `https://${baseURL}/og?title=${encodeURIComponent(title)}`;
@@ -41,6 +47,9 @@ export default function Blog(
 	{ params: {locale}}: { params: { locale: string }}
 ) {
 	unstable_setRequestLocale(locale);
+
+	const t = useTranslations();
+	const { person, blog, newsletter } = createContent(t);
     return (
         <Flex
 			fillWidth maxWidth="s"
@@ -78,7 +87,7 @@ export default function Blog(
 				<Posts range={[4]} columns="2" locale={locale}/>
 			</Flex>
             {newsletter.display && (
-                <Mailchimp/>
+                <Mailchimp newsletter={newsletter} />
             )}
         </Flex>
     );

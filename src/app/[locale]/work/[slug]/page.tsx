@@ -2,9 +2,11 @@ import { notFound } from 'next/navigation'
 import { CustomMDX } from '@/components/mdx'
 import { formatDate, getPosts } from '@/app/utils'
 import { AvatarGroup, Button, Flex, Heading, SmartImage, Text } from '@/once-ui/components'
-import { baseURL, person } from '@/app/resources';
+import { baseURL } from '@/app/resources';
 import { routing } from '@/i18n/routing';
 import { unstable_setRequestLocale } from 'next-intl/server';
+import { useTranslations } from 'next-intl';
+import { createContent } from '@/app/resources/content';
 
 interface WorkParams {
     params: {
@@ -83,6 +85,9 @@ export default function Project({ params }: WorkParams) {
 	if (!post) {
 		notFound()
 	}
+
+	const t = useTranslations();
+	const { person } = createContent(t);
 
 	const avatars = post.metadata.team?.map((person) => ({
         src: person.avatar,

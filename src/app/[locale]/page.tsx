@@ -3,14 +3,19 @@ import React from 'react';
 import { Heading, Flex, Text, Button,  Avatar, RevealFx } from '@/once-ui/components';
 import { Projects } from '@/components/work/Projects';
 
-import { about, baseURL, home, newsletter, person, routes } from '@/app/resources'
+// import { about, baseURL, home, newsletter, person, routes } from '@/app/resources'
+import { baseURL, routes } from '@/app/resources'; 
 import { Mailchimp } from '@/components';
 import { Posts } from '@/components/blog/Posts';
-import { unstable_setRequestLocale } from 'next-intl/server';
+import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
+import { createContent } from '../resources/content';
+import { useTranslations } from 'next-intl';
 
-export function generateMetadata(
+export async function generateMetadata(
 	{params: {locale}}: { params: { locale: string }}
 ) {
+	const t = await getTranslations();
+    const {home } = createContent(t);
 	const title = home.title;
 	const description = home.description;
 	const ogImage = `https://${baseURL}/og?title=${encodeURIComponent(title)}`;
@@ -43,6 +48,8 @@ export default function Home(
 	{ params: {locale}}: { params: { locale: string }}
 ) {
 	unstable_setRequestLocale(locale);
+	const t = useTranslations();
+	const { home, about, person, newsletter } = createContent(t);
 	return (
 		<Flex
 			maxWidth="m" fillWidth gap="xl"
@@ -125,7 +132,7 @@ export default function Home(
 			)}
 			<Projects range={[2]} locale={locale}/>
 			{ newsletter.display &&
-				<Mailchimp/>
+				<Mailchimp newsletter={newsletter} />
 			}
 		</Flex>
 	);

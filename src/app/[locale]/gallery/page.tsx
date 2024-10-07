@@ -1,11 +1,17 @@
 import { Flex } from "@/once-ui/components";
 import MasonryGrid from "@/components/gallery/MasonryGrid";
-import { baseURL, gallery, person } from "@/app/resources";
-import { unstable_setRequestLocale } from "next-intl/server";
+import { baseURL } from "@/app/resources";
+import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
+import { createContent } from "@/app/resources/content";
+import { useTranslations } from "next-intl";
 
-export function generateMetadata(
+export async function generateMetadata(
 	{params: {locale}}: { params: { locale: string }}
 ) {
+
+	const t = await getTranslations();
+	const { gallery } = createContent(t);
+
 	const title = gallery.title;
 	const description = gallery.description;
 	const ogImage = `https://${baseURL}/og?title=${encodeURIComponent(title)}`;
@@ -38,6 +44,8 @@ export default function Gallery(
 	{ params: {locale}}: { params: { locale: string }}
 ) {
 	unstable_setRequestLocale(locale);
+	const t = useTranslations();
+	const { gallery, person } = createContent(t);
     return (
         <Flex fillWidth>
             <script

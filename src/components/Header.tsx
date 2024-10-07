@@ -7,10 +7,12 @@ import { Flex, ToggleButton } from "@/once-ui/components"
 import styles from '@/components/Header.module.scss'
 
 import { routes, display } from '@/app/resources'
-import { person, home, about, blog, work, gallery } from '@/app/resources'
+// import { person, home, about, blog, work, gallery } from '@/app/resources'
 
 import { routing } from '@/i18n/routing';
 import { Locale, usePathname, useRouter } from '@/i18n/routing';
+import { createContent } from "@/app/resources/content";
+import { useTranslations } from "next-intl";
 
 type TimeDisplayProps = {
     timeZone: string;
@@ -64,6 +66,9 @@ export const Header = () => {
             )
         })
     }
+
+    const t = useTranslations();
+    const { person, home, about, blog, work, gallery } = createContent(t);
 
     return (
         <Flex style={{height: 'fit-content'}}

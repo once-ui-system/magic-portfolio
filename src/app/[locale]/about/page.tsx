@@ -1,12 +1,18 @@
 import { Avatar, Button, Flex, Heading, Icon, IconButton, SmartImage, Tag, Text } from '@/once-ui/components';
-import { person, about, social, baseURL } from '@/app/resources'
+// import { person, about, social, baseURL } from '@/app/resources'
+import { baseURL } from '@/app/resources';
+import { createContent } from '@/app/resources/content';
 import TableOfContents from '@/components/about/TableOfContents';
 import styles from '@/components/about/about.module.scss'
-import { unstable_setRequestLocale } from 'next-intl/server';
+import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
+import { useTranslations } from 'next-intl';
+import { ReactElement, JSXElementConstructor, ReactNode, ReactPortal, AwaitedReactNode } from 'react';
 
-export function generateMetadata(
+export async function generateMetadata(
     {params: {locale}}: { params: { locale: string }}
 ) {
+    const t = await getTranslations();
+    const {person, about, social } = createContent(t);
 	const title = about.title;
 	const description = about.description;
 	const ogImage = `https://${baseURL}/og?title=${encodeURIComponent(title)}`;
@@ -35,33 +41,34 @@ export function generateMetadata(
 	};
 }
 
-const structure = [
-    { 
-        title: about.intro.title,
-        display: about.intro.display,
-        items: []
-    },
-    { 
-        title: about.work.title,
-        display: about.work.display,
-        items: about.work.experiences.map(experience => experience.company)
-    },
-    { 
-        title: about.studies.title,
-        display: about.studies.display,
-        items: about.studies.institutions.map(institution => institution.name)
-    },
-    { 
-        title: about.technical.title,
-        display: about.technical.display,
-        items: about.technical.skills.map(skill => skill.title)
-    },
-]
-
 export default function About(
     { params: {locale}}: { params: { locale: string }}
 ) {
     unstable_setRequestLocale(locale);
+    const t = useTranslations();
+    const {person, about, social } = createContent(t);
+    const structure = [
+        { 
+            title: about.intro.title,
+            display: about.intro.display,
+            items: []
+        },
+        { 
+            title: about.work.title,
+            display: about.work.display,
+            items: about.work.experiences.map(experience => experience.company)
+        },
+        { 
+            title: about.studies.title,
+            display: about.studies.display,
+            items: about.studies.institutions.map(institution => institution.name)
+        },
+        { 
+            title: about.technical.title,
+            display: about.technical.display,
+            items: about.technical.skills.map(skill => skill.title)
+        },
+    ]
     return (
         <Flex
             fillWidth maxWidth="m"
@@ -248,7 +255,7 @@ export default function About(
                                         <Flex
                                             as="ul"
                                             direction="column" gap="16">
-                                            {experience.achievements.map((achievement, index) => (
+                                            {experience.achievements.map((achievement: string, index: any) => (
                                                 <Text
                                                     as="li"
                                                     variant="body-default-m"

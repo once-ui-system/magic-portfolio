@@ -1,7 +1,7 @@
 "use client";
 
 import { mailchimp } from '@/app/resources'
-import { newsletter } from '@/app/resources'
+// import { newsletter } from '@/app/resources'
 import { Button, Flex, Heading, Input, Text } from '@/once-ui/components';
 import { Background } from '@/once-ui/components/Background';
 import { useState } from 'react';
@@ -15,7 +15,15 @@ function debounce<T extends (...args: any[]) => void>(func: T, delay: number): T
     }) as T;
 }
 
-export const Mailchimp = () => {
+type NewsletterProps = {
+    display: boolean;
+    title: string | JSX.Element;
+    description: string | JSX.Element;
+}
+
+export const Mailchimp = (
+    { newsletter }: { newsletter: NewsletterProps}
+) => {
     const [email, setEmail] = useState<string>('');
     const [error, setError] = useState<string>('');
     const [touched, setTouched] = useState<boolean>(false);

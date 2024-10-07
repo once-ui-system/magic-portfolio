@@ -1,6 +1,7 @@
 import { ImageResponse } from 'next/og'
 import { baseURL } from '@/app/resources';
-import { person } from '@/app/resources'; 
+import { createContent } from '../resources/content';
+import { getTranslations } from 'next-intl/server';
 
 export const runtime = 'edge';
 
@@ -11,6 +12,9 @@ export async function GET(request: Request) {
         new URL('../../../public/fonts/Inter.ttf', import.meta.url)
     ).then((res) => res.arrayBuffer());
     const fontData = await font;
+
+    const t = await getTranslations();
+    const { person } = createContent(t);
 
     return new ImageResponse(
         (
