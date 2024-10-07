@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from 'react';
-import { usePathname } from 'next/navigation';
+import { usePathname } from '@/i18n/routing';
 import { routes, protectedRoutes } from '@/app/resources';
 import { Flex, Spinner, Input, Button, Heading } from '@/once-ui/components';
 

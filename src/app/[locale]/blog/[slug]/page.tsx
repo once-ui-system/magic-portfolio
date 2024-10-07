@@ -4,23 +4,36 @@ import { formatDate, getPosts } from '@/app/utils'
 import { Avatar, Button, Flex, Heading, Text } from '@/once-ui/components'
 
 import { person, baseURL } from '@/app/resources'
+import { unstable_setRequestLocale } from 'next-intl/server'
+import { routing } from '@/i18n/routing';
 
 interface BlogParams {
     params: { 
         slug: string;
+		locale: string;
     };
 }
 
 export async function generateStaticParams() {
-	let posts = getPosts(['src', 'app', 'blog', 'posts'])
+	const locales = routing.locales;
+    
+    // Create an array to store all posts from all locales
+    const allPosts = [];
 
-	return posts.map((post) => ({
-		slug: post.slug,
-	}))
+    // Fetch posts for each locale
+    for (const locale of locales) {
+        const posts = getPosts(['src', 'app', '[locale]', 'blog', 'posts', locale]);
+        allPosts.push(...posts.map(post => ({
+            slug: post.slug,
+            locale: locale,
+        })));
+    }
+
+    return allPosts;
 }
 
-export function generateMetadata({ params }: BlogParams) {
-	let post = getPosts(['src', 'app', 'blog', 'posts']).find((post) => post.slug === params.slug)
+export function generateMetadata({ params: { slug, locale } }: BlogParams) {
+	let post = getPosts(['src', 'app', '[locale]', 'blog', 'posts', locale]).find((post) => post.slug === slug)
 
 	if (!post) {
 		return
@@ -44,7 +57,7 @@ export function generateMetadata({ params }: BlogParams) {
 			description,
 			type: 'article',
 			publishedTime,
-			url: `https://${baseURL}/blog/${post.slug}`,
+			url: `https://${baseURL}/${locale}/blog/${post.slug}`,
 			images: [
 				{
 					url: ogImage,
@@ -61,7 +74,8 @@ export function generateMetadata({ params }: BlogParams) {
 }
 
 export default function Blog({ params }: BlogParams) {
-	let post = getPosts(['src', 'app', 'blog', 'posts']).find((post) => post.slug === params.slug)
+	unstable_setRequestLocale(params.locale);
+	let post = getPosts(['src', 'app', '[locale]', 'blog', 'posts', params.locale]).find((post) => post.slug === params.slug)
 
 	if (!post) {
 		notFound()
@@ -86,7 +100,7 @@ export default function Blog({ params }: BlogParams) {
 						image: post.metadata.image
 							? `https://${baseURL}${post.metadata.image}`
 							: `https://${baseURL}/og?title=${post.metadata.title}`,
-							url: `https://${baseURL}/blog/${post.slug}`,
+							url: `https://${baseURL}/${params.locale}/blog/${post.slug}`,
 						author: {
 							'@type': 'Person',
 							name: person.name,
@@ -95,7 +109,7 @@ export default function Blog({ params }: BlogParams) {
 				}}
 			/>
 			<Button
-				href="/blog"
+				href={`/${params.locale}/blog`}
 				variant="tertiary"
 				size="s"
 				prefixIcon="chevronLeft">

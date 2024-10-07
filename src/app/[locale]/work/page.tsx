@@ -1,9 +1,12 @@
 import { getPosts } from '@/app/utils';
 import { Flex } from '@/once-ui/components';
 import { Projects } from '@/components/work/Projects';
-import { baseURL, person, work } from '../resources';
+import { baseURL, person, work } from '@/app/resources';
+import { unstable_setRequestLocale } from 'next-intl/server';
 
-export function generateMetadata() {
+export function generateMetadata(
+    {params: {locale}}: { params: { locale: string }}
+) {
 	const title = work.title;
 	const description = work.description;
 	const ogImage = `https://${baseURL}/og?title=${encodeURIComponent(title)}`;
@@ -15,7 +18,7 @@ export function generateMetadata() {
 			title,
 			description,
 			type: 'website',
-			url: `https://${baseURL}/work`,
+			url: `https://${baseURL}/${locale}/work/`,
 			images: [
 				{
 					url: ogImage,
@@ -32,8 +35,11 @@ export function generateMetadata() {
 	};
 }
 
-export default function Work() {
-    let allProjects = getPosts(['src', 'app', 'work', 'projects']);
+export default function Work(
+    { params: {locale}}: { params: { locale: string }}
+) {
+    unstable_setRequestLocale(locale);
+    let allProjects = getPosts(['src', 'app', '[locale]', 'work', 'projects', locale]);
 
     return (
         <Flex
@@ -64,7 +70,7 @@ export default function Work() {
                     }),
                 }}
             />
-            <Projects/>
+            <Projects locale={locale}/>
         </Flex>
     );
 }

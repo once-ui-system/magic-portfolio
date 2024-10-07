@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Flex, Text } from '@/once-ui/components';
-import styles from '@/app/about/about.module.scss';
+import styles from './about.module.scss';
 
 interface TableOfContentsProps {
     structure: {

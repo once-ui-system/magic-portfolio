@@ -1,13 +1,16 @@
 "use client";
 
-import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useParams } from "next/navigation";
+import { useEffect, useState, useTransition } from "react";
 
 import { Flex, ToggleButton } from "@/once-ui/components"
 import styles from '@/components/Header.module.scss'
 
 import { routes, display } from '@/app/resources'
 import { person, home, about, blog, work, gallery } from '@/app/resources'
+
+import { routing } from '@/i18n/routing';
+import { Locale, usePathname, useRouter } from '@/i18n/routing';
 
 type TimeDisplayProps = {
     timeZone: string;
@@ -47,7 +50,20 @@ const TimeDisplay: React.FC<TimeDisplayProps> = ({ timeZone, locale = 'en-GB' })
 export default TimeDisplay;
 
 export const Header = () => {
+    const router = useRouter();
+    const [isPending, startTransition] = useTransition();
     const pathname = usePathname() ?? '';
+    const params = useParams();
+
+    function handleLanguageChange(locale: string) {
+        const nextLocale = locale as Locale;
+        startTransition(() => {
+            router.replace(
+                pathname,
+                {locale: nextLocale}
+            )
+        })
+    }
 
     return (
         <Flex style={{height: 'fit-content'}}
@@ -75,7 +91,7 @@ export const Header = () => {
                     { routes['/'] && (
                         <ToggleButton
                             prefixIcon="home"
-                            href="/"
+                            href={`/${params?.locale}`}
                             selected={pathname === "/"}>
                             <Flex paddingX="2" hide="s">{home.label}</Flex>
                         </ToggleButton>
@@ -83,7 +99,7 @@ export const Header = () => {
                     { routes['/about'] && (
                         <ToggleButton
                             prefixIcon="person"
-                            href="/about"
+                            href={`/${params?.locale}/about`}
                             selected={pathname === "/about"}>
                             <Flex paddingX="2" hide="s">{about.label}</Flex>
                         </ToggleButton>
@@ -91,7 +107,7 @@ export const Header = () => {
                     { routes['/work'] && (
                         <ToggleButton
                             prefixIcon="grid"
-                            href="/work"
+                            href={`/${params?.locale}/work`}
                             selected={pathname.startsWith('/work')}>
                             <Flex paddingX="2" hide="s">{work.label}</Flex>
                         </ToggleButton>
@@ -99,7 +115,7 @@ export const Header = () => {
                     { routes['/blog'] && (
                         <ToggleButton
                             prefixIcon="book"
-                            href="/blog"
+                            href={`/${params?.locale}/blog`}
                             selected={pathname.startsWith('/blog')}>
                             <Flex paddingX="2" hide="s">{blog.label}</Flex>
                         </ToggleButton>
@@ -107,7 +123,7 @@ export const Header = () => {
                     { routes['/gallery'] && (
                         <ToggleButton
                             prefixIcon="gallery"
-                            href="/gallery"
+                            href={`/${params?.locale}/gallery`}
                             selected={pathname.startsWith('/gallery')}>
                             <Flex paddingX="2" hide="s">{gallery.label}</Flex>
                         </ToggleButton>
@@ -115,13 +131,31 @@ export const Header = () => {
                 </Flex>
             </Flex>
             <Flex
-                hide="s"
                 paddingRight="12" fillWidth
                 justifyContent="flex-end" alignItems="center"
-                textVariant="body-default-s">
-                { display.time && (
-                    <TimeDisplay timeZone={person.location}/>
-                )}
+                textVariant="body-default-s"
+                gap="20">
+                {routing.locales.length > 1 && <Flex
+                    background="surface" border="neutral-medium" borderStyle="solid-1" radius="m-4" shadow="l"
+                    padding="4" gap="2"
+                    justifyContent="center">
+                        {routing.locales.map((locale, index) => (
+                            <ToggleButton
+                                key={index}
+                                selected={params?.locale === locale}
+                                onClick={() => handleLanguageChange(locale)}
+                                className={isPending && 'pointer-events-none opacity-60' || ''}
+                                >
+                                {locale.toUpperCase()}
+                            </ToggleButton>
+                        ))}
+                    </Flex>
+                }
+                <Flex hide="s">
+                    { display.time && (
+                        <TimeDisplay timeZone={person.location}/>
+                    )}
+                </Flex>
             </Flex>
         </Flex>
     )

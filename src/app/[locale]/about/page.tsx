@@ -1,9 +1,12 @@
 import { Avatar, Button, Flex, Heading, Icon, IconButton, SmartImage, Tag, Text } from '@/once-ui/components';
 import { person, about, social, baseURL } from '@/app/resources'
 import TableOfContents from '@/components/about/TableOfContents';
-import styles from '@/app/about/about.module.scss'
+import styles from '@/components/about/about.module.scss'
+import { unstable_setRequestLocale } from 'next-intl/server';
 
-export function generateMetadata() {
+export function generateMetadata(
+    {params: {locale}}: { params: { locale: string }}
+) {
 	const title = about.title;
 	const description = about.description;
 	const ogImage = `https://${baseURL}/og?title=${encodeURIComponent(title)}`;
@@ -15,7 +18,7 @@ export function generateMetadata() {
 			title,
 			description,
 			type: 'website',
-			url: `https://${baseURL}/blog`,
+			url: `https://${baseURL}/${locale}/blog`,
 			images: [
 				{
 					url: ogImage,
@@ -55,7 +58,10 @@ const structure = [
     },
 ]
 
-export default function About() {
+export default function About(
+    { params: {locale}}: { params: { locale: string }}
+) {
+    unstable_setRequestLocale(locale);
     return (
         <Flex
             fillWidth maxWidth="m"

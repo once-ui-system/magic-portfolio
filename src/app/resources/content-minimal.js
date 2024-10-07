@@ -1,5 +1,6 @@
 import { InlineCode } from "@/once-ui/components";
-import Link from 'next/link'
+// import Link from 'next/link'
+import { Link } from '@/i18n/routing';
 
 const person = {
     firstName: 'Selene',
