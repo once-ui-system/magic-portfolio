@@ -11,7 +11,7 @@ import { routes, display } from '@/app/resources'
 
 import { routing } from '@/i18n/routing';
 import { Locale, usePathname, useRouter } from '@/i18n/routing';
-import { createContent } from "@/app/resources/content";
+import { renderContent } from "@/app/resources";
 import { useTranslations } from "next-intl";
 
 type TimeDisplayProps = {
@@ -68,7 +68,7 @@ export const Header = () => {
     }
 
     const t = useTranslations();
-    const { person, home, about, blog, work, gallery } = createContent(t);
+    const { person, home, about, blog, work, gallery } = renderContent(t);
 
     return (
         <Flex style={{height: 'fit-content'}}

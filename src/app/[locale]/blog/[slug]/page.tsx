@@ -3,11 +3,10 @@ import { CustomMDX } from '@/components/mdx'
 import { formatDate, getPosts } from '@/app/utils'
 import { Avatar, Button, Flex, Heading, Text } from '@/once-ui/components'
 
-import { baseURL } from '@/app/resources'
+import { baseURL, renderContent } from '@/app/resources'
 import { unstable_setRequestLocale } from 'next-intl/server'
 import { routing } from '@/i18n/routing';
-import { useTranslations } from 'next-intl'
-import { createContent } from '@/app/resources/content'
+import { useTranslations } from 'next-intl';
 
 interface BlogParams {
     params: { 
@@ -84,7 +83,7 @@ export default function Blog({ params }: BlogParams) {
 	}
 
 	const t = useTranslations();
-	const { person } = createContent(t);
+	const { person } = renderContent(t);
 
 	return (
 		<Flex as="section"

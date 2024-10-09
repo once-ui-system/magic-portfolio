@@ -3,17 +3,16 @@ import { Mailchimp } from '@/components';
 import { Posts } from '@/components/blog/Posts';
 
 // import { blog, newsletter, person } from '@/app/resources'
-import { baseURL, mailchimp } from '@/app/resources'
+import { baseURL, mailchimp, renderContent } from '@/app/resources'
 import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
 import { useTranslations } from 'next-intl';
-import { createContent } from '@/app/resources/content';
 
 export async function generateMetadata(
 	{params: {locale}}: { params: { locale: string }}
 ) {
 
 	const t = await getTranslations();
-	const { blog } = createContent(t);
+	const { blog } = renderContent(t);
 
 	const title = blog.title;
 	const description = blog.description;
@@ -49,7 +48,7 @@ export default function Blog(
 	unstable_setRequestLocale(locale);
 
 	const t = useTranslations();
-	const { person, blog, newsletter } = createContent(t);
+	const { person, blog, newsletter } = renderContent(t);
     return (
         <Flex
 			fillWidth maxWidth="s"

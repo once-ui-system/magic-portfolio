@@ -11,7 +11,7 @@
         "title": "Portofolio {name}",
         "description": "Situs web portofolio yang menampilkan karya saya sebagai {role}",
         "headline": "Insinyur desain dan pembangun",
-        "subline": "Saya Selene, seorang insinyur desain di {placeholder}, di mana saya membuat pengalaman pengguna yang intuitif.<br/> Setelah jam kerja, saya mengerjakan proyek-proyek pribadi."
+        "subline": "Saya Selene, seorang insinyur desain di {placeholder}, di mana saya membuat pengalaman<br></br>pengguna yang intuitif. Setelah jam kerja, saya mengerjakan proyek-proyek pribadi."
     },
     "about": {
         "label": "Tentang",

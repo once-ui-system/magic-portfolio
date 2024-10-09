@@ -11,7 +11,7 @@
         "title": "{name}'s Portfolio",
         "description": "Portfolio website showcasing my work as a {role}",
         "headline": "Design engineer and builder",
-        "subline": "I'm Selene, a design engineer at {placeholder}, where I craft intuitive<br/> user experiences. After hours, I build my own projects."
+        "subline": "I'm Selene, a design engineer at {placeholder}, where I craft intuitive<br></br>user experiences. After hours, I build my own projects."
     },
     "about": {
         "label": "About",

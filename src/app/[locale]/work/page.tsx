@@ -1,9 +1,8 @@
 import { getPosts } from '@/app/utils';
 import { Flex } from '@/once-ui/components';
 import { Projects } from '@/components/work/Projects';
-import { baseURL } from '@/app/resources';
+import { baseURL, renderContent } from '@/app/resources';
 import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
-import { createContent } from '@/app/resources/content';
 import { useTranslations } from 'next-intl';
 
 export async function generateMetadata(
@@ -11,7 +10,7 @@ export async function generateMetadata(
 ) {
 
     const t = await getTranslations();
-    const { work } = createContent(t);
+    const { work } = renderContent(t);
 
 	const title = work.title;
 	const description = work.description;
@@ -48,7 +47,7 @@ export default function Work(
     let allProjects = getPosts(['src', 'app', '[locale]', 'work', 'projects', locale]);
 
     const t = useTranslations();
-    const { person, work } = createContent(t);
+    const { person, work } = renderContent(t);
 
     return (
         <Flex

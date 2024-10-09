@@ -37,6 +37,8 @@ const display = {
     time:     true
 }
 
+const i18n = false;
+
 const mailchimp = {
     action: 'https://url/subscribe/post?parameters',
     effects: {
@@ -46,4 +48,4 @@ const mailchimp = {
     }
 }
 
-export { routes, protectedRoutes, effects, style, display, mailchimp, baseURL };
+export { routes, protectedRoutes, effects, style, display, mailchimp, baseURL, i18n };
