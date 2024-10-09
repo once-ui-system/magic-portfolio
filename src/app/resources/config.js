@@ -1,4 +1,13 @@
-const baseURL = 'nextjs-portfolio.up.railway.app'
+const baseURL = 'demo.app'
+
+// Enable localization
+const i18n = true;
+
+const i18nOptions = {
+    locales: ['en', 'id'],      // A list of all locales that are supported
+    defaultLocale: 'en'  // Local used by default and as a fallback
+}
+
 
 const routes = {
     '/':        true,
@@ -37,8 +46,6 @@ const display = {
     time:     true
 }
 
-const i18n = false;
-
 const mailchimp = {
     action: 'https://url/subscribe/post?parameters',
     effects: {
@@ -48,4 +55,4 @@ const mailchimp = {
     }
 }
 
-export { routes, protectedRoutes, effects, style, display, mailchimp, baseURL, i18n };
+export { routes, protectedRoutes, effects, style, display, mailchimp, baseURL, i18n, i18nOptions };
