@@ -1,11 +1,9 @@
 import { Avatar, Button, Flex, Heading, Icon, IconButton, SmartImage, Tag, Text } from '@/once-ui/components';
-// import { person, about, social, baseURL } from '@/app/resources'
 import { baseURL, renderContent } from '@/app/resources';
 import TableOfContents from '@/components/about/TableOfContents';
 import styles from '@/components/about/about.module.scss'
 import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
 import { useTranslations } from 'next-intl';
-import { ReactElement, JSXElementConstructor, ReactNode, ReactPortal, AwaitedReactNode } from 'react';
 
 export async function generateMetadata(
     {params: {locale}}: { params: { locale: string }}

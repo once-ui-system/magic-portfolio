@@ -7,7 +7,6 @@ import { Flex, ToggleButton } from "@/once-ui/components"
 import styles from '@/components/Header.module.scss'
 
 import { routes, display } from '@/app/resources'
-// import { person, home, about, blog, work, gallery } from '@/app/resources'
 
 import { routing } from '@/i18n/routing';
 import { Locale, usePathname, useRouter } from '@/i18n/routing';
