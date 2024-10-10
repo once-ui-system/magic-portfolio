@@ -4,14 +4,15 @@
     },
     "newsletter": {
         "title": "Langganan Buletin {firstName}",
-        "description": "Saya sesekali menulis tentang desain, teknologi, dan berbagi pemikiran tentang persimpangan kreativitas dan rekayasa"
+        "description": "Saya sesekali menulis tentang desain, teknologi, dan berbagi pemikiran tentang persimpangan kreativitas dan rekayasa",
+        "button": "Daftar"
     },
     "home": {
         "label": "Beranda",
         "title": "Portofolio {name}",
         "description": "Situs web portofolio yang menampilkan karya saya sebagai {role}",
         "headline": "Insinyur desain dan pembangun",
-        "subline": "Saya Selene, seorang insinyur desain di placeholder, di mana saya membuat pengalaman pengguna yang intuitif. Setelah jam kerja, saya mengerjakan proyek-proyek pribadi."
+        "subline": "Saya Selene, seorang insinyur desain di FLY, di mana saya membuat pengalaman pengguna yang intuitif. Setelah jam kerja, saya mengerjakan proyek-proyek pribadi."
     },
     "about": {
         "label": "Tentang",
@@ -73,5 +74,8 @@
         "label": "Galeri",
         "title": "Galeri Foto Saya",
         "description": "Koleksi foto oleh {name}"
+    },
+    "projectCard": {
+        "label": "Baca Studi Kasus"
     }
 }

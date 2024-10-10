@@ -4,14 +4,15 @@
     },
     "newsletter": {
         "title": "Subscribe to {firstName}'s Newsletter",
-        "description": "I occasionally write about design, technology, and share thoughts on the intersection of creativity and engineering"
+        "description": "I occasionally write about design, technology, and share thoughts on the intersection of creativity and engineering",
+        "button": "Sign up"
     },
     "home": {
         "label": "Home",
         "title": "{name}'s Portfolio",
         "description": "Portfolio website showcasing my work as a {role}",
         "headline": "Design engineer and builder",
-        "subline": "I'm Selene, a design engineer at placeholder, where I craft intuitive user experiences. After hours, I build my own projects."
+        "subline": "I'm Selene, a design engineer at FLY, where I craft intuitive user experiences. After hours, I build my own projects."
     },
     "about": {
         "label": "About",
@@ -73,5 +74,8 @@
         "label": "Gallery",
         "title": "My photo gallery",
         "description": "A photo collection by {name}"
+    },
+    "projectCard": {
+        "label": "Read Case Study"
     }
 }

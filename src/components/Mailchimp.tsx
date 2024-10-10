@@ -1,10 +1,10 @@
 "use client";
 
 import { mailchimp } from '@/app/resources'
-// import { newsletter } from '@/app/resources'
 import { Button, Flex, Heading, Input, Text } from '@/once-ui/components';
 import { Background } from '@/once-ui/components/Background';
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 
 
 function debounce<T extends (...args: any[]) => void>(func: T, delay: number): T {
@@ -27,6 +27,8 @@ export const Mailchimp = (
     const [email, setEmail] = useState<string>('');
     const [error, setError] = useState<string>('');
     const [touched, setTouched] = useState<boolean>(false);
+
+    const t = useTranslations();
 
     const validateEmail = (email: string): boolean => {
         if (email === '') {
@@ -131,7 +133,7 @@ export const Mailchimp = (
                                 value="Subscribe"
                                 size="m"
                                 fillWidth>
-                                Sign up
+                                {t("newsletter.button")}
                             </Button>
                         </Flex>
                     </div>
