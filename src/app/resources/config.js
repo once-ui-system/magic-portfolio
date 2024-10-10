@@ -5,9 +5,8 @@ const i18n = true;
 
 const i18nOptions = {
     locales: ['en', 'id'],      // A list of all locales that are supported
-    defaultLocale: 'en'  // Local used by default and as a fallback
+    defaultLocale: 'en'         // Local used by default and as a fallback
 }
-
 
 const routes = {
     '/':        true,

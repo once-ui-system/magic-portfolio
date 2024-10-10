@@ -3,7 +3,6 @@ import React from 'react';
 import { Heading, Flex, Text, Button,  Avatar, RevealFx } from '@/once-ui/components';
 import { Projects } from '@/components/work/Projects';
 
-// import { about, baseURL, home, newsletter, person, routes } from '@/app/resources'
 import { baseURL, routes, renderContent } from '@/app/resources'; 
 import { Mailchimp } from '@/components';
 import { Posts } from '@/components/blog/Posts';
@@ -79,7 +78,6 @@ export default function Home(
 				fillWidth
 				direction="column"
 				paddingY="l" gap="m">
-				
 					<Flex
 						direction="column"
 						fillWidth maxWidth="s" gap="m">
