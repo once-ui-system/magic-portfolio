@@ -12,6 +12,7 @@ import { routing } from '@/i18n/routing';
 import { Locale, usePathname, useRouter } from '@/i18n/routing';
 import { renderContent } from "@/app/resources";
 import { useTranslations } from "next-intl";
+import { i18n } from "@/app/resources/config";
 
 type TimeDisplayProps = {
     timeZone: string;
@@ -143,7 +144,7 @@ export const Header = () => {
                     background="surface" border="neutral-medium" borderStyle="solid-1" radius="m-4" shadow="l"
                     padding="4" gap="2"
                     justifyContent="center">
-                        {routing.locales.map((locale, index) => (
+                        {i18n && routing.locales.map((locale, index) => (
                             <ToggleButton
                                 key={index}
                                 selected={params?.locale === locale}
