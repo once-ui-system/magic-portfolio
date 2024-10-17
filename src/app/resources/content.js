@@ -8,7 +8,7 @@ const person = {
     },
     role:      'Full Stack Developer',
     avatar:    '/images/avatar.png',
-    location:  'Europe/France',        // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
+    location:  'Europe/France/Monaco',        // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
     languages: ['English', 'French', 'Ukrainian', 'Polish', 'Russian']  // optional: Leave the array empty if you don't want to display languages
 }
 
@@ -32,9 +32,14 @@ const social = [
         link: 'https://www.linkedin.com/in/maksym-petriv-b6ba062a0/',
     },
     {
-        name: 'X',
-        icon: 'x',
-        link: '',
+      name: 'Telegram',
+      icon: 'telegram',
+      link: 'https://t.me/petrivskyyy'
+    },
+    {
+        name: 'WhatsApp',
+        icon: 'whatsapp',
+        link: 'https://wa.me/33751494698',
     },
     {
         name: 'Email',
@@ -73,34 +78,91 @@ const about = {
     },
     work: {
         display: true, // set to false to hide this section
-        title: 'G-Yachts WebSite',
+        title: 'Projects Portfolio',
         experiences: [
             {
-                company: 'G-Yachts',
-                timeframe: '2024 - Present',
+                company: 'G-Yachts Monaco',
+                timeframe: '06/2024 - Present',
                 role: 'Full Stack Developer and Tech Lead',
                 achievements: [
-                    <>Redesigned the UI/UX for the FLY platform, resulting in a 20% increase in user engagement and 30% faster load times.</>,
-                    <>Spearheaded the integration of AI tools into design workflows, enabling designers to iterate 50% faster.</>
+                    <>Developed a sophisticated website for G-Yachts Monaco, a premier yacht brokerage, using Next.js for a seamless and fast user experience. The project includes a custom-built administrative panel powered by Payload CMS, enabling efficient content management and easy site updates. The combination of Next.js and Payload CMS ensures both frontend performance and backend flexibility, providing G-Yachts Monaco with a robust platform for showcasing their offerings.</>,
+                    <>Integration of APIs for real-time currency changes and newsletters. API integration of yachts with Yatco. Generation of PDF brochures for each yacht</>,
+                    <><a href="https://www.g-yachts.com/en">G-Yachts WebSite</a></>
                 ],
                 images: [ // optional: leave the array empty if you don't want to display images
                     {
-                        src: '/images/projects/project-01/cover-01.jpg',
-                        alt: 'Once UI Project',
+                        src: '/images/projects/g-yachts/main.png',
+                        alt: 'G-Yachts Main Page',
+                        width: 16,
+                        height: 9
+                    },
+                    {
+                        src: '/images/projects/g-yachts/admin.png',
+                        alt: 'Admin Panel Main Page',
                         width: 16,
                         height: 9
                     }
                 ]
             },
             {
-                company: 'Creativ3',
-                timeframe: '2018 - 2022',
-                role: 'Lead Designer',
+                company: 'Aurumgroup Switzerland',
+                timeframe: '08/2024 - 09/2024',
+                role: 'Full Stack Developer',
                 achievements: [
-                    <>Developed a design system that unified the brand across multiple platforms, improving design consistency by 40%.</>,
-                    <>Led a cross-functional team to launch a new product line, contributing to a 15% increase in overall company revenue.</>
+                    <>Designed and developed a high-performance website for Aurumgroup, a leading company in its industry, using Next.js to ensure a fast, responsive, and engaging user experience. The website highlights Aurumgroup's services and offerings with a focus on sleek design and optimized performance. Leveraging Next.js, the site delivers a seamless browsing experience, allowing Aurumgroup to effectively connect with their audience.</>,
+                    <><a href="https://www.aurumgroup.ch/">Aurumgroup WebSite</a></>
                 ],
-                images: [ ]
+                images: [
+                    {
+                      src: '/images/projects/aurumgroup/main.png',
+                      alt: 'Main Page of Aurumgroup Website',
+                      width: 16,
+                      height: 9
+                    },
+                    {
+                      src: '/images/projects/aurumgroup/about.png',
+                        alt: 'Main Page of Aurumgroup Website',
+                        width: 16,
+                        height: 9
+                    }
+                ]
+            },
+            {
+                company: 'EcoPod Ukraine',
+                timeframe: '11/2021 - 12/2021',
+                role: 'Front End Developer',
+                achievements: [
+                    <>Created a user-centric website for EcoPod, focusing on Frontend development and intuitive UI/UX design. The website emphasizes an eco-friendly aesthetic, ensuring a visually engaging and seamless browsing experience. With a clean and modern interface, the site effectively communicates EcoPod's mission and offerings, providing users with an accessible and enjoyable online experience.</>,
+                    <><a href="https://en.ecopod.ua/">EcoPod WebSite</a></>
+                ],
+                images: [
+                    {
+                        src: '/images/projects/ecopod/main.png',
+                        alt: 'Main Page of EcoPod Website',
+                        width: 16,
+                        height: 9
+                    },
+                    {
+                        src: '/images/projects/ecopod/products.png',
+                        alt: 'About Page of EcoPod Website',
+                        width: 16,
+                        height: 9
+                    }
+                ]
+            },
+            {
+                company: 'My Portfolio',
+                achievements: [
+                    <>I made my portfolio that you are looking at now using Next.js and the OnceUI library</>
+                ],
+                images: [
+                    {
+                        src: '/images/projects/portfolio/main.png',
+                        alt: 'Main Page of My Portfolio',
+                        width: 16,
+                        height: 9
+                    }
+                ]
             }
         ]
     },
@@ -109,7 +171,7 @@ const about = {
         title: 'Studies',
         institutions: [
             {
-                name: 'CNED',
+                name: 'CNED France',
                 description: <>BTS SIO (SLAM) - Software Development, Mathematics & Computer Science</>,
             },
             {
@@ -122,7 +184,8 @@ const about = {
             },
             {
                 name: 'University of Toronto',
-                description: <>Learn to Program: The Fundamentals | Certification<br/><a href="https://www.coursera.org/account/accomplishments/verify/3CM33JH7UCVP">Certification Link</a></>,            }
+                description: <>Learn to Program: The Fundamentals | Certification<br/><a href="https://www.coursera.org/account/accomplishments/verify/3CM33JH7UCVP">Certification Link</a></>,
+            }
         ]
     },
     technical: {
@@ -130,33 +193,61 @@ const about = {
         title: 'Technical skills',
         skills: [
             {
-                title: 'Figma',
-                description: <>Able to prototype in Figma with Once UI with unnatural speed.</>,
+                title: 'Next.js, React, Tailwind CSS, Python, C, C#, JavaScript, TypeScript, Figma, Adobe XD',
                 images: [
                     {
-                        src: '/images/projects/project-01/cover-02.jpg',
+                        src: '/images/projects/project-01/next.webp',
                         alt: 'Project image',
                         width: 16,
                         height: 9
                     },
                     {
-                        src: '/images/projects/project-01/cover-03.jpg',
+                        src: '/images/projects/project-01/react.webp',
                         alt: 'Project image',
-                        width: 16,
+                        width: 9,
                         height: 9
                     },
+                    {
+                        src: '/images/projects/project-01/python.webp',
+                        alt: 'Project image',
+                        width: 9,
+                        height: 9
+                    },
+                    {
+                        src: '/images/projects/project-01/typescript.svg',
+                        alt: 'Project image',
+                        width: 9,
+                        height: 9
+                    },
+                    {
+                        src: '/images/projects/project-01/c.png',
+                        alt: 'Project image',
+                        width: 9,
+                        height: 9
+                    },
+                    {
+                        src: '/images/projects/project-01/figma.png',
+                        alt: 'Project image',
+                        width: 9,
+                        height: 9
+                    }
                 ]
             },
             {
-                title: 'Next.js',
-                description: <>Building next gen apps with Next.js + Once UI + Supabase.</>,
+                title: 'Node.js, MongoDB, REST API, GraphQL, MySQL, API Integration',
                 images: [
                     {
-                        src: '/images/projects/project-01/cover-04.jpg',
+                        src: '/images/projects/project-01/node.webp',
                         alt: 'Project image',
                         width: 16,
                         height: 9
                     },
+                    {
+                        src: '/images/projects/project-01/mongo.svg',
+                        alt: 'Project image',
+                        width: 9,
+                        height: 9
+                    }
                 ]
             }
         ]
@@ -174,7 +265,7 @@ const blog = {
 const work = {
     label: 'Work',
     title: 'My projects',
-    description: `Design and dev projects by ${person.name}`
+    description: `Dev projects by ${person.name}`
     // Create new project pages by adding a new .mdx file to app/blog/posts
     // All projects will be listed on the /home and /work routes
 }
