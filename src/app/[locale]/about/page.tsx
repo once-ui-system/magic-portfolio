@@ -341,11 +341,6 @@ export default function About(
                                             variant="heading-strong-l">
                                             {skill.title}
                                         </Text>
-                                        <Text
-                                            variant="body-default-m"
-                                            onBackground="neutral-weak">
-                                            {skill.description}
-                                        </Text>
                                         {skill.images.length > 0 && (
                                             <Flex
                                                 fillWidth paddingTop="m" gap="12"
