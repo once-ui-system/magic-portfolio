@@ -37,24 +37,18 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
     const handleImageClick = () => {
         if(images.length > 1) {
             setIsTransitioning(false);
-            setTimeout(() => {
-                const nextIndex = (activeIndex + 1) % images.length;
-                setActiveIndex(nextIndex);
-                setTimeout(() => {
-                    setIsTransitioning(true);
-                }, 630);
-            }, 630);
+            const nextIndex = (activeIndex + 1) % images.length;
+            handleControlClick(nextIndex);
+
         }
     };
-    
+
     const handleControlClick = (index: number) => {
         if (index !== activeIndex) {
-            setIsTransitioning(true);
+            setIsTransitioning(false);
             setTimeout(() => {
                 setActiveIndex(index);
-                setTimeout(() => {
-                    setIsTransitioning(false);
-                }, 630);
+                setIsTransitioning(true);
             }, 630);
         }
     };
