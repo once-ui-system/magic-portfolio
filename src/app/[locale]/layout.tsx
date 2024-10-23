@@ -9,7 +9,7 @@ import { baseURL, effects, style } from '@/app/resources'
 
 import { Albert_Sans } from 'next/font/google'
 import { Source_Code_Pro } from 'next/font/google';
-
+//fonts
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, getTranslations, unstable_setRequestLocale } from 'next-intl/server';
 
