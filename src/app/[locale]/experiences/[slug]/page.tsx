@@ -7,7 +7,7 @@ import { routing } from '@/i18n/routing';
 import { unstable_setRequestLocale } from 'next-intl/server';
 import { useTranslations } from 'next-intl';
 
-interface WorkParams {
+interface experiencesParams {
     params: {
         slug: string;
 		locale: string;
@@ -22,7 +22,7 @@ export async function generateStaticParams() {
 
     // Fetch posts for each locale
     for (const locale of locales) {
-        const posts = getPosts(['src', 'app', '[locale]', 'work', 'projects', locale]);
+        const posts = getPosts(['src', 'app', '[locale]', 'experiences', 'projects', locale]);
         allPosts.push(...posts.map(post => ({
             slug: post.slug,
             locale: locale,
@@ -32,8 +32,8 @@ export async function generateStaticParams() {
     return allPosts;
 }
 
-export function generateMetadata({ params: { slug, locale } }: WorkParams) {
-	let post = getPosts(['src', 'app', '[locale]', 'work', 'projects', locale]).find((post) => post.slug === slug)
+export function generateMetadata({ params: { slug, locale } }: experiencesParams) {
+	let post = getPosts(['src', 'app', '[locale]', 'experiences', 'projects', locale]).find((post) => post.slug === slug)
 	
 	if (!post) {
 		return
@@ -61,7 +61,7 @@ export function generateMetadata({ params: { slug, locale } }: WorkParams) {
 			description,
 			type: 'article',
 			publishedTime,
-			url: `https://${baseURL}/${locale}/work/${post.slug}`,
+			url: `https://${baseURL}/${locale}/experiences/${post.slug}`,
 			images: [
 				{
 					url: ogImage,
@@ -77,9 +77,9 @@ export function generateMetadata({ params: { slug, locale } }: WorkParams) {
 	}
 }
 
-export default function Project({ params }: WorkParams) {
+export default function Project({ params }: experiencesParams) {
 	unstable_setRequestLocale(params.locale);
-	let post = getPosts(['src', 'app', '[locale]', 'work', 'projects', params.locale]).find((post) => post.slug === params.slug)
+	let post = getPosts(['src', 'app', '[locale]', 'experiences', 'projects', params.locale]).find((post) => post.slug === params.slug)
 
 	if (!post) {
 		notFound()
@@ -111,7 +111,7 @@ export default function Project({ params }: WorkParams) {
 						image: post.metadata.image
 							? `https://${baseURL}${post.metadata.image}`
 							: `https://${baseURL}/og?title=${post.metadata.title}`,
-							url: `https://${baseURL}/${params.locale}/work/${post.slug}`,
+							url: `https://${baseURL}/${params.locale}/experiences/${post.slug}`,
 						author: {
 							'@type': 'Person',
 							name: person.name,
@@ -123,7 +123,7 @@ export default function Project({ params }: WorkParams) {
 				fillWidth maxWidth="xs" gap="16"
 				direction="column">
 				<Button
-					href={`/${params.locale}/work`}
+					href={`/${params.locale}/experiences`}
 					variant="tertiary"
 					size="s"
 					prefixIcon="chevronLeft">

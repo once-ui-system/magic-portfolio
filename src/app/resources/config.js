@@ -12,7 +12,7 @@ const i18nOptions = {
 const routes = {
     '/':        true,
     '/about':   true,
-    '/work':    true,
+    '/experiences':    true,
     '/blog':    true,
     '/gallery': true,
 }
@@ -20,7 +20,7 @@ const routes = {
 // Enable password protection on selected routes
 // Set password in pages/api/authenticate.ts
 const protectedRoutes = {
-    '/work/automate-design-handovers-with-a-figma-to-code-pipeline': true
+    '/experiences/automate-design-handovers-with-a-figma-to-code-pipeline': true
 }
 
 const effects = {
@@ -30,20 +30,20 @@ const effects = {
 }
 
 const style = {
-    theme:       'dark',         // dark | light
+    theme:       'light',         // dark | light
     neutral:     'gray',         // sand | gray | slate
-    brand:       'aqua',         // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan
+    brand:       'violet',         // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan
     accent:      'yellow',       // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan
-    solid:       'contrast',     // color | contrast
-    solidStyle:  'flat',         // flat | plastic
+    solid:       'color',     // color | contrast
+    solidStyle:  'plastic',         // flat | plastic
     border:      'playful',      // rounded | playful | conservative
     surface:     'translucent',  // filled | translucent
     transition:  'all'           // all | micro | macro
 }
 
 const display = {
-    location: true,
-    time:     true
+    location: false,
+    time:     false
 }
 
 const mailchimp = {

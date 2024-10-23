@@ -72,15 +72,15 @@ const createI18nContent = (t) => {
             title: t("about.intro.title"),
             description: <>{t("about.intro.description")}</>
         },
-        work: {
+        experiences: {
             display: true, // set to false to hide this section
-            title: t("about.work.title"),
+            title: t("about.experiences.title"),
             experiences: [
                 {
                     company: 'FLY',
-                    timeframe: t("about.work.experiences.FLY.timeframe"),
-                    role: t("about.work.experiences.FLY.role"),
-                    achievements: t("about.work.experiences.FLY.achievements").split(";"),
+                    timeframe: t("about.experiences.experiences.FLY.timeframe"),
+                    role: t("about.experiences.experiences.FLY.role"),
+                    achievements: t("about.experiences.experiences.FLY.achievements").split(";"),
                     images: [ // optional: leave the array empty if you don't want to display images
                         {
                             src: '/images/projects/project-01/cover-01.jpg',
@@ -92,9 +92,9 @@ const createI18nContent = (t) => {
                 },
                 {
                     company: 'Creativ3',
-                    timeframe: t("about.work.experiences.Creativ3.timeframe"),
-                    role: t("about.work.experiences.Creativ3.role"),
-                    achievements: t("about.work.experiences.Creativ3.achievements").split(";"),
+                    timeframe: t("about.experiences.experiences.Creativ3.timeframe"),
+                    role: t("about.experiences.experiences.Creativ3.role"),
+                    achievements: t("about.experiences.experiences.Creativ3.achievements").split(";"),
                     images: [ ]
                 }
             ]
@@ -159,12 +159,12 @@ const createI18nContent = (t) => {
         // All posts will be listed on the /blog route
     }
 
-    const work = {
-        label: t("work.label"),
-        title: t("work.title"),
-        description: t("work.description", {name: person.name})
+    const experiences = {
+        label: t("experiences.label"),
+        title: t("experiences.title"),
+        description: t("experiences.description", {name: person.name})
         // Create new project pages by adding a new .mdx file to app/blog/posts
-        // All projects will be listed on the /home and /work routes
+        // All projects will be listed on the /home and /experiences routes
     }
 
     const gallery = {
@@ -252,7 +252,7 @@ const createI18nContent = (t) => {
         home,
         about,
         blog,
-        work,
+        experiences,
         gallery
     }
 };

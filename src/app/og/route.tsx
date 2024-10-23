@@ -8,7 +8,7 @@ export async function GET(request: Request) {
     let url = new URL(request.url)
     let title = url.searchParams.get('title') || 'Portfolio'
     const font = fetch(
-        new URL('../../../public/fonts/Inter.ttf', import.meta.url)
+        new URL('../../../public/fonts/Albert_Sans.ttf', import.meta.url)
     ).then((res) => res.arrayBuffer());
     const fontData = await font;
 
@@ -31,7 +31,7 @@ export async function GET(request: Request) {
                         flexDirection: 'column',
                         justifyContent: 'center',
                         gap: '4rem',
-                        fontFamily: 'Inter',
+                        fontFamily: 'Albert_Sans',
                         fontStyle: 'normal',
                         color: 'white',
                     }}>
@@ -93,7 +93,7 @@ export async function GET(request: Request) {
             height: 1080,
             fonts: [
                 {
-                    name: 'Inter',
+                    name: 'Albert_Sans',
                     data: fontData,
                     style: 'normal',
                 },

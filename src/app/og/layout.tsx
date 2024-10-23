@@ -7,7 +7,7 @@ import { Flex, Background } from '@/once-ui/components'
 import { Footer, Header, RouteGuard } from "@/components";
 import { baseURL, effects, style } from '@/app/resources'
 
-import { Albert_Sans } from 'next/font/google'
+import { Albert Sans } from 'next/font/google'
 import { Source_Code_Pro } from 'next/font/google';
 
 import { NextIntlClientProvider } from 'next-intl';
@@ -50,7 +50,7 @@ export async function generateMetadata(
 	}
 };
 
-const primary = Albert_Sans({
+const primary = Albert Sans({
 	variable: '--font-primary',
 	subsets: ['latin'],
 	display: 'swap',

@@ -1,6 +1,6 @@
 import { getPosts } from '@/app/utils';
 import { Flex } from '@/once-ui/components';
-import { Projects } from '@/components/work/Projects';
+import { Projects } from '@/components/experiences/Projects';
 import { baseURL, renderContent } from '@/app/resources';
 import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
 import { useTranslations } from 'next-intl';
@@ -10,10 +10,10 @@ export async function generateMetadata(
 ) {
 
     const t = await getTranslations();
-    const { work } = renderContent(t);
+    const { experiences } = renderContent(t);
 
-	const title = work.title;
-	const description = work.description;
+	const title = experiences.title;
+	const description = experiences.description;
 	const ogImage = `https://${baseURL}/og?title=${encodeURIComponent(title)}`;
 
 	return {
@@ -23,7 +23,7 @@ export async function generateMetadata(
 			title,
 			description,
 			type: 'website',
-			url: `https://${baseURL}/${locale}/work/`,
+			url: `https://${baseURL}/${locale}/experiences/`,
 			images: [
 				{
 					url: ogImage,
@@ -40,14 +40,14 @@ export async function generateMetadata(
 	};
 }
 
-export default function Work(
+export default function experiences(
     { params: {locale}}: { params: { locale: string }}
 ) {
     unstable_setRequestLocale(locale);
-    let allProjects = getPosts(['src', 'app', '[locale]', 'work', 'projects', locale]);
+    let allProjects = getPosts(['src', 'app', '[locale]', 'experiences', 'projects', locale]);
 
     const t = useTranslations();
-    const { person, work } = renderContent(t);
+    const { person, experiences } = renderContent(t);
 
     return (
         <Flex
@@ -60,16 +60,16 @@ export default function Work(
                     __html: JSON.stringify({
                         '@context': 'https://schema.org',
                         '@type': 'CollectionPage',
-                        headline: work.title,
-                        description: work.description,
-                        url: `https://${baseURL}/projects`,
+                        headline: experiences.title,
+                        description: experiences.description,
+                        url: `https://${baseURL}/experiences`,
                         image: `${baseURL}/og?title=Design%20Projects`,
                         author: {
                             '@type': 'Person',
                             name: person.name,
                         },
                         hasPart: allProjects.map(project => ({
-                            '@type': 'CreativeWork',
+                            '@type': 'Creativeexperiences',
                             headline: project.metadata.title,
                             description: project.metadata.summary,
                             url: `https://${baseURL}/projects/${project.slug}`,

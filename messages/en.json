@@ -10,7 +10,7 @@
     "home": {
         "label": "Home",
         "title": "{name}'s Portfolio",
-        "description": "Portfolio website showcasing my work as a {role}",
+        "description": "Portfolio website showcasing my experiences as a {role}",
         "headline": "Design engineer and builder",
         "subline": "I'm Selene, a design engineer at FLY, where I craft intuitive user experiences. After hours, I build my own projects."
     },
@@ -20,15 +20,15 @@
         "description": "Meet {name}, {role} from {location}",
         "intro": {
             "title": "Introduction",
-            "description": "Selene is a Jakarta-based design engineer with a passion for transforming complex challenges into simple, elegant design solutions. Her work spans digital interfaces, interactive experiences, and the convergence of design and technology."
+            "description": "Selene is a Jakarta-based design engineer with a passion for transforming complex challenges into simple, elegant design solutions. Her experiences spans digital interfaces, interactive experiences, and the convergence of design and technology."
         },
-        "work": {
-            "title": "Work Experience",
+        "experiences": {
+            "title": "experiences Experience",
             "experiences": {
                 "FLY": {
                     "timeframe": "2022 - Present",
                     "role": "Senior Design Engineer",
-                    "achievements": "Redesigned the UI/UX for the FLY platform, resulting in a 20% increase in user engagement and 30% faster load times.;Spearheaded the integration of AI tools into design workflows, enabling designers to iterate 50% faster."
+                    "achievements": "Redesigned the UI/UX for the FLY platform, resulting in a 20% increase in user engagement and 30% faster load times.;Spearheaded the integration of AI tools into design experiencesflows, enabling designers to iterate 50% faster."
                 },
                 "Creativ3": {
                     "timeframe": "2018 - 2022",
@@ -65,8 +65,8 @@
         "title": "Writing about design and tech...",
         "description": "Read what {name} has been up to recently"
     },
-    "work": {
-        "label": "Work",
+    "experiences": {
+        "label": "experiences",
         "title": "My projects",
         "description": "Design and dev projects by {name}"
     },

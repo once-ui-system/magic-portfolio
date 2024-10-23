@@ -1,12 +1,12 @@
 import { InlineCode } from "@/once-ui/components";
 
 const person = {
-    firstName: 'Selene',
-    lastName:  'Yu',
+    firstName: 'Etherea',
+    lastName:  'Initiative',
     get name() {
         return `${this.firstName} ${this.lastName}`;
     },
-    role:      'Design Engineer',
+    role:      'Jedi',
     avatar:    '/images/avatar.jpg',
     location:  'Asia/Jakarta',        // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
     languages: ['English', 'Bahasa']  // optional: Leave the array empty if you don't want to display languages
@@ -46,13 +46,13 @@ const social = [
 const home = {
     label: 'Home',
     title: `${person.name}'s Portfolio`,
-    description: `Portfolio website showcasing my work as a ${person.role}`,
-    headline: <>Design engineer and builder</>,
-    subline: <>I'm Selene, a design engineer at <InlineCode>FLY</InlineCode>, where I craft intuitive<br/> user experiences. After hours, I build my own projects.</>
+    description: `Portfolio website showcasing my experiences as a ${person.role}`,
+    headline: <>Etherea Initiative</>,
+    subline: <>Etherea Initiative is a meditation game, journal and inspiration box for all to enjoy.</>
 }
 
 const about = {
-    label: 'About',
+    label: 'What is Etherea Initiative',
     title: 'About me',
     description: `Meet ${person.name}, ${person.role} from ${person.location}`,
     tableOfContent: {
@@ -69,11 +69,11 @@ const about = {
     intro: {
         display: true,
         title: 'Introduction',
-        description: <>Selene is a Jakarta-based design engineer with a passion for transforming complex challenges into simple, elegant design solutions. Her work spans digital interfaces, interactive experiences, and the convergence of design and technology.</>
+        description: <>Selene is a Jakarta-based design engineer with a passion for transforming complex challenges into simple, elegant design solutions. Her experiences spans digital interfaces, interactive experiences, and the convergence of design and technology.</>
     },
-    work: {
+    experiences: {
         display: true, // set to false to hide this section
-        title: 'Work Experience',
+        title: 'experiences Experience',
         experiences: [
             {
                 company: 'FLY',
@@ -81,7 +81,7 @@ const about = {
                 role: 'Senior Design Engineer',
                 achievements: [
                     <>Redesigned the UI/UX for the FLY platform, resulting in a 20% increase in user engagement and 30% faster load times.</>,
-                    <>Spearheaded the integration of AI tools into design workflows, enabling designers to iterate 50% faster.</>
+                    <>Spearheaded the integration of AI tools into design experiencesflows, enabling designers to iterate 50% faster.</>
                 ],
                 images: [ // optional: leave the array empty if you don't want to display images
                     {
@@ -164,12 +164,12 @@ const blog = {
     // All posts will be listed on the /blog route
 }
 
-const work = {
-    label: 'Work',
+const experiences = {
+    label: 'Places',
     title: 'My projects',
     description: `Design and dev projects by ${person.name}`
     // Create new project pages by adding a new .mdx file to app/blog/posts
-    // All projects will be listed on the /home and /work routes
+    // All projects will be listed on the /home and /experiences routes
 }
 
 const gallery = {
@@ -251,4 +251,4 @@ const gallery = {
     ]
 }
 
-export { person, social, newsletter, home, about, blog, work, gallery };
+export { person, social, newsletter, home, about, blog, experiences, gallery };

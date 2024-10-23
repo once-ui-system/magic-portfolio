@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Heading, Flex, Text, Button,  Avatar, RevealFx } from '@/once-ui/components';
-import { Projects } from '@/components/work/Projects';
+import { Projects } from '@/components/experiences/Projects';
 
 import { baseURL, routes, renderContent } from '@/app/resources'; 
 import { Mailchimp } from '@/components';

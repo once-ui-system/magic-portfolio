@@ -22,7 +22,7 @@
             "title": "Pengantar",
             "description": "Selene adalah seorang insinyur desain yang berbasis di Jakarta dengan hasrat untuk mengubah tantangan kompleks menjadi solusi desain yang sederhana dan elegan. Karyanya meliputi antarmuka digital, pengalaman interaktif, dan pertemuan antara desain dan teknologi."
         },
-        "work": {
+        "experiences": {
             "title": "Pengalaman Kerja",
             "experiences": {
                 "FLY": {
@@ -65,7 +65,7 @@
         "title": "Menulis tentang desain dan teknologi...",
         "description": "Baca apa yang {name} lakukan baru-baru ini"
     },
-    "work": {
+    "experiences": {
         "label": "Karya",
         "title": "Proyek Saya",
         "description": "Proyek desain dan pengembangan oleh {name}"

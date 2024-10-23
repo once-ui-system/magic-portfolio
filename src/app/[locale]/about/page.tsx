@@ -51,9 +51,9 @@ export default function About(
             items: []
         },
         { 
-            title: about.work.title,
-            display: about.work.display,
-            items: about.work.experiences.map(experience => experience.company)
+            title: about.experiences.title,
+            display: about.experiences.display,
+            items: about.experiences.experiences.map(experience => experience.company)
         },
         { 
             title: about.studies.title,
@@ -85,9 +85,9 @@ export default function About(
                         sameAs: social
                             .filter((item) => item.link && !item.link.startsWith('mailto:')) // Filter out empty links and email links
                             .map((item) => item.link),
-                        worksFor: {
+                        experiencessFor: {
                             '@type': 'Organization',
-                            name: about.work.experiences[0].company || ''
+                            name: about.experiences.experiences[0].company || ''
                         },
                     }),
                 }}
@@ -210,19 +210,19 @@ export default function About(
                         </Flex>
                     )}
 
-                    { about.work.display && (
+                    { about.experiences.display && (
                         <>
                             <Heading
                                 as="h2"
-                                id={about.work.title}
+                                id={about.experiences.title}
                                 variant="display-strong-s"
                                 marginBottom="m">
-                                {about.work.title}
+                                {about.experiences.title}
                             </Heading>
                             <Flex
                                 direction="column"
                                 fillWidth gap="l" marginBottom="40">
-                                {about.work.experiences.map((experience, index) => (
+                                {about.experiences.experiences.map((experience, index) => (
                                     <Flex
                                         key={`${experience.company}-${experience.role}-${index}`}
                                         fillWidth
