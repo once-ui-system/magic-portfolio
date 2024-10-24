@@ -136,7 +136,7 @@ export const Header = () => {
                 </Flex>
             </Flex>
             <Flex
-                paddingRight="12" fillWidth
+                paddingRight="12"
                 justifyContent="flex-end" alignItems="center"
                 textVariant="body-default-s"
                 gap="20">
