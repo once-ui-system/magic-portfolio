@@ -1,21 +1,21 @@
 import { InlineCode } from "@/once-ui/components";
 
 const person = {
-    firstName: 'Selene',
-    lastName:  'Yu',
+    firstName: 'Tim',
+    lastName:  'Schalk',
     get name() {
         return `${this.firstName} ${this.lastName}`;
     },
-    role:      'Design Engineer',
+    role:      'Full-Stack Developer & Computer Science Student',
     avatar:    '/images/avatar.jpg',
-    location:  'Asia/Jakarta',        // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
-    languages: ['English', 'Bahasa']  // optional: Leave the array empty if you don't want to display languages
+    location:  'Europe/Hamburg',        // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
+    languages: ['German 🇩🇪', 'English 🇺🇸', 'Norsk 🇳🇴 ;)']  // optional: Leave the array empty if you don't want to display languages
 }
 
 const newsletter = {
-    display: true,
-    title: <>Subscribe to {person.firstName}'s Newsletter</>,
-    description: <>I occasionally write about design, technology, and share thoughts on the intersection of creativity and engineering.</>
+    display: false,
+    title: '' //<>Subscribe to {person.firstName}'s Newsletter</>,
+    description: '' //<>I occasionally write about design, technology, and share thoughts on the intersection of creativity and engineering.</>
 }
 
 const social = [
@@ -24,22 +24,12 @@ const social = [
     {
         name: 'GitHub',
         icon: 'github',
-        link: 'https://github.com/once-ui-system/nextjs-starter',
+        link: 'https://github.com/timschalk',
     },
     {
         name: 'LinkedIn',
         icon: 'linkedin',
-        link: 'https://www.linkedin.com/company/once-ui/',
-    },
-    {
-        name: 'X',
-        icon: 'x',
-        link: '',
-    },
-    {
-        name: 'Email',
-        icon: 'email',
-        link: 'mailto:example@gmail.com',
+        link: 'https://www.linkedin.com/in/tim-schalk/',
     },
 ]
 
@@ -47,8 +37,8 @@ const home = {
     label: 'Home',
     title: `${person.name}'s Portfolio`,
     description: `Portfolio website showcasing my work as a ${person.role}`,
-    headline: <>Design engineer and builder</>,
-    subline: <>I'm Selene, a design engineer at <InlineCode>FLY</InlineCode>, where I craft intuitive<br/> user experiences. After hours, I build my own projects.</>
+    headline: 'Moin Moin', //<>Design engineer and builder</>,
+    subline: '' //<>I'm Selene, a design engineer at <InlineCode>FLY</InlineCode>, where I craft intuitive<br/> user experiences. After hours, I build my own projects.</>
 }
 
 const about = {
