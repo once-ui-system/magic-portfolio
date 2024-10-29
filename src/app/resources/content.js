@@ -37,8 +37,8 @@ const home = {
     label: 'Home',
     title: `${person.name}'s Portfolio`,
     description: `Portfolio website showcasing my work as a ${person.role}`,
-    headline: 'Moin Moin', //<>Design engineer and builder</>,
-    subline: '' //<>I'm Selene, a design engineer at <InlineCode>FLY</InlineCode>, where I craft intuitive<br/> user experiences. After hours, I build my own projects.</>
+    headline: 'moin moin', //<>Design engineer and builder</>,
+    subline: <>i am tim, a <InlineCode>{'<software />'}</InlineCode> developer, but pulled this beautiful portfolio from <a href="https://github.com/once-ui-system/magic-portfolio" target="_blank">here</a>. long story short, i am not the hero here. {':-)'}</>
 }
 
 const about = {
@@ -53,42 +53,51 @@ const about = {
         display: true
     },
     calendar: {
-        display: true,
-        link: 'https://cal.com'
+        display: false,
+        link: '' //'https://cal.com'
     },
     intro: {
         display: true,
         title: 'Introduction',
-        description: <>Selene is a Jakarta-based design engineer with a passion for transforming complex challenges into simple, elegant design solutions. Her work spans digital interfaces, interactive experiences, and the convergence of design and technology.</>
+        description: <>I'm a passionate software developer, currently pursuing my Master's in Computer Science in Hamburg. With every line of code, I strive to create innovative solutions that push the boundaries of technology. Balancing my studies and projects, I'm confidently shaping my future in the tech world with a laid-back and determined attitude.  Because, you know, who needs sleep when you have endless lines of code to keep you company? But hey, no pressure - it's not like the world depends on my next line of code!<br/><br/>~ Specials thanks to GPT-4 Omni ♥️</>
     },
     work: {
         display: true, // set to false to hide this section
         title: 'Work Experience',
         experiences: [
             {
-                company: 'FLY',
-                timeframe: '2022 - Present',
-                role: 'Senior Design Engineer',
+                company: 'apoways GmbH',
+                timeframe: '2021 - Present',
+                role: 'Full-Stack Developer',
                 achievements: [
-                    <>Redesigned the UI/UX for the FLY platform, resulting in a 20% increase in user engagement and 30% faster load times.</>,
-                    <>Spearheaded the integration of AI tools into design workflows, enabling designers to iterate 50% faster.</>
+                    <>Developing a web application using React JS and Laravel to streamline the ordering process between patients and pharmacies, enhancing efficiency and user experience.</>,
+                    <>Creating a communication platform for pharmacists, patients, and care facilities, facilitating seamless interaction and collaboration.</>,
+                    <>Building a cross-platform mobile application for Android and iOS using React Native, ensuring accessibility and functionality across devices.</>
                 ],
                 images: [ // optional: leave the array empty if you don't want to display images
                     {
-                        src: '/images/projects/project-01/cover-01.jpg',
-                        alt: 'Once UI Project',
+                        src: '/images/projects/apoways/apoways_web_screenshot.png',
+                        alt: 'Apoways Webapp for Pharmacies',
                         width: 16,
+                        height: 9
+                    },
+                    {
+                        src: '/images/projects/apoways/apoways_app_screenshot.png',
+                        alt: 'Apoways Cross-Platform App',
+                        width: 9,
                         height: 9
                     }
                 ]
             },
             {
-                company: 'Creativ3',
-                timeframe: '2018 - 2022',
-                role: 'Lead Designer',
+                company: 'Deutsche Telekom AG',
+                timeframe: '2017 - 2020',
+                role: 'Work-Study Student (Bachelor of Business Informatics)',
                 achievements: [
-                    <>Developed a design system that unified the brand across multiple platforms, improving design consistency by 40%.</>,
-                    <>Led a cross-functional team to launch a new product line, contributing to a 15% increase in overall company revenue.</>
+                    <>Analytical activities in ERP, CRM, and SQL-Database Systems.</>,
+                    <>Development of complex MS Excel VBA-based tools.</>,
+                    <>Design, implementation, and support of virtual machines.</>,
+                    <>Webdevelopment</>
                 ],
                 images: [ ]
             }
@@ -99,12 +108,12 @@ const about = {
         title: 'Studies',
         institutions: [
             {
-                name: 'University of Jakarta',
-                description: <>Studied software engineering.</>,
+                name: 'Hamburg University of Applied Sciences (HAW Hamburg)',
+                description: <>Studying Computer Science.</>,
             },
             {
-                name: 'Build the Future',
-                description: <>Studied online marketing and personal branding.</>,
+                name: 'FOM Hochschule für Oekonomie & Management',
+                description: <>Studied Business Informatics.</>,
             }
         ]
     },
@@ -113,33 +122,33 @@ const about = {
         title: 'Technical skills',
         skills: [
             {
-                title: 'Figma',
-                description: <>Able to prototype in Figma with Once UI with unnatural speed.</>,
+                title: 'React JS & Native',
+                description: <>Able to develop awesome apps with React.</>,
                 images: [
-                    {
-                        src: '/images/projects/project-01/cover-02.jpg',
-                        alt: 'Project image',
-                        width: 16,
-                        height: 9
-                    },
-                    {
-                        src: '/images/projects/project-01/cover-03.jpg',
-                        alt: 'Project image',
-                        width: 16,
-                        height: 9
-                    },
+                    // {
+                    //     src: '/images/projects/project-01/cover-02.jpg',
+                    //     alt: 'Project image',
+                    //     width: 16,
+                    //     height: 9
+                    // },
+                    // {
+                    //     src: '/images/projects/project-01/cover-03.jpg',
+                    //     alt: 'Project image',
+                    //     width: 16,
+                    //     height: 9
+                    // },
                 ]
             },
             {
-                title: 'Next.js',
-                description: <>Building next gen apps with Next.js + Once UI + Supabase.</>,
+                title: 'Laravel',
+                description: <>Building robust Backend Applications with Laravel.</>,
                 images: [
-                    {
-                        src: '/images/projects/project-01/cover-04.jpg',
-                        alt: 'Project image',
-                        width: 16,
-                        height: 9
-                    },
+                    // {
+                    //     src: '/images/projects/project-01/cover-04.jpg',
+                    //     alt: 'Project image',
+                    //     width: 16,
+                    //     height: 9
+                    // },
                 ]
             }
         ]

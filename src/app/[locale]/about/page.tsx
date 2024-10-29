@@ -119,7 +119,7 @@ export default function About(
                             <Icon
                                 onBackground="accent-weak"
                                 name="globe"/>
-                            {person.location}
+                            {"Hamburg, Germany"}
                         </Flex>
                         { person.languages.length > 0 && (
                             <Flex
@@ -263,7 +263,7 @@ export default function About(
                                         </Flex>
                                         {experience.images.length > 0 && (
                                             <Flex
-                                                fillWidth paddingTop="m" paddingLeft="40"
+                                                fillWidth paddingTop="m" paddingLeft="40" gap="8"
                                                 wrap>
                                                 {experience.images.map((image, index) => (
                                                     <Flex

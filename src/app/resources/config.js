@@ -1,4 +1,4 @@
-const baseURL = 'demo.app'
+const baseURL = 'me.timschalk.de'
 
 // Enable localization
 const i18n = false;
@@ -12,14 +12,16 @@ const i18nOptions = {
 const routes = {
     '/':        true,
     '/about':   true,
-    '/work':    true,
-    '/blog':    true,
-    '/gallery': true,
+    '/work':    false,
+    '/blog':    false,
+    '/gallery': false,
 }
 
 // Enable password protection on selected routes
 // Set password in pages/api/authenticate.ts
 const protectedRoutes = {
+    '/work': true,
+    '/blog': true,
     '/work/automate-design-handovers-with-a-figma-to-code-pipeline': true
 }
 
@@ -33,7 +35,7 @@ const style = {
     theme:       'dark',         // dark | light
     neutral:     'gray',         // sand | gray | slate
     brand:       'aqua',         // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan
-    accent:      'yellow',       // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan
+    accent:      'magenta',       // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan
     solid:       'contrast',     // color | contrast
     solidStyle:  'flat',         // flat | plastic
     border:      'playful',      // rounded | playful | conservative
@@ -47,7 +49,7 @@ const display = {
 }
 
 const mailchimp = {
-    action: 'https://url/subscribe/post?parameters',
+    action: '', //'https://url/subscribe/post?parameters',
     effects: {
         gradient: true,
         dots:     false,
