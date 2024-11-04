@@ -12,9 +12,9 @@ const i18nOptions = {
 const routes = {
     '/':        true,
     '/about':   true,
-    '/work':    false,
+    '/work':    true,
     '/blog':    false,
-    '/gallery': false,
+    '/gallery': true,
 }
 
 // Enable password protection on selected routes
@@ -22,7 +22,6 @@ const routes = {
 const protectedRoutes = {
     '/work': true,
     '/blog': true,
-    '/work/automate-design-handovers-with-a-figma-to-code-pipeline': true
 }
 
 const effects = {
