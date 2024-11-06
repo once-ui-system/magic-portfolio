@@ -1,8 +1,8 @@
 .hover {
-    transition: var(--transition-property) var(--transition-duration-micro-medium) var(--transition-timing-function);
+    transition: var(--transition-micro-medium);
 
     &:hover {
-        transform: translateX(1rem);
+        transform: translateX(var(--static-space-8));
         
         .image {
             transform: scale(1.04);
@@ -12,5 +12,5 @@
 
 .image {
     transform: scale(1);
-    transition: var(--transition-property) var(--transition-duration-micro-medium) var(--transition-timing-function);
+    transition: var(--transition-micro-medium);
 }
