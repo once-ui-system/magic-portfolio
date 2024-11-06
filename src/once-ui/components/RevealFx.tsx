@@ -20,7 +20,7 @@ const RevealFx = forwardRef<HTMLDivElement, RevealFxProps>(({
 	children,
 	speed = 'medium',
 	delay = 0,
-	revealedByDefault = true,
+	revealedByDefault = false,
 	translateY,
 	trigger,
 	style,
