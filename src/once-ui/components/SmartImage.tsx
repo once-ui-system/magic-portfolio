@@ -17,6 +17,7 @@ export type SmartImageProps = ImageProps & {
     objectFit?: CSSProperties['objectFit'];
     enlarge?: boolean;
     src: string;
+    unoptimized?: boolean;
 };
 
 const SmartImage: React.FC<SmartImageProps> = ({
@@ -30,6 +31,7 @@ const SmartImage: React.FC<SmartImageProps> = ({
     objectFit = 'cover',
     enlarge = false,
     src,
+    unoptimized = false,
     ...props
 }) => {
     const [isEnlarged, setIsEnlarged] = useState(false);
@@ -73,7 +75,20 @@ const SmartImage: React.FC<SmartImageProps> = ({
         };
     };
 
-    const isVideo = src.endsWith('.mp4');
+    const isYouTubeVideo = (url: string) => {
+        const youtubeRegex = /(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
+        return youtubeRegex.test(url);
+    };
+
+    const getYouTubeEmbedUrl = (url: string) => {
+        const match = url.match(/(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
+        return match 
+            ? `https://www.youtube.com/embed/${match[1]}?controls=0&rel=0&modestbranding=1` 
+            : '';
+    };
+
+    const isVideo = src?.endsWith('.mp4');
+    const isYouTube = isYouTubeVideo(src);
 
     return (
         <>
@@ -115,7 +130,20 @@ const SmartImage: React.FC<SmartImageProps> = ({
                         }}
                     />
                 )}
-                {!isLoading && !isVideo && (
+                {!isLoading && isYouTube && (
+                    <iframe
+                        width="100%"
+                        height="100%"
+                        src={getYouTubeEmbedUrl(src)}
+                        frameBorder="0"
+                        allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                        style={{
+                            objectFit: objectFit,
+                        }}
+                    />
+                )}
+                {!isLoading && !isVideo && !isYouTube && (
                     <Image
                         {...props}
                         src={src}
@@ -172,6 +200,7 @@ const SmartImage: React.FC<SmartImageProps> = ({
                                 alt={alt}
                                 fill
                                 sizes="90vw"
+                                unoptimized={unoptimized}
                                 style={{ objectFit: 'contain' }}
                             />
                         )}

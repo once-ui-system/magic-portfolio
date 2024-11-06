@@ -1,12 +1,13 @@
 import { notFound } from 'next/navigation'
 import { CustomMDX } from '@/components/mdx'
-import { formatDate, getPosts } from '@/app/utils'
+import { getPosts } from '@/app/utils/utils'
 import { Avatar, Button, Flex, Heading, Text } from '@/once-ui/components'
 
 import { baseURL, renderContent } from '@/app/resources'
 import { unstable_setRequestLocale } from 'next-intl/server'
 import { routing } from '@/i18n/routing';
 import { useTranslations } from 'next-intl';
+import { formatDate } from '@/app/utils/formatDate'
 
 interface BlogParams {
     params: { 

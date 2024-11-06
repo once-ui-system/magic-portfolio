@@ -1,7 +1,7 @@
 import { renderContent } from "@/app/resources";
 import { Flex, IconButton, SmartLink, Text } from "@/once-ui/components"
 import { useTranslations } from "next-intl";
-// import { person, social } from '@/app/resources'
+import styles from './Footer.module.scss'
 
 export const Footer = () => {
     const currentYear = new Date().getFullYear();
@@ -14,9 +14,10 @@ export const Footer = () => {
             as="footer"
             position="relative"
             fillWidth padding="8"
-            justifyContent="center">
+            justifyContent="center" mobileDirection="column">
             <Flex
-                fillWidth maxWidth="m" paddingY="8" paddingX="16"
+                className={styles.mobile}
+                fillWidth maxWidth="m" paddingY="8" paddingX="16" gap="16"
                 justifyContent="space-between" alignItems="center">
                 <Text
                     variant="body-default-s"
@@ -48,6 +49,7 @@ export const Footer = () => {
                     ))}
                 </Flex>
             </Flex>
+            <Flex height="80" show="s"></Flex>
         </Flex>
     )
 }

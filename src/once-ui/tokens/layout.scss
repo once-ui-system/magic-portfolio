@@ -102,3 +102,167 @@
         --responsive-space-xs: var(--static-space-4);
     }
 }
+
+[data-scaling="110"] {
+    --static-space-1:   calc(0.0625rem * 1.1);
+    --static-space-2:   calc(0.125rem * 1.1);
+    --static-space-4:   calc(0.25rem * 1.1);
+    --static-space-8:   calc(0.5rem * 1.1);
+    --static-space-12:  calc(0.75rem * 1.1);
+    --static-space-16:  calc(1rem * 1.1);
+    --static-space-20:  calc(1.25rem * 1.1);
+    --static-space-24:  calc(1.5rem * 1.1);
+    --static-space-32:  calc(2rem * 1.1);
+    --static-space-40:  calc(2.5rem * 1.1);
+    --static-space-48:  calc(3rem * 1.1);
+    --static-space-56:  calc(3.5rem * 1.1);
+    --static-space-64:  calc(4rem * 1.1);
+    --static-space-80:  calc(5rem * 1.1);
+    --static-space-104: calc(6.5rem * 1.1);
+    --static-space-128: calc(8rem * 1.1);
+    --static-space-160: calc(10rem * 1.1);
+
+    --static-width-2400: calc(150rem * 1.1);
+    --static-width-1600: calc(100rem * 1.1);
+    --static-width-1440: calc(90rem * 1.1);
+    --static-width-1200: calc(75rem * 1.1);
+    --static-width-1024: calc(64rem * 1.1);
+    --static-width-880:  calc(55rem * 1.1);
+    --static-width-768:  calc(48rem * 1.1);
+    --static-width-560:  calc(35rem * 1.1);
+    --static-width-400:  calc(25rem * 1.1);
+    --static-width-320:  calc(20rem * 1.1);
+
+    --static-height-560: calc(35rem * 1.1);
+    --static-height-480: calc(30rem * 1.1);
+    --static-height-400: calc(25rem * 1.1);
+    --static-height-360: calc(22.5rem * 1.1);
+    --static-height-320: calc(20rem * 1.1);
+    --static-height-280: calc(17.5rem * 1.1);
+    --static-height-240: calc(15rem * 1.1);
+    --static-height-220: calc(13.75rem * 1.1);
+    --static-height-160: calc(10rem * 1.1);
+}
+
+[data-scaling="105"] {
+    --static-space-1:   calc(0.0625rem * 1.05);
+    --static-space-2:   calc(0.125rem * 1.05);
+    --static-space-4:   calc(0.25rem * 1.05);
+    --static-space-8:   calc(0.5rem * 1.05);
+    --static-space-12:  calc(0.75rem * 1.05);
+    --static-space-16:  calc(1rem * 1.05);
+    --static-space-20:  calc(1.25rem * 1.05);
+    --static-space-24:  calc(1.5rem * 1.05);
+    --static-space-32:  calc(2rem * 1.05);
+    --static-space-40:  calc(2.5rem * 1.05);
+    --static-space-48:  calc(3rem * 1.05);
+    --static-space-56:  calc(3.5rem * 1.05);
+    --static-space-64:  calc(4rem * 1.05);
+    --static-space-80:  calc(5rem * 1.05);
+    --static-space-104: calc(6.5rem * 1.05);
+    --static-space-128: calc(8rem * 1.05);
+    --static-space-160: calc(10rem * 1.05);
+
+    --static-width-2400: calc(150rem * 1.05);
+    --static-width-1600: calc(100rem * 1.05);
+    --static-width-1440: calc(90rem * 1.05);
+    --static-width-1200: calc(75rem * 1.05);
+    --static-width-1024: calc(64rem * 1.05);
+    --static-width-880:  calc(55rem * 1.05);
+    --static-width-768:  calc(48rem * 1.05);
+    --static-width-560:  calc(35rem * 1.05);
+    --static-width-400:  calc(25rem * 1.05);
+    --static-width-320:  calc(20rem * 1.05);
+
+    --static-height-560: calc(35rem * 1.05);
+    --static-height-480: calc(30rem * 1.05);
+    --static-height-400: calc(25rem * 1.05);
+    --static-height-360: calc(22.5rem * 1.05);
+    --static-height-320: calc(20rem * 1.05);
+    --static-height-280: calc(17.5rem * 1.05);
+    --static-height-240: calc(15rem * 1.05);
+    --static-height-220: calc(13.75rem * 1.05);
+    --static-height-160: calc(10rem * 1.05);
+}
+
+[data-scaling="95"] {
+    --static-space-1:   calc(0.0625rem * 0.95);
+    --static-space-2:   calc(0.125rem * 0.95);
+    --static-space-4:   calc(0.25rem * 0.95);
+    --static-space-8:   calc(0.5rem * 0.95);
+    --static-space-12:  calc(0.75rem * 0.95);
+    --static-space-16:  calc(1rem * 0.95);
+    --static-space-20:  calc(1.25rem * 0.95);
+    --static-space-24:  calc(1.5rem * 0.95);
+    --static-space-32:  calc(2rem * 0.95);
+    --static-space-40:  calc(2.5rem * 0.95);
+    --static-space-48:  calc(3rem * 0.95);
+    --static-space-56:  calc(3.5rem * 0.95);
+    --static-space-64:  calc(4rem * 0.95);
+    --static-space-80:  calc(5rem * 0.95);
+    --static-space-104: calc(6.5rem * 0.95);
+    --static-space-128: calc(8rem * 0.95);
+    --static-space-160: calc(10rem * 0.95);
+
+    --static-width-2400: calc(150rem * 0.95);
+    --static-width-1600: calc(100rem * 0.95);
+    --static-width-1440: calc(90rem * 0.95);
+    --static-width-1200: calc(75rem * 0.95);
+    --static-width-1024: calc(64rem * 0.95);
+    --static-width-880:  calc(55rem * 0.95);
+    --static-width-768:  calc(48rem * 0.95);
+    --static-width-560:  calc(35rem * 0.95);
+    --static-width-400:  calc(25rem * 0.95);
+    --static-width-320:  calc(20rem * 0.95);
+
+    --static-height-560: calc(35rem * 0.95);
+    --static-height-480: calc(30rem * 0.95);
+    --static-height-400: calc(25rem * 0.95);
+    --static-height-360: calc(22.5rem * 0.95);
+    --static-height-320: calc(20rem * 0.95);
+    --static-height-280: calc(17.5rem * 0.95);
+    --static-height-240: calc(15rem * 0.95);
+    --static-height-220: calc(13.75rem * 0.95);
+    --static-height-160: calc(10rem * 0.95);
+}
+
+[data-scaling="90"] {
+    --static-space-1:   calc(0.0625rem * 0.9);
+    --static-space-2:   calc(0.125rem * 0.9);
+    --static-space-4:   calc(0.25rem * 0.9);
+    --static-space-8:   calc(0.5rem * 0.9);
+    --static-space-12:  calc(0.75rem * 0.9);
+    --static-space-16:  calc(1rem * 0.9);
+    --static-space-20:  calc(1.25rem * 0.9);
+    --static-space-24:  calc(1.5rem * 0.9);
+    --static-space-32:  calc(2rem * 0.9);
+    --static-space-40:  calc(2.5rem * 0.9);
+    --static-space-48:  calc(3rem * 0.9);
+    --static-space-56:  calc(3.5rem * 0.9);
+    --static-space-64:  calc(4rem * 0.9);
+    --static-space-80:  calc(5rem * 0.9);
+    --static-space-104: calc(6.5rem * 0.9);
+    --static-space-128: calc(8rem * 0.9);
+    --static-space-160: calc(10rem * 0.9);
+
+    --static-width-2400: calc(150rem * 0.9);
+    --static-width-1600: calc(100rem * 0.9);
+    --static-width-1440: calc(90rem * 0.9);
+    --static-width-1200: calc(75rem * 0.9);
+    --static-width-1024: calc(64rem * 0.9);
+    --static-width-880:  calc(55rem * 0.9);
+    --static-width-768:  calc(48rem * 0.9);
+    --static-width-560:  calc(35rem * 0.9);
+    --static-width-400:  calc(25rem * 0.9);
+    --static-width-320:  calc(20rem * 0.9);
+
+    --static-height-560: calc(35rem * 0.9);
+    --static-height-480: calc(30rem * 0.9);
+    --static-height-400: calc(25rem * 0.9);
+    --static-height-360: calc(22.5rem * 0.9);
+    --static-height-320: calc(20rem * 0.9);
+    --static-height-280: calc(17.5rem * 0.9);
+    --static-height-240: calc(15rem * 0.9);
+    --static-height-220: calc(13.75rem * 0.9);
+    --static-height-160: calc(10rem * 0.9);
+}

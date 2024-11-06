@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import React from 'react';
 import classNames from 'classnames';
@@ -41,6 +41,6 @@ const UserMenu: React.FC<UserMenuProps> = ({
     );
 };
 
-UserMenu.displayName = "UserMenu";
+UserMenu.displayName = 'UserMenu';
 
 export { UserMenu };

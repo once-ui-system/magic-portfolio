@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import React, { ReactNode, HTMLAttributes, MouseEventHandler, forwardRef } from 'react';
 import classNames from 'classnames';
@@ -93,6 +93,6 @@ const Chip: React.FC<ChipProps> = forwardRef<HTMLDivElement, ChipProps>(({
     );
 });
 
-Chip.displayName = "Chip";
+Chip.displayName = 'Chip';
 
 export { Chip };

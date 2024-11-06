@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import React, { forwardRef } from 'react';
 import classNames from 'classnames';
@@ -67,6 +67,6 @@ const Icon = forwardRef<HTMLDivElement, IconProps>(({
     );
 });
 
-Icon.displayName = "Icon";
+Icon.displayName = 'Icon';
 
 export { Icon };

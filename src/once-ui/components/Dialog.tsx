@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import React, { ReactNode, useEffect, useCallback, useRef, forwardRef, useState } from 'react';
 import ReactDOM from 'react-dom';
@@ -125,8 +125,8 @@ const Dialog: React.FC<DialogProps> = forwardRef<HTMLDivElement, DialogProps>(({
                 <Flex
                     as="header"
                     direction="column"
-                    paddingX="m"
-                    paddingTop="m"
+                    paddingX="24"
+                    paddingTop="24"
                     paddingBottom="s"
                     gap="4">
                     <Flex
@@ -155,37 +155,32 @@ const Dialog: React.FC<DialogProps> = forwardRef<HTMLDivElement, DialogProps>(({
                 </Flex>
                 <Flex
                     as="section"
-                    paddingX="m"
-                    paddingY="s"
+                    paddingX="24" paddingBottom="24"
                     overflowY="auto"
                     direction="column">
                     {children}
                 </Flex>
                 {(primaryButtonProps || secondaryButtonProps || dangerButtonProps) && (
                     <Flex
+                        style={{
+                            borderTop: '1px solid var(--neutral-border-medium)'
+                        }}
                         as="footer"
                         justifyContent="space-between"
-                        paddingTop="s"
-                        paddingX="m"
-                        paddingBottom="m">
-                        {dangerButtonProps && (
-                            <Button
-                                {...dangerButtonProps}
-                                variant='danger'
-                                size='m' />
-                        )}
+                        padding="12">
+                            {dangerButtonProps ? (
+                                <Button
+                                    {...dangerButtonProps}/>
+                            ) : <div/>
+                        }
                         <Flex gap="8">
                             {secondaryButtonProps && (
                                 <Button
-                                    {...secondaryButtonProps}
-                                    variant='secondary'
-                                    size='m' />
+                                    {...secondaryButtonProps}/>
                             )}
                             {primaryButtonProps && (
                                 <Button
-                                    {...primaryButtonProps}
-                                    variant='primary'
-                                    size='m' />
+                                    {...primaryButtonProps}/>
                             )}
                         </Flex>
                     </Flex>
@@ -196,6 +191,6 @@ const Dialog: React.FC<DialogProps> = forwardRef<HTMLDivElement, DialogProps>(({
     );
 });
 
-Dialog.displayName = "Dialog";
+Dialog.displayName = 'Dialog';
 
 export { Dialog };

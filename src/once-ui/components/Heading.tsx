@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import React, { ElementType, ComponentPropsWithoutRef } from 'react';
 import classNames from 'classnames';
@@ -101,6 +101,6 @@ const Heading = <T extends ElementType = 'h1'>({
     );
 };
 
-Heading.displayName = "Heading";
+Heading.displayName = 'Heading';
 
 export { Heading };

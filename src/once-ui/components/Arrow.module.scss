@@ -1,0 +1,45 @@
+.arrowContainer {
+    transition: var(--transition-micro-medium);
+    height: var(--static-space-16);
+    width: var(--static-space-0);
+    visibility: hidden;
+}
+
+.arrowHead {
+    transition: var(--transition-micro-medium);
+    width: var(--static-space-0);
+    transition-delay: 0.2s;
+    position: absolute;
+    right: 0;
+    transform-origin: right center;
+    transform: rotate(0);
+}
+
+.active {
+    width: var(--static-space-16);
+    visibility: visible;
+
+    .arrow {
+        width: var(--static-space-12);
+    }
+
+    .arrowHead {
+        width: var(--static-space-8);
+    }
+
+    .arrowHead:nth-child(2) {
+        transform: rotate(45deg);
+    }
+
+    .arrowHead:nth-child(3) {
+        transform: rotate(-45deg);
+    }
+}
+
+.onSolid {
+    background: var(--brand-on-solid-strong);
+}
+
+.onBackground {
+    background: var(--brand-on-background-strong);
+}

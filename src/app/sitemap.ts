@@ -1,4 +1,4 @@
-import { getPosts } from '@/app/utils'
+import { getPosts } from '@/app/utils/utils'
 import { baseURL } from '@/app/resources'
 import { routing } from '@/i18n/routing'
 

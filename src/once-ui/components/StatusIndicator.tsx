@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import React, { forwardRef } from 'react';
 import classNames from 'classnames';
@@ -28,6 +28,6 @@ const StatusIndicator = forwardRef<HTMLDivElement, StatusIndicatorProps>(({
     );
 });
 
-StatusIndicator.displayName = "StatusIndicator";
+StatusIndicator.displayName = 'StatusIndicator';
 
 export { StatusIndicator };

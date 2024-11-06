@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import React, { useState, forwardRef } from 'react';
 import styles from './NavIcon.module.scss';

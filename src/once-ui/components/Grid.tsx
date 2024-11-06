@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import React, { CSSProperties, forwardRef } from 'react';
 import classNames from 'classnames';
@@ -153,7 +153,7 @@ const Grid = forwardRef<HTMLDivElement, ComponentProps>(({
     );
 });
 
-Grid.displayName = "Grid";
+Grid.displayName = 'Grid';
 
 export { Grid };
 export type { GridProps };

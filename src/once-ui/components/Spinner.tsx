@@ -28,6 +28,6 @@ const Spinner = forwardRef<HTMLDivElement, SpinnerProps>(({
     );
 });
 
-Spinner.displayName = "Spinner";
+Spinner.displayName = 'Spinner';
 
 export { Spinner };

@@ -1,4 +1,4 @@
-"use client"
+'use client'
 
 import React, { useEffect, useState, forwardRef } from 'react';
 import { IconButton, Icon, Flex, Text } from '.';
@@ -91,6 +91,6 @@ const Toast = forwardRef<HTMLDivElement, ToastProps>(({
     );
 });
 
-Toast.displayName = "Toast";
+Toast.displayName = 'Toast';
 
 export { Toast };

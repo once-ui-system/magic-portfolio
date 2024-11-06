@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import React, { CSSProperties, forwardRef } from 'react';
 import classNames from 'classnames';
@@ -192,6 +192,6 @@ const Flex = forwardRef<HTMLDivElement, ComponentProps>(({
     );
 });
 
-Flex.displayName = "Flex";
+Flex.displayName = 'Flex';
 
 export { Flex };

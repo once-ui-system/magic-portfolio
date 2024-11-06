@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import React, { ReactNode, forwardRef } from 'react';
 import Link from 'next/link';

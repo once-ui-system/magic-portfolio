@@ -1,15 +1,14 @@
-"use client";
+'use client';
 
 import React, { useState, useRef, useEffect, forwardRef } from 'react';
 import classNames from 'classnames';
-import { DropdownWrapper, Input, InputProps, IconButton } from '.';
+import { DropdownWrapper, Input, InputProps } from '.';
 import { DropdownOptions } from '.';
 import inputStyles from './Input.module.scss';
 
 interface SelectProps extends Omit<InputProps, 'onSelect' | 'value'> {
     options: DropdownOptions[];
     value: string;
-    hasSuffix?: React.ReactNode;
     style?: React.CSSProperties;
     onSelect: (option: DropdownOptions) => void;
     renderDropdownOptions?: (option: DropdownOptions) => React.ReactNode;
@@ -19,7 +18,6 @@ interface SelectProps extends Omit<InputProps, 'onSelect' | 'value'> {
 const Select = forwardRef<HTMLDivElement, SelectProps>(({
     options,
     value,
-    hasSuffix,
     style,
     onSelect,
     renderDropdownOptions,
@@ -79,7 +77,7 @@ const Select = forwardRef<HTMLDivElement, SelectProps>(({
             renderCustomDropdownContent={renderCustomDropdownContent}>
             <Input
                 {...inputProps}
-                style={{ cursor: 'pointer', textOverflow: 'ellipsis' }}
+                style={{ cursor: 'pointer', textOverflow: 'ellipsis', ...style }}
                 value={value}
                 onFocus={handleFocus}
                 onBlur={handleBlur}
@@ -95,7 +93,7 @@ const Select = forwardRef<HTMLDivElement, SelectProps>(({
     );
 });
 
-Select.displayName = "Select";
+Select.displayName = 'Select';
 
 export { Select };
 export type { SelectProps };

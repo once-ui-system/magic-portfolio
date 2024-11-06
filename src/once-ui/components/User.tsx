@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import React, { forwardRef } from 'react';
 import classNames from 'classnames';
@@ -7,6 +7,7 @@ import { Flex, Text, Skeleton, Tag, TagProps, Avatar, AvatarProps } from '.';
 
 interface UserProps {
     name?: string;
+    children?: React.ReactNode;
     subline?: string;
     tag?: string;
     tagProps?: TagProps;
@@ -17,6 +18,7 @@ interface UserProps {
 
 const User = forwardRef<HTMLDivElement, UserProps>(({ 
     name, 
+    children,
     subline, 
     tagProps = {}, 
     loading = false, 
@@ -39,6 +41,7 @@ const User = forwardRef<HTMLDivElement, UserProps>(({
                 empty={isEmpty}
                 loading={loading} 
                 {...restAvatarProps}/>
+            {children}
             {name && (
                 <Flex
                     direction="column"
@@ -83,6 +86,7 @@ const User = forwardRef<HTMLDivElement, UserProps>(({
                         </Flex>
                     ) : (
                         <Text
+                            wrap="nowrap"
                             variant="body-default-xs"
                             onBackground="neutral-weak">
                             {subline}
@@ -94,7 +98,7 @@ const User = forwardRef<HTMLDivElement, UserProps>(({
     );
 });
 
-User.displayName = "User";
+User.displayName = 'User';
 
 export { User };
 export type { UserProps };

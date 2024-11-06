@@ -1,10 +1,11 @@
-"use client";
+'use client';
 
 import React, { useEffect } from 'react';
 import Link from 'next/link';
 import classNames from 'classnames';
 import styles from './Logo.module.scss';
 import { SpacingToken } from '../types';
+import { Flex } from '.';
 
 const sizeMap: Record<string, SpacingToken> = {
     xs: '20',
@@ -20,6 +21,8 @@ interface LogoProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
     style?: React.CSSProperties;
     wordmark?: boolean;
     icon?: boolean;
+    iconSrc?: string;
+    wordmarkSrc?: string;
     href?: string;
 }
 
@@ -27,38 +30,68 @@ const Logo: React.FC<LogoProps> = ({
     size = 'm',
     wordmark = true,
     icon = true,
-    href = '/',
+    href,
+    iconSrc,
+    wordmarkSrc,
     className,
     style,
     ...props
 }) => {
     useEffect(() => {
         if (!icon && !wordmark) {
-            console.warn("Both 'icon' and 'showType' props are set to false. The logo will not render any content.");
+            console.warn("Both 'icon' and 'wordmark' props are set to false. The logo will not render any content.");
         }
     }, [icon, wordmark]);
 
-    return (
+    const content = (
+        <>
+            {icon && !iconSrc && (
+                <div
+                    style={{ height: `var(--static-space-${sizeMap[size]})` }}
+                    className={styles.icon}
+                />
+            )}
+            {iconSrc && (
+                <img
+                    style={{ height: `var(--static-space-${sizeMap[size]})`, width: 'auto' }}
+                    alt="Trademark"
+                    src={iconSrc}
+                />
+            )}
+            {wordmark && !wordmarkSrc && (
+                <div
+                    style={{ height: `var(--static-space-${sizeMap[size]})` }}
+                    className={styles.type}
+                />
+            )}
+            {wordmarkSrc && (
+                <img
+                    style={{ height: `var(--static-space-${sizeMap[size]})`, width: 'auto'}}
+                    alt="Trademark"
+                    src={wordmarkSrc}
+                />
+            )}
+        </>
+    );
+
+    return href ? (
         <Link
             className={classNames('radius-l', 'flex', className)}
-            style={{height: 'fit-content', ...style}}
+            style={{ height: 'fit-content', ...style }}
             href={href}
             aria-label="Trademark"
             {...props}>
-            {icon && (
-                <div
-                    style={{ height: `var(--static-space-${sizeMap[size]})` }}
-                    className={styles.icon}/>
-            )}
-            {wordmark && (
-                <div
-                    style={{ height: `var(--static-space-${sizeMap[size]})` }}
-                    className={styles.type}/>
-            )}
+            {content}
         </Link>
+    ) : (
+        <Flex
+            className={classNames('radius-l', 'flex', className)}
+            style={{ height: 'fit-content', ...style }}
+            aria-label="Trademark">
+            {content}
+        </Flex>
     );
 };
 
-Logo.displayName = "Logo";
-
+Logo.displayName = 'Logo';
 export { Logo };

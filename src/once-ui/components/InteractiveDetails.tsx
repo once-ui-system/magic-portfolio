@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import React, { forwardRef } from 'react';
 import { Text, Flex, IconButton, IconButtonProps } from '.';
@@ -58,7 +58,7 @@ const InteractiveDetails: React.FC<InteractiveDetailsProps> = forwardRef<HTMLDiv
     );
 });
 
-InteractiveDetails.displayName = "InteractiveDetails";
+InteractiveDetails.displayName = 'InteractiveDetails';
 
 export { InteractiveDetails };
 export type { InteractiveDetailsProps };

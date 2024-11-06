@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import React, { forwardRef } from 'react';
 import classNames from 'classnames';
@@ -47,6 +47,6 @@ const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(({
     );
 });
 
-Tooltip.displayName = "Tooltip";
+Tooltip.displayName = 'Tooltip';
 
 export { Tooltip };

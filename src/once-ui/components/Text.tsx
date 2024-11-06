@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import React, { ElementType, ComponentPropsWithoutRef } from 'react';
 import classNames from 'classnames';
@@ -101,6 +101,6 @@ const Text = <T extends ElementType = 'span'>({
     );
 };
 
-Text.displayName = "Text";
+Text.displayName = 'Text';
 
 export { Text };

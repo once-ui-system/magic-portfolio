@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import React, { forwardRef} from 'react';
 import classNames from 'classnames';
@@ -37,6 +37,6 @@ const Skeleton: React.FC<SkeletonProps> = forwardRef<HTMLDivElement, SkeletonPro
     );
 });
 
-Skeleton.displayName = "Skeleton";
+Skeleton.displayName = 'Skeleton';
 
 export { Skeleton };

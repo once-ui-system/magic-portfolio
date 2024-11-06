@@ -1,15 +1,18 @@
-"use client";
+'use client';
 
 import React, { useState, useRef, useEffect, ReactNode, forwardRef, useImperativeHandle } from 'react';
 import { useFloating, shift, offset, flip, size, autoUpdate } from '@floating-ui/react-dom';
 import { Flex, Dropdown, DropdownProps, DropdownOptions } from '.';
 import styles from './Select.module.scss';
+import classNames from 'classnames';
 
 interface DropdownWrapperProps {
     children: ReactNode;
     dropdownOptions: DropdownOptions[];
     dropdownProps?: Omit<DropdownProps, 'options'> & { onOptionSelect?: (option: DropdownOptions) => void };
     selectedOption?: string;
+    style?: React.CSSProperties;
+    className?: string;
     renderCustomDropdownContent?: () => ReactNode;
 }
 
@@ -18,6 +21,8 @@ const DropdownWrapper = forwardRef<HTMLDivElement, DropdownWrapperProps>(({
     dropdownOptions,
     dropdownProps = {},
     selectedOption,
+    style,
+    className,
     renderCustomDropdownContent,
 }, ref) => {
     const [isDropdownOpen, setDropdownOpen] = useState(false);
@@ -104,7 +109,11 @@ const DropdownWrapper = forwardRef<HTMLDivElement, DropdownWrapperProps>(({
 
     return (
         <Flex
-            style={{ WebkitTapHighlightColor: 'transparent' }}
+            style={{
+                WebkitTapHighlightColor: 'transparent',
+                ...style
+            }}
+            className={className}
             position="relative"
             ref={wrapperRef}
             onClick={() => setDropdownOpen(!isDropdownOpen)}
@@ -117,7 +126,7 @@ const DropdownWrapper = forwardRef<HTMLDivElement, DropdownWrapperProps>(({
             {isDropdownOpen && (
                 <Flex
                     zIndex={1}
-                    className={`${styles.dropdown} ${styles.fadeIn}`}
+                    className={classNames(styles.dropdown, styles.fadeIn)}
                     ref={setDropdownRef}
                     style={{
                         minWidth: '100%',
@@ -134,7 +143,9 @@ const DropdownWrapper = forwardRef<HTMLDivElement, DropdownWrapperProps>(({
                         {...restDropdownProps}
                         selectedOption={selectedOption}>
                         {renderCustomDropdownContent && (
-                            <div onClick={stopPropagation} onKeyDown={stopPropagation}>
+                            <div
+                                onClick={stopPropagation}
+                                onKeyDown={stopPropagation}>
                                 {renderCustomDropdownContent()}
                             </div>
                         )}
@@ -145,6 +156,6 @@ const DropdownWrapper = forwardRef<HTMLDivElement, DropdownWrapperProps>(({
     );
 });
 
-DropdownWrapper.displayName = "DropdownWrapper";
+DropdownWrapper.displayName = 'DropdownWrapper';
 
 export { DropdownWrapper };

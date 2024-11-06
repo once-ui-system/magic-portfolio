@@ -9,7 +9,7 @@
     white-space: nowrap;
     text-decoration: none;
     -webkit-tap-highlight-color: transparent;
-    transition: var(--transition-property) var(--transition-duration-micro-medium) var(--transition-timing-function);
+    transition: var(--transition-micro-medium);
 
     &:disabled {
         box-shadow: none;
@@ -54,7 +54,7 @@
     color: var(--neutral-on-background-strong);
 
     &:hover, &:focus {
-        background: var(--neutral-alpha-weak);
+        background: var(--neutral-background-medium);
         border-color: var(--neutral-border-strong);
     }
 }
@@ -85,6 +85,7 @@
 .s {
     padding: var(--static-space-4) var(--static-space-8);
     border-radius: var(--radius-m);
+    min-height: var(--static-space-32);
     height: var(--static-space-32);
     gap: var(--static-space-4);
 }
@@ -92,6 +93,7 @@
 .m {
     padding: var(--static-space-8) var(--static-space-12);
     border-radius: var(--radius-m);
+    min-height: var(--static-space-40);
     height: var(--static-space-40);
     gap: var(--static-space-4);
 }
@@ -99,6 +101,7 @@
 .l {
     padding: var(--static-space-12) var(--static-space-20);
     border-radius: var(--radius-l);
+    min-height: var(--static-space-48);
     height: var(--static-space-48);
     gap: var(--static-space-8);
 }

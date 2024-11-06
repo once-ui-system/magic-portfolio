@@ -2,7 +2,7 @@
     cursor: pointer;
 
     &:active {
-        .toggle {
+        .element {
             transform: translateY(-50%) scaleX(1.2);
         }
     }
@@ -16,7 +16,7 @@
             background-color: var(--brand-solid-strong);
         }
 
-        .switch.checked .toggle::before {
+        .switch.checked .element::before {
             display: none;
         }
     }
@@ -37,21 +37,22 @@
     border-radius: var(--radius-l-nest-4);
     background-color: var(--neutral-solid-medium);
     position: relative;
-    transition: var(--transition-property) var(--transition-duration-micro-medium) var(--transition-timing-function);
+    transition: var(--transition-micro-medium);
 
     &.checked {
         box-shadow: inset 0 var(--solid-inset-distance) var(--solid-inset-size) var(--solid-inset-color-brand);
         background-color: var(--brand-solid-medium);
         border-color: var(--solid-border-color-brand);
 
-        .toggle {
+        .element {
             left: calc(100% - var(--static-space-20));
             transform-origin: right;
         }
     }
 }
 
-.toggle {
+.element {
+    z-index: 1;
     transform-origin: left;
     width: var(--static-space-16);
     height: var(--static-space-16);
@@ -65,8 +66,18 @@
     outline: none;
 }
 
-.container:hover .toggle::before,
-.toggle:focus-within::before {
+.disabled {
+    .switch {
+        opacity: 0.4;
+    }
+
+    .element::before {
+        display: none !important;
+    }
+}
+
+.container:hover .element::before,
+.element:focus-within::before {
     content: '';
     position: absolute;
     top: 50%;
@@ -75,7 +86,7 @@
     width: var(--static-space-40);
     height: var(--static-space-40);
     background-color: var(--brand-alpha-medium);
-    border-radius: var(--radius-999);
+    border-radius: var(--radius-full);
     z-index: -1;
     animation: scaleInCenter 0.2s forwards;
 }

@@ -1,6 +1,6 @@
 .wrapper {
     border: 1px solid var(--static-transparent);
-    transition: var(--transition-property) var(--transition-duration-micro-medium) var(--transition-timing-function);
+    transition: var(--transition-micro-medium);
 
     &:hover {
         background-color: var(--neutral-alpha-weak);

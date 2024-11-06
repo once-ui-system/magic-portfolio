@@ -7,7 +7,7 @@
     border-color: var(--static-transparent);
     border-width: 1px;
     border-style: solid;
-    transition: var(--transition-property) var(--transition-duration-micro-medium) var(--transition-timing-function);
+    transition: var(--transition-micro-medium);
 
     &:hover, &:focus {
         background: var(--neutral-alpha-weak);

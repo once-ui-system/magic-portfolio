@@ -1,4 +1,4 @@
-import { getPosts } from '@/app/utils';
+import { getPosts } from '@/app/utils/utils';
 import { Flex } from '@/once-ui/components';
 
 import { ProjectCard } from '@/components';

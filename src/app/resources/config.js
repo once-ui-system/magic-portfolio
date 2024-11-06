@@ -24,16 +24,26 @@ const protectedRoutes = {
 }
 
 const effects = {
-    gradient: true,
-    dots:     true,
-    lines:    false,
+    mask: 'cursor',             // none | cursor | topLeft | topRight | bottomLeft | bottomRight
+    gradient: {
+        display: true,
+        opacity: 0.6            // 0 - 1
+    },
+    dots: {
+        display: true,
+        opacity: 0.4,           // 0 - 1
+        size: '24'              // 2 | 4 | 8 | 12 | 16 | 20 | 24 | 32 | 40 | 48 | 56 | 634
+    },
+    lines: {
+        display: false,
+    },
 }
 
 const style = {
     theme:       'dark',         // dark | light
     neutral:     'gray',         // sand | gray | slate
-    brand:       'aqua',         // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan
-    accent:      'yellow',       // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan
+    brand:       'pink',         // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan
+    accent:      'orange',       // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan
     solid:       'contrast',     // color | contrast
     solidStyle:  'flat',         // flat | plastic
     border:      'playful',      // rounded | playful | conservative
@@ -49,9 +59,17 @@ const display = {
 const mailchimp = {
     action: 'https://url/subscribe/post?parameters',
     effects: {
-        gradient: true,
-        dots:     false,
-        lines:    true,
+        mask: 'topRight',           // none | cursor | topLeft | topRight | bottomLeft | bottomRight
+        gradient: {
+            display: true,
+            opacity: 0.6            // 0 - 1
+        },
+        dots: {
+            display: false,
+        },
+        lines: {
+            display: false,
+        },
     }
 }
 

@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import React, { useState, KeyboardEventHandler, ChangeEventHandler, FocusEventHandler, forwardRef } from 'react';
 
@@ -82,7 +82,7 @@ const TagInput = forwardRef<HTMLInputElement, TagInputProps>(({
     );
 });
 
-TagInput.displayName = "TagInput";
+TagInput.displayName = 'TagInput';
 
 export { TagInput };
 export type { TagInputProps };

@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import React, { forwardRef, ReactNode, ButtonHTMLAttributes, AnchorHTMLAttributes } from 'react';
 import Link from 'next/link';
@@ -111,6 +111,6 @@ const ToggleButton = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPro
     );
 });
 
-ToggleButton.displayName = "ToggleButton";
+ToggleButton.displayName = 'ToggleButton';
 
 export { ToggleButton };

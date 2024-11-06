@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import React, { forwardRef, ReactNode, HTMLAttributes } from 'react';
 import classNames from 'classnames';
@@ -22,6 +22,6 @@ const InlineCode = forwardRef<HTMLSpanElement, InlineCodeProps>(({ children, cla
     );
 });
 
-InlineCode.displayName = "InlineCode";
+InlineCode.displayName = 'InlineCode';
 
 export { InlineCode };

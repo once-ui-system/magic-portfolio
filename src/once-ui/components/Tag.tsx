@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import React, { forwardRef, HTMLAttributes, ReactNode } from 'react';
 import classNames from 'classnames';
@@ -50,7 +50,7 @@ const Tag = forwardRef<HTMLDivElement, TagProps>(({
     );
 });
 
-Tag.displayName = "Tag";
+Tag.displayName = 'Tag';
 
 export { Tag };
 export type { TagProps };

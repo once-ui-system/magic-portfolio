@@ -4,7 +4,7 @@
     user-select: none;
     height: fit-content;
     width: fit-content;
-    transition: var(--transition-property) var(--transition-duration-micro-medium) var(--transition-timing-function);
+    transition: var(--transition-micro-medium);
 
     &.selected {
         background: var(--brand-alpha-medium);

@@ -8,7 +8,7 @@
     z-index: 9;
     background-color: var(--backdrop);
     visibility: hidden;
-    transition: var(--transition-property) var(--transition-duration-macro-medium) var(--transition-timing-function);
+    transition: var(--transition-macro-medium);
 
     &.open {
         opacity: 1;
@@ -21,7 +21,7 @@
     opacity: 0;
     box-shadow: var(--shadow-xl);
     max-width: 40rem;
-    transition: var(--transition-property) var(--transition-duration-macro-medium) var(--transition-timing-function);
+    transition: var(--transition-macro-medium);
 
     &.open {
         transform: scale(1);
@@ -29,12 +29,11 @@
         visibility: visible;
     }
 
-    @media (--m) {
+    @media (--s) {
         position: fixed;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        max-width: 100%;
-        border-radius: var(--radius-l) var(--radius-l) 0 0;
+        bottom: var(--static-space-8);
+        top: var(--static-space-8);
+        left: var(--static-space-8);
+        max-width: calc(100% - (2 * var(--static-space-8)));
     }
 }

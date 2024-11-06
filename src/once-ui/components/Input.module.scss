@@ -9,13 +9,15 @@
 
 .base {
     display: flex;
+    overflow: hidden;
     align-items: stretch;
     position: relative;
     border: 1px solid var(--neutral-border-medium);
-    background-color: var(--static-transparent);
+    background-color: var(--neutral-alpha-weak);
+    backdrop-filter: var(--backdrop-filter);
     border-radius: var(--radius-l);
     min-height: var(--static-space-56);
-    transition: var(--transition-property) var(--transition-duration-micro-medium) var(--transition-timing-function);
+    transition: var(--transition-micro-medium);
 
     &.focused, &.filled {
         background-color: var(--neutral-background-strong);
@@ -23,7 +25,7 @@
     }
 
     &:focus-within, &:hover {
-        background-color: var(--neutral-alpha-weak);
+        background-color: var(--neutral-alpha-medium);
     }
 
     &:has(.labelAsPlaceholder) {
@@ -31,18 +33,48 @@
     }
 }
 
+.textareaBase {
+    &::after {
+        pointer-events: none;
+        content: '';
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        width: var(--static-space-32);
+        height: var(--static-space-32);
+        border: 1px solid var(--neutral-border-strong);
+        transform: translateX(50%) translateY(50%) rotate(45deg);
+        background-color: var(--neutral-alpha-weak);
+    }
+
+    ::-webkit-resizer {
+        display: none;
+    }
+}
+
 .label {
     position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
     left: var(--static-space-16);
     transition: transform 0.3s, top 0.3s, left 0.3s;
     color: var(--neutral-on-background-weak);
     pointer-events: none;
     transform-origin: left;
+}
+
+.inputLabel {
+    top: 50%;
+    transform: translateY(-50%);
 
     &.floating {
         transform: scale(0.75);
+    }
+}
+
+.textareaLabel {
+    top: var(--static-space-16);
+
+    &.floating {
+        transform: scale(0.75) translateY(calc(-1 * var(--static-space-16)));
     }
 }
 

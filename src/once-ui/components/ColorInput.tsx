@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import React, {  useRef, forwardRef } from 'react';
 import { Flex, Input, InputProps, IconButton, Icon } from '.';
@@ -107,6 +107,6 @@ const ColorInput = forwardRef<HTMLInputElement, ColorInputProps>(({
     );
 });
 
-ColorInput.displayName = "ColorInput";
+ColorInput.displayName = 'ColorInput';
 
 export { ColorInput };

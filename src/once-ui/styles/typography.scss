@@ -169,4 +169,27 @@ h1, h2, h3, h4, h5, h6, p {
 
 .font-code {
     font-family: var(--font-family-code);
+
+    &.font-strong, & > .font-strong {
+        font-weight: var(--font-weight-30);
+    }
+
+    &.font-default, & > .font-default {
+        font-weight: var(--font-weight-20);
+    }
+
+    &.font-l, & > .font-l {
+        font-size:   calc(var(--font-size-label-l) * var(--font-size-label-multiplier));
+        line-height: calc(var(--line-height-label-l) * var(--line-height-label-multiplier));
+    }
+    
+    &.font-m, & > .font-m {
+        font-size:   calc(var(--font-size-label-m) * var(--font-size-label-multiplier));
+        line-height: calc(var(--line-height-label-m) * var(--line-height-label-multiplier));
+    }
+    
+    &.font-s, & > .font-s {
+        font-size:   calc(var(--font-size-label-s) * var(--font-size-label-multiplier));
+        line-height: calc(var(--line-height-label-s) * var(--line-height-label-multiplier));
+    }
 }
