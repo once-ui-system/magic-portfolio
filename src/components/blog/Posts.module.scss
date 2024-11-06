@@ -3,14 +3,5 @@
 
     &:hover {
         transform: translateX(var(--static-space-8));
-        
-        .image {
-            transform: scale(1.04);
-        }
     }
-}
-
-.image {
-    transform: scale(1);
-    transition: var(--transition-micro-medium);
 }
