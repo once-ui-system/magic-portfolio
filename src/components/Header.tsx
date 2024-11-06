@@ -73,15 +73,9 @@ export const Header = () => {
     return (
         <>
             <Flex
+                className={styles.mask}
                 position="fixed" zIndex={9}
-                fillWidth minHeight="80" justifyContent="center"
-                style={{
-                    pointerEvents: 'none',
-                    backdropFilter: 'blur(0.5rem)',
-                    background: 'linear-gradient(to bottom, var(--page-background), var(--static-transparent))',
-                    maskImage: 'linear-gradient(rgba(0,0,0) 25%, rgba(0, 0, 0, 0) 100%)',
-                    maskSize: '100% 100%',
-                }}>
+                fillWidth minHeight="80" justifyContent="center">
             </Flex>
             <Flex style={{height: 'fit-content'}}
                 className={styles.position}
