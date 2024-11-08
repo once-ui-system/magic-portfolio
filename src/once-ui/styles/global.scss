@@ -3,9 +3,10 @@
     box-sizing: border-box;
 }
 
-ul {
+ul, ol {
     margin: 0;
     padding: 0 0 0 var(--static-space-12);
+    line-height: 150%;
 }
 
 li {

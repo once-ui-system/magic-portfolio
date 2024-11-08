@@ -1,4 +1,4 @@
-const baseURL = 'demo.app'
+const baseURL = 'demo.magic-portfolio.com'
 
 // Enable localization
 const i18n = false;
@@ -27,7 +27,7 @@ const effects = {
     mask: 'cursor',             // none | cursor | topLeft | topRight | bottomLeft | bottomRight
     gradient: {
         display: true,
-        opacity: 0.6            // 0 - 1
+        opacity: 0.4            // 0 - 1
     },
     dots: {
         display: true,
