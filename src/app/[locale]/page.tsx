@@ -91,33 +91,37 @@ export default function Home(
 						</RevealFx>
 						<RevealFx
 							translateY="8" delay={0.2}>
-							<Text
-								wrap="balance"
-								onBackground="neutral-weak"
-								variant="heading-default-xl">
-								{home.subline}
-							</Text>
+							<Flex fillWidth>
+								<Text
+									wrap="balance"
+									onBackground="neutral-weak"
+									variant="heading-default-xl">
+									{home.subline}
+								</Text>
+							</Flex>
 						</RevealFx>
 						<RevealFx translateY="12" delay={0.4}>
-							<Button
-								id="about"
-								data-border="rounded"
-								href={`/${locale}/about`}
-								variant="tertiary"
-								size="m">
-								<Flex
-									gap="8"
-									alignItems="center">
-									{about.avatar.display && (
-										<Avatar
-											style={{marginLeft: '-0.75rem', marginRight: '0.25rem'}}
-											src={person.avatar}
-											size="m"/>
-										)}
-										{t("about.title")}
-										<Arrow trigger="#about"/>
-								</Flex>
-							</Button>
+							<Flex fillWidth>
+								<Button
+									id="about"
+									data-border="rounded"
+									href={`/${locale}/about`}
+									variant="tertiary"
+									size="m">
+									<Flex
+										gap="8"
+										alignItems="center">
+										{about.avatar.display && (
+											<Avatar
+												style={{marginLeft: '-0.75rem', marginRight: '0.25rem'}}
+												src={person.avatar}
+												size="m"/>
+											)}
+											{t("about.title")}
+											<Arrow trigger="#about"/>
+									</Flex>
+								</Button>
+							</Flex>
 						</RevealFx>
 					</Flex>
 				
