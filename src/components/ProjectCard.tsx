@@ -57,8 +57,8 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
         <Flex
             fillWidth gap="m"
             direction="column">
-            <Flex onClick={handleImageClick}>
-            <RevealFx
+            {images[activeIndex] && <Flex onClick={handleImageClick}>
+                <RevealFx
                     style={{width: '100%'}}
                     delay={0.4}
                     trigger={isTransitioning}
@@ -76,7 +76,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
                             }),
                         }}/>
                 </RevealFx>
-            </Flex>
+            </Flex>}
             {images.length > 1 && (
                 <Flex
                     gap="4" paddingX="s"
