@@ -141,7 +141,8 @@ export default function Home(
 							Latest from the blog
 						</Heading>
 					</Flex>
-					<Flex flex={3} paddingX="20">
+					<Flex
+						flex={3} paddingX="20">
 						<Posts range={[1,2]} columns="2" locale={locale}/>
 					</Flex>
 				</Flex>
