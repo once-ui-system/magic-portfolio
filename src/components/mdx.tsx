@@ -121,6 +121,27 @@ function createParagraph({ children }: TextProps) {
     );
 };
 
+function createCode({ children, inline = false }: TextProps & { inline?: boolean }) {
+    const codeStyle: React.CSSProperties = inline 
+        ? { fontFamily: 'monospace', fontSize: '90%' }
+        : {
+            padding: '16px', 
+            borderRadius: '4px', 
+            border: '1px solid #ddd',
+            overflowX: 'auto' as React.CSSProperties['overflowX'],
+        };
+
+    return (
+        <div style={{ marginBottom: '16px' }}>
+            <pre style={codeStyle}>
+                <code style={{ fontFamily: 'monospace', fontSize: '90%' }}>
+                    {children}
+                </code>
+            </pre>
+        </div>
+    );
+}
+
 const components = {
     p: createParagraph as any,
     h1: createHeading(1) as any,
@@ -132,6 +153,7 @@ const components = {
     img: createImage as any,
     a: CustomLink as any,
     Table,
+    pre: createCode as any,
 };
 
 type CustomMDXProps = MDXRemoteProps & {
