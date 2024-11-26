@@ -10,12 +10,34 @@
     flex-direction: row;
 }
 
+.l-flex-show {
+    display: none;
+}
+
 .m-flex-show {
     display: none;
 }
 
 .s-flex-show {
     display: none;
+}
+
+@media (--l) {
+    .l-flex-hide {
+        display: none !important;
+    }
+
+    .l-flex-show {
+        display: flex !important;
+    }
+
+    .l-flex-column {
+        flex-direction: column !important;
+    }
+
+    .l-flex-row {
+        flex-direction: row !important;
+    }
 }
 
 @media (--m) {

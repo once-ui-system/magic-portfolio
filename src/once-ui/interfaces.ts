@@ -71,8 +71,8 @@ export interface StyleProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 export interface ConditionalProps extends HTMLAttributes<HTMLDivElement> {
-    hide?: 's' | 'm';
-    show?: 's' | 'm';
+    hide?: 's' | 'm' | 'l';
+    show?: 's' | 'm' | 'l';
 }
 
 export interface DisplayProps extends HTMLAttributes<HTMLDivElement> {
