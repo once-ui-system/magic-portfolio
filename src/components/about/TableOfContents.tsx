@@ -44,7 +44,7 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({ structure, about }) =
             }}
             position="fixed"
             paddingLeft="24" gap="32"
-            direction="column" hide="s">
+            direction="column" hide="m">
             {structure
                 .filter(section => section.display)
                 .map((section, sectionIndex) => (
@@ -56,7 +56,7 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({ structure, about }) =
                         alignItems="center"
                         onClick={() => scrollTo(section.title, 80)}>
                         <Flex
-                            height="1" width="16"
+                            height="1" minWidth="16"
                             background="neutral-strong">
                         </Flex>
                         <Text>
@@ -67,6 +67,7 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({ structure, about }) =
                         <>
                             {section.items.map((item, itemIndex) => (
                                 <Flex
+                                    hide="l"
                                     key={itemIndex}
                                     style={{ cursor: 'pointer' }}
                                     className={styles.hover}
@@ -74,7 +75,7 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({ structure, about }) =
                                     alignItems="center"
                                     onClick={() => scrollTo(item, 80)}>
                                     <Flex
-                                        height="1" width="8"
+                                        height="1" minWidth="8"
                                         background="neutral-strong">
                                     </Flex>
                                     <Text>
