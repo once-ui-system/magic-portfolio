@@ -19,6 +19,12 @@ import {
 import { routing } from "@/i18n/routing";
 import { Background, Flex } from "@/once-ui/components";
 
+import type { Viewport } from "next";
+
+export const viewport: Viewport = {
+  themeColor: "black",
+};
+
 export async function generateMetadata({
   params: { locale },
 }: {
@@ -28,17 +34,25 @@ export async function generateMetadata({
 
   return {
     metadataBase: new URL(`https://${baseURL}/${locale}`),
-    title: "Daniel Crotty | Lax Teacher",
+    title: "Daniel Crotty | The Lax Teacher",
     description:
-      "Daniel Crotty is a former college coach and 3x All-American college player. He offers private, individual, and small group lacrosse lessons",
+      "Daniel Crotty, 3x All-American and 2021 MAC Defensive Player of the Year, offers personalized lacrosse lessons for all positions, ages, and skill levels in Charlotte, NC.",
     openGraph: {
-      title: "Daniel Crotty | Lax Teacher",
+      title: "Daniel Crotty | The Lax Teacher",
       description:
-        "Daniel Crotty is a former college coach and 3x All-American college player. He offers private, individual, and small group lacrosse lessons",
-      url: baseURL,
-      siteName: "Daniel Crotty | Lax Teacher",
+        "Learn lacrosse from Daniel Crotty, a former college coach, 3x All-American, and 2021 MAC Defensive Player of the Year. Private and group lessons for all skill levels in Charlotte, NC.",
+      url: `https://${baseURL}/${locale}`,
+      siteName: "Daniel Crotty | The Lax Teacher",
       locale: "en_US",
       type: "website",
+      images: [
+        {
+          url: `https://${baseURL}/images/north_south_game.png`,
+          width: 828,
+          height: 1465,
+          alt: "Daniel Crotty teaching lacrosse players on the field",
+        },
+      ],
     },
     robots: {
       index: true,
@@ -51,6 +65,14 @@ export async function generateMetadata({
         "max-snippet": -1,
       },
     },
+    twitter: {
+      card: "summary_large_image",
+      title: "Daniel Crotty | The Lax Teacher",
+      description:
+        "Daniel Crotty, 3x All-American and 2021 MAC Defensive Player of the Year, offers personalized lacrosse lessons for all positions, ages, and skill levels in Charlotte, NC.",
+      images: [`https://${baseURL}/images/north_south_game.png`],
+    },
+    themeColor: "#1a73e8",
   };
 }
 
