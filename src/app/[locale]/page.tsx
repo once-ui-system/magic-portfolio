@@ -21,32 +21,48 @@ export async function generateMetadata({
   params: { locale: string };
 }) {
   const t = await getTranslations();
-  const { person, about, social } = renderContent(t);
-  const title = about.title;
-  const description = about.description;
-  const ogImage = `https://${baseURL}/og?title=${encodeURIComponent(title)}`;
 
   return {
-    title,
-    description,
+    metadataBase: new URL(`https://${baseURL}/${locale}`),
+    title: "Daniel Crotty | The Lax Teacher",
+    description:
+      "Daniel Crotty, 3x All-American and 2021 MAC Defensive Player of the Year, offers personalized lacrosse lessons for all positions, ages, and skill levels in Charlotte, NC.",
     openGraph: {
-      title,
-      description,
+      title: "Daniel Crotty | The Lax Teacher",
+      description:
+        "Learn lacrosse from Daniel Crotty, a former college coach, 3x All-American, and 2021 MAC Defensive Player of the Year. Private and group lessons for all skill levels in Charlotte, NC.",
+      url: `https://${baseURL}/${locale}`,
+      siteName: "Daniel Crotty | The Lax Teacher",
+      locale: "en_US",
       type: "website",
-      url: `https://${baseURL}/${locale}/about`,
       images: [
         {
-          url: ogImage,
-          alt: title,
+          url: `https://${baseURL}/images/north_south_game.png`,
+          width: 828,
+          height: 1465,
+          alt: "Daniel Crotty teaching lacrosse players on the field",
         },
       ],
     },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
+    },
     twitter: {
       card: "summary_large_image",
-      title,
-      description,
-      images: [ogImage],
+      title: "Daniel Crotty | The Lax Teacher",
+      description:
+        "Daniel Crotty, 3x All-American and 2021 MAC Defensive Player of the Year, offers personalized lacrosse lessons for all positions, ages, and skill levels in Charlotte, NC.",
+      images: [`https://${baseURL}/images/north_south_game.png`],
     },
+    themeColor: "#1a73e8",
   };
 }
 
