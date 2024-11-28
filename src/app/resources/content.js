@@ -82,20 +82,31 @@ const about = {
     title: "Introduction",
     description: (
       <>
-        Hi, I'm Dan Crotty and welcome to my page! As a former college coach and
-        3x All-American college player, I'm excited to offer private,
-        individual, and small group lacrosse lessons for boys and girls players
-        of all skill levels and ages in the Charlotte area. As a defenseman in
-        field and a forward in box, I possess a deep understanding of what it
-        takes to be elite on both sides of the ball. While coaching in college I
-        oversaw both the face-off units and goalie units which allowed me to
-        gain immense knowledge of the specialty positions and how to train them.
-        My goal is to not just teach the "how", but also the "why". My depth of
-        knowledge allows each lesson to be specifically catered to what areas
-        the athlete needs to work on to reach their goals. If you have any
-        questions or would be interested in scheduling a lesson, feel free to
-        reach out via DM (@laxteacher), phone (123-456-789), or
-        email(dcrotty4@gmail.com).
+        Hi, I'm Dan Crotty, and welcome to my page! As a former college coach,
+        3x All-American, and 2021 MAC Conference Defensive Player of the Year,
+        I'm excited to offer private, individual, and small group lacrosse
+        lessons for boys and girls of all skill levels and ages in the Charlotte
+        area. I am a proud alum of Stevens Institute of Technology, where I
+        honed my skills as a defenseman in field lacrosse. I also played as a
+        forward in box lacrosse, giving me a deep understanding of what it takes
+        to be elite on both sides of the ball.
+        <br />
+        <br />
+        While coaching in college, I oversaw both the face-off units and goalie
+        units, gaining immense knowledge of the specialty positions and how to
+        train them. I train all positions and ages, and my goal is not just to
+        teach the "how" but also the "why." My depth of knowledge allows each
+        lesson to be specifically tailored to the areas the athlete needs to
+        work on to reach their goals.
+        <br />
+        <br />
+        If you're looking to elevate your game, have questions, or are
+        interested in scheduling a lesson, feel free to reach out via DM
+        (@laxteacher), phone (123-456-789), or email (dcrotty4@gmail.com).
+        <br />
+        <br />
+        Based out of Charlotte, NC, I look forward to helping players achieve
+        their full potential!
       </>
     ),
   },
