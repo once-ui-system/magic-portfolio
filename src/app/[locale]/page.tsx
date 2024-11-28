@@ -135,7 +135,17 @@ export default function About({
             {person.languages.length > 0 && (
               <Flex wrap gap="8">
                 {person.languages.map((language, index) => (
-                  <Tag key={index} size="l">
+                  <Tag
+                    key={index}
+                    size="l"
+                    style={{
+                      width: "100%",
+                      justifyContent: "center",
+                      textAlign: "center",
+                      paddingTop: "8px",
+                      paddingBottom: "8px",
+                    }}
+                  >
                     {language}
                   </Tag>
                 ))}

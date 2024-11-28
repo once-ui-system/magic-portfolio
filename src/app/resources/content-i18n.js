@@ -10,7 +10,13 @@ const createI18nContent = (t) => {
     role: t("person.role"),
     avatar: "/images/avatar.png",
     location: "Asia/Jakarta", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
-    languages: ["English", "Bahasa"], // optional: Leave the array empty if you don't want to display languages
+    languages: [
+      "3x All American",
+      "2021 MAC Defensive Player of the Year",
+      "Former Coach @ DI Wagner College",
+      "Former Coach @ DIII Montclair State University",
+      "Former Coach @ DIII Babson College",
+    ], // optional: Leave the array empty if you don't want to display languages
   };
 
   const newsletter = {
