@@ -70,8 +70,8 @@ const home = {
 
 const about = {
   label: "About",
-  title: "About me",
-  description: `Meet ${person.name}, ${person.role} from ${person.location}`,
+  title: "LaxTeacher",
+  description: `Daniel Crotty is a private lacrosse coach based in Charlotte, NC. He offers private, individual, and small group lacrosse lessons`,
   tableOfContent: {
     display: true,
     subItems: false,
