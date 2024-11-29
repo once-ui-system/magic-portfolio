@@ -29,24 +29,24 @@ const createI18nContent = (t) => {
     // Links are automatically displayed.
     // Import new icons in /once-ui/icons.ts
     {
-      name: "GitHub",
-      icon: "github",
-      link: "https://github.com/once-ui-system/nextjs-starter",
+      name: "Instagram",
+      icon: "instagram",
+      link: "https://www.instagram.com/laxteacher/",
     },
     {
       name: "LinkedIn",
       icon: "linkedin",
-      link: "https://www.linkedin.com/company/once-ui/",
-    },
-    {
-      name: "X",
-      icon: "x",
-      link: "",
+      link: "https://www.linkedin.com/in/dcrotty35/",
     },
     {
       name: "Email",
       icon: "email",
-      link: "mailto:example@gmail.com",
+      link: "mailto:dcrotty4@gmail.com",
+    },
+    {
+      name: "Phone",
+      icon: "phone",
+      link: "tel:123-456-789",
     },
   ];
 

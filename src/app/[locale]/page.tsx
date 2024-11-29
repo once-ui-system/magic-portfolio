@@ -8,6 +8,7 @@ import {
   SmartImage,
   Tag,
   Text,
+  RevealFx,
 } from "@/once-ui/components";
 import { baseURL, renderContent } from "@/app/resources";
 import TableOfContents from "@/components/about/TableOfContents";
@@ -24,20 +25,20 @@ export async function generateMetadata({
 
   return {
     metadataBase: new URL(`https://${baseURL}/${locale}`),
-    title: "Daniel Crotty | The Lax Teacher",
+    title: "Daniel Crotty | LaxTeacher",
     description:
       "Daniel Crotty, 3x All-American and 2021 MAC Defensive Player of the Year, offers personalized lacrosse lessons for all positions, ages, and skill levels in Charlotte, NC.",
     openGraph: {
-      title: "Daniel Crotty | The Lax Teacher",
+      title: "Daniel Crotty | LaxTeacher",
       description:
         "Learn lacrosse from Daniel Crotty, a former college coach, 3x All-American, and 2021 MAC Defensive Player of the Year. Private and group lessons for all skill levels in Charlotte, NC.",
       url: `https://${baseURL}/${locale}`,
-      siteName: "Daniel Crotty | The Lax Teacher",
+      siteName: "Daniel Crotty | LaxTeacher",
       locale: "en_US",
       type: "website",
       images: [
         {
-          url: `https://${baseURL}/images/north_south_game.png`,
+          url: `https://${baseURL}/images/college_lacrosse/babson_crotty.png`,
           width: 828,
           height: 1465,
           alt: "Daniel Crotty teaching lacrosse players on the field",
@@ -57,10 +58,10 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: "Daniel Crotty | The Lax Teacher",
+      title: "Daniel Crotty | LaxTeacher",
       description:
         "Daniel Crotty, 3x All-American and 2021 MAC Defensive Player of the Year, offers personalized lacrosse lessons for all positions, ages, and skill levels in Charlotte, NC.",
-      images: [`https://${baseURL}/images/north_south_game.png`],
+      images: [`https://${baseURL}/images/college_lacrosse/babson_crotty.png`],
     },
     themeColor: "#1a73e8",
   };
@@ -132,298 +133,312 @@ export default function About({
           <TableOfContents structure={structure} about={about} />
         </Flex>
       )}
-      <Flex fillWidth mobileDirection="column" justifyContent="center">
-        {about.avatar.display && (
-          <Flex
-            minWidth="160"
-            paddingX="l"
-            paddingBottom="xl"
-            gap="m"
-            flex={3}
-            direction="column"
-            alignItems="center"
-          >
-            <Avatar src={person.avatar} size="xl" />
-            <Flex gap="8" alignItems="center">
-              <Icon onBackground="accent-weak" name="globe" />
-              Charlotte, North Carolina
-            </Flex>
-            {person.languages.length > 0 && (
-              <Flex wrap gap="8">
-                {person.languages.map((language, index) => (
-                  <Tag
-                    key={index}
-                    size="l"
-                    style={{
-                      width: "100%",
-                      justifyContent: "center",
-                      textAlign: "center",
-                      paddingTop: "8px",
-                      paddingBottom: "8px",
-                    }}
-                  >
-                    {language}
-                  </Tag>
-                ))}
-              </Flex>
-            )}
-          </Flex>
-        )}
-        <Flex
-          className={styles.blockAlign}
-          fillWidth
-          flex={9}
-          maxWidth={40}
-          direction="column"
-        >
-          <Flex
-            id={about.intro.title}
-            fillWidth
-            minHeight="160"
-            direction="column"
-            justifyContent="center"
-            marginBottom="32"
-          >
-            {about.calendar.display && (
-              <Flex
-                className={styles.blockAlign}
-                style={{
-                  backdropFilter: "blur(var(--static-space-1))",
-                  border: "1px solid var(--brand-alpha-medium)",
-                  width: "fit-content",
-                }}
-                alpha="brand-weak"
-                radius="full"
-                fillWidth
-                padding="4"
-                gap="8"
-                marginBottom="m"
-                alignItems="center"
-              >
-                <Flex paddingLeft="12">
-                  <Icon name="calendar" onBackground="brand-weak" />
-                </Flex>
-                <Flex paddingX="8">Schedule an appointment</Flex>
-                <IconButton
-                  href={about.calendar.link}
-                  data-border="rounded"
-                  variant="tertiary"
-                  icon="chevronRight"
-                />
-              </Flex>
-            )}
-            <Heading className={styles.textAlign} variant="display-strong-xl">
-              {person.name}
-            </Heading>
-            <Text
-              className={styles.textAlign}
-              variant="display-default-xs"
-              onBackground="neutral-weak"
-            >
-              {person.role}
-            </Text>
-            {social.length > 0 && (
-              <Flex
-                className={styles.blockAlign}
-                paddingTop="20"
-                paddingBottom="8"
-                gap="8"
-                wrap
-              >
-                {social.map(
-                  (item) =>
-                    item.link && (
-                      <Button
-                        key={item.name}
-                        href={item.link}
-                        prefixIcon={item.icon}
-                        label={item.name}
-                        size="s"
-                        variant="tertiary"
-                      />
-                    )
-                )}
-              </Flex>
-            )}
-          </Flex>
-
-          {about.intro.display && (
+      <RevealFx translateY="12">
+        <Flex fillWidth mobileDirection="column" justifyContent="center">
+          {about.avatar.display && (
             <Flex
-              direction="column"
-              textVariant="body-default-l"
-              fillWidth
+              minWidth="160"
+              paddingX="l"
+              paddingBottom="xl"
               gap="m"
-              marginBottom="xl"
+              flex={3}
+              direction="column"
+              alignItems="center"
             >
-              {about.intro.description}
+              <Avatar src={person.avatar} size="xl" />
+              <Flex gap="8" alignItems="center">
+                <Icon onBackground="accent-weak" name="globe" />
+                Charlotte, North Carolina
+              </Flex>
+              {person.languages.length > 0 && (
+                <Flex wrap gap="8">
+                  {person.languages.map((language, index) => (
+                    <Tag
+                      key={index}
+                      size="l"
+                      style={{
+                        width: "100%",
+                        justifyContent: "center",
+                        textAlign: "center",
+                        paddingTop: "8px",
+                        paddingBottom: "8px",
+                      }}
+                    >
+                      {language}
+                    </Tag>
+                  ))}
+                </Flex>
+              )}
             </Flex>
           )}
-
-          {about.work.display && (
-            <>
-              <Heading
-                as="h2"
-                id={about.work.title}
-                variant="display-strong-s"
-                marginBottom="m"
-              >
-                {about.work.title}
+          <Flex
+            className={styles.blockAlign}
+            fillWidth
+            flex={9}
+            maxWidth={40}
+            direction="column"
+          >
+            <Flex
+              id={about.intro.title}
+              fillWidth
+              minHeight="160"
+              direction="column"
+              justifyContent="center"
+              marginBottom="32"
+            >
+              {about.calendar.display && (
+                <Flex
+                  className={styles.blockAlign}
+                  style={{
+                    backdropFilter: "blur(var(--static-space-1))",
+                    border: "1px solid var(--brand-alpha-medium)",
+                    width: "fit-content",
+                  }}
+                  alpha="brand-weak"
+                  radius="full"
+                  fillWidth
+                  padding="4"
+                  gap="8"
+                  marginBottom="m"
+                  alignItems="center"
+                >
+                  <Flex paddingLeft="12">
+                    <Icon name="calendar" onBackground="brand-weak" />
+                  </Flex>
+                  <Flex paddingX="8">Schedule a call</Flex>
+                  <IconButton
+                    href={about.calendar.link}
+                    data-border="rounded"
+                    variant="tertiary"
+                    icon="chevronRight"
+                  />
+                </Flex>
+              )}
+              <Heading className={styles.textAlign} variant="display-strong-xl">
+                {person.name}
               </Heading>
-              <Flex direction="column" fillWidth gap="l" marginBottom="40">
-                {about.work.experiences.map((experience, index) => (
-                  <Flex
-                    key={`${experience.company}-${experience.role}-${index}`}
-                    fillWidth
-                    direction="column"
-                  >
+              <Text
+                className={styles.textAlign}
+                variant="display-default-xs"
+                onBackground="neutral-weak"
+              >
+                {person.role}
+              </Text>
+              {social.length > 0 && (
+                <Flex
+                  className={styles.blockAlign}
+                  paddingTop="20"
+                  paddingBottom="8"
+                  gap="8"
+                  wrap
+                >
+                  {social.map(
+                    (item) =>
+                      item.link && (
+                        <Button
+                          key={item.name}
+                          href={item.link}
+                          prefixIcon={item.icon}
+                          label={item.name}
+                          size="s"
+                          variant="tertiary"
+                        />
+                      )
+                  )}
+                </Flex>
+              )}
+            </Flex>
+
+            {about.intro.display && (
+              <Flex
+                direction="column"
+                textVariant="body-default-l"
+                fillWidth
+                gap="m"
+                marginBottom="xl"
+              >
+                {about.intro.description}
+              </Flex>
+            )}
+
+            {about.work.display && (
+              <>
+                <Heading
+                  as="h2"
+                  id={about.work.title}
+                  variant="display-strong-s"
+                  marginBottom="m"
+                >
+                  {about.work.title}
+                </Heading>
+                <Flex direction="column" fillWidth gap="l" marginBottom="40">
+                  {about.work.experiences.map((experience, index) => (
                     <Flex
+                      key={`${experience.company}-${experience.role}-${index}`}
                       fillWidth
-                      justifyContent="space-between"
-                      alignItems="flex-end"
-                      marginBottom="4"
+                      direction="column"
                     >
-                      <Text id={experience.company} variant="heading-strong-l">
-                        {experience.company}
+                      <Flex
+                        fillWidth
+                        justifyContent="space-between"
+                        alignItems="flex-end"
+                        marginBottom="4"
+                      >
+                        <Text
+                          id={experience.company}
+                          variant="heading-strong-l"
+                        >
+                          {experience.company}
+                        </Text>
+                        <Text
+                          variant="heading-default-xs"
+                          onBackground="neutral-weak"
+                        >
+                          {experience.timeframe}
+                        </Text>
+                      </Flex>
+                      <Text
+                        variant="body-default-s"
+                        onBackground="brand-weak"
+                        marginBottom="m"
+                      >
+                        {experience.role}
+                      </Text>
+                      <Flex as="ul" direction="column" gap="16">
+                        {experience.achievements.map(
+                          (achievement: string, index: any) => (
+                            <Text
+                              as="li"
+                              variant="body-default-m"
+                              key={`${experience.company}-${index}`}
+                            >
+                              {achievement}
+                            </Text>
+                          )
+                        )}
+                      </Flex>
+                      {experience.images.length > 0 && (
+                        <Flex fillWidth paddingTop="m" paddingLeft="40" wrap>
+                          {experience.images.map((image, index) => (
+                            <Flex
+                              key={index}
+                              border="neutral-medium"
+                              borderStyle="solid-1"
+                              radius="m"
+                              minWidth={image.width}
+                              height={image.height}
+                            >
+                              <SmartImage
+                                enlarge
+                                radius="m"
+                                sizes={image.width.toString()}
+                                alt={image.alt}
+                                src={image.src}
+                              />
+                            </Flex>
+                          ))}
+                        </Flex>
+                      )}
+                    </Flex>
+                  ))}
+                </Flex>
+              </>
+            )}
+
+            {about.studies.display && (
+              <>
+                <Heading
+                  as="h2"
+                  id={about.studies.title}
+                  variant="display-strong-s"
+                  marginBottom="m"
+                >
+                  {about.studies.title}
+                </Heading>
+                <Flex direction="column" fillWidth gap="l" marginBottom="40">
+                  {about.studies.institutions.map((institution, index) => (
+                    <Flex
+                      key={`${institution.name}-${index}`}
+                      fillWidth
+                      gap="4"
+                      direction="column"
+                    >
+                      <Text id={institution.name} variant="heading-strong-l">
+                        {institution.name}
                       </Text>
                       <Text
                         variant="heading-default-xs"
                         onBackground="neutral-weak"
                       >
-                        {experience.timeframe}
+                        {institution.description}
                       </Text>
                     </Flex>
-                    <Text
-                      variant="body-default-s"
-                      onBackground="brand-weak"
-                      marginBottom="m"
+                  ))}
+                </Flex>
+              </>
+            )}
+
+            {about.technical.display && (
+              <>
+                <Heading
+                  as="h2"
+                  id={about.technical.title}
+                  variant="display-strong-s"
+                  marginBottom="40"
+                >
+                  {about.technical.title}
+                </Heading>
+                <Flex direction="column" fillWidth gap="l">
+                  {about.technical.skills.map((skill, index) => (
+                    <Flex
+                      key={`${skill}-${index}`}
+                      fillWidth
+                      gap="4"
+                      direction="column"
                     >
-                      {experience.role}
-                    </Text>
-                    <Flex as="ul" direction="column" gap="16">
-                      {experience.achievements.map(
-                        (achievement: string, index: any) => (
-                          <Text
-                            as="li"
-                            variant="body-default-m"
-                            key={`${experience.company}-${index}`}
-                          >
-                            {achievement}
-                          </Text>
-                        )
+                      <Text variant="heading-strong-l">{skill.title}</Text>
+                      <Text
+                        variant="body-default-m"
+                        onBackground="neutral-weak"
+                      >
+                        {skill.description}
+                      </Text>
+                      {skill.images.length > 0 && (
+                        <Flex
+                          fillWidth
+                          paddingTop="m"
+                          gap="12"
+                          wrap
+                          justifyContent="center"
+                        >
+                          {skill.images.map((image, index) => (
+                            <Flex
+                              key={index}
+                              border="neutral-medium"
+                              borderStyle="solid-1"
+                              radius="m"
+                              minWidth={image.width}
+                              height={image.height}
+                            >
+                              <SmartImage
+                                enlarge
+                                radius="m"
+                                sizes={image.width.toString()}
+                                alt={image.alt}
+                                src={image.src}
+                              />
+                            </Flex>
+                          ))}
+                        </Flex>
                       )}
                     </Flex>
-                    {experience.images.length > 0 && (
-                      <Flex fillWidth paddingTop="m" paddingLeft="40" wrap>
-                        {experience.images.map((image, index) => (
-                          <Flex
-                            key={index}
-                            border="neutral-medium"
-                            borderStyle="solid-1"
-                            radius="m"
-                            minWidth={image.width}
-                            height={image.height}
-                          >
-                            <SmartImage
-                              enlarge
-                              radius="m"
-                              sizes={image.width.toString()}
-                              alt={image.alt}
-                              src={image.src}
-                            />
-                          </Flex>
-                        ))}
-                      </Flex>
-                    )}
-                  </Flex>
-                ))}
-              </Flex>
-            </>
-          )}
-
-          {about.studies.display && (
-            <>
-              <Heading
-                as="h2"
-                id={about.studies.title}
-                variant="display-strong-s"
-                marginBottom="m"
-              >
-                {about.studies.title}
-              </Heading>
-              <Flex direction="column" fillWidth gap="l" marginBottom="40">
-                {about.studies.institutions.map((institution, index) => (
-                  <Flex
-                    key={`${institution.name}-${index}`}
-                    fillWidth
-                    gap="4"
-                    direction="column"
-                  >
-                    <Text id={institution.name} variant="heading-strong-l">
-                      {institution.name}
-                    </Text>
-                    <Text
-                      variant="heading-default-xs"
-                      onBackground="neutral-weak"
-                    >
-                      {institution.description}
-                    </Text>
-                  </Flex>
-                ))}
-              </Flex>
-            </>
-          )}
-
-          {about.technical.display && (
-            <>
-              <Heading
-                as="h2"
-                id={about.technical.title}
-                variant="display-strong-s"
-                marginBottom="40"
-              >
-                {about.technical.title}
-              </Heading>
-              <Flex direction="column" fillWidth gap="l">
-                {about.technical.skills.map((skill, index) => (
-                  <Flex
-                    key={`${skill}-${index}`}
-                    fillWidth
-                    gap="4"
-                    direction="column"
-                  >
-                    <Text variant="heading-strong-l">{skill.title}</Text>
-                    <Text variant="body-default-m" onBackground="neutral-weak">
-                      {skill.description}
-                    </Text>
-                    {skill.images.length > 0 && (
-                      <Flex fillWidth paddingTop="m" gap="12" wrap>
-                        {skill.images.map((image, index) => (
-                          <Flex
-                            key={index}
-                            border="neutral-medium"
-                            borderStyle="solid-1"
-                            radius="m"
-                            minWidth={image.width}
-                            height={image.height}
-                          >
-                            <SmartImage
-                              enlarge
-                              radius="m"
-                              sizes={image.width.toString()}
-                              alt={image.alt}
-                              src={image.src}
-                            />
-                          </Flex>
-                        ))}
-                      </Flex>
-                    )}
-                  </Flex>
-                ))}
-              </Flex>
-            </>
-          )}
+                  ))}
+                </Flex>
+              </>
+            )}
+          </Flex>
         </Flex>
-      </Flex>
+      </RevealFx>
     </Flex>
   );
 }
