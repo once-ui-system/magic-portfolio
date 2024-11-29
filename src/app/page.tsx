@@ -13,8 +13,6 @@ import {
 import { baseURL, renderContent } from "@/app/resources";
 import TableOfContents from "@/components/about/TableOfContents";
 import styles from "@/components/about/about.module.scss";
-import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
-import { useTranslations } from "next-intl";
 
 export async function generateMetadata({
   params: { locale },
@@ -69,9 +67,7 @@ export default function About({
 }: {
   params: { locale: string };
 }) {
-  unstable_setRequestLocale(locale);
-  const t = useTranslations();
-  const { person, about, social } = renderContent(t);
+  const { person, about, social } = renderContent("en");
   const structure = [
     {
       title: about.intro.title,

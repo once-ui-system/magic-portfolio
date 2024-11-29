@@ -9,14 +9,6 @@ import { baseURL, effects, style } from "@/app/resources";
 import { Inter } from "next/font/google";
 import { Source_Code_Pro } from "next/font/google";
 
-import { NextIntlClientProvider } from "next-intl";
-import {
-  getMessages,
-  getTranslations,
-  unstable_setRequestLocale,
-} from "next-intl/server";
-
-import { routing } from "@/i18n/routing";
 import { Background, Flex } from "@/once-ui/components";
 
 export async function generateMetadata({
@@ -24,8 +16,6 @@ export async function generateMetadata({
 }: {
   params: { locale: string };
 }) {
-  const t = await getTranslations();
-
   return {
     metadataBase: new URL(`https://${baseURL}/${locale}`),
     title: "Daniel Crotty | LaxTeacher",
@@ -99,75 +89,58 @@ interface RootLayoutProps {
   params: { locale: string };
 }
 
-export function generateStaticParams() {
-  return routing.locales.map((locale) => ({ locale }));
-}
-
-export default async function RootLayout({
-  children,
-  params: { locale },
-}: RootLayoutProps) {
-  unstable_setRequestLocale(locale);
-  const messages = await getMessages();
+export default async function RootLayout({ children }: RootLayoutProps) {
   return (
-    <NextIntlClientProvider messages={messages}>
-      <head>
-        <link
-          rel="apple-touch-icon"
-          href="/images/college_lacrosse/babson_crotty.png"
-        />
-      </head>
+    <Flex
+      as="html"
+      lang="en"
+      background="page"
+      data-neutral={style.neutral}
+      data-brand={style.brand}
+      data-accent={style.accent}
+      data-solid={style.solid}
+      data-solid-style={style.solidStyle}
+      data-theme={style.theme}
+      data-border={style.border}
+      data-surface={style.surface}
+      data-transition={style.transition}
+      className={classNames(
+        primary.variable,
+        secondary ? secondary.variable : "",
+        tertiary ? tertiary.variable : "",
+        code.variable
+      )}
+    >
       <Flex
-        as="html"
-        lang="en"
-        background="page"
-        data-neutral={style.neutral}
-        data-brand={style.brand}
-        data-accent={style.accent}
-        data-solid={style.solid}
-        data-solid-style={style.solidStyle}
-        data-theme={style.theme}
-        data-border={style.border}
-        data-surface={style.surface}
-        data-transition={style.transition}
-        className={classNames(
-          primary.variable,
-          secondary ? secondary.variable : "",
-          tertiary ? tertiary.variable : "",
-          code.variable
-        )}
+        style={{ minHeight: "100vh" }}
+        as="body"
+        fillWidth
+        margin="0"
+        padding="0"
+        direction="column"
       >
+        <Background
+          mask={effects.mask as any}
+          gradient={effects.gradient as any}
+          dots={effects.dots as any}
+          lines={effects.lines as any}
+        />
+        <Flex fillWidth minHeight="16"></Flex>
+        <Header />
         <Flex
-          style={{ minHeight: "100vh" }}
-          as="body"
+          zIndex={0}
           fillWidth
-          margin="0"
-          padding="0"
-          direction="column"
+          paddingY="l"
+          paddingX="l"
+          justifyContent="center"
+          flex={1}
         >
-          <Background
-            mask={effects.mask as any}
-            gradient={effects.gradient as any}
-            dots={effects.dots as any}
-            lines={effects.lines as any}
-          />
-          <Flex fillWidth minHeight="16"></Flex>
-          <Header />
-          <Flex
-            zIndex={0}
-            fillWidth
-            paddingY="l"
-            paddingX="l"
-            justifyContent="center"
-            flex={1}
-          >
-            <Flex justifyContent="center" fillWidth minHeight="0">
-              <RouteGuard>{children}</RouteGuard>
-            </Flex>
+          <Flex justifyContent="center" fillWidth minHeight="0">
+            <RouteGuard>{children}</RouteGuard>
           </Flex>
-          <Footer />
         </Flex>
+        <Footer />
       </Flex>
-    </NextIntlClientProvider>
+    </Flex>
   );
 }
