@@ -31,9 +31,9 @@ export async function generateMetadata({
       type: "website",
       images: [
         {
-          url: `https://${baseURL}/images/college_lacrosse/babson_crotty.png`,
-          width: 1200,
-          height: 630,
+          url: `https://${baseURL}/images/north_south_game.png`,
+          width: 828,
+          height: 1465,
           alt: "Daniel Crotty teaching lacrosse players on the field",
         },
       ],
