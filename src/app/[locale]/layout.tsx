@@ -19,12 +19,6 @@ import {
 import { routing } from "@/i18n/routing";
 import { Background, Flex } from "@/once-ui/components";
 
-import type { Viewport } from "next";
-
-export const viewport: Viewport = {
-  themeColor: "black",
-};
-
 export async function generateMetadata({
   params: { locale },
 }: {
@@ -72,7 +66,6 @@ export async function generateMetadata({
         "Daniel Crotty, 3x All-American and 2021 MAC Defensive Player of the Year, offers personalized lacrosse lessons for all positions, ages, and skill levels in Charlotte, NC.",
       images: [`https://${baseURL}/images/college_lacrosse/babson_crotty.png`],
     },
-    themeColor: "#1a73e8",
   };
 }
 
@@ -118,6 +111,12 @@ export default async function RootLayout({
   const messages = await getMessages();
   return (
     <NextIntlClientProvider messages={messages}>
+      <head>
+        <link
+          rel="apple-touch-icon"
+          href="/images/college_lacrosse/babson_crotty.png"
+        />
+      </head>
       <Flex
         as="html"
         lang="en"

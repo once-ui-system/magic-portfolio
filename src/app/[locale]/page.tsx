@@ -21,8 +21,6 @@ export async function generateMetadata({
 }: {
   params: { locale: string };
 }) {
-  const t = await getTranslations();
-
   return {
     metadataBase: new URL(`https://${baseURL}/${locale}`),
     title: "Daniel Crotty | LaxTeacher",
@@ -63,7 +61,6 @@ export async function generateMetadata({
         "Daniel Crotty, 3x All-American and 2021 MAC Defensive Player of the Year, offers personalized lacrosse lessons for all positions, ages, and skill levels in Charlotte, NC.",
       images: [`https://${baseURL}/images/college_lacrosse/babson_crotty.png`],
     },
-    themeColor: "#1a73e8",
   };
 }
 
@@ -110,7 +107,7 @@ export default function About({
             jobTitle: person.role,
             description: about.intro.description,
             url: `https://${baseURL}/about`,
-            image: `${baseURL}/images/${person.avatar}`,
+            image: `${baseURL}/images/avatar.png`,
             sameAs: social
               .filter((item) => item.link && !item.link.startsWith("mailto:")) // Filter out empty links and email links
               .map((item) => item.link),
