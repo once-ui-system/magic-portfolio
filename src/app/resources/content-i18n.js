@@ -11,8 +11,6 @@ const createI18nContent = (t) => {
     avatar: "/images/avatar.png",
     location: "Asia/Jakarta", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
     languages: [
-      "3x All American",
-      "2021 MAC Defensive Player of the Year",
       "Former Coach @ DI Wagner College",
       "Former Coach @ DIII Montclair State University",
       "Former Coach @ DIII Babson College",
