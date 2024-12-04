@@ -73,7 +73,7 @@ const createI18nContent = (t) => {
     },
     calendar: {
       display: true,
-      link: "https://cal.com",
+      link: "http://calendly.com/laxteacher",
     },
     intro: {
       display: true,

@@ -74,7 +74,7 @@ const about = {
   },
   calendar: {
     display: true,
-    link: "https://cal.com",
+    link: "http://calendly.com/laxteacher",
   },
   intro: {
     display: true,
@@ -290,27 +290,10 @@ const about = {
             <h4>Individual Accolades</h4>
             <ul>
               <li>2021 MAC Freedom Defensive Player of the Year</li>
-              <li>2021 Division 3 North South Game Participant</li>
-              <li>2021 3rd Team USILA All-American</li>
-              <li>2021 3rd Team USA Lax Magazine All-American</li>
-              <li>2021 USILA 3rd Team Preseason All-American</li>
-              <li>2021 1st Team All-MAC Freedom</li>
-              <li>2021 All-MAC Academic Team Men's Lacrosse</li>
-              <li>2021 MAC Spring Honor Roll</li>
-              <li>2021 Team Defensive MVP</li>
-              <li>2021 Team Leader; Caused Turnovers</li>
-              <li>2020 Academic All-American</li>
-              <li>2020 Team Defensive MVP</li>
-              <li>2020 Inside Lacrosse Honorable Mention Media All-American</li>
-              <li>2020 MAC Spring Honor Roll</li>
-              <li>2020 Team Leader; Caused Turnovers & GBs</li>
-              <li>2019 USILA 3rd Team Preseason All-American</li>
-              <li>2018 USILA Honorable Mention All-American</li>
-              <li>2018 IMCLA 2nd Team All-East Region</li>
-              <li>2018 1st Team All-Empire 8</li>
-              <li>2018 Team Leader; Caused Turnovers & GBs</li>
-              <li>2017 2nd Team All-Empire 8</li>
-              <li>2017 Starzenski Award Winner</li>
+              <li>3x All-American</li>
+              <li>Academic All-American</li>
+              <li>3x All conference</li>
+              <li>20+ additional collegiate accolades</li>
             </ul>
           </>
         ),
