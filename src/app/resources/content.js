@@ -277,17 +277,17 @@ const about = {
         title: "Statistics",
         description: (
           <>
-            <h4>Captain Season</h4>
+            <h4>Career Statistics</h4>
             <ul>
-              <li>40 Caused Turnovers</li>
-              <li>79 Ground Balls</li>
-              <li>22 Games Played</li>
-              <li>22 Games Started</li>
-              <li>2 Goals</li>
-              <li>1 Assist</li>
+              <li>107 Caused Turnovers</li>
+              <li>201 Ground Balls</li>
+              <li>3 Goals</li>
+              <li>2 Assist</li>
+              <li>56 Games Started</li>
+              <li>75 Games Played</li>
             </ul>
             <br />
-            <h4>individual Accolades</h4>
+            <h4>Individual Accolades</h4>
             <ul>
               <li>2021 MAC Freedom Defensive Player of the Year</li>
               <li>2021 Division 3 North South Game Participant</li>
