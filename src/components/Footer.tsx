@@ -38,6 +38,9 @@ export const Footer = () => {
               Once UI
             </SmartLink>
           </Text>
+          <SmartLink href="https://verselabs.io">
+            Powered by Verse Labs
+          </SmartLink>
         </Text>
         <Flex gap="16">
           {social.map(
@@ -51,7 +54,7 @@ export const Footer = () => {
                   size="s"
                   variant="ghost"
                 />
-              )
+              ),
           )}
         </Flex>
       </Flex>
