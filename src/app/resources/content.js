@@ -292,7 +292,7 @@ const about = {
               <li>2021 MAC Freedom Defensive Player of the Year</li>
               <li>3x All-American</li>
               <li>Academic All-American</li>
-              <li>3x All conference</li>
+              <li>3x All Conference</li>
               <li>20+ additional collegiate accolades</li>
             </ul>
           </>
