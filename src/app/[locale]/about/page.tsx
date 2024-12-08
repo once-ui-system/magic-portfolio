@@ -347,7 +347,7 @@ export default function About(
                                             onBackground="neutral-weak">
                                             {skill.description}
                                         </Text>
-                                        {skill.images.length > 0 && (
+                                        {skill.images && skill.images.length > 0 && (
                                             <Flex
                                                 fillWidth paddingTop="m" gap="12"
                                                 wrap>
