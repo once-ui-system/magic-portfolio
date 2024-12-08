@@ -80,9 +80,9 @@ export default function Home(
 				paddingY="l" gap="m">
 					<Flex
 						direction="column"
-						fillWidth maxWidth="s" gap="m">
+						fillWidth maxWidth="s">
 						<RevealFx
-							translateY="4">
+							translateY="4" fillWidth justifyContent="flex-start" paddingBottom="m">
 							<Heading
 								wrap="balance"
 								variant="display-strong-l">
@@ -90,15 +90,13 @@ export default function Home(
 							</Heading>
 						</RevealFx>
 						<RevealFx
-							translateY="8" delay={0.2}>
-							<Flex fillWidth>
-								<Text
-									wrap="balance"
-									onBackground="neutral-weak"
-									variant="heading-default-xl">
-									{home.subline}
-								</Text>
-							</Flex>
+							translateY="8" delay={0.2} fillWidth justifyContent="flex-start" paddingBottom="m">
+							<Text
+								wrap="balance"
+								onBackground="neutral-weak"
+								variant="heading-default-xl">
+								{home.subline}
+							</Text>
 						</RevealFx>
 						<RevealFx translateY="12" delay={0.4}>
 							<Flex fillWidth>

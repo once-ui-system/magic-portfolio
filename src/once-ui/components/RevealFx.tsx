@@ -5,7 +5,7 @@ import { SpacingToken } from '../types';
 import styles from './RevealFx.module.scss';
 import { Flex } from '.';
 
-interface RevealFxProps extends React.HTMLAttributes<HTMLDivElement> {
+interface RevealFxProps extends React.ComponentProps<typeof Flex> {
 	children: React.ReactNode;
 	speed?: 'slow' | 'medium' | 'fast';
 	delay?: number;
