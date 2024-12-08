@@ -108,6 +108,7 @@ export default function About(
                 mobileDirection="column" justifyContent="center">
                 { about.avatar.display && (
                     <Flex
+                        className={styles.avatar}
                         minWidth="160" paddingX="l" paddingBottom="xl" gap="m"
                         flex={3} direction="column" alignItems="center">
                         <Avatar
