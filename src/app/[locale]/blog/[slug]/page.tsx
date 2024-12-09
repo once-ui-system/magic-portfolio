@@ -21,7 +21,7 @@ export async function generateStaticParams() {
 	const locales = routing.locales;
     
     // Create an array to store all posts from all locales
-    const allPosts = [];
+    const allPosts: { slug: string; locale: string }[] = [];
 
     // Fetch posts for each locale
     for (const locale of locales) {

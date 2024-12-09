@@ -16,11 +16,11 @@ interface WorkParams {
     };
 }
 
-export async function generateStaticParams() {
+export async function generateStaticParams(): Promise<{ slug: string; locale: string }[]> {
 	const locales = routing.locales;
     
     // Create an array to store all posts from all locales
-    const allPosts = [];
+    const allPosts: { slug: string; locale: string }[] = [];
 
     // Fetch posts for each locale
     for (const locale of locales) {
