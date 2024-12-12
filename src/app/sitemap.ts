@@ -1,5 +1,5 @@
 import { getPosts } from '@/app/utils/utils'
-import { baseURL } from '@/app/resources'
+import { baseURL, routes as routesConfig } from '@/app/resources'
 import { routing } from '@/i18n/routing'
 
 export default async function sitemap() {
@@ -20,8 +20,10 @@ export default async function sitemap() {
         }))
     );
 
+    const activeRoutes  = Object.keys(routesConfig).filter((route) => routesConfig[route]);
+
     let routes = locales.flatMap((locale)=> 
-        ['', '/blog', '/work'].map((route) => ({
+        activeRoutes.map((route) => ({
             url: `${baseURL}/${locale}${route}`,
             lastModified: new Date().toISOString().split('T')[0],
         }))
