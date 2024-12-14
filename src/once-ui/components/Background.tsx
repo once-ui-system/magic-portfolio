@@ -182,7 +182,7 @@ const Background = forwardRef<HTMLDivElement, BackgroundProps>(
                         style={{
                             ...commonStyles,
                             opacity: dots.opacity,
-                            backgroundImage: `radial-gradient(var(--${dotsColor}) 0.5px, var(--static-transparent) 0.5px)`,
+                            backgroundImage: `radial-gradient(var(--${dotsColor}) 0.5px, var(--static-transparent) 1px)`,
                             backgroundSize: `var(--static-space-${dotsSize}) var(--static-space-${dotsSize})`,
                             ...maskStyle(),
                         }}
