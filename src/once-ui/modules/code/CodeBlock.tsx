@@ -9,10 +9,7 @@ import { Flex, Button, IconButton, DropdownWrapper } from '@/once-ui/components'
 
 import Prism from 'prismjs';
 import 'prismjs/plugins/line-highlight/prism-line-highlight';
-import 'prismjs/components/prism-jsx';
-import 'prismjs/components/prism-css';
-import 'prismjs/components/prism-typescript';
-import 'prismjs/components/prism-tsx';
+import 'prismjs/components/';
 
 type CodeInstance = {
     code: string;
@@ -46,11 +43,15 @@ const CodeBlock: React.FC<CodeBlockProps> = ({
     const { code, language, label } = codeInstances[selectedInstance] || { code: '', language: '', label: 'Select Code' };
 
     const [copyIcon, setCopyIcon] = useState<string>('clipboard');
+    const [isExpanded, setIsExpanded] = useState(false);
+    const [showExpandButton, setShowExpandButton] = useState(false);
 
     useEffect(() => {
         if (codeRef.current && codeInstances.length > 0) {
             Prism.highlightAll();
         }
+        const lineCount = code.split('\n').length;
+        setShowExpandButton(lineCount > 8);
     }, [code, codeInstances.length]);
 
     const handleCopy = () => {
@@ -76,6 +77,10 @@ const CodeBlock: React.FC<CodeBlockProps> = ({
         }
     };
 
+    const toggleExpand = () => {
+        setIsExpanded(prev => !prev);
+    };
+
     return (
         <Flex
             position="relative" zIndex={0}
@@ -87,11 +92,12 @@ const CodeBlock: React.FC<CodeBlockProps> = ({
             {(codeInstances.length > 1 || copyButton && !compact) && (
                 <Flex
                     style={{
-                        borderBottom: '1px solid var(--neutral-border-medium)'
+                        borderBottom: '1px solid var(--neutral-border-medium)',
                     }}
                     zIndex={2}
                     fillWidth padding="8"
-                    justifyContent="space-between">
+                    justifyContent="space-between"
+                    alignItems="center">
                     {codeInstances.length > 1 ? (
                         <Flex>
                             <DropdownWrapper
@@ -109,17 +115,30 @@ const CodeBlock: React.FC<CodeBlockProps> = ({
                                     size="s"
                                     label={label}
                                     suffixIcon="chevronDown"
-                                    variant="tertiary"/>
+                                    variant="tertiary"
+                                />
                             </DropdownWrapper>
                         </Flex>
-                    ) : <div/>}
-                    {(copyButton && !compact) && 
-                        <IconButton
-                            tooltip="Copy"
-                            variant="secondary"
-                            onClick={handleCopy}
-                            icon={copyIcon}/>
-                    }
+                    ) : <div />}
+                    <Flex gap="8">
+                        {(copyButton && !compact) && 
+                            <IconButton
+                                tooltip="Copy"
+                                variant="secondary"
+                                onClick={handleCopy}
+                                icon={copyIcon}
+                            />
+                        }
+                        {(showExpandButton && !compact) && 
+                            <IconButton
+                                aria-label={isExpanded ? 'Collapse' : 'Expand'}
+                                onClick={toggleExpand}
+                                icon={isExpanded ? 'chevronUp' : 'chevronDown'}
+                                size="m"
+                                variant="secondary"
+                            />
+                        }
+                    </Flex>
                 </Flex>
             )}
             {codePreview && (
@@ -141,7 +160,9 @@ const CodeBlock: React.FC<CodeBlockProps> = ({
                     style={{
                         borderTop: (!compact && codePreview) ?
                         '1px solid var(--neutral-border-medium)' : 
-                        'none'
+                        'none',
+                        maxHeight: isExpanded ? 'none' : '150px',
+                        overflow: 'hidden',
                     }}
                     fillWidth padding="8"
                     position="relative" overflowY="auto">
@@ -159,6 +180,23 @@ const CodeBlock: React.FC<CodeBlockProps> = ({
                                 icon={copyIcon}
                                 size="m"
                                 variant="secondary"/>
+                        </Flex>
+                    }
+                    {compact && showExpandButton &&
+                        <Flex
+                            zIndex={1}
+                            style={{
+                                right: 'var(--static-space-8)',
+                                bottom: 'var(--static-space-8)',
+                            }}
+                            position="absolute">
+                            <IconButton
+                                aria-label={isExpanded ? 'Collapse' : 'Expand'}
+                                onClick={toggleExpand}
+                                icon={isExpanded ? 'chevronUp' : 'chevronDown'}
+                                size="m"
+                                variant="secondary"
+                            />
                         </Flex>
                     }
                     <pre
