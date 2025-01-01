@@ -129,7 +129,7 @@ const CodeBlock: React.FC<CodeBlockProps> = ({
                                 icon={copyIcon}
                             />
                         }
-                        {showExpandButton && (
+                        {(showExpandButton && !compact) && 
                             <IconButton
                                 aria-label={isExpanded ? 'Collapse' : 'Expand'}
                                 onClick={toggleExpand}
@@ -137,7 +137,7 @@ const CodeBlock: React.FC<CodeBlockProps> = ({
                                 size="m"
                                 variant="secondary"
                             />
-                        )}
+                        }
                     </Flex>
                 </Flex>
             )}
