@@ -5,18 +5,19 @@
 
 ul, ol {
     margin: 0;
-    padding: 0 0 0 var(--static-space-12);
+    padding: 0 0 0 var(--static-space-24);
     line-height: 150%;
 }
 
 li {
     padding: 0;
-    list-style-position: inside;
+    line-height: 175%;
     font-size: inherit;
     color: inherit;
+    margin-bottom: var(--static-space-12);
+    padding-left: var(--static-space-8);
 
     &::marker {
-        margin-right: var(--static-space-4);
         color: var(--brand-on-background-weak);
     }
 }

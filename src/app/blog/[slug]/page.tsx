@@ -76,8 +76,8 @@ export default function Blog({ params }: BlogParams) {
 
 	return (
 		<Flex as="section"
-			fillWidth maxWidth="m"
-			direction="column" alignItems="center"
+			fillWidth maxWidth="xs"
+			direction="column"
 			gap="l">
 			<script
 				type="application/ld+json"

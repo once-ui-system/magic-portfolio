@@ -112,7 +112,7 @@ function createHeading(level: 1 | 2 | 3 | 4 | 5 | 6) {
 
 function createParagraph({ children }: TextProps) {
     return (
-        <Text style={{lineHeight: '150%'}}
+        <Text style={{lineHeight: '175%'}}
             variant="body-default-m"
             onBackground="neutral-medium"
             marginTop="8"
