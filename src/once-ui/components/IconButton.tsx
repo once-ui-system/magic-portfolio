@@ -1,118 +1,118 @@
-'use client';
+"use client";
 
-import React, { forwardRef, useState, useEffect, ReactNode } from 'react';
-import Link from 'next/link';
-
-import { Icon, Tooltip } from '.';
-import buttonStyles from './Button.module.scss';
-import iconStyles from './IconButton.module.scss';
+import React, { forwardRef, useState, useEffect, ReactNode } from "react";
+import { ElementType } from "./ElementType";
+import { Flex, Icon, Tooltip } from ".";
+import buttonStyles from "./Button.module.scss";
+import iconStyles from "./IconButton.module.scss";
+import classNames from "classnames";
 
 interface CommonProps {
-    icon?: string;
-    size?: 's' | 'm' | 'l';
-    tooltip?: string;
-    tooltipPosition?: 'top' | 'bottom' | 'left' | 'right';
-    variant?: 'primary' | 'secondary' | 'tertiary' | 'danger' | 'ghost';
-    className?: string;
-    style?: React.CSSProperties;
-    href?: string;
-    children?: ReactNode;
+  icon?: string;
+  id?: string;
+  size?: "s" | "m" | "l";
+  radius?:
+    | "none"
+    | "top"
+    | "right"
+    | "bottom"
+    | "left"
+    | "top-left"
+    | "top-right"
+    | "bottom-right"
+    | "bottom-left";
+  tooltip?: string;
+  tooltipPosition?: "top" | "bottom" | "left" | "right";
+  variant?: "primary" | "secondary" | "tertiary" | "danger" | "ghost";
+  className?: string;
+  style?: React.CSSProperties;
+  href?: string;
+  children?: ReactNode;
 }
 
 export type IconButtonProps = CommonProps & React.ButtonHTMLAttributes<HTMLButtonElement>;
-export type AnchorProps = CommonProps & React.AnchorHTMLAttributes<HTMLAnchorElement>;
+type AnchorProps = CommonProps & React.AnchorHTMLAttributes<HTMLAnchorElement>;
 
-const isExternalLink = (url: string) => /^https?:\/\//.test(url);
-
-const IconButton = forwardRef<HTMLButtonElement, IconButtonProps | AnchorProps>(({
-    icon = 'refresh',
-    size = 'm',
-    tooltip,
-    tooltipPosition = 'top',
-    variant = 'primary',
-    className,
-    style,
-    href,
-    children,
-    ...props
-}, ref) => {
+const IconButton = forwardRef<HTMLButtonElement, IconButtonProps | AnchorProps>(
+  (
+    {
+      icon = "refresh",
+      size = "m",
+      id,
+      radius,
+      tooltip,
+      tooltipPosition = "top",
+      variant = "primary",
+      href,
+      children,
+      className,
+      style,
+      ...props
+    },
+    ref,
+  ) => {
     const [isTooltipVisible, setTooltipVisible] = useState(false);
     const [isHover, setIsHover] = useState(false);
 
     useEffect(() => {
-        let timer: NodeJS.Timeout;
-        if (isHover) {
-            timer = setTimeout(() => {
-                setTooltipVisible(true);
-            }, 400);
-        } else {
-            setTooltipVisible(false);
-        }
+      let timer: NodeJS.Timeout;
+      if (isHover) {
+        timer = setTimeout(() => {
+          setTooltipVisible(true);
+        }, 400);
+      } else {
+        setTooltipVisible(false);
+      }
 
-        return () => clearTimeout(timer);
+      return () => clearTimeout(timer);
     }, [isHover]);
 
     const content = (
-        <>
-            {children ? (
-                children
-            ) : (
-                <Icon name={icon} size="s" />
-            )}
-            {tooltip && isTooltipVisible && (
-                <div style={{ position: "absolute" }} className={iconStyles[tooltipPosition]}>
-                    <Tooltip label={tooltip} />
-                </div>
-            )}
-        </>
+      <>
+        {children ? children : <Icon name={icon} size="s" />}
+        {tooltip && isTooltipVisible && (
+          <Flex position="absolute" zIndex={1} className={iconStyles[tooltipPosition]}>
+            <Tooltip label={tooltip} />
+          </Flex>
+        )}
+      </>
     );
 
-    const commonProps = {
-        className: `${buttonStyles.button} ${buttonStyles[variant]} ${iconStyles[size]} ${className || ''}`,
-        style: { ...style },
-        onMouseEnter: () => setIsHover(true),
-        onMouseLeave: () => setIsHover(false),
-        'aria-label': tooltip || icon,
-    };
-
-    if (href) {
-        const isExternal = isExternalLink(href);
-
-        if (isExternal) {
-            return (
-                <a
-                    href={href}
-                    ref={ref as React.Ref<HTMLAnchorElement>}
-                    target="_blank"
-                    rel="noreferrer"
-                    {...commonProps}
-                    {...(props as React.AnchorHTMLAttributes<HTMLAnchorElement>)}>
-                    {content}
-                </a>
-            );
-        }
-
-        return (
-            <Link
-                href={href}
-                ref={ref as React.Ref<HTMLAnchorElement>}
-                {...commonProps}
-                {...(props as React.AnchorHTMLAttributes<HTMLAnchorElement>)}>
-                {content}
-            </Link>
-        );
-    }
+    const radiusSize = size === "s" || size === "m" ? "m" : "l";
 
     return (
-        <button
-            ref={ref as React.Ref<HTMLButtonElement>}
-            {...commonProps}
-            {...(props as React.ButtonHTMLAttributes<HTMLButtonElement>)}>
-            {content}
-        </button>
+      <ElementType
+        id={id}
+        href={href}
+        ref={ref}
+        className={classNames(
+          buttonStyles.button,
+          buttonStyles[variant],
+          iconStyles[size],
+          className,
+          radius === "none"
+            ? "radius-none"
+            : radius
+              ? `radius-${radiusSize}-${radius}`
+              : `radius-${radiusSize}`,
+          "text-decoration-none",
+          "button",
+          "cursor-interactive",
+          className,
+        )}
+        style={style}
+        onMouseEnter={() => setIsHover(true)}
+        onMouseLeave={() => setIsHover(false)}
+        aria-label={tooltip || icon}
+        {...props}
+      >
+        <Flex fill justifyContent="center" alignItems="center">
+          {content}
+        </Flex>
+      </ElementType>
     );
-});
+  },
+);
 
-IconButton.displayName = 'IconButton';
-
+IconButton.displayName = "IconButton";
 export { IconButton };

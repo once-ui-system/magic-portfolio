@@ -1,0 +1,26 @@
+.overlay {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    pointer-events: none;
+}
+
+.holoFx {
+    &:hover {
+        .burn {
+            transform: translateX(1px) translateY(1px);
+            opacity: var(--burn-opacity);
+        }
+
+        .light {
+            transform: translateX(-1px) translateY(-1px);
+            opacity: var(--light-opacity);
+        }
+
+        .texture {
+            opacity: var(--texture-opacity);
+            transform: translateX(calc(var(--gradient-pos-x) / 50)) scale(1.1);
+            background-size: 150% 150%;
+            background-position: center;
+        }
+    }
+}

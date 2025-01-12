@@ -1,21 +1,17 @@
 .button {
-    width: 100%;
     display: flex;
-    justify-content: center;
     align-items: center;
     gap: var(--static-space-8);
-    border-radius: var(--radius-m);
-    border-color: var(--static-transparent);
     border-width: 1px;
     border-style: solid;
     background: var(--static-transparent);
     color: var(--neutral-on-background-strong);
     transition: var(--transition-micro-medium);
-    cursor: pointer;
+    cursor: var(--cursor-interactive);
 	user-select: none;
     white-space: nowrap;
   
-    &:hover {
+    &:hover, &:focus {
         background: var(--neutral-alpha-weak);
         border-color: var(--neutral-alpha-medium);
     }
@@ -34,48 +30,28 @@
     }
 }
 
-.labelWrapper {
-    display: flex;
-    align-items: center;
-    gap: var(--static-space-8);
-    max-width: 100%;
-}
-
-.label {
-    padding: var(--static-space-4) var(--static-space-4);
-}
-
 .s {
+    height: var(--static-space-24);
+    min-height: var(--static-space-24);
     padding: var(--static-space-2) var(--static-space-8);
 }
 
 .m {
+    height: var(--static-space-32);
+    min-height: var(--static-space-32);
     padding: var(--static-space-4) var(--static-space-12);
 }
   
 .l {
+    height: var(--static-space-40);
+    min-height: var(--static-space-40);
     padding: var(--static-space-8) var(--static-space-16);
 }
 
-.start {
-    justify-content: flex-start;
-}
-  
-.center {
-    justify-content: center;
-}
-  
-.fit {
-    width: auto;
-}
-  
-.fill {
-    width: 100%;
+.ghost {
+    border-color: var(--static-transparent);
 }
 
-.truncate {
-    width: 100%;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
+.outline {
+    border-color: var(--neutral-alpha-medium);
 }

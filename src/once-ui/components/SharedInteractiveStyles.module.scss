@@ -1,5 +1,5 @@
 .container {
-    cursor: pointer;
+    cursor: var(--cursor-interactive);
     isolation: isolate;
 
     &:hover, &:focus {

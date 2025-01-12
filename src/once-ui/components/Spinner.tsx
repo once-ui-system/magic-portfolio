@@ -1,33 +1,40 @@
-import React, { forwardRef } from 'react';
-import classNames from 'classnames';
+import React, { forwardRef } from "react";
 
-import styles from './Spinner.module.scss';
+import styles from "./Spinner.module.scss";
+import { Flex } from "./Flex";
 
-interface SpinnerProps {
-    size?: 'xs' | 's' | 'm' | 'l' | 'xl';
-    ariaLabel?: string;
-    className?: string;
-    style?: React.CSSProperties;
+interface SpinnerProps extends React.ComponentProps<typeof Flex> {
+  size?: "xs" | "s" | "m" | "l" | "xl";
+  ariaLabel?: string;
+  className?: string;
+  style?: React.CSSProperties;
 }
 
-const Spinner = forwardRef<HTMLDivElement, SpinnerProps>(({
-    size = 'm',
-    className,
-    style,
-    ariaLabel = 'Loading'
-}, ref) => {
+const Spinner = forwardRef<HTMLDivElement, SpinnerProps>(
+  ({ size = "m", ariaLabel = "Loading", className, style, ...rest }, ref) => {
     return (
-        <div
-            ref={ref}
-            className={classNames(styles.bounding, styles[size], className)}
-            style={style}
-            role="status"
-            aria-label={ariaLabel}>
-            <div className={styles.spinner} />
-        </div>
+      <Flex
+        justifyContent="center"
+        alignItems="center"
+        style={style}
+        className={className}
+        {...rest}
+      >
+        <Flex
+          ref={ref}
+          justifyContent="center"
+          alignItems="center"
+          className={styles[size]}
+          role="status"
+          aria-label={ariaLabel}
+        >
+          <div className={styles.spinner} />
+        </Flex>
+      </Flex>
     );
-});
+  },
+);
 
-Spinner.displayName = 'Spinner';
+Spinner.displayName = "Spinner";
 
 export { Spinner };

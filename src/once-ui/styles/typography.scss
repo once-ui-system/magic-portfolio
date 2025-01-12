@@ -1,7 +1,7 @@
 html {
     font-size:   var(--font-scaling-desktop);
     font-family: var(--font-family-body);
-    font-weight: var(--font-weight-default);
+    font-weight: var(--font-weight-normal);
     color: var(--neutral-on-background-strong);
 }
 
@@ -33,31 +33,35 @@ h1, h2, h3, h4, h5, h6, p {
     font-family: var(--font-family-heading);
 
     &.font-strong, & > .font-strong {
-        font-weight: var(--font-weight-40);
+        font-weight: var(--font-weight-display-strong);
     }
 
     &.font-default, & > .font-default {
-        font-weight: var(--font-weight-10);
+        font-weight: var(--font-weight-display-default);
     }
 
     &.font-xl, & > .font-xl {
         font-size:   calc(var(--font-size-display-xl) * var(--font-size-heading-multiplier));
         line-height: calc(var(--line-height-display-xl) * var(--line-height-heading-multiplier));
+        letter-spacing: -2%;
     }
     
     &.font-l, & > .font-l {
         font-size:   calc(var(--font-size-display-l) * var(--font-size-heading-multiplier));
         line-height: calc(var(--line-height-display-l) * var(--line-height-heading-multiplier));
+        letter-spacing: -1.5%;
     }
     
     &.font-m, & > .font-m {
         font-size:   calc(var(--font-size-display-m) * var(--font-size-heading-multiplier));
         line-height: calc(var(--line-height-display-m) * var(--line-height-heading-multiplier));
+        letter-spacing: -1%;
     }
     
     &.font-s, & > .font-s {
         font-size:   calc(var(--font-size-display-s) * var(--font-size-heading-multiplier));
         line-height: calc(var(--line-height-display-s) * var(--line-height-heading-multiplier));
+        letter-spacing: -0.5%;
     }
 
     &.font-xs, & > .font-xs {
@@ -70,11 +74,11 @@ h1, h2, h3, h4, h5, h6, p {
     font-family: var(--font-family-heading);
 
     &.font-strong, & > .font-strong {
-        font-weight: var(--font-weight-30);
+        font-weight: var(--font-weight-heading-strong);
     }
 
     &.font-default, & > .font-default {
-        font-weight: var(--font-weight-20);
+        font-weight: var(--font-weight-heading-default);
     }
 
     &.font-xl, & > .font-xl {
@@ -107,11 +111,11 @@ h1, h2, h3, h4, h5, h6, p {
     font-family: var(--font-family-body);
 
     &.font-strong, & > .font-strong {
-        font-weight: var(--font-weight-30);
+        font-weight: var(--font-weight-body-strong);
     }
 
     &.font-default, & > .font-default {
-        font-weight: var(--font-weight-20);
+        font-weight: var(--font-weight-body-default);
     }
 
     &.font-xl, & > .font-xl {
@@ -144,11 +148,11 @@ h1, h2, h3, h4, h5, h6, p {
     font-family: var(--font-family-label);
 
     &.font-strong, & > .font-strong {
-        font-weight: var(--font-weight-30);
+        font-weight: var(--font-weight-label-strong);
     }
 
     &.font-default, & > .font-default {
-        font-weight: var(--font-weight-20);
+        font-weight: var(--font-weight-label-default);
     }
 
     &.font-l, & > .font-l {
@@ -171,11 +175,11 @@ h1, h2, h3, h4, h5, h6, p {
     font-family: var(--font-family-code);
 
     &.font-strong, & > .font-strong {
-        font-weight: var(--font-weight-30);
+        font-weight: var(--font-weight-code-strong);
     }
 
     &.font-default, & > .font-default {
-        font-weight: var(--font-weight-20);
+        font-weight: var(--font-weight-code-default);
     }
 
     &.font-l, & > .font-l {

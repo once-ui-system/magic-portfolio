@@ -1,24 +1,5 @@
-.glitchFx {
-    position: relative;
-    display: inline-block;
-}
-
-.original {
-    position: relative;
-    z-index: 1;
-    display: inline-block;
-}
-
 .glitchLayer {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-    opacity: 0.5;
     pointer-events: none;
-    display: inline-block;
 }
 
 .blueShift {
@@ -45,7 +26,7 @@
         clip-path: inset(50% 0 25% 0);
     }
     11%, 13% {
-        transform: translate(4px, -7px) skew(-1deg);
+        transform: translate(4px, -7px) skew(-1deg) scaleX(1.5) scaleY(1.25);
         opacity: 0.7;
         clip-path: inset(0 35% 40% 0);
     }
@@ -83,7 +64,7 @@
         clip-path: inset(50% 25% 25% 0);
     }
     75%, 80% {
-        transform: translate(4px, -6px) skew(-1deg);
+        transform: translate(4px, -6px) skew(-1deg) scaleX(2) scaleY(1.25);
         opacity: 0.3;
         clip-path: inset(0 0 20% 50%);
     }

@@ -1,15 +1,17 @@
 .button {
     display: flex;
-    justify-content: center;
     align-items: center;
     position: relative;
-    cursor: pointer;
     user-select: none;
     padding: 0;
     white-space: nowrap;
     text-decoration: none;
     -webkit-tap-highlight-color: transparent;
     transition: var(--transition-micro-medium);
+
+    &:hover, &:focus {
+        z-index: 1;
+    }
 
     &:disabled {
         box-shadow: none;
@@ -48,14 +50,17 @@
 }
 
 .tertiary {
-    box-shadow: inset 0 var(--solid-inset-distance) var(--solid-inset-size) var(--solid-inset-color-neutral);
     background: var(--static-transparent);
-    border: 1px solid var(--neutral-border-medium);
     color: var(--neutral-on-background-strong);
+    border: 1px solid var(--static-transparent);
 
     &:hover, &:focus {
-        background: var(--neutral-background-medium);
-        border-color: var(--neutral-border-strong);
+        border: 1px solid var(--neutral-border-medium);
+    }
+
+    &:disabled {
+        background: var(--static-transparent);
+        color: var(--neutral-on-background-weak);
     }
 }
 
@@ -84,7 +89,6 @@
 
 .s {
     padding: var(--static-space-4) var(--static-space-8);
-    border-radius: var(--radius-m);
     min-height: var(--static-space-32);
     height: var(--static-space-32);
     gap: var(--static-space-4);
@@ -92,7 +96,6 @@
 
 .m {
     padding: var(--static-space-8) var(--static-space-12);
-    border-radius: var(--radius-m);
     min-height: var(--static-space-40);
     height: var(--static-space-40);
     gap: var(--static-space-4);
@@ -100,20 +103,7 @@
 
 .l {
     padding: var(--static-space-12) var(--static-space-20);
-    border-radius: var(--radius-l);
     min-height: var(--static-space-48);
     height: var(--static-space-48);
     gap: var(--static-space-8);
-}
-
-.label {
-    padding: 0 var(--static-space-4);
-}
-
-.fillWidth {
-    width: 100%;
-}
-
-.fitContent {
-    width: fit-content;
 }

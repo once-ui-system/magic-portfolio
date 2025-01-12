@@ -58,7 +58,7 @@ export default function About() {
     ]
     return (
         <Flex
-            fillWidth maxWidth="m"
+            maxWidth="m"
             direction="column">
             <script
                 type="application/ld+json"
@@ -129,7 +129,7 @@ export default function About() {
                 )}
                 <Flex
                     className={styles.blockAlign}
-                    fillWidth flex={9} maxWidth={40} direction="column">
+                    flex={9} maxWidth={40} direction="column">
                     <Flex
                         id={about.intro.title}
                         fillWidth minHeight="160"
@@ -137,14 +137,14 @@ export default function About() {
                         marginBottom="32">
                         {about.calendar.display && (
                             <Flex
+                                fitWidth
+                                border="brand-alpha-medium"
                                 className={styles.blockAlign}
                                 style={{
                                     backdropFilter: 'blur(var(--static-space-1))',
-                                    border: '1px solid var(--brand-alpha-medium)',
-                                    width: 'fit-content'
                                 }}
-                                alpha="brand-weak" radius="full"
-                                fillWidth padding="4" gap="8" marginBottom="m"
+                                background="brand-alpha-weak" radius="full"
+                                padding="4" gap="8" marginBottom="m"
                                 alignItems="center">
                                 <Flex paddingLeft="12">
                                     <Icon
@@ -158,7 +158,7 @@ export default function About() {
                                 <IconButton
                                     href={about.calendar.link}
                                     data-border="rounded"
-                                    variant="tertiary"
+                                    variant="secondary"
                                     icon="chevronRight"/>
                             </Flex>
                         )}
@@ -185,7 +185,7 @@ export default function About() {
                                             prefixIcon={item.icon}
                                             label={item.name}
                                             size="s"
-                                            variant="tertiary"/>
+                                            variant="secondary"/>
                                     )
                                 ))}
                             </Flex>
@@ -260,7 +260,7 @@ export default function About() {
                                                     <Flex
                                                         key={index}
                                                         border="neutral-medium"
-                                                        borderStyle="solid-1"
+                                                        
                                                         radius="m"
                                                         minWidth={image.width} height={image.height}>
                                                         <SmartImage
@@ -345,7 +345,7 @@ export default function About() {
                                                     <Flex
                                                         key={index}
                                                         border="neutral-medium"
-                                                        borderStyle="solid-1"
+                                                        
                                                         radius="m"
                                                         minWidth={image.width} height={image.height}>
                                                         <SmartImage

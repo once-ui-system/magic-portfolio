@@ -103,6 +103,7 @@ export default function Blog({ params }: BlogParams) {
 			/>
 			<Button
 				href="/blog"
+				weight="default"
 				variant="tertiary"
 				size="s"
 				prefixIcon="chevronLeft">

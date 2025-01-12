@@ -1,99 +1,124 @@
-'use client';
+"use client";
 
-import React, { ReactNode, forwardRef } from 'react';
-import Link from 'next/link';
+import React, { ReactNode, forwardRef } from "react";
+import { ElementType } from "./ElementType";
+import classNames from "classnames";
 
-import { Spinner, Icon } from '.';
-import styles from './Button.module.scss';
+import { Spinner, Icon, Arrow, Flex } from ".";
+import styles from "./Button.module.scss";
 
 interface CommonProps {
-    variant?: 'primary' | 'secondary' | 'tertiary' | 'danger';
-    size?: 's' | 'm' | 'l';
-    label?: string;
-    prefixIcon?: string;
-    suffixIcon?: string;
-    loading?: boolean;
-    fillWidth?: boolean;
-    children?: ReactNode;
-    href?: string;
-    className?: string;
-    style?: React.CSSProperties;
+  variant?: "primary" | "secondary" | "tertiary" | "danger";
+  size?: "s" | "m" | "l";
+  radius?:
+    | "none"
+    | "top"
+    | "right"
+    | "bottom"
+    | "left"
+    | "top-left"
+    | "top-right"
+    | "bottom-right"
+    | "bottom-left";
+  label?: string;
+  weight?: "default" | "strong";
+  prefixIcon?: string;
+  suffixIcon?: string;
+  loading?: boolean;
+  fillWidth?: boolean;
+  justifyContent?: "flex-start" | "center" | "flex-end" | "space-between";
+  children?: ReactNode;
+  href?: string;
+  className?: string;
+  style?: React.CSSProperties;
+  id?: string;
+  arrowIcon?: boolean;
 }
 
 export type ButtonProps = CommonProps & React.ButtonHTMLAttributes<HTMLButtonElement>;
 export type AnchorProps = CommonProps & React.AnchorHTMLAttributes<HTMLAnchorElement>;
 
-const isExternalLink = (url: string) => /^https?:\/\//.test(url);
-
-const Button = forwardRef<HTMLButtonElement, ButtonProps | AnchorProps>(({
-    variant = 'primary',
-    size = 'm',
-    label,
-    children,
-    prefixIcon,
-    suffixIcon,
-    loading = false,
-    fillWidth = false,
-    href,
-    className,
-    style,
-    ...props
-}, ref) => {
-    const labelSize = size === 'l' ? 'font-l' : size === 'm' ? 'font-m' : 'font-s';
-    const iconSize = size === 'l' ? 'm' : size === 'm' ? 's' : 'xs';
-
-    const content = (
-        <>
-            {prefixIcon && !loading && <Icon name={prefixIcon} size={iconSize} />}
-            {loading && <Spinner size={size} />}
-            <div className={`font-label font-strong ${styles.label} ${labelSize}`}>{label || children}</div>
-            {suffixIcon && <Icon name={suffixIcon} size={iconSize} />}
-        </>
-    );
-
-    const commonProps = {
-        className: `${styles.button} ${styles[variant]} ${styles[size]} ${fillWidth ? styles.fillWidth : styles.fitContent} ${className || ''}`,
-        style: { ...style, textDecoration: 'none' },
-    };
-
-    if (href) {
-        const isExternal = isExternalLink(href);
-
-        if (isExternal) {
-            return (
-                <a
-                    href={href}
-                    ref={ref as React.Ref<HTMLAnchorElement>}
-                    target="_blank"
-                    rel="noreferrer"
-                    {...commonProps}
-                    {...(props as React.AnchorHTMLAttributes<HTMLAnchorElement>)}>
-                    {content}
-                </a>
-            );
-        }
-
-        return (
-            <Link
-                href={href}
-                ref={ref as React.Ref<HTMLAnchorElement>}
-                {...commonProps}
-                {...(props as React.AnchorHTMLAttributes<HTMLAnchorElement>)}>
-                {content}
-            </Link>
-        );
-    }
+const Button = forwardRef<HTMLButtonElement, ButtonProps | AnchorProps>(
+  (
+    {
+      variant = "primary",
+      size = "m",
+      radius,
+      label,
+      weight = "strong",
+      children,
+      prefixIcon,
+      suffixIcon,
+      loading = false,
+      fillWidth = false,
+      justifyContent = "center",
+      href,
+      id,
+      arrowIcon = false,
+      className,
+      style,
+      ...props
+    },
+    ref,
+  ) => {
+    const iconSize = size === "l" ? "s" : size === "m" ? "s" : "xs";
+    const radiusSize = size === "s" || size === "m" ? "m" : "l";
 
     return (
-        <button
-            ref={ref as React.Ref<HTMLButtonElement>}
-            {...commonProps}
-            {...(props as React.ButtonHTMLAttributes<HTMLButtonElement>)}>
-            {content}
-        </button>
+      <ElementType
+        id={id}
+        href={href}
+        ref={ref}
+        className={classNames(
+          styles.button,
+          styles[variant],
+          styles[size],
+          radius === "none"
+            ? "radius-none"
+            : radius
+              ? `radius-${radiusSize}-${radius}`
+              : `radius-${radiusSize}`,
+          "text-decoration-none",
+          "button",
+          "cursor-interactive",
+          {
+            ["fill-width"]: fillWidth,
+            ["fit-width"]: !fillWidth,
+            ["justify-" + justifyContent]: justifyContent,
+          },
+          className,
+        )}
+        style={style}
+        {...props}
+      >
+        {prefixIcon && !loading && <Icon name={prefixIcon} size={iconSize} />}
+        {loading && <Spinner size={size} />}
+        {(label || children) && (
+          <Flex
+            paddingX="4"
+            paddingY="0"
+            textWeight={weight}
+            textSize={size}
+            className="font-label"
+          >
+            {label || children}
+          </Flex>
+        )}
+        {arrowIcon && (
+          <Arrow
+            style={{
+              marginLeft: "calc(-1 * var(--static-space-4))",
+            }}
+            trigger={"#" + id}
+            scale={size === "s" ? 0.8 : size === "m" ? 0.9 : 1}
+            color={variant === "primary" ? "onSolid" : "onBackground"}
+          />
+        )}
+        {suffixIcon && <Icon name={suffixIcon} size={iconSize} />}
+      </ElementType>
     );
-});
+  },
+);
 
-Button.displayName = 'Button';
-
+Button.displayName = "Button";
 export { Button };

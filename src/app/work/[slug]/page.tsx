@@ -109,6 +109,7 @@ export default function Project({ params }: WorkParams) {
 				<Button
 					href="/work"
 					variant="tertiary"
+					weight="default"
 					size="s"
 					prefixIcon="chevronLeft">
 					Projects
@@ -135,7 +136,7 @@ export default function Project({ params }: WorkParams) {
 					alignItems="center">
 					{ post.metadata.team && (
 						<AvatarGroup
-							reverseOrder
+							reverse
 							avatars={avatars}
 							size="m"/>
 					)}

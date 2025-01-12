@@ -1,0 +1,194 @@
+.calendar {
+    &.xs {
+      --calendar-padding: var(--static-space-8);
+      --calendar-gap: var(--static-space-4);
+      --calendar-button-size: var(--static-space-24);
+      --calendar-font-size: var(--font-size-xs);
+    }
+  
+    &.s {
+      --calendar-padding: var(--static-space-12);
+      --calendar-gap: var(--static-space-8);
+      --calendar-button-size: var(--static-space-28);
+      --calendar-font-size: var(--font-size-s);
+    }
+  
+    &.m {
+      --calendar-padding: var(--static-space-16);
+      --calendar-gap: var(--static-space-12);
+      --calendar-button-size: var(--static-space-32);
+      --calendar-font-size: var(--font-size-m);
+    }
+  
+    &.l {
+      --calendar-padding: var(--static-space-20);
+      --calendar-gap: var(--static-space-16);
+      --calendar-button-size: var(--static-space-36);
+      --calendar-font-size: var(--font-size-l);
+    }
+  
+    &.xl {
+      --calendar-padding: var(--static-space-24);
+      --calendar-gap: var(--static-space-20);
+      --calendar-button-size: var(--static-space-40);
+      --calendar-font-size: var(--font-size-xl);
+    }
+  }
+  
+  .monthButton {
+  
+      
+      &:hover {
+          transform: scale(1.10);
+          background: var(--neutral-background-medium);
+      }
+      
+      
+      &:disabled {
+          opacity: 0.5;
+          cursor: not-allowed;
+          transform: none;
+      }
+  }
+  
+  .dayButton {
+    aspect-ratio: 1;
+    width: var(--calendar-button-size);
+    height: var(--calendar-button-size);
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--calendar-font-size);
+    transition: all 0.2s ease-in-out;
+    border-radius: var(--radius-m);
+    background-color: transparent;
+    border: 0.5px solid var(--neutral-background-medium);
+    color: var(--neutral-on-background-weak);
+  
+  
+    &:hover {
+      color: var(--neutral-background-weak);
+      transform: scale(1.10);
+      background: var(--neutral-background-strong);
+    }
+  
+    &:active {
+      background-color: var(--brand-background-strong);
+      color: white;
+      transform: scale(0.95);
+    }
+  
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+    }
+  }
+  
+  .timeSelector {
+    background: var(--neutral-background-medium);
+    border-radius: var(--radius-m);
+    border: 1px solid var(--neutral-background-medium);
+    padding: var(--calendar-padding);
+    font-size: var(--calendar-font-size);
+  
+    &:focus-within {
+      border: 1px solid var(--neutral-border-strong);
+    }
+  }
+  
+  .timeInput {
+    width: var(--static-space-40);
+    height: var(--static-space-32);
+    border: 1px solid var(--neutral-border-medium);
+    border-radius: var(--radius-m);
+    background: var(--neutral-background-strong);
+    color: var(--neutral-on-background-strong);
+    text-align: center;
+    font-size: var(--calendar-font-size);
+    outline: none;
+    transition: all 0.2s ease-in-out;
+    
+    &:focus {
+      border-color: var(--brand-border-medium);
+      box-shadow: 0 0 0 2px var(--brand-alpha-weak);
+    }
+  
+    &:invalid {
+      border-color: var(--danger-border-medium);
+    }
+  
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  }
+  
+  .ampmSelector {
+    min-width: var(--static-space-80);
+    height: var(--static-space-32);
+    font-size: var(--calendar-font-size);
+  
+    button {
+      min-width: var(--static-space-40);
+    }
+  }
+  
+  .monthTransition {
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  }
+  
+  .slideLeft {
+    transform: translateX(-20px);
+    opacity: 0;
+  }
+  
+  .slideRight {
+    transform: translateX(20px);
+    opacity: 0;
+  }
+  
+  .timeWrapper {
+      &.vertical {
+        align-items: flex-start;
+      }
+    }
+    
+    .verticalTimeLabel {
+      writing-mode: vertical-lr;
+      transform: rotate(180deg);
+      margin-right: var(--static-space-8);
+    }
+    
+    .timeSelector {
+      &.vertical {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+    
+    .ampmSelector {
+      min-width: var(--static-space-80);
+      height: var(--static-space-32);
+      font-size: var(--calendar-font-size);
+    
+      &.vertical {
+        min-width: var(--static-space-32);
+        height: auto;
+    
+        button {
+          min-width: var(--static-space-32);
+          height: var(--static-space-40);
+        }
+      }
+    }
+  
+  .grid {
+    display: grid;
+
+    > div {
+      overflow: hidden;
+    }
+  }

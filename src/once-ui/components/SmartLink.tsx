@@ -1,87 +1,79 @@
-'use client';
+"use client";
 
-import React, { forwardRef, ReactNode } from 'react';
-import classNames from 'classnames';
-import Link from 'next/link';
-import { Icon } from '.';
+import React, { forwardRef, ReactNode } from "react";
+import classNames from "classnames";
+import { Icon } from ".";
+import { ElementType } from "./ElementType";
 
-interface SmartLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
-    href: string;
-    prefixIcon?: string;
-    suffixIcon?: string;
-    iconSize?: 'xs' | 's' | 'm' | 'l' | 'xl';
-    style?: React.CSSProperties;
-    className?: string;
-    selected?: boolean;
-    unstyled?: boolean;
-    children: ReactNode;
+interface CommonProps {
+  prefixIcon?: string;
+  suffixIcon?: string;
+  fillWidth?: boolean;
+  iconSize?: "xs" | "s" | "m" | "l" | "xl";
+  selected?: boolean;
+  unstyled?: boolean;
+  children: ReactNode;
+  href?: string;
+  style?: React.CSSProperties;
+  className?: string;
 }
 
-const SmartLink = forwardRef<HTMLAnchorElement, SmartLinkProps>(({ 
-        href,
-        prefixIcon,
-        suffixIcon,
-        iconSize='xs',
-        style,
-        className,
-        selected,
-        unstyled = false,
-        children,
-        ...props
-    }, ref) => {
-        const isExternal = href.startsWith('http') || href.startsWith('//');
+export type SmartLinkProps = CommonProps & React.AnchorHTMLAttributes<HTMLAnchorElement>;
 
-        const content = (
-            <>
-                {prefixIcon && <Icon name={prefixIcon} size={iconSize} />}
-                {children}
-                {suffixIcon && <Icon name={suffixIcon} size={iconSize} />}
-            </>
-        );
+const SmartLink = forwardRef<HTMLAnchorElement, SmartLinkProps>(
+  (
+    {
+      href,
+      prefixIcon,
+      suffixIcon,
+      fillWidth = false,
+      iconSize = "xs",
+      style,
+      className,
+      selected,
+      unstyled = false,
+      children,
+      ...props
+    },
+    ref,
+  ) => {
+    const content = (
+      <>
+        {prefixIcon && <Icon name={prefixIcon} size={iconSize} />}
+        {children}
+        {suffixIcon && <Icon name={suffixIcon} size={iconSize} />}
+      </>
+    );
 
-        const commonProps = {
-            ref,
-            className: classNames(className || '', {
-                'px-4 mx-4': !unstyled,
+    const commonProps = {
+      ref,
+      className: classNames(className, "align-items-center display-inline-flex g-8 radius-s", {
+        "fill-width": fillWidth,
+        "fit-width": !fillWidth,
+        "px-4 mx-4": !unstyled,
+      }),
+      style: !unstyled
+        ? {
+            ...(selected && {
+              textDecoration: "underline",
             }),
-            style: !unstyled ? {
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: 'var(--static-space-8)',
-                borderRadius: 'var(--radius-s)',
-                ...(selected && { textDecoration: 'underline' }),
-                ...style
-            } : { 
-                textDecoration: 'none',
-                color: 'inherit',
-                ...style
-            },
-            ...props
-        };
+            ...style,
+          }
+        : {
+            textDecoration: "none",
+            ...style,
+          },
+      ...props,
+    };
 
-        if (isExternal) {
-            return (
-                <a
-                    href={href}
-                    target="_blank"
-                    rel="noreferrer"
-                    {...commonProps}>
-                    {content}
-                </a>
-            );
-        }
-
-        return (
-            <Link
-                href={href}
-                {...commonProps}
-                {...props}>
-                {content}
-            </Link>
-        );
-    }
+    return (
+      <ElementType href={href} {...commonProps}>
+        {content}
+      </ElementType>
+    );
+  },
 );
 
-SmartLink.displayName = 'SmartLink';
+SmartLink.displayName = "SmartLink";
 
 export { SmartLink };

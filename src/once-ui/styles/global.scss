@@ -3,10 +3,9 @@
     box-sizing: border-box;
 }
 
-ul, ol {
+ul {
     margin: 0;
-    padding: 0 0 0 var(--static-space-24);
-    line-height: 150%;
+    padding: 0 0 0 var(--static-space-12);
 }
 
 li {
@@ -33,7 +32,7 @@ img {
 }
 
 /* LINK */
-a {
+a:not(.button) {
     color: var(--brand-on-background-medium);
     text-decoration: none;
     text-decoration-thickness: 1px;
@@ -58,7 +57,6 @@ a {
 
 ::-webkit-scrollbar-thumb {
     background: var(--neutral-alpha-medium);
-    border-radius: var(--radius-full);
     transition: var(--transition-micro-medium);
 
     &:hover {

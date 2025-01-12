@@ -1,0 +1,307 @@
+.position-relative {
+  position: relative;
+}
+
+.position-fixed {
+  position: fixed;
+}
+
+.position-absolute {
+  position: absolute;
+}
+
+.position-sticky {
+  position: sticky;
+}
+
+.position-static {
+  position: static;
+}
+
+.top-0 { 
+  top: 0;
+}
+  
+.left-0 { 
+  left: 0;
+}
+  
+.bottom-0 { 
+  bottom: 0;
+}
+
+.right-0 { 
+  right: 0;
+}
+
+.top-1 { 
+  top: var(--static-space-1);
+}
+
+.left-1 { 
+  left: var(--static-space-1);
+}
+
+.bottom-1 { 
+  bottom: var(--static-space-1);
+}
+
+.right-1 { 
+  right: var(--static-space-1);
+}
+
+.top-2 { 
+  top: var(--static-space-2);
+}
+
+.left-2 { 
+  left: var(--static-space-2);
+}
+
+.bottom-2 { 
+  bottom: var(--static-space-2);
+}
+
+.right-2 { 
+  right: var(--static-space-2);
+}
+
+.top-4 { 
+  top: var(--static-space-4);
+}
+
+.left-4 { 
+  left: var(--static-space-4);
+}
+
+.bottom-4 { 
+  bottom: var(--static-space-4);
+}
+
+.right-4 { 
+  right: var(--static-space-4);
+}
+
+.top-8 { 
+  top: var(--static-space-8);
+}
+
+.left-8 { 
+  left: var(--static-space-8);
+}
+
+.bottom-8 { 
+  bottom: var(--static-space-8);
+}
+
+.right-8 { 
+  right: var(--static-space-8);
+}
+
+.top-12 { 
+  top: var(--static-space-12);
+}
+
+.left-12 { 
+  left: var(--static-space-12);
+}
+
+.bottom-12 { 
+  bottom: var(--static-space-12);
+}
+
+.right-12 { 
+  right: var(--static-space-12);
+}
+
+.top-16 { 
+  top: var(--static-space-16);
+}
+
+.left-16 { 
+  left: var(--static-space-16);
+}
+
+.bottom-16 { 
+  bottom: var(--static-space-16);
+}
+
+.right-16 { 
+  right: var(--static-space-16);
+}
+
+.top-20 { 
+  top: var(--static-space-20);
+}
+
+.left-20 { 
+  left: var(--static-space-20);
+}
+
+.bottom-20 { 
+  bottom: var(--static-space-20);
+}
+
+.right-20 { 
+  right: var(--static-space-20);
+}
+
+.top-24 { 
+  top: var(--static-space-24);
+}
+
+.left-24 { 
+  left: var(--static-space-24);
+}
+
+.bottom-24 { 
+  bottom: var(--static-space-24);
+}
+
+.right-24 { 
+  right: var(--static-space-24);
+}
+
+.top-32 { 
+  top: var(--static-space-32);
+}
+
+.left-32 { 
+  left: var(--static-space-32);
+}
+
+.bottom-32 { 
+  bottom: var(--static-space-32);
+}
+
+.right-32 { 
+  right: var(--static-space-32);
+}
+
+.top-40 { 
+  top: var(--static-space-40);
+}
+
+.left-40 { 
+  left: var(--static-space-40);
+}
+
+.bottom-40 { 
+  bottom: var(--static-space-40);
+}
+
+.right-40 { 
+  right: var(--static-space-40);
+}
+
+.top-48 { 
+  top: var(--static-space-48);
+}
+
+.left-48 { 
+  left: var(--static-space-48);
+}
+
+.bottom-48 { 
+  bottom: var(--static-space-48);
+}
+
+.right-48 { 
+  right: var(--static-space-48);
+}
+
+.top-56 { 
+  top: var(--static-space-56);
+}
+
+.left-56 { 
+  left: var(--static-space-56);
+}
+
+.bottom-56 { 
+  bottom: var(--static-space-56);
+}
+
+.right-56 { 
+  right: var(--static-space-56);
+}
+
+.top-64 { 
+  top: var(--static-space-64);
+}
+
+.left-64 { 
+  left: var(--static-space-64);
+}
+
+.bottom-64 { 
+  bottom: var(--static-space-64);
+}
+
+.right-64 { 
+  right: var(--static-space-64);
+}
+
+.top-80 { 
+  top: var(--static-space-80);
+}
+
+.left-80 { 
+  left: var(--static-space-80);
+}
+
+.bottom-80 { 
+  bottom: var(--static-space-80);
+}
+
+.right-80 { 
+  right: var(--static-space-80);
+}
+
+.top-104 { 
+  top: var(--static-space-104); 
+}
+
+.left-104 { 
+  left: var(--static-space-104); 
+}
+
+.bottom-104 { 
+  bottom: var(--static-space-104); 
+}
+
+.right-104 { 
+  right: var(--static-space-104); 
+}
+
+.top-128 { 
+  top: var(--static-space-128); 
+}
+
+.left-128 { 
+  left: var(--static-space-128); 
+}
+
+.bottom-128 { 
+  bottom: var(--static-space-128); 
+}
+
+.right-128 { 
+  right: var(--static-space-128); 
+}
+
+.top-160 { 
+  top: var(--static-space-160); 
+}
+
+.left-160 { 
+  left: var(--static-space-160); 
+}
+
+.bottom-160 { 
+  bottom: var(--static-space-160); 
+}
+
+.right-160 { 
+  right: var(--static-space-160);
+}

@@ -1,210 +1,287 @@
-'use client';
+"use client";
 
-import React, { CSSProperties, forwardRef, useEffect, useRef, useState } from 'react';
-import { SpacingToken } from '../types';
+import React, { CSSProperties, forwardRef, useEffect, useRef, useState } from "react";
+import { SpacingToken } from "../types";
+import { Flex } from "./Flex";
+import { DisplayProps } from "../interfaces";
+import styles from "./Background.module.scss";
+import classNames from "classnames";
 
 function setRef<T>(ref: React.Ref<T> | undefined, value: T | null) {
-    if (typeof ref === 'function') {
-        ref(value);
-    } else if (ref && 'current' in ref) {
-        (ref as React.MutableRefObject<T | null>).current = value;
-    }
+  if (typeof ref === "function") {
+    ref(value);
+  } else if (ref && "current" in ref) {
+    (ref as React.MutableRefObject<T | null>).current = value;
+  }
 }
 
-export interface MaskOptions {
-    none: 'none';
-    cursor: 'cursor';
-    topLeft: 'topLeft';
-    topRight: 'topRight';
-    bottomLeft: 'bottomLeft';
-    bottomRight: 'bottomRight';
+interface MaskProps {
+  cursor?: boolean;
+  x?: number;
+  y?: number;
+  radius?: number;
 }
 
-type MaskType = keyof MaskOptions;
-
-export interface BackgroundProps {
-    position?: CSSProperties['position'];
-    gradient?: GradientProps;
-    dots?: DotsProps;
-    lines?: LinesProps;
-    mask?: MaskType;
-    className?: string;
-    style?: React.CSSProperties;
+interface GradientProps {
+  display?: boolean;
+  opacity?: DisplayProps["opacity"];
+  x?: number;
+  y?: number;
+  width?: number;
+  height?: number;
+  tilt?: number;
+  colorStart?: string;
+  colorEnd?: string;
 }
 
-export interface GradientProps {
-    display?: boolean;
-    opacity?: number;
+interface DotsProps {
+  display?: boolean;
+  opacity?: DisplayProps["opacity"];
+  color?: string;
+  size?: SpacingToken;
 }
 
-export interface DotsProps {
-    display?: boolean;
-    opacity?: number;
-    color?: string;
-    size?: SpacingToken;
+interface GridProps {
+  display?: boolean;
+  opacity?: DisplayProps["opacity"];
+  color?: string;
+  width?: string;
+  height?: string;
 }
 
-export interface LinesProps {
-    display?: boolean;
-    opacity?: number;
-    size?: SpacingToken;
+interface LinesProps {
+  display?: boolean;
+  opacity?: DisplayProps["opacity"];
+  size?: SpacingToken;
+}
+
+interface BackgroundProps extends React.ComponentProps<typeof Flex> {
+  position?: CSSProperties["position"];
+  gradient?: GradientProps;
+  dots?: DotsProps;
+  grid?: GridProps;
+  lines?: LinesProps;
+  mask?: MaskProps;
+  className?: string;
+  style?: React.CSSProperties;
+  children?: React.ReactNode;
 }
 
 const Background = forwardRef<HTMLDivElement, BackgroundProps>(
-    ({
-        position = 'fixed',
-        gradient = {},
-        dots = {},
-        lines = {},
-        mask = 'none',
-        className,
-        style
-    }, forwardedRef) => {
-        const dotsColor = dots.color ?? 'brand-on-background-weak';
-        const dotsSize = dots.size ?? '16';
+  (
+    {
+      position = "fixed",
+      gradient = {},
+      dots = {},
+      grid = {},
+      lines = {},
+      mask = {},
+      children,
+      className,
+      style,
+      ...rest
+    },
+    forwardedRef,
+  ) => {
+    const dotsColor = dots.color ?? "brand-on-background-weak";
+    const dotsSize = "var(--static-space-" + (dots.size ?? "24") + ")";
 
-        const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
-        const [smoothPosition, setSmoothPosition] = useState({ x: 0, y: 0 });
-        const maskSize = 1200;
-        const backgroundRef = useRef<HTMLDivElement>(null);
+    const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
+    const [smoothPosition, setSmoothPosition] = useState({ x: 0, y: 0 });
+    const backgroundRef = useRef<HTMLDivElement>(null);
 
-        useEffect(() => {
-            setRef(forwardedRef, backgroundRef.current);
-        }, [forwardedRef]);
+    useEffect(() => {
+      setRef(forwardedRef, backgroundRef.current);
+    }, [forwardedRef]);
 
-        useEffect(() => {
-            const handleMouseMove = (event: MouseEvent) => {
-                if (backgroundRef.current) {
-                    const rect = backgroundRef.current.getBoundingClientRect();
-                    setCursorPosition({
-                        x: event.clientX - rect.left,
-                        y: event.clientY - rect.top,
-                    });
-                }
-            };
+    useEffect(() => {
+      const handleMouseMove = (event: MouseEvent) => {
+        if (backgroundRef.current) {
+          const rect = backgroundRef.current.getBoundingClientRect();
+          setCursorPosition({
+            x: event.clientX - rect.left,
+            y: event.clientY - rect.top,
+          });
+        }
+      };
 
-            document.addEventListener('mousemove', handleMouseMove);
+      document.addEventListener("mousemove", handleMouseMove);
 
-            return () => {
-                document.removeEventListener('mousemove', handleMouseMove);
-            };
-        }, []);
+      return () => {
+        document.removeEventListener("mousemove", handleMouseMove);
+      };
+    }, []);
 
-        useEffect(() => {
-            let animationFrameId: number;
+    useEffect(() => {
+      let animationFrameId: number;
 
-            const updateSmoothPosition = () => {
-                setSmoothPosition((prev) => {
-                    const dx = cursorPosition.x - prev.x;
-                    const dy = cursorPosition.y - prev.y;
-                    const easingFactor = 0.05;
+      const updateSmoothPosition = () => {
+        setSmoothPosition((prev) => {
+          const dx = cursorPosition.x - prev.x;
+          const dy = cursorPosition.y - prev.y;
+          const easingFactor = 0.05;
 
-                    return {
-                        x: Math.round(prev.x + dx * easingFactor),
-                        y: Math.round(prev.y + dy * easingFactor),
-                    };
-                });
-                animationFrameId = requestAnimationFrame(updateSmoothPosition);
-            };
+          return {
+            x: Math.round(prev.x + dx * easingFactor),
+            y: Math.round(prev.y + dy * easingFactor),
+          };
+        });
+        animationFrameId = requestAnimationFrame(updateSmoothPosition);
+      };
 
-            if (mask === 'cursor') {
-                animationFrameId = requestAnimationFrame(updateSmoothPosition);
+      if (mask.cursor) {
+        animationFrameId = requestAnimationFrame(updateSmoothPosition);
+      }
+
+      return () => {
+        cancelAnimationFrame(animationFrameId);
+      };
+    }, [cursorPosition, mask]);
+
+    const maskStyle = (): CSSProperties => {
+      if (!mask) return {};
+
+      if (mask.cursor) {
+        return {
+          "--mask-position-x": `${smoothPosition.x}px`,
+          "--mask-position-y": `${smoothPosition.y}px`,
+          "--mask-radius": `${mask.radius || 50}vh`,
+        } as CSSProperties;
+      }
+
+      if (mask.x != null && mask.y != null) {
+        return {
+          "--mask-position-x": `${mask.x}%`,
+          "--mask-position-y": `${mask.y}%`,
+          "--mask-radius": `${mask.radius || 50}vh`,
+        } as CSSProperties;
+      }
+
+      return {};
+    };
+
+    const remap = (
+      value: number,
+      inputMin: number,
+      inputMax: number,
+      outputMin: number,
+      outputMax: number,
+    ) => {
+      return ((value - inputMin) / (inputMax - inputMin)) * (outputMax - outputMin) + outputMin;
+    };
+
+    const adjustedX = gradient.x != null ? remap(gradient.x, 0, 100, 37.5, 62.5) : 50;
+    const adjustedY = gradient.y != null ? remap(gradient.y, 0, 100, 37.5, 62.5) : 50;
+
+    return (
+      <Flex
+        ref={backgroundRef}
+        fill
+        position={position}
+        className={classNames(mask && styles.mask, className)}
+        top="0"
+        left="0"
+        zIndex={0}
+        overflow="hidden"
+        style={{
+          ...maskStyle(),
+          ...style,
+        }}
+        {...rest}
+      >
+        {gradient.display && (
+          <Flex
+            position="absolute"
+            className={styles.gradient}
+            opacity={gradient.opacity}
+            pointerEvents="none"
+            style={{
+              ["--gradient-position-x" as string]: `${adjustedX}%`,
+              ["--gradient-position-y" as string]: `${adjustedY}%`,
+              ["--gradient-width" as string]:
+                gradient.width != null ? `${gradient.width / 4}%` : "25%",
+              ["--gradient-height" as string]:
+                gradient.height != null ? `${gradient.height / 4}%` : "25%",
+              ["--gradient-tilt" as string]: gradient.tilt != null ? `${gradient.tilt}deg` : "0deg",
+              ["--gradient-color-start" as string]: gradient.colorStart
+                ? `var(--${gradient.colorStart})`
+                : "var(--brand-solid-strong)",
+              ["--gradient-color-end" as string]: gradient.colorEnd
+                ? `var(--${gradient.colorEnd})`
+                : "var(--brand-solid-weak)",
+            }}
+          />
+        )}
+        {dots.display && (
+          <Flex
+            position="absolute"
+            top="0"
+            left="0"
+            fill
+            pointerEvents="none"
+            className={styles.dots}
+            opacity={dots.opacity}
+            style={
+              {
+                "--dots-color": `var(--${dotsColor})`,
+                "--dots-size": dotsSize,
+              } as React.CSSProperties
             }
-
-            return () => {
-                cancelAnimationFrame(animationFrameId);
-            };
-        }, [cursorPosition, mask]);
-
-        const commonStyles: CSSProperties = {
-            position,
-            top: '0',
-            left: '0',
-            zIndex: '0',
-            width: '100%',
-            height: '100%',
-            pointerEvents: 'none',
-            ...style,
-        };
-
-        const maskStyle = (): CSSProperties => {
-            switch (mask) {
-                case 'none':
-                    return { maskImage: 'none' };
-                case 'cursor':
-                    return {
-                        maskImage: `radial-gradient(circle ${maskSize / 2}px at ${smoothPosition.x}px ${smoothPosition.y}px, rgba(0, 0, 0, 1) 20%, rgba(0, 0, 0, 0) 100%)`,
-                        maskSize: '100% 100%',
-                    };
-                case 'topLeft':
-                    return {
-                        maskImage: `radial-gradient(circle ${maskSize / 2}px at 0% 0%, rgba(0, 0, 0, 1) 20%, rgba(0, 0, 0, 0) 100%)`,
-                        maskSize: '100% 100%',
-                    };
-                case 'topRight':
-                    return {
-                        maskImage: `radial-gradient(circle ${maskSize / 2}px at 100% 0%, rgba(0, 0, 0, 1) 20%, rgba(0, 0, 0, 0) 100%)`,
-                        maskSize: '100% 100%',
-                    };
-                case 'bottomLeft':
-                    return {
-                        maskImage: `radial-gradient(circle ${maskSize / 2}px at 0% 100%, rgba(0, 0, 0, 1) 20%, rgba(0, 0, 0, 0) 100%)`,
-                        maskSize: '100% 100%',
-                    };
-                case 'bottomRight':
-                    return {
-                        maskImage: `radial-gradient(circle ${maskSize / 2}px at 100% 100%, rgba(0, 0, 0, 1) 20%, rgba(0, 0, 0, 0) 100%)`,
-                        maskSize: '100% 100%',
-                    };
-                default:
-                    return {};
-            }
-        };
-
-        return (
-            <>
-                {gradient.display && (
-                    <div
-                        ref={backgroundRef}
-                        className={className}
-                        style={{
-                            ...commonStyles,
-                            opacity: gradient.opacity,
-                            background: 'radial-gradient(100% 100% at 50% 0%, var(--static-transparent) 0%, var(--page-background) 100%), radial-gradient(90% 80% at 10% 20%, var(--brand-background-medium) 0%, var(--static-transparent) 100%), radial-gradient(200% 120% at 50% 0%, var(--accent-solid-medium) 0%, var(--static-transparent) 100%)',
-                            ...maskStyle(),
-                        }}
-                    />
-                )}
-                {dots.display && (
-                    <div
-                        ref={backgroundRef}
-                        className={className}
-                        style={{
-                            ...commonStyles,
-                            opacity: dots.opacity,
-                            backgroundImage: `radial-gradient(var(--${dotsColor}) 0.5px, var(--static-transparent) 1px)`,
-                            backgroundSize: `var(--static-space-${dotsSize}) var(--static-space-${dotsSize})`,
-                            ...maskStyle(),
-                        }}
-                    />
-                )}
-                {lines.display && (
-                    <div
-                        ref={backgroundRef}
-                        className={className}
-                        style={{
-                            ...commonStyles,
-                            opacity: lines.opacity,
-                            backgroundImage: `repeating-linear-gradient(45deg, var(--brand-on-background-weak) 0, var(--brand-on-background-weak) 0.5px, var(--static-transparent) 0.5px, var(--static-transparent) ${dots.size})`,
-                            ...maskStyle(),
-                        }}
-                    />
-                )}
-            </>
-        );
-    }
+          />
+        )}
+        {lines.display && (
+          <Flex
+            position="absolute"
+            top="0"
+            left="0"
+            fill
+            pointerEvents="none"
+            className={styles.lines}
+            opacity={lines.opacity}
+            style={{
+              backgroundImage: `repeating-linear-gradient(45deg, var(--brand-on-background-weak) 0, var(--brand-on-background-weak) 0.5px, var(--static-transparent) 0.5px, var(--static-transparent) ${dots.size})`,
+            }}
+          />
+        )}
+        {grid.display && (
+          <Flex
+            position="absolute"
+            top="0"
+            left="0"
+            fill
+            pointerEvents="none"
+            className={styles.grid}
+            opacity={grid.opacity}
+            style={{
+              backgroundSize: `
+                ${grid.width || "var(--static-space-32)"}
+                ${grid.height || "var(--static-space-32)"}`,
+              backgroundPosition: "0 0",
+              backgroundImage: `
+                linear-gradient(
+                  90deg,
+                  var(--${grid.color || "brand-on-background-weak"}) 0,
+                  var(--${grid.color || "brand-on-background-weak"}) 1px,
+                  var(--static-transparent) 1px,
+                  var(--static-transparent) ${grid.width || "var(--static-space-32)"}
+                ),
+                linear-gradient(
+                  0deg,
+                  var(--${grid.color || "brand-on-background-weak"}) 0,
+                  var(--${grid.color || "brand-on-background-weak"}) 1px,
+                  var(--static-transparent) 1px,
+                  var(--static-transparent) ${grid.height || "var(--static-space-32)"}
+                )
+              `,
+            }}
+          />
+        )}
+        {children}
+      </Flex>
+    );
+  },
 );
 
-Background.displayName = 'Background';
+Background.displayName = "Background";
 
 export { Background };

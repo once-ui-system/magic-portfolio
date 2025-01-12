@@ -1,46 +1,57 @@
-'use client';
+"use client";
 
-import React from 'react';
-import classNames from 'classnames';
+import React from "react";
+import classNames from "classnames";
+import { Flex, DropdownWrapper, User, UserProps } from ".";
+import styles from "./UserMenu.module.scss";
+import { DropdownWrapperProps } from "./DropdownWrapper";
 
-import { Flex, DropdownWrapper, DropdownProps, User, UserProps } from '.';
-import { DropdownOptions } from '.';
-import styles from './UserMenu.module.scss'
-
-interface UserMenuProps extends UserProps {
-    selected?: boolean;
-    dropdownOptions?: DropdownOptions[];
-    dropdownAlignment?: 'left' | 'center' | 'right';
-    dropdownProps?: Omit<DropdownProps, 'options'> & { onOptionSelect?: (option: DropdownOptions) => void };
-    className?: string;
+interface UserMenuProps
+  extends UserProps,
+    Pick<DropdownWrapperProps, "minHeight" | "minWidth" | "maxWidth"> {
+  selected?: boolean;
+  dropdown?: React.ReactNode;
+  className?: string;
+  style?: React.CSSProperties;
 }
 
 const UserMenu: React.FC<UserMenuProps> = ({
-    selected = false,
-    dropdownOptions = [],
-    dropdownAlignment = 'left',
-    dropdownProps,
-    className,
-    ...userProps
+  selected = false,
+  dropdown,
+  minWidth,
+  maxWidth,
+  minHeight,
+  className,
+  style,
+  ...userProps
 }) => {
-    return (
-        <DropdownWrapper
-            dropdownOptions={dropdownOptions}
-            dropdownProps={dropdownProps}>
-            <Flex
-                direction="column"
-                padding="4"
-                radius="full"
-                border={selected ? 'neutral-medium' : 'transparent'}
-                background={selected ? 'neutral-strong' : 'transparent'}
-                style={{ cursor: 'pointer' }}
-                className={classNames(className || '', selected ? styles.selected : '', styles.wrapper)}>
-                <User {...userProps} />
-            </Flex>
-        </DropdownWrapper>
-    );
+  return (
+    <DropdownWrapper
+      minWidth={minWidth}
+      maxWidth={maxWidth}
+      minHeight={minHeight}
+      style={{
+        borderRadius: "var(--radius-full)",
+      }}
+      trigger={
+        <Flex
+          tabIndex={0}
+          direction="column"
+          padding="4"
+          radius="full"
+          cursor="interactive"
+          border={selected ? "neutral-medium" : "transparent"}
+          background={selected ? "neutral-strong" : "transparent"}
+          className={classNames(className || "", selected ? styles.selected : "", styles.wrapper)}
+          style={style}
+        >
+          <User {...userProps} />
+        </Flex>
+      }
+      dropdown={<>{dropdown}</>}
+    />
+  );
 };
 
-UserMenu.displayName = 'UserMenu';
-
+UserMenu.displayName = "UserMenu";
 export { UserMenu };

@@ -1,0 +1,11 @@
+.tiltFx {
+    transition: transform 0.3s ease-out;
+}
+
+@media (hover: hover) {
+    .tiltFx {
+        perspective: 1000px;
+        transform-style: preserve-3d;
+        will-change: transform;
+    }
+}

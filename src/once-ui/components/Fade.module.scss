@@ -1,0 +1,6 @@
+.mask {
+    backdrop-filter: blur(0.5rem);
+    background: linear-gradient(var(--gradient-direction), var(--base-color), transparent);
+    mask-image: linear-gradient(var(--gradient-direction), black 20%, transparent 100%);
+    mask-size: 100% 100%;
+}

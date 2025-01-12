@@ -12,7 +12,7 @@
     backdrop-filter: var(--backdrop-filter);
 }
 
-.backdrop {
+.overlay-background {
     background-color: var(--backdrop);
 }
 
@@ -20,9 +20,9 @@
 .neutral-background-weak,
 .neutral-background-medium,
 .neutral-background-strong,
-.neutral-alpha-weak,
-.neutral-alpha-medium,
-.neutral-alpha-strong {
+.neutral-background-alpha-weak,
+.neutral-background-alpha-medium,
+.neutral-background-alpha-strong {
     ::selection {
         background-color: var(--neutral-on-background-weak);
         color: var(--neutral-background-weak);
@@ -62,15 +62,15 @@
     background-color: var(--neutral-solid-strong);
 }
 
-.neutral-alpha-weak {
+.neutral-background-alpha-weak {
     background-color: var(--neutral-alpha-weak);
 }
 
-.neutral-alpha-medium {
+.neutral-background-alpha-medium {
     background-color: var(--neutral-alpha-medium);
 }
 
-.neutral-alpha-strong {
+.neutral-background-alpha-strong {
     background-color: var(--neutral-alpha-strong);
 }
 
@@ -78,9 +78,9 @@
 .brand-background-weak,
 .brand-background-medium,
 .brand-background-strong,
-.brand-alpha-weak,
-.brand-alpha-medium,
-.brand-alpha-strong {
+.brand-background-alpha-weak,
+.brand-background-alpha-medium,
+.brand-background-alpha-strong {
     ::selection {
         background-color: var(--brand-on-background-weak);
         color: var(--brand-background-weak);
@@ -120,15 +120,15 @@
     background-color: var(--brand-solid-strong);
 }
 
-.brand-alpha-weak {
+.brand-background-alpha-weak {
     background-color: var(--brand-alpha-weak);
 }
 
-.brand-alpha-medium {
+.brand-background-alpha-medium {
     background-color: var(--brand-alpha-medium);
 }
 
-.brand-alpha-strong {
+.brand-background-alpha-strong {
     background-color: var(--brand-alpha-strong);
 }
 
@@ -136,9 +136,9 @@
 .accent-background-weak,
 .accent-background-medium,
 .accent-background-strong,
-.accent-alpha-weak,
-.accent-alpha-medium,
-.accent-alpha-strong {
+.accent-background-alpha-weak,
+.accent-background-alpha-medium,
+.accent-background-alpha-strong {
     ::selection {
         background-color: var(--accent-on-background-weak);
         color: var(--accent-background-weak);
@@ -178,15 +178,15 @@
     background-color: var(--accent-solid-strong);
 }
 
-.accent-alpha-weak {
+.accent-background-alpha-weak {
     background-color: var(--accent-alpha-weak);
 }
 
-.accent-alpha-medium {
+.accent-background-alpha-medium {
     background-color: var(--accent-alpha-medium);
 }
 
-.accent-alpha-strong {
+.accent-background-alpha-strong {
     background-color: var(--accent-alpha-strong);
 }
 
@@ -194,9 +194,9 @@
 .info-background-weak,
 .info-background-medium,
 .info-background-strong,
-.info-alpha-weak,
-.info-alpha-medium,
-.info-alpha-strong {
+.info-background-alpha-weak,
+.info-background-alpha-medium,
+.info-background-alpha-strong {
     ::selection {
         background-color: var(--info-on-background-weak);
         color: var(--info-background-weak);
@@ -236,15 +236,15 @@
     background-color: var(--info-solid-strong);
 }
 
-.info-alpha-weak {
+.info-background-alpha-weak {
     background-color: var(--info-alpha-weak);
 }
 
-.info-alpha-medium {
+.info-background-alpha-medium {
     background-color: var(--info-alpha-medium);
 }
 
-.info-alpha-strong {
+.info-background-alpha-strong {
     background-color: var(--info-alpha-strong);
 }
 
@@ -252,9 +252,9 @@
 .danger-background-weak,
 .danger-background-medium,
 .danger-background-strong,
-.danger-alpha-weak,
-.danger-alpha-medium,
-.danger-alpha-strong {
+.danger-background-alpha-weak,
+.danger-background-alpha-medium,
+.danger-background-alpha-strong {
     ::selection {
         background-color: var(--danger-on-background-weak);
         color: var(--danger-background-weak);
@@ -294,15 +294,15 @@
     background-color: var(--danger-solid-strong);
 }
 
-.danger-alpha-weak {
+.danger-background-alpha-weak {
     background-color: var(--danger-alpha-weak);
 }
 
-.danger-alpha-medium {
+.danger-background-alpha-medium {
     background-color: var(--danger-alpha-medium);
 }
 
-.danger-alpha-strong {
+.danger-background-alpha-strong {
     background-color: var(--danger-alpha-strong);
 }
 
@@ -310,9 +310,9 @@
 .warning-background-weak,
 .warning-background-medium,
 .warning-background-strong,
-.warning-alpha-weak,
-.warning-alpha-medium,
-.warning-alpha-strong {
+.warning-background-alpha-weak,
+.warning-background-alpha-medium,
+.warning-background-alpha-strong {
     ::selection {
         background-color: var(--warning-on-background-weak);
         color: var(--warning-background-weak);
@@ -352,15 +352,15 @@
     background-color: var(--warning-solid-strong);
 }
 
-.warning-alpha-weak {
+.warning-background-alpha-weak {
     background-color: var(--warning-alpha-weak);
 }
 
-.warning-alpha-medium {
+.warning-background-alpha-medium {
     background-color: var(--warning-alpha-medium);
 }
 
-.warning-alpha-strong {
+.warning-background-alpha-strong {
     background-color: var(--warning-alpha-strong);
 }
 
@@ -368,9 +368,9 @@
 .success-background-weak,
 .success-background-medium,
 .success-background-strong,
-.success-alpha-weak,
-.success-alpha-medium,
-.success-alpha-strong {
+.success-background-alpha-weak,
+.success-background-alpha-medium,
+.success-background-alpha-strong {
     ::selection {
         background-color: var(--success-on-background-weak);
         color: var(--success-background-weak);
@@ -410,14 +410,14 @@
     background-color: var(--success-solid-strong);
 }
 
-.success-alpha-weak {
+.success-background-alpha-weak {
     background-color: var(--success-alpha-weak);
 }
 
-.success-alpha-medium {
+.success-background-alpha-medium {
     background-color: var(--success-alpha-medium);
 }
 
-.success-alpha-strong {
+.success-background-alpha-strong {
     background-color: var(--success-alpha-strong);
 }

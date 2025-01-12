@@ -1,9 +1,6 @@
 .tag {
-    border-width: 1px;
-    border-style: solid;
     white-space: nowrap;
     user-select: none;
-    width: fit-content;
 
     &.brand {
         border-color: var(--brand-border-strong);
@@ -51,6 +48,7 @@
         border-color: var(--brand-alpha-medium);
         background-image: linear-gradient(45deg, var(--brand-background-strong), var(--accent-background-strong));
         color: var(--brand-on-background-medium);
+        background-clip: padding-box;
     }
 }
 

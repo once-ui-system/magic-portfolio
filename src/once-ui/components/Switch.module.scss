@@ -1,5 +1,6 @@
 .container {
-    cursor: pointer;
+    cursor: var(--cursor-interactive);
+    isolation: isolate;
 
     &:active {
         .element {
