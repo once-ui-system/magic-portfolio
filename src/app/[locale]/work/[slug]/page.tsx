@@ -2,10 +2,10 @@ import { notFound } from 'next/navigation'
 import { CustomMDX } from '@/components/mdx'
 import { getPosts } from '@/app/utils/utils'
 import { AvatarGroup, Button, Flex, Heading, SmartImage, Text } from '@/once-ui/components'
-import { baseURL, renderContent } from '@/app/resources';
+import { baseURL } from '@/app/resources';
 import { routing } from '@/i18n/routing';
 import { unstable_setRequestLocale } from 'next-intl/server';
-import { useTranslations } from 'next-intl';
+import { person } from '@/app/resources/content';
 import { formatDate } from '@/app/utils/formatDate';
 import ScrollToHash from '@/components/ScrollToHash';
 
@@ -86,9 +86,6 @@ export default function Project({ params }: WorkParams) {
 	if (!post) {
 		notFound()
 	}
-
-	const t = useTranslations();
-	const { person } = renderContent(t);
 
 	const avatars = post.metadata.team?.map((person) => ({
         src: person.avatar,

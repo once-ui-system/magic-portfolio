@@ -3,8 +3,7 @@
 import Masonry from 'react-masonry-css';
 import { SmartImage } from "@/once-ui/components";
 import styles from "./Gallery.module.scss";
-import { useTranslations } from 'next-intl';
-import { renderContent } from '@/app/resources';
+import { gallery } from '@/app/resources/content';
 
 export default function MasonryGrid() {
     const breakpointColumnsObj = {
@@ -13,9 +12,6 @@ export default function MasonryGrid() {
         1024: 2,
         560: 1
     };
-
-    const t = useTranslations();
-    const { gallery } = renderContent(t);
 
     return (
         <Masonry

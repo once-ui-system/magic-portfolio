@@ -10,18 +10,15 @@ import { Inter } from 'next/font/google'
 import { Source_Code_Pro } from 'next/font/google';
 
 import { NextIntlClientProvider } from 'next-intl';
-import { getMessages, getTranslations, unstable_setRequestLocale } from 'next-intl/server';
+import { getMessages, unstable_setRequestLocale } from 'next-intl/server';
 
 import { routing } from "@/i18n/routing";
-import { renderContent } from "@/app/resources";
+import { person, home } from '@/app/resources/content';
 import { Background, Flex } from "@/once-ui/components";
 
 export async function generateMetadata(
 	{ params: { locale }}: { params: { locale: string }}
 ) {
-
-	const t = await getTranslations();
-	const { person, home } = renderContent(t);
 
 	return {
 		metadataBase: new URL(`https://${baseURL}/${locale}`),

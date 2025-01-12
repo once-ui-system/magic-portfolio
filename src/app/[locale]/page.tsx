@@ -3,17 +3,15 @@ import React from 'react';
 import { Heading, Flex, Text, Button,  Avatar, RevealFx, Arrow } from '@/once-ui/components';
 import { Projects } from '@/components/work/Projects';
 
-import { baseURL, routes, renderContent } from '@/app/resources'; 
+import { baseURL, routes } from '@/app/resources'; 
+import { home, about, person, newsletter } from '@/app/resources/content';
 import { Mailchimp } from '@/components';
 import { Posts } from '@/components/blog/Posts';
-import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
-import { useTranslations } from 'next-intl';
+import { unstable_setRequestLocale } from 'next-intl/server';
 
 export async function generateMetadata(
 	{params: {locale}}: { params: { locale: string }}
 ) {
-	const t = await getTranslations();
-    const { home } = renderContent(t);
 	const title = home.title;
 	const description = home.description;
 	const ogImage = `https://${baseURL}/og?title=${encodeURIComponent(title)}`;
@@ -46,8 +44,6 @@ export default function Home(
 	{ params: {locale}}: { params: { locale: string }}
 ) {
 	unstable_setRequestLocale(locale);
-	const t = useTranslations();
-	const { home, about, person, newsletter } = renderContent(t);
 	return (
 		<Flex
 			maxWidth="m" fillWidth gap="xl"
@@ -115,7 +111,7 @@ export default function Home(
 												src={person.avatar}
 												size="m"/>
 											)}
-											{t("about.title")}
+											{about.title}
 											<Arrow trigger="#about"/>
 									</Flex>
 								</Button>

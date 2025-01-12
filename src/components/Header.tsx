@@ -7,12 +7,10 @@ import { Flex, ToggleButton } from "@/once-ui/components"
 import styles from '@/components/Header.module.scss'
 
 import { routes, display } from '@/app/resources'
+import { person, home, about, blog, work, gallery } from '@/app/resources/content';
 
 import { routing } from '@/i18n/routing';
 import { Locale, usePathname, useRouter } from '@/i18n/routing';
-import { renderContent } from "@/app/resources";
-import { useTranslations } from "next-intl";
-import { i18n } from "@/app/resources/config";
 
 type TimeDisplayProps = {
     timeZone: string;
@@ -66,9 +64,6 @@ export const Header = () => {
             )
         })
     }
-
-    const t = useTranslations();
-    const { person, home, about, blog, work, gallery } = renderContent(t);
 
     return (
         <>
@@ -150,23 +145,6 @@ export const Header = () => {
                         justifyContent="flex-end" alignItems="center"
                         textVariant="body-default-s"
                         gap="20">
-                        {routing.locales.length > 1 &&
-                            <Flex
-                                background="surface" border="neutral-medium" borderStyle="solid-1" radius="m-4" shadow="l"
-                                padding="4" gap="2"
-                                justifyContent="center">
-                                {i18n && routing.locales.map((locale, index) => (
-                                    <ToggleButton
-                                        key={index}
-                                        selected={params?.locale === locale}
-                                        onClick={() => handleLanguageChange(locale)}
-                                        className={isPending && 'pointer-events-none opacity-60' || ''}
-                                        >
-                                        {locale.toUpperCase()}
-                                    </ToggleButton>
-                                ))}
-                            </Flex>
-                        }
                         <Flex hide="s">
                             { display.time && (
                                 <TimeDisplay timeZone={person.location}/>
