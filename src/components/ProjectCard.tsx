@@ -11,6 +11,7 @@ interface ProjectCardProps {
     content: string;
     description: string;
     avatars: { src: string }[];
+    link: string;
 }
 
 export const ProjectCard: React.FC<ProjectCardProps> = ({
@@ -19,7 +20,8 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
     title,
     content,
     description,
-    avatars
+    avatars,
+    link,
 }) => {
     const [activeIndex, setActiveIndex] = useState(0);
     const [isTransitioning, setIsTransitioning] = useState(false);
@@ -87,8 +89,8 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
                             key={index}
                             onClick={() => handleControlClick(index)}
                             style={{
-                                background: activeIndex === index 
-                                    ? 'var(--neutral-on-background-strong)' 
+                                background: activeIndex === index
+                                    ? 'var(--neutral-on-background-strong)'
                                     : 'var(--neutral-alpha-medium)',
                                 cursor: 'pointer',
                                 transition: 'background 0.3s ease',
@@ -131,17 +133,27 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
                                 {description}
                             </Text>
                         )}
-                        {content?.trim() && (
-                            <SmartLink
-                                suffixIcon="chevronRight"
-                                style={{margin: '0', width: 'fit-content'}}
-                                href={href}>
-                                    <Text
-                                        variant="body-default-s">
-                                       {t("projectCard.label")}
-                                    </Text>
-                            </SmartLink>
-                        )}
+                        <Flex gap="24" wrap>
+                            {content?.trim() && (
+                                <SmartLink
+                                    suffixIcon="arrowRight"
+                                    style={{margin: '0', width: 'fit-content'}}
+                                    href={href}>
+                                        <Text
+                                            variant="body-default-s">
+                                        {t("projectCard.label")}
+                                        </Text>
+                                </SmartLink>
+                            )}
+                            {link && (
+                                <SmartLink
+                                    suffixIcon="arrowUpRightFromSquare"
+                                    style={{ margin: "0", width: "fit-content" }}
+                                    href={link}>
+                                    <Text variant="body-default-s">{t("projectCard.link")}</Text>
+                                </SmartLink>
+                            )}
+                        </Flex>
                     </Flex>
                 )}
             </Flex>

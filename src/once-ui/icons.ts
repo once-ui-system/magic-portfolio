@@ -16,9 +16,11 @@ import {
 	HiExclamationCircle,
 	HiCheckCircle,
 	HiMiniGlobeAsiaAustralia,
+	HiArrowTopRightOnSquare,
 	HiEnvelope,
 	HiCalendarDays,
-	HiClipboard
+	HiClipboard,
+	HiArrowRight
 } from "react-icons/hi2";
 
 import {
@@ -33,17 +35,18 @@ import {
 	FaDiscord,
 	FaGithub,
 	FaLinkedin,
-	FaXTwitter
+	FaXTwitter,
 } from "react-icons/fa6";
 
 export const iconLibrary: Record<string, IconType> = {
 	chevronUp: HiChevronUp,
-    chevronDown: HiChevronDown,
+  chevronDown: HiChevronDown,
 	chevronRight: HiChevronRight,
 	chevronLeft: HiChevronLeft,
 	refresh: HiOutlineArrowPath,
 	arrowUpRight: HiArrowUpRight,
 	check: HiCheck,
+	arrowRight: HiArrowRight,
 	helpCircle: HiMiniQuestionMarkCircle,
 	infoCircle: HiInformationCircle,
 	warningTriangle: HiExclamationTriangle,
@@ -63,5 +66,6 @@ export const iconLibrary: Record<string, IconType> = {
 	github: FaGithub,
 	linkedin: FaLinkedin,
 	x: FaXTwitter,
-	clipboard: HiClipboard
+	clipboard: HiClipboard,
+	arrowUpRightFromSquare: HiArrowTopRightOnSquare
 };
