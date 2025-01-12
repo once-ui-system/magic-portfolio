@@ -101,7 +101,7 @@ const createI18nContent = (t) => {
         },
         studies: {
             display: true, // set to false to hide this section
-            title: 'Studies',
+            title: t("about.studies.title"),
             institutions: [
                 {
                     name: 'University of Jakarta',
