@@ -180,6 +180,7 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
                 } else if (ref) {
                   ref.current = node;
                 }
+                // @ts-ignore:next-line
                 textareaRef.current = node;
               }}
               id={id}
