@@ -30,7 +30,7 @@ export function Posts({
         <>
             {displayedBlogs.length > 0 && (
                 <Grid
-                    columns={`repeat(${columns}, 1fr)`} mobileColumns="1col"
+                    columns={columns} mobileColumns="1"
                     fillWidth marginBottom="40" gap="m">
                     {displayedBlogs.map((post) => (
                         <Post
