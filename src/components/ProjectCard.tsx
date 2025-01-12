@@ -133,25 +133,27 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
                                 {description}
                             </Text>
                         )}
-                        {link && (
-                            <SmartLink
-                                suffixIcon="arrowUpRightFromSquare"
-                                style={{ margin: "0", width: "fit-content" }}
-                                href={link}>
-                                <Text variant="body-default-s">{t("projectCard.link")}</Text>
-                            </SmartLink>
-                        )}
-                        {content?.trim() && (
-                            <SmartLink
-                                suffixIcon="chevronRight"
-                                style={{margin: '0', width: 'fit-content'}}
-                                href={href}>
-                                    <Text
-                                        variant="body-default-s">
-                                       {t("projectCard.label")}
-                                    </Text>
-                            </SmartLink>
-                        )}
+                        <Flex gap="24" wrap>
+                            {content?.trim() && (
+                                <SmartLink
+                                    suffixIcon="arrowRight"
+                                    style={{margin: '0', width: 'fit-content'}}
+                                    href={href}>
+                                        <Text
+                                            variant="body-default-s">
+                                        {t("projectCard.label")}
+                                        </Text>
+                                </SmartLink>
+                            )}
+                            {link && (
+                                <SmartLink
+                                    suffixIcon="arrowUpRightFromSquare"
+                                    style={{ margin: "0", width: "fit-content" }}
+                                    href={link}>
+                                    <Text variant="body-default-s">{t("projectCard.link")}</Text>
+                                </SmartLink>
+                            )}
+                        </Flex>
                     </Flex>
                 )}
             </Flex>
