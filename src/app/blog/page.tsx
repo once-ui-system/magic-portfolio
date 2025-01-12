@@ -3,11 +3,8 @@ import { Mailchimp } from '@/components';
 import { Posts } from '@/components/blog/Posts';
 import { baseURL } from '@/app/resources'
 import { blog, person, newsletter } from '@/app/resources/content';
-import { unstable_setRequestLocale } from 'next-intl/server';
 
-export async function generateMetadata(
-	{params: {locale}}: { params: { locale: string }}
-) {
+export async function generateMetadata() {
 
 	const title = blog.title;
 	const description = blog.description;
@@ -20,7 +17,7 @@ export async function generateMetadata(
 			title,
 			description,
 			type: 'website',
-			url: `https://${baseURL}/${locale}/blog`,
+			url: `https://${baseURL}/blog`,
 			images: [
 				{
 					url: ogImage,
@@ -37,11 +34,7 @@ export async function generateMetadata(
 	};
 }
 
-export default function Blog(
-	{ params: {locale}}: { params: { locale: string }}
-) {
-	unstable_setRequestLocale(locale);
-
+export default function Blog() {
     return (
         <Flex
 			fillWidth maxWidth="s"
@@ -75,8 +68,8 @@ export default function Blog(
             </Heading>
 			<Flex
 				fillWidth flex={1} direction="column">
-				<Posts range={[1,3]} locale={locale} thumbnail/>
-				<Posts range={[4]} columns="2" locale={locale}/>
+				<Posts range={[1,3]} thumbnail/>
+				<Posts range={[4]} columns="2"/>
 			</Flex>
             {newsletter.display && (
                 <Mailchimp newsletter={newsletter} />

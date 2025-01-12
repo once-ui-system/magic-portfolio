@@ -7,11 +7,8 @@ import { baseURL, routes } from '@/app/resources';
 import { home, about, person, newsletter } from '@/app/resources/content';
 import { Mailchimp } from '@/components';
 import { Posts } from '@/components/blog/Posts';
-import { unstable_setRequestLocale } from 'next-intl/server';
 
-export async function generateMetadata(
-	{params: {locale}}: { params: { locale: string }}
-) {
+export async function generateMetadata() {
 	const title = home.title;
 	const description = home.description;
 	const ogImage = `https://${baseURL}/og?title=${encodeURIComponent(title)}`;
@@ -23,7 +20,7 @@ export async function generateMetadata(
 			title,
 			description,
 			type: 'website',
-			url: `https://${baseURL}/${locale}`,
+			url: `https://${baseURL}`,
 			images: [
 				{
 					url: ogImage,
@@ -40,10 +37,7 @@ export async function generateMetadata(
 	};
 }
 
-export default function Home(
-	{ params: {locale}}: { params: { locale: string }}
-) {
-	unstable_setRequestLocale(locale);
+export default function Home() {
 	return (
 		<Flex
 			maxWidth="m" fillWidth gap="xl"
@@ -99,7 +93,7 @@ export default function Home(
 								<Button
 									id="about"
 									data-border="rounded"
-									href={`/${locale}/about`}
+									href="/about"
 									variant="tertiary"
 									size="m">
 									<Flex
@@ -121,7 +115,7 @@ export default function Home(
 				
 			</Flex>
 			<RevealFx translateY="16" delay={0.6}>
-				<Projects range={[1,1]} locale={locale}/>
+				<Projects range={[1,1]}/>
 			</RevealFx>
 			{routes['/blog'] && (
 				<Flex
@@ -137,11 +131,11 @@ export default function Home(
 					</Flex>
 					<Flex
 						flex={3} paddingX="20">
-						<Posts range={[1,2]} columns="2" locale={locale}/>
+						<Posts range={[1,2]} columns="2"/>
 					</Flex>
 				</Flex>
 			)}
-			<Projects range={[2]} locale={locale}/>
+			<Projects range={[2]}/>
 			{ newsletter.display &&
 				<Mailchimp newsletter={newsletter} />
 			}

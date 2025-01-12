@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from 'react';
-import { usePathname } from '@/i18n/routing';
+import { usePathname } from 'next/navigation';
 import { routes, protectedRoutes } from '@/app/resources';
 import { Flex, Spinner, Input, Button, Heading } from '@/once-ui/components';
 
@@ -99,19 +99,19 @@ const RouteGuard: React.FC<RouteGuardProps> = ({ children }) => {
             <Heading align="center" wrap="balance">
                 This page is password protected
             </Heading>
-            <Input
-                id="password"
-                type="password"
-                label="Enter password"
-                value={password}
-                onChange={(e) => {
-                    setPassword(e.target.value);
-                    setError(undefined);
-                }}
-                error={error}/>
-            <Button onClick={handlePasswordSubmit} size="l">
-                Submit
-            </Button>
+            <Flex fillWidth gap="8" direction="column">
+                <Input
+                    id="password"
+                    label="Password"
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    error={error}
+                />
+                <Button onClick={handlePasswordSubmit}>
+                    Submit
+                </Button>
+            </Flex>
         </Flex>
         );
     }

@@ -3,8 +3,6 @@
 import { mailchimp } from '@/app/resources'
 import { Button, Flex, Heading, Input, Text, Background } from '@/once-ui/components';
 import { useState } from 'react';
-import { useTranslations } from 'next-intl';
-
 
 function debounce<T extends (...args: any[]) => void>(func: T, delay: number): T {
     let timeout: ReturnType<typeof setTimeout>;
@@ -26,8 +24,6 @@ export const Mailchimp = (
     const [email, setEmail] = useState<string>('');
     const [error, setError] = useState<string>('');
     const [touched, setTouched] = useState<boolean>(false);
-
-    const t = useTranslations();
 
     const validateEmail = (email: string): boolean => {
         if (email === '') {
@@ -133,7 +129,7 @@ export const Mailchimp = (
                                 value="Subscribe"
                                 size="m"
                                 fillWidth>
-                                {t("newsletter.button")}
+                                Subscribe
                             </Button>
                         </Flex>
                     </div>

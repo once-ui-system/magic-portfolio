@@ -3,12 +3,8 @@ import { Flex } from '@/once-ui/components';
 import { Projects } from '@/components/work/Projects';
 import { baseURL } from '@/app/resources';
 import { person, work } from '@/app/resources/content';
-import { unstable_setRequestLocale } from 'next-intl/server';
 
-export async function generateMetadata(
-    {params: {locale}}: { params: { locale: string }}
-) {
-
+export async function generateMetadata() {
 	const title = work.title;
 	const description = work.description;
 	const ogImage = `https://${baseURL}/og?title=${encodeURIComponent(title)}`;
@@ -20,7 +16,7 @@ export async function generateMetadata(
 			title,
 			description,
 			type: 'website',
-			url: `https://${baseURL}/${locale}/work/`,
+			url: `https://${baseURL}/work/`,
 			images: [
 				{
 					url: ogImage,
@@ -37,11 +33,8 @@ export async function generateMetadata(
 	};
 }
 
-export default function Work(
-    { params: {locale}}: { params: { locale: string }}
-) {
-    unstable_setRequestLocale(locale);
-    let allProjects = getPosts(['src', 'app', '[locale]', 'work', 'projects', locale]);
+export default function Work() {
+    let allProjects = getPosts(['src', 'app', 'work', 'projects']);
 
     return (
         <Flex
@@ -72,7 +65,7 @@ export default function Work(
                     }),
                 }}
             />
-            <Projects locale={locale}/>
+            <Projects />
         </Flex>
     );
 }

@@ -1,43 +1,28 @@
-import ScrollToHash from '@/components/ScrollToHash';
 import { notFound } from 'next/navigation'
 import { CustomMDX } from '@/components/mdx'
 import { getPosts } from '@/app/utils/utils'
-import { Avatar, Button, Flex, Heading, Text } from '@/once-ui/components'
-
-import { baseURL } from '@/app/resources'
-import { unstable_setRequestLocale } from 'next-intl/server'
-import { routing } from '@/i18n/routing';
+import { AvatarGroup, Button, Flex, Heading, SmartImage, Text } from '@/once-ui/components'
+import { baseURL } from '@/app/resources';
 import { person } from '@/app/resources/content';
-import { formatDate } from '@/app/utils/formatDate'
+import { formatDate } from '@/app/utils/formatDate';
+import ScrollToHash from '@/components/ScrollToHash';
 
 interface BlogParams {
-    params: { 
+    params: {
         slug: string;
-		locale: string;
     };
 }
 
-export async function generateStaticParams() {
-	const locales = routing.locales;
-    
-    // Create an array to store all posts from all locales
-    const allPosts: { slug: string; locale: string }[] = [];
-
-    // Fetch posts for each locale
-    for (const locale of locales) {
-        const posts = getPosts(['src', 'app', '[locale]', 'blog', 'posts', locale]);
-        allPosts.push(...posts.map(post => ({
-            slug: post.slug,
-            locale: locale,
-        })));
-    }
-
-    return allPosts;
+export async function generateStaticParams(): Promise<{ slug: string }[]> {
+    const posts = getPosts(['src', 'app', 'blog', 'posts']);
+    return posts.map((post) => ({
+        slug: post.slug,
+    }));
 }
 
-export function generateMetadata({ params: { slug, locale } }: BlogParams) {
-	let post = getPosts(['src', 'app', '[locale]', 'blog', 'posts', locale]).find((post) => post.slug === slug)
-
+export function generateMetadata({ params: { slug } }: BlogParams) {
+	let post = getPosts(['src', 'app', 'blog', 'posts']).find((post) => post.slug === slug)
+	
 	if (!post) {
 		return
 	}
@@ -46,8 +31,10 @@ export function generateMetadata({ params: { slug, locale } }: BlogParams) {
 		title,
 		publishedAt: publishedTime,
 		summary: description,
+		images,
 		image,
-	} = post.metadata;
+		team,
+	} = post.metadata
 	let ogImage = image
 		? `https://${baseURL}${image}`
 		: `https://${baseURL}/og?title=${title}`;
@@ -60,7 +47,7 @@ export function generateMetadata({ params: { slug, locale } }: BlogParams) {
 			description,
 			type: 'article',
 			publishedTime,
-			url: `https://${baseURL}/${locale}/blog/${post.slug}`,
+			url: `https://${baseURL}/blog/${post.slug}`,
 			images: [
 				{
 					url: ogImage,
@@ -77,18 +64,21 @@ export function generateMetadata({ params: { slug, locale } }: BlogParams) {
 }
 
 export default function Blog({ params }: BlogParams) {
-	unstable_setRequestLocale(params.locale);
-	let post = getPosts(['src', 'app', '[locale]', 'blog', 'posts', params.locale]).find((post) => post.slug === params.slug)
+	let post = getPosts(['src', 'app', 'blog', 'posts']).find((post) => post.slug === params.slug)
 
 	if (!post) {
 		notFound()
 	}
 
+	const avatars = post.metadata.team?.map((person) => ({
+        src: person.avatar,
+    })) || [];
+
 	return (
 		<Flex as="section"
-			fillWidth maxWidth="xs"
-			direction="column"
-			gap="m">
+			fillWidth maxWidth="m"
+			direction="column" alignItems="center"
+			gap="l">
 			<script
 				type="application/ld+json"
 				suppressHydrationWarning
@@ -103,7 +93,7 @@ export default function Blog({ params }: BlogParams) {
 						image: post.metadata.image
 							? `https://${baseURL}${post.metadata.image}`
 							: `https://${baseURL}/og?title=${post.metadata.title}`,
-							url: `https://${baseURL}/${params.locale}/blog/${post.slug}`,
+							url: `https://${baseURL}/blog/${post.slug}`,
 						author: {
 							'@type': 'Person',
 							name: person.name,
@@ -112,7 +102,7 @@ export default function Blog({ params }: BlogParams) {
 				}}
 			/>
 			<Button
-				href={`/${params.locale}/blog`}
+				href="/blog"
 				variant="tertiary"
 				size="s"
 				prefixIcon="chevronLeft">
@@ -125,10 +115,11 @@ export default function Blog({ params }: BlogParams) {
 			<Flex
 				gap="12"
 				alignItems="center">
-				{ person.avatar && (
-					<Avatar
+				{avatars.length > 0 && (
+					<AvatarGroup
 						size="s"
-						src={person.avatar}/>
+						avatars={avatars}
+					/>
 				)}
 				<Text
 					variant="body-default-s"

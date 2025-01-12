@@ -1,6 +1,6 @@
 "use client";
 
-import { useParams } from "next/navigation";
+import { useParams, usePathname, useRouter } from "next/navigation";
 import { useEffect, useState, useTransition } from "react";
 
 import { Flex, ToggleButton } from "@/once-ui/components"
@@ -8,9 +8,6 @@ import styles from '@/components/Header.module.scss'
 
 import { routes, display } from '@/app/resources'
 import { person, home, about, blog, work, gallery } from '@/app/resources/content';
-
-import { routing } from '@/i18n/routing';
-import { Locale, usePathname, useRouter } from '@/i18n/routing';
 
 type TimeDisplayProps = {
     timeZone: string;
@@ -55,16 +52,6 @@ export const Header = () => {
     const pathname = usePathname() ?? '';
     const params = useParams();
 
-    function handleLanguageChange(locale: string) {
-        const nextLocale = locale as Locale;
-        startTransition(() => {
-            router.replace(
-                pathname,
-                {locale: nextLocale}
-            )
-        })
-    }
-
     return (
         <>
             <Flex
@@ -99,7 +86,7 @@ export const Header = () => {
                             { routes['/'] && (
                                 <ToggleButton
                                     prefixIcon="home"
-                                    href={`/${params?.locale}`}
+                                    href="/"
                                     selected={pathname === "/"}>
                                     <Flex paddingX="2" hide="s">{home.label}</Flex>
                                 </ToggleButton>
@@ -107,7 +94,7 @@ export const Header = () => {
                             { routes['/about'] && (
                                 <ToggleButton
                                     prefixIcon="person"
-                                    href={`/${params?.locale}/about`}
+                                    href="/about"
                                     selected={pathname === "/about"}>
                                     <Flex paddingX="2" hide="s">{about.label}</Flex>
                                 </ToggleButton>
@@ -115,7 +102,7 @@ export const Header = () => {
                             { routes['/work'] && (
                                 <ToggleButton
                                     prefixIcon="grid"
-                                    href={`/${params?.locale}/work`}
+                                    href="/work"
                                     selected={pathname.startsWith('/work')}>
                                     <Flex paddingX="2" hide="s">{work.label}</Flex>
                                 </ToggleButton>
@@ -123,7 +110,7 @@ export const Header = () => {
                             { routes['/blog'] && (
                                 <ToggleButton
                                     prefixIcon="book"
-                                    href={`/${params?.locale}/blog`}
+                                    href="/blog"
                                     selected={pathname.startsWith('/blog')}>
                                     <Flex paddingX="2" hide="s">{blog.label}</Flex>
                                 </ToggleButton>
@@ -131,7 +118,7 @@ export const Header = () => {
                             { routes['/gallery'] && (
                                 <ToggleButton
                                     prefixIcon="gallery"
-                                    href={`/${params?.locale}/gallery`}
+                                    href="/gallery"
                                     selected={pathname.startsWith('/gallery')}>
                                     <Flex paddingX="2" hide="s">{gallery.label}</Flex>
                                 </ToggleButton>

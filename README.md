@@ -31,12 +31,12 @@ src/app/resources/config
 
 **5. Edit content**
 ```
-src/app/resources/content (or content-i18n for localization)
+src/app/resources/content
 ```
 
 **6. Create blog posts / projects**
 ```
-Add a new .mdx file to src/app/[locale]/blog/posts or src/app/[locale]/work/projects
+Add a new .mdx file to src/app/blog/posts or src/app/work/projects
 ```
 
 # **Features**
@@ -59,9 +59,9 @@ Add a new .mdx file to src/app/[locale]/blog/posts or src/app/[locale]/work/proj
 - Generate and display social links automatically
 - Set up password protection for URLs
 
-## **Localization (NEW)**
-- Magic Portfolio now supports localization with the next-intl library
-- See more info in resources/config.js
+## **Localization**
+- A localized version of Magic Portfolio is available with the next-intl library
+- To use localization, switch to the 'i18n' branch
 
 # **Authors**
 

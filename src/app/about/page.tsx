@@ -3,11 +3,8 @@ import { baseURL } from '@/app/resources';
 import TableOfContents from '@/components/about/TableOfContents';
 import styles from '@/components/about/about.module.scss'
 import { person, about, social } from '@/app/resources/content';
-import { unstable_setRequestLocale } from 'next-intl/server';
 
-export async function generateMetadata(
-    {params: {locale}}: { params: { locale: string }}
-) {
+export async function generateMetadata() {
 	const title = about.title;
 	const description = about.description;
 	const ogImage = `https://${baseURL}/og?title=${encodeURIComponent(title)}`;
@@ -19,7 +16,7 @@ export async function generateMetadata(
 			title,
 			description,
 			type: 'website',
-			url: `https://${baseURL}/${locale}/about`,
+			url: `https://${baseURL}/about`,
 			images: [
 				{
 					url: ogImage,
@@ -36,10 +33,7 @@ export async function generateMetadata(
 	};
 }
 
-export default function About(
-    { params: {locale}}: { params: { locale: string }}
-) {
-    unstable_setRequestLocale(locale);
+export default function About() {
     const structure = [
         { 
             title: about.intro.title,
