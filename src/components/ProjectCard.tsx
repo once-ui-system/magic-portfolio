@@ -26,7 +26,9 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
         <Flex
             fillWidth gap="m"
             direction="column">
-            <Carousel images={images.map(image => ({
+            <Carousel
+                sizes="(max-width: 960px) 100vw, 960px"
+                images={images.map(image => ({
                 src: image,
                 alt: title
             }))}/>

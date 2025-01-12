@@ -27,15 +27,15 @@
 }
 
 .l-flex-show {
-    display: none;
+    display: none !important;
 }
 
 .m-flex-show {
-    display: none;
+    display: none !important;
 }
 
 .s-flex-show {
-    display: none;
+    display: none !important;
 }
 
 @media (--l) {
