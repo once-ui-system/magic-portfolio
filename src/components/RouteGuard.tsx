@@ -99,7 +99,7 @@ const RouteGuard: React.FC<RouteGuardProps> = ({ children }) => {
             <Heading align="center" wrap="balance">
                 This page is password protected
             </Heading>
-            <Flex fillWidth gap="8" direction="column">
+            <Flex fillWidth gap="8" direction="column" alignItems="center">
                 <Input
                     id="password"
                     label="Password"
