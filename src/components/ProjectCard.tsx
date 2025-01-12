@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 
 interface ProjectCardProps {
     href: string;
+    priority?: boolean;
     images: string[];
     title: string;
     content: string;
@@ -15,6 +16,7 @@ interface ProjectCardProps {
 
 export const ProjectCard: React.FC<ProjectCardProps> = ({
     href,
+    priority = false,
     images = [],
     title,
     content,
@@ -63,6 +65,8 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
                     trigger={isTransitioning}
                     speed="fast">
                     <SmartImage
+                        priority={priority}
+                        sizes="(max-width: 960px) 100vw, 960px"
                         tabIndex={0}
                         radius="l"
                         alt={title}
@@ -138,7 +142,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
                                     href={href}>
                                         <Text
                                             variant="body-default-s">
-                                        Project Card
+                                        Read case study
                                         </Text>
                                 </SmartLink>
                             )}
@@ -147,7 +151,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
                                     suffixIcon="arrowUpRightFromSquare"
                                     style={{ margin: "0", width: "fit-content" }}
                                     href={link}>
-                                    <Text variant="body-default-s">Link</Text>
+                                    <Text variant="body-default-s">View project</Text>
                                 </SmartLink>
                             )}
                         </Flex>

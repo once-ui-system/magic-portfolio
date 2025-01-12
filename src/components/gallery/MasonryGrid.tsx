@@ -20,6 +20,8 @@ export default function MasonryGrid() {
             columnClassName={styles.masonryGridColumn}>
             {gallery.images.map((image, index) => (
                 <SmartImage
+                    priority={index < 10}
+                    sizes="(max-width: 560px) 100vw, (max-width: 1024px) 50vw, (max-width: 1440px) 33vw, 25vw"
                     key={index}
                     radius="m"
                     aspectRatio={image.orientation === "horizontal" ? "16 / 9" : "9 / 16"}
