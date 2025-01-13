@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Heading, Flex, Text, Button,  Avatar, RevealFx, Arrow, Column } from '@/once-ui/components';
 import { Projects } from '@/components/work/Projects';
-
+import { Analytics } from "@vercel/analytics/react"
 import { baseURL, routes } from '@/app/resources'; 
 import { home, about, person, newsletter } from '@/app/resources/content';
 import { Mailchimp } from '@/components';
@@ -39,78 +39,98 @@ export async function generateMetadata() {
 
 export default function Home() {
 	return (
-		<Column
-			maxWidth="m" gap="xl"
-			alignItems="center">
-			<script
-				type="application/ld+json"
-				suppressHydrationWarning
-				dangerouslySetInnerHTML={{
-					__html: JSON.stringify({
-						'@context': 'https://schema.org',
-						'@type': 'WebPage',
-						name: home.title,
-						description: home.description,
-						url: `https://${baseURL}`,
-						image: `${baseURL}/og?title=${encodeURIComponent(home.title)}`,
-						publisher: {
-							'@type': 'Person',
-							name: person.name,
-							image: {
-								'@type': 'ImageObject',
-								url: `${baseURL}${person.avatar}`,
-							},
-						},
-					}),
-				}}
-			/>
+		<>
 			<Column
-				fillWidth
-				paddingY="l" gap="m">
+				maxWidth="m" gap="xl"
+				alignItems="center">
+				<script
+					type="application/ld+json"
+					suppressHydrationWarning
+					dangerouslySetInnerHTML={{
+						__html: JSON.stringify({
+							'@context': 'https://schema.org',
+							'@type': 'WebPage',
+							name: home.title,
+							description: home.description,
+							url: `https://${baseURL}`,
+							image: `${baseURL}/og?title=${encodeURIComponent(home.title)}`,
+							publisher: {
+								'@type': 'Person',
+								name: person.name,
+								image: {
+									'@type': 'ImageObject',
+									url: `${baseURL}${person.avatar}`,
+								},
+							},
+						}),
+					}}
+				/>
 				<Column
-					maxWidth="s">
-					<RevealFx
-						translateY="4" fillWidth justifyContent="flex-start" paddingBottom="m">
-						<Heading
-							wrap="balance"
-							variant="display-strong-l">
-							{home.headline}
-						</Heading>
-					</RevealFx>
-					<RevealFx
-						translateY="8" delay={0.2} fillWidth justifyContent="flex-start" paddingBottom="m">
-						<Text
-							wrap="balance"
-							onBackground="neutral-weak"
-							variant="heading-default-xl">
-							{home.subline}
-						</Text>
-					</RevealFx>
-					<RevealFx translateY="12" delay={0.4} justifyContent="flex-start">
-						<Button
-							id="about"
-							data-border="rounded"
-							href="/about"
-							variant="secondary"
-							size="m"
-							arrowIcon>
-							<Flex
-								gap="8"
-								alignItems="center">
-								{about.avatar.display && (
-									<Avatar
-										style={{marginLeft: '-0.75rem', marginRight: '0.25rem'}}
-										src={person.avatar}
-										size="m"/>
+					fillWidth
+					paddingY="l" gap="m">
+					<Column
+						maxWidth="s">
+						<RevealFx
+							translateY="4" fillWidth justifyContent="flex-start" paddingBottom="m">
+							<Heading
+								wrap="balance"
+								variant="display-strong-l">
+								{home.headline}
+							</Heading>
+						</RevealFx>
+						<RevealFx
+							translateY="8" delay={0.2} fillWidth justifyContent="flex-start" paddingBottom="m">
+							<Text
+								wrap="balance"
+								onBackground="neutral-weak"
+								variant="heading-default-xl">
+								{home.subline}
+							</Text>
+						</RevealFx>
+						<RevealFx translateY="12" delay={0.4} justifyContent="flex-start">
+							<Button
+								id="about"
+								data-border="rounded"
+								href="/about"
+								variant="secondary"
+								size="m"
+								arrowIcon>
+								<Flex
+									gap="8"
+									alignItems="center">
+									{about.avatar.display && (
+										<Avatar
+											style={{marginLeft: '-0.75rem', marginRight: '0.25rem'}}
+											src={person.avatar}
+											size="m"/>
 									)}
 									{about.title}
-							</Flex>
-						</Button>
-					</RevealFx>
+								</Flex>
+							</Button>
+						</RevealFx>
+					</Column>
 				</Column>
-			</Column>
-			<RevealFx translateY="16" delay={0.6}>
-				{routes['/blog'] && (
+				<RevealFx translateY="16" delay={0.6}>
+					{routes['/blog'] && (
+						<Flex
+							fillWidth gap="24"
+							mobileDirection="column">
+							<Flex flex={1} paddingLeft="l">
+								<Heading
+									as="h2"
+									variant="display-strong-xs"
+									wrap="balance">
+									Latest from the blog
+								</Heading>
+							</Flex>
+							<Flex
+								flex={3} paddingX="20">
+								<Posts range={[1,2]} columns="2"/>
+							</Flex>
+						</Flex>
+					)}
+				</RevealFx>
+				<RevealFx translateY="16" delay={0.6}>
 					<Flex
 						fillWidth gap="24"
 						mobileDirection="column">
@@ -119,34 +139,17 @@ export default function Home() {
 								as="h2"
 								variant="display-strong-xs"
 								wrap="balance">
-								Latest from the blog
+								Latest from the Project
 							</Heading>
 						</Flex>
 						<Flex
-							flex={3} paddingX="20">
-							<Posts range={[1,2]} columns="2"/>
+							flex={4} paddingX="20">
+							<Projects range={[1,1]}/>
 						</Flex>
 					</Flex>
-				)}
-			</RevealFx>
-			<RevealFx translateY="16" delay={0.6}>
-				<Flex
-					fillWidth gap="24"
-					mobileDirection="column">
-					<Flex flex={1} paddingLeft="l">
-						<Heading
-							as="h2"
-							variant="display-strong-xs"
-							wrap="balance">
-							Latest from the Project
-						</Heading>
-					</Flex>
-					<Flex
-						flex={4} paddingX="20">
-						<Projects range={[1,1]}/>
-					</Flex>
-				</Flex>
-			</RevealFx>
-		</Column>
+				</RevealFx>
+			</Column>
+			<Analytics/>
+		</>
 	);
 }
