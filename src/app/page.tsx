@@ -110,9 +110,26 @@ export default function Home() {
 				</Column>
 			</Column>
 			<RevealFx translateY="16" delay={0.6}>
-				<Projects range={[1,1]}/>
+				{routes['/blog'] && (
+					<Flex
+						fillWidth gap="24"
+						mobileDirection="column">
+						<Flex flex={1} paddingLeft="l">
+							<Heading
+								as="h2"
+								variant="display-strong-xs"
+								wrap="balance">
+								Latest from the blog
+							</Heading>
+						</Flex>
+						<Flex
+							flex={3} paddingX="20">
+							<Posts range={[1,2]} columns="2"/>
+						</Flex>
+					</Flex>
+				)}
 			</RevealFx>
-			{routes['/blog'] && (
+			<RevealFx translateY="16" delay={0.6}>
 				<Flex
 					fillWidth gap="24"
 					mobileDirection="column">
@@ -121,19 +138,15 @@ export default function Home() {
 							as="h2"
 							variant="display-strong-xs"
 							wrap="balance">
-							Latest from the blog
+							Latest from the Project
 						</Heading>
 					</Flex>
 					<Flex
-						flex={3} paddingX="20">
-						<Posts range={[1,2]} columns="2"/>
+						flex={4} paddingX="20">
+						<Projects range={[1,1]}/>
 					</Flex>
 				</Flex>
-			)}
-			<Projects range={[2]}/>
-			{ newsletter.display &&
-				<Mailchimp newsletter={newsletter} />
-			}
+			</RevealFx>
 		</Column>
 	);
 }
