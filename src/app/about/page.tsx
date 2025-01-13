@@ -163,33 +163,6 @@ export default function About() {
                         fillWidth minHeight="160"
                         direction="column" justifyContent="center"
                         marginBottom="32">
-                        {about.calendar.display && (
-                            <Flex
-                                fitWidth
-                                border="brand-alpha-medium"
-                                className={styles.blockAlign}
-                                style={{
-                                    backdropFilter: 'blur(var(--static-space-1))',
-                                }}
-                                background="brand-alpha-weak" radius="full"
-                                padding="4" gap="8" marginBottom="m"
-                                alignItems="center">
-                                <Flex paddingLeft="12">
-                                    <Icon
-                                        name="calendar"
-                                        onBackground="brand-weak"/>
-                                </Flex>
-                                <Flex
-                                    paddingX="8">
-                                    Schedule a call
-                                </Flex>
-                                <IconButton
-                                    href={about.calendar.link}
-                                    data-border="rounded"
-                                    variant="secondary"
-                                    icon="chevronRight"/>
-                            </Flex>
-                        )}
                         <Heading
                             className={styles.textAlign}
                             variant="display-strong-xl">

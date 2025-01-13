@@ -117,7 +117,8 @@ export const Mailchimp = (
                     display: 'flex',
                     justifyContent: 'center'
                 }}
-                action={mailchimp.action}
+                // action={mailchimp.action}
+                // onSubmit={(e) => e.preventDefault()}
                 method="post"
                 id="mc-embedded-subscribe-form"
                 name="mc-embedded-subscribe-form">

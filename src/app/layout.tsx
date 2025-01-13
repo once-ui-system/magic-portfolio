@@ -12,6 +12,8 @@ import { Source_Code_Pro } from 'next/font/google';
 import { person, home } from '@/app/resources/content';
 import { Background, Flex } from "@/once-ui/components";
 
+import { Analytics } from "@vercel/analytics/react"
+
 export async function generateMetadata() {
 	return {
 		metadataBase: new URL(`https://${baseURL}`),
@@ -144,6 +146,7 @@ export default async function RootLayout({
 					</Flex>
 				</Flex>
 				<Footer/>
+				<Analytics />
 			</Flex>
 		</Flex>
 	);
