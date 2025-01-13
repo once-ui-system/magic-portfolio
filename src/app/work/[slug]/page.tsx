@@ -1,49 +1,51 @@
 import { notFound } from 'next/navigation'
+import { Metadata } from 'next'
 import { CustomMDX } from '@/components/mdx'
 import { getPosts } from '@/app/utils/utils'
 import { AvatarGroup, Button, Flex, Heading, SmartImage, Text } from '@/once-ui/components'
-import { baseURL } from '@/app/resources';
-import { person } from '@/app/resources/content';
-import { formatDate } from '@/app/utils/formatDate';
-import ScrollToHash from '@/components/ScrollToHash';
+import { baseURL } from '@/app/resources'
+import { person } from '@/app/resources/content'
+import { formatDate } from '@/app/utils/formatDate'
+import ScrollToHash from '@/components/ScrollToHash'
 
 interface WorkParams {
-    params: {
-        slug: string;
-    };
+	params: {
+		slug: string
+	}
+}
+
+interface PostMetadata {
+	title: string
+	publishedAt: string
+	summary: string
+	images: string[]
+	image?: string
+	team?: Array<{
+		avatar: string
+		name: string
+	}>
 }
 
 export async function generateStaticParams(): Promise<{ slug: string }[]> {
-    const posts = getPosts(['src', 'app', 'work', 'projects']);
-    return posts.map((post) => ({
-        slug: post.slug,
-    }));
+	const posts = getPosts(['src', 'app', 'work', 'projects'])
+	return posts.map((post) => ({
+		slug: post.slug,
+	}))
 }
 
-export function generateMetadata({ params: { slug } }: WorkParams) {
+export function generateMetadata({ params: { slug } }: WorkParams): Metadata {
 	let post = getPosts(['src', 'app', 'work', 'projects']).find((post) => post.slug === slug)
-	
+
 	if (!post) {
-		return
+		return {}
 	}
 
-	let {
-		title,
-		publishedAt: publishedTime,
-		summary: description,
-		images,
-		image,
-		team,
-	} = post.metadata
-	let ogImage = image
-		? `https://${baseURL}${image}`
-		: `https://${baseURL}/og?title=${title}`;
+	let { title, publishedAt: publishedTime, summary: description, image } = post.metadata as PostMetadata
+	let ogImage = image ? `https://${baseURL}${image}` : `https://${baseURL}/og?title=${title}`
 
 	return {
 		title,
 		description,
-		images,
-		team,
 		openGraph: {
 			title,
 			description,
@@ -72,15 +74,13 @@ export default function Project({ params }: WorkParams) {
 		notFound()
 	}
 
-	const avatars = post.metadata.team?.map((person) => ({
-        src: person.avatar,
-    })) || [];
+	const metadata = post.metadata as PostMetadata
+	const avatars = metadata.team?.map((person) => ({
+		src: person.avatar,
+	})) || []
 
 	return (
-		<Flex as="section"
-			fillWidth maxWidth="m"
-			direction="column" alignItems="center"
-			gap="l">
+		<Flex as="section" fillWidth maxWidth="m" direction="column" alignItems="center" gap="l">
 			<script
 				type="application/ld+json"
 				suppressHydrationWarning
@@ -88,14 +88,14 @@ export default function Project({ params }: WorkParams) {
 					__html: JSON.stringify({
 						'@context': 'https://schema.org',
 						'@type': 'BlogPosting',
-						headline: post.metadata.title,
-						datePublished: post.metadata.publishedAt,
-						dateModified: post.metadata.publishedAt,
-						description: post.metadata.summary,
-						image: post.metadata.image
-							? `https://${baseURL}${post.metadata.image}`
-							: `https://${baseURL}/og?title=${post.metadata.title}`,
-							url: `https://${baseURL}/work/${post.slug}`,
+						headline: metadata.title,
+						datePublished: metadata.publishedAt,
+						dateModified: metadata.publishedAt,
+						description: metadata.summary,
+						image: metadata.image
+							? `https://${baseURL}${metadata.image}`
+							: `https://${baseURL}/og?title=${metadata.title}`,
+						url: `https://${baseURL}/work/${post.slug}`,
 						author: {
 							'@type': 'Person',
 							name: person.name,
@@ -103,47 +103,26 @@ export default function Project({ params }: WorkParams) {
 					}),
 				}}
 			/>
-			<Flex
-				fillWidth maxWidth="xs" gap="16"
-				direction="column">
-				<Button
-					href="/work"
-					variant="tertiary"
-					weight="default"
-					size="s"
-					prefixIcon="chevronLeft">
+			<Flex fillWidth maxWidth="xs" gap="16" direction="column">
+				<Button href="/work" variant="tertiary" weight="default" size="s" prefixIcon="chevronLeft">
 					Projects
 				</Button>
-				<Heading
-					variant="display-strong-s">
-					{post.metadata.title}
-				</Heading>
+				<Heading variant="display-strong-s">{metadata.title}</Heading>
 			</Flex>
-			{post.metadata.images.length > 0 && (
+			{metadata.images.length > 0 && (
 				<SmartImage
 					priority
 					aspectRatio="16 / 9"
 					radius="m"
 					alt="image"
-					src={post.metadata.images[0]}/>
+					src={metadata.images[0]}
+				/>
 			)}
-			<Flex style={{margin: 'auto'}}
-				as="article"
-				maxWidth="xs" fillWidth
-				direction="column">
-				<Flex
-					gap="12" marginBottom="24"
-					alignItems="center">
-					{ post.metadata.team && (
-						<AvatarGroup
-							reverse
-							avatars={avatars}
-							size="m"/>
-					)}
-					<Text
-						variant="body-default-s"
-						onBackground="neutral-weak">
-						{formatDate(post.metadata.publishedAt)}
+			<Flex style={{ margin: 'auto' }} as="article" maxWidth="xs" fillWidth direction="column">
+				<Flex gap="12" marginBottom="24" alignItems="center">
+					{metadata.team && <AvatarGroup reverse avatars={avatars} size="m" />}
+					<Text variant="body-default-s" onBackground="neutral-weak">
+						{formatDate(metadata.publishedAt)}
 					</Text>
 				</Flex>
 				<CustomMDX source={post.content} />

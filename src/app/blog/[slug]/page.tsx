@@ -1,43 +1,55 @@
 import { notFound } from 'next/navigation'
+import { Metadata } from 'next'
 import { CustomMDX } from '@/components/mdx'
 import { getPosts } from '@/app/utils/utils'
 import { AvatarGroup, Button, Flex, Heading, SmartImage, Text } from '@/once-ui/components'
-import { baseURL } from '@/app/resources';
-import { person } from '@/app/resources/content';
-import { formatDate } from '@/app/utils/formatDate';
-import ScrollToHash from '@/components/ScrollToHash';
+import { baseURL } from '@/app/resources'
+import { person } from '@/app/resources/content'
+import { formatDate } from '@/app/utils/formatDate'
+import ScrollToHash from '@/components/ScrollToHash'
 
 interface BlogParams {
-    params: {
-        slug: string;
-    };
+	params: {
+		slug: string
+	}
+}
+
+interface PostMetadata {
+	title: string
+	publishedAt: string
+	summary: string
+	images?: string[]
+	image?: string
+	team?: Array<{
+		avatar: string
+		name: string
+	}>
 }
 
 export async function generateStaticParams(): Promise<{ slug: string }[]> {
-    const posts = getPosts(['src', 'app', 'blog', 'posts']);
-    return posts.map((post) => ({
-        slug: post.slug,
-    }));
+	const posts = getPosts(['src', 'app', 'blog', 'posts'])
+	return posts.map((post) => ({
+		slug: post.slug,
+	}))
 }
 
-export function generateMetadata({ params: { slug } }: BlogParams) {
+export function generateMetadata({ params: { slug } }: BlogParams): Metadata {
 	let post = getPosts(['src', 'app', 'blog', 'posts']).find((post) => post.slug === slug)
-	
+
 	if (!post) {
-		return
+		return {}
 	}
 
 	let {
 		title,
 		publishedAt: publishedTime,
 		summary: description,
-		images,
 		image,
-		team,
-	} = post.metadata
+	} = post.metadata as PostMetadata
+
 	let ogImage = image
 		? `https://${baseURL}${image}`
-		: `https://${baseURL}/og?title=${title}`;
+		: `https://${baseURL}/og?title=${title}`
 
 	return {
 		title,
@@ -54,7 +66,7 @@ export function generateMetadata({ params: { slug } }: BlogParams) {
 				},
 			],
 		},
-			twitter: {
+		twitter: {
 			card: 'summary_large_image',
 			title,
 			description,
@@ -70,15 +82,19 @@ export default function Blog({ params }: BlogParams) {
 		notFound()
 	}
 
-	const avatars = post.metadata.team?.map((person) => ({
-        src: person.avatar,
-    })) || [];
+	const metadata = post.metadata as PostMetadata
+	const avatars = metadata.team?.map((person) => ({
+		src: person.avatar,
+	})) || []
 
 	return (
-		<Flex as="section"
-			fillWidth maxWidth="xs"
+		<Flex
+			as="section"
+			fillWidth
+			maxWidth="xs"
 			direction="column"
-			gap="l">
+			gap="l"
+		>
 			<script
 				type="application/ld+json"
 				suppressHydrationWarning
@@ -86,14 +102,14 @@ export default function Blog({ params }: BlogParams) {
 					__html: JSON.stringify({
 						'@context': 'https://schema.org',
 						'@type': 'BlogPosting',
-						headline: post.metadata.title,
-						datePublished: post.metadata.publishedAt,
-						dateModified: post.metadata.publishedAt,
-						description: post.metadata.summary,
-						image: post.metadata.image
-							? `https://${baseURL}${post.metadata.image}`
-							: `https://${baseURL}/og?title=${post.metadata.title}`,
-							url: `https://${baseURL}/blog/${post.slug}`,
+						headline: metadata.title,
+						datePublished: metadata.publishedAt,
+						dateModified: metadata.publishedAt,
+						description: metadata.summary,
+						image: metadata.image
+							? `https://${baseURL}${metadata.image}`
+							: `https://${baseURL}/og?title=${metadata.title}`,
+						url: `https://${baseURL}/blog/${post.slug}`,
 						author: {
 							'@type': 'Person',
 							name: person.name,
@@ -106,16 +122,14 @@ export default function Blog({ params }: BlogParams) {
 				weight="default"
 				variant="tertiary"
 				size="s"
-				prefixIcon="chevronLeft">
+				prefixIcon="chevronLeft"
+			>
 				Posts
 			</Button>
-			<Heading
-				variant="display-strong-s">
-				{post.metadata.title}
+			<Heading variant="display-strong-s">
+				{metadata.title}
 			</Heading>
-			<Flex
-				gap="12"
-				alignItems="center">
+			<Flex gap="12" alignItems="center">
 				{avatars.length > 0 && (
 					<AvatarGroup
 						size="s"
@@ -124,14 +138,16 @@ export default function Blog({ params }: BlogParams) {
 				)}
 				<Text
 					variant="body-default-s"
-					onBackground="neutral-weak">
-					{formatDate(post.metadata.publishedAt)}
+					onBackground="neutral-weak"
+				>
+					{formatDate(metadata.publishedAt)}
 				</Text>
 			</Flex>
 			<Flex
 				as="article"
 				direction="column"
-				fillWidth>
+				fillWidth
+			>
 				<CustomMDX source={post.content} />
 			</Flex>
 			<ScrollToHash />
