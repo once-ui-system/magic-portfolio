@@ -118,7 +118,7 @@ export const Mailchimp = (
                     justifyContent: 'center'
                 }}
                 // action={mailchimp.action}
-                // onSubmit={(e) => e.preventDefault()}
+                onSubmit={(e) => e.preventDefault()}
                 method="post"
                 id="mc-embedded-subscribe-form"
                 name="mc-embedded-subscribe-form">
