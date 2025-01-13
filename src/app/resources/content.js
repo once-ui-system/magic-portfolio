@@ -1,15 +1,15 @@
 import { InlineCode } from "@/once-ui/components";
 
 const person = {
-    firstName: 'Selene',
-    lastName:  'Yu',
+    firstName: 'Sushanth',
+    lastName:  'Reddy',
     get name() {
         return `${this.firstName} ${this.lastName}`;
     },
-    role:      'Design Engineer',
-    avatar:    '/images/avatar.jpg',
-    location:  'Asia/Jakarta',        // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
-    languages: ['English', 'Bahasa']  // optional: Leave the array empty if you don't want to display languages
+    role:      'Software Engineer',
+    avatar:    '/images/avatar.png',
+    location:  'Asia/Kolkata',        // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
+    languages: ['English']  // optional: Leave the array empty if you don't want to display languages
 }
 
 const newsletter = {
@@ -24,22 +24,22 @@ const social = [
     {
         name: 'GitHub',
         icon: 'github',
-        link: 'https://github.com/once-ui-system/nextjs-starter',
+        link: 'https://github.com/nxtgencat',
     },
     {
         name: 'LinkedIn',
         icon: 'linkedin',
-        link: 'https://www.linkedin.com/company/once-ui/',
+        link: 'https://in.linkedin.com/in/nxtgencat',
     },
     {
         name: 'X',
         icon: 'x',
-        link: '',
+        link: 'https://x.com/nxtgencat',
     },
     {
         name: 'Email',
         icon: 'email',
-        link: 'mailto:example@gmail.com',
+        link: 'mailto:thesushanthmail@gmail.com',
     },
 ]
 
@@ -47,8 +47,8 @@ const home = {
     label: 'Home',
     title: `${person.name}'s Portfolio`,
     description: `Portfolio website showcasing my work as a ${person.role}`,
-    headline: <>Design engineer and builder</>,
-    subline: <>I'm Selene, a design engineer at <InlineCode>FLY</InlineCode>, where I craft intuitive<br/> user experiences. After hours, I build my own projects.</>
+    headline: <>Software Engineer and Developer</>,
+    subline: <>I'm Sushanth Reddy, a Software Engineer skilled in architecting and developing <InlineCode>robust</InlineCode> <InlineCode>scalable </InlineCode>systems. After hours, I build my own projects.</>
 }
 
 const about = {
@@ -69,38 +69,31 @@ const about = {
     intro: {
         display: true,
         title: 'Introduction',
-        description: <>Selene is a Jakarta-based design engineer with a passion for transforming complex challenges into simple, elegant design solutions. Her work spans digital interfaces, interactive experiences, and the convergence of design and technology.</>
+        description: <>Sushanth Reddy, a Software Engineer, passionate about turning complex technical challenges into elegant solutions. With a focus on web development, Android app development, and operating systems, I strive to deliver exceptional software experiences.</>
     },
     work: {
         display: true, // set to false to hide this section
         title: 'Work Experience',
         experiences: [
             {
-                company: 'FLY',
-                timeframe: '2022 - Present',
-                role: 'Senior Design Engineer',
-                achievements: [
-                    <>Redesigned the UI/UX for the FLY platform, resulting in a 20% increase in user engagement and 30% faster load times.</>,
-                    <>Spearheaded the integration of AI tools into design workflows, enabling designers to iterate 50% faster.</>
-                ],
-                images: [ // optional: leave the array empty if you don't want to display images
-                    {
-                        src: '/images/projects/project-01/cover-01.jpg',
-                        alt: 'Once UI Project',
-                        width: 16,
-                        height: 9
-                    }
-                ]
-            },
-            {
-                company: 'Creativ3',
-                timeframe: '2018 - 2022',
-                role: 'Lead Designer',
+                company: 'Softius Internet Services',
+                timeframe: 'Jan 2024 - Mar 2024',
+                role: 'Frontend Development Team Member',
                 achievements: [
                     <>Developed a design system that unified the brand across multiple platforms, improving design consistency by 40%.</>,
-                    <>Led a cross-functional team to launch a new product line, contributing to a 15% increase in overall company revenue.</>
+                    <>Contributed to the integration of APIs and third-party services into web applications, enhancing functionality and user experience .</>
                 ],
-                images: [ ]
+                images: []
+            },
+            {
+                company: 'Prasunet Company',
+                timeframe: 'Mar 2024 - Apr 2024',
+                role: 'Android Development Team Member ',
+                achievements: [
+                    <>Redesigned the UI/UX for the platform, resulting in a 20% increase in user engagement and 30% faster load times.</>,
+                    <>Spearheaded the integration of AI tools into design workflows, enabling designers to iterate 50% faster.</>
+                ],
+                images: []
             }
         ]
     },
@@ -109,12 +102,12 @@ const about = {
         title: 'Studies',
         institutions: [
             {
-                name: 'University of Jakarta',
-                description: <>Studied software engineering.</>,
+                name: 'SRM Institute of Science and Technology',
+                description: <>Studied Computer science and engineering.</>,
             },
             {
-                name: 'Build the Future',
-                description: <>Studied online marketing and personal branding.</>,
+                name: ' Bhashyam Junior College',
+                description: <>Studied Science stream.</>,
             }
         ]
     },
@@ -123,36 +116,34 @@ const about = {
         title: 'Technical skills',
         skills: [
             {
-                title: 'Figma',
-                description: <>Able to prototype in Figma with Once UI with unnatural speed.</>,
-                // optional: leave the array empty if you don't want to display images
-                images: [
-                    {
-                        src: '/images/projects/project-01/cover-02.jpg',
-                        alt: 'Project image',
-                        width: 16,
-                        height: 9
-                    },
-                    {
-                        src: '/images/projects/project-01/cover-03.jpg',
-                        alt: 'Project image',
-                        width: 16,
-                        height: 9
-                    },
-                ]
+                title: 'Kotlin, Jetpack Compose',
+                description: <>Developed scalable Android apps using Kotlin, Jetpack Compose, and modern Android libraries like Hilt and Coroutines.</>,
+                images: []
             },
             {
-                title: 'Next.js',
-                description: <>Building next gen apps with Next.js + Once UI + Supabase.</>,
-                // optional: leave the array empty if you don't want to display images
-                images: [
-                    {
-                        src: '/images/projects/project-01/cover-04.jpg',
-                        alt: 'Project image',
-                        width: 16,
-                        height: 9
-                    },
-                ]
+                title: 'JavaScript, React, Next.js',
+                description: <>Built responsive web apps with Next.js, leveraging Once UI, Supabase, and dynamic content rendering.</>,
+                images: []
+            },
+            {
+                title: 'Python',
+                description: <>Developed a web scraper using Python and Selenium to extract data from the Haveloc website efficiently.</>,
+                images: []
+            },
+            {
+                title: '',
+                description: <>A program for Windows that allows users to easily enable and disable their camera for enhanced privacy. This tool provides a simple and quick way to control camera access, ensuring your privacy is protected when the camera is not in use.</>,
+                images: []
+            },
+            {
+                title: 'SQL (Postgres)',
+                description: <>Implemented robust database schemas using PostgreSQL, with optimized queries for fast and reliable data operations.</>,
+                images: []
+            },
+            {
+                title: 'Docker, Git & AWS',
+                description: <>Used Docker for containerization, Git for version control, and AWS for scalable application deployment and cloud infrastructure management.</>,
+                images: []
             }
         ]
     }
@@ -179,78 +170,7 @@ const gallery = {
     title: 'My photo gallery',
     description: `A photo collection by ${person.name}`,
     // Images from https://pexels.com
-    images: [
-        { 
-            src: '/images/gallery/img-01.jpg', 
-            alt: 'image',
-            orientation: 'vertical'
-        },
-        { 
-            src: '/images/gallery/img-02.jpg', 
-            alt: 'image',
-            orientation: 'horizontal'
-        },
-        { 
-            src: '/images/gallery/img-03.jpg', 
-            alt: 'image',
-            orientation: 'vertical'
-        },
-        { 
-            src: '/images/gallery/img-04.jpg', 
-            alt: 'image',
-            orientation: 'horizontal'
-        },
-        { 
-            src: '/images/gallery/img-05.jpg', 
-            alt: 'image',
-            orientation: 'horizontal'
-        },
-        { 
-            src: '/images/gallery/img-06.jpg', 
-            alt: 'image',
-            orientation: 'vertical'
-        },
-        { 
-            src: '/images/gallery/img-07.jpg', 
-            alt: 'image',
-            orientation: 'horizontal'
-        },
-        { 
-            src: '/images/gallery/img-08.jpg', 
-            alt: 'image',
-            orientation: 'vertical'
-        },
-        { 
-            src: '/images/gallery/img-09.jpg', 
-            alt: 'image',
-            orientation: 'horizontal'
-        },
-        { 
-            src: '/images/gallery/img-10.jpg', 
-            alt: 'image',
-            orientation: 'horizontal'
-        },
-        { 
-            src: '/images/gallery/img-11.jpg', 
-            alt: 'image',
-            orientation: 'vertical'
-        },
-        { 
-            src: '/images/gallery/img-12.jpg', 
-            alt: 'image',
-            orientation: 'horizontal'
-        },
-        { 
-            src: '/images/gallery/img-13.jpg', 
-            alt: 'image',
-            orientation: 'horizontal'
-        },
-        { 
-            src: '/images/gallery/img-14.jpg', 
-            alt: 'image',
-            orientation: 'horizontal'
-        },
-    ]
+    images: []
 }
 
 export { person, social, newsletter, home, about, blog, work, gallery };
