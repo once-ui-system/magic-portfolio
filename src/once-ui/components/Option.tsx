@@ -41,7 +41,13 @@ const Option = forwardRef<HTMLDivElement, OptionProps>(
     }
 
     return (
-      <ElementType tabIndex={tabIndex} ref={ref} href={href} className="reset-button-styles" style={{width: "100%"}}>
+      <ElementType
+        tabIndex={tabIndex}
+        ref={ref}
+        href={href}
+        className="reset-button-styles"
+        style={{ width: "100%" }}
+      >
         <Flex
           {...props}
           fillWidth

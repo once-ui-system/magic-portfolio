@@ -75,7 +75,7 @@ const DropdownWrapper = forwardRef<HTMLDivElement, DropdownWrapperProps>(
       open: isOpen,
       middleware: [
         offset(4),
-        minHeight ?  undefined : flip(),
+        minHeight ? undefined : flip(),
         shift(),
         size({
           apply({ availableWidth, availableHeight, elements }) {
@@ -181,7 +181,12 @@ const DropdownWrapper = forwardRef<HTMLDivElement, DropdownWrapperProps>(
             }}
             role="listbox"
           >
-            <Dropdown minWidth={minWidth} radius="l" selectedOption={selectedOption} onSelect={onSelect}>
+            <Dropdown
+              minWidth={minWidth}
+              radius="l"
+              selectedOption={selectedOption}
+              onSelect={onSelect}
+            >
               {dropdown}
             </Dropdown>
           </Flex>

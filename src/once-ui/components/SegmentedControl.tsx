@@ -42,7 +42,10 @@ const SegmentedControl: React.FC<SegmentedControlProps> = ({
     }
   }, [selected]);
 
-  const handleButtonClick = (clickedButton: ButtonOption, event: React.MouseEvent<HTMLButtonElement>) => {
+  const handleButtonClick = (
+    clickedButton: ButtonOption,
+    event: React.MouseEvent<HTMLButtonElement>,
+  ) => {
     event.stopPropagation();
     const newSelected = clickedButton.value;
     setInternalSelected(newSelected);

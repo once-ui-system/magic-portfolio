@@ -28,13 +28,9 @@ const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
         border="neutral-medium"
         background="surface"
         overflow="hidden"
-        {...rest}>
-        <Flex
-          flex={1}
-          overflowY="auto"
-          direction="column"
-          gap="2"
-        >
+        {...rest}
+      >
+        <Flex flex={1} overflowY="auto" direction="column" gap="2">
           {children}
         </Flex>
       </Flex>

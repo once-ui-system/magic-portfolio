@@ -27,8 +27,22 @@ export interface FlexProps extends HTMLAttributes<HTMLDivElement> {
   direction?: "row" | "column" | "row-reverse" | "column-reverse";
   tabletDirection?: "row" | "column" | "row-reverse" | "column-reverse";
   mobileDirection?: "row" | "column" | "row-reverse" | "column-reverse";
-  horizontal?: "start" | "center" | "end" | "space-between" | "space-around" | "space-evenly" | "stretch";
-  vertical?: "start" | "center" | "end" | "space-between" | "space-around" | "space-evenly" | "stretch";
+  horizontal?:
+    | "start"
+    | "center"
+    | "end"
+    | "space-between"
+    | "space-around"
+    | "space-evenly"
+    | "stretch";
+  vertical?:
+    | "start"
+    | "center"
+    | "end"
+    | "space-between"
+    | "space-around"
+    | "space-evenly"
+    | "stretch";
   center?: boolean;
   wrap?: boolean;
   flex?: flex;

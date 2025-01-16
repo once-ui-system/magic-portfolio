@@ -311,13 +311,7 @@ const Dialog: React.FC<DialogProps> = forwardRef<HTMLDivElement, DialogProps>(
               {children}
             </Flex>
             {footer && (
-              <Flex
-                borderTop="neutral-medium"
-                as="footer"
-                horizontal="end"
-                padding="12"
-                gap="8"
-              >
+              <Flex borderTop="neutral-medium" as="footer" horizontal="end" padding="12" gap="8">
                 {footer}
               </Flex>
             )}

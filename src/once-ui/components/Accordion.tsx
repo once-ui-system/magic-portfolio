@@ -4,7 +4,7 @@ import React, { useState, forwardRef, useImperativeHandle } from "react";
 import { Flex, Icon, Heading, Column } from ".";
 import styles from "./Accordion.module.scss";
 
-interface AccordionProps extends Omit<React.ComponentProps<typeof Flex>, "title">{
+interface AccordionProps extends Omit<React.ComponentProps<typeof Flex>, "title"> {
   title: React.ReactNode;
   children: React.ReactNode;
   open?: boolean;
@@ -69,7 +69,7 @@ const Accordion: React.FC<AccordionProps> = forwardRef(
           aria-hidden={!isOpen}
         >
           <Flex fillWidth minHeight={0} overflow="hidden">
-            <Column fillWidth paddingX="20" paddingTop="8" paddingBottom="16"  {...rest}>
+            <Column fillWidth paddingX="20" paddingTop="8" paddingBottom="16" {...rest}>
               {children}
             </Column>
           </Flex>

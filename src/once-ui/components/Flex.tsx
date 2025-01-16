@@ -228,8 +228,14 @@ const Flex = forwardRef<HTMLDivElement, ComponentProps>(
       overflowX && `overflow-x-${overflowX}`,
       overflowY && `overflow-y-${overflowY}`,
       flex && `flex-${flex}`,
-      horizontal && ((direction === "row" || direction === "row-reverse" || direction === undefined) ? `justify-${horizontal}` : `align-${horizontal}`),
-      vertical && ((direction === "row" || direction === "row-reverse" || direction === undefined) ? `align-${vertical}` : `justify-${vertical}`),
+      horizontal &&
+        (direction === "row" || direction === "row-reverse" || direction === undefined
+          ? `justify-${horizontal}`
+          : `align-${horizontal}`),
+      vertical &&
+        (direction === "row" || direction === "row-reverse" || direction === undefined
+          ? `align-${vertical}`
+          : `justify-${vertical}`),
       center && "center",
       fit && "fit",
       fitWidth && "fit-width",

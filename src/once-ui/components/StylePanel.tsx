@@ -89,9 +89,7 @@ const StylePanel = forwardRef<HTMLDivElement, StylePanelProps>(({ ...rest }, ref
   return (
     <Column fillWidth gap="16" ref={ref} {...rest}>
       <Column fillWidth paddingTop="12" paddingLeft="16" gap="4">
-        <Text variant="heading-strong-s">
-          Page
-        </Text>
+        <Text variant="heading-strong-s">Page</Text>
         <Text variant="body-default-s" onBackground="neutral-weak">
           Customize global design settings
         </Text>
@@ -107,9 +105,7 @@ const StylePanel = forwardRef<HTMLDivElement, StylePanelProps>(({ ...rest }, ref
           paddingY="16"
           gap="24"
         >
-          <Text variant="label-default-s">
-            Theme
-          </Text>
+          <Text variant="label-default-s">Theme</Text>
           <SegmentedControl
             maxWidth={22}
             buttons={[
@@ -120,44 +116,34 @@ const StylePanel = forwardRef<HTMLDivElement, StylePanelProps>(({ ...rest }, ref
             selected={theme}
           />
         </Flex>
-        <Flex
-          horizontal="space-between"
-          vertical="center"
-          fillWidth
-          paddingX="24"
-          paddingY="16"
-        >
-          <Text variant="label-default-s">
-            Shape
-          </Text>
+        <Flex horizontal="space-between" vertical="center" fillWidth paddingX="24" paddingY="16">
+          <Text variant="label-default-s">Shape</Text>
           <Flex gap="4">
-              {shapes.map((radius, index) => (
+            {shapes.map((radius, index) => (
               <Flex
-                  data-border={shapes[index]}
-                  key={radius}
-                  horizontal="center"
-                  vertical="center"
-                  className={classNames(
+                data-border={shapes[index]}
+                key={radius}
+                horizontal="center"
+                vertical="center"
+                className={classNames(
                   styles.select,
                   selectedShape === radius ? styles.selected : "",
-                  )}
-                  onClick={() => {
+                )}
+                onClick={() => {
                   setSelectedShape(radius);
-                  }}
+                }}
               >
-                  <IconButton variant="ghost" size="m">
+                <IconButton variant="ghost" size="m">
                   <div className={classNames(styles.neutral, styles.swatch)}></div>
-                  </IconButton>
+                </IconButton>
               </Flex>
-              ))}
+            ))}
           </Flex>
         </Flex>
       </Column>
 
       <Column fillWidth paddingTop="12" paddingLeft="16" gap="4">
-        <Text variant="heading-strong-s">
-          Color
-        </Text>
+        <Text variant="heading-strong-s">Color</Text>
         <Text variant="body-default-s" onBackground="neutral-weak">
           Customize color schemes
         </Text>
@@ -260,9 +246,7 @@ const StylePanel = forwardRef<HTMLDivElement, StylePanelProps>(({ ...rest }, ref
       </Column>
 
       <Column fillWidth paddingTop="12" paddingLeft="16" gap="4">
-        <Text variant="heading-strong-s">
-          Solid style
-        </Text>
+        <Text variant="heading-strong-s">Solid style</Text>
         <Text variant="body-default-s" onBackground="neutral-weak">
           Customize the appearance of interactive elements
         </Text>
@@ -277,9 +261,7 @@ const StylePanel = forwardRef<HTMLDivElement, StylePanelProps>(({ ...rest }, ref
           paddingY="16"
           gap="24"
         >
-          <Text variant="label-default-s">
-            Style
-          </Text>
+          <Text variant="label-default-s">Style</Text>
           <SegmentedControl
             maxWidth={22}
             minWidth={0}
@@ -351,9 +333,7 @@ const StylePanel = forwardRef<HTMLDivElement, StylePanelProps>(({ ...rest }, ref
           paddingY="16"
           gap="24"
         >
-          <Text variant="label-default-s">
-            Effect
-          </Text>
+          <Text variant="label-default-s">Effect</Text>
           <SegmentedControl
             maxWidth={22}
             minWidth={0}
@@ -403,9 +383,7 @@ const StylePanel = forwardRef<HTMLDivElement, StylePanelProps>(({ ...rest }, ref
         </Flex>
       </Column>
       <Column fillWidth paddingTop="12" paddingLeft="16" gap="4">
-        <Text variant="heading-strong-s">
-          Advanced
-        </Text>
+        <Text variant="heading-strong-s">Advanced</Text>
         <Text variant="body-default-s" onBackground="neutral-weak">
           Customize advanced styling options
         </Text>
@@ -420,9 +398,7 @@ const StylePanel = forwardRef<HTMLDivElement, StylePanelProps>(({ ...rest }, ref
           paddingY="16"
           gap="24"
         >
-          <Text variant="label-default-s">
-            Surface
-          </Text>
+          <Text variant="label-default-s">Surface</Text>
           <SegmentedControl
             maxWidth={22}
             minWidth={0}
@@ -451,9 +427,7 @@ const StylePanel = forwardRef<HTMLDivElement, StylePanelProps>(({ ...rest }, ref
           paddingY="16"
           gap="24"
         >
-          <Text variant="label-default-s">
-            Scaling
-          </Text>
+          <Text variant="label-default-s">Scaling</Text>
           <SegmentedControl
             maxWidth={22}
             minWidth={0}
@@ -496,11 +470,10 @@ const StylePanel = forwardRef<HTMLDivElement, StylePanelProps>(({ ...rest }, ref
           paddingY="16"
           gap="24"
         >
-          <Text variant="label-default-s">
-            Transition
-          </Text>
+          <Text variant="label-default-s">Transition</Text>
           <SegmentedControl
-            maxWidth={22} minWidth={0}
+            maxWidth={22}
+            minWidth={0}
             onToggle={(value) => setTransition(value as "all" | "micro" | "macro" | "none")}
             selected={transition}
             buttons={[

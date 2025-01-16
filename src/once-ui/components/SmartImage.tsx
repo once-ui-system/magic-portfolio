@@ -121,7 +121,7 @@ const SmartImage: React.FC<SmartImageProps> = ({
         onClick={handleClick}
         {...rest}
       >
-        {isLoading && <Skeleton shape="block"/>}
+        {isLoading && <Skeleton shape="block" />}
         {!isLoading && isVideo && (
           <video
             src={src}

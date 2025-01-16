@@ -239,13 +239,7 @@ const Select = forwardRef<HTMLDivElement, SelectProps>(
                 options.filter((option) =>
                   option.label?.toString().toLowerCase().includes(searchQuery.toLowerCase()),
                 ).length === 0 && (
-                  <Flex
-                    fillWidth
-                    vertical="center"
-                    horizontal="center"
-                    paddingX="16"
-                    paddingY="32"
-                  >
+                  <Flex fillWidth vertical="center" horizontal="center" paddingX="16" paddingY="32">
                     {emptyState}
                   </Flex>
                 )}

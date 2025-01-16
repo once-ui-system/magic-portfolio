@@ -26,7 +26,8 @@ const Kbd = forwardRef<HTMLDivElement, KbdProps>(
       border="neutral-strong"
       className={className}
       style={style}
-      {...rest}>
+      {...rest}
+    >
       <Text as="span" variant="label-default-s">
         {label || children}
       </Text>

@@ -69,12 +69,12 @@ const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
     const [isTransitioning, setIsTransitioning] = useState(true);
 
     const [currentMonth, setCurrentMonth] = useState<number>(
-      value ? value.getMonth() : today.getMonth()
+      value ? value.getMonth() : today.getMonth(),
     );
     const [currentYear, setCurrentYear] = useState<number>(
-      value ? value.getFullYear() : today.getFullYear()
+      value ? value.getFullYear() : today.getFullYear(),
     );
-    
+
     useEffect(() => {
       if (typeof propCurrentMonth === "number") {
         setCurrentMonth(propCurrentMonth);
@@ -83,7 +83,7 @@ const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
         setCurrentYear(propCurrentYear);
       }
     }, [propCurrentMonth, propCurrentYear]);
-    
+
     useEffect(() => {
       setSelectedDate(value);
       if (value) {
@@ -205,7 +205,12 @@ const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
         const prevMonthDay = daysInPrevMonth - firstDay + i + 1;
         days.push(
           //@ts-ignore
-          <Flex paddingY="2" width="40" height="40" key={`prev-${currentYear}-${currentMonth}-${i}`}>
+          <Flex
+            paddingY="2"
+            width="40"
+            height="40"
+            key={`prev-${currentYear}-${currentMonth}-${i}`}
+          >
             <Button fillWidth weight="default" variant="tertiary" size="m" disabled>
               {prevMonthDay}
             </Button>
@@ -265,7 +270,12 @@ const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
       for (let i = 1; i <= remainingDays; i++) {
         days.push(
           //@ts-ignore
-          <Flex marginTop="2" width="40" height="40" key={`next-${currentYear}-${currentMonth}-${i}`}>
+          <Flex
+            marginTop="2"
+            width="40"
+            height="40"
+            key={`next-${currentYear}-${currentMonth}-${i}`}
+          >
             <Button fillWidth weight="default" variant="tertiary" size="m" disabled>
               {i}
             </Button>
