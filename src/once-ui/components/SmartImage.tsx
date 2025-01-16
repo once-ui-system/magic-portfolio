@@ -5,7 +5,7 @@ import Image from "next/image";
 
 import { Flex, Skeleton } from "@/once-ui/components";
 
-interface SmartImageProps extends React.ComponentProps<typeof Flex> {
+export interface SmartImageProps extends React.ComponentProps<typeof Flex> {
   aspectRatio?: string;
   height?: number;
   alt?: string;
