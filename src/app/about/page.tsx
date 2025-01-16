@@ -106,7 +106,7 @@ export default function About() {
                             size="xl"/>
                         <Flex
                             gap="8"
-                            horizontal="center">
+                            vertical="center">
                             <Icon
                                 onBackground="accent-weak"
                                 name="globe"/>
