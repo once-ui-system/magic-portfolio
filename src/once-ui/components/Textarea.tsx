@@ -159,7 +159,7 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
           background="neutral-alpha-weak"
           position="relative"
           overflow="hidden"
-          alignItems="stretch"
+          vertical="stretch"
           className={classNames(
             styles.base,
             lines !== "auto" && styles.textareaBase,
@@ -180,7 +180,7 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
                 } else if (ref) {
                   ref.current = node;
                 }
-                // @ts-ignore:next-line
+                //@ts-ignore
                 textareaRef.current = node;
               }}
               id={id}

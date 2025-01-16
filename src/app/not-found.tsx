@@ -1,10 +1,10 @@
-import { Flex, Heading, Text } from "@/once-ui/components";
+import { Column, Heading, Text } from "@/once-ui/components";
 
 export default function NotFound() {
     return (
-        <Flex
+        <Column
             as="section"
-            direction="column" alignItems="center">
+            horizontal="center">
             <Text
                 marginBottom="s"
                 variant="display-strong-xl">
@@ -19,6 +19,6 @@ export default function NotFound() {
                 onBackground="neutral-weak">
                 The page you are looking for does not exist.
             </Text>
-        </Flex>
+        </Column>
     )
 }

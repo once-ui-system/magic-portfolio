@@ -45,12 +45,13 @@ const Feedback = forwardRef<HTMLDivElement, FeedbackProps>(
         ref={ref}
         border={`${variant}-medium`}
         background={`${variant}-medium`}
+        vertical="start"
         role="alert"
         aria-live="assertive"
         {...rest}
       >
         {icon && (
-          <Flex paddingY="16" paddingLeft="16" alignItems="flex-start">
+          <Flex paddingY="16" paddingLeft="16">
             <Icon
               padding="4"
               radius="m"
@@ -61,7 +62,7 @@ const Feedback = forwardRef<HTMLDivElement, FeedbackProps>(
             />
           </Flex>
         )}
-        <Flex fillWidth padding="16" gap="24" justifyContent="center" direction="column">
+        <Flex fillWidth padding="16" gap="24" vertical="center" direction="column">
           {(title || description) && (
             <Flex direction="column" fillWidth gap="4">
               {title && (

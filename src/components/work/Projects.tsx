@@ -1,6 +1,5 @@
 import { getPosts } from '@/app/utils/utils';
-import { Flex } from '@/once-ui/components';
-
+import { Column } from '@/once-ui/components';
 import { ProjectCard } from '@/components';
 
 interface ProjectsProps {
@@ -19,9 +18,8 @@ export function Projects({ range }: ProjectsProps) {
         : sortedProjects;
 
     return (
-        <Flex
-            fillWidth gap="xl" marginBottom="40" paddingX="l"
-            direction="column">
+        <Column
+            fillWidth gap="xl" marginBottom="40" paddingX="l">
             {displayedProjects.map((post, index) => (
                 <ProjectCard
                     priority={index < 2}
@@ -35,6 +33,6 @@ export function Projects({ range }: ProjectsProps) {
                     link={post.metadata.link || ""}
                 />
             ))}
-        </Flex>
+        </Column>
     );
 }

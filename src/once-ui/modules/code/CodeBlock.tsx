@@ -93,7 +93,7 @@ const CodeBlock: React.FC<CodeBlockProps> = ({
       overflow="hidden"
       border="neutral-medium"
       direction="column"
-      justifyContent="center"
+      vertical="center"
       fillWidth
       minHeight={3}
       className={className}
@@ -101,7 +101,7 @@ const CodeBlock: React.FC<CodeBlockProps> = ({
       {...rest}
     >
       {(codeInstances.length > 1 || (copyButton && !compact)) && (
-        <Flex borderBottom="neutral-medium" zIndex={2} fillWidth justifyContent="space-between">
+        <Flex borderBottom="neutral-medium" zIndex={2} fillWidth horizontal="space-between">
           {codeInstances.length > 1 ? (
             <Flex borderRight="neutral-medium">
               <DropdownWrapper
@@ -165,8 +165,8 @@ const CodeBlock: React.FC<CodeBlockProps> = ({
           zIndex={1}
           fillHeight
           padding="l"
-          justifyContent="center"
-          alignItems="center"
+          horizontal="center"
+          vertical="center"
         >
           {Array.isArray(codePreview)
             ? codePreview.map((item, index) => <React.Fragment key={index}>{item}</React.Fragment>)

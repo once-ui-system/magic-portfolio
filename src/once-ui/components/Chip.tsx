@@ -62,7 +62,7 @@ const Chip: React.FC<ChipProps> = forwardRef<HTMLDivElement, ChipProps>(
       <Flex
         ref={ref}
         fit
-        alignItems="center"
+        vertical="center"
         radius="full"
         paddingX="8"
         paddingY="4"

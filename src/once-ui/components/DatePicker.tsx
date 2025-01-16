@@ -204,7 +204,6 @@ const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
       for (let i = 0; i < firstDay; i++) {
         const prevMonthDay = daysInPrevMonth - firstDay + i + 1;
         days.push(
-          // @ts-ignore:next-line
           <Flex paddingY="2" width="40" height="40" key={`prev-${currentYear}-${currentMonth}-${i}`}>
             <Button fillWidth weight="default" variant="tertiary" size="m" disabled>
               {prevMonthDay}
@@ -232,7 +231,6 @@ const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
         const isDisabled = (minDate && currentDate < minDate) || (maxDate && currentDate > maxDate);
 
         days.push(
-          // @ts-ignore:next-line
           <Flex paddingY="2" key={`day-${currentYear}-${currentMonth}-${day}`}>
             <Flex
               width="40"
@@ -264,7 +262,6 @@ const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
 
       for (let i = 1; i <= remainingDays; i++) {
         days.push(
-          // @ts-ignore:next-line
           <Flex marginTop="2" width="40" height="40" key={`next-${currentYear}-${currentMonth}-${i}`}>
             <Button fillWidth weight="default" variant="tertiary" size="m" disabled>
               {i}
@@ -283,13 +280,13 @@ const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
         style={style}
         direction="column"
         fillWidth
-        alignItems="center"
+        horizontal="center"
         gap={size}
         {...rest}
       >
-        <Flex fillWidth justifyContent="center" alignItems="center">
+        <Flex fillWidth center>
           {isTimeSelector ? (
-            <Flex alignItems="center" fillWidth direction="column" gap="8">
+            <Flex horizontal="center" fillWidth direction="column" gap="8">
               <Text variant={`label-default-${size}`} onBackground="neutral-strong">
                 {monthNames[currentMonth]} {currentYear}
               </Text>
@@ -316,7 +313,7 @@ const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
                   }}
                 />
               )}
-              <Flex fillWidth direction="column" alignItems="center" gap="8">
+              <Flex fillWidth direction="column" horizontal="center" gap="8">
                 <Text variant={`body-default-${size}`} onBackground="neutral-strong">
                   {monthNames[currentMonth]} {currentYear}
                 </Text>
@@ -344,8 +341,8 @@ const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
 
         <RevealFx
           fillWidth
-          justifyContent="center"
-          alignItems="center"
+          horizontal="center"
+          vertical="center"
           key={isTimeSelector ? "time" : "date"}
           trigger={isTransitioning}
           speed="fast"
@@ -353,8 +350,8 @@ const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
           {isTimeSelector ? (
             <Flex
               maxWidth={24}
-              justifyContent="center"
-              alignItems="center"
+              horizontal="center"
+              vertical="center"
               direction="column"
               padding="32"
               gap="32"
@@ -379,7 +376,7 @@ const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
                   )
                 }
               />
-              <Flex fillWidth gap="16" alignItems="center" data-scaling="110">
+              <Flex fillWidth gap="16" vertical="center" data-scaling="110">
                 <NumberInput
                   id="hours"
                   label="Hours"

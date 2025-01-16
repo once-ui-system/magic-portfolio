@@ -16,7 +16,7 @@ const InlineCode = forwardRef<HTMLDivElement, InlineCodeProps>(({ children, ...r
       fit
       ref={ref}
       radius="s"
-      alignItems="center"
+      vertical="center"
       paddingX="4"
       paddingY="1"
       textType="code"

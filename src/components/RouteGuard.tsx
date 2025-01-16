@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { routes, protectedRoutes } from '@/app/resources';
-import { Flex, Spinner, Input, Button, Heading } from '@/once-ui/components';
+import { Flex, Spinner, Input, Button, Heading, Column } from '@/once-ui/components';
 
 interface RouteGuardProps {
     children: React.ReactNode;
@@ -77,7 +77,7 @@ const RouteGuard: React.FC<RouteGuardProps> = ({ children }) => {
 
     if (loading) {
         return (
-        <Flex fillWidth paddingY="128" justifyContent="center">
+        <Flex fillWidth paddingY="128" horizontal="center">
             <Spinner />
         </Flex>
         );
@@ -85,7 +85,7 @@ const RouteGuard: React.FC<RouteGuardProps> = ({ children }) => {
 
     if (!isRouteEnabled) {
         return (
-        <Flex fillWidth paddingY="128" justifyContent="center">
+        <Flex fillWidth paddingY="128" horizontal="center">
             <Spinner />
         </Flex>
         );
@@ -93,13 +93,13 @@ const RouteGuard: React.FC<RouteGuardProps> = ({ children }) => {
 
     if (isPasswordRequired && !isAuthenticated) {
         return (
-        <Flex
-            fillWidth paddingY="128" maxWidth={24} gap="24"
-            justifyContent="center" direction="column" alignItems="center">
+        <Column
+            paddingY="128" maxWidth={24} gap="24"
+            center>
             <Heading align="center" wrap="balance">
                 This page is password protected
             </Heading>
-            <Flex fillWidth gap="8" direction="column" alignItems="center">
+            <Column fillWidth gap="8" horizontal="center">
                 <Input
                     id="password"
                     label="Password"
@@ -111,8 +111,8 @@ const RouteGuard: React.FC<RouteGuardProps> = ({ children }) => {
                 <Button onClick={handlePasswordSubmit}>
                     Submit
                 </Button>
-            </Flex>
-        </Flex>
+            </Column>
+        </Column>
         );
     }
 

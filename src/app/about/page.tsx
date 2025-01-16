@@ -1,4 +1,4 @@
-import { Avatar, Button, Flex, Heading, Icon, IconButton, SmartImage, Tag, Text } from '@/once-ui/components';
+import { Avatar, Button, Column, Flex, Heading, Icon, IconButton, SmartImage, Tag, Text } from '@/once-ui/components';
 import { baseURL } from '@/app/resources';
 import TableOfContents from '@/components/about/TableOfContents';
 import styles from '@/components/about/about.module.scss'
@@ -57,9 +57,8 @@ export default function About() {
         },
     ]
     return (
-        <Flex
-            maxWidth="m"
-            direction="column">
+        <Column
+            maxWidth="m">
             <script
                 type="application/ld+json"
                 suppressHydrationWarning
@@ -83,30 +82,31 @@ export default function About() {
                 }}
             />
             { about.tableOfContent.display && (
-                <Flex
-                    style={{ left: '0', top: '50%', transform: 'translateY(-50%)' }}
+                <Column
+                    left="0"
+                    style={{ top: '50%', transform: 'translateY(-50%)' }}
                     position="fixed"
                     paddingLeft="24" gap="32"
-                    direction="column" hide="s">
+                    hide="s">
                     <TableOfContents
                         structure={structure}
                         about={about} />
-                </Flex>
+                </Column>
             )}
             <Flex
                 fillWidth
-                mobileDirection="column" justifyContent="center">
+                mobileDirection="column" horizontal="center">
                 { about.avatar.display && (
-                    <Flex
+                    <Column
                         className={styles.avatar}
                         minWidth="160" paddingX="l" paddingBottom="xl" gap="m"
-                        flex={3} direction="column" alignItems="center">
+                        flex={3} horizontal="center">
                         <Avatar
                             src={person.avatar}
                             size="xl"/>
                         <Flex
                             gap="8"
-                            alignItems="center">
+                            horizontal="center">
                             <Icon
                                 onBackground="accent-weak"
                                 name="globe"/>
@@ -125,15 +125,15 @@ export default function About() {
                                 ))}
                             </Flex>
                         )}
-                    </Flex>
+                    </Column>
                 )}
-                <Flex
+                <Column
                     className={styles.blockAlign}
-                    flex={9} maxWidth={40} direction="column">
-                    <Flex
+                    flex={9} maxWidth={40}>
+                    <Column
                         id={about.intro.title}
                         fillWidth minHeight="160"
-                        direction="column" justifyContent="center"
+                        vertical="center"
                         marginBottom="32">
                         {about.calendar.display && (
                             <Flex
@@ -145,12 +145,11 @@ export default function About() {
                                 }}
                                 background="brand-alpha-weak" radius="full"
                                 padding="4" gap="8" marginBottom="m"
-                                alignItems="center">
-                                <Flex paddingLeft="12">
-                                    <Icon
-                                        name="calendar"
-                                        onBackground="brand-weak"/>
-                                </Flex>
+                                vertical="center">
+                                <Icon
+                                    paddingLeft="12"
+                                    name="calendar"
+                                    onBackground="brand-weak"/>
                                 <Flex
                                     paddingX="8">
                                     Schedule a call
@@ -190,15 +189,14 @@ export default function About() {
                                 ))}
                             </Flex>
                         )}
-                    </Flex>
+                    </Column>
 
                     { about.intro.display && (
-                        <Flex
-                            direction="column"
+                        <Column
                             textVariant="body-default-l"
                             fillWidth gap="m" marginBottom="xl">
                             {about.intro.description}
-                        </Flex>
+                        </Column>
                     )}
 
                     { about.work.display && (
@@ -210,18 +208,16 @@ export default function About() {
                                 marginBottom="m">
                                 {about.work.title}
                             </Heading>
-                            <Flex
-                                direction="column"
+                            <Column
                                 fillWidth gap="l" marginBottom="40">
                                 {about.work.experiences.map((experience, index) => (
-                                    <Flex
+                                    <Column
                                         key={`${experience.company}-${experience.role}-${index}`}
-                                        fillWidth
-                                        direction="column">
+                                        fillWidth>
                                         <Flex
                                             fillWidth
-                                            justifyContent="space-between"
-                                            alignItems="flex-end"
+                                            horizontal="space-between"
+                                            vertical="end"
                                             marginBottom="4">
                                             <Text
                                                 id={experience.company}
@@ -240,9 +236,9 @@ export default function About() {
                                             marginBottom="m">
                                             {experience.role}
                                         </Text>
-                                        <Flex
+                                        <Column
                                             as="ul"
-                                            direction="column" gap="16">
+                                            gap="16">
                                             {experience.achievements.map((achievement: JSX.Element, index: number) => (
                                                 <Text
                                                     as="li"
@@ -251,7 +247,7 @@ export default function About() {
                                                     {achievement}
                                                 </Text>
                                             ))}
-                                        </Flex>
+                                        </Column>
                                         {experience.images.length > 0 && (
                                             <Flex
                                                 fillWidth paddingTop="m" paddingLeft="40"
@@ -260,9 +256,9 @@ export default function About() {
                                                     <Flex
                                                         key={index}
                                                         border="neutral-medium"
-                                                        
                                                         radius="m"
-                                                        minWidth={image.width} height={image.height}>
+                                                        minWidth={image.width}
+                                                        height={image.height}>
                                                         <SmartImage
                                                             enlarge
                                                             radius="m"
@@ -273,9 +269,9 @@ export default function About() {
                                                 ))}
                                             </Flex>
                                         )}
-                                    </Flex>
+                                    </Column>
                                 ))}
-                            </Flex>
+                            </Column>
                         </>
                     )}
 
@@ -288,14 +284,12 @@ export default function About() {
                                 marginBottom="m">
                                 {about.studies.title}
                             </Heading>
-                            <Flex
-                                direction="column"
+                            <Column
                                 fillWidth gap="l" marginBottom="40">
                                 {about.studies.institutions.map((institution, index) => (
-                                    <Flex
+                                    <Column
                                         key={`${institution.name}-${index}`}
-                                        fillWidth gap="4"
-                                        direction="column">
+                                        fillWidth gap="4">
                                         <Text
                                             id={institution.name}
                                             variant="heading-strong-l">
@@ -306,9 +300,9 @@ export default function About() {
                                             onBackground="neutral-weak">
                                             {institution.description}
                                         </Text>
-                                    </Flex>
+                                    </Column>
                                 ))}
-                            </Flex>
+                            </Column>
                         </>
                     )}
 
@@ -320,14 +314,12 @@ export default function About() {
                                 variant="display-strong-s" marginBottom="40">
                                 {about.technical.title}
                             </Heading>
-                            <Flex
-                                direction="column"
+                            <Column
                                 fillWidth gap="l">
                                 {about.technical.skills.map((skill, index) => (
-                                    <Flex
+                                    <Column
                                         key={`${skill}-${index}`}
-                                        fillWidth gap="4"
-                                        direction="column">
+                                        fillWidth gap="4">
                                         <Text
                                             variant="heading-strong-l">
                                             {skill.title}
@@ -345,7 +337,6 @@ export default function About() {
                                                     <Flex
                                                         key={index}
                                                         border="neutral-medium"
-                                                        
                                                         radius="m"
                                                         minWidth={image.width} height={image.height}>
                                                         <SmartImage
@@ -358,13 +349,13 @@ export default function About() {
                                                 ))}
                                             </Flex>
                                         )}
-                                    </Flex>
+                                    </Column>
                                 ))}
-                            </Flex>
+                            </Column>
                         </>
                     )}
-                </Flex>
+                </Column>
             </Flex>
-        </Flex>
+        </Column>
     );
 }

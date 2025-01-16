@@ -48,8 +48,8 @@ const Arrow: React.FC<ArrowProps> = ({
     <Flex
       ref={ref}
       position="relative"
-      alignItems="center"
-      justifyContent="flex-end"
+      vertical="center"
+      horizontal="center"
       className={classNames(styles.arrowContainer, className)}
       style={{
         transform: `scale(${scale})`,

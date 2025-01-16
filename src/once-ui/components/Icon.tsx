@@ -75,9 +75,9 @@ const Icon = forwardRef<HTMLDivElement, IconProps>(
     return (
       <Flex
         inline
-        fitHeight
+        fit
         position="relative"
-        as="span"
+        as="div"
         ref={ref}
         className={classNames(colorClass, styles.icon, styles[size])}
         role={decorative ? "presentation" : undefined}

@@ -1,6 +1,6 @@
 "use client";
 
-import { Flex, Heading, SmartImage, SmartLink, Tag, Text } from '@/once-ui/components';
+import { Column, Flex, Heading, SmartImage, SmartLink, Tag, Text } from '@/once-ui/components';
 import styles from './Posts.module.scss';
 import { formatDate } from '@/app/utils/formatDate';
 
@@ -12,12 +12,9 @@ interface PostProps {
 export default function Post({ post, thumbnail }: PostProps) {
     return (
         <SmartLink
+            fillWidth
             className={styles.hover}
-            style={{
-                textDecoration: 'none',
-                margin: '0',
-                height: 'fit-content',
-            }}
+            unstyled
             key={post.slug}
             href={`/blog/${post.slug}`}>
             <Flex
@@ -25,27 +22,23 @@ export default function Post({ post, thumbnail }: PostProps) {
                 mobileDirection="column"
                 fillWidth paddingY="12" paddingX="16" gap="32">
                 {post.metadata.image && thumbnail && (
-                    <Flex
-                        maxWidth={20} fillWidth
-                        className={styles.image}>
-                        <SmartImage
-                            priority
-                            sizes="640px"
-                            style={{
-                                cursor: 'pointer',
-                                border: '1px solid var(--neutral-alpha-weak)'
-                            }}
-                            radius="m"
-                            src={post.metadata.image}
-                            alt={'Thumbnail of ' + post.metadata.title}
-                            aspectRatio="16 / 9"
-                        />
-                    </Flex>
+                    <SmartImage
+                        priority
+                        maxWidth={20}
+                        className={styles.image}
+                        sizes="640px"
+                        border="neutral-alpha-weak"
+                        cursor="interactive"
+                        radius="m"
+                        src={post.metadata.image}
+                        alt={'Thumbnail of ' + post.metadata.title}
+                        aspectRatio="16 / 9"
+                    />
                 )}
-                <Flex
+                <Column
                     position="relative"
                     fillWidth gap="8"
-                    direction="column" justifyContent="center">
+                    vertical="center">
                     <Heading
                         as="h2"
                         variant="heading-strong-l"
@@ -63,7 +56,7 @@ export default function Post({ post, thumbnail }: PostProps) {
                             label={post.metadata.tag}
                             variant="neutral" />
                     }
-                </Flex>
+                </Column>
             </Flex>
         </SmartLink>
     );

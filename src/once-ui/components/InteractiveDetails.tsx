@@ -18,7 +18,7 @@ const InteractiveDetails: React.FC<InteractiveDetailsProps> = forwardRef<
 >(({ label, description, iconButtonProps, onClick, className, id }, ref) => {
   return (
     <Flex ref={ref} direction="column" className={className} onClick={onClick} id={id}>
-      <Flex gap="4" alignItems="center">
+      <Flex gap="4" vertical="center">
         <Text as="span" variant="label-default-m" onBackground="neutral-strong">
           {label}
         </Text>

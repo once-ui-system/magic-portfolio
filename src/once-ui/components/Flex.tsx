@@ -1,18 +1,18 @@
 "use client";
 
-import React, { CSSProperties, forwardRef } from "react";
 import classNames from "classnames";
+import { CSSProperties, forwardRef } from "react";
 
 import {
-  FlexProps,
-  SpacingProps,
-  SizeProps,
-  StyleProps,
   CommonProps,
-  DisplayProps,
   ConditionalProps,
+  DisplayProps,
+  FlexProps,
+  SizeProps,
+  SpacingProps,
+  StyleProps,
 } from "../interfaces";
-import { TextVariant, SpacingToken, ColorScheme, ColorWeight } from "../types";
+import { ColorScheme, ColorWeight, SpacingToken, TextVariant } from "../types";
 
 interface ComponentProps
   extends FlexProps,
@@ -31,9 +31,9 @@ const Flex = forwardRef<HTMLDivElement, ComponentProps>(
       direction,
       tabletDirection,
       mobileDirection,
-      justifyContent,
-      alignItems,
       wrap = false,
+      horizontal,
+      vertical,
       flex,
       textVariant,
       textSize,
@@ -62,6 +62,7 @@ const Flex = forwardRef<HTMLDivElement, ComponentProps>(
       marginY,
       gap,
       position,
+      center,
       width,
       height,
       maxWidth,
@@ -227,12 +228,15 @@ const Flex = forwardRef<HTMLDivElement, ComponentProps>(
       overflowX && `overflow-x-${overflowX}`,
       overflowY && `overflow-y-${overflowY}`,
       flex && `flex-${flex}`,
-      justifyContent && `justify-${justifyContent}`,
-      alignItems && `align-${alignItems}`,
+      horizontal && ((direction === "row" || direction === "row-reverse" || direction === undefined) ? `justify-${horizontal}` : `align-${horizontal}`),
+      vertical && ((direction === "row" || direction === "row-reverse" || direction === undefined) ? `align-${vertical}` : `justify-${vertical}`),
+      center && "center",
       fit && "fit",
       fitWidth && "fit-width",
       fitHeight && "fit-height",
       fill && "fill",
+      fillWidth && !minWidth && "min-width-0",
+      fillHeight && !minHeight && "min-height-0",
       (fillWidth || maxWidth) && "fill-width",
       (fillHeight || maxHeight) && "fill-height",
       shadow && `shadow-${shadow}`,

@@ -82,20 +82,20 @@ const Carousel: React.FC<CarouselProps> = ({
       <RevealFx
         onClick={handleImageClick}
         fillWidth
-        aspectRatio={aspectRatio}
         trigger={isTransitioning}
         translateY="16"
+        aspectRatio={aspectRatio}
         speed="fast"
       >
         <SmartImage
           sizes={sizes}
           priority
           radius="l"
+          border="neutral-alpha-weak"
           alt={images[activeIndex]?.alt}
           aspectRatio={aspectRatio}
           src={images[activeIndex]?.src}
           style={{
-            border: "1px solid var(--neutral-alpha-weak)",
             ...(images.length > 1 && {
               cursor: "pointer",
             }),
@@ -105,7 +105,7 @@ const Carousel: React.FC<CarouselProps> = ({
       {images.length > 1 && (
         <>
           {indicator === "line" ? (
-            <Flex gap="4" paddingX="s" fillWidth justifyContent="center">
+            <Flex gap="4" paddingX="s" fillWidth horizontal="center">
               {images.map((_, index) => (
                 <Flex
                   key={index}
@@ -115,9 +115,9 @@ const Carousel: React.FC<CarouselProps> = ({
                       activeIndex === index
                         ? "var(--neutral-on-background-strong)"
                         : "var(--neutral-alpha-medium)",
-                    cursor: "pointer",
                     transition: "background 0.3s ease",
                   }}
+                  cursor="interactive"
                   fillWidth
                   height="2"
                 ></Flex>
@@ -130,10 +130,10 @@ const Carousel: React.FC<CarouselProps> = ({
                   key={index}
                   style={{
                     border: activeIndex === index ? "2px solid var(--brand-solid-strong)" : "none",
-                    cursor: "pointer",
                     borderRadius: "var(--radius-m-nest-4)",
                     transition: "border 0.3s ease",
                   }}
+                  cursor="interactive"
                   padding="4"
                   width="80"
                   height="80"
@@ -143,11 +143,9 @@ const Carousel: React.FC<CarouselProps> = ({
                     aspectRatio="1 / 1"
                     sizes="120px"
                     src={image.src}
-                    style={{
-                      cursor: "pointer",
-                      borderRadius: "var(--radius-m)",
-                      transition: "background 0.3s ease",
-                    }}
+                    cursor="interactive"
+                    radius="m"
+                    transition="macro-medium"
                   />
                 </Flex>
               ))}

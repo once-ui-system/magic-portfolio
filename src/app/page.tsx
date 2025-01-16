@@ -41,7 +41,7 @@ export default function Home() {
 	return (
 		<Column
 			maxWidth="m" gap="xl"
-			alignItems="center">
+			horizontal="center">
 			<script
 				type="application/ld+json"
 				suppressHydrationWarning
@@ -70,7 +70,7 @@ export default function Home() {
 				<Column
 					maxWidth="s">
 					<RevealFx
-						translateY="4" fillWidth justifyContent="flex-start" paddingBottom="m">
+						translateY="4" fillWidth horizontal="start" paddingBottom="m">
 						<Heading
 							wrap="balance"
 							variant="display-strong-l">
@@ -78,7 +78,7 @@ export default function Home() {
 						</Heading>
 					</RevealFx>
 					<RevealFx
-						translateY="8" delay={0.2} fillWidth justifyContent="flex-start" paddingBottom="m">
+						translateY="8" delay={0.2} fillWidth horizontal="start" paddingBottom="m">
 						<Text
 							wrap="balance"
 							onBackground="neutral-weak"
@@ -86,7 +86,7 @@ export default function Home() {
 							{home.subline}
 						</Text>
 					</RevealFx>
-					<RevealFx translateY="12" delay={0.4} justifyContent="flex-start">
+					<RevealFx translateY="12" delay={0.4} horizontal="start">
 						<Button
 							id="about"
 							data-border="rounded"
@@ -96,7 +96,7 @@ export default function Home() {
 							arrowIcon>
 							<Flex
 								gap="8"
-								alignItems="center">
+								vertical="center">
 								{about.avatar.display && (
 									<Avatar
 										style={{marginLeft: '-0.75rem', marginRight: '0.25rem'}}

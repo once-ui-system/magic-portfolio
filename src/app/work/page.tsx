@@ -1,5 +1,5 @@
 import { getPosts } from '@/app/utils/utils';
-import { Flex } from '@/once-ui/components';
+import { Column } from '@/once-ui/components';
 import { Projects } from '@/components/work/Projects';
 import { baseURL } from '@/app/resources';
 import { person, work } from '@/app/resources/content';
@@ -37,9 +37,8 @@ export default function Work() {
     let allProjects = getPosts(['src', 'app', 'work', 'projects']);
 
     return (
-        <Flex
-			fillWidth maxWidth="m"
-			direction="column">
+        <Column
+			maxWidth="m">
             <script
                 type="application/ld+json"
                 suppressHydrationWarning
@@ -66,6 +65,6 @@ export default function Work() {
                 }}
             />
             <Projects />
-        </Flex>
+        </Column>
     );
 }

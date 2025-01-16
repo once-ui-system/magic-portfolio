@@ -24,7 +24,7 @@ const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
           userSelect: "none",
           ...style,
         }}
-        alignItems="center"
+        vertical="center"
         gap="4"
         zIndex={1}
         background="surface"
@@ -38,7 +38,7 @@ const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
         {prefixIcon && <Icon name={prefixIcon} size="xs" />}
         <Flex
           paddingX="2"
-          alignItems="center"
+          vertical="center"
           textVariant="body-default-xs"
           onBackground="neutral-strong"
         >

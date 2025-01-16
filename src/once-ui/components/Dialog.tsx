@@ -220,8 +220,7 @@ const Dialog: React.FC<DialogProps> = forwardRef<HTMLDivElement, DialogProps>(
         className={classNames(styles.overlay, {
           [styles.open]: isAnimating,
         })}
-        justifyContent="center"
-        alignItems="center"
+        center
         padding="l"
         role="dialog"
         aria-modal="true"
@@ -229,8 +228,7 @@ const Dialog: React.FC<DialogProps> = forwardRef<HTMLDivElement, DialogProps>(
       >
         <Flex
           fill
-          justifyContent="center"
-          alignItems="center"
+          center
           transition="macro-medium"
           style={{
             transform: base ? "scale(0.94) translateY(-1.25rem)" : "",
@@ -284,7 +282,7 @@ const Dialog: React.FC<DialogProps> = forwardRef<HTMLDivElement, DialogProps>(
               paddingBottom="s"
               gap="4"
             >
-              <Flex fillWidth justifyContent="space-between" gap="8">
+              <Flex fillWidth horizontal="space-between" gap="8">
                 <Heading id="dialog-title" variant="heading-strong-l">
                   {title}
                 </Heading>
@@ -316,7 +314,7 @@ const Dialog: React.FC<DialogProps> = forwardRef<HTMLDivElement, DialogProps>(
               <Flex
                 borderTop="neutral-medium"
                 as="footer"
-                justifyContent="flex-end"
+                horizontal="end"
                 padding="12"
                 gap="8"
               >

@@ -81,7 +81,7 @@ const RevealFx = forwardRef<HTMLDivElement, RevealFxProps>(
       <Flex
         fillWidth
         position="relative"
-        justifyContent="center"
+        horizontal="center"
         ref={ref}
         style={revealStyle}
         className={`${styles.revealFx} ${isRevealed ? styles.revealed : styles.hidden} ${className || ""}`}

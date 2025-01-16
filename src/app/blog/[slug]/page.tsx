@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation'
 import { CustomMDX } from '@/components/mdx'
 import { getPosts } from '@/app/utils/utils'
-import { AvatarGroup, Button, Flex, Heading, SmartImage, Text } from '@/once-ui/components'
+import { AvatarGroup, Button, Column, Heading, Row, Text } from '@/once-ui/components'
 import { baseURL } from '@/app/resources';
 import { person } from '@/app/resources/content';
 import { formatDate } from '@/app/utils/formatDate';
@@ -75,9 +75,9 @@ export default function Blog({ params }: BlogParams) {
     })) || [];
 
 	return (
-		<Flex as="section"
-			fillWidth maxWidth="xs"
-			direction="column"
+		<Column
+			as="section"
+			maxWidth="xs"
 			gap="l">
 			<script
 				type="application/ld+json"
@@ -113,9 +113,9 @@ export default function Blog({ params }: BlogParams) {
 				variant="display-strong-s">
 				{post.metadata.title}
 			</Heading>
-			<Flex
+			<Row
 				gap="12"
-				alignItems="center">
+				vertical="center">
 				{avatars.length > 0 && (
 					<AvatarGroup
 						size="s"
@@ -127,14 +127,13 @@ export default function Blog({ params }: BlogParams) {
 					onBackground="neutral-weak">
 					{formatDate(post.metadata.publishedAt)}
 				</Text>
-			</Flex>
-			<Flex
+			</Row>
+			<Column
 				as="article"
-				direction="column"
 				fillWidth>
 				<CustomMDX source={post.content} />
-			</Flex>
+			</Column>
 			<ScrollToHash />
-		</Flex>
+		</Column>
 	)
 }

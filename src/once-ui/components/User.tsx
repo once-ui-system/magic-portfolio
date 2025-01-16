@@ -25,7 +25,7 @@ const User = forwardRef<HTMLDivElement, UserProps>(
     const isEmpty = empty || (!src && !value);
 
     return (
-      <Flex ref={ref} alignItems="center" gap="8" className={classNames(className)}>
+      <Flex ref={ref} vertical="center" gap="8" className={classNames(className)}>
         <Avatar
           size="m"
           src={src}
@@ -42,7 +42,7 @@ const User = forwardRef<HTMLDivElement, UserProps>(
                 <Skeleton width="xl" height="m" shape="line" aria-label="Loading name" />
               </Flex>
             ) : (
-              <Flex gap="8" alignItems="center">
+              <Flex gap="8" vertical="center">
                 <Text variant="heading-strong-xs" onBackground="neutral-strong">
                   {name}
                 </Text>

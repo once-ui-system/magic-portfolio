@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Flex, Text } from '@/once-ui/components';
+import { Column, Flex, Text } from '@/once-ui/components';
 import styles from './about.module.scss';
 
 interface TableOfContentsProps {
@@ -35,25 +35,25 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({ structure, about }) =
     if (!about.tableOfContent.display) return null;
 
     return (
-        <Flex
+        <Column
+            left="0"
             style={{
-                left: '0',
                 top: '50%',
                 transform: 'translateY(-50%)',
                 whiteSpace: 'nowrap'
             }}
             position="fixed"
             paddingLeft="24" gap="32"
-            direction="column" hide="m">
+            hide="m">
             {structure
                 .filter(section => section.display)
                 .map((section, sectionIndex) => (
-                <Flex key={sectionIndex} gap="12" direction="column">
+                <Column key={sectionIndex} gap="12">
                     <Flex
-                        style={{ cursor: 'pointer' }}
+                        cursor="interactive"
                         className={styles.hover}
                         gap="8"
-                        alignItems="center"
+                        vertical="center"
                         onClick={() => scrollTo(section.title, 80)}>
                         <Flex
                             height="1" minWidth="16"
@@ -72,7 +72,7 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({ structure, about }) =
                                     style={{ cursor: 'pointer' }}
                                     className={styles.hover}
                                     gap="12" paddingLeft="24"
-                                    alignItems="center"
+                                    vertical="center"
                                     onClick={() => scrollTo(item, 80)}>
                                     <Flex
                                         height="1" minWidth="8"
@@ -85,9 +85,9 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({ structure, about }) =
                             ))}
                         </>
                     )}
-                </Flex>
+                </Column>
             ))}
-        </Flex>
+        </Column>
     );
 };
 

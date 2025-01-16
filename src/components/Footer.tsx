@@ -10,11 +10,11 @@ export const Footer = () => {
             as="footer"
             position="relative"
             fillWidth padding="8"
-            justifyContent="center" mobileDirection="column">
+            horizontal="center" mobileDirection="column">
             <Flex
                 className={styles.mobile}
-                fillWidth maxWidth="m" paddingY="8" paddingX="16" gap="16"
-                justifyContent="space-between" alignItems="center">
+                maxWidth="m" paddingY="8" paddingX="16" gap="16"
+                horizontal="space-between" vertical="center">
                 <Text
                     variant="body-default-s"
                     onBackground="neutral-strong">

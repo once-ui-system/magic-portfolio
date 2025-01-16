@@ -57,8 +57,8 @@ const LogoCloud = forwardRef<HTMLDivElement, LogoCloudProps>(
         {visibleLogos.map((logo, index) => (
           <Flex
             key={`${key}-${index}`}
-            alignItems="center"
-            justifyContent="center"
+            vertical="center"
+            horizontal="center"
             paddingX="24"
             paddingY="20"
             radius="l"

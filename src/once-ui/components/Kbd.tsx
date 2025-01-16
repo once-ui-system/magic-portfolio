@@ -16,7 +16,7 @@ const Kbd = forwardRef<HTMLDivElement, KbdProps>(
     <Flex
       as="kbd"
       ref={ref}
-      justifyContent="center"
+      horizontal="center"
       minWidth="32"
       background="neutral-strong"
       radius="s"

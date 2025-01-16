@@ -23,7 +23,7 @@ const AvatarGroup = forwardRef<HTMLDivElement, AvatarGroupProps>(
     return (
       <Flex
         position="relative"
-        alignItems="center"
+        vertical="center"
         ref={ref}
         className={classNames(styles.avatarGroup, className)}
         style={style}

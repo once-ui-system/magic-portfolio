@@ -5,7 +5,7 @@ import { Flex, Text, SegmentedControl, IconButton, Scroller, Column } from ".";
 
 import styles from "./StylePanel.module.scss";
 import classNames from "classnames";
-import { style } from "../resources/config";
+import { style } from "@/app/resources";
 
 interface StylePanelProps extends React.ComponentProps<typeof Flex> {
   style?: React.CSSProperties;
@@ -100,8 +100,8 @@ const StylePanel = forwardRef<HTMLDivElement, StylePanelProps>(({ ...rest }, ref
       <Column fillWidth border="neutral-alpha-medium" radius="l-4">
         <Flex
           borderBottom="neutral-alpha-medium"
-          justifyContent="space-between"
-          alignItems="center"
+          horizontal="space-between"
+          vertical="center"
           fillWidth
           paddingX="24"
           paddingY="16"
@@ -121,8 +121,8 @@ const StylePanel = forwardRef<HTMLDivElement, StylePanelProps>(({ ...rest }, ref
           />
         </Flex>
         <Flex
-          justifyContent="space-between"
-          alignItems="center"
+          horizontal="space-between"
+          vertical="center"
           fillWidth
           paddingX="24"
           paddingY="16"
@@ -135,8 +135,8 @@ const StylePanel = forwardRef<HTMLDivElement, StylePanelProps>(({ ...rest }, ref
               <Flex
                   data-border={shapes[index]}
                   key={radius}
-                  justifyContent="center"
-                  alignItems="center"
+                  horizontal="center"
+                  vertical="center"
                   className={classNames(
                   styles.select,
                   selectedShape === radius ? styles.selected : "",
@@ -165,8 +165,8 @@ const StylePanel = forwardRef<HTMLDivElement, StylePanelProps>(({ ...rest }, ref
       <Column fillWidth border="neutral-alpha-medium" radius="l-4">
         <Flex
           borderBottom="neutral-alpha-medium"
-          justifyContent="space-between"
-          alignItems="center"
+          horizontal="space-between"
+          vertical="center"
           fillWidth
           paddingX="24"
           paddingY="16"
@@ -180,8 +180,8 @@ const StylePanel = forwardRef<HTMLDivElement, StylePanelProps>(({ ...rest }, ref
               <Flex
                 marginRight="2"
                 key={color}
-                justifyContent="center"
-                alignItems="center"
+                horizontal="center"
+                vertical="center"
                 className={classNames(styles.select, brandColor === color ? styles.selected : "")}
                 onClick={() => {
                   setBrandColor(color);
@@ -197,8 +197,8 @@ const StylePanel = forwardRef<HTMLDivElement, StylePanelProps>(({ ...rest }, ref
 
         <Flex
           borderBottom="neutral-alpha-medium"
-          justifyContent="space-between"
-          alignItems="center"
+          horizontal="space-between"
+          vertical="center"
           fillWidth
           paddingX="24"
           paddingY="16"
@@ -212,8 +212,8 @@ const StylePanel = forwardRef<HTMLDivElement, StylePanelProps>(({ ...rest }, ref
               <Flex
                 marginRight="2"
                 key={color}
-                justifyContent="center"
-                alignItems="center"
+                horizontal="center"
+                vertical="center"
                 className={classNames(styles.select, accentColor === color ? styles.selected : "")}
                 onClick={() => {
                   setAccentColor(color);
@@ -228,8 +228,8 @@ const StylePanel = forwardRef<HTMLDivElement, StylePanelProps>(({ ...rest }, ref
         </Flex>
 
         <Flex
-          justifyContent="space-between"
-          alignItems="center"
+          horizontal="space-between"
+          vertical="center"
           fillWidth
           paddingX="24"
           paddingY="16"
@@ -243,8 +243,8 @@ const StylePanel = forwardRef<HTMLDivElement, StylePanelProps>(({ ...rest }, ref
               <Flex
                 marginRight="2"
                 key={color}
-                justifyContent="center"
-                alignItems="center"
+                horizontal="center"
+                vertical="center"
                 className={classNames(styles.select, neutralColor === color ? styles.selected : "")}
                 onClick={() => {
                   setNeutralColor(color);
@@ -270,8 +270,8 @@ const StylePanel = forwardRef<HTMLDivElement, StylePanelProps>(({ ...rest }, ref
       <Column fillWidth border="neutral-alpha-medium" radius="l-4">
         <Flex
           borderBottom="neutral-alpha-medium"
-          justifyContent="space-between"
-          alignItems="center"
+          horizontal="space-between"
+          vertical="center"
           fillWidth
           paddingX="24"
           paddingY="16"
@@ -287,7 +287,7 @@ const StylePanel = forwardRef<HTMLDivElement, StylePanelProps>(({ ...rest }, ref
               {
                 size: "l",
                 label: (
-                  <Flex alignItems="center" gap="12">
+                  <Flex vertical="center" gap="12">
                     <Flex
                       data-solid="color"
                       border="brand-strong"
@@ -305,7 +305,7 @@ const StylePanel = forwardRef<HTMLDivElement, StylePanelProps>(({ ...rest }, ref
               {
                 size: "l",
                 label: (
-                  <Flex alignItems="center" gap="12">
+                  <Flex vertical="center" gap="12">
                     <Flex
                       data-solid="inverse"
                       border="brand-strong"
@@ -323,7 +323,7 @@ const StylePanel = forwardRef<HTMLDivElement, StylePanelProps>(({ ...rest }, ref
               {
                 size: "l",
                 label: (
-                  <Flex alignItems="center" gap="12">
+                  <Flex vertical="center" gap="12">
                     <Flex
                       data-solid="contrast"
                       border="brand-strong"
@@ -344,8 +344,8 @@ const StylePanel = forwardRef<HTMLDivElement, StylePanelProps>(({ ...rest }, ref
           />
         </Flex>
         <Flex
-          justifyContent="space-between"
-          alignItems="center"
+          horizontal="space-between"
+          vertical="center"
           fillWidth
           paddingX="24"
           paddingY="16"
@@ -361,7 +361,7 @@ const StylePanel = forwardRef<HTMLDivElement, StylePanelProps>(({ ...rest }, ref
               {
                 size: "l",
                 label: (
-                  <Flex alignItems="center" gap="12">
+                  <Flex vertical="center" gap="12">
                     <Flex
                       border="brand-strong"
                       solid="brand-weak"
@@ -378,7 +378,7 @@ const StylePanel = forwardRef<HTMLDivElement, StylePanelProps>(({ ...rest }, ref
               {
                 size: "l",
                 label: (
-                  <Flex alignItems="center" gap="12">
+                  <Flex vertical="center" gap="12">
                     <Flex
                       border="brand-strong"
                       style={{
@@ -413,8 +413,8 @@ const StylePanel = forwardRef<HTMLDivElement, StylePanelProps>(({ ...rest }, ref
       <Column fillWidth border="neutral-alpha-medium" radius="l-4">
         <Flex
           borderBottom="neutral-alpha-medium"
-          justifyContent="space-between"
-          alignItems="center"
+          horizontal="space-between"
+          vertical="center"
           fillWidth
           paddingX="24"
           paddingY="16"
@@ -444,8 +444,8 @@ const StylePanel = forwardRef<HTMLDivElement, StylePanelProps>(({ ...rest }, ref
         </Flex>
         <Flex
           borderBottom="neutral-alpha-medium"
-          justifyContent="space-between"
-          alignItems="center"
+          horizontal="space-between"
+          vertical="center"
           fillWidth
           paddingX="24"
           paddingY="16"
@@ -489,8 +489,8 @@ const StylePanel = forwardRef<HTMLDivElement, StylePanelProps>(({ ...rest }, ref
           />
         </Flex>
         <Flex
-          justifyContent="space-between"
-          alignItems="center"
+          horizontal="space-between"
+          vertical="center"
           fillWidth
           paddingX="24"
           paddingY="16"

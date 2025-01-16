@@ -52,7 +52,7 @@ const RadioButton: React.FC<RadioButtonProps> = forwardRef<HTMLInputElement, Rad
 
     return (
       <Flex
-        alignItems="center"
+        vertical="center"
         gap="16"
         zIndex={1}
         className={classNames(styles.container, className, {
@@ -78,8 +78,8 @@ const RadioButton: React.FC<RadioButtonProps> = forwardRef<HTMLInputElement, Rad
           aria-labelledby={radioId}
           aria-disabled={disabled}
           position="relative"
-          justifyContent="center"
-          alignItems="center"
+          horizontal="center"
+          vertical="center"
           radius="full"
           onClick={toggleItem}
           onKeyDown={handleKeyDown}

@@ -137,7 +137,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           background="neutral-alpha-weak"
           position="relative"
           overflow="hidden"
-          alignItems="stretch"
+          vertical="stretch"
           className={classNames(
             styles.base,
             {

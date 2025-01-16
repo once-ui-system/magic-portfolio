@@ -1,6 +1,6 @@
 "use client";
 
-import { AvatarGroup, Carousel, Flex, Heading, SmartLink, Text } from "@/once-ui/components";
+import { AvatarGroup, Carousel, Column, Flex, Heading, SmartLink, Text } from "@/once-ui/components";
 
 interface ProjectCardProps {
     href: string;
@@ -23,9 +23,8 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
     link,
 }) => {
     return (
-        <Flex
-            fillWidth gap="m"
-            direction="column">
+        <Column
+            fillWidth gap="m">
             <Carousel
                 sizes="(max-width: 960px) 100vw, 960px"
                 images={images.map(image => ({
@@ -47,8 +46,8 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
                     </Flex>
                 )}
                 {(avatars?.length > 0 || description?.trim() || content?.trim()) && (
-                    <Flex
-                        flex={7} direction="column"
+                    <Column
+                        flex={7}
                         gap="16">
                         {avatars?.length > 0 && (
                             <AvatarGroup
@@ -85,9 +84,9 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
                                 </SmartLink>
                             )}
                         </Flex>
-                    </Flex>
+                    </Column>
                 )}
             </Flex>
-        </Flex>
+        </Column>
     );
 };

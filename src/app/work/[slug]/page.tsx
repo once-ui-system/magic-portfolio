@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation'
 import { CustomMDX } from '@/components/mdx'
 import { getPosts } from '@/app/utils/utils'
-import { AvatarGroup, Button, Flex, Heading, SmartImage, Text } from '@/once-ui/components'
+import { AvatarGroup, Button, Column, Flex, Heading, SmartImage, Text } from '@/once-ui/components'
 import { baseURL } from '@/app/resources';
 import { person } from '@/app/resources/content';
 import { formatDate } from '@/app/utils/formatDate';
@@ -77,9 +77,9 @@ export default function Project({ params }: WorkParams) {
     })) || [];
 
 	return (
-		<Flex as="section"
-			fillWidth maxWidth="m"
-			direction="column" alignItems="center"
+		<Column as="section"
+			maxWidth="m"
+			horizontal="center"
 			gap="l">
 			<script
 				type="application/ld+json"
@@ -103,9 +103,8 @@ export default function Project({ params }: WorkParams) {
 					}),
 				}}
 			/>
-			<Flex
-				fillWidth maxWidth="xs" gap="16"
-				direction="column">
+			<Column
+				maxWidth="xs" gap="16">
 				<Button
 					href="/work"
 					variant="tertiary"
@@ -118,7 +117,7 @@ export default function Project({ params }: WorkParams) {
 					variant="display-strong-s">
 					{post.metadata.title}
 				</Heading>
-			</Flex>
+			</Column>
 			{post.metadata.images.length > 0 && (
 				<SmartImage
 					priority
@@ -127,13 +126,12 @@ export default function Project({ params }: WorkParams) {
 					alt="image"
 					src={post.metadata.images[0]}/>
 			)}
-			<Flex style={{margin: 'auto'}}
+			<Column style={{margin: 'auto'}}
 				as="article"
-				maxWidth="xs" fillWidth
-				direction="column">
+				maxWidth="xs">
 				<Flex
 					gap="12" marginBottom="24"
-					alignItems="center">
+					vertical="center">
 					{ post.metadata.team && (
 						<AvatarGroup
 							reverse
@@ -147,8 +145,8 @@ export default function Project({ params }: WorkParams) {
 					</Text>
 				</Flex>
 				<CustomMDX source={post.content} />
-			</Flex>
+			</Column>
 			<ScrollToHash />
-		</Flex>
+		</Column>
 	)
 }

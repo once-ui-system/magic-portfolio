@@ -241,8 +241,8 @@ const Select = forwardRef<HTMLDivElement, SelectProps>(
                 ).length === 0 && (
                   <Flex
                     fillWidth
-                    alignItems="center"
-                    justifyContent="center"
+                    vertical="center"
+                    horizontal="center"
                     paddingX="16"
                     paddingY="32"
                   >

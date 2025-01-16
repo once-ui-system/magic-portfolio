@@ -3,7 +3,7 @@
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
-import { Fade, Flex, ToggleButton } from "@/once-ui/components"
+import { Fade, Flex, Line, ToggleButton } from "@/once-ui/components"
 import styles from '@/components/Header.module.scss'
 
 import { routes, display } from '@/app/resources'
@@ -59,10 +59,10 @@ export const Header = () => {
                 as="header"
                 zIndex={9}
                 fillWidth padding="8"
-                justifyContent="center">
+                horizontal="center">
                 <Flex
                     paddingLeft="12" fillWidth
-                    alignItems="center"
+                    vertical="center"
                     textVariant="body-default-s">
                     { display.location && (
                         <Flex hide="s">
@@ -70,29 +70,22 @@ export const Header = () => {
                         </Flex>
                     )}
                 </Flex>
-                <Flex fillWidth justifyContent="center">
+                <Flex fillWidth horizontal="center">
                     <Flex
                         background="surface" border="neutral-medium"  radius="m-4" shadow="l"
                         padding="4"
-                        justifyContent="center">
+                        horizontal="center">
                         <Flex
                             gap="4"
+                            vertical="center"
                             textVariant="body-default-s">
                             { routes['/'] && (
-                                <>
-                                    <ToggleButton
-                                        className="s-flex-hide"
-                                        prefixIcon="home"
-                                        href="/"
-                                        label={home.label}
-                                        selected={pathname === "/"}/>
-                                    <ToggleButton
-                                        className="s-flex-show"
-                                        prefixIcon="home"
-                                        href="/"
-                                        selected={pathname === "/"}/>
-                                </>
+                                <ToggleButton
+                                    prefixIcon="home"
+                                    href="/"
+                                    selected={pathname === "/"}/>
                             )}
+                            <Line vert maxHeight="24"/>
                             { routes['/about'] && (
                                 <>
                                     <ToggleButton
@@ -156,10 +149,10 @@ export const Header = () => {
                         </Flex>
                     </Flex>
                 </Flex>
-                <Flex fillWidth justifyContent="flex-end" alignItems="center">
+                <Flex fillWidth horizontal="end" vertical="center">
                     <Flex
                         paddingRight="12"
-                        justifyContent="flex-end" alignItems="center"
+                        horizontal="end" vertical="center"
                         textVariant="body-default-s"
                         gap="20">
                         <Flex hide="s">

@@ -46,9 +46,7 @@ const Avatar = forwardRef<HTMLDivElement, AvatarProps>(
       return (
         <Skeleton
           {...rest}
-          style={{
-            border: "1px solid var(--neutral-border-medium)",
-          }}
+          border="neutral-medium"
           shape="circle"
           width={size}
           height={size}
@@ -107,8 +105,8 @@ const Avatar = forwardRef<HTMLDivElement, AvatarProps>(
         ref={ref}
         role="img"
         position="relative"
-        justifyContent="center"
-        alignItems="center"
+        horizontal="center"
+        vertical="center"
         radius="full"
         border="neutral-strong"
         background="surface"

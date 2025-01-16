@@ -41,11 +41,11 @@ const Option = forwardRef<HTMLDivElement, OptionProps>(
     }
 
     return (
-      <ElementType tabIndex={tabIndex} ref={ref} href={href} className="reset-button-styles">
+      <ElementType tabIndex={tabIndex} ref={ref} href={href} className="reset-button-styles" style={{width: "100%"}}>
         <Flex
           {...props}
           fillWidth
-          alignItems="center"
+          vertical="center"
           paddingX="12"
           paddingY="8"
           gap="12"
@@ -67,7 +67,7 @@ const Option = forwardRef<HTMLDivElement, OptionProps>(
         >
           {hasPrefix && <Flex className={styles.prefix}>{hasPrefix}</Flex>}
           <Flex
-            alignItems="flex-start"
+            horizontal="start"
             style={{
               whiteSpace: "nowrap",
             }}

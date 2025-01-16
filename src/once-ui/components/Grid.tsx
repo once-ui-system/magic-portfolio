@@ -219,7 +219,6 @@ const Grid = forwardRef<HTMLDivElement, ComponentProps>(
     );
 
     const combinedStyle: CSSProperties = {
-      gap,
       maxWidth: parseDimension(maxWidth, "width"),
       minWidth: parseDimension(minWidth, "width"),
       minHeight: parseDimension(minHeight, "height"),

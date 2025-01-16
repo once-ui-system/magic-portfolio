@@ -69,7 +69,7 @@ const TagInput = forwardRef<HTMLInputElement, TagInputProps>(
             }}
             direction="row"
             gap="4"
-            alignItems="center"
+            vertical="center"
             wrap
             paddingY="16"
           >

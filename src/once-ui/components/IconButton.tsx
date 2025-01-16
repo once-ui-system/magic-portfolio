@@ -106,7 +106,7 @@ const IconButton = forwardRef<HTMLButtonElement, IconButtonProps | AnchorProps>(
         aria-label={tooltip || icon}
         {...props}
       >
-        <Flex fill justifyContent="center" alignItems="center">
+        <Flex fill center>
           {content}
         </Flex>
       </ElementType>

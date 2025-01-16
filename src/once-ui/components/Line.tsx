@@ -4,23 +4,23 @@ import React, { forwardRef } from "react";
 import { Flex } from ".";
 
 interface LineProps extends React.ComponentProps<typeof Flex> {
-  vertical?: boolean;
+  vert?: boolean;
   style?: React.CSSProperties;
 }
 
 const Line = forwardRef<HTMLDivElement, LineProps>(
-  ({ vertical, className, style, ...rest }, ref) => {
+  ({ vert, className, style, ...rest }, ref) => {
     return (
       <Flex
         ref={ref}
-        minWidth={(vertical && "1") || undefined}
-        minHeight={(!vertical && "1") || undefined}
-        width={(vertical && "1") || undefined}
-        height={(!vertical && "1") || undefined}
-        fillWidth={!vertical}
-        fillHeight={vertical}
+        minWidth={(vert && "1") || undefined}
+        minHeight={(!vert && "1") || undefined}
+        width={(vert && "1") || undefined}
+        height={(!vert && "1") || undefined}
+        fillWidth={!vert}
+        fillHeight={vert}
         background="neutral-strong"
-        direction={vertical ? "column" : "row"}
+        direction={vert ? "column" : "row"}
         className={className}
         style={style}
         {...rest}

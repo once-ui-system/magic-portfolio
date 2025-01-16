@@ -10,7 +10,7 @@ import { Inter } from 'next/font/google'
 import { Source_Code_Pro } from 'next/font/google';
 
 import { person, home } from '@/app/resources/content';
-import { Background, Flex } from "@/once-ui/components";
+import { Background, Column, Flex } from "@/once-ui/components";
 
 export async function generateMetadata() {
 	return {
@@ -86,10 +86,9 @@ export default async function RootLayout({
 				secondary ? secondary.variable : '',
 				tertiary ? tertiary.variable : '',
 				code.variable)}>
-			<Flex style={{minHeight: '100vh'}}
+			<Column style={{minHeight: '100vh'}}
 				as="body"
-				fillWidth margin="0" padding="0"
-				direction="column">
+				fillWidth margin="0" padding="0">
 				<Background
 					mask={{
 						cursor: effects.mask.cursor,
@@ -134,9 +133,9 @@ export default async function RootLayout({
 					position="relative"
 					zIndex={0}
 					fillWidth paddingY="l" paddingX="l"
-					justifyContent="center" flex={1}>
+					horizontal="center" flex={1}>
 					<Flex
-						justifyContent="center"
+						horizontal="center"
 						fillWidth minHeight="0">
 						<RouteGuard>
 							{children}
@@ -144,7 +143,7 @@ export default async function RootLayout({
 					</Flex>
 				</Flex>
 				<Footer/>
-			</Flex>
+			</Column>
 		</Flex>
 	);
 }
