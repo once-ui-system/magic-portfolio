@@ -65,7 +65,7 @@ export const HeadingLink: React.FC<HeadingLinkProps> = ({
                 style={style}
                 onClick={() => copyURL(id)}
                 className={styles.control}
-                alignItems="center"
+                vertical="center"
                 gap="4">
                 <Heading
                     className={styles.text}
