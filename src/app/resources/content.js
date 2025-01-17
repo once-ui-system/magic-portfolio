@@ -1,19 +1,19 @@
 import { InlineCode } from "@/once-ui/components";
 
 const person = {
-    firstName: 'Selene',
-    lastName:  'Yu',
+    firstName: 'Arnab',
+    lastName:  'Ghosh',
     get name() {
         return `${this.firstName} ${this.lastName}`;
     },
-    role:      'Design Engineer',
+    role:      'Student',
     avatar:    '/images/avatar.jpg',
-    location:  'Asia/Jakarta',        // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
-    languages: ['English', 'Bahasa']  // optional: Leave the array empty if you don't want to display languages
+    location:  'America/Los_Angeles',        // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
+    languages: ['English', 'Korean', 'Spanish', 'Bengali']  // optional: Leave the array empty if you don't want to display languages
 }
 
 const newsletter = {
-    display: true,
+    display: false,
     title: <>Subscribe to {person.firstName}'s Newsletter</>,
     description: <>I occasionally write about design, technology, and share thoughts on the intersection of creativity and engineering.</>
 }
@@ -24,22 +24,17 @@ const social = [
     {
         name: 'GitHub',
         icon: 'github',
-        link: 'https://github.com/once-ui-system/nextjs-starter',
+        link: 'https://github.com/arniber21',
     },
     {
         name: 'LinkedIn',
         icon: 'linkedin',
-        link: 'https://www.linkedin.com/company/once-ui/',
-    },
-    {
-        name: 'X',
-        icon: 'x',
-        link: '',
+        link: 'https://www.linkedin.com/in/arnab-ghosh819/',
     },
     {
         name: 'Email',
         icon: 'email',
-        link: 'mailto:example@gmail.com',
+        link: 'mailto:arnabcare21@gmail.com',
     },
 ]
 
@@ -47,8 +42,8 @@ const home = {
     label: 'Home',
     title: `${person.name}'s Portfolio`,
     description: `Portfolio website showcasing my work as a ${person.role}`,
-    headline: <>Design engineer and builder</>,
-    subline: <>I'm Selene, a design engineer at <InlineCode>FLY</InlineCode>, where I craft intuitive<br/> user experiences. After hours, I build my own projects.</>
+    headline: <>Software Engineer / Student @ Cornell University</>,
+    subline: <>I'm Arnab, a student at Cornell University studying Computer Science and Mathematics pursuing a career in Software Engineering.</>
 }
 
 const about = {
@@ -63,96 +58,101 @@ const about = {
         display: true
     },
     calendar: {
-        display: true,
+        display: false,
         link: 'https://cal.com'
     },
     intro: {
         display: true,
         title: 'Introduction',
-        description: <>Selene is a Jakarta-based design engineer with a passion for transforming complex challenges into simple, elegant design solutions. Her work spans digital interfaces, interactive experiences, and the convergence of design and technology.</>
+        description: <>Arnab is a student at Cornell University majoring in Computer Science and Mathematics, with a passion for socially impactful technology and national security. 
+        He is an experienced full-stack developer proficient in Kotlin, Java, and TypeScript, specializing in security and cryptography. 
+        His interests include security, cryptography, quantum computing, post-quantum cryptography, and secure AI.</>
     },
     work: {
         display: true, // set to false to hide this section
         title: 'Work Experience',
         experiences: [
             {
-                company: 'FLY',
-                timeframe: '2022 - Present',
-                role: 'Senior Design Engineer',
+                company: 'National Geospactial Intelligence Agency',
+                timeframe: 'Summer 2025',
+                role: 'Software Engineer Intern, IT Architecture and Engineering',
                 achievements: [
-                    <>Redesigned the UI/UX for the FLY platform, resulting in a 20% increase in user engagement and 30% faster load times.</>,
-                    <>Spearheaded the integration of AI tools into design workflows, enabling designers to iterate 50% faster.</>
+                    <>Incoming intern for the NGA's IT Architecture and Engineering team.</>,
                 ],
-                images: [ // optional: leave the array empty if you don't want to display images
-                    {
-                        src: '/images/projects/project-01/cover-01.jpg',
-                        alt: 'Once UI Project',
-                        width: 16,
-                        height: 9
-                    }
-                ]
+                images: []
             },
             {
-                company: 'Creativ3',
-                timeframe: '2018 - 2022',
-                role: 'Lead Designer',
+                company: 'Cornell Quantum Computing Association',
+                timeframe: 'August 2024 - Present',
+                role: 'Education Lead',
                 achievements: [
-                    <>Developed a design system that unified the brand across multiple platforms, improving design consistency by 40%.</>,
-                    <>Led a cross-functional team to launch a new product line, contributing to a 15% increase in overall company revenue.</>
+                    <>Run QCA's education program. Primarily composed of the Fundamentals lecture series, which educates students on quantum computing fundamentals.</>,
+                    <>Develop, test, and deliver curricula, worksheets, presentations, certification quizzes, and other educational materials.</>,
+                    <>Organized Cornell's Qiskit Fall Fest 2024, featuring a variety of workshops on quantum computing via the Qiskit framework.</>,
                 ],
-                images: [ ]
-            }
+                images: []
+            },
+            {
+                company: 'CS 2110, Object-Oriented Programming and Data Structures',
+                timeframe: 'August 2024 - Present',
+                role: 'Consultant',
+                achievements: [
+                    <>Grade assignments and exams, hold office hours, and provide feedback to students.</>,
+                    <>Assist course staff with discussion sections and student consultations.</>,
+                ],
+                images: []
+            },
         ]
     },
     studies: {
         display: true, // set to false to hide this section
-        title: 'Studies',
+        title: 'Education',
         institutions: [
             {
-                name: 'University of Jakarta',
-                description: <>Studied software engineering.</>,
+                name: 'Cornell University',
+                description:
+                <ul>
+                    <li>Bachelor of Arts in Computer Science and Mathematics</li>
+                    <li>3.78 GPA with expected graduation in May 2028.</li>
+                    <li>Advanced coursework: Honors Object-Oriented Programming and Data Structures, Mathematical Foundations of CS, Computer Organization and Architecture.</li>
+                </ul>,
             },
-            {
-                name: 'Build the Future',
-                description: <>Studied online marketing and personal branding.</>,
-            }
         ]
     },
     technical: {
         display: true, // set to false to hide this section
-        title: 'Technical skills',
+        title: 'Technical Skills',
         skills: [
             {
-                title: 'Figma',
-                description: <>Able to prototype in Figma with Once UI with unnatural speed.</>,
+                title: 'Backend Development',
+                description: <>Proficient in Kotlin, Java, including frameworks such as Spring Boot, kTor, with experience in security, authentication, authorization, microservices, RESTful APIs, and database management.</>,
                 // optional: leave the array empty if you don't want to display images
-                images: [
-                    {
-                        src: '/images/projects/project-01/cover-02.jpg',
-                        alt: 'Project image',
-                        width: 16,
-                        height: 9
-                    },
-                    {
-                        src: '/images/projects/project-01/cover-03.jpg',
-                        alt: 'Project image',
-                        width: 16,
-                        height: 9
-                    },
-                ]
+                images: []
             },
             {
-                title: 'Next.js',
-                description: <>Building next gen apps with Next.js + Once UI + Supabase.</>,
+                title: 'Full Stack and Frontend Development',
+                description: <>Proficient in TypeScript, JavaScript, React, Remix, Next.js, tRPC, Turbo, and Tailwind.</>,
                 // optional: leave the array empty if you don't want to display images
                 images: [
                     {
-                        src: '/images/projects/project-01/cover-04.jpg',
-                        alt: 'Project image',
+                        src: "/images/projects/avec/homepage.jpeg",
+                        alt: "Avec Homepage",
                         width: 16,
-                        height: 9
+                        height: 9,
                     },
-                ]
+                    {
+                        src: "/images/projects/avec/add-ride.jpeg",
+                        alt: "Avec Add Ride",
+                        width: 16,
+                        height: 9,
+                    },
+            ]
+            },
+            {
+                title: 'Quantum Computing',
+                description: <>Proficient in quantum computing fundamentals, post-quantum cryptography, and quantum algorithms using the Qiskit framework.</>,
+                // optional: leave the array empty if you don't want to display images
+                images: []
             }
         ]
     }
@@ -160,7 +160,7 @@ const about = {
 
 const blog = {
     label: 'Blog',
-    title: 'Writing about design and tech...',
+    title: 'Writing about my life...',
     description: `Read what ${person.name} has been up to recently`
     // Create new blog posts by adding a new .mdx file to app/blog/posts
     // All posts will be listed on the /blog route
@@ -178,77 +178,86 @@ const gallery = {
     label: 'Gallery',
     title: 'My photo gallery',
     description: `A photo collection by ${person.name}`,
-    // Images from https://pexels.com
     images: [
         { 
-            src: '/images/gallery/img-01.jpg', 
+            src: '/images/gallery/IMG_0007.jpg', 
             alt: 'image',
-            orientation: 'vertical'
         },
         { 
-            src: '/images/gallery/img-02.jpg', 
+            src: '/images/gallery/IMG_0017.jpg', 
             alt: 'image',
-            orientation: 'horizontal'
         },
         { 
-            src: '/images/gallery/img-03.jpg', 
+            src: '/images/gallery/IMG_0018.jpg', 
             alt: 'image',
-            orientation: 'vertical'
         },
         { 
-            src: '/images/gallery/img-04.jpg', 
+            src: '/images/gallery/IMG_0020.jpg', 
             alt: 'image',
-            orientation: 'horizontal'
         },
         { 
-            src: '/images/gallery/img-05.jpg', 
+            src: '/images/gallery/IMG_0021.jpg', 
             alt: 'image',
-            orientation: 'horizontal'
         },
         { 
-            src: '/images/gallery/img-06.jpg', 
+            src: '/images/gallery/IMG_0022.jpg', 
             alt: 'image',
-            orientation: 'vertical'
         },
         { 
-            src: '/images/gallery/img-07.jpg', 
+            src: '/images/gallery/IMG_0029.jpg', 
             alt: 'image',
-            orientation: 'horizontal'
         },
         { 
-            src: '/images/gallery/img-08.jpg', 
+            src: '/images/gallery/IMG_0032.jpg', 
             alt: 'image',
-            orientation: 'vertical'
         },
         { 
-            src: '/images/gallery/img-09.jpg', 
+            src: '/images/gallery/IMG_0034.jpg', 
             alt: 'image',
-            orientation: 'horizontal'
         },
         { 
-            src: '/images/gallery/img-10.jpg', 
+            src: '/images/gallery/IMG_0045.jpg', 
             alt: 'image',
-            orientation: 'horizontal'
         },
         { 
-            src: '/images/gallery/img-11.jpg', 
+            src: '/images/gallery/IMG_0085.jpg', 
             alt: 'image',
-            orientation: 'vertical'
         },
         { 
-            src: '/images/gallery/img-12.jpg', 
+            src: '/images/gallery/IMG_0086.jpg', 
             alt: 'image',
-            orientation: 'horizontal'
         },
         { 
-            src: '/images/gallery/img-13.jpg', 
+            src: '/images/gallery/IMG_0088.jpg', 
             alt: 'image',
-            orientation: 'horizontal'
         },
         { 
-            src: '/images/gallery/img-14.jpg', 
+            src: '/images/gallery/IMG_0096.jpg', 
             alt: 'image',
-            orientation: 'horizontal'
+        },
+        { 
+            src: '/images/gallery/IMG_0103.jpg', 
+            alt: 'image',
+        },
+        { 
+            src: '/images/gallery/IMG_0167.jpg', 
+            alt: 'image',
+        },
+        { 
+            src: '/images/gallery/IMG_0180.jpg', 
+            alt: 'image',
+        },
+        { 
+            src: '/images/gallery/IMG_0185.jpg', 
+            alt: 'image',
+        },
+        { 
+            src: '/images/gallery/IMG_0189.jpg', 
+            alt: 'image',
+        },
+        { 
+            src: '/images/gallery/IMG_0198.jpg', 
+            alt: 'image',
         },
     ]
 }

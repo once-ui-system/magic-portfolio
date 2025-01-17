@@ -1,0 +1,152 @@
+---
+title: "Avec: Cornell University Rideshare Platform"
+publishedAt: "2025-01-15"
+summary: "Building AVEC, a ride-share platform for university students looking to make long-distance trips between cities (starting at Ithaca, NY and Cornell University)."
+images:
+  - "/images/projects/avec/homepage.jpeg"
+  - "/images/projects/avec/add-ride.jpeg"
+team:
+  - name: "Arnab Ghosh"
+    role: "Software Engineer"
+    avatar: "/images/avatar.jpg"
+    linkedIn: "https://www.linkedin.com/in/arnab-ghosh819/"
+link: "https://github.com/arniber21/RideshareWeb"
+---
+
+## Overview
+In this project, I leveraged my full-stack development skills to attempt to solve one of Cornell University's long-standing problems - it's relative isolation. 
+This is particularly inconvenient when traveling to other cities, as services such as Bus routes, Uber rides, flights, and more are far more limited. 
+Delays added by winter weather complicate the situation. 
+A gap in Ithaca's transportation infrastructure is the relative lack of car-pooling - a pattern seen through most of the United States and Canada. 
+
+
+Avec was the first project in which I tried to implement a monorepo structure and use the microservice architecture. 
+Given the complexity and the plug-and-play nature of the features that I wanted to implement eventually (for example, delaying the payment feature until I could figure it out) would be much easier in a microservice architecture. 
+Giving up tRPC, however, meant that I lost the type-safe compiler-guaranteed security that it offered, requiring more careful API development. 
+This forced me to think more about the separation of concerns between frontend and backend, generating a more robust architecture in the end. 
+Another challenge that the microservice architecture brought was deployment. 
+Docker really shines in this example, as well as the flexibility of custom NPM build scripts. 
+
+## 🚀 Features
+- **Ride Management**
+  - Post and search for rides
+  - Real-time ride status updates
+  - Flexible booking system
+  - Seat availability tracking
+
+- **User System**
+  - Email and password authentication
+  - Google OAuth integration
+  - JWT-based session management
+  - Profile customization
+
+- **Reviews & Ratings**
+  - Rate drivers and passengers
+  - Detailed review system
+  - Review moderation
+  - Anti-spam protection
+
+- **Real-time Communication**
+  - WebSocket-based live chat
+  - Message persistence
+  - Typing indicators
+  - Read receipts
+
+- **Payment Integration** (Planned)
+  - Stripe Connect integration
+  - Payment processing
+  - Transaction history
+
+## 🛠 Tech Stack
+
+### Frontend
+- **Framework**: Next.js 15 with App Router
+  - React 19
+  - TypeScript
+  - Server Components
+- **UI Components**: 
+  - Radix UI primitives
+  - Tailwind CSS
+  - Shadcn/UI components
+- **Form Handling**:
+  - React Hook Form
+  - Zod validation
+- **Data Fetching**: 
+  - Axios for API calls
+  - React Query (planned)
+
+### Backend Services
+  - Express.js
+  - JWT authentication
+  - Prisma ORM
+  - PostgreSQL
+
+### Infrastructure
+- **Development**:
+  - pnpm workspaces
+  - Turborepo
+  - Docker Compose
+- **Deployment**:
+  - Docker containers
+  - Kubernetes (planned)
+  - GitHub Actions CI/CD
+
+## 📦 Project Structure
+
+```
+avec/
+├── apps/
+│   └── web/                 # Next.js web application
+│       ├── app/            # App router pages
+│       ├── components/     # React components
+│       ├── lib/           # Utilities and hooks
+│       └── styles/        # Global styles
+├── packages/
+│   ├── common/            # Shared code
+│   │   ├── types/        # TypeScript definitions
+│   │   ├── utils/        # Shared utilities
+│   │   └── constants/    # Shared constants
+│   ├── ui/               # Shared UI components
+│   └── api-client/       # Generated API client
+├── services/
+│   ├── auth/             # Authentication service
+│   │   ├── src/
+│   │   ├── prisma/      # Database schema
+│   │   └── tests/       # Service tests
+│   ├── rides/           # Ride management
+│   ├── users/           # User management
+│   ├── chat/            # Real-time chat
+│   ├── reviews/         # Review system
+│   └── payments/        # Payment processing
+└── infrastructure/
+    ├── terraform/       # IaC definitions
+    ├── docker/          # Container configs
+    └── k8s/             # K8s manifests
+```
+
+## 🔧 Service Architecture
+
+### Auth Service
+- JWT-based authentication
+- Google OAuth 2.0 integration
+- Password hashing with bcrypt
+- Session management with Redis
+- Email verification
+
+### Rides Service
+- Ride CRUD operations
+- Booking management
+- Location services
+- Event publishing
+
+### Reviews Service
+- Review creation and retrieval
+- Rating calculations
+- Basic moderation
+- Report handling
+
+### Chat Service
+- WebSocket connections
+- Message persistence
+- Presence tracking
+- Chat history
