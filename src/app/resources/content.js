@@ -18,22 +18,17 @@ const social = [
   {
     name: "GitHub",
     icon: "github",
-    link: "https://github.com/once-ui-system/nextjs-starter",
+    link: "https://github.com/GinaHorch",
   },
   {
     name: "LinkedIn",
     icon: "linkedin",
-    link: "https://www.linkedin.com/company/once-ui/",
-  },
-  {
-    name: "X",
-    icon: "x",
-    link: "",
+    link: "https://www.linkedin.com/in/gina-horch",
   },
   {
     name: "Email",
     icon: "email",
-    link: "mailto:example@gmail.com",
+    link: "mailto:social.insight.solutions@gmail.com",
   },
 ];
 
@@ -41,11 +36,11 @@ const home = {
   label: "Home",
   title: `${person.name}'s Portfolio`,
   description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Design engineer and builder</>,
+  headline: <>Driven by Curiosity, Collaboration, and Continuous Improvement</>,
   subline: (
     <>
-      I'm Selene, a design engineer at <InlineCode>FLY</InlineCode>, where I craft intuitive
-      <br /> user experiences. After hours, I build my own projects.
+      Kaya, I'm Gina, a Scrum Master and Full-Stack Developer passionate about empowering teams
+      to deliver impactful solutions through Agile methodologies and scalable user-centred technology.
     </>
   ),
 };
@@ -70,14 +65,27 @@ const about = {
     title: "Introduction",
     description: (
       <>
-        Selene is a Jakarta-based design engineer with a passion for transforming complex challenges
-        into simple, elegant design solutions. Her work spans digital interfaces, interactive
-        experiences, and the convergence of design and technology.
+      <p>
+        Gina is a skilled Scrum Master and Full-Stack Developer with a talent for driving collaboration, 
+        fostering innovation, and delivering impactful solutions. Combining expertise in Agile methodologies 
+        with technical proficiency in modern web technologies, Gina thrives in crafting scalable, user-centered 
+        applications that solve real-world problems.
+      </p>
+      <p>
+        Her strengths lie in leading teams to success through servant leadership, empowering cross-functional 
+        collaboration, and aligning technical execution with business objectives. With a focus on continuous improvement, 
+        she brings together her deep understanding of Agile principles and her hands-on experience in full-stack development 
+        to deliver high-quality, adaptive solutions.
+      </p>
+      <p>
+        From building responsive frontend interfaces to architecting robust backend systems, Gina is passionate about leveraging 
+        technology to create meaningful, effective digital experiences.
+      </p>
       </>
     ),
   },
   work: {
-    display: true, // set to false to hide this section
+    display: false, // set to false to hide this section
     title: "Work Experience",
     experiences: [
       {
@@ -127,12 +135,17 @@ const about = {
     title: "Studies",
     institutions: [
       {
-        name: "University of Jakarta",
-        description: <>Studied software engineering.</>,
+        name: "First Class Honours in Psychology",
+        description: <>Studied psychology at Edith Cowan University.</>,
       },
       {
-        name: "Build the Future",
-        description: <>Studied online marketing and personal branding.</>,
+        name: "Certified SAFe® 6 Scrum Master (SSM)",
+        description: <>Completed a two-day course on Lean-Agile principles and practices of the Scaled Agile Framework® (SAFe®) version 6.0.</>,
+      },
+      {
+        name: "Professional Scrum Master (PSM I)",
+        description: <>Completed the Scrum.org learning path and passed the PSM I certification exam, 
+        demonstrating a deep understanding of Scrum principles and the ability to apply them to solve complex problems collaboratively.</>,
       },
     ],
   },
