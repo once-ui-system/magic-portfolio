@@ -15,7 +15,7 @@
     "classnames": "^2.5.1",
     "cookie": "^1.0.1",
     "gray-matter": "^4.0.3",
-    "next": "^14.2.16",
+    "next": "^15.1.6",
     "next-mdx-remote": "^5.0.0",
     "postcss": "^8.4.39",
     "postcss-preset-env": "^9.5.15",
@@ -27,7 +27,8 @@
     "remark": "^15.0.1",
     "remark-html": "^16.0.1",
     "sass": "^1.77.6",
-    "sharp": "^0.33.4"
+    "sharp": "^0.33.4",
+    "yet-another-react-lightbox": "^3.21.7"
   },
   "devDependencies": {
     "@csstools/postcss-global-data": "^2.1.1",
