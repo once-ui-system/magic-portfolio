@@ -299,13 +299,13 @@ export default function About() {
                             key={index}
                             border="neutral-medium"
                             radius="m"
-                            minWidth={image.width}
-                            height={image.height}
+                            minWidth={image.width / 60}
+                            height={image.height / 60}
                           >
                             <SmartImage
                               enlarge
                               radius="m"
-                              sizes={image.width.toString()}
+                              sizes={`${image.width}x${image.height}`}
                               alt={image.alt}
                               src={image.src}
                             />

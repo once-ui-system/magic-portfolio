@@ -154,21 +154,22 @@ const about = {
     title: "Technical skills",
     skills: [
       {
-        title: "Figma",
-        description: <>Able to prototype in Figma with Once UI with unnatural speed.</>,
+        title: "Agile Practices",
+        description: <>Leading Agile teams as a certified Scrum Master, 
+        focusing on delivering iterative value and fostering collaboration.</>,
         // optional: leave the array empty if you don't want to display images
         images: [
           {
-            src: "/images/projects/project-01/cover-02.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
+            src: "/images/skills/ScrumMasterPoster.webp",
+            alt: "Scrum Master Poster from Scrum.org",
+            width: 400,
+            height: 600,
           },
           {
-            src: "/images/projects/project-01/cover-03.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
+            src: "/images/skills/Safe6-essential.webp",
+            alt: "SAFe 6 framework - essential",
+            width: 900,
+            height: 400,
           },
         ],
       },
