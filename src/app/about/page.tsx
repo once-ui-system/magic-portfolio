@@ -287,7 +287,9 @@ export default function About() {
               </Heading>
               <Column fillWidth gap="l">
                 {about.technical.skills.map((skill, index) => (
-                  <Column key={`${skill}-${index}`} fillWidth gap="4">
+                  <Column key={`${skill}-${index}`} fillWidth gap="4"
+                  className={skill.title === "Agile Practices" ? "agile-skills" : "other-skills"}
+                  >
                     <Text variant="heading-strong-l">{skill.title}</Text>
                     <Text variant="body-default-m" onBackground="neutral-weak">
                       {skill.description}
@@ -297,10 +299,11 @@ export default function About() {
                         {skill.images.map((image, index) => (
                           <Flex
                             key={index}
+                            className={skill.title === "Agile Practices" ? "agile-skills" : "other-skills"}
                             border="neutral-medium"
                             radius="m"
-                            minWidth={image.width / 60}
-                            height={image.height / 60}
+                            minWidth={skill.title === "Agile Practices" ? image.width / 50 : 16} // Default for others
+                            height={skill.title === "Agile Practices" ? image.height / 50 : 9} // Default for others
                           >
                             <SmartImage
                               enlarge

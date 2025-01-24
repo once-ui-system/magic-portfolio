@@ -8,7 +8,7 @@ const person = {
   },
   role: "Scrum Master and Full Stack Developer",
   avatar: "/images/GinaHeadShot.webp",
-  location: "Australia/Perth", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
+  location: "Australia/Perth", // Expecting the IANA time zone identifier
   languages: ["English", "German"], 
 };
 
@@ -57,7 +57,7 @@ const about = {
     display: true,
   },
   calendar: {
-    display: true,
+    display: false,
     link: "https://cal.com",
   },
   intro: {
@@ -174,9 +174,50 @@ const about = {
         ],
       },
       {
-        title: "Next.js",
-        description: <>Building next gen apps with Next.js + Once UI + Supabase.</>,
-        // optional: leave the array empty if you don't want to display images
+        title: "React.js",
+        description: <>Creating dynamic and responsive frontend applications using React.js with 
+        modern JavaScript and TypeScript.</>,
+        
+        images: [
+          {
+            src: "/images/skills/react.svg",
+            alt: "Project image",
+            width: 16,
+            height: 9,
+          },
+        ],
+      },
+      {
+        title: "Python & Django",
+        description: <>Building scalable backend solutions with Django and integrating RESTful APIs for full-stack applications.</>,
+        
+        images: [
+          {
+            src: "/images/projects/project-01/cover-04.jpg",
+            alt: "Project image",
+            width: 16,
+            height: 9,
+          },
+        ],
+      },
+      {
+        title: "SQL",
+        description: <>Designing and querying relational databases to support robust backend services.</>,
+
+        images: [
+          {
+            src: "/images/projects/project-01/cover-04.jpg",
+            alt: "Project image",
+            width: 16,
+            height: 9,
+          },
+        ],
+      },
+      {
+        title: "Testing",
+        description: <>Proficient in testing API endpoints using Insomnia and writing automated tests to ensure 
+        reliability and functionality in Python applications, focusing on backend robustness and error handling.</>,
+
         images: [
           {
             src: "/images/projects/project-01/cover-04.jpg",
