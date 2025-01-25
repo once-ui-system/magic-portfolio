@@ -112,22 +112,6 @@ const about = {
           },
         ],
       },
-      {
-        company: "Creativ3",
-        timeframe: "2018 - 2022",
-        role: "Lead Designer",
-        achievements: [
-          <>
-            Developed a design system that unified the brand across multiple platforms, improving
-            design consistency by 40%.
-          </>,
-          <>
-            Led a cross-functional team to launch a new product line, contributing to a 15% increase
-            in overall company revenue.
-          </>,
-        ],
-        images: [],
-      },
     ],
   },
   studies: {
@@ -175,12 +159,28 @@ const about = {
       },
       {
         title: "React.js",
-        description: <>Creating dynamic and responsive frontend applications using React.js with 
-        modern JavaScript and TypeScript.</>,
+        description: <>Developing reusable and efficient UI components with React.js, focusing on 
+        state management, hooks, and responsive design using TypeScript and modern 
+        JavaScript.</>,
         
         images: [
           {
             src: "/images/skills/react.svg",
+            alt: "Project image",
+            width: 16,
+            height: 9,
+          },
+        ],
+      },
+      {
+        title: "Next.js",
+        description: <>Building full-stack applications with Next.js, utilising server-side 
+        rendering (SSR), static site generation (SSG), and API routes for 
+        performance optimisation and scalability.</>,
+        
+        images: [
+          {
+            src: "/images/skills/nextjs.svg",
             alt: "Project image",
             width: 16,
             height: 9,
@@ -193,7 +193,7 @@ const about = {
         
         images: [
           {
-            src: "/images/projects/project-01/cover-04.jpg",
+            src: "/images/skills/backend.svg",
             alt: "Project image",
             width: 16,
             height: 9,
@@ -206,7 +206,7 @@ const about = {
 
         images: [
           {
-            src: "/images/projects/project-01/cover-04.jpg",
+            src: "/images/skills/sql.svg",
             alt: "Project image",
             width: 16,
             height: 9,
@@ -220,7 +220,7 @@ const about = {
 
         images: [
           {
-            src: "/images/projects/project-01/cover-04.jpg",
+            src: "/images/skills/testing.svg",
             alt: "Project image",
             width: 16,
             height: 9,
