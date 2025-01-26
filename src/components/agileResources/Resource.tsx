@@ -1,22 +1,22 @@
 "use client";
 
 import { Column, Flex, Heading, SmartImage, SmartLink, Tag, Text } from "@/once-ui/components";
-import styles from "./Posts.module.scss";
+import styles from "./Resources.module.scss";
 import { formatDate } from "@/app/utils/formatDate";
 
-interface PostProps {
-  post: any;
+interface ResourceProps {
+  resource: any;
   thumbnail: boolean;
 }
 
-export default function Post({ post, thumbnail }: PostProps) {
+export default function Resource({ resource, thumbnail }: ResourceProps) {
   return (
     <SmartLink
       fillWidth
       className={styles.hover}
       unstyled
-      key={post.slug}
-      href={`/blog/${post.slug}`}
+      key={resource.slug}
+      href={`/agile/${resource.slug}`}
     >
       <Flex
         position="relative"
@@ -26,7 +26,7 @@ export default function Post({ post, thumbnail }: PostProps) {
         paddingX="16"
         gap="32"
       >
-        {post.metadata.image && thumbnail && (
+        {resource.metadata.image && thumbnail && (
           <SmartImage
             priority
             maxWidth={20}
@@ -35,20 +35,20 @@ export default function Post({ post, thumbnail }: PostProps) {
             border="neutral-alpha-weak"
             cursor="interactive"
             radius="m"
-            src={post.metadata.image}
-            alt={"Thumbnail of " + post.metadata.title}
+            src={resource.metadata.image}
+            alt={"Thumbnail of " + resource.metadata.title}
             aspectRatio="16 / 9"
           />
         )}
         <Column position="relative" fillWidth gap="8" vertical="center">
           <Heading as="h2" variant="heading-strong-l" wrap="balance">
-            {post.metadata.title}
+            {resource.metadata.title}
           </Heading>
           <Text variant="label-default-s" onBackground="neutral-weak">
-            {formatDate(post.metadata.publishedAt, false)}
+            {formatDate(resource.metadata.publishedAt, false)}
           </Text>
-          {post.metadata.tag && (
-            <Tag className="mt-8" label={post.metadata.tag} variant="neutral" />
+          {resource.metadata.tag && (
+            <Tag className="mt-8" label={resource.metadata.tag} variant="neutral" />
           )}
         </Column>
       </Flex>

@@ -114,25 +114,6 @@ const about = {
       },
     ],
   },
-  studies: {
-    display: true, // set to false to hide this section
-    title: "Studies",
-    institutions: [
-      {
-        name: "First Class Honours in Psychology",
-        description: <>Studied psychology at Edith Cowan University.</>,
-      },
-      {
-        name: "Certified SAFe® 6 Scrum Master (SSM)",
-        description: <>Completed a two-day course on Lean-Agile principles and practices of the Scaled Agile Framework® (SAFe®) version 6.0.</>,
-      },
-      {
-        name: "Professional Scrum Master (PSM I)",
-        description: <>Completed the Scrum.org learning path and passed the PSM I certification exam, 
-        demonstrating a deep understanding of Scrum principles and the ability to apply them to solve complex problems collaboratively.</>,
-      },
-    ],
-  },
   technical: {
     display: true, // set to false to hide this section
     title: "Technical skills",
@@ -229,21 +210,40 @@ const about = {
       },
     ],
   },
+  studies: {
+    display: true, // set to false to hide this section
+    title: "Studies",
+    institutions: [
+      {
+        name: "First Class Honours in Psychology",
+        description: <>Studied psychology at Edith Cowan University.</>,
+      },
+      {
+        name: "Certified SAFe® 6 Scrum Master (SSM)",
+        description: <>Completed a two-day course on Lean-Agile principles and practices of the Scaled Agile Framework® (SAFe®) version 6.0.</>,
+      },
+      {
+        name: "Professional Scrum Master (PSM I)",
+        description: <>Completed the Scrum.org learning path and passed the PSM I certification exam, 
+        demonstrating a deep understanding of Scrum principles and the ability to apply them to solve complex problems collaboratively.</>,
+      },
+    ],
+  },
 };
 
-const blog = {
-  label: "Blog",
-  title: "Writing about design and tech...",
-  description: `Read what ${person.name} has been up to recently`,
-  // Create new blog posts by adding a new .mdx file to app/blog/posts
-  // All posts will be listed on the /blog route
+const agileResources = {
+  label: "Agile Resources",
+  title: "My agile resources",
+  description: `Explore Agile content and resources used by ${person.name}`,
+  // Create new Agile resources by adding a new .mdx file to app/agile/resources
+  // All resources will be listed on the /agile route
 };
 
-const work = {
-  label: "Work",
+const projects = {
+  label: "Projects",
   title: "My projects",
-  description: `Design and dev projects by ${person.name}`,
-  // Create new project pages by adding a new .mdx file to app/blog/posts
+  description: `Explore design and development projects by ${person.name}`,
+  // Create new project pages by adding a new .mdx file to app/work/projects
   // All projects will be listed on the /home and /work routes
 };
 
@@ -326,4 +326,4 @@ const gallery = {
   ],
 };
 
-export { person, social, home, about, blog, work, gallery };
+export { person, social, home, about, agileResources, projects, gallery };

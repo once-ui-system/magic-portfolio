@@ -12,7 +12,7 @@ export {
   social,
   home,
   about,
-  agile,
-  work,
+  agileResources,
+  projects,
   gallery,
 } from "@/app/resources/content";

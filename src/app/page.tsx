@@ -5,7 +5,7 @@ import { Projects } from "@/components/work/Projects";
 
 import { baseURL, routes } from "@/app/resources";
 import { home, about, person } from "@/app/resources/content";
-import { Posts } from "@/components/blog/Posts";
+import { Resources } from "@/components/agileResources/Resources";
 
 export async function generateMetadata() {
   const title = home.title;
@@ -99,15 +99,15 @@ export default function Home() {
       <RevealFx translateY="16" delay={0.6}>
         <Projects range={[1, 1]} />
       </RevealFx>
-      {routes["/blog"] && (
+      {routes["/agile"] && (
         <Flex fillWidth gap="24" mobileDirection="column">
           <Flex flex={1} paddingLeft="l">
             <Heading as="h2" variant="display-strong-xs" wrap="balance">
-              Latest from the blog
+              My Agile Resources
             </Heading>
           </Flex>
           <Flex flex={3} paddingX="20">
-            <Posts range={[1, 2]} columns="2" />
+            <Resources range={[1, 2]} columns="2" />
           </Flex>
         </Flex>
       )}
