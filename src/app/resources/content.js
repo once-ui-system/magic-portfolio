@@ -36,7 +36,7 @@ const home = {
   label: "Home",
   title: `${person.name}'s Portfolio`,
   description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Driven by Curiosity, Collaboration, and Continuous Improvement</>,
+  headline: <>Thank you for visiting my Portfolio</>,
   subline: (
     <>
       Kaya, I'm Gina, a Scrum Master and Full-Stack Developer passionate about empowering teams
