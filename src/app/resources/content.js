@@ -239,7 +239,7 @@ const agileResources = {
   // All resources will be listed on the /agile route
 };
 
-const projects = {
+const work = {
   label: "Projects",
   title: "My projects",
   description: `Explore design and development projects by ${person.name}`,
@@ -326,4 +326,4 @@ const gallery = {
   ],
 };
 
-export { person, social, home, about, agileResources, projects, gallery };
+export { person, social, home, about, agileResources, work, gallery };

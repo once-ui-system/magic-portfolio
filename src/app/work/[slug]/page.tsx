@@ -14,16 +14,16 @@ interface WorkParams {
 }
 
 export async function generateStaticParams(): Promise<{ slug: string }[]> {
-  const posts = getPosts(["src", "app", "work", "projects"]);
-  return posts.map((post) => ({
-    slug: post.slug,
+  const projects = getPosts(["src", "app", "work", "projects"]);
+  return projects.map((project) => ({
+    slug: project.slug,
   }));
 }
 
 export function generateMetadata({ params: { slug } }: WorkParams) {
-  let post = getPosts(["src", "app", "work", "projects"]).find((post) => post.slug === slug);
+  let project = getPosts(["src", "app", "work", "projects"]).find((project) => project.slug === slug);
 
-  if (!post) {
+  if (!project) {
     return;
   }
 
@@ -34,7 +34,7 @@ export function generateMetadata({ params: { slug } }: WorkParams) {
     images,
     image,
     team,
-  } = post.metadata;
+  } = project.metadata;
   let ogImage = image ? `https://${baseURL}${image}` : `https://${baseURL}/og?title=${title}`;
 
   return {
@@ -47,7 +47,7 @@ export function generateMetadata({ params: { slug } }: WorkParams) {
       description,
       type: "article",
       publishedTime,
-      url: `https://${baseURL}/work/${post.slug}`,
+      url: `https://${baseURL}/work/${project.slug}`,
       images: [
         {
           url: ogImage,
@@ -64,14 +64,14 @@ export function generateMetadata({ params: { slug } }: WorkParams) {
 }
 
 export default function Project({ params }: WorkParams) {
-  let post = getPosts(["src", "app", "work", "projects"]).find((post) => post.slug === params.slug);
+  let project = getPosts(["src", "app", "work", "projects"]).find((project) => project.slug === params.slug);
 
-  if (!post) {
+  if (!project) {
     notFound();
   }
 
   const avatars =
-    post.metadata.team?.map((person) => ({
+    project.metadata.team?.map((person) => ({
       src: person.avatar,
     })) || [];
 
@@ -83,15 +83,15 @@ export default function Project({ params }: WorkParams) {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "BlogPosting",
-            headline: post.metadata.title,
-            datePublished: post.metadata.publishedAt,
-            dateModified: post.metadata.publishedAt,
-            description: post.metadata.summary,
-            image: post.metadata.image
-              ? `https://${baseURL}${post.metadata.image}`
-              : `https://${baseURL}/og?title=${post.metadata.title}`,
-            url: `https://${baseURL}/work/${post.slug}`,
+            "@type": "CreativeWork",
+            headline: project.metadata.title,
+            datePublished: project.metadata.publishedAt,
+            dateModified: project.metadata.publishedAt,
+            description: project.metadata.summary,
+            image: project.metadata.image
+              ? `https://${baseURL}${project.metadata.image}`
+              : `https://${baseURL}/og?title=${project.metadata.title}`,
+            url: `https://${baseURL}/work/${project.slug}`,
             author: {
               "@type": "Person",
               name: person.name,
@@ -103,25 +103,25 @@ export default function Project({ params }: WorkParams) {
         <Button href="/work" variant="tertiary" weight="default" size="s" prefixIcon="chevronLeft">
           Projects
         </Button>
-        <Heading variant="display-strong-s">{post.metadata.title}</Heading>
+        <Heading variant="display-strong-s">{project.metadata.title}</Heading>
       </Column>
-      {post.metadata.images.length > 0 && (
+      {project.metadata.images.length > 0 && (
         <SmartImage
           priority
           aspectRatio="16 / 9"
           radius="m"
           alt="image"
-          src={post.metadata.images[0]}
+          src={project.metadata.images[0]}
         />
       )}
       <Column style={{ margin: "auto" }} as="article" maxWidth="xs">
         <Flex gap="12" marginBottom="24" vertical="center">
-          {post.metadata.team && <AvatarGroup reverse avatars={avatars} size="m" />}
+          {project.metadata.team && <AvatarGroup reverse avatars={avatars} size="m" />}
           <Text variant="body-default-s" onBackground="neutral-weak">
-            {formatDate(post.metadata.publishedAt)}
+            {formatDate(project.metadata.publishedAt)}
           </Text>
         </Flex>
-        <CustomMDX source={post.content} />
+        <CustomMDX source={project.content} />
       </Column>
       <ScrollToHash />
     </Column>

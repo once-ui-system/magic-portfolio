@@ -28,9 +28,9 @@ src/app/resources/config
 src/app/resources/content
 ```
 
-**6. Create blog posts / projects**
+**6. Create agile resources / projects**
 ```
-Add a new .mdx file to src/app/blog/posts or src/app/work/projects
+Add a new .mdx file to src/app/agile/resources or src/app/work/projects
 ```
 
 # **Features**
@@ -49,7 +49,7 @@ Add a new .mdx file to src/app/blog/posts or src/app/work/projects
 
 ## **Content**
 - Render sections conditionally based on the content file
-- Enable or disable pages for blog, work, gallery and about / CV
+- Enable or disable pages for agile, work, gallery and about / CV
 - Generate and display social links automatically
 - Set up password protection for URLs
 
