@@ -13,6 +13,6 @@ export {
   home,
   about,
   agileResources,
-  projects,
+  work,
   gallery,
 } from "@/app/resources/content";
