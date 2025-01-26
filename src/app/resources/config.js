@@ -4,7 +4,7 @@ const routes = {
   "/": true,
   "/about": true,
   "/work": true,
-  "/blog": true,
+  "/agile": true,
   "/gallery": true,
 };
 

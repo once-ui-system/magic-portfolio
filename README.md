@@ -9,17 +9,9 @@ View the [demo here](https://demo.magic-portfolio.com).
 
 <a href="https://storyset.com/work">Work illustrations by Storyset</a>
 
-Magic Portfolio was built with [Once UI](https://once-ui.com) for [Next.js](https://nextjs.org). It requires Node.js v18.17+.
+# **Thank you to Work Illustrations by unDraw**
 
-**1. Clone the repository**
-```
-git clone https://github.com/once-ui-system/magic-portfolio.git
-```
-
-**2. Install dependencies**
-```
-npm install
-```
+<a href="https://undraw.co/">Work illustrations by unDraw</a>
 
 **3. Run dev server**
 ```

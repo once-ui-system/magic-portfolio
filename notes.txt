@@ -1,0 +1,47 @@
+I am changing Blog content to Agile Resources
+Agile Resources
+Simple and clear, communicates that the section provides external references or curated links.
+Content Suggestions
+Instead of blog posts, you could include:
+
+Curated Links:
+
+Links to scrum.org, Scaled Agile Framework (SAFe), and other credible Agile resources.
+Agile Framework Summaries:
+
+Short descriptions of popular frameworks (Scrum, Kanban, SAFe) with links to learn more.
+Certifications:
+
+Links and brief info about certifications like:
+Certified ScrumMaster (CSM)
+SAFe Agilist
+Professional Scrum Master (PSM)
+Recommended Tools:
+
+Highlight tools commonly used in Agile (e.g., Jira, Trello).
+Quotes or Principles:
+
+Display core Agile Manifesto principles or inspirational quotes about collaboration and adaptability.
+
+Example Content Structure
+Heading: Agile Knowledge Base
+Introduction:
+"Explore curated resources to enhance your Agile knowledge and skills. Whether you're new to Agile or a seasoned practitioner, these resources can support your journey."
+Sections:
+Frameworks:
+"Learn more about popular Agile frameworks:"
+Scrum: scrum.org
+SAFe: scaledagileframework.com
+Certifications:
+Links to certifications like:
+Professional Scrum Master: scrum.org certifications
+SAFe Agilist: SAFe Certifications
+Recommended Tools:
+Jira: jira.com
+Trello: trello.com
+Manifesto:
+"Core Agile Manifesto Values":
+Individuals and interactions over processes and tools.
+Responding to change over following a plan.
+
+Remember to check images, logos, etc. find Agile related content...
