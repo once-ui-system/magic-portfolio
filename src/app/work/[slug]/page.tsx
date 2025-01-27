@@ -20,14 +20,15 @@ export async function generateStaticParams(): Promise<{ slug: string }[]> {
   }));
 }
 
-export function generateMetadata({ params: { slug } }: WorkParams) {
-  let project = getPosts(["src", "app", "work", "projects"]).find((project) => project.slug === slug);
+export async function generateMetadata({ params }: WorkParams) {
+  const { slug } = await params;
+  const project = getPosts(["src", "app", "work", "projects"]).find((project) => project.slug === slug);
 
   if (!project) {
     return;
   }
 
-  let {
+  const {
     title,
     publishedAt: publishedTime,
     summary: description,
@@ -35,7 +36,7 @@ export function generateMetadata({ params: { slug } }: WorkParams) {
     image,
     team,
   } = project.metadata;
-  let ogImage = image ? `https://${baseURL}${image}` : `https://${baseURL}/og?title=${title}`;
+  const ogImage = image ? `https://${baseURL}${image}` : `https://${baseURL}/og?title=${title}`;
 
   return {
     title,
@@ -63,8 +64,9 @@ export function generateMetadata({ params: { slug } }: WorkParams) {
   };
 }
 
-export default function Project({ params }: WorkParams) {
-  let project = getPosts(["src", "app", "work", "projects"]).find((project) => project.slug === params.slug);
+export default async function Project({ params }: WorkParams) {
+  const { slug } = await params;
+  const project = getPosts(["src", "app", "work", "projects"]).find((project) => project.slug === params.slug);
 
   if (!project) {
     notFound();
