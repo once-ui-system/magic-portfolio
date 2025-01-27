@@ -8,9 +8,9 @@ import { formatDate } from "@/app/utils/formatDate";
 import ScrollToHash from "@/components/ScrollToHash";
 
 interface AgileParams {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 export async function generateStaticParams(): Promise<{ slug: string }[]> {
@@ -20,7 +20,13 @@ export async function generateStaticParams(): Promise<{ slug: string }[]> {
   }));
 }
 
-export function generateMetadata({ params: { slug } }: AgileParams) {
+export async function generateMetadata(props: AgileParams) {
+  const params = await props.params;
+
+  const {
+    slug
+  } = params;
+
   let resource = getPosts(["src", "app", "agile", "resources"]).find((res) => res.slug === slug);
 
   if (!resource) {
@@ -61,7 +67,8 @@ export function generateMetadata({ params: { slug } }: AgileParams) {
   };
 }
 
-export default function AgileResource({ params }: AgileParams) {
+export default async function AgileResource(props: AgileParams) {
+  const params = await props.params;
   let resource = getPosts(["src", "app", "agile", "resources"]).find((resource) => resource.slug === params.slug);
 
   if (!resource) {
