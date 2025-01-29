@@ -48,7 +48,22 @@ export default function Post({ post, thumbnail }: PostProps) {
             {formatDate(post.metadata.publishedAt, false)}
           </Text>
           {post.metadata.tag && (
-            <Tag className="mt-8" label={post.metadata.tag} variant="neutral" />
+            <SmartLink
+                key={post.metadata.tag}
+                href={`/blog?tag=${post.metadata.tag}`}
+                style={{
+                    textDecoration: 'none',
+                    margin: '0',
+                    height: 'fit-content',
+                    width: 'fit-content',
+                }}
+            >
+                <Tag
+                    className="mt-8"
+                    label={post.metadata.tag}
+                    variant="neutral"
+                />
+            </SmartLink>
           )}
         </Column>
       </Flex>
