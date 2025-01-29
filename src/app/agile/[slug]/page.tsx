@@ -7,23 +7,29 @@ import { person } from "@/app/resources/content";
 import { formatDate } from "@/app/utils/formatDate";
 import ScrollToHash from "@/components/ScrollToHash";
 
-interface BlogParams {
-  params: {
+interface AgileParams {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 export async function generateStaticParams(): Promise<{ slug: string }[]> {
-  const posts = getPosts(["src", "app", "blog", "posts"]);
-  return posts.map((post) => ({
-    slug: post.slug,
+  const resources = getPosts(["src", "app", "agile", "resources"]);
+  return resources.map((resource) => ({
+    slug: resource.slug,
   }));
 }
 
-export function generateMetadata({ params: { slug } }: BlogParams) {
-  let post = getPosts(["src", "app", "blog", "posts"]).find((post) => post.slug === slug);
+export async function generateMetadata(props: AgileParams) {
+  const params = await props.params;
 
-  if (!post) {
+  const {
+    slug
+  } = params;
+
+  let resource = getPosts(["src", "app", "agile", "resources"]).find((res) => res.slug === slug);
+
+  if (!resource) {
     return;
   }
 
@@ -34,7 +40,7 @@ export function generateMetadata({ params: { slug } }: BlogParams) {
     images,
     image,
     team,
-  } = post.metadata;
+  } = resource.metadata;
   let ogImage = image ? `https://${baseURL}${image}` : `https://${baseURL}/og?title=${title}`;
 
   return {
@@ -45,7 +51,7 @@ export function generateMetadata({ params: { slug } }: BlogParams) {
       description,
       type: "article",
       publishedTime,
-      url: `https://${baseURL}/blog/${post.slug}`,
+      url: `https://${baseURL}/agile/${resource.slug}`,
       images: [
         {
           url: ogImage,
@@ -61,15 +67,16 @@ export function generateMetadata({ params: { slug } }: BlogParams) {
   };
 }
 
-export default function Blog({ params }: BlogParams) {
-  let post = getPosts(["src", "app", "blog", "posts"]).find((post) => post.slug === params.slug);
+export default async function AgileResource(props: AgileParams) {
+  const params = await props.params;
+  let resource = getPosts(["src", "app", "agile", "resources"]).find((resource) => resource.slug === params.slug);
 
-  if (!post) {
+  if (!resource) {
     notFound();
   }
 
   const avatars =
-    post.metadata.team?.map((person) => ({
+    resource.metadata.team?.map((person) => ({
       src: person.avatar,
     })) || [];
 
@@ -81,15 +88,15 @@ export default function Blog({ params }: BlogParams) {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "BlogPosting",
-            headline: post.metadata.title,
-            datePublished: post.metadata.publishedAt,
-            dateModified: post.metadata.publishedAt,
-            description: post.metadata.summary,
-            image: post.metadata.image
-              ? `https://${baseURL}${post.metadata.image}`
-              : `https://${baseURL}/og?title=${post.metadata.title}`,
-            url: `https://${baseURL}/blog/${post.slug}`,
+            "@type": "Article",
+            headline: resource.metadata.title,
+            datePublished: resource.metadata.publishedAt,
+            dateModified: resource.metadata.publishedAt,
+            description: resource.metadata.summary,
+            image: resource.metadata.image
+              ? `https://${baseURL}${resource.metadata.image}`
+              : `https://${baseURL}/og?title=${resource.metadata.title}`,
+            url: `https://${baseURL}/agile/${resource.slug}`,
             author: {
               "@type": "Person",
               name: person.name,
@@ -97,18 +104,18 @@ export default function Blog({ params }: BlogParams) {
           }),
         }}
       />
-      <Button href="/blog" weight="default" variant="tertiary" size="s" prefixIcon="chevronLeft">
-        Posts
+      <Button href="/agile" weight="default" variant="tertiary" size="s" prefixIcon="chevronLeft">
+        Resources
       </Button>
-      <Heading variant="display-strong-s">{post.metadata.title}</Heading>
+      <Heading variant="display-strong-s">{resource.metadata.title}</Heading>
       <Row gap="12" vertical="center">
         {avatars.length > 0 && <AvatarGroup size="s" avatars={avatars} />}
         <Text variant="body-default-s" onBackground="neutral-weak">
-          {formatDate(post.metadata.publishedAt)}
+          {formatDate(resource.metadata.publishedAt)}
         </Text>
       </Row>
       <Column as="article" fillWidth>
-        <CustomMDX source={post.content} />
+        <CustomMDX source={resource.content} />
       </Column>
       <ScrollToHash />
     </Column>

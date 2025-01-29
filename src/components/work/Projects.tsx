@@ -19,17 +19,17 @@ export function Projects({ range }: ProjectsProps) {
 
   return (
     <Column fillWidth gap="xl" marginBottom="40" paddingX="l">
-      {displayedProjects.map((post, index) => (
+      {displayedProjects.map((project, index) => (
         <ProjectCard
           priority={index < 2}
-          key={post.slug}
-          href={`work/${post.slug}`}
-          images={post.metadata.images}
-          title={post.metadata.title}
-          description={post.metadata.summary}
-          content={post.content}
-          avatars={post.metadata.team?.map((member) => ({ src: member.avatar })) || []}
-          link={post.metadata.link || ""}
+          key={project.slug}
+          href={`work/${project.slug}`}
+          images={project.metadata.images}
+          title={project.metadata.title}
+          description={project.metadata.summary}
+          content={project.content}
+          avatars={project.metadata.team?.map((member) => ({ src: member.avatar })) || []}
+          link={project.metadata.link || ""}
         />
       ))}
     </Column>

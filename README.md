@@ -1,23 +1,17 @@
-# **Build your portfolio with Once UI's Magic Portfolio**
+# **Thank you to Once UI's Magic Portfolio boilerplate**
 
 View the [demo here](https://demo.magic-portfolio.com).
 
 ![Magic Portfolio](public/images/cover.png)
 
 
-# **Getting started**
+# **Thank you to Work Illustrations by Storyset**
 
-Magic Portfolio was built with [Once UI](https://once-ui.com) for [Next.js](https://nextjs.org). It requires Node.js v18.17+.
+<a href="https://storyset.com/work">Work illustrations by Storyset</a>
 
-**1. Clone the repository**
-```
-git clone https://github.com/once-ui-system/magic-portfolio.git
-```
+# **Thank you to Work Illustrations by unDraw**
 
-**2. Install dependencies**
-```
-npm install
-```
+<a href="https://undraw.co/">Work illustrations by unDraw</a>
 
 **3. Run dev server**
 ```
@@ -34,9 +28,9 @@ src/app/resources/config
 src/app/resources/content
 ```
 
-**6. Create blog posts / projects**
+**6. Create agile resources / projects**
 ```
-Add a new .mdx file to src/app/blog/posts or src/app/work/projects
+Add a new .mdx file to src/app/agile/resources or src/app/work/projects
 ```
 
 # **Features**
@@ -49,19 +43,15 @@ Add a new .mdx file to src/app/blog/posts or src/app/work/projects
 - Automatic schema and metadata generation based on the content file
 
 ## **Design**
-- Responsive layout optimized for all screen sizes
+- Responsive layout optimised for all screen sizes
 - Timeless design without heavy animations and motion
-- Endless customization options through [data attributes](https://once-ui.com/docs/theming)
+- Endless customisation options through [data attributes](https://once-ui.com/docs/theming)
 
 ## **Content**
 - Render sections conditionally based on the content file
-- Enable or disable pages for blog, work, gallery and about / CV
+- Enable or disable pages for agile, work, gallery and about / CV
 - Generate and display social links automatically
 - Set up password protection for URLs
-
-## **Localization**
-- A localized version of Magic Portfolio is available with the next-intl library
-- To use localization, switch to the 'i18n' branch
 
 # **Authors**
 

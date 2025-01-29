@@ -1,11 +1,11 @@
 import { Column, Flex, Heading } from "@/once-ui/components";
-import { Posts } from "@/components/blog/Posts";
+import { Resources } from "@/components/agileResources/Resources";
 import { baseURL } from "@/app/resources";
-import { blog, person} from "@/app/resources/content";
+import { agileResources, person} from "@/app/resources/content";
 
 export async function generateMetadata() {
-  const title = blog.title;
-  const description = blog.description;
+  const title = agileResources.title;
+  const description = agileResources.description;
   const ogImage = `https://${baseURL}/og?title=${encodeURIComponent(title)}`;
 
   return {
@@ -15,7 +15,7 @@ export async function generateMetadata() {
       title,
       description,
       type: "website",
-      url: `https://${baseURL}/blog`,
+      url: `https://${baseURL}/agile`,
       images: [
         {
           url: ogImage,
@@ -32,7 +32,7 @@ export async function generateMetadata() {
   };
 }
 
-export default function Blog() {
+export default function Agile() {
   return (
     <Column maxWidth="s">
       <script
@@ -41,11 +41,11 @@ export default function Blog() {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "Blog",
-            headline: blog.title,
-            description: blog.description,
-            url: `https://${baseURL}/blog`,
-            image: `${baseURL}/og?title=${encodeURIComponent(blog.title)}`,
+            "@type": "Article",
+            headline: agileResources.title,
+            description: agileResources.description,
+            url: `https://${baseURL}/agile`,
+            image: `${baseURL}/og?title=${encodeURIComponent(agileResources.title)}`,
             author: {
               "@type": "Person",
               name: person.name,
@@ -58,11 +58,11 @@ export default function Blog() {
         }}
       />
       <Heading marginBottom="l" variant="display-strong-s">
-        {blog.title}
+        {agileResources.title}
       </Heading>
       <Column fillWidth flex={1}>
-        <Posts range={[1, 3]} thumbnail />
-        <Posts range={[4]} columns="2" />
+        <Resources range={[1, 3]} thumbnail />
+        <Resources range={[4]} columns="2" />
       </Column>
     </Column>
   );
