@@ -6,10 +6,10 @@ const person = {
   get name() {
     return `${this.firstName} ${this.lastName}`;
   },
-  role: "Design Engineer",
+  role: "Sr. Product Design",
   avatar: "/images/avatar.jpg",
-  location: "Asia/Jakarta", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
-  languages: ["English", "Bahasa"], // optional: Leave the array empty if you don't want to display languages
+  location: "Europe/London", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
+  languages: ["English", "Somali"], // optional: Leave the array empty if you don't want to display languages
 };
 
 const newsletter = {
@@ -89,12 +89,12 @@ const about = {
   },
   work: {
     display: true, // set to false to hide this section
-    title: "Work Experience",
+    title: "Experience",
     experiences: [
       {
-        company: "FLY",
+        company: "Pendo",
         timeframe: "2022 - Present",
-        role: "Senior Design Engineer",
+        role: "Senior Product Designer",
         achievements: [
           <>
             Redesigned the UI/UX for the FLY platform, resulting in a 20% increase in user
@@ -116,9 +116,25 @@ const about = {
         ],
       },
       {
-        company: "Creativ3",
-        timeframe: "2018 - 2022",
-        role: "Lead Designer",
+        company: "mosaid.me studio",
+        timeframe: "2020 - 2022",
+        role: "Freelance Product Designer",
+        achievements: [
+          <>
+            Developed a design system that unified the brand across multiple platforms, improving
+            design consistency by 40%.
+          </>,
+          <>
+            Led a cross-functional team to launch a new product line, contributing to a 15% increase
+            in overall company revenue.
+          </>,
+        ],
+        images: [],
+      },
+      {
+        company: "Tribepad",
+        timeframe: "2019 - 2020",
+        role: "Product Designer",
         achievements: [
           <>
             Developed a design system that unified the brand across multiple platforms, improving
@@ -138,11 +154,11 @@ const about = {
     title: "Studies",
     institutions: [
       {
-        name: "University of Jakarta",
+        name: "Sheffield Hallam University",
         description: <>Studied software engineering.</>,
       },
       {
-        name: "Build the Future",
+        name: "University of Roehampton",
         description: <>Studied online marketing and personal branding.</>,
       },
     ],
