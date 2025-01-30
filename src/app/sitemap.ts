@@ -12,6 +12,11 @@ export default async function sitemap() {
     lastModified: project.metadata.publishedAt,
   }));
 
+  const skills = getPosts(["src", "app", "skill", "skills"]).map((skill) => ({
+    url: `${baseURL}/skills/${skill.slug}`,
+    lastModified: skill.metadata.publishedAt,
+  }));
+
   const activeRoutes = Object.keys(routesConfig).filter((route) => routesConfig[route]);
 
   const routes = activeRoutes.map((route) => ({

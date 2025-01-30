@@ -117,13 +117,21 @@ const about = {
   },
   technical: {
     display: true, // set to false to hide this section
-    title: "Technical skills",
+    title: "Skills Snapshot",
+    description: (
+      <>
+      <p>
+      By leveraging skills in technologies like React, Django, and Python alongside servant leadership principles, I drive collaboration and 
+      deliver robust, user-focused solutions that align technical innovation with iterative, value-driven outcomes.
+      </p>
+      </>
+    ),
     skills: [
       {
         title: "Agile Practices",
         description: <>Leading Agile teams as a certified Scrum Master, 
         focusing on delivering iterative value and fostering collaboration.</>,
-        // optional: leave the array empty if you don't want to display images
+        
         images: [
           {
             src: "/images/skills/ScrumMasterPoster.webp",
@@ -248,83 +256,32 @@ const work = {
   // All projects will be listed on the /home and /work routes
 };
 
-const gallery = {
-  label: "Gallery",
-  title: "My photo gallery",
-  description: `A photo collection by ${person.name}`,
+const skills = {
+  label: "Skills",
+  title: "My technical skills",
+  description: `A blend of technical expertise and Agile leadership by ${person.name}`,
+  headline: <>Certified Scrum Master and Full-Stack Developer</>,
+  subline: (
+    <>
+      As a Certified Scrum Master and Full Stack Developer, I bring a unique blend of technical expertise 
+      and Agile leadership to every project. By leveraging skills in technologies like React, Django, and 
+      Python alongside servant leadership principles, I drive collaboration and deliver robust, user-focused 
+      solutions that align technical innovation with iterative, value-driven outcomes.
+    </>
+  ),
   // Images from https://pexels.com
   images: [
     {
-      src: "/images/gallery/img-01.jpg",
+      src: "/images/skills/ScrumMasterPoster.webp",
       alt: "image",
       orientation: "vertical",
     },
     {
-      src: "/images/gallery/img-02.jpg",
+      src: "/images/skills/SSM.svg",
       alt: "image",
       orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/img-03.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
-    {
-      src: "/images/gallery/img-04.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/img-05.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/img-06.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
-    {
-      src: "/images/gallery/img-07.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/img-08.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
-    {
-      src: "/images/gallery/img-09.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/img-10.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/img-11.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
-    {
-      src: "/images/gallery/img-12.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/img-13.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/img-14.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
+    },   
   ],
 };
 
-export { person, social, home, about, agileResources, work, gallery };
+export { person, social, home, about, agileResources, work, skills };

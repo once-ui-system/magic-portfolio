@@ -14,5 +14,5 @@ export {
   about,
   agileResources,
   work,
-  gallery,
+  skills,
 } from "@/app/resources/content";

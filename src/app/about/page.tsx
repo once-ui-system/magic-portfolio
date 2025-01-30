@@ -261,10 +261,20 @@ export default function About() {
                 as="h2"
                 id={about.technical.title}
                 variant="display-strong-s"
-                marginBottom="40"
+                marginBottom="m"
               >
                 {about.technical.title}
               </Heading>
+                <Column fillWidth gap="m">
+                  <Text 
+                    wrap="balance" 
+                    onBackground="neutral-weak" 
+                    variant="body-default-m"
+                    marginBottom="m"
+                  >
+                  {about.technical.description}
+                  </Text>
+                </Column>
               <Column fillWidth gap="l">
                 {about.technical.skills.map((skill, index) => (
                   <Column key={`${skill}-${index}`} fillWidth gap="4"

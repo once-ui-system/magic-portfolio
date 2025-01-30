@@ -17,7 +17,6 @@ View the [demo here](https://demo.magic-portfolio.com).
 
 ## **Content**
 - Render sections conditionally based on the content file
-- Enable or disable pages for agile, work, gallery and about / CV
 - Generate and display social links automatically
 - Set up password protection for URLs
 
