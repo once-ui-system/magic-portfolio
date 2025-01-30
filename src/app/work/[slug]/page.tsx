@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import { CustomMDX } from "@/components/mdx";
 import { getPosts } from "@/app/utils/utils";
-import { AvatarGroup, Button, Column, Flex, Heading, SmartImage, Text } from "@/once-ui/components";
+import { AvatarGroup, Button, Column, Flex, Heading, SmartImage, Text, SmartLink } from "@/once-ui/components";
 import { baseURL } from "@/app/resources";
 import { person } from "@/app/resources/content";
 import { formatDate } from "@/app/utils/formatDate";
@@ -35,7 +35,11 @@ export async function generateMetadata({ params }: WorkParams) {
     images,
     image,
     team,
+    linkGithubFrontend,
+    linkGithubBackend,
+    linkLive,
   } = project.metadata;
+  
   const ogImage = image ? `https://${baseURL}${image}` : `https://${baseURL}/og?title=${title}`;
 
   return {
@@ -64,7 +68,7 @@ export async function generateMetadata({ params }: WorkParams) {
   };
 }
 
-export default async function Project({ params }: WorkParams) {
+export default async function Project({ params }: WorkParams) { 
   const { slug } = await params;
   const project = getPosts(["src", "app", "work", "projects"]).find((project) => project.slug === slug);
 
@@ -72,10 +76,12 @@ export default async function Project({ params }: WorkParams) {
     notFound();
   }
 
+  const { linkGithubFrontend, linkGithubBackend, linkLive, team } = project.metadata;
+
   const avatars =
-    project.metadata.team?.map((person) => ({
-      src: person.avatar,
-    })) || [];
+  project.metadata.team?.map((person) => ({
+    src: person.avatar,
+  })) || [];
 
   return (
     <Column as="section" maxWidth="m" horizontal="center" gap="l">
@@ -101,7 +107,7 @@ export default async function Project({ params }: WorkParams) {
           }),
         }}
       />
-      <Column maxWidth="xs" gap="16">
+    <Column maxWidth="xs" gap="16">
         <Button href="/work" variant="tertiary" weight="default" size="s" prefixIcon="chevronLeft">
           Projects
         </Button>
@@ -123,9 +129,41 @@ export default async function Project({ params }: WorkParams) {
             {formatDate(project.metadata.publishedAt)}
           </Text>
         </Flex>
-        <CustomMDX source={project.content} />
-      </Column>
+      <CustomMDX source={project.content} />
+      <Flex gap="16" wrap>
+        {linkGithubFrontend && (
+          <SmartLink
+            href={linkGithubFrontend}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ padding: "10px 20px", backgroundColor: "#333", color: "#fff", borderRadius: "5px" }}
+          >
+            View Frontend Code
+          </SmartLink>
+        )}
+        {linkGithubBackend && (
+          <SmartLink
+            href={linkGithubBackend}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ padding: "10px 20px", backgroundColor: "#333", color: "#fff", borderRadius: "5px" }}
+          >
+            View Backend Code
+          </SmartLink>
+        )}
+        {linkLive && (
+          <SmartLink
+            href={linkLive}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ padding: "10px 20px", backgroundColor: "#333", color: "#fff", borderRadius: "5px" }}
+          >
+            View Project
+          </SmartLink>
+        )}
+      </Flex>
       <ScrollToHash />
+    </Column>
     </Column>
   );
 }
