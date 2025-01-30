@@ -2,7 +2,7 @@ import React from "react";
 
 import { Heading, Flex, Text, Button, Avatar, RevealFx, Arrow, Column } from "@/once-ui/components";
 import { Projects } from "@/components/work/Projects";
-
+import Acknowledgement from "@/components/Acknowledgement";
 import { baseURL, routes } from "@/app/resources";
 import { home, about, person } from "@/app/resources/content";
 import { Resources } from "@/components/agileResources/Resources";
@@ -38,6 +38,9 @@ export async function generateMetadata() {
 
 export default function Home() {
   return (
+    <>
+      <Acknowledgement />
+    
     <Column maxWidth="m" gap="xl" horizontal="center">
       <script
         type="application/ld+json"
@@ -113,5 +116,6 @@ export default function Home() {
       )}
       <Projects range={[2]} />
     </Column>
+    </>
   );
 }

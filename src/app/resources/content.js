@@ -243,7 +243,7 @@ const agileResources = {
 const work = {
   label: "Projects",
   title: "My projects",
-  description: `Explore design and development projects by ${person.name}`,
+  description: `Explore projects by ${person.name}`,
   // Create new project pages by adding a new .mdx file to app/work/projects
   // All projects will be listed on the /home and /work routes
 };
