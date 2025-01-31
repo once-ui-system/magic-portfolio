@@ -99,12 +99,31 @@ export default function Home() {
           </RevealFx>
         </Column>
       </Column>
-      <RevealFx translateY="16" delay={0.6}>
-        <Projects range={[1, 1]} />
-      </RevealFx>
+      {routes["/work"] && (
+        <Flex fillWidth gap="24" mobileDirection="column">
+          <Flex direction="column" gap="s" align="start" flex={1}>
+            <Heading as="h2" variant="display-strong-xs" wrap="balance">
+              My Projects
+            </Heading>
+            <Button 
+              id="projects" 
+              data-border="rounded"
+              variant="secondary"
+              size="s"
+              arrowIcon
+              href="/projects"
+            >
+              Explore Projects
+              </Button>
+          </Flex>
+          <Flex flex={2} paddingX="20">
+            <Projects range={[0, 1]} />
+          </Flex>
+        </Flex>
+      )}
       {routes["/skills"] && (
         <Flex fillWidth gap="24" mobileDirection="column">
-          <Flex flex={1} paddingLeft="l">
+          <Flex direction="column" gap="s" align="start" flex={1}>
             <Heading as="h2" variant="display-strong-xs" wrap="balance">
               My Tech Skills
             </Heading>

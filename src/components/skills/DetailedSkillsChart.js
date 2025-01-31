@@ -31,73 +31,72 @@ const DetailedSkillsChart = () => {
             ratings: [7, 7, 7, 6],
         },
     };
-};
 
   // Chart.js data
-  const data = {
-    labels: skills,
-    datasets: [
-      {
-        label: "Skill Rating (1-10)",
-        data: ratings,
-        backgroundColor: "rgba(135, 206, 250, 0.5)", // Sky blue
-        borderColor: "rgba(0, 123, 255, 1)", // Blue
-        borderWidth: 1,
-        barThickness: 10,
-      },
-    ],
-  };
-
-  // Chart.js options
-  const options = {
-    indexAxis: "y", // Horizontal bar chart
-    responsive: true,
-    maintainAspectRatio: false,
-    plugins: {
-      legend: { display: false, position: "top" },
-      tooltip: { callbacks: { label: (ctx) => `Rating: ${ctx.raw}` } },
-      title: {
-        display: true,
-        text: "Technical Skills Overview",
-        font: { size: 18 },
-      },
-    },
-    scales: {
-      x: { 
-        beginAtZero: true, 
-        max: 10, 
-        ticks: { font: { size: 14 } }, 
-      },
-      y: { 
-        ticks: { font: { size: 14 } } 
-      },
-    },
-  };
-
-  return (
-    {Object.entries(individualCategoryData).map(([category, { skills, ratings }]) => (
-    <div className={styles.chartContainer} key={category} >
-      <Bar 
-        data={{
-          labels: skills, 
-          datasets: [
-            { 
-            label: `${category} Skills`,
-            data: ratings, 
-            backgroundColor: "rgba(135, 206, 250, 0.5)",
-            borderColor: "rgba(0, 123, 255, 1)",
+    const data = {
+        labels: skills,
+        datasets: [
+        {
+            label: "Skill Rating (1-10)",
+            data: ratings,
+            backgroundColor: "rgba(135, 206, 250, 0.5)", // Sky blue
+            borderColor: "rgba(0, 123, 255, 1)", // Blue
             borderWidth: 1,
             barThickness: 10,
-          },
+        },
         ],
-      }} options={{
-        ...options,
-        plugins: { ...options.plugins, title: { text: `${category} Skills` }} 
-      }}
-      />        
-    </div>
-  ))}
-  );
+    };
+
+  // Chart.js options
+    const options = {
+        indexAxis: "y", // Horizontal bar chart
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+        legend: { display: false, position: "top" },
+        tooltip: { callbacks: { label: (ctx) => `Rating: ${ctx.raw}` } },
+        title: {
+            display: true,
+            text: "Technical Skills Overview",
+            font: { size: 18 },
+        },
+        },
+        scales: {
+        x: { 
+            beginAtZero: true, 
+            max: 10, 
+            ticks: { font: { size: 14 } } 
+        },
+        y: { 
+            ticks: { font: { size: 14 } } 
+        }
+        }
+    };
+
+    return (
+        {Object.entries(individualCategoryData).map(([category, { skills, ratings }]) => (
+        <div className={styles.chartContainer} key={category} >
+        <Bar 
+            data={{
+            labels: skills, 
+            datasets: [
+                { 
+                label: `${category} Skills`,
+                data: ratings, 
+                backgroundColor: "rgba(135, 206, 250, 0.5)",
+                borderColor: "rgba(0, 123, 255, 1)",
+                borderWidth: 1,
+                barThickness: 10,
+            },
+            ],
+        }} options={{
+            ...options,
+            plugins: { ...options.plugins, title: { text: `${category} Skills` }} 
+        }}
+        />        
+        </div>
+    ))}
+    );
 };
 
 export default DetailedSkillsChart;
