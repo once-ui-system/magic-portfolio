@@ -1,14 +1,18 @@
 import {
-  AvatarGroup,
-  Carousel,
   Column,
   Badge,
   Flex,
   Heading,
+  Icon,
+  RevealFx,
+  Row,
   SmartLink,
   Text,
 } from "@/once-ui/components";
 import { getPosts } from "@/app/utils/utils";
+import { baseURL, routes } from "@/app/resources";
+import { person, skills } from "@/app/resources/content";
+import OverviewSkillsChart from "@/components/skills/OverviewSkillsChart";
 
 export function Skills({ range }: BadgeProps) {
   let allSkills = getPosts(["src", "app", "skill", "skills"]);
@@ -23,19 +27,21 @@ export function Skills({ range }: BadgeProps) {
 
   return (
     <Column fillWidth gap="xl" marginBottom="40" paddingX="l">
-      {displayedSkills.map((skill, index) => (
-        <SkillCard
-          priority={index < 2}
-          key={skill.slug}
-          href={`skills/${skill.slug}`}
-          images={skill.metadata.images}
-          title={skill.metadata.title}
-          description={skill.metadata.summary}
-          content={skill.content}
-          avatars={skill.metadata.team?.map((member) => ({ src: member.avatar })) || []}
-          link={skill.metadata.link || ""}
-        />
+      {displayedSkills.map((skill) => (
+        
       ))}
+      {routes["/skills"] && (
+        <Flex fillWidth gap="24" mobileDirection="column">
+          <Flex flex={1} paddingLeft="l">
+            <Heading as="h2" variant="display-strong-xs" wrap="balance">
+              My Tech Skills
+            </Heading>
+          </Flex>
+          <Flex flex={2} paddingX="20">
+            <OverviewSkillsChart />
+          </Flex>
+        </Flex>
+      )}
     </Column>
   );
 }

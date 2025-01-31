@@ -1,0 +1,22 @@
+// styles.scss 
+.chartContainer {
+    border: 2px solid #007bff; /* Blue border */
+    border-radius: 10px;
+    padding: 16px;
+    background: #f9f9f9;
+    width: "100%";
+    max-width: "1200px";
+    margin: 0 auto;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px;
+    height: calc(25px * 12 + 100px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .chartContainer canvas {
+    width: 100% !important; /* Ensure the chart takes full width */
+    height: 100% !important; /* Ensure the chart takes full height */
+  }

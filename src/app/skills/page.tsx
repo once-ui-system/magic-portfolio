@@ -1,4 +1,6 @@
-import { Column, RevealFx, Text, Heading, Flex } from "@/once-ui/components";
+import { Column, RevealFx, Text, Heading, Flex, Badge } from "@/once-ui/components";
+import OverviewSkillsChart from "@/components/skills/OverviewSkillsChart";
+import DetailedSkillsChart from "@/components/skills/DetailedSkillsChart";
 import MasonryGrid from "@/components/skills/MasonryGrid";
 import { baseURL, routes } from "@/app/resources";
 import { skills, person } from "@/app/resources/content";
@@ -32,6 +34,18 @@ export async function generateMetadata() {
     
   };
 }
+
+const techStack = [
+  { name: "React", icon: "🔵" },
+  { name: "Django", icon: "🌐" },
+  { name: "Python", icon: "🐍" },
+  { name: "TypeScript", icon: "📘" },
+];
+
+const certifications = [
+  { title: "Professional Scrum Master I", provider: "Scrum.org" },
+  { title: "SAFe® 6 Scrum Master", provider: "Scaled Agile®" },
+];
 
 export default function Skills() {
   return (

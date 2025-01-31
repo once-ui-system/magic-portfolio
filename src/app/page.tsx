@@ -1,5 +1,5 @@
 import React from "react";
-
+import OverviewSkillsChart from "@/components/skills/OverviewSkillsChart";
 import { Heading, Flex, Text, Button, Avatar, RevealFx, Arrow, Column } from "@/once-ui/components";
 import { Projects } from "@/components/work/Projects";
 import Acknowledgement from "@/components/Acknowledgement";
@@ -102,6 +102,28 @@ export default function Home() {
       <RevealFx translateY="16" delay={0.6}>
         <Projects range={[1, 1]} />
       </RevealFx>
+      {routes["/skills"] && (
+        <Flex fillWidth gap="24" mobileDirection="column">
+          <Flex flex={1} paddingLeft="l">
+            <Heading as="h2" variant="display-strong-xs" wrap="balance">
+              My Tech Skills
+            </Heading>
+            <Button 
+              id="skills" 
+              data-border="rounded"
+              variant="secondary"
+              size="s"
+              arrowIcon
+              href="/skills"
+            >
+              Explore Skills
+              </Button>
+          </Flex>
+          <Flex flex={2} paddingX="20">
+            <OverviewSkillsChart />
+          </Flex>
+        </Flex>
+      )}
       {routes["/agile"] && (
         <Flex fillWidth gap="24" mobileDirection="column">
           <Flex flex={1} paddingLeft="l">
@@ -109,12 +131,11 @@ export default function Home() {
               My Agile Resources
             </Heading>
           </Flex>
-          <Flex flex={3} paddingX="20">
+          <Flex flex={2} paddingX="20">
             <Resources range={[1, 2]} columns="2" />
           </Flex>
         </Flex>
       )}
-      <Projects range={[2]} />
     </Column>
     </>
   );

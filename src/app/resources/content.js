@@ -269,7 +269,6 @@ const skills = {
       solutions that align technical innovation with iterative, value-driven outcomes.
     </>
   ),
-  // Images from https://pexels.com
   images: [
     {
       src: "/images/skills/ScrumMasterPoster.webp",
