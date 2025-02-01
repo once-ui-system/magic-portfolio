@@ -67,3 +67,61 @@ export default function Agile() {
     </Column>
   );
 }
+
+// copied from AboutPage - in case code for agile images can be used
+// {about.technical.display && (
+//   <>
+//   <Heading
+//     as="h2"
+//     id={about.technical.title}
+//     variant="display-strong-s"
+//     marginBottom="m"
+//   >
+//     {about.technical.title}
+//   </Heading>
+//     <Column fillWidth gap="m">
+//       <Text 
+//         wrap="balance" 
+//         onBackground="neutral-weak" 
+//         variant="body-default-m"
+//         marginBottom="m"
+//       >
+//       {about.technical.description}
+//       </Text>
+//     </Column>
+//   <Column fillWidth gap="l">
+//     {about.technical.skills.map((skill, index) => (
+//       <Column key={`${skill}-${index}`} fillWidth gap="4"
+//       className={skill.title === "Agile Practices" ? "agile-skills" : "other-skills"}
+//       >
+//         <Text variant="heading-strong-l">{skill.title}</Text>
+//         <Text variant="body-default-m" onBackground="neutral-weak">
+//           {skill.description}
+//         </Text>
+//         {skill.images && skill.images.length > 0 && (
+//           <Flex fillWidth paddingTop="m" gap="12" wrap>
+//             {skill.images.map((image, index) => (
+//               <Flex
+//                 key={index}
+//                 className={skill.title === "Agile Practices" ? "agile-skills" : "other-skills"}
+//                 border="neutral-medium"
+//                 radius="m"
+//                 minWidth={skill.title === "Agile Practices" ? image.width / 50 : 16} // Default for others
+//                 height={skill.title === "Agile Practices" ? image.height / 50 : 9} // Default for others
+//               >
+//                 <SmartImage
+//                   enlarge
+//                   radius="m"
+//                   sizes={`${image.width}x${image.height}`}
+//                   alt={image.alt}
+//                   src={image.src}
+//                 />
+//               </Flex>
+//             ))}
+//           </Flex>
+//         )}
+//       </Column>
+//     ))}
+//   </Column>
+// </>
+// )}

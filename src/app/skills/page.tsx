@@ -47,52 +47,67 @@ const certifications = [
   { title: "SAFe® 6 Scrum Master", provider: "Scaled Agile®" },
 ];
 
+const badges = [
+  { title: "Certified Scrum Master", provider: "Scrum.org" },
+  { title: "Certified SAFe® 6 Scrum Master", provider: "Scaled Agile®" },
+];
+
 export default function Skills() {
+  const structure = [
+    {
+      title: skills.title,
+      headline: skills.headline,
+      subline: skills.subline,      
+      items: [],
+    },
+    {
+      title: "Tech Stack",
+      items: techStack,
+    },
+    {
+      title: "Certifications & Badges",
+      items: certifications, badges,
+    },
+  ]
   return (
-    <>
-      <Column fillWidth paddingY="l" gap="m">
-        <Column maxWidth="s">
-          <RevealFx translateY="4" fillWidth horizontal="start" paddingBottom="m">
-            <Heading wrap="balance" variant="display-strong-l">
-              {skills.headline}
-            </Heading>
-          </RevealFx>
-          <RevealFx translateY="8" delay={0.2} fillWidth horizontal="start" paddingBottom="m">
-            <Text wrap="balance" onBackground="neutral-weak" variant="heading-default-xl">
-              {skills.subline}
-            </Text>
-          </RevealFx>
-            <Flex fillWidth>
-              <script
-                type="application/ld+json"
-                suppressHydrationWarning
-                dangerouslySetInnerHTML={{
-                  __html: JSON.stringify({
-                    "@context": "https://schema.org",
-                    "@type": "ImageGallery",
-                    name: skills.title,
-                    description: skills.description,
-                    url: `https://${baseURL}/gallery`,
-                    image: skills.images.map((image) => ({
-                      "@type": "ImageObject",
-                      url: `${baseURL}${image.src}`,
-                      description: image.alt,
-                    })),
-                    author: {
-                      "@type": "Person",
-                      name: person.name,
-                      image: {
-                        "@type": "ImageObject",
-                        url: `${baseURL}${person.avatar}`,
-                      },
-                    },
-                  }),
-                }}
-              />
-              <MasonryGrid />
-            </Flex>
-        </Column>
-      </Column> 
-    </>
+      <Column maxWidth="s">
+        <script
+          type="application/ld+json"
+          suppressHydrationWarning
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "ImageGallery",
+              name: skills.title,
+              description: skills.description,
+              url: `https://${baseURL}/gallery`,
+              image: skills.images.map((image) => ({
+                "@type": "ImageObject",
+                url: `${baseURL}${image.src}`,
+                description: image.alt,
+              })),
+            }),
+          }}
+        /> 
+        {skills.display && (
+          <>
+          <Heading as="h1" variant="display-strong-xl" marginBottom="m">
+            {skills.title}
+          </Heading>
+          <Text variant="body-default-l" onBackground="neutral-weak" marginBottom="m">
+            {skills.description}
+          </Text>
+          <Heading as="h2" variant="display-strong-xs" marginBottom="m">
+            {skills.headline}
+          </Heading>
+          <Text variant="body-default-m" onBackground="neutral-weak">
+            {skills.subline}
+          </Text>
+        </>
+        )}
+        
+
+         
+      </Column>
   );
 }

@@ -111,7 +111,7 @@ export default function Home() {
               variant="secondary"
               size="s"
               arrowIcon
-              href="/projects"
+              href="/work"
             >
               Explore Projects
               </Button>

@@ -15,6 +15,7 @@ import { baseURL } from "@/app/resources";
 import TableOfContents from "@/components/about/TableOfContents";
 import styles from "@/components/about/about.module.scss";
 import { person, about, social } from "@/app/resources/content";
+import DetailedSkillsChart from "@/components/skills/DetailedSkillsChart";
 
 export async function generateMetadata() {
   const title = about.title;
@@ -276,34 +277,33 @@ export default function About() {
                   {about.technical.description}
                   </Text>
                 </Column>
+                {/* Render each skill section with a chart */}
               <Column fillWidth gap="l">
                 {about.technical.skills.map((skill, index) => (
-                  <Column key={`${skill}-${index}`} fillWidth gap="4"
+                  <Column key={`${skill.title}-${index}`} fillWidth gap="4"
                   className={skill.title === "Agile Practices" ? "agile-skills" : "other-skills"}
                   >
                     <Text variant="heading-strong-l">{skill.title}</Text>
                     <Text variant="body-default-m" onBackground="neutral-weak">
                       {skill.description}
                     </Text>
+                    
+                    {/* Render a chart for the matching category */}
+                    <Column fillWidth>
+                      <DetailedSkillsChart category={skill.title} />
+                    </Column>
+
                     {skill.images && skill.images.length > 0 && (
                       <Flex fillWidth paddingTop="m" gap="12" wrap>
                         {skill.images.map((image, index) => (
-                          <Flex
-                            key={index}
-                            className={skill.title === "Agile Practices" ? "agile-skills" : "other-skills"}
-                            border="neutral-medium"
-                            radius="m"
-                            minWidth={skill.title === "Agile Practices" ? image.width / 50 : 16} // Default for others
-                            height={skill.title === "Agile Practices" ? image.height / 50 : 9} // Default for others
-                          >
-                            <SmartImage
+                          <SmartImage
+                              key={index}
                               enlarge
                               radius="m"
                               sizes={`${image.width}x${image.height}`}
                               alt={image.alt}
                               src={image.src}
                             />
-                          </Flex>
                         ))}
                       </Flex>
                     )}

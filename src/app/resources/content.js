@@ -1,4 +1,5 @@
 import { InlineCode } from "@/once-ui/components";
+import { display } from "./config";
 
 const person = {
   firstName: "Gina",
@@ -117,7 +118,7 @@ const about = {
   },
   technical: {
     display: true, // set to false to hide this section
-    title: "Skills Snapshot",
+    title: "Skills Overview",
     description: (
       <>
       <p>
@@ -128,8 +129,161 @@ const about = {
     ),
     skills: [
       {
-        title: "Agile Practices",
-        description: <>Leading Agile teams as a certified Scrum Master, 
+        title: "Scrum, Agile and DevOps",
+        description: <>Leading Agile teams as a Professional Scrum Master, 
+        focusing on delivering iterative value and fostering collaboration.</>,
+        
+        images: [
+          {
+            src: "/images/skills/ScrumMasterPoster.webp",
+            alt: "Scrum Master Poster from Scrum.org",
+            width: 400,
+            height: 600,
+          },
+          {
+            src: "/images/skills/Safe6-essential.webp",
+            alt: "SAFe 6 framework - essential",
+            width: 900,
+            height: 400,
+          },
+        ],
+      },
+      {
+        title: "Frontend Development and UI Design",
+        description: <>Developing reusable and efficient UI components with React.js, focusing on 
+        state management, hooks, and responsive design using TypeScript and modern 
+        JavaScript.</>,
+        
+        images: [
+          {
+            src: "/images/skills/react.svg",
+            alt: "Project image",
+            width: 16,
+            height: 9,
+          },
+        ],
+      },
+      {
+        title: "Backend Development and Cloud Expertise",
+        description: <>Building full-stack applications with Next.js, utilising server-side 
+        rendering (SSR), static site generation (SSG), and API routes for 
+        performance optimisation and scalability.</>,
+        
+        images: [
+          {
+            src: "/images/skills/nextjs.svg",
+            alt: "Project image",
+            width: 16,
+            height: 9,
+          },
+        ],
+      },
+      {
+        title: "Databases, Data Management, Data Analysis, and Data Visualisation",
+        description: <>Building scalable backend solutions with Django and integrating RESTful APIs for full-stack applications.</>,
+        
+        images: [
+          {
+            src: "/images/skills/backend.svg",
+            alt: "Project image",
+            width: 16,
+            height: 9,
+          },
+        ],
+      },
+      {
+        title: "Version Control and Collaboration Tools",
+        description: <>Designing and querying relational databases to support robust backend services.</>,
+
+        images: [
+          {
+            src: "/images/skills/sql.svg",
+            alt: "Project image",
+            width: 16,
+            height: 9,
+          },
+        ],
+      },
+    ],
+  },
+  studies: {
+    display: true, // set to false to hide this section
+    title: "Studies",
+    institutions: [
+      {
+        name: "First Class Honours in Psychology",
+        description: <>Studied psychology at Edith Cowan University.</>,
+      },
+      {
+        name: "Certified SAFe® 6 Scrum Master (SSM)",
+        description: <>Completed a two-day course on Lean-Agile principles and practices of the Scaled Agile Framework® (SAFe®) version 6.0.</>,
+      },
+      {
+        name: "Professional Scrum Master (PSM I)",
+        description: <>Completed the Scrum.org learning path and passed the PSM I certification exam, 
+        demonstrating a deep understanding of Scrum principles and the ability to apply them to solve complex problems collaboratively.</>,
+      },
+    ],
+  },
+};
+
+const agileResources = {
+  label: "Agile Resources",
+  title: "My Agile Resources",
+  description: `Explore Agile content and resources used by ${person.name}`,
+  // Create new Agile resources by adding a new .mdx file to app/agile/resources
+  // All resources will be listed on the /agile route
+};
+
+const work = {
+  label: "Projects",
+  title: "My projects",
+  description: `Explore projects by ${person.name}`,
+  // Create new project pages by adding a new .mdx file to app/work/projects
+  // All projects will be listed on the /home and /work routes
+};
+
+const skills = {
+  display: true,
+  label: "Skills",
+  title: "My technical skills",
+  description: `A blend of technical expertise and Agile leadership by ${person.name}`,
+  headline: <>Professional Scrum Master and Full-Stack Developer</>,
+  subline: (
+    <>
+      As a Professional Scrum Master and Full Stack Developer, I bring a unique blend of technical expertise 
+      and Agile leadership to every project. By leveraging skills in technologies like React, Django, and 
+      Python alongside servant leadership principles, I drive collaboration and deliver robust, user-focused 
+      solutions that align technical innovation with iterative, value-driven outcomes.
+    </>
+  ),
+  images: [
+    {
+      src: "/images/skills/ScrumMasterPoster.webp",
+      alt: "image",
+      orientation: "vertical",
+    },
+    {
+      src: "/images/skills/SSM.svg",
+      alt: "image",
+      orientation: "horizontal",
+    },   
+  ],
+  technical: {
+    display: true, // set to false to hide this section
+    title: "Skills Overview",
+    description: (
+      <>
+      <p>
+      By leveraging skills in technologies like React, Django, and Python alongside servant leadership principles, I drive collaboration and 
+      deliver robust, user-focused solutions that align technical innovation with iterative, value-driven outcomes.
+      </p>
+      </>
+    ),
+    skills: [
+      {
+        title: "Agile Leadership and Practices",
+        description: <>Leading Agile teams as a Professional Scrum Master, 
         focusing on delivering iterative value and fostering collaboration.</>,
         
         images: [
@@ -219,68 +373,6 @@ const about = {
       },
     ],
   },
-  studies: {
-    display: true, // set to false to hide this section
-    title: "Studies",
-    institutions: [
-      {
-        name: "First Class Honours in Psychology",
-        description: <>Studied psychology at Edith Cowan University.</>,
-      },
-      {
-        name: "Certified SAFe® 6 Scrum Master (SSM)",
-        description: <>Completed a two-day course on Lean-Agile principles and practices of the Scaled Agile Framework® (SAFe®) version 6.0.</>,
-      },
-      {
-        name: "Professional Scrum Master (PSM I)",
-        description: <>Completed the Scrum.org learning path and passed the PSM I certification exam, 
-        demonstrating a deep understanding of Scrum principles and the ability to apply them to solve complex problems collaboratively.</>,
-      },
-    ],
-  },
-};
-
-const agileResources = {
-  label: "Agile Resources",
-  title: "My Agile Resources",
-  description: `Explore Agile content and resources used by ${person.name}`,
-  // Create new Agile resources by adding a new .mdx file to app/agile/resources
-  // All resources will be listed on the /agile route
-};
-
-const work = {
-  label: "Projects",
-  title: "My projects",
-  description: `Explore projects by ${person.name}`,
-  // Create new project pages by adding a new .mdx file to app/work/projects
-  // All projects will be listed on the /home and /work routes
-};
-
-const skills = {
-  label: "Skills",
-  title: "My technical skills",
-  description: `A blend of technical expertise and Agile leadership by ${person.name}`,
-  headline: <>Certified Scrum Master and Full-Stack Developer</>,
-  subline: (
-    <>
-      As a Certified Scrum Master and Full Stack Developer, I bring a unique blend of technical expertise 
-      and Agile leadership to every project. By leveraging skills in technologies like React, Django, and 
-      Python alongside servant leadership principles, I drive collaboration and deliver robust, user-focused 
-      solutions that align technical innovation with iterative, value-driven outcomes.
-    </>
-  ),
-  images: [
-    {
-      src: "/images/skills/ScrumMasterPoster.webp",
-      alt: "image",
-      orientation: "vertical",
-    },
-    {
-      src: "/images/skills/SSM.svg",
-      alt: "image",
-      orientation: "horizontal",
-    },   
-  ],
 };
 
 export { person, social, home, about, agileResources, work, skills };

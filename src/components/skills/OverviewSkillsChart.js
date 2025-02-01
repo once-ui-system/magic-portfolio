@@ -15,24 +15,24 @@ const calculateAverage = (ratings) => {
 const OverviewSkillsChart = () => {
   const categoriesData = [
   {
-    category: "Frontend & UI Design",
-    average: calculateAverage([9, 8, 7, 7, 7, 6, 5]),
+    category: "Frontend/UI Design",
+    average: calculateAverage([9, 8, 7, 6, 7, 7, 5, 3, 7, 7, 7, 7, 7, 5, 6, 6]),
   },
   {
-    category: "Backend & Cloud Development",
-    average: calculateAverage([8, 5, 5, 3, 5, 7, 7, 7, 7]),
+    category: "Backend/Cloud Development",
+    average: calculateAverage([8, 5, 7, 7, 7, 6, 7, 7, 3, 7, 7, 7, 7, 6]),
   },
   {
-    category: "Databases & Data Management",
-    average: calculateAverage([6, 6, 5]),
+    category: "Databases/Data Management/Analysis/Visualisation",
+    average: calculateAverage([6, 6, 6, 6, 5, 5, 5, 5, 5, 5, 7, 5, 5]),
   },
   {
-    category: "Agile & DevOps",
-    average: calculateAverage([9, 7, 7, 6]),
+    category: "Scrum/Agile/DevOps",
+    average: calculateAverage([7, 8, 7, 7, 7, 6, 5, 7, 8, 7, 7, 7, 4, 5, 7, 6, 8]),
   },
   {
-    category: "Version Control & Collaboration",
-    average: calculateAverage([7, 7, 7, 6]),
+    category: "Version Control/Collaboration Tools",
+    average: calculateAverage([7, 7, 5, 7, 6, 8, 7, 7]),
   },
 ];
 
