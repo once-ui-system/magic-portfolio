@@ -4,39 +4,23 @@
 import React from "react";
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from "chart.js";
 import { Bar } from "react-chartjs-2";
+import { skillRatings } from "./SkillRatings";
 import styles from "./SkillsChart.module.scss";
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
-const calculateAverage = (ratings) => {
+const calculateAverage = (skills) => {
+  const ratings = skills.map((skill) => skillRatings.ratings[skill] || 0);
   return (ratings.reduce((sum, rating) => sum + rating, 0) / ratings.length).toFixed(1);
 };
 
 const OverviewSkillsChart = () => {
-  const categoriesData = [
-  {
-    category: "Frontend/UI Design",
-    average: calculateAverage([9, 8, 7, 6, 7, 7, 5, 3, 7, 7, 7, 7, 7, 5, 6, 6]),
-  },
-  {
-    category: "Backend/Cloud Development",
-    average: calculateAverage([8, 5, 7, 7, 7, 6, 7, 7, 3, 7, 7, 7, 7, 6]),
-  },
-  {
-    category: "Databases/Data Management/Analysis/Visualisation",
-    average: calculateAverage([6, 6, 6, 6, 5, 5, 5, 5, 5, 5, 7, 5, 5]),
-  },
-  {
-    category: "Scrum/Agile/DevOps",
-    average: calculateAverage([7, 8, 7, 7, 7, 6, 5, 7, 8, 7, 7, 7, 4, 5, 7, 6, 8]),
-  },
-  {
-    category: "Version Control/Collaboration Tools",
-    average: calculateAverage([7, 7, 5, 7, 6, 8, 7, 7]),
-  },
-];
+  const categoriesData = Object.entries(skillRatings.categories).map(([category, skills]) => ({
+    category,
+    average: calculateAverage(skills),
+  }));
 
-  const mainChartData = {
+  const data = {
   labels: categoriesData.map((item) => item.category),
   datasets: [
     {
@@ -84,10 +68,9 @@ const OverviewSkillsChart = () => {
 
   return (
     <div className={styles.chartContainer}>
-      <Bar data={mainChartData} options={options} />
+      <Bar data={data} options={options} />
     </div>
   );
 };
-
 
 export default OverviewSkillsChart;

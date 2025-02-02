@@ -30,8 +30,8 @@ const individualCategoryData = {
     "Scrum, Agile and DevOps": {
         skills: ["Professional Scrum Master (PSM I)", "Servant Leadership", "Lean-Agile Leadership", "Scrum Team Coaching",
                 "Scaled Agile Framework (SAFe 6.0)", "SAFe Scrum Master Role", "Flow Metrics (SAFe 6.0)", "Team Syncs & Stand-Ups",
-                "Conflict Resolution", "Facilitating Agile Ceremonies", "Kanban", "CI/CD Pipelines", "CALMR Approach",
-                "Cloud Infrastructure", "Version Control", "Jira", "Trello" ],
+                "Agile Project Management","Conflict Resolution", "Facilitating Agile Ceremonies", "Kanban", 
+                "CI/CD Pipelines", "CALMR Approach", "Cloud Infrastructure", "Version Control", "Jira", "Trello" ],
         ratings: [7, 8, 7, 7, 7, 6, 5, 7, 8, 7, 7, 7, 4, 5, 7, 6, 8],
     },
     "Version Control and Collaboration Tools": {

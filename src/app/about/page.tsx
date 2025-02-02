@@ -195,14 +195,14 @@ export default function About() {
           </Column>
 
           {about.intro.display && (
-            <Column className="space-y-4" textVariant="body-default-l" fillWidth gap="m" marginBottom="xl">
+            <Column className="space-y-4" textVariant="body-default-l" fillWidth gap="m" marginBottom="l">
               {about.intro.description}
             </Column>
           )}
 
           {about.work.display && (
             <>
-              <Heading as="h2" id={about.work.title} variant="display-strong-s" marginBottom="m">
+              <Heading as="h2" id={about.work.title} variant="display-strong-s" marginBottom="s">
                 {about.work.title}
               </Heading>
               <Column fillWidth gap="l" marginBottom="40">
@@ -216,7 +216,7 @@ export default function About() {
                         {experience.timeframe}
                       </Text>
                     </Flex>
-                    <Text variant="body-default-s" onBackground="brand-weak" marginBottom="m">
+                    <Text variant="body-default-s" onBackground="brand-weak" marginBottom="s">
                       {experience.role}
                     </Text>
                     <Column as="ul" gap="16">
@@ -263,14 +263,13 @@ export default function About() {
                 as="h2"
                 id={about.technical.title}
                 variant="display-strong-s"
-                marginBottom="m"
+                marginBottom="s"
               >
                 {about.technical.title}
               </Heading>
                 <Column fillWidth gap="m">
                   <Text 
                     wrap="balance" 
-                    onBackground="neutral-weak" 
                     variant="body-default-m"
                     marginBottom="m"
                   >
@@ -278,13 +277,13 @@ export default function About() {
                   </Text>
                 </Column>
                 {/* Render each skill section with a chart */}
-              <Column fillWidth gap="l">
+              <Column fillWidth gap="m">
                 {about.technical.skills.map((skill, index) => (
                   <Column key={`${skill.title}-${index}`} fillWidth gap="4"
                   className={skill.title === "Agile Practices" ? "agile-skills" : "other-skills"}
                   >
                     <Text variant="heading-strong-l">{skill.title}</Text>
-                    <Text variant="body-default-m" onBackground="neutral-weak">
+                    <Text variant="body-default-m" onBackground="neutral-weak" marginBottom="s">
                       {skill.description}
                     </Text>
                     
@@ -294,7 +293,7 @@ export default function About() {
                     </Column>
 
                     {skill.images && skill.images.length > 0 && (
-                      <Flex fillWidth paddingTop="m" gap="12" wrap>
+                      <Flex fillWidth paddingTop="m" wrap>
                         {skill.images.map((image, index) => (
                           <SmartImage
                               key={index}

@@ -130,29 +130,17 @@ const about = {
     skills: [
       {
         title: "Scrum, Agile and DevOps",
-        description: <>Leading Agile teams as a Professional Scrum Master, 
-        focusing on delivering iterative value and fostering collaboration.</>,
-        
-        images: [
-          {
-            src: "/images/skills/ScrumMasterPoster.webp",
-            alt: "Scrum Master Poster from Scrum.org",
-            width: 400,
-            height: 600,
-          },
-          {
-            src: "/images/skills/Safe6-essential.webp",
-            alt: "SAFe 6 framework - essential",
-            width: 900,
-            height: 400,
-          },
-        ],
+        description: <>Certified Professional Scrum Master (PSM I) with expertise in servant leadership, Lean-Agile principles, and coaching Scrum teams. 
+                Experienced in SAFe 6.0 methodologies, including Flow Metrics, Agile Release Trains (ARTs), and Iteration Planning. Skilled in facilitating 
+                Agile ceremonies (Sprint Planning, Retrospectives, Stand-Ups) and conflict resolution. DevOps expertise includes CI/CD pipelines, 
+                cloud infrastructure, and version control, ensuring seamless deployment and automation.
+        </>,
       },
       {
         title: "Frontend Development and UI Design",
-        description: <>Developing reusable and efficient UI components with React.js, focusing on 
-        state management, hooks, and responsive design using TypeScript and modern 
-        JavaScript.</>,
+        description: <>Crafting modern, accessible, and user-friendly interfaces using HTML, CSS, JavaScript, and TypeScript. I specialise in building scalable 
+                React.js applications, leveraging Next.js, Tailwind CSS, and Bootstrap for efficient styling. My expertise includes user-centric design principles, 
+                accessibility standards, and responsive layouts. I also integrate tools like Vite, Remix, and GraphQL to enhance performance and data-driven UI experiences.</>,
         
         images: [
           {
@@ -165,9 +153,9 @@ const about = {
       },
       {
         title: "Backend Development and Cloud Expertise",
-        description: <>Building full-stack applications with Next.js, utilising server-side 
-        rendering (SSR), static site generation (SSG), and API routes for 
-        performance optimisation and scalability.</>,
+        description: <>Developing robust and scalable backend solutions using Python, C#, and Node.js. Experienced in Django Rest Framework, Flask, and RESTful APIs, 
+                I ensure seamless data processing and integrations. Cloud expertise includes AWS S3 for storage, deploying applications on Netlify and Heroku, and 
+                containerisation using Docker and Kubernetes. Performance is optimised with Gunicorn for scalable web application hosting.</>,
         
         images: [
           {
@@ -180,7 +168,9 @@ const about = {
       },
       {
         title: "Databases, Data Management, Data Analysis, and Data Visualisation",
-        description: <>Building scalable backend solutions with Django and integrating RESTful APIs for full-stack applications.</>,
+        description: <>Strong foundation in SQL, PostgreSQL, SQLite, and BigQuery for efficient data querying and management. Skilled in data migrations and 
+                ETL/ELT pipelines using Airbyte and DagsterUI. Proficient in NumPy and SciPy for data analysis, and leveraging Matplotlib and Chart.js for insightful 
+                data visualisation. Experienced in designing Entity-Relationship Diagrams (ERD) to structure database architecture effectively.</>,
         
         images: [
           {
@@ -193,7 +183,9 @@ const about = {
       },
       {
         title: "Version Control and Collaboration Tools",
-        description: <>Designing and querying relational databases to support robust backend services.</>,
+        description: <>Ensuring smooth collaboration and source control using Git, GitHub, and GitLab. Experienced in Jira, Trello, and Microsoft Teams for 
+                effective Agile project management and tracking. Proficient in Slack and code collaboration tools, fostering team synergy in remote and 
+                hybrid environments.</>,
 
         images: [
           {
@@ -212,16 +204,52 @@ const about = {
     institutions: [
       {
         name: "First Class Honours in Psychology",
-        description: <>Studied psychology at Edith Cowan University.</>,
+        description: <>Completed a Bachelor of Psychology (Honours) at Edith Cowan University (2020-2021).</>,
+      },
+      {
+        name: "Atlassian Agile Project Management",
+        description: <>Studied Agile Project Management and Agile Methodologies at Atlassian and received a Professional Certificate (2024).</>,
       },
       {
         name: "Certified SAFe® 6 Scrum Master (SSM)",
-        description: <>Completed a two-day course on Lean-Agile principles and practices of the Scaled Agile Framework® (SAFe®) version 6.0.</>,
+        description: <>Completed a two-day course on Lean-Agile principles and practices of the Scaled Agile Framework® (SAFe®) version 6.0. (2025).</>,
       },
       {
         name: "Professional Scrum Master (PSM I)",
         description: <>Completed the Scrum.org learning path and passed the PSM I certification exam, 
-        demonstrating a deep understanding of Scrum principles and the ability to apply them to solve complex problems collaboratively.</>,
+        demonstrating a deep understanding of Scrum principles and the ability to apply them to solve complex problems collaboratively (2025).</>,
+      },
+      {
+        name: "Responding to Childhood Trauma",
+        description: <>Completed a Professional Certificate in Responding to Childhood Trauma at the University of South Australia (2022).</>,
+      },
+      {
+        name: "Assessing Childhood Trauma",
+        description: <>Completed a Professional Certificate in Assessing Childhood Trauma at the University of South Australia (2021).</>,
+      },
+      {
+        name: "Understanding Childhood Trauma",
+        description: <>Completed a Professional Certificate in Understanding Childhood Trauma at the University of South Australia (2021).</>,
+      },
+      {
+        name: "Bachelor of Arts (Psychology)",
+        description: <>Completed a Bachelor of Arts (Psychology) at Edith Cowan University (2013-2019).</>,
+      },
+      {
+        name: "Investigative Interviewer of Children and Vulnerable Persons",
+        description: <>Completed the Investigative Interviewer of Children and Vulnerable Persons (IICVP) course at Western Australia Police Academy (2016).</>,
+      },
+      {
+        name: "Advanced Diploma of Public Safety (Police Investigation)",
+        description: <>Studied the Advanced Diploma of Public Safety (Police Investigation) at Western Australia Police Academy (2010-2012).</>,
+      },
+      {
+        name: "Certificate IV in Training and Assessment",
+        description: <>Studied the Certificate IV in Training and Assessment at Education Training Advisory Services (2007-2008).</>,
+      },
+      {
+        name: "Diploma of Horticulture",
+        description: <>Studied the Diploma of Horticulture at Challenger TAFE (2006-2007).</>,
       },
     ],
   },
