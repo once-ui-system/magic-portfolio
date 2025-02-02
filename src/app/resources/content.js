@@ -167,7 +167,7 @@ const about = {
         ],
       },
       {
-        title: "Databases, Data Management, Data Analysis, and Data Visualisation",
+        title: "Databases & Data Analysis & Data Visualisation",
         description: <>Strong foundation in SQL, PostgreSQL, SQLite, and BigQuery for efficient data querying and management. Skilled in data migrations and 
                 ETL/ELT pipelines using Airbyte and DagsterUI. Proficient in NumPy and SciPy for data analysis, and leveraging Matplotlib and Chart.js for insightful 
                 data visualisation. Experienced in designing Entity-Relationship Diagrams (ERD) to structure database architecture effectively.</>,

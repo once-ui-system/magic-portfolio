@@ -1,12 +1,12 @@
 export const skillRatings = {
   categories: {
     "Frontend Development and UI Design": ["HTML", "CSS", "JavaScript", "Typescript",
-              "React.js", "Next.js", "Tailwind CSS", "Bootstrap", 
+              "React.js", "Next.js", "Tailwind", "Bootstrap", 
               "User-centric Design", "Accessibility Standards", "Responsive Design",
               "Modular UI Components", "Vite", "Remix", "GraphQL", "Wireframes"],
     "Backend Development and Cloud Expertise": ["Python", "C#", "Node.js", "Django Rest Framework", "Django", "SQL", "Flask",
               "RESTful APIs", "AWS S3", "Netlify", "Heroku", "Docker", "Kubernetes", "Gunicorn"],
-    "Databases/Management/Analysis/Visualisation": ["SQL","PostgreSQL", "SQLite", "BigQuery", "Data Migrations", 
+    "Databases & Data Analysis & Data Visualisation": ["SQL","PostgreSQL", "SQLite", "BigQuery", "Data Migrations", 
               "Airbyte", "DagsterUI", "NumPy", "SciPy", "Matplotlib", "chart.js",
               "Entity-Relationship Diagrams", "ETL/ELT Pipelines"],
     "Scrum, Agile and DevOps": ["Professional Scrum Master (PSM I)", "Servant Leadership", "Lean-Agile Leadership", "Scrum Team Coaching",
