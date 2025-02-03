@@ -135,8 +135,8 @@ export default function Home() {
               arrowIcon
               href="/skills"
             >
-              Explore Skills
-              </Button>
+            Explore Skills
+            </Button>
           </Flex>
           <Flex flex={2} paddingX="20">
             <OverviewSkillsChart />

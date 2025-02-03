@@ -10,15 +10,27 @@ interface TableOfContentsProps {
     display: boolean;
     items: string[];
   }[];
-  about: {
+  about?: {
     tableOfContent: {
       display: boolean;
-      subItems: boolean;
+      subItems?: boolean;
     };
   };
+  skills?: {
+    tableOfContent: {
+      display: boolean;
+      subItems?: boolean;
+    };
+  };
+  offset?: number; // Allow dynamic offset for scrolling
 }
 
-const TableOfContents: React.FC<TableOfContentsProps> = ({ structure, about }) => {
+const TableOfContents: React.FC<TableOfContentsProps> = ({ structure, about, skills }) => {
+  const tableOfContent = about?.tableOfContent ?? skills?.tableOfContent;
+
+  if (!tableOfContent?.display) {
+    return null; // Don't render if table of contents is not enabled
+  }
   const scrollTo = (id: string, offset: number) => {
     const element = document.getElementById(id);
     if (element) {
@@ -31,8 +43,6 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({ structure, about }) =
       });
     }
   };
-
-  if (!about.tableOfContent.display) return null;
 
   return (
     <Column
@@ -61,7 +71,8 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({ structure, about }) =
               <Flex height="1" minWidth="16" background="neutral-strong"></Flex>
               <Text>{section.title}</Text>
             </Flex>
-            {about.tableOfContent.subItems && (
+            
+            {tableOfContent?.subItems && (
               <>
                 {section.items.map((item, itemIndex) => (
                   <Flex

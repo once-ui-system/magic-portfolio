@@ -43,14 +43,19 @@ const DetailedSkillsChart = ({ category }) => {
             },
         },
         scales: {
-        x: { 
-            beginAtZero: true, 
-            max: 10, 
-            ticks: { font: { size: 14 } } 
-        },
-        y: { 
-            ticks: { font: { size: 14 } } 
-        }
+            x: { 
+                beginAtZero: true, 
+                max: 10, 
+                ticks: { font: { size: 14 }, stepSize: 1 }, 
+            },
+            y: { 
+                ticks: { 
+                    font: { size: 14 }, 
+                    autoSkip: false, // Disable auto-skipping of labels
+                    maxRotation: 0, // Prevent rotation of labels
+                    minRotation: 0, // Prevent rotation of labels
+                },
+            },
         },
     };
 

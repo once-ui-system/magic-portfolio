@@ -256,6 +256,11 @@ const about = {
 };
 
 const agileResources = {
+  display: true,
+  tableOfContent: {
+    display: true,
+    subItems: false,
+  },
   label: "Agile Resources",
   title: "My Agile Resources",
   description: `Explore Agile content and resources used by ${person.name}`,
@@ -264,7 +269,12 @@ const agileResources = {
 };
 
 const work = {
+  display: true,
   label: "Projects",
+  tableOfContent: {
+    display: true,
+    subItems: false,
+  },
   title: "My projects",
   description: `Explore projects by ${person.name}`,
   // Create new project pages by adding a new .mdx file to app/work/projects
@@ -272,42 +282,36 @@ const work = {
 };
 
 const skills = {
-  display: true,
   label: "Skills",
   title: "My technical skills",
   description: `A blend of technical expertise and Agile leadership by ${person.name}`,
-  headline: <>Professional Scrum Master and Full-Stack Developer</>,
-  subline: (
+  tableOfContent: {
+    display: true,
+    subItems: false,
+  },
+  avatar: {
+    display: true,
+  },
+  intro: {
+    display: true,
+    title: "Professional Scrum Master and Full-Stack Developer",
+    description: (
     <>
+    <p>
       As a Professional Scrum Master and Full Stack Developer, I bring a unique blend of technical expertise 
       and Agile leadership to every project. By leveraging skills in technologies like React, Django, and 
       Python alongside servant leadership principles, I drive collaboration and deliver robust, user-focused 
       solutions that align technical innovation with iterative, value-driven outcomes.
+    </p>
     </>
-  ),
-  images: [
-    {
-      src: "/images/skills/ScrumMasterPoster.webp",
-      alt: "image",
-      orientation: "vertical",
-    },
-    {
-      src: "/images/skills/SSM.svg",
-      alt: "image",
-      orientation: "horizontal",
-    },   
-  ],
+    ),
+  },
   technical: {
     display: true, // set to false to hide this section
     title: "Skills Overview",
-    description: (
-      <>
-      <p>
-      By leveraging skills in technologies like React, Django, and Python alongside servant leadership principles, I drive collaboration and 
-      deliver robust, user-focused solutions that align technical innovation with iterative, value-driven outcomes.
-      </p>
-      </>
-    ),
+    description: <>A visual representation of my technical expertise across key domains, 
+            showcasing proficiency in frontend and backend development, data management, 
+            Agile leadership, and DevOps practices.</>,
     skills: [
       {
         title: "Agile Leadership and Practices",
@@ -320,82 +324,7 @@ const skills = {
             alt: "Scrum Master Poster from Scrum.org",
             width: 400,
             height: 600,
-          },
-          {
-            src: "/images/skills/Safe6-essential.webp",
-            alt: "SAFe 6 framework - essential",
-            width: 900,
-            height: 400,
-          },
-        ],
-      },
-      {
-        title: "React.js",
-        description: <>Developing reusable and efficient UI components with React.js, focusing on 
-        state management, hooks, and responsive design using TypeScript and modern 
-        JavaScript.</>,
-        
-        images: [
-          {
-            src: "/images/skills/react.svg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-        ],
-      },
-      {
-        title: "Next.js",
-        description: <>Building full-stack applications with Next.js, utilising server-side 
-        rendering (SSR), static site generation (SSG), and API routes for 
-        performance optimisation and scalability.</>,
-        
-        images: [
-          {
-            src: "/images/skills/nextjs.svg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-        ],
-      },
-      {
-        title: "Python & Django",
-        description: <>Building scalable backend solutions with Django and integrating RESTful APIs for full-stack applications.</>,
-        
-        images: [
-          {
-            src: "/images/skills/backend.svg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-        ],
-      },
-      {
-        title: "SQL",
-        description: <>Designing and querying relational databases to support robust backend services.</>,
-
-        images: [
-          {
-            src: "/images/skills/sql.svg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-        ],
-      },
-      {
-        title: "Testing",
-        description: <>Proficient in testing API endpoints using Insomnia and writing automated tests to ensure 
-        reliability and functionality in Python applications, focusing on backend robustness and error handling.</>,
-
-        images: [
-          {
-            src: "/images/skills/testing.svg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
+     
           },
         ],
       },
