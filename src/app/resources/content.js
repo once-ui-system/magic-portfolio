@@ -257,15 +257,25 @@ const about = {
 
 const agileResources = {
   display: true,
-  tableOfContent: {
-    display: true,
-    subItems: false,
-  },
   label: "Agile Resources",
   title: "My Agile Resources",
-  description: `Explore Agile content and resources used by ${person.name}`,
-  // Create new Agile resources by adding a new .mdx file to app/agile/resources
-  // All resources will be listed on the /agile route
+  description: `A blend of Agile resources by ${person.name}`,
+  avatar: {
+    display: true,
+  },
+  intro: {
+    display: true,
+    title: "Test",
+    description: (
+      <>
+      <p>
+        The Agile Manifesto and Core Principles are key concepts that define the Agile movement.
+      </p>
+      </>
+    ),
+
+
+}
 };
 
 const work = {

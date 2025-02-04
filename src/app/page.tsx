@@ -145,10 +145,20 @@ export default function Home() {
       )}
       {routes["/agile"] && (
         <Flex fillWidth gap="24" mobileDirection="column">
-          <Flex flex={1} paddingLeft="l">
+          <Flex direction="column" gap="s" align="start" flex={1}>
             <Heading as="h2" variant="display-strong-xs" wrap="balance">
               My Agile Resources
             </Heading>
+            <Button 
+              id="skills" 
+              data-border="rounded"
+              variant="secondary"
+              size="s"
+              arrowIcon
+              href="/agile"
+            >
+            Explore Resources
+            </Button>
           </Flex>
           <Flex flex={2} paddingX="20">
             <Resources range={[1, 2]} columns="2" />
