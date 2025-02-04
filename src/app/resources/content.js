@@ -264,15 +264,15 @@ const agileResources = {
       </p>
       </>
     ),
-    manifesto: {
+  manifesto: {
       display: true, // set to false to hide this section
       title: "The Agile Manifesto and Core Principles",
     },
-    psm: {
+  psm: {
       display: true, // set to false to hide this section
       title: "Professional Scrum Master (PSM I) Resources",
     },
-    safe: {
+  safe: {
       display: true, // set to false to hide this section
       title: "SAFe 6.0 Scrum Master Resources",
     }

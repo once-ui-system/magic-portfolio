@@ -89,7 +89,7 @@ export default function Agile() {
           <Column fillWidth paddingY="l" gap="m">
             <Column maxWidth="s">
               <RevealFx translateY="4" fillWidth horizontal="start" paddingBottom="m">
-                <Heading marginBottom="l" variant="display-strong-s">
+                <Heading marginBottom="s" variant="display-strong-s">
                   {agileResources.intro.title}
                 </Heading>
               </RevealFx>
@@ -99,10 +99,54 @@ export default function Agile() {
                 </Text>
               </RevealFx>
             </Column>
-            <Column fillWidth flex={1}>
-              <Resources range={[1, 3]} thumbnail />
+            {agileResources.intro.manifesto.display && (
+              <>
+              <Heading
+                as="h3"
+                id={agileResources.intro.manifesto.title}
+                variant="heading-strong-xl"
+                marginBottom="s"
+              >
+                {agileResources.intro.manifesto.title}
+              </Heading>
+
+              <Column fillWidth flex={1}>
+                <Resources range={[1, 3]} thumbnail />
+              </Column>
+              </>
+            )}
+            {agileResources.intro.psm.display && (
+              <>
+              <Heading
+                as="h3"
+                id={agileResources.intro.psm.title}
+                variant="heading-strong-xl"
+                marginBottom="s"
+              >
+                {agileResources.intro.psm.title}
+              </Heading>
+
+              <Column fillWidth flex={1}>
               <Resources range={[4]} columns="2" />
             </Column>
+              </>
+            )}
+            {agileResources.intro.safe.display && (
+              <>
+              <Heading
+                as="h3"
+                id={agileResources.intro.safe.title}
+                variant="heading-strong-xl"
+                marginBottom="s"
+              >
+                {agileResources.intro.safe.title}
+              </Heading>
+
+              <Column fillWidth flex={1}>
+              <Resources range={[8]} columns="2" />
+            </Column>
+              </>
+            )}
           </Column>
         </Column>
       </Flex>
