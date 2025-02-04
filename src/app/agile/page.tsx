@@ -1,7 +1,8 @@
-import { Column, Flex, Heading, Text, RevealFx, Arrow, Button } from "@/once-ui/components";
+import { Column, Flex, Heading, Text, RevealFx, Tag, Icon, Avatar, Arrow, Button } from "@/once-ui/components";
 import { Resources } from "@/components/agileResources/Resources";
 import { baseURL } from "@/app/resources";
-import { agileResources, person} from "@/app/resources/content";
+import { about,agileResources, person} from "@/app/resources/content";
+import styles from "@/components/agileResources/Resources.module.scss";
 
 export async function generateMetadata() {
   const title = agileResources.title;
@@ -34,7 +35,7 @@ export async function generateMetadata() {
 
 export default function Agile() {
   return (
-    <Column maxWidth="s">      
+    <Column maxWidth="m">      
       <script
           type="application/ld+json"
           suppressHydrationWarning
@@ -57,24 +58,54 @@ export default function Agile() {
             }),
           }}
         />
-      <Column fillWidth paddingY="l" gap="m">
-        <Column maxWidth="s">
-          <RevealFx translateY="4" fillWidth horizontal="start" paddingBottom="m">
-            <Heading marginBottom="l" variant="display-strong-s">
-              {agileResources.intro.title}
-            </Heading>
-          </RevealFx>
-          <RevealFx translateY="8" delay={0.2} fillWidth horizontal="start" paddingBottom="m">
-            <Text wrap="balance" onBackground="neutral-weak" variant="heading-default-xl">
-              {agileResources.intro.description}
-            </Text>
-          </RevealFx>
+      <Flex fillWidth mobileDirection="column" horizontal="center">
+        {about.avatar.display && (
+          <Column
+            className={styles.avatar}
+            minWidth="160"
+            paddingX="l"
+            paddingBottom="xl"
+            gap="m"
+            flex={3}
+            horizontal="center"
+          >
+            <Avatar src={person.avatar} size="xl" />
+            <Flex gap="8" vertical="center">
+              <Icon onBackground="accent-weak" name="globe" />
+              {person.location}
+            </Flex>
+            {person.languages.length > 0 && (
+              <Flex wrap gap="8">
+                {person.languages.map((language, index) => (
+                  <Tag key={index} size="l">
+                    {language}
+                  </Tag>
+                ))}
+              </Flex>
+            )}
+          </Column>
+        )}
+        <Column className={styles.blockAlign} flex={9} maxWidth={40}>
+          <Column fillWidth paddingY="l" gap="m">
+            <Column maxWidth="s">
+              <RevealFx translateY="4" fillWidth horizontal="start" paddingBottom="m">
+                <Heading marginBottom="l" variant="display-strong-s">
+                  {agileResources.intro.title}
+                </Heading>
+              </RevealFx>
+              <RevealFx translateY="8" delay={0.2} fillWidth horizontal="start" paddingBottom="m">
+                <Text wrap="balance" onBackground="neutral-weak" variant="heading-default-xl">
+                  {agileResources.intro.description}
+                </Text>
+              </RevealFx>
+            </Column>
+            <Column fillWidth flex={1}>
+              <Resources range={[1, 3]} thumbnail />
+              <Resources range={[4]} columns="2" />
+            </Column>
+          </Column>
         </Column>
-        <Column fillWidth flex={1}>
-          <Resources range={[1, 3]} thumbnail />
-          <Resources range={[4]} columns="2" />
-        </Column>
-      </Column>
+      </Flex>
     </Column>
   );
 }

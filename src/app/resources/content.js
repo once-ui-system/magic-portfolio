@@ -79,10 +79,6 @@ const about = {
         she brings together her deep understanding of Agile principles and her hands-on experience in full-stack development 
         to deliver high-quality, adaptive solutions.
       </p>
-      <p>
-        From building responsive frontend interfaces to architecting robust backend systems, Gina is passionate about leveraging 
-        technology to create meaningful, effective digital experiences.
-      </p>
       </>
     ),
   },
@@ -130,17 +126,14 @@ const about = {
     skills: [
       {
         title: "Scrum, Agile and DevOps",
-        description: <>Certified Professional Scrum Master (PSM I) with expertise in servant leadership, Lean-Agile principles, and coaching Scrum teams. 
-                Experienced in SAFe 6.0 methodologies, including Flow Metrics, Agile Release Trains (ARTs), and Iteration Planning. Skilled in facilitating 
-                Agile ceremonies (Sprint Planning, Retrospectives, Stand-Ups) and conflict resolution. DevOps expertise includes CI/CD pipelines, 
-                cloud infrastructure, and version control, ensuring seamless deployment and automation.
+        description: <>Explore my expertise in Scrum, Agile, and DevOps—from servant leadership and SAFe 6.0 
+        to CI/CD automation and Agile Release Trains—all visualised in one streamlined graph.
         </>,
       },
       {
         title: "Frontend Development and UI Design",
-        description: <>Crafting modern, accessible, and user-friendly interfaces using HTML, CSS, JavaScript, and TypeScript. I specialise in building scalable 
-                React.js applications, leveraging Next.js, Tailwind CSS, and Bootstrap for efficient styling. My expertise includes user-centric design principles, 
-                accessibility standards, and responsive layouts. I also integrate tools like Vite, Remix, and GraphQL to enhance performance and data-driven UI experiences.</>,
+        description: <>Discover my approach to frontend development and UI design, where React, Next.js, and TypeScript 
+        meet accessibility, responsive design, and high-performance UI—all captured in one concise graph.</>,
         
         images: [
           {
@@ -153,9 +146,8 @@ const about = {
       },
       {
         title: "Backend Development and Cloud Expertise",
-        description: <>Developing robust and scalable backend solutions using Python, C#, and Node.js. Experienced in Django Rest Framework, Flask, and RESTful APIs, 
-                I ensure seamless data processing and integrations. Cloud expertise includes AWS S3 for storage, deploying applications on Netlify and Heroku, and 
-                containerisation using Docker and Kubernetes. Performance is optimised with Gunicorn for scalable web application hosting.</>,
+        description: <>Explore my backend development and cloud expertise, from scalable APIs in Django and Node.js to 
+        AWS, Docker, and Kubernetes-powered deployments—all visualized in one streamlined graph.</>,
         
         images: [
           {
@@ -168,9 +160,8 @@ const about = {
       },
       {
         title: "Databases & Data Analysis & Data Visualisation",
-        description: <>Strong foundation in SQL, PostgreSQL, SQLite, and BigQuery for efficient data querying and management. Skilled in data migrations and 
-                ETL/ELT pipelines using Airbyte and DagsterUI. Proficient in NumPy and SciPy for data analysis, and leveraging Matplotlib and Chart.js for insightful 
-                data visualisation. Experienced in designing Entity-Relationship Diagrams (ERD) to structure database architecture effectively.</>,
+        description: <>Explore my expertise in databases, data analysis, and visualization—from SQL and ETL pipelines to 
+        NumPy-driven insights and Chart.js visualisations—all captured in one concise graph.</>,
         
         images: [
           {
@@ -183,9 +174,8 @@ const about = {
       },
       {
         title: "Version Control and Collaboration Tools",
-        description: <>Ensuring smooth collaboration and source control using Git, GitHub, and GitLab. Experienced in Jira, Trello, and Microsoft Teams for 
-                effective Agile project management and tracking. Proficient in Slack and code collaboration tools, fostering team synergy in remote and 
-                hybrid environments.</>,
+        description: <>Explore my expertise in version control and collaboration, from Git and GitHub workflows to 
+        Agile project management with Jira and Trello—all visualized in one streamlined graph.</>,
 
         images: [
           {
@@ -265,17 +255,28 @@ const agileResources = {
   },
   intro: {
     display: true,
-    title: "Test",
+    title: "My Agile Resources",
     description: (
       <>
       <p>
-        The Agile Manifesto and Core Principles are key concepts that define the Agile movement.
+      A curated collection of essential resources for Scrum Masters, covering the Agile Manifesto, PSM I (Scrum.org), and SAFe 6.0. 
+      Whether you're a seasoned Scrum Master or just starting, this page provides the key tools, guides, and references to excel in your role.
       </p>
       </>
     ),
-
-
-}
+    manifesto: {
+      display: true, // set to false to hide this section
+      title: "The Agile Manifesto and Core Principles",
+    },
+    psm: {
+      display: true, // set to false to hide this section
+      title: "Professional Scrum Master (PSM I) Resources",
+    },
+    safe: {
+      display: true, // set to false to hide this section
+      title: "SAFe 6.0 Scrum Master Resources",
+    }
+  },
 };
 
 const work = {
