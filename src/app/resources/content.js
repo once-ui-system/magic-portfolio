@@ -271,6 +271,20 @@ const agileResources = {
   psm: {
       display: true, // set to false to hide this section
       title: "Professional Scrum Master (PSM I) Resources",
+      images:[
+        {
+          src: "/images/skills/ScrumMasterPoster.webp",
+          alt: "Scrum Master Poster from Scrum.org",
+          width: 400,
+          height: 600,
+      }],
+      pdf: [
+        {
+          src: "/images/pdf/ScrumMasterPoster.pdf",
+          alt: "Scrum Master Poster from Scrum.org",
+          width: 400,
+          height: 600,
+      }],
     },
   safe: {
       display: true, // set to false to hide this section

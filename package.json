@@ -27,6 +27,7 @@
     "react-icons": "^5.2.1",
     "react-masonry-css": "^1.0.16",
     "remark": "^15.0.1",
+    "remark-gfm": "^4.0.0",
     "remark-html": "^16.0.1",
     "sass": "^1.77.6",
     "sharp": "^0.33.4"
