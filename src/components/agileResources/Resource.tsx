@@ -10,7 +10,8 @@ interface ResourceProps {
 }
 
 export default function Resource({ resource, thumbnail }: ResourceProps) {
-  // const imageSrc = resource.metadata.image || resource.metadata.images?.[0]
+  const isScrumMasterPoster = resource.metadata.title === "What is a Scrum Master?";
+
   return (
     <SmartLink
       fillWidth
@@ -27,7 +28,19 @@ export default function Resource({ resource, thumbnail }: ResourceProps) {
         paddingX="16"
         gap="32"
       >
-        {resource.metadata.image && thumbnail && (
+        {isScrumMasterPoster ? (
+          <SmartImage
+          enlarge
+          height={0.2}
+          priority
+          aspectRatio="2 / 3"
+          objectFit="contain"
+          radius="m"
+          alt="ScrumMasterPoster"
+          src="/images/skills/ScrumMasterPoster.webp"
+        />
+        ) : (
+        resource.metadata.image && thumbnail && (
           <SmartImage
             priority
             maxWidth={20}
@@ -40,6 +53,7 @@ export default function Resource({ resource, thumbnail }: ResourceProps) {
             alt={"Thumbnail of " + resource.metadata.title}
             aspectRatio="16 / 9"
           />
+        )
         )}
         <Column position="relative" fillWidth gap="8" vertical="center">
           <Heading as="h2" variant="heading-strong-l" wrap="balance">

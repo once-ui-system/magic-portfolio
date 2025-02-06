@@ -24,6 +24,7 @@ type Metadata = {
   linkLive?: string;
   linkScrum?: string;
   linkSAFe?: string;
+  linkManifesto?: string;
 };
 
 function getMDXFiles(dir: string) {
@@ -57,6 +58,7 @@ function readMDXFile(filePath: string) {
     linkLive: data.linkLive || "",
     linkScrum: data.linkScrum || "",
     linkSAFe: data.linkSAFe || "",
+    linkManifesto: data.linkManifesto || "",
   };
 
   return { metadata, content };

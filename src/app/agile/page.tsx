@@ -127,7 +127,7 @@ export default function Agile() {
               </Heading>
 
               <Column fillWidth flex={1}>
-              <Resources range={[3, 3]} columns="2" />
+              <Resources range={[3, 4]} columns="2" />
             </Column>
               </>
             )}
@@ -143,7 +143,7 @@ export default function Agile() {
               </Heading>
 
               <Column fillWidth flex={1}>
-              <Resources range={[8]} columns="2" />
+              <Resources range={[5, 6]} columns="2" />
             </Column>
               </>
             )}
