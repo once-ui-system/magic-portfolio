@@ -10,6 +10,7 @@ interface ResourceProps {
 }
 
 export default function Resource({ resource, thumbnail }: ResourceProps) {
+  // const imageSrc = resource.metadata.image || resource.metadata.images?.[0]
   return (
     <SmartLink
       fillWidth

@@ -8,7 +8,7 @@ interface ResourcesProps {
   thumbnail?: boolean;
 }
 
-export function Resources({ range, columns = "1", thumbnail = false }: ResourcesProps) {
+export function Resources({ range, columns = "1", thumbnail = true }: ResourcesProps) {
   let allAgileResources = getPosts(["src", "app", "agile", "resources"]);
 
   const sortedAgileResources = allAgileResources.sort((a, b) => {
@@ -24,7 +24,10 @@ export function Resources({ range, columns = "1", thumbnail = false }: Resources
       {displayedAgileResources.length > 0 && (
         <Grid columns={columns} mobileColumns="1" fillWidth marginBottom="40" gap="m">
           {displayedAgileResources.map((resource) => (
+            <>
             <Resource key={resource.slug} resource={resource} thumbnail={thumbnail} />
+            {/* {console.log("Displaying Agile Resources with Thumbnail:", thumbnail)} */}
+            </>
           ))}
         </Grid>
       )}

@@ -161,7 +161,7 @@ export default function Home() {
             </Button>
           </Flex>
           <Flex flex={2} paddingX="20">
-            <Resources range={[1, 2]} columns="2" />
+            <Resources range={[3, 3]} thumbnail={true} />
           </Flex>
         </Flex>
       )}
