@@ -117,18 +117,6 @@ export default async function Resource({ params }: AgileParams) {
         </Button>
         <Heading variant="display-strong-s">{resource.metadata.title}</Heading>
       </Column>
-      {/* {agileResources.intro.psm.images.length > 0 && (
-          <SmartImage
-          enlarge
-          height={0.2} 
-          priority
-          aspectRatio="2 / 3"
-          objectFit="contain"
-          radius="m"
-          alt="image"
-          src={agileResources.intro.psm.images[0].src}
-        />
-      )} */}
       <Column style={{ margin: "auto" }} as="article" maxWidth="xs">
         <Flex gap="12" marginBottom="24" vertical="center">
           {resource.metadata.team?.length > 0 && <AvatarGroup reverse avatars={avatars} size="m" />}
