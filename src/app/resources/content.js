@@ -73,11 +73,20 @@ const about = {
         title: 'Work Experience',
         experiences: [
             {
-                company: 'National Geospactial Intelligence Agency',
+                company: 'National Geospatial Intelligence Agency',
                 timeframe: 'Summer 2025',
                 role: 'Software Engineer Intern, IT Architecture and Engineering',
                 achievements: [
                     <>Incoming intern for the NGA's IT Architecture and Engineering team.</>,
+                ],
+                images: []
+            },
+            {
+                company: 'Cornell CMSX',
+                timeframe: 'February 2025 - Present',
+                role: 'Software Engineer',
+                achievements: [
+                    <>Develop and maintain CMSx, Cornell CS' in-house course management software.</>,
                 ],
                 images: []
             },
@@ -94,7 +103,7 @@ const about = {
             },
             {
                 company: 'CS 2110, Object-Oriented Programming and Data Structures',
-                timeframe: 'August 2024 - Present',
+                timeframe: 'January 2025 - Present',
                 role: 'Consultant',
                 achievements: [
                     <>Grade assignments and exams, hold office hours, and provide feedback to students.</>,

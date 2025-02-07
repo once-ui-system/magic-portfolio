@@ -1,0 +1,41 @@
+---
+title: "Post-Quantum Cryptography with Big Data"
+publishedAt: "2025-01-15"
+summary: "AP Research Project concerning the performance of the NIST-Selected Federal post-quantum cryptographic standards."
+images:
+  - "/images/projects/pqc/paper.jpeg"
+team:
+  - name: "Arnab Ghosh"
+    role: "Lead Researcher"
+    avatar: "/images/avatar.jpg"
+    linkedIn: "https://www.linkedin.com/in/arnab-ghosh819/"
+  - name: "Cooper Lee"
+    role: "Assistant Researcher"
+    avatar: ""
+    linkedIn: "" 
+link: "https://github.com/arniber21/pqcbench"
+---
+  
+## Overview
+In light of the threat Shor's Algorithm (and Regev's Algorithm, which speeds up Shor's by an algorithmic factor), 
+the US government and many other implicated stakeholders have begun to pay more attention to the threat posed by 
+quantum computers towards modern encryption. Recently, NIST designated Kyber as the backend of a slew of communication
+protocols promising resistance to the threats posed to encryption by quantum computing. I, along with Cooper Lee, 
+ researched the effectiveness of Kyber with large payloads, a key use-case for any reasonable large-scale migration 
+ to a post-quantum future, finding that the existing algorithms are inefficient in their current state and infeasible
+  to be used with larger payloads. 
+
+## Motivations
+Cryptography is what led me to discover the world of Quantum Computing. I stumbled upon the idea for this research project 
+while exploring the recent developments in post-quantum cryptography, namely the standardization of Kyber in particular. 
+Intriguied, I wanted to explore the ramifications and possible use cases given that the government was beginning to take an active role
+in the post-quantum cryptographic race. After exploring a variety of avenues, I came to big data being the most exciting
+exploration I could pursue on the edge (I originally wanted to explore embedded applications, but this is quite a saturated field). 
+
+## Technical Writing
+The largest challenge of this project was surprisingly not the technology (I learned a lot of C++!) but communicating my findings
+to a non-technical audience.  
+
+## Technologies Used
+- **C++**: Writing standard, up-to-date specifications of both ECC-KEM (which comes standard in C++) and Kyber KEM (the newly standardized post-quantum algorithm). 
+- **Docker, Linux**: Testing each cipher in a sterile and fair testing environment. 
