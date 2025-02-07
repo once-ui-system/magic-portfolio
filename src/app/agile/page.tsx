@@ -1,6 +1,7 @@
 import { Column, Flex, Heading, Text, RevealFx, Tag, Icon, Avatar, Arrow, Button } from "@/once-ui/components";
 import { Resources } from "@/components/agileResources/Resources";
 import { baseURL } from "@/app/resources";
+import { getPosts } from "@/app/utils/utils";
 import { about,agileResources, person} from "@/app/resources/content";
 import styles from "@/components/agileResources/Resources.module.scss";
 
@@ -34,6 +35,8 @@ export async function generateMetadata() {
 }
 
 export default function Agile() {
+  let allAgileResources = getPosts(["src", "app", "agile", "resources"]);
+
   return (
     <Column maxWidth="m">      
       <script
@@ -55,6 +58,13 @@ export default function Agile() {
                   url: `${baseURL}${person.avatar}`,
                 },
               },
+              hasPart: allAgileResources.map((agileResources) => ({
+                "@type": "CreativeWork",
+                headline: agileResources.metadata.title,
+                description: agileResources.metadata.summary,
+                url: `https://${baseURL}/agile/${agileResources.slug}`,
+                image: `${baseURL}/${agileResources.metadata.image}`,
+              })),
             }),
           }}
         />
@@ -127,7 +137,7 @@ export default function Agile() {
               </Heading>
 
               <Column fillWidth flex={1}>
-              <Resources range={[3, 5]} columns="2" />
+              <Resources range={[3, 5]} thumbnail={true} />
             </Column>
               </>
             )}
@@ -143,7 +153,7 @@ export default function Agile() {
               </Heading>
 
               <Column fillWidth flex={1}>
-              <Resources range={[6, 9]} columns="2" />
+              <Resources range={[6, 9]} thumbnail={true} />
             </Column>
               </>
             )}

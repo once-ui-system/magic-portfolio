@@ -15,3 +15,23 @@
     left: -2rem;
     transition: var(--transition-micro-medium);
 }
+
+.avatar {
+    position: sticky;
+    height: fit-content;
+    top: var(--static-space-64);
+}
+
+@media (--s) {
+    .avatar {
+        top: auto;
+    }
+
+    .textAlign {
+        text-align: center;
+    }
+
+    .blockAlign {
+        align-self: center;
+    }
+}
