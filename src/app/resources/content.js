@@ -1,24 +1,24 @@
 import { InlineCode } from "@/once-ui/components";
 
 const person = {
-  firstName: "Selene",
-  lastName: "Yu",
+  firstName: "Álvaro",
+  lastName: "Mañoso Oca",
   get name() {
     return `${this.firstName} ${this.lastName}`;
   },
-  role: "Design Engineer",
-  avatar: "/images/avatar.jpg",
-  location: "Asia/Jakarta", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
-  languages: ["English", "Bahasa"], // optional: Leave the array empty if you don't want to display languages
+  role: "Software Architect",
+  avatar: "/images/avatar.JPEG",
+  location: "Europe/Spain", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
+  languages: ["Spanish", "English", "Catalan"], // optional: Leave the array empty if you don't want to display languages
 };
 
 const newsletter = {
-  display: true,
+  display: false,
   title: <>Subscribe to {person.firstName}'s Newsletter</>,
   description: (
     <>
-      I occasionally write about design, technology, and share thoughts on the intersection of
-      creativity and engineering.
+      I occasionally write about architecture, technology, and share thoughts on the intersection of
+      soft skills and engineering.
     </>
   ),
 };
@@ -29,14 +29,14 @@ const social = [
   {
     name: "GitHub",
     icon: "github",
-    link: "https://github.com/once-ui-system/nextjs-starter",
+    link: "https://github.com/alvaromaoc",
   },
   {
     name: "LinkedIn",
     icon: "linkedin",
-    link: "https://www.linkedin.com/company/once-ui/",
+    link: "https://www.linkedin.com/in/alvaromaoc",
   },
-  {
+  /* {
     name: "X",
     icon: "x",
     link: "",
@@ -45,18 +45,18 @@ const social = [
     name: "Email",
     icon: "email",
     link: "mailto:example@gmail.com",
-  },
+  }, */
 ];
 
 const home = {
   label: "Home",
   title: `${person.name}'s Portfolio`,
   description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Design engineer and builder</>,
+  headline: <>Software architect and community builder</>,
   subline: (
     <>
-      I'm Selene, a design engineer at <InlineCode>FLY</InlineCode>, where I craft intuitive
-      <br /> user experiences. After hours, I build my own projects.
+      I'm Álvaro, a software engineer currently working at <InlineCode>Tymit</InlineCode>.
+      <br /> At the moment I'm being tutored as a software architect in the Master's Degree of Software Development and Architecture at <InlineCode>La Salle</InlineCode>.
     </>
   ),
 };
@@ -73,7 +73,7 @@ const about = {
     display: true,
   },
   calendar: {
-    display: true,
+    display: false,
     link: "https://cal.com",
   },
   intro: {
@@ -81,9 +81,8 @@ const about = {
     title: "Introduction",
     description: (
       <>
-        Selene is a Jakarta-based design engineer with a passion for transforming complex challenges
-        into simple, elegant design solutions. Her work spans digital interfaces, interactive
-        experiences, and the convergence of design and technology.
+        Álvaro is a Spain-based software architect with a passion for transforming complex challenges
+        into simple, versatile and scalable architecture solutions.
       </>
     ),
   },
@@ -92,41 +91,49 @@ const about = {
     title: "Work Experience",
     experiences: [
       {
-        company: "FLY",
-        timeframe: "2022 - Present",
-        role: "Senior Design Engineer",
+        company: "Tymit",
+        timeframe: "2024 - Present",
+        role: "Software Engineer",
         achievements: [
           <>
-            Redesigned the UI/UX for the FLY platform, resulting in a 20% increase in user
-            engagement and 30% faster load times.
+            Designed the architecture and built the components for data migrations that onboarded 2 million
+            users into the platform.
           </>,
           <>
-            Spearheaded the integration of AI tools into design workflows, enabling designers to
-            iterate 50% faster.
+            Redesigned the way the credentials were being changed increasing their security and
+            allowing their auditability.
           </>,
         ],
         images: [
           // optional: leave the array empty if you don't want to display images
-          {
+          /*{
             src: "/images/projects/project-01/cover-01.jpg",
             alt: "Once UI Project",
             width: 16,
             height: 9,
-          },
+          }, */
         ],
       },
       {
-        company: "Creativ3",
-        timeframe: "2018 - 2022",
-        role: "Lead Designer",
+        company: "GFT Group",
+        timeframe: "2023 - 2024",
+        role: "Junior Software Engineer",
         achievements: [
           <>
-            Developed a design system that unified the brand across multiple platforms, improving
-            design consistency by 40%.
+            Built an entire end-to-end CI/CD pipeline with GitHub actions integrating SDLC controls that reduced the
+            delivery time by 14 times.
           </>,
+        ],
+        images: [],
+      },
+      {
+        company: "IThink UPC",
+        timeframe: "2020 - 2022",
+        role: "Intern Software Engineer",
+        achievements: [
           <>
-            Led a cross-functional team to launch a new product line, contributing to a 15% increase
-            in overall company revenue.
+            Designed and developed a new platform to manage the building technical inspection and all its involved
+            requirements, also allowing the neighbourhood communities to be part of the process.
           </>,
         ],
         images: [],
@@ -138,17 +145,17 @@ const about = {
     title: "Studies",
     institutions: [
       {
-        name: "University of Jakarta",
-        description: <>Studied software engineering.</>,
+        name: "Master's Degree in software development and architecture",
+        description: <>La Salle - Ramon Llull University</>,
       },
       {
-        name: "Build the Future",
-        description: <>Studied online marketing and personal branding.</>,
+        name: "Bachelor's Degree in informatics engineering",
+        description: <>Polytechnic University of Catalonia</>,
       },
     ],
   },
   technical: {
-    display: true, // set to false to hide this section
+    display: false, // set to false to hide this section
     title: "Technical skills",
     skills: [
       {
@@ -189,7 +196,7 @@ const about = {
 
 const blog = {
   label: "Blog",
-  title: "Writing about design and tech...",
+  title: "Writing about architecture and tech...",
   description: `Read what ${person.name} has been up to recently`,
   // Create new blog posts by adding a new .mdx file to app/blog/posts
   // All posts will be listed on the /blog route
@@ -198,7 +205,7 @@ const blog = {
 const work = {
   label: "Work",
   title: "My projects",
-  description: `Design and dev projects by ${person.name}`,
+  description: `Architecture and dev projects by ${person.name}`,
   // Create new project pages by adding a new .mdx file to app/blog/posts
   // All projects will be listed on the /home and /work routes
 };
