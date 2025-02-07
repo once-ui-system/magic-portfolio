@@ -144,14 +144,14 @@ const about = {
                 // optional: leave the array empty if you don't want to display images
                 images: [
                     {
-                        src: "/images/projects/avec/homepage.jpeg",
-                        alt: "Avec Homepage",
+                        src: "/images/projects/voicesof/front-page.jpeg",
+                        alt: "Voices of Equity Home Page",
                         width: 16,
                         height: 9,
                     },
                     {
-                        src: "/images/projects/avec/add-ride.jpeg",
-                        alt: "Avec Add Ride",
+                        src: "/images/projects/avec/homepage.jpeg",
+                        alt: "Avec Homepage",
                         width: 16,
                         height: 9,
                     },
