@@ -28,8 +28,8 @@ export function Resources({ range, columns = "1", thumbnail = true }: ResourcesP
             <Resource key={resource.slug || index} 
             resource={resource} 
             thumbnail={thumbnail} />
-            {/* {console.log("Displaying Agile Resources with Thumbnail:", thumbnail)} */}
-            </>
+           </>
+            
           ))}
         </Grid>
       )}

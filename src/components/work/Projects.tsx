@@ -28,8 +28,9 @@ export function Projects({ range }: ProjectsProps) {
           title={project.metadata.title}
           description={project.metadata.summary}
           content={project.content}
-          avatars={project.metadata.team?.map((member, index) => ({ 
-            key: index,
+          avatars={project.metadata.team?.map((member) => ({ 
+            // key: index,
+            id: member.avatar,
             src: member.avatar 
           })) || []}
           link={project.metadata.link || ""}

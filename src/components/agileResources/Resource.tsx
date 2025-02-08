@@ -32,7 +32,7 @@ export default function Resource({ resource, thumbnail }: ResourceProps) {
           <SmartImage
           enlarge
           height={0.2}
-          priority
+          priority={false}
           aspectRatio="2 / 3"
           objectFit="contain"
           radius="m"
@@ -42,7 +42,7 @@ export default function Resource({ resource, thumbnail }: ResourceProps) {
         ) : (
         resource.metadata.image && thumbnail && (
           <SmartImage
-            priority
+            priority={false}
             maxWidth={20}
             className={styles.image}
             sizes="640px"
