@@ -1,6 +1,7 @@
 import { getPosts } from "@/app/utils/utils";
 import { Grid } from "@/once-ui/components";
 import Resource from "./Resource";
+import React from "react";
 
 interface ResourcesProps {
   range?: [number] | [number, number];
@@ -24,11 +25,9 @@ export function Resources({ range, columns = "1", thumbnail = true }: ResourcesP
       {displayedAgileResources.length > 0 && (
         <Grid columns={columns} mobileColumns="1" fillWidth marginBottom="40" gap="m">
           {displayedAgileResources.map((resource, index) => (
-            <>
-            <Resource key={resource.slug || index} 
-            resource={resource} 
-            thumbnail={thumbnail} />
-           </>
+            <React.Fragment key={resource.slug || `resource-${index}`}>
+              <Resource resource={resource} thumbnail={thumbnail} />
+           </React.Fragment>
             
           ))}
         </Grid>
