@@ -259,8 +259,9 @@ const agileResources = {
     description: (
       <>
       <p>
-      A curated collection of essential resources for Scrum Masters, covering the Agile Manifesto, PSM I (Scrum.org), and SAFe 6.0. 
-      Whether you're a seasoned Scrum Master or just starting, this page provides the key tools, guides, and references to excel in your role.
+      Welcome to my go-to collection of essential resources for Scrum Masters! Whether you're just starting your Agile journey 
+      or you're a seasoned pro, I’ve gathered the key tools, guides, and references to help you excel. From the Agile Manifesto 
+      to PSM I (Scrum.org) and SAFe 6.0, this page is packed with everything you need to grow, adapt, and thrive in your role.
       </p>
       </>
     ),

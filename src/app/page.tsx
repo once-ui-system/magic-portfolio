@@ -117,7 +117,7 @@ export default function Home() {
               </Button>
           </Flex>
           <Flex flex={2} paddingX="20">
-            <Projects range={[0, 1]} />
+            <Projects range={[1, 1]} />
           </Flex>
         </Flex>
       )}
