@@ -156,16 +156,6 @@ export default async function Resource({ params }: AgileParams) {
                 Visit scaledagile.com
               </SmartLink>
             )}
-            {pdf && (
-              <SmartLink
-                href={pdf}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{ padding: "10px 20px", backgroundColor: "#333", color: "#fff", borderRadius: "5px" }}
-              >
-                Download PDF
-              </SmartLink>
-            )}
         </Flex>
       </Column>      
       <ScrollToHash />
