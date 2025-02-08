@@ -135,14 +135,14 @@ const about = {
         description: <>Discover my approach to frontend development and UI design, where React, Next.js, and TypeScript 
         meet accessibility, responsive design, and high-performance UI—all captured in one concise graph.</>,
         
-        images: [
-          {
-            src: "/images/skills/react.svg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-        ],
+        // images: [
+        //   {
+        //     src: "/images/skills/react.svg",
+        //     alt: "Project image",
+        //     width: 16,
+        //     height: 9,
+        //   },
+        // ],
       },
       {
         title: "Backend Development and Cloud Expertise",
