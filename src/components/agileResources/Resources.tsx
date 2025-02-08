@@ -23,9 +23,11 @@ export function Resources({ range, columns = "1", thumbnail = true }: ResourcesP
     <>
       {displayedAgileResources.length > 0 && (
         <Grid columns={columns} mobileColumns="1" fillWidth marginBottom="40" gap="m">
-          {displayedAgileResources.map((resource) => (
+          {displayedAgileResources.map((resource, index) => (
             <>
-            <Resource key={resource.slug} resource={resource} thumbnail={thumbnail} />
+            <Resource key={resource.slug || index} 
+            resource={resource} 
+            thumbnail={thumbnail} />
             {/* {console.log("Displaying Agile Resources with Thumbnail:", thumbnail)} */}
             </>
           ))}
