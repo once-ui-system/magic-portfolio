@@ -1,4 +1,5 @@
 import { Avatar, Column, Icon, IconButton, SmartImage, Tag, Text, Heading, Flex, Button, Badge } from "@/once-ui/components";
+import DetailedSkillsChart from "@/components/skills/DetailedSkillsChart";
 import OverviewSkillsChart from "@/components/skills/OverviewSkillsChart";
 import TableOfContents from "@/components/about/TableOfContents";
 import { baseURL, display, routes } from "@/app/resources";
@@ -33,6 +34,19 @@ export async function generateMetadata() {
     },
     
   };
+}
+
+interface Image {
+  width: number;
+  height: number;
+  alt: string;
+  src: string;
+}
+
+interface Skill {
+  title: string;
+  description: string;
+  images?: Image[];
 }
 
 const techStack = [
@@ -144,20 +158,52 @@ export default function Skills() {
               <Heading as="h2" id={skills.technical.title} variant="display-strong-s" marginBottom="s">
                 {skills.technical.title}
               </Heading>
-              <Button 
-                id="skills" 
-                data-border="rounded"
-                variant="secondary"
-                size="s"
-                arrowIcon
-                href="/about/#SkillsOverview"
-                >
-              More Details
-              </Button>
+              <Column fillWidth gap="m">
+                  <Text 
+                    wrap="balance" 
+                    variant="body-default-m"
+                    marginBottom="m"
+                  >
+                  {skills.technical.description}
+                  </Text>
+                </Column>              
             </Flex>
-              <Flex flex={2} paddingX="20">
+              
+              {/* Render each skill section with a chart */}
+              <Column fillWidth gap="m">
                 <OverviewSkillsChart />
-              </Flex>
+
+                {skills.technical.skills.map((skill, index) => (
+                  <Column key={`${skill.title}-${index}`} fillWidth gap="4"
+                  className={skill.title === "Agile Practices" ? "agile-skills" : "other-skills"}
+                  >
+                    <Text variant="heading-strong-l">{skill.title}</Text>
+                    <Text variant="body-default-m" onBackground="neutral-weak" marginBottom="s">
+                      {skill.description}
+                    </Text>
+                    
+                    {/* Render a chart for the matching category */}
+                    <Column fillWidth>
+                      <DetailedSkillsChart category={skill.title} />
+                    </Column>
+
+                    {skill.images && skill.images.length > 0 && (
+                      <Flex fillWidth paddingTop="m" wrap>
+                        {skill.images.map((image, index) => (
+                          <SmartImage
+                              key={index}
+                              enlarge
+                              radius="m"
+                              sizes={`${image.width}x${image.height}`}
+                              alt={image.alt}
+                              src={image.src}
+                            />
+                        ))}
+                      </Flex>
+                    )}
+                  </Column>
+                ))}
+              </Column>
           </>
         )}        
 

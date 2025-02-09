@@ -29,8 +29,8 @@ import {
   PiGridFourDuotone,
   PiBookBookmarkDuotone,
   PiToolboxDuotone,
-  PiLightbulbDuotone,
-  PiImageDuotone,
+  PiPlayCircleDuotone,
+  PiPlayFill,
 } from "react-icons/pi";
 
 import { FaDiscord, FaGithub, FaLinkedin, FaXTwitter } from "react-icons/fa6";
@@ -65,4 +65,6 @@ export const iconLibrary: Record<string, IconType> = {
   x: FaXTwitter,
   clipboard: HiClipboard,
   arrowUpRightFromSquare: HiArrowTopRightOnSquare,
+  play: PiPlayCircleDuotone,
+  playFill: PiPlayFill,
 };

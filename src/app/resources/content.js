@@ -68,16 +68,31 @@ const about = {
     description: (
       <>
       <p>
-        Gina is a skilled Scrum Master and Full-Stack Developer with a talent for driving collaboration, 
-        fostering innovation, and delivering impactful solutions. Combining expertise in Agile methodologies 
-        with technical proficiency in modern web technologies, Gina thrives in crafting scalable, user-centered 
-        applications that solve real-world problems.
+      Gina is a certified Scrum Master and Full-Stack Developer with a strong foundation in collaboration, servant leadership, 
+      and delivering impactful solutions. With a 22-year career in law enforcement, followed by two years in research, she has 
+      spent her professional life fostering cross-functional teamwork, driving innovation, and ensuring alignment between 
+      strategy and execution.
       </p>
       <p>
-        Her strengths lie in leading teams to success through servant leadership, empowering cross-functional 
-        collaboration, and aligning technical execution with business objectives. With a focus on continuous improvement, 
-        she brings together her deep understanding of Agile principles and her hands-on experience in full-stack development 
-        to deliver high-quality, adaptive solutions.
+      Her Agile journey began long before formal certification, as she consistently applied key Agile principles — adaptability, 
+      transparency, and continuous improvement—while managing high-pressure, multi-agency investigations. As an Investigations Manager 
+      at a busy metropolitan police station, she coached and mentored teams to enhance investigative capabilities, balanced competing 
+      priorities, and built strong stakeholder relationships. In her role as a Research Assistant, she refined these skills further, 
+      facilitating data-driven decision-making and cross-functional collaboration.
+      </p>
+      <p>
+      Now, as a Scrum Master, Gina is dedicated to building high-performing teams by fostering a culture of trust, empowerment, and 
+      continuous learning. She excels at removing blockers, optimising workflows, and ensuring that teams stay aligned with business 
+      objectives to deliver value-driven outcomes. 
+      </p>
+      <p>
+      In addition to her Agile expertise, Gina brings technical proficiency in full-stack development, crafting scalable, user-centered 
+      applications that solve real-world problems. She seamlessly integrates her deep understanding of Agile methodologies with hands-on 
+      experience in modern web technologies, ensuring that both teams and products evolve efficiently in dynamic environments. 
+      </p>
+      <p>
+      With a passion for servant leadership, innovation, and continuous improvement, Gina thrives at the intersection of technology 
+      and team empowerment, enabling organisations to navigate complexity and achieve meaningful, lasting impact.
       </p>
       </>
     ),
@@ -112,82 +127,95 @@ const about = {
       },
     ],
   },
+
   technical: {
     display: true, // set to false to hide this section
-    title: "Skills Overview",
+    title: "A Journey of Service",
     description: (
       <>
       <p>
-      By leveraging skills in technologies like React, Django, and Python alongside servant leadership principles, I drive collaboration and 
-      deliver robust, user-focused solutions that align technical innovation with iterative, value-driven outcomes.
+      Gina has spent her career championing the needs of vulnerable children, victim-survivors, and the wider 
+      community. Her decades of service reflect resilience, compassion, respect, and a steadfast commitment
+      to empowering individuals and strengthening communities. Whether through law enforcement, research, or
+      community leadership, her work embodies a deep commitment to collaborating with others to drive
+      meaningful and lasting change.
+      </p>
+      <br /><br />
+      <p>
+      Each recognition earned reflects Gina's dedication to fostering empowerment, resilience, and safety 
+      within the communities she has worked alongside.
       </p>
       </>
     ),
-    skills: [
+    services: [
       {
-        title: "Scrum, Agile and DevOps",
-        description: <>Explore my expertise in Scrum, Agile, and DevOps—from servant leadership and SAFe 6.0 
-        to CI/CD automation and Agile Release Trains—all visualised in one streamlined graph.
-        </>,
-      },
-      {
-        title: "Frontend Development and UI Design",
-        description: <>Discover my approach to frontend development and UI design, where React, Next.js, and TypeScript 
-        meet accessibility, responsive design, and high-performance UI—all captured in one concise graph.</>,
-        
-        // images: [
-        //   {
-        //     src: "/images/skills/react.svg",
-        //     alt: "Project image",
-        //     width: 16,
-        //     height: 9,
-        //   },
-        // ],
-      },
-      {
-        title: "Backend Development and Cloud Expertise",
-        description: <>Explore my backend development and cloud expertise, from scalable APIs in Django and Node.js to 
-        AWS, Docker, and Kubernetes-powered deployments—all visualized in one streamlined graph.</>,
-        
-        images: [
+        title: "WA Police Excellence Awards (2017)",
+        description: <>Gina was awarded the 9 News WA Police Excellence Award 2017 - Police Officer of the Year
+        for her dedication to victim-survivors and their families.</>,
+        videos: [
+          // optional: leave the array empty if you don't want to display images
           {
-            src: "/images/skills/nextjs.svg",
-            alt: "Project image",
+            title: "WA Police Excellence Award 2017",
+            src: "/images/about/video-thumbnail.webp",
+            alt: "WA Police Excellence Award 2017",
             width: 16,
             height: 9,
           },
         ],
       },
       {
-        title: "Databases & Data Analysis & Data Visualisation",
-        description: <>Explore my expertise in databases, data analysis, and visualization—from SQL and ETL pipelines to 
-        NumPy-driven insights and Chart.js visualisations—all captured in one concise graph.</>,
-        
+        title: "Canva Force for Good Scholarship (2024)",
+        description: <>Gina was awarded the Canva Force for Good Scholarship, a partnership with She Codes Australia
+        supporting women to break into tech and building meaningful careers through education, inclusion, and empowerment.</>,
+        images: [{
+          
+      }]  
+      },
+      {
+        title: "First Class Honours in Psychology (2021)",
+          description: <>Gina was awarded First Class Honours in Psychology at Edith Cowan University (2021) with her thesis
+          focused on improving responses for children and young people who have displayed harmful sexual behaviours.</>,
+        images: [{
+          
+      }]  
+      },
+      {
+        title: "WA Police Medal (2018)",
+        description: <>Gina was awarded the WA Police Medal for 10 years of diligent and ethical service with the
+          Western Australia Police Force.</>,
+        images: [{
+          
+      }]  
+      },
+      {
+        title: "Certificate of Outstanding Performance (2017)",
+        description: <>Gina was awarded the Certificate of Outstanding Performance in recognition for her nomination for the 2017
+        Australian Council of Women and Policing "Excellence in Policing" Awards in the category of "Most Outstanding Female Investigator".</>,
         images: [
-          {
-            src: "/images/skills/backend.svg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
+          
         ],
       },
       {
-        title: "Version Control and Collaboration Tools",
-        description: <>Explore my expertise in version control and collaboration, from Git and GitHub workflows to 
-        Agile project management with Jira and Trello—all visualized in one streamlined graph.</>,
-
+        title: "Certificate of Outstanding Performance (2015)",
+        description: <>Gina was awarded the Certificate of Outstanding Performance for her dedication and exemplary compassion to victims of
+        the Australian Federal Government's Royal Commission into Institutional Child Sex Abuse.</>,
         images: [
-          {
-            src: "/images/skills/sql.svg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
+          
+        ],
+      },
+      {
+        title: "Bravery Award (2005)",
+        description: <>Gina was awarded the Bravery Award by the Bavarian Police Force for her decisive actions while off duty in Munich, where she
+        intervened to stop the mugging of an elderly man at a train station, ensuring his safety and the arrest of both offenders.</>,
+        images: [
+          
         ],
       },
     ],
   },
+      
+   
+
   studies: {
     display: true, // set to false to hide this section
     title: "Studies",
@@ -340,19 +368,42 @@ const skills = {
             Agile leadership, and DevOps practices.</>,
     skills: [
       {
-        title: "Agile Leadership and Practices",
-        description: <>Leading Agile teams as a Professional Scrum Master, 
-        focusing on delivering iterative value and fostering collaboration.</>,
-        
+        title: "Scrum, Agile and DevOps",
+        description: <>Explore my expertise in Scrum, Agile, and DevOps—from servant leadership and SAFe 6.0 
+        to CI/CD automation and Agile Release Trains—all visualised in one streamlined graph.
+        </>,
+        images: [{
+          src: "/images/skills/nextjs.svg",
+          alt: "Next JS Logo",
+          width: 16,
+          height: 9,
+      }]  
+      },
+      {
+        title: "Frontend Development and UI Design",
+        description: <>Discover my approach to frontend development and UI design, where React, Next.js, and TypeScript 
+        meet accessibility, responsive design, and high-performance UI—all captured in one concise graph.</>,
         images: [
-          {
-            src: "/images/skills/ScrumMasterPoster.webp",
-            alt: "Scrum Master Poster from Scrum.org",
-            width: 400,
-            height: 600,
-     
-          },
-        ],
+          
+        ]
+    },
+      {
+        title: "Backend Development and Cloud Expertise",
+        description: <>Explore my backend development and cloud expertise, from scalable APIs in Django and Node.js to 
+        AWS, Docker, and Kubernetes-powered deployments—all visualized in one streamlined graph.</>,
+        
+      },
+      {
+        title: "Databases & Data Analysis & Data Visualisation",
+        description: <>Explore my expertise in databases, data analysis, and visualization—from SQL and ETL pipelines to 
+        NumPy-driven insights and Chart.js visualisations—all captured in one concise graph.</>,
+      
+      },
+      {
+        title: "Version Control and Collaboration Tools",
+        description: <>Explore my expertise in version control and collaboration, from Git and GitHub workflows to 
+        Agile project management with Jira and Trello—all visualized in one streamlined graph.</>,
+
       },
     ],
   },
