@@ -1,3 +1,4 @@
+import React, { JSX } from "react";
 import {
   Avatar,
   Button,
@@ -12,8 +13,9 @@ import {
 } from "@/once-ui/components";
 import { baseURL } from "@/app/resources";
 import TableOfContents from "@/components/about/TableOfContents";
-import styles from "@/components/about/about.module.scss";
+import styles from "@/components/about/About.module.scss";
 import { person, about, social } from "@/app/resources/content";
+
 
 export async function generateMetadata() {
   const title = about.title;
@@ -59,7 +61,7 @@ export default function About() {
     {
       title: about.technical.title,
       display: about.technical.display,
-      items: about.technical.skills.map((skill) => skill.title),
+      items: about.technical.services.map((services) => services.title),
     },
     {
       title: about.studies.title,
@@ -193,14 +195,14 @@ export default function About() {
           </Column>
 
           {about.intro.display && (
-            <Column className="space-y-4" textVariant="body-default-l" fillWidth gap="m" marginBottom="xl">
+            <Column className="space-y-4" textVariant="body-default-l" fillWidth gap="m" marginBottom="l">
               {about.intro.description}
             </Column>
           )}
 
           {about.work.display && (
             <>
-              <Heading as="h2" id={about.work.title} variant="display-strong-s" marginBottom="m">
+              <Heading as="h2" id={about.work.title} variant="display-strong-s" marginBottom="s">
                 {about.work.title}
               </Heading>
               <Column fillWidth gap="l" marginBottom="40">
@@ -214,7 +216,7 @@ export default function About() {
                         {experience.timeframe}
                       </Text>
                     </Flex>
-                    <Text variant="body-default-s" onBackground="brand-weak" marginBottom="m">
+                    <Text variant="body-default-s" onBackground="brand-weak" marginBottom="s">
                       {experience.role}
                     </Text>
                     <Column as="ul" gap="16">
@@ -257,47 +259,57 @@ export default function About() {
 
           {about.technical.display && (
             <>
-              <Heading
-                as="h2"
-                id={about.technical.title}
-                variant="display-strong-s"
-                marginBottom="40"
-              >
+              <Column maxWidth="m" gap="m" horizontal="center">
+                <Heading
+                  as="h2"
+                  id={about.technical.title}
+                  variant="display-strong-s"
+                  marginBottom="s"
+                >
                 {about.technical.title}
-              </Heading>
-              <Column fillWidth gap="l">
-                {about.technical.skills.map((skill, index) => (
-                  <Column key={`${skill}-${index}`} fillWidth gap="4"
-                  className={skill.title === "Agile Practices" ? "agile-skills" : "other-skills"}
-                  >
-                    <Text variant="heading-strong-l">{skill.title}</Text>
-                    <Text variant="body-default-m" onBackground="neutral-weak">
-                      {skill.description}
-                    </Text>
-                    {skill.images && skill.images.length > 0 && (
-                      <Flex fillWidth paddingTop="m" gap="12" wrap>
-                        {skill.images.map((image, index) => (
-                          <Flex
-                            key={index}
-                            className={skill.title === "Agile Practices" ? "agile-skills" : "other-skills"}
-                            border="neutral-medium"
-                            radius="m"
-                            minWidth={skill.title === "Agile Practices" ? image.width / 50 : 16} // Default for others
-                            height={skill.title === "Agile Practices" ? image.height / 50 : 9} // Default for others
-                          >
-                            <SmartImage
-                              enlarge
-                              radius="m"
-                              sizes={`${image.width}x${image.height}`}
-                              alt={image.alt}
-                              src={image.src}
-                            />
-                          </Flex>
-                        ))}
-                      </Flex>
-                    )}
-                  </Column>
-                ))}
+                </Heading>
+                <Text 
+                    className="space-y-4"
+                    wrap="balance" 
+                    variant="body-default-m"
+                    gap="m"
+                    marginBottom="s"
+
+                >
+                  {about.technical.description}
+                </Text>
+
+                {/* Warning Message for Aboriginal viewers */}
+                <Text variant="heading-default-m" onBackground="danger-strong" marginBottom="s">
+                  ⚠️ Aboriginal and Torres Strait Islander viewers are advised that this video may
+                  contain images, voices, and names of deceased persons.
+                </Text>
+                {/* Conditional Rendering: Show Thumbnail or Video */}
+                {/* Direct Video Embed */}
+                <iframe
+                    width="100%"
+                    height="315"
+                    src="https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/WA.Police/videos/1814792681887509/"
+                    allow="autoplay; clipboard-write; encrypted-media; picture-in-picture"
+                    allowFullScreen
+                    style={{
+                      border: "none",
+                      borderRadius: "8px",
+                      boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)",
+                    }}
+                    title="Nine News WA Police Excellence Awards 2017"
+                  ></iframe>
+
+                  {about.technical.services.map((service, index) => (
+                    <Column key={`${service.title}-${index}`} fillWidth gap="m" marginBottom="s">
+                      <Text id={service.title} variant="heading-strong-l">
+                        {service.title}
+                      </Text>
+                      <Text variant="body-default-m" onBackground="neutral-weak">
+                        {service.description}
+                      </Text>
+                    </Column>
+                  ))}                             
               </Column>
             </>
           )}

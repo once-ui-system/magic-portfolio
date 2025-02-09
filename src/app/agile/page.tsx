@@ -1,7 +1,9 @@
-import { Column, Flex, Heading } from "@/once-ui/components";
+import { Column, Flex, Heading, Text, RevealFx, Tag, Icon, Avatar, Arrow, Button } from "@/once-ui/components";
 import { Resources } from "@/components/agileResources/Resources";
 import { baseURL } from "@/app/resources";
-import { agileResources, person} from "@/app/resources/content";
+import { getPosts } from "@/app/utils/utils";
+import { about,agileResources, person} from "@/app/resources/content";
+import styles from "@/components/agileResources/Resources.module.scss";
 
 export async function generateMetadata() {
   const title = agileResources.title;
@@ -33,37 +35,131 @@ export async function generateMetadata() {
 }
 
 export default function Agile() {
+  let allAgileResources = getPosts(["src", "app", "agile", "resources"]);
+
   return (
-    <Column maxWidth="s">
+    <Column maxWidth="m">      
       <script
-        type="application/ld+json"
-        suppressHydrationWarning
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Article",
-            headline: agileResources.title,
-            description: agileResources.description,
-            url: `https://${baseURL}/agile`,
-            image: `${baseURL}/og?title=${encodeURIComponent(agileResources.title)}`,
-            author: {
-              "@type": "Person",
-              name: person.name,
-              image: {
-                "@type": "ImageObject",
-                url: `${baseURL}${person.avatar}`,
+          type="application/ld+json"
+          suppressHydrationWarning
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Article",
+              headline: agileResources.title,
+              description: agileResources.description,
+              url: `https://${baseURL}/agile`,
+              image: `${baseURL}/og?title=${encodeURIComponent(agileResources.title)}`,
+              author: {
+                "@type": "Person",
+                name: person.name,
+                image: {
+                  "@type": "ImageObject",
+                  url: `${baseURL}${person.avatar}`,
+                },
               },
-            },
-          }),
-        }}
-      />
-      <Heading marginBottom="l" variant="display-strong-s">
-        {agileResources.title}
-      </Heading>
-      <Column fillWidth flex={1}>
-        <Resources range={[1, 3]} thumbnail />
-        <Resources range={[4]} columns="2" />
-      </Column>
+              hasPart: allAgileResources.map((agileResources) => ({
+                "@type": "CreativeWork",
+                headline: agileResources.metadata.title,
+                description: agileResources.metadata.summary,
+                url: `https://${baseURL}/agile/${agileResources.slug}`,
+                image: `${baseURL}/${agileResources.metadata.image}`,
+              })),
+            }),
+          }}
+        />
+      <Flex fillWidth mobileDirection="column" horizontal="center">
+        {about.avatar.display && (
+          <Column
+            className={styles.avatar}
+            minWidth="160"
+            paddingX="l"
+            paddingBottom="xl"
+            gap="m"
+            flex={3}
+            horizontal="center"
+          >
+            <Avatar src={person.avatar} size="xl" />
+            <Flex gap="8" vertical="center">
+              <Icon onBackground="accent-weak" name="globe" />
+              {person.location}
+            </Flex>
+            {person.languages.length > 0 && (
+              <Flex wrap gap="8">
+                {person.languages.map((language, index) => (
+                  <Tag key={index} size="l">
+                    {language}
+                  </Tag>
+                ))}
+              </Flex>
+            )}
+          </Column>
+        )}
+        <Column className={styles.blockAlign} flex={9} maxWidth={40}>
+          <Column fillWidth paddingY="l" gap="m">
+            <Column maxWidth="s">
+              <RevealFx translateY="4" fillWidth horizontal="start" paddingBottom="m">
+                <Heading marginBottom="s" variant="display-strong-s">
+                  {agileResources.intro.title}
+                </Heading>
+              </RevealFx>
+              <RevealFx translateY="8" delay={0.2} fillWidth horizontal="start" paddingBottom="m">
+                <Text wrap="balance" onBackground="neutral-weak" variant="heading-default-xl">
+                  {agileResources.intro.description}
+                </Text>
+              </RevealFx>
+            </Column>
+            {agileResources.intro.manifesto.display && (
+              <>
+              <Heading
+                as="h3"
+                id={agileResources.intro.manifesto.title}
+                variant="heading-strong-xl"
+                marginBottom="s"
+              >
+                {agileResources.intro.manifesto.title}
+              </Heading>
+
+              <Column fillWidth flex={1}>
+                <Resources range={[1, 2]} thumbnail={true} />
+              </Column>
+              </>
+            )}
+            {agileResources.intro.psm.display && (
+              <>
+              <Heading
+                as="h3"
+                id={agileResources.intro.psm.title}
+                variant="heading-strong-xl"
+                marginBottom="s"
+              >
+                {agileResources.intro.psm.title}
+              </Heading>
+
+              <Column fillWidth flex={1}>
+              <Resources range={[3, 5]} thumbnail={true} />
+            </Column>
+              </>
+            )}
+            {agileResources.intro.safe.display && (
+              <>
+              <Heading
+                as="h3"
+                id={agileResources.intro.safe.title}
+                variant="heading-strong-xl"
+                marginBottom="s"
+              >
+                {agileResources.intro.safe.title}
+              </Heading>
+
+              <Column fillWidth flex={1}>
+              <Resources range={[6, 9]} thumbnail={true} />
+            </Column>
+              </>
+            )}
+          </Column>
+        </Column>
+      </Flex>
     </Column>
   );
 }

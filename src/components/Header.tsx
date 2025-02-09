@@ -7,7 +7,7 @@ import { Fade, Flex, Line, ToggleButton } from "@/once-ui/components";
 import styles from "@/components/Header.module.scss";
 
 import { routes, display } from "@/app/resources";
-import { person, home, about, agileResources, work, gallery } from "@/app/resources/content";
+import { person, home, about, agileResources, work, skills } from "@/app/resources/content";
 
 type TimeDisplayProps = {
   timeZone: string;
@@ -109,6 +109,23 @@ export const Header = () => {
                   />
                 </>
               )}
+              {routes["/skills"] && (
+                <>
+                  <ToggleButton
+                    className="s-flex-hide"
+                    prefixIcon="skills"
+                    href="/skills"
+                    label={skills.label}
+                    selected={pathname.startsWith("/skills")}
+                  />
+                  <ToggleButton
+                    className="s-flex-show"
+                    prefixIcon="skills"
+                    href="/skills"
+                    selected={pathname.startsWith("/skills")}
+                  />
+                </>
+              )}
               {routes["/agile"] && (
                 <>
                   <ToggleButton
@@ -123,23 +140,6 @@ export const Header = () => {
                     prefixIcon="book"
                     href="/agile"
                     selected={pathname.startsWith("/agile")}
-                  />
-                </>
-              )}
-              {routes["/gallery"] && (
-                <>
-                  <ToggleButton
-                    className="s-flex-hide"
-                    prefixIcon="gallery"
-                    href="/gallery"
-                    label={gallery.label}
-                    selected={pathname.startsWith("/gallery")}
-                  />
-                  <ToggleButton
-                    className="s-flex-show"
-                    prefixIcon="gallery"
-                    href="/gallery"
-                    selected={pathname.startsWith("/gallery")}
                   />
                 </>
               )}

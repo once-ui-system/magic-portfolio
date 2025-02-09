@@ -1,10 +1,10 @@
 import React from "react";
-
+import OverviewSkillsChart from "@/components/skills/OverviewSkillsChart";
 import { Heading, Flex, Text, Button, Avatar, RevealFx, Arrow, Column } from "@/once-ui/components";
 import { Projects } from "@/components/work/Projects";
 import Acknowledgement from "@/components/Acknowledgement";
 import { baseURL, routes } from "@/app/resources";
-import { home, about, person } from "@/app/resources/content";
+import { home, about, person, agileResources, work, skills } from "@/app/resources/content";
 import { Resources } from "@/components/agileResources/Resources";
 
 export async function generateMetadata() {
@@ -99,22 +99,72 @@ export default function Home() {
           </RevealFx>
         </Column>
       </Column>
-      <RevealFx translateY="16" delay={0.6}>
-        <Projects range={[1, 1]} />
-      </RevealFx>
-      {routes["/agile"] && (
+      {routes["/work"] && (
         <Flex fillWidth gap="24" mobileDirection="column">
-          <Flex flex={1} paddingLeft="l">
+          <Flex direction="column" gap="s" align="start" flex={1}>
             <Heading as="h2" variant="display-strong-xs" wrap="balance">
-              My Agile Resources
+              My Projects
             </Heading>
+            <Button 
+              id="projects" 
+              data-border="rounded"
+              variant="secondary"
+              size="s"
+              arrowIcon
+              href="/work"
+            >
+              Explore Projects
+              </Button>
           </Flex>
-          <Flex flex={3} paddingX="20">
-            <Resources range={[1, 2]} columns="2" />
+          <Flex flex={2} paddingX="20">
+            <Projects range={[1, 1]} />
           </Flex>
         </Flex>
       )}
-      <Projects range={[2]} />
+      {routes["/skills"] && (
+        <Flex fillWidth gap="24" mobileDirection="column">
+          <Flex direction="column" gap="s" align="start" flex={1}>
+            <Heading as="h2" variant="display-strong-xs" wrap="balance">
+              My Tech Skills
+            </Heading>
+            <Button 
+              id="skills" 
+              data-border="rounded"
+              variant="secondary"
+              size="s"
+              arrowIcon
+              href="/skills"
+            >
+            Explore Skills
+            </Button>
+          </Flex>
+          <Flex flex={2} paddingX="20">
+            <OverviewSkillsChart />
+          </Flex>
+        </Flex>
+      )}
+      {routes["/agile"] && (
+        <Flex fillWidth gap="24" mobileDirection="column">
+          <Flex direction="column" gap="s" align="start" flex={1}>
+            <Heading as="h2" variant="display-strong-xs" wrap="balance">
+              My Agile Resources
+            </Heading>
+            <Button 
+              id="skills" 
+              data-border="rounded"
+              variant="secondary"
+              size="s"
+              arrowIcon
+              href="/agile"
+            >
+            Explore Resources
+            </Button>
+          </Flex>
+          <Flex flex={2} paddingX="20">
+            <Resources range={[3, 3]} thumbnail={true} />
+          </Flex>
+        </Flex>
+      )}
     </Column>
     </>
   );

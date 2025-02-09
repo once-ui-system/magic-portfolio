@@ -6,7 +6,7 @@ type Team = {
   name: string;
   role: string;
   avatar: string;
-  linkedIn: string;
+  linkedIn?: string;
 };
 
 type Metadata = {
@@ -15,12 +15,16 @@ type Metadata = {
   summary: string;
   image?: string;
   images: string[];
+  pdf?: string;
   tag?: string;
   team: Team[];
   link?: string;
   linkGithubFrontend?: string;
   linkGithubBackend?: string;
   linkLive?: string;
+  linkScrum?: string;
+  linkSAFe?: string;
+  linkManifesto?: string;
 };
 
 function getMDXFiles(dir: string) {
@@ -45,12 +49,16 @@ function readMDXFile(filePath: string) {
     summary: data.summary || "",
     image: data.image || "",
     images: data.images || [],
+    pdf: data.pdf || "",
     tag: data.tag || [],
     team: data.team || [],
     link: data.link || "",
     linkGithubFrontend: data.linkGithubFrontend || "",
     linkGithubBackend: data.linkGithubBackend || "",
     linkLive: data.linkLive || "",
+    linkScrum: data.linkScrum || "",
+    linkSAFe: data.linkSAFe || "",
+    linkManifesto: data.linkManifesto || "",
   };
 
   return { metadata, content };

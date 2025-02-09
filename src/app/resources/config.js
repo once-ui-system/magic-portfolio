@@ -5,13 +5,13 @@ const routes = {
   "/about": true,
   "/work": true,
   "/agile": true,
-  "/gallery": true,
+  "/skills": true,
 };
 
 // Enable password protection on selected routes
 // Set password in pages/api/authenticate.ts
 const protectedRoutes = {
-  "/work/automate-design-handovers-with-a-figma-to-code-pipeline": true,
+  "/agile/resource7": true,
 };
 
 const style = {
