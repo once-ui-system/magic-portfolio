@@ -57,7 +57,6 @@ const StylePanel = forwardRef<HTMLDivElement, StylePanelProps>(({ ...rest }, ref
   const [solid, setSolid] = useState(style.solid);
   const [solidStyle, setSolidStyle] = useState(style.solidStyle);
   const [transition, setTransition] = useState(style.transition);
-  const [scaling, setScaling] = useState(style.scaling);
   const [surface, setSurface] = useState(style.surface);
 
   useEffect(() => {
@@ -70,7 +69,6 @@ const StylePanel = forwardRef<HTMLDivElement, StylePanelProps>(({ ...rest }, ref
     root.setAttribute("data-solid-style", solidStyle);
     root.setAttribute("data-theme", theme);
     root.setAttribute("data-transition", transition);
-    root.setAttribute("data-scaling", scaling);
     root.setAttribute("data-surface", surface);
     root.setAttribute("data-transition", transition);
   }, [
@@ -83,7 +81,6 @@ const StylePanel = forwardRef<HTMLDivElement, StylePanelProps>(({ ...rest }, ref
     theme,
     transition,
     surface,
-    scaling,
   ]);
 
   return (
@@ -427,40 +424,6 @@ const StylePanel = forwardRef<HTMLDivElement, StylePanelProps>(({ ...rest }, ref
           paddingY="16"
           gap="24"
         >
-          <Text variant="label-default-s">Scaling</Text>
-          <SegmentedControl
-            maxWidth={22}
-            minWidth={0}
-            onToggle={(value) => setScaling(value as "90" | "95" | "100" | "105" | "110")}
-            selected={scaling}
-            buttons={[
-              {
-                size: "l",
-                label: "90",
-                value: "90",
-              },
-              {
-                size: "l",
-                label: "95",
-                value: "95",
-              },
-              {
-                size: "l",
-                label: "100",
-                value: "100",
-              },
-              {
-                size: "l",
-                label: "105",
-                value: "105",
-              },
-              {
-                size: "l",
-                label: "110",
-                value: "110",
-              },
-            ]}
-          />
         </Flex>
         <Flex
           horizontal="space-between"

@@ -12,17 +12,18 @@ export default async function sitemap() {
     lastModified: project.metadata.publishedAt,
   }));
 
-  const skills = getPosts(["src", "app", "skill", "skills"]).map((skill) => ({
+  const skills = getPosts(["src", "app", "skills"]).map((skill) => ({
     url: `${baseURL}/skills/${skill.slug}`,
     lastModified: skill.metadata.publishedAt,
   }));
 
-  const activeRoutes = Object.keys(routesConfig).filter((route) => routesConfig[route]);
+  const activeRoutes = Object.keys(routesConfig).filter(
+    (route) => routesConfig[route as keyof typeof routesConfig],);
 
   const routes = activeRoutes.map((route) => ({
     url: `${baseURL}${route !== "/" ? route : ""}`,
     lastModified: new Date().toISOString().split("T")[0],
   }));
 
-  return [...routes, ...agileResources, ...works];
+  return [...routes, ...agileResources, ...works, ...skills];
 }

@@ -133,8 +133,6 @@ export default async function RootLayout({ children }: RootLayoutProps) {
             grid={{
               display: effects.grid.display,
               color: effects.grid.color,
-              width: effects.grid.width as any,
-              height: effects.grid.height as any,
               opacity: effects.grid.opacity as any,
             }}
             lines={{
