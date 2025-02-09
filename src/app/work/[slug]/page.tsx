@@ -6,13 +6,8 @@ import { baseURL } from "@/app/resources";
 import { person } from "@/app/resources/content";
 import { formatDate } from "@/app/utils/formatDate";
 import ScrollToHash from "@/components/ScrollToHash";
-import type { AppProps } from "next/app";
 
-interface WorkParams extends AppProps {
-  params: {
-    slug: string;
-  };
-}
+type Params = Promise<{ slug: string }>
 
 export async function generateStaticParams(): Promise<{ slug: string }[]> {
   const projects = getPosts(["src", "app", "work", "projects"]);
@@ -21,9 +16,11 @@ export async function generateStaticParams(): Promise<{ slug: string }[]> {
   }));
 }
 
-export async function generateMetadata({ params }: WorkParams) {
-  const { slug } = params;
-  const project = getPosts(["src", "app", "work", "projects"]).find((project) => project.slug === slug);
+export async function generateMetadata({ params }: { params: Params }) {
+  const { slug } = await params;
+  const project = getPosts(["src", "app", "work", "projects"]).find(
+    (project) => project.slug === slug
+  );
 
   if (!project) {
     return;
@@ -69,9 +66,10 @@ export async function generateMetadata({ params }: WorkParams) {
   };
 }
 
-export default async function Project({ params }: WorkParams) { 
-  const { slug } = params;
-  const project = getPosts(["src", "app", "work", "projects"]).find((project) => project.slug === slug);
+export default async function Page({ params }: { params: Params }) {
+  const { slug } = await params;
+  const project = getPosts(["src", "app", "work", "projects"]).find(
+    (project) => project.slug === slug);
 
   if (!project) {
     notFound();
