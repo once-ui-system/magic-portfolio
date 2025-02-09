@@ -1,4 +1,4 @@
-import { Column, Flex, Heading, Text, RevealFx, Tag, Icon, Avatar, Arrow, Button } from "@/once-ui/components";
+import { Column, Flex, Heading, Text, RevealFx, Tag, Icon, Avatar } from "@/once-ui/components";
 import { Resources } from "@/components/agileResources/Resources";
 import { baseURL } from "@/app/resources";
 import { getPosts } from "@/app/utils/utils";

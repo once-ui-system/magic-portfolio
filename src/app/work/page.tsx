@@ -1,5 +1,5 @@
 import { getPosts } from "@/app/utils/utils";
-import { Column, Flex, Heading, RevealFx, Avatar, Button, Icon, Tag } from "@/once-ui/components";
+import { Column, Flex, Avatar, Icon, Tag } from "@/once-ui/components";
 import { Projects } from "@/components/work/Projects";
 import { baseURL } from "@/app/resources";
 import { person, work, about } from "@/app/resources/content";

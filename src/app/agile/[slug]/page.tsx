@@ -1,9 +1,9 @@
 import { notFound } from "next/navigation";
 import { CustomMDX } from "@/components/mdx";
 import { getPosts } from "@/app/utils/utils";
-import { AvatarGroup, Button, Column, Heading, Flex, Text, SmartImage, SmartLink } from "@/once-ui/components";
+import { AvatarGroup, Button, Column, Heading, Flex, Text, SmartLink } from "@/once-ui/components";
 import { baseURL } from "@/app/resources";
-import { agileResources, person } from "@/app/resources/content";
+import { person } from "@/app/resources/content";
 import { formatDate } from "@/app/utils/formatDate";
 import ScrollToHash from "@/components/ScrollToHash";
 

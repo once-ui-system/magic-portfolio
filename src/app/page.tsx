@@ -1,10 +1,10 @@
 import React from "react";
 import OverviewSkillsChart from "@/components/skills/OverviewSkillsChart";
-import { Heading, Flex, Text, Button, Avatar, RevealFx, Arrow, Column } from "@/once-ui/components";
+import { Heading, Flex, Text, Button, Avatar, RevealFx, Column } from "@/once-ui/components";
 import { Projects } from "@/components/work/Projects";
 import Acknowledgement from "@/components/Acknowledgement";
 import { baseURL, routes } from "@/app/resources";
-import { home, about, person, agileResources, work, skills } from "@/app/resources/content";
+import { home, about, person } from "@/app/resources/content";
 import { Resources } from "@/components/agileResources/Resources";
 
 export async function generateMetadata() {
