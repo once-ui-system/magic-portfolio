@@ -1,11 +1,12 @@
 import React from "react";
-import OverviewSkillsChart from "@/components/skills/OverviewSkillsChart";
 import { Heading, Flex, Text, Button, Avatar, RevealFx, Column } from "@/once-ui/components";
 import { Projects } from "@/components/work/Projects";
 import Acknowledgement from "@/components/Acknowledgement";
 import { baseURL, routes } from "@/app/resources";
 import { home, about, person } from "@/app/resources/content";
 import { Resources } from "@/components/agileResources/Resources";
+
+const OverviewSkillsChart = React.lazy(() => import("@/components/skills/OverviewSkillsChart"));
 
 export async function generateMetadata() {
   const title = home.title;

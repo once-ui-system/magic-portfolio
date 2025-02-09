@@ -26,8 +26,8 @@ const OverviewSkillsChart = () => {
     {
       label: "Average Skill Rating",
       data: categoriesData.map((item) => item.average),
-      backgroundColor: "rgba(135, 206, 250, 0.5)",
-      borderColor: "rgba(0, 123, 255, 1)",
+      backgroundColor: "lightblue",
+      borderColor: "blue",
       borderWidth: 1,
       barThickness: 30,
     },

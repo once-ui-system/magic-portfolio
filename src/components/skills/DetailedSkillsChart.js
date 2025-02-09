@@ -20,8 +20,8 @@ const DetailedSkillsChart = ({ category }) => {
         {
             label: "Skill Rating (1-10)",
             data: ratings,
-            backgroundColor: "rgba(135, 206, 250, 0.5)", // Sky blue
-            borderColor: "rgba(0, 123, 255, 1)", // Blue
+            backgroundColor: "lightblue", 
+            borderColor: "blue", 
             borderWidth: 1,
             barThickness: 10,
         },

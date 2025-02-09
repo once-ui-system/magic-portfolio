@@ -1,12 +1,12 @@
 import React from "react";
 import { Avatar, Column, Icon, SmartImage, Tag, Text, Heading, Flex} from "@/once-ui/components";
-import TableOfContents from "@/components/about/TableOfContents";
 import { baseURL} from "@/app/resources";
 import { skills, person, about } from "@/app/resources/content";
 import styles from "@/components/skills/Skills.module.scss";
 
 const DetailedSkillsChart = React.lazy(() => import("@/components/skills/DetailedSkillsChart"));
 const OverviewSkillsChart = React.lazy(() => import("@/components/skills/OverviewSkillsChart"));
+const TableOfContents = React.lazy(() => import("@/components/about/TableOfContents"));
 
 export async function generateMetadata() {
   const title = skills.title;
