@@ -6,7 +6,8 @@
     "export": "next export",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "clean": "rm -rf .next"
   },
   "dependencies": {
     "@floating-ui/react-dom": "^2.1.1",
@@ -29,7 +30,6 @@
     "remark": "^15.0.1",
     "remark-gfm": "^4.0.0",
     "remark-html": "^16.0.1",
-    "sass": "^1.77.6",
     "sharp": "^0.33.4"
   },
   "devDependencies": {
@@ -41,6 +41,7 @@
     "eslint": "^9.20.0",
     "postcss-custom-media": "^10.0.7",
     "postcss-flexbugs-fixes": "^5.0.2",
+    "sass": "^1.84.0",
     "typescript": "^5"
   }
 }

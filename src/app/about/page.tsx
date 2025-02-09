@@ -13,7 +13,7 @@ import {
 } from "@/once-ui/components";
 import { baseURL } from "@/app/resources";
 import TableOfContents from "@/components/about/TableOfContents";
-import styles from "@/components/about/About.module.scss";
+import styles from '@/components/about/About.module.scss';
 import { person, about, social } from "@/app/resources/content";
 
 
