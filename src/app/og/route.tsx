@@ -7,6 +7,10 @@ export const runtime = "edge";
 export async function GET(request: Request) {
   let url = new URL(request.url);
   let title = url.searchParams.get("title") || "Portfolio";
+  const font = fetch(new URL("../../../public/fonts/Inter.ttf", import.meta.url)).then((res) =>
+    res.arrayBuffer(),
+  );
+  const fontData = await font;
 
   return new ImageResponse(
     <div
@@ -24,7 +28,7 @@ export async function GET(request: Request) {
           flexDirection: "column",
           justifyContent: "center",
           gap: "4rem",
-          fontFamily: "Helvetica, sans-serif",
+          fontFamily: "Inter",
           fontStyle: "normal",
           color: "white",
         }}
@@ -93,7 +97,8 @@ export async function GET(request: Request) {
       height: 720,
       fonts: [
         {
-          name: "Helvetica",
+          name: "Inter",
+          data: fontData,
           style: "normal",
         },
       ],
