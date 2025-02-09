@@ -6,8 +6,9 @@ import { baseURL } from "@/app/resources";
 import { person } from "@/app/resources/content";
 import { formatDate } from "@/app/utils/formatDate";
 import ScrollToHash from "@/components/ScrollToHash";
+import type { AppProps } from "next/app";
 
-interface WorkParams {
+interface WorkParams extends AppProps {
   params: {
     slug: string;
   };
