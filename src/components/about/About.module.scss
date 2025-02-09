@@ -1,0 +1,37 @@
+.hover {
+    transition: var(--transition-micro-medium);
+
+    &:hover {
+        transform: translateX(var(--static-space-4));
+    }
+}
+
+.playButtonOverlay {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 50%;
+  }
+
+.avatar {
+    position: sticky;
+    height: fit-content;
+    top: var(--static-space-64);
+}
+
+@media (--s) {
+    .avatar {
+        top: auto;
+    }
+
+    .textAlign {
+        text-align: center;
+    }
+
+    .blockAlign {
+        align-self: center;
+    }
+}
