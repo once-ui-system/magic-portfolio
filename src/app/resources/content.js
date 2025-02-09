@@ -36,11 +36,12 @@ const home = {
   label: "Home",
   title: `${person.name}'s Portfolio`,
   description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Thank you for visiting my Portfolio</>,
+  headline: <>Kaya, welcome to my Portfolio</>,
   subline: (
     <>
-      Kaya, I'm Gina, a Scrum Master and Full-Stack Developer passionate about empowering teams
+      I'm Gina, a certified Scrum Master and Full-Stack Developer passionate about empowering teams
       to deliver impactful solutions through Agile methodologies and scalable user-centred technology.
+      Explore my portfolio to learn more about my work and skills.
     </>
   ),
 };
@@ -233,7 +234,7 @@ const about = {
 
 const agileResources = {
   label: "Agile Resources",
-  title: "My agile resources",
+  title: "My Agile Resources",
   description: `Explore Agile content and resources used by ${person.name}`,
   // Create new Agile resources by adding a new .mdx file to app/agile/resources
   // All resources will be listed on the /agile route
@@ -242,7 +243,7 @@ const agileResources = {
 const work = {
   label: "Projects",
   title: "My projects",
-  description: `Explore design and development projects by ${person.name}`,
+  description: `Explore projects by ${person.name}`,
   // Create new project pages by adding a new .mdx file to app/work/projects
   // All projects will be listed on the /home and /work routes
 };
