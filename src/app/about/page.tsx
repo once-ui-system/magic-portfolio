@@ -139,7 +139,7 @@ export default function About() {
             fillWidth
             minHeight="160"
             vertical="center"
-            marginBottom="32"
+            marginBottom="m"
           >
             {about.calendar.display && (
               <Flex
@@ -275,7 +275,6 @@ export default function About() {
                     variant="body-default-m"
                     gap="m"
                     marginBottom="s"
-
                 >
                   {about.technical.description}
                 </Text>

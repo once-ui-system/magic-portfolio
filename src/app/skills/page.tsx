@@ -1,7 +1,7 @@
 import React from "react";
-import { Avatar, Column, Icon, SmartImage, Tag, Text, Heading, Flex} from "@/once-ui/components";
+import { Avatar, Badge, Button, Column, Icon, SmartImage, SmartLink, Tag, Text, Heading, Flex} from "@/once-ui/components";
 import { baseURL} from "@/app/resources";
-import { skills, person, about } from "@/app/resources/content";
+import { skills, social, person, about } from "@/app/resources/content";
 import styles from "@/components/skills/Skills.module.scss";
 
 const DetailedSkillsChart = React.lazy(() => import("@/components/skills/DetailedSkillsChart"));
@@ -38,36 +38,16 @@ export async function generateMetadata() {
   };
 }
 
-interface Image {
-  width: number;
-  height: number;
-  alt: string;
-  src: string;
-}
-
-interface Skill {
-  title: string;
-  description: string;
-  images?: Image[];
-}
-
-const techStack = [
-  { name: "React", icon: "🔵" },
-  { name: "Django", icon: "🌐" },
-  { name: "Python", icon: "🐍" },
-  { name: "TypeScript", icon: "📘" },
-];
-
-const certifications = [
-  { title: "Professional Scrum Master I", provider: "Scrum.org" },
-  { title: "SAFe® 6 Scrum Master", provider: "Scaled Agile®" },
-];
-
 export default function Skills() {
   const structure = [
     {
       title: skills.intro.title,
       display: skills.intro.display,    
+      items: [],
+    },
+    {
+      title: skills.certifications.title,
+      display: skills.certifications.display,
       items: [],
     },
     {
@@ -77,7 +57,7 @@ export default function Skills() {
     },
   ];
   return (
-    <Column maxWidth="s">
+    <Column maxWidth="m">
         <script
           type="application/ld+json"
           suppressHydrationWarning
@@ -104,7 +84,7 @@ export default function Skills() {
           >
           <TableOfContents 
             structure={structure} 
-            skills={{ tableOfContent: skills.tableOfContent }} // Pass only the `tableOfContent` property 
+            skills={skills}
             />
           </Column>
         )}
@@ -119,48 +99,121 @@ export default function Skills() {
               flex={3}
               horizontal="center"
             >
-            <Avatar src={person.avatar} size="xl" />
-            <Flex gap="8" vertical="center">
-              <Icon onBackground="accent-weak" name="globe" />
-              {person.location}
-            </Flex>
-            {person.languages.length > 0 && (
-              <Flex wrap gap="8">
-                {person.languages.map((language, index) => (
-                  <Tag key={index} size="l">
-                    {language}
-                  </Tag>
-                ))}
+              <Avatar src={person.avatar} size="xl" />
+              <Flex gap="8" vertical="center">
+                <Icon onBackground="accent-weak" name="globe" />
+                {person.location}
               </Flex>
-            )}
-          </Column>
-        )}
-        </Flex>
-        
-        <Column className={styles.blockAlign} flex={9} maxWidth={40}>
-          <Column
-            id={skills.intro.title}
-            fillWidth
-            minHeight="160"
-            vertical="center"
-            marginBottom="32"
-            >
-          </Column>
+              {person.languages.length > 0 && (
+                <Flex wrap gap="8">
+                  {person.languages.map((language, index) => (
+                    <Tag key={index} size="l">
+                      {language}
+                    </Tag>
+                  ))}
+                </Flex>
+              )}
+            </Column>
+          )}
 
-        {skills.intro.display && (
-          <Column className="space-y-4" textVariant="body-default-l" fillWidth gap="m" marginBottom="l">
-              {skills.intro.description}
-          </Column>
-        )}
+            <Column className={styles.blockAlign} flex={9} maxWidth={40}>
+                <Column
+                      id={skills.intro.title}
+                      fillWidth
+                      minHeight="160"
+                      vertical="center"
+                      marginBottom="m"
+                >
+                      {skills.intro.title}
+                    <Heading className={styles.textAlign} variant="display-strong-xl">
+                        {person.name}
+                    </Heading>
+                    <Text
+                        className={styles.textAlign}
+                        variant="display-default-xs"
+                        onBackground="neutral-weak"
+                    >
+                        {person.role}
+                    </Text>
+                      {social.length > 0 && (
+                        <Flex className={styles.blockAlign} paddingTop="20" paddingBottom="8" gap="8" wrap>
+                          {social.map(
+                            (item) =>
+                              item.link && (
+                                <Button
+                                  key={item.name}
+                                  href={item.link}
+                                  prefixIcon={item.icon}
+                                  label={item.name}
+                                  size="s"
+                                  variant="secondary"
+                                />
+                              ),
+                          )}
+                        </Flex>
+                      )}
+                </Column>
+                {skills.intro.display && (
+                    <Column className="space-y-4" textVariant="body-default-l" fillWidth gap="m" marginBottom="l">
+                      {skills.intro.description}
+                    </Column>
+                )}
 
-        {skills.technical.display && (
-          <>
+                {skills.certifications.display && (
+                  <Column maxWidth="m" gap="m" horizontal="start">
+                    <Heading 
+                        as="h2" 
+                        id={skills.certifications.title} 
+                        variant="display-strong-m"                       
+                    >
+                      {skills.certifications.title}
+                    </Heading>
+                    <Text 
+                        onBackground="neutral-weak"
+                        variant="body-default-l"
+                                         
+                    >
+                      {skills.certifications.description}
+                    </Text>
+                    <Column className={styles.blockAlign} paddingTop="s" paddingBottom="m" gap="m" wrap>
+                      {skills.certifications.images.map((image, index) => (
+                        <Column key={`${image.title}-${index}`} gap="m" className={styles.blockAlign}>
+                        <Badge
+                          id={image.title}
+                          title={image.title}
+                          href={image.link} // Use the link from the image object                          
+                          arrow // Show the arrow effect (default: true)
+                          effect // Enable the hover effect (default: true)
+                          className={styles.badge}
+                          fitWidth
+                          vertical="center"
+                          radius="full"
+                          background="neutral-weak"    
+                          border="brand-alpha-medium"                      
+                        >
+                          <SmartImage
+                            enlarge
+                            radius="l"
+                            sizes="100x100"
+                            alt={image.alt}
+                            src={image.src}
+                          />
+                        </Badge>
+                        </Column>
+                      ))}
+                    </Column>
+                  </Column>
+                )}
+                     
+
           <Flex fillWidth gap="24" mobileDirection="column">
-            <Flex direction="column" gap="s" align="start" flex={1}></Flex>
-              <Heading as="h2" id={skills.technical.title} variant="display-strong-s" marginBottom="s">
-                {skills.technical.title}
-              </Heading>
-              <Column fillWidth gap="m">
+            <Flex direction="column" gap="s" align="start" flex={1}>
+            {skills.technical.display && (
+              <>              
+                <Heading as="h2" id={skills.technical.title} variant="display-strong-s" marginBottom="s">
+                  {skills.technical.title}
+                </Heading>
+                <Column fillWidth gap="m">
                   <Text 
                     wrap="balance" 
                     variant="body-default-m"
@@ -168,9 +221,11 @@ export default function Skills() {
                   >
                   {skills.technical.description}
                   </Text>
-                </Column>              
+                </Column>
+              </>              
+            )}
             </Flex>
-              
+          </Flex>
               {/* Render each skill section with a chart */}
               <Column fillWidth gap="m">
                 <OverviewSkillsChart />
@@ -188,29 +243,12 @@ export default function Skills() {
                     <Column fillWidth>
                       <DetailedSkillsChart category={skill.title} />
                     </Column>
-
-                    {skill.images && skill.images.length > 0 && (
-                      <Flex fillWidth paddingTop="m" wrap>
-                        {skill.images.map((image, index) => (
-                          <SmartImage
-                              key={index}
-                              enlarge
-                              radius="m"
-                              sizes={`${image.width}x${image.height}`}
-                              alt={image.alt}
-                              src={image.src}
-                            />
-                        ))}
-                      </Flex>
-                    )}
                   </Column>
                 ))}
               </Column>
-          </>
-        )}        
-
-      </Column>
-
+          </Column>
+        </Flex>
     </Column>
   );
 }
+      

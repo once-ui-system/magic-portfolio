@@ -345,7 +345,7 @@ const skills = {
   },
   intro: {
     display: true,
-    title: "Professional Scrum Master and Full-Stack Developer",
+    title: "Skills Overview",
     description: (
     <>
     <p>
@@ -357,27 +357,82 @@ const skills = {
     </>
     ),
   },
+  certifications: {
+    display: true,
+    title: "Certifications",
+    description: <>Scrum related badges.</>,
+    images: [{
+      src: "/images/skills/PSM.webp",
+      alt: "Professional Scrum Master I badge from Scrum.org",
+      title: "Professional Scrum Master",
+      link: "https://www.credly.com/badges/ba729d96-b107-4598-8310-395b9e99aa10/public_url",
+      
+    },
+    {
+      src: "/images/skills/SSM.svg",
+      alt: "SAFe 6.0 Scrum Master badge from Scrum.org",
+      title: "SAFe 6.0 Scrum Master",
+      link: "https://www.credly.com/badges/a58f3094-7b69-46fb-9cc9-97b1f78607d6/public_url",
+      
+    },
+    {
+      src: "/images/skills/SAFeFlow.png",
+      alt: "SAFe 6.0 Understanding and Improving Flow Badge",
+      title: "SAFe Skill Flow",
+      link: "https://www.credly.com/badges/1f56d2b6-4569-41a9-97e5-6e07effeb045/public_url",
+      
+    },
+  ],
+  pdf: [
+    {
+      src: "/images/pdf/AgileProjectManagement.pdf",
+      alt: "Agile Project Management certificate",
+      title: "Professional Certificate in Agile Project Management",
+      link: "https://www.linkedin.com/learning/certificates/13e4f6daa55c82ec88073398d9afbe53c12ee95fcb5233f9b8b4b04e79022595?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_certifications_details%3BwFUWFenTR3KAEc9VcNQ36A%3D%3D",
+    },
+    {
+      src: "/images/pdf/BusinessAnalysisCertificate.pdf",
+      alt: "Business Analysis Certificate",
+      title: "Microsoft Career Essentials in Business Analysis",
+      link: "https://www.linkedin.com/learning/certificates/c8e19f48805a4f6d09e440dc9ac05ef0843373ca4b672a7fef24589d51a1d38d?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_certifications_details%3BwFUWFenTR3KAEc9VcNQ36A%3D%3D",
+    },
+    {
+      src: "/images/pdf/SoftwareDevelopmentCertificate.pdf",
+      alt: "Software Development Certificate",
+      title: "Microsoft Career Essentials in Software Development",
+      link: "https://www.linkedin.com/learning/certificates/dfc0a18f83a25526159ccf0bdf9590f284a6a4b1893abefacc2a25948c926ade?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_certifications_details%3BwFUWFenTR3KAEc9VcNQ36A%3D%3D",
+    },
+    {
+      src: "/images/pdf/CyberSecurityCertificate.pdf",
+      alt: "Cyber Security Certificate",
+      title: "Microsoft Career Essentials in Cyber Security",
+      link: "https://www.linkedin.com/learning/certificates/748a55382243a9d074bf3cd1ffc27c3f9665bcc7a743f9ad5bbb73f14d919d3f?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_certifications_details%3BwFUWFenTR3KAEc9VcNQ36A%3D%3D",
+    },
+  ],
+  },
+
   technical: {
     display: true, // set to false to hide this section
-    title: "Skills Overview",
+    title: "Skill Ratings",
     description: <>A visual representation of my technical expertise across key domains, 
             showcasing proficiency in frontend and backend development, data management, 
             Agile leadership, and DevOps practices.</>,
+    
     skills: [
       {
-        title: "Scrum, Agile and DevOps",
+        title: "Scrum, Agile & DevOps",
         description: <>Explore my expertise in Scrum, Agile, and DevOps—from servant leadership and SAFe 6.0 
         to CI/CD automation and Agile Release Trains—all visualised in one streamlined graph.
         </>,
-        images: [{
-          src: "/images/skills/nextjs.svg",
-          alt: "Next JS Logo",
-          width: 16,
-          height: 9,
-      }]  
       },
       {
-        title: "Frontend Development and UI Design",
+        title: "Version Control & Collaboration Tools",
+        description: <>Explore my expertise in version control and collaboration, from Git and GitHub workflows to 
+        Agile project management with Jira and Trello—all visualized in one streamlined graph.</>,
+
+      },
+      {
+        title: "Frontend Development & UI Design",
         description: <>Discover my approach to frontend development and UI design, where React, Next.js, and TypeScript 
         meet accessibility, responsive design, and high-performance UI—all captured in one concise graph.</>,
         images: [
@@ -385,23 +440,18 @@ const skills = {
         ]
     },
       {
-        title: "Backend Development and Cloud Expertise",
+        title: "Backend Development & Cloud Expertise",
         description: <>Explore my backend development and cloud expertise, from scalable APIs in Django and Node.js to 
         AWS, Docker, and Kubernetes-powered deployments—all visualized in one streamlined graph.</>,
         
       },
       {
-        title: "Databases & Data Analysis & Data Visualisation",
+        title: "Databases & Analysis & Data Visualisation",
         description: <>Explore my expertise in databases, data analysis, and visualization—from SQL and ETL pipelines to 
         NumPy-driven insights and Chart.js visualisations—all captured in one concise graph.</>,
       
       },
-      {
-        title: "Version Control and Collaboration Tools",
-        description: <>Explore my expertise in version control and collaboration, from Git and GitHub workflows to 
-        Agile project management with Jira and Trello—all visualized in one streamlined graph.</>,
-
-      },
+      
     ],
   },
 };

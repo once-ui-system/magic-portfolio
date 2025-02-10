@@ -19,8 +19,8 @@ const Badge = forwardRef<HTMLDivElement | HTMLAnchorElement, BadgeProps>(
     const content = (
       <Flex
         id="badge"
-        paddingX="20"
-        paddingY="12"
+        paddingX="xl"
+        paddingY="l"
         fitWidth
         className={effect ? styles.animation : undefined}
         vertical="center"
@@ -32,7 +32,7 @@ const Badge = forwardRef<HTMLDivElement | HTMLAnchorElement, BadgeProps>(
       >
         {icon && <Icon className="mr-8" size="s" name={icon} onBackground="brand-medium" />}
         {title && (
-          <Text onBackground="brand-strong" variant="label-strong-s">
+          <Text onBackground="brand-strong" variant="label-strong-m">
             {title}
           </Text>
         )}

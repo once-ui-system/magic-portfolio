@@ -1,10 +1,11 @@
 import React from "react";
-import { Heading, Flex, Text, Button, Avatar, RevealFx, Column } from "@/once-ui/components";
+import { Heading, Tag, Icon, Flex, Text, Button, Avatar, RevealFx, Column } from "@/once-ui/components";
 import { Projects } from "@/components/work/Projects";
 import Acknowledgement from "@/components/Acknowledgement";
 import { baseURL, routes } from "@/app/resources";
 import { home, about, person } from "@/app/resources/content";
 import { Resources } from "@/components/agileResources/Resources";
+import styles from "@/components/about/About.module.scss";
 
 const OverviewSkillsChart = React.lazy(() => import("@/components/skills/OverviewSkillsChart"));
 
@@ -66,16 +67,47 @@ export default function Home() {
         }}
       />
       <Column fillWidth paddingY="l" gap="m">
-        <Column maxWidth="s">
+        <Column maxWidth="m">
+        <Flex fillWidth mobileDirection="column" paddingY="s" horizontal="end">
+              {about.avatar.display && (
+              <Column
+                className={styles.avatar}
+                minWidth="160"
+                paddingX="l"
+                paddingBottom="m"
+                gap="m"
+                flex={3}
+                horizontal="center"
+              >
+              <Avatar src={person.avatar} size="xl" />
+              <Flex gap="8" vertical="center">
+                <Icon onBackground="accent-weak" name="globe" />
+                {person.location}
+              </Flex>
+              {person.languages.length > 0 && (
+                <Flex wrap gap="8">
+                  {person.languages.map((language, index) => (
+                    <Tag key={index} size="l">
+                      {language}
+                    </Tag>
+                  ))}
+                </Flex>
+              )}
+            </Column>
+            )}
+            </Flex>
           <RevealFx translateY="4" fillWidth horizontal="start" paddingBottom="m">
             <Heading wrap="balance" variant="display-strong-l">
               {home.headline}
             </Heading>
           </RevealFx>
-          <RevealFx translateY="8" delay={0.2} fillWidth horizontal="start" paddingBottom="m">
+          <RevealFx translateY="8" delay={0.2} horizontal="start" fillWidth paddingBottom="m">
+            <Column maxWidth="s">
             <Text wrap="balance" onBackground="neutral-weak" variant="heading-default-xl">
               {home.subline}
             </Text>
+            </Column>
+            
           </RevealFx>
           <RevealFx translateY="12" delay={0.4} horizontal="start">
             <Button
