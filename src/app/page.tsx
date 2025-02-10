@@ -43,7 +43,7 @@ export default function Home() {
     <>
       <Acknowledgement />
     
-    <Column maxWidth="m" gap="xl" horizontal="center">
+    <Column maxWidth="m" gap="l" horizontal="center">
       <script
         type="application/ld+json"
         suppressHydrationWarning
@@ -66,72 +66,74 @@ export default function Home() {
           }),
         }}
       />
-      <Column fillWidth paddingY="l" gap="m">
-        <Column maxWidth="m">
-        <Flex fillWidth mobileDirection="column" paddingY="s" horizontal="end">
-              {about.avatar.display && (
-              <Column
-                className={styles.avatar}
-                minWidth="160"
-                paddingX="l"
-                paddingBottom="m"
-                gap="m"
-                flex={3}
-                horizontal="center"
-              >
-              <Avatar src={person.avatar} size="xl" />
+      
+      <Flex fillWidth mobileDirection="column" paddingY="s" horizontal="end">
+        {about.avatar.display && (
+          <Column
+              className={styles.avatar}
+              minWidth="160"
+              paddingX="l"
+              paddingBottom="m"
+              gap="m"
+              flex={3}
+              horizontal="center"
+          >
+            <Avatar src={person.avatar} size="xl" />
               <Flex gap="8" vertical="center">
                 <Icon onBackground="accent-weak" name="globe" />
-                {person.location}
+                  {person.location}
               </Flex>
-              {person.languages.length > 0 && (
-                <Flex wrap gap="8">
+                {person.languages.length > 0 && (
+              <Flex wrap gap="s" horizontal="center">
                   {person.languages.map((language, index) => (
                     <Tag key={index} size="l">
                       {language}
                     </Tag>
                   ))}
-                </Flex>
+                  <RevealFx translateY="12" delay={0.4} horizontal="center">
+                      <Button
+                        id="about"
+                        data-border="rounded"
+                        href="/about"
+                        variant="secondary"
+                        size="m"
+                        arrowIcon
+                      >
+                      <Flex gap="8" vertical="center">
+                        {about.avatar.display && (
+                        <Avatar
+                          style={{ marginLeft: "-0.75rem", marginRight: "0.25rem" }}
+                          src={person.avatar}
+                          size="m"
+                      />
+                      )}
+                      {about.title}
+                      </Flex>
+                      </Button>
+                  </RevealFx>
+              </Flex>
               )}
             </Column>
-            )}
-            </Flex>
-          <RevealFx translateY="4" fillWidth horizontal="start" paddingBottom="m">
-            <Heading wrap="balance" variant="display-strong-l">
-              {home.headline}
-            </Heading>
-          </RevealFx>
-          <RevealFx translateY="8" delay={0.2} horizontal="start" fillWidth paddingBottom="m">
-            <Column maxWidth="s">
-            <Text wrap="balance" onBackground="neutral-weak" variant="heading-default-xl">
-              {home.subline}
-            </Text>
+          )}
+            <Column className={styles.blockAlign} flex={9} maxWidth={40}>
+                <RevealFx translateY="4" fillWidth horizontal="start" padding="m">
+                  <Heading wrap="balance" variant="display-strong-l">
+                    {home.headline}
+                  </Heading>
+                </RevealFx>
+                <RevealFx translateY="8" delay={0.2} horizontal="start" fillWidth padding="m">
+                  <Column maxWidth="s">
+                    <Text wrap="balance" onBackground="neutral-weak" variant="heading-default-xl">
+                      {home.subline}
+                    </Text>
+                  </Column>
+                </RevealFx>
             </Column>
-            
-          </RevealFx>
-          <RevealFx translateY="12" delay={0.4} horizontal="start">
-            <Button
-              id="about"
-              data-border="rounded"
-              href="/about"
-              variant="secondary"
-              size="m"
-              arrowIcon
-            >
-              <Flex gap="8" vertical="center">
-                {about.avatar.display && (
-                  <Avatar
-                    style={{ marginLeft: "-0.75rem", marginRight: "0.25rem" }}
-                    src={person.avatar}
-                    size="m"
-                  />
-                )}
-                {about.title}
-              </Flex>
-            </Button>
-          </RevealFx>
-        </Column>
-      </Column>
+      </Flex>
+              
+      
+
+      
       {routes["/work"] && (
         <Flex fillWidth gap="24" mobileDirection="column">
           <Flex direction="column" gap="s" align="start" flex={1}>
