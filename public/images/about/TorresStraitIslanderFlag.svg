@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.0"
+   width="387.298334621"
+   height="258.198889747" viewBox="0 0 600.0 400.0"
+   id="svg2"
+   sodipodi:docname="Flag_of_the_Torres_Strait_Islanders.svg"
+   inkscape:version="0.92.2 (5c3e80d, 2017-08-06)">
+  <metadata
+     id="metadata14">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1920"
+     inkscape:window-height="986"
+     id="namedview12"
+     showgrid="false"
+     inkscape:zoom="1.18"
+     inkscape:cx="413.62236"
+     inkscape:cy="227.0723"
+     inkscape:window-x="-11"
+     inkscape:window-y="-11"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs4" />
+  <g
+     id="layer1">
+    <rect
+       width="600"
+       height="70"
+       x="0"
+       y="330"
+       style="opacity:1;fill:#009966;fill-opacity:1;stroke:none"
+       id="rect2160" />
+    <rect
+       width="600"
+       height="70"
+       x="0"
+       y="0"
+       style="opacity:1;fill:#009966;fill-opacity:1;stroke:none"
+       id="rect3198" />
+    <rect
+       width="600"
+       height="20"
+       x="0"
+       y="70"
+       style="opacity:1;fill:#000000;fill-opacity:1;stroke:none"
+       id="rect3200" />
+    <rect
+       width="600"
+       height="20"
+       x="0"
+       y="310"
+       style="opacity:1;fill:#000000;fill-opacity:1;stroke:none"
+       id="rect4171" />
+    <rect
+       width="600"
+       height="220"
+       x="0"
+       y="90"
+       style="opacity:1;fill:#000099;fill-opacity:1;stroke:none"
+       id="rect4173" />
+    <path
+       d="M 290,95 C 190,125 195,200 227,269 L 189,305 L 258,280 L 258,188 C 280,155 320,155 342,188 L 342,280 L 411,305 L 373,269 C 405,200 410,125 310,95 L 300,138 L 290,95 z "
+       style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none"
+       id="path5162" />
+    <path
+       d="M 147.70136,41.916072 L 141.06587,46.262758 L 143.0885,53.932988 L 136.90408,48.965456 L 130.23428,53.259327 L 133.04759,45.842538 L 126.9028,40.826065 L 134.82595,41.209769 L 137.69805,33.815548 L 139.78151,41.469479 L 147.70136,41.916072 z "
+       transform="matrix(3.6439588,-0.1980871,0.1934751,3.8308938,-208.3274,65.732436)"
+       style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-opacity:1"
+       id="path6829" />
+  </g>
+</svg>
