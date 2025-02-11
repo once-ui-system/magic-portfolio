@@ -1,4 +1,6 @@
 import { autoPlacement } from "@floating-ui/react-dom";
+import React, { useEffect, useState, useLayoutEffect, useRef } from "react";
+
 
 const person = {
   firstName: "Gina",
