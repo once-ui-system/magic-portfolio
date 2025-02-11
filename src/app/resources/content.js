@@ -32,6 +32,27 @@ const social = [
   },
 ];
 
+const flags = [
+  {
+    name: "Aboriginal Flag",
+    src: "/images/about/AboriginalFlag.svg",
+    alt: "Aboriginal Flag",
+    link: "https://aiatsis.gov.au/explore/aboriginal-flag",
+  },
+  {
+    name: "Torres Strait Islander Flag",
+    src: "/images/about/TorresStraitIslanderFlag.svg",
+    alt: "Torres Strait Islander Flag",
+    link: "https://aiatsis.gov.au/explore/torres-strait-islander-flag",
+  },
+  {
+    name: "Pride Flag",
+    src: "/images/about/PrideFlag.svg",
+    alt: "LGBTQIA+ Pride Flag",
+    link: "https://aifs.gov.au/resources/resource-sheets/lgbtiqa-glossary-common-terms",
+  },
+];
+
 const home = {
   label: "Home",
   title: `${person.name}'s Portfolio`,
@@ -315,6 +336,7 @@ const agileResources = {
         {
           src: "/images/skills/ScrumMasterPoster.webp",
           alt: "Scrum Master Poster from Scrum.org",
+          sizes: "(max-width: 768px) 80vw, (max-width: 1200px) 60vw, 40vw",
           width: 400,
           height: 600,
       }],
@@ -322,6 +344,7 @@ const agileResources = {
         {
           src: "/images/pdf/ScrumMasterPoster.pdf",
           alt: "Scrum Master Poster from Scrum.org",
+          sizes: "(max-width: 768px) 80vw, (max-width: 1200px) 60vw, 40vw",
           width: 400,
           height: 600,
       }],
@@ -470,4 +493,4 @@ const skills = {
   },
 };
 
-export { person, social, home, about, agileResources, work, skills };
+export { person, social, home, about, agileResources, work, skills, flags };

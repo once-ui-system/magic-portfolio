@@ -1,5 +1,5 @@
 import { Flex, IconButton, SmartLink, Text } from "@/once-ui/components";
-import { person, social } from "@/app/resources/content";
+import { person, social, flags } from "@/app/resources/content";
 import styles from "./Footer.module.scss";
 
 export const Footer = () => {
@@ -28,7 +28,7 @@ export const Footer = () => {
           <Text paddingX="4">{person.name}</Text>
           <Text onBackground="neutral-weak">
             {/* Usage of this template requires attribution. Please don't remove the link to Once UI. */}
-            / Thank you for this amazing portfolio creator {" "}
+            / Thank you for this portfolio creator {" "}
             <SmartLink
               style={{ marginLeft: "-0.125rem" }}
               href="https://once-ui.com/templates/magic-portfolio"
@@ -51,6 +51,24 @@ export const Footer = () => {
                 />
               ),
           )}
+            {flags.map((flag) => (
+              <SmartLink
+                key={flag.name}
+                href={flag.link}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  src={flag.src}
+                  alt={flag.alt}
+                  width="24"
+                  height="24"
+                  style={{ borderRadius: "4px" }} // Optional styling
+                />
+              </SmartLink>
+            ))}
+
+
         </Flex>
       </Flex>
       <Flex height="80" show="s"></Flex>
