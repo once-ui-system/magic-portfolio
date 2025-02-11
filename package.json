@@ -10,7 +10,7 @@
     "clean": "rm -rf .next"
   },
   "dependencies": {
-    "@floating-ui/react-dom": "^2.1.1",
+    "@floating-ui/react-dom": "^2.1.2",
     "@mdx-js/loader": "^3.1.0",
     "@next/bundle-analyzer": "^15.1.6",
     "@next/mdx": "^14.2.16",
@@ -18,8 +18,10 @@
     "classnames": "^2.5.1",
     "cookie": "^1.0.1",
     "gray-matter": "^4.0.3",
+    "install": "^0.13.0",
     "next": "^15.1.6",
     "next-mdx-remote": "^5.0.0",
+    "npm": "^11.1.0",
     "postcss": "^8.4.39",
     "postcss-preset-env": "^9.5.15",
     "prismjs": "^1.29.0",
