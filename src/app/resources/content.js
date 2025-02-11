@@ -1,3 +1,5 @@
+import { autoPlacement } from "@floating-ui/react-dom";
+
 const person = {
   firstName: "Gina",
   lastName: "Horch",
@@ -137,7 +139,6 @@ const about = {
       community leadership, her work embodies a deep commitment to collaborating with others to drive
       meaningful and lasting change.
       </p>
-      <br /><br />
       <p>
       Each recognition earned reflects Gina's dedication to fostering empowerment, resilience, and safety 
       within the communities she has worked alongside.
@@ -146,11 +147,30 @@ const about = {
     ),
     services: [
       {
+        title: "Reconciliation & Truth Telling",
+        description: <>Gina is committed to supporting reconciliation and truth-telling in all aspects of her work. 
+        As a proud ally of First Nations Peoples, she strives to create inclusive spaces that honour 
+        their voices, histories, and cultures. Gina has taken the Ally Pledge to stand up for Justice, 
+        Treaty, and Truth and actively engages in learning, listening, and advocating for meaningful change.</>,
+        images: [
+          {
+            title: "I invite you to find out more",
+            src: "/images/about/ally-pledge.webp",
+            alt: "Evolve Communities Ally Pledge",
+            link: "https://www.evolves.com.au/ask-aunty/",
+            sizes: "(max-width: 768px) 80vw, (max-width: 1200px) 60vw, 40vw",
+            width: 16,
+            height: 16,
+          },
+        ],
+        videos: []
+      },
+      {
         title: "WA Police Excellence Awards (2017)",
         description: <>Gina was awarded the 9 News WA Police Excellence Award 2017 - Police Officer of the Year
         for her dedication to victim-survivors and their families.</>,
+        images: [],
         videos: [
-          // optional: leave the array empty if you don't want to display images
           {
             title: "WA Police Excellence Award 2017",
             src: "/images/about/video-thumbnail.webp",
@@ -164,49 +184,43 @@ const about = {
         title: "Canva Force for Good Scholarship (2024)",
         description: <>Gina was awarded the Canva Force for Good Scholarship, a partnership with She Codes Australia
         supporting women to break into tech and building meaningful careers through education, inclusion, and empowerment.</>,
-        images: [{
-          
-      }]  
+        images: [],
+        videos: [],
       },
       {
         title: "First Class Honours in Psychology (2021)",
           description: <>Gina was awarded First Class Honours in Psychology at Edith Cowan University (2021) with her thesis
           focused on improving responses for children and young people who have displayed harmful sexual behaviours.</>,
-        images: [{
-          
-      }]  
+        images: [],
+        videos: [],
       },
       {
         title: "WA Police Medal (2018)",
         description: <>Gina was awarded the WA Police Medal for 10 years of diligent and ethical service with the
           Western Australia Police Force.</>,
-        images: [{
-          
-      }]  
+        images: [],
+        videos: [],
       },
       {
         title: "Certificate of Outstanding Performance (2017)",
         description: <>Gina was awarded the Certificate of Outstanding Performance in recognition for her nomination for the 2017
         Australian Council of Women and Policing "Excellence in Policing" Awards in the category of "Most Outstanding Female Investigator".</>,
-        images: [
-          
-        ],
+        images: [],
+        videos: [],
       },
       {
         title: "Certificate of Outstanding Performance (2015)",
         description: <>Gina was awarded the Certificate of Outstanding Performance for her dedication and exemplary compassion to victims of
         the Australian Federal Government's Royal Commission into Institutional Child Sex Abuse.</>,
-        images: [
-          
-        ],
+        images: [],
+        videos: [],
       },
       {
         title: "Bravery Award (2005)",
         description: <>Gina was awarded the Bravery Award by the Bavarian Police Force for her decisive actions while off duty in Munich, where she
         intervened to stop the mugging of an elderly man at a train station, ensuring his safety and the arrest of both offenders.</>,
-        images: [
-          
-        ],
+        images: [],
+        videos: [],
       },
     ],
   },

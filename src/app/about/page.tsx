@@ -8,6 +8,7 @@ import {
   Icon,
   IconButton,
   SmartImage,
+  SmartLink,
   Tag,
   Text,
 } from "@/once-ui/components";
@@ -269,18 +270,13 @@ export default function About() {
                 >
                 {about.technical.title}
                 </Heading>
-                <Text 
-                    className="space-y-4"
-                    wrap="balance" 
-                    variant="body-default-m"
-                    gap="m"
-                    marginBottom="s"
-                >
+                <Column className="space-y-4" onBackground="neutral-weak" textVariant="body-default-m" fillWidth gap="s">                
                   {about.technical.description}
-                </Text>
+                </Column>
+               
 
                 {/* Warning Message for Aboriginal viewers */}
-                <Text variant="heading-default-m" onBackground="danger-strong" marginBottom="s">
+                <Text variant="heading-default-s" onBackground="danger-strong" marginBottom="s" align="center">
                   ⚠️ Aboriginal and Torres Strait Islander viewers are advised that this video may
                   contain images, voices, and names of deceased persons.
                 </Text>
@@ -308,11 +304,46 @@ export default function About() {
                       <Text variant="body-default-m" onBackground="neutral-weak">
                         {service.description}
                       </Text>
-                    </Column>
-                  ))}                             
+                      {Array.isArray(service.images) && service.images.length > 0 && (                       
+                        <Flex gap="m" vertical="center">
+                          {service.images.map((image, imgIndex) => {
+                            if (!image.src) return null;  
+                            return (                                  
+                              <SmartImage
+                                  key={`${image.title || 'image'}-${imgIndex}`}
+                                  enlarge
+                                  radius="m"
+                                  src={image.src} // Access src from image
+                                  alt={image.alt || 'Image'} // Access alt from image
+                                  title={image.title || 'Image'} // Optional: Add title for hover effect
+                                  priority={false}
+                                  width={image.width}
+                                  height={image.height}
+                                />
+                              );
+                            })}
+                          {/* Button Link */}
+                          <SmartLink
+                              href="https://www.evolves.com.au/ask-aunty/"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              title={service.images[0]?.title} // Show title on hover
+                          >
+                          <Button
+                              variant="primary"
+                              size="m"
+                          >
+                            Ask Aunty
+                        </Button>
+                      </SmartLink>
+                      </Flex>
+                    )}
+                  </Column>
+                  ))}
               </Column>
             </>
           )}
+                           
 
           {about.studies.display && (
             <>
