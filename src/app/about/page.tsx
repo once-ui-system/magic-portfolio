@@ -273,29 +273,6 @@ export default function About() {
                 <Column className="space-y-4" onBackground="neutral-weak" textVariant="body-default-m" fillWidth gap="s">                
                   {about.technical.description}
                 </Column>
-               
-
-                {/* Warning Message for Aboriginal viewers */}
-                <Text variant="heading-default-s" onBackground="danger-strong" marginBottom="s" align="center">
-                  ⚠️ Aboriginal and Torres Strait Islander viewers are advised that this video may
-                  contain images, voices, and names of deceased persons.
-                </Text>
-                {/* Conditional Rendering: Show Thumbnail or Video */}
-                {/* Direct Video Embed */}
-                <iframe
-                    width="100%"
-                    height="315"
-                    src="https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/WA.Police/videos/1814792681887509/"
-                    allow="autoplay; clipboard-write; encrypted-media; picture-in-picture"
-                    allowFullScreen
-                    style={{
-                      border: "none",
-                      borderRadius: "8px",
-                      boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)",
-                    }}
-                    title="Nine News WA Police Excellence Awards 2017"
-                  ></iframe>
-
                   {about.technical.services.map((service, index) => (
                     <Column key={`${service.title}-${index}`} fillWidth gap="m" marginBottom="s">
                       <Text id={service.title} variant="heading-strong-l">
@@ -337,13 +314,40 @@ export default function About() {
                         </Button>
                       </SmartLink>
                       </Flex>
-                    )}
-                  </Column>
+                      )}
+                      {/* Display Video - Only if videos[] exists */}
+                      {Array.isArray(service.videos) && service.videos.length > 0 && (
+                        <>
+                          {/* Warning for Aboriginal and Torres Strait Islander viewers */}
+                          <Text variant="heading-default-s" onBackground="danger-strong" marginBottom="s" align="center">
+                            ⚠️ Aboriginal and Torres Strait Islander viewers are advised that this video may
+                            contain images, voices, and names of deceased persons.
+                          </Text>
+
+                          {service.videos.map((video, vidIndex) => (
+                            <iframe
+                              key={`${video.title || 'video'}-${vidIndex}`}
+                              width="100%"
+                              height="315"
+                              src={video.embedUrl}
+                              allow="autoplay; clipboard-write; encrypted-media; picture-in-picture"
+                              allowFullScreen
+                              style={{
+                                border: "none",
+                                borderRadius: "8px",
+                                boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)",
+                              }}
+                              title={video.title || "Embedded Video"}
+                            ></iframe>
+                          ))}
+                        </>
+                      )}
+                    </Column>
                   ))}
+                
               </Column>
             </>
-          )}
-                           
+          )}                           
 
           {about.studies.display && (
             <>

@@ -173,7 +173,7 @@ const about = {
         videos: [
           {
             title: "WA Police Excellence Award 2017",
-            src: "/images/about/video-thumbnail.webp",
+            embedUrl: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/WA.Police/videos/1814792681887509/",
             alt: "WA Police Excellence Award 2017",
             width: 16,
             height: 9,
