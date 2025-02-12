@@ -6,6 +6,7 @@ const routes = {
   "/work": true,
   "/blog": true,
   "/gallery": true,
+  showWorkPreviewOnHome: true,  // Controls work preview section visibility on homepage
 };
 
 // Enable password protection on selected routes
