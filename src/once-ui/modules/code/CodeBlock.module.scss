@@ -1,5 +1,6 @@
 .pre {
     display: flex;
+    isolation: isolate;
     padding: var(--static-space-8);
     font-family: var(--font-family-code);
     color: var(--neutral-on-background-strong);
@@ -9,7 +10,7 @@
     tab-size: 2;
     margin: 0;
     height: fit-content;
-    width: fit-content;
+    width: 100%;
     min-height: var(--static-space-32);
     tab-size: 2;
     line-height: 1.75;
@@ -23,7 +24,13 @@
     font-family: inherit;
 }
 
-.compactCopy {
-    top: 50%;
-    transform: translateY(-50%);
+.fullscreen {
+    position: fixed;
+    left: var(--static-space-8);
+    top: var(--static-space-8);
+    right: var(--static-space-8);
+    bottom: var(--static-space-8);
+    width: calc(100% - var(--static-space-16)) !important;
+    height: calc(100% - var(--static-space-16)) !important;
+    z-index: 9;
 }
