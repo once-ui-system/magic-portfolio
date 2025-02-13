@@ -175,9 +175,10 @@ export default function Skills() {
                     >
                       {skills.certifications.description}
                     </Text>
-                    <Column className={styles.blockAlign} paddingTop="s" paddingBottom="m" gap="m" wrap>
+
+                     <Flex wrap={true} gap="m" horizontal="center" paddingBottom="l">
                       {skills.certifications.images.map((image, index) => (
-                        <Column key={`${image.title}-${index}`} gap="m" className={styles.blockAlign}>
+                        <Flex key={`${image.title}-${index}`} className={styles.badgeWrapper} vertical="center">
                         <Badge
                           id={image.title}
                           title={image.title}
@@ -186,23 +187,23 @@ export default function Skills() {
                           effect // Enable the hover effect (default: true)
                           className={styles.badge}
                           fitWidth
-                          vertical="center"
                           radius="full"
                           background="neutral-weak"    
                           border="brand-alpha-medium"                      
                         >
                           <SmartImage
                             enlarge
-                            radius="l"
-                            sizes="100x100"
+                            radius="full"
+                            sizes="150x150"
                             alt={image.alt}
                             src={image.src}
+                            className={styles.badgeImage}
                           />
                         </Badge>
-                        </Column>
+                        </Flex>
                       ))}
-                    </Column>
-                  </Column>
+                    </Flex>
+                  </Column>                 
                 )}
                      
 

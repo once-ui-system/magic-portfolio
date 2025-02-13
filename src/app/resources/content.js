@@ -395,7 +395,7 @@ const skills = {
   certifications: {
     display: true,
     title: "Certifications",
-    description: <>Scrum related badges.</>,
+    description: <>Professional Scrum Master and Scaled Agile Framework related badges.</>,
     images: [{
       src: "/images/skills/PSM.webp",
       alt: "Professional Scrum Master I badge from Scrum.org",
@@ -405,7 +405,7 @@ const skills = {
     },
     {
       src: "/images/skills/SSM.svg",
-      alt: "SAFe 6.0 Scrum Master badge from Scrum.org",
+      alt: "SAFe 6.0 Scrum Master badge from Scaled Agile",
       title: "SAFe 6.0 Scrum Master",
       link: "https://www.credly.com/badges/a58f3094-7b69-46fb-9cc9-97b1f78607d6/public_url",
       
@@ -415,6 +415,13 @@ const skills = {
       alt: "SAFe 6.0 Understanding and Improving Flow Badge",
       title: "SAFe Skill Flow",
       link: "https://www.credly.com/badges/1f56d2b6-4569-41a9-97e5-6e07effeb045/public_url",
+      
+    },
+    {
+      src: "/images/skills/SAFeFlow.png",
+      alt: "SAFe 6.0 Introduction to Lean Portfolio Management",
+      title: "SAFe Skill LPM",
+      link: "https://www.credly.com/badges/4d768447-c6ec-4cd6-a725-ab59fa2b3859/public_url",
       
     },
   ],
