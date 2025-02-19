@@ -2,8 +2,9 @@
 
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
-import { Fade, Flex, Line, ToggleButton } from "@/once-ui/components";
+import { Fade, Flex, Line, ToggleButton, Text } from "@/once-ui/components";
 import styles from "@/components/Header.module.scss";
 
 import { routes, display } from "@/app/resources";
@@ -58,10 +59,14 @@ export const Header = () => {
         padding="8"
         horizontal="center"
       >
-        <Flex paddingLeft="12" fillWidth vertical="center" textVariant="body-default-s">
-          {display.location && <Flex hide="s">{person.location}</Flex>}
+        <Flex paddingLeft="12" fillWidth vertical="center" textVariant="body-default-s" className={styles.logoContainer}>
+          <Image src="/images/m-logo.svg" alt="Mo Said Logo" width={44} height={44} />
         </Flex>
-        <Flex fillWidth horizontal="center">
+        <Flex 
+          className={styles.menuContainer}
+          fillWidth
+          horizontal="center"
+        >
           <Flex
             background="surface"
             border="neutral-medium"
@@ -146,7 +151,7 @@ export const Header = () => {
             </Flex>
           </Flex>
         </Flex>
-        <Flex fillWidth horizontal="end" vertical="center">
+        <Flex fillWidth horizontal="end" vertical="center" className={styles.timeZone}>
           <Flex
             paddingRight="12"
             horizontal="end"
@@ -155,6 +160,9 @@ export const Header = () => {
             gap="20"
           >
             <Flex hide="s">{display.time && <TimeDisplay timeZone={person.location} />}</Flex>
+            <Text>
+              {/* your timezone content */}
+            </Text>
           </Flex>
         </Flex>
       </Flex>

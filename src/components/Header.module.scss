@@ -23,3 +23,23 @@
         bottom: 0;
     }
 }
+
+.logoContainer {
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+.menuContainer {
+  @media (max-width: 768px) {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+}
+
+.timeZone {
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
