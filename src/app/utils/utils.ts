@@ -18,6 +18,7 @@ type Metadata = {
   tag?: string;
   team: Team[];
   link?: string;
+  featured?: boolean;
 };
 
 import { notFound } from 'next/navigation';
@@ -47,6 +48,7 @@ function readMDXFile(filePath: string) {
     tag: data.tag || [],
     team: data.team || [],
     link: data.link || "",
+    featured: data.featured || false,
   };
 
   return { metadata, content };
@@ -69,4 +71,16 @@ function getMDXData(dir: string) {
 export function getPosts(customPath = ["", "", "", ""]) {
   const postsDir = path.join(process.cwd(), ...customPath);
   return getMDXData(postsDir);
+}
+
+export function getFilteredPosts(folders: string[], options: { 
+  featured?: boolean 
+} = {}) {
+  const posts = getPosts(folders);
+  
+  if (options.featured !== undefined) {
+    return posts.filter(post => post.metadata.featured === options.featured);
+  }
+  
+  return posts;
 }

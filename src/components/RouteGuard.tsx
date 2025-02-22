@@ -9,14 +9,33 @@ interface RouteGuardProps {
   children: React.ReactNode;
 }
 
-const RouteGuard: React.FC<RouteGuardProps> = ({ children }) => {
+export function RouteGuard({ children }: RouteGuardProps) {
   const pathname = usePathname();
+  const [authorized, setAuthorized] = useState(false);
   const [isRouteEnabled, setIsRouteEnabled] = useState(false);
   const [isPasswordRequired, setIsPasswordRequired] = useState(false);
   const [password, setPassword] = useState("");
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [error, setError] = useState<string | undefined>(undefined);
   const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Check if path requires protection
+    const protectedPaths = [
+      '/work/automate-design-handovers-with-a-figma-to-code-pipeline',
+      // Add other protected paths here
+    ];
+
+    const requiresAuth = protectedPaths.some(path => pathname.startsWith(path));
+
+    if (!requiresAuth) {
+      setAuthorized(true);
+      return;
+    }
+
+    // Authentication logic here
+    // ... 
+  }, [pathname]);
 
   useEffect(() => {
     const performChecks = async () => {
@@ -113,6 +132,4 @@ const RouteGuard: React.FC<RouteGuardProps> = ({ children }) => {
   }
 
   return <>{children}</>;
-};
-
-export { RouteGuard };
+}
