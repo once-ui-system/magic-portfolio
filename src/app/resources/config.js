@@ -11,7 +11,8 @@ const routes = {
 // Enable password protection on selected routes
 // Set password in pages/api/authenticate.ts
 const protectedRoutes = {
-  "/work/automate-design-handovers-with-a-figma-to-code-pipeline": true,
+  "/work/pm-roadmap-tool": true,
+  "/work/pendo-free-growth": true
 };
 
 const style = {
@@ -106,4 +107,12 @@ const mailchimp = {
   },
 };
 
-export { routes, protectedRoutes, effects, style, display, mailchimp, baseURL };
+export { 
+  routes, 
+  protectedRoutes,  // Single export of protectedRoutes
+  effects, 
+  style, 
+  display, 
+  mailchimp, 
+  baseURL 
+};

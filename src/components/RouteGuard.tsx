@@ -19,22 +19,26 @@ export function RouteGuard({ children }: RouteGuardProps) {
   const [error, setError] = useState<string | undefined>(undefined);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    // Check if path requires protection
-    const protectedPaths = [
-      '/work/automate-design-handovers-with-a-figma-to-code-pipeline',
-      // Add other protected paths here
-    ];
-
-    const requiresAuth = protectedPaths.some(path => pathname.startsWith(path));
-
-    if (!requiresAuth) {
+  const checkAuth = async () => {
+    const response = await fetch("/api/check-auth");
+    if (response.ok) {
+      setIsAuthenticated(true);
       setAuthorized(true);
-      return;
+    } else {
+      setIsAuthenticated(false);
+      setAuthorized(false);
     }
+  };
 
-    // Authentication logic here
-    // ... 
+  useEffect(() => {
+    if (!pathname) return;
+    
+    if (protectedRoutes[pathname]) {
+      setIsPasswordRequired(true);
+      checkAuth();
+    } else {
+      setAuthorized(true);
+    }
   }, [pathname]);
 
   useEffect(() => {
