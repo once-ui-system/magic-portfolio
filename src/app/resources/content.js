@@ -51,7 +51,7 @@ const social = [
 const home = {
   label: "Home",
   title: `${person.name}'s Portfolio`,
-  description: `Portfolio website showcasing my work as a ${person.role}`,
+  description: `Mo&apos;s portfolio showcasing product design work.`,
   headline: <>Product Designer and UX Engineer</>,
   subline: (
     <>
@@ -81,7 +81,7 @@ const about = {
     title: "Introduction",
     description: (
       <>
-        Hi, I’m Mo, a product designer in the SaaS space. My work is driven by a deep empathy for users, drive positive business outcomes, and a passion for product craft. Currently at Pendo, I’m focused on improving the world’s experience with software.
+        Hi, I&apos;m Mo, a product designer in the SaaS space. My work is driven by a deep empathy for users, drive positive business outcomes, and a passion for product craft. Currently at Pendo, I&apos;m focused on improving the world&apos;s experience with software.
       </>
     ),
   },
@@ -98,7 +98,7 @@ const about = {
             I designed for the Roadmap product in collaboration with the Listen team, delivering key features such as new templates, roadmap voting, and publishing capabilities.
           </>,
           <>
-            I worked with the PLG team to support the company’s flywheel strategy, contributing to the launch of onboarding flows, paywall experiences, and Home projects.
+            I worked with the PLG team to support the company&apos;s flywheel strategy, contributing to the launch of onboarding flows, paywall experiences, and Home projects.
           </>,
         ],
         images: [
@@ -120,7 +120,7 @@ const about = {
             During the pandemic, I launched mosaid.me studio, offering a range of services including product design, product discovery, web design, and design jam workshops.
           </>,
           <>
-            I’ve delivered digital experiences for 12 renowned brands, including South Yorkshire Housing Association, Airship Services, the University of Sheffield, and The Good Things Foundation.
+            I&apos;ve delivered digital experiences for 12 renowned brands, including South Yorkshire Housing Association, Airship Services, the University of Sheffield, and The Good Things Foundation.
           </>,
         ],
         images: [],
