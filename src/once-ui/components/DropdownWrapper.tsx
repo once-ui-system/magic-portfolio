@@ -35,7 +35,7 @@ export interface DropdownWrapperProps {
   onSelect?: (value: string) => void;
   isOpen?: boolean;
   onOpenChange?: (isOpen: boolean) => void;
-  onClose: () => void;
+  onClose?: () => void;
 }
 
 const DropdownWrapper = forwardRef<HTMLDivElement, DropdownWrapperProps>(
@@ -121,14 +121,14 @@ const DropdownWrapper = forwardRef<HTMLDivElement, DropdownWrapperProps>(
     const handleClickOutside = useCallback((event: MouseEvent) => {
       if (wrapperRef.current && !wrapperRef.current.contains(event.target as Node)) {
         handleOpenChange(false);
-        onClose();
+        onClose?.();
       }
     }, [handleOpenChange, onClose]);
 
     const handleFocusOut = useCallback((event: FocusEvent) => {
       if (wrapperRef.current && !wrapperRef.current.contains(event.relatedTarget as Node)) {
         handleOpenChange(false);
-        onClose();
+        onClose?.();
       }
     }, [handleOpenChange, onClose]);
 

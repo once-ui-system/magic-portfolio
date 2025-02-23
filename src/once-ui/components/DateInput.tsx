@@ -65,6 +65,10 @@ export const DateInput: React.FC<DateInputProps> = ({
     setIsOpen(true);
   }, []);
 
+  const handleClose = () => {
+    setIsOpen(false);
+  };
+
   const trigger = (
     <Input
       className="cursor-interactive"
@@ -97,6 +101,7 @@ export const DateInput: React.FC<DateInputProps> = ({
       onOpenChange={setIsOpen}
       className={className}
       style={{ ...style }}
+      onClose={handleClose}
     />
   );
 };
