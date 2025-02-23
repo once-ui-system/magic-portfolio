@@ -19,6 +19,7 @@ type Metadata = {
   team: Team[];
   link?: string;
   featured?: boolean;
+  case_study?: boolean;
 };
 
 import { notFound } from 'next/navigation';
@@ -49,6 +50,7 @@ function readMDXFile(filePath: string) {
     team: data.team || [],
     link: data.link || "",
     featured: data.featured || false,
+    case_study: data.case_study || false,
   };
 
   return { metadata, content };
@@ -74,13 +76,18 @@ export function getPosts(customPath = ["", "", "", ""]) {
 }
 
 export function getFilteredPosts(folders: string[], options: { 
-  featured?: boolean 
+  featured?: boolean;
+  case_study?: boolean;
 } = {}) {
   const posts = getPosts(folders);
   
-  if (options.featured !== undefined) {
-    return posts.filter(post => post.metadata.featured === options.featured);
-  }
-  
-  return posts;
+  return posts.filter(post => {
+    if (options.featured !== undefined && post.metadata.featured !== options.featured) {
+      return false;
+    }
+    if (options.case_study !== undefined && post.metadata.case_study !== options.case_study) {
+      return false;
+    }
+    return true;
+  });
 }

@@ -1,5 +1,5 @@
 import { getPosts } from "@/app/utils/utils";
-import { Column } from "@/once-ui/components";
+import { Column, Heading } from "@/once-ui/components";
 import { Projects } from "@/components/work/Projects";
 import { baseURL } from "@/app/resources";
 import { person, work } from "@/app/resources/content";
@@ -35,9 +35,13 @@ export async function generateMetadata() {
 
 export default function Work() {
   return (
-    <section>
-      <h2>All Projects</h2>
-      <Projects showFeaturedOnly={false} />
-    </section>
+    <Column maxWidth="m" gap="xl" horizontal="center">
+      <Column paddingY="l" gap="m">
+        <Column maxWidth="m">
+          
+          <Projects  />
+        </Column>
+      </Column>
+    </Column>
   );
 }
