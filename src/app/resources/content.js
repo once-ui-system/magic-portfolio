@@ -52,10 +52,10 @@ const home = {
   label: "Home",
   title: `${person.name}'s Portfolio`,
   description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Product Designer and Builder</>,
+  headline: <>Product Designer and UX Engineer</>,
   subline: (
     <>
-      I'm Mo, a digital product designer at <InlineCode>Pendo</InlineCode>, I craft experinces 
+      I'm Mo, a digital product designer at <InlineCode>pendo.io</InlineCode>, I craft experinces 
       <br />that users love. After hours, I build my own projects.
     </>
   ),
@@ -81,9 +81,7 @@ const about = {
     title: "Introduction",
     description: (
       <>
-        Selene is a Jakarta-based design engineer with a passion for transforming complex challenges
-        into simple, elegant design solutions. Her work spans digital interfaces, interactive
-        experiences, and the convergence of design and technology.
+        Hi, I’m Mo, a product designer in the SaaS space. My work is driven by a deep empathy for users, drive positive business outcomes, and a passion for product craft. Currently at Pendo, I’m focused on improving the world’s experience with software.
       </>
     ),
   },
@@ -97,18 +95,16 @@ const about = {
         role: "Senior Product Designer",
         achievements: [
           <>
-            Redesigned the UI/UX for the FLY platform, resulting in a 20% increase in user
-            engagement and 30% faster load times.
+            I designed for the Roadmap product in collaboration with the Listen team, delivering key features such as new templates, roadmap voting, and publishing capabilities.
           </>,
           <>
-            Spearheaded the integration of AI tools into design workflows, enabling designers to
-            iterate 50% faster.
+            I worked with the PLG team to support the company’s flywheel strategy, contributing to the launch of onboarding flows, paywall experiences, and Home projects.
           </>,
         ],
         images: [
           // optional: leave the array empty if you don't want to display images
           {
-            src: "/images/projects/project-01/cover-01.jpg",
+            src: "/images/projects/project-01/image-04.jpg",
             alt: "Once UI Project",
             width: 16,
             height: 9,
@@ -121,12 +117,10 @@ const about = {
         role: "Freelance Product Designer",
         achievements: [
           <>
-            Developed a design system that unified the brand across multiple platforms, improving
-            design consistency by 40%.
+            During the pandemic, I launched mosaid.me studio, offering a range of services including product design, product discovery, web design, and design jam workshops.
           </>,
           <>
-            Led a cross-functional team to launch a new product line, contributing to a 15% increase
-            in overall company revenue.
+            I’ve delivered digital experiences for 12 renowned brands, including South Yorkshire Housing Association, Airship Services, the University of Sheffield, and The Good Things Foundation.
           </>,
         ],
         images: [],
@@ -137,12 +131,10 @@ const about = {
         role: "Product Designer",
         achievements: [
           <>
-            Developed a design system that unified the brand across multiple platforms, improving
-            design consistency by 40%.
+            At Tribepad, I worked within the New Innovations team to deliver key projects, including the ATS lite product and the hiring manager view.
           </>,
           <>
-            Led a cross-functional team to launch a new product line, contributing to a 15% increase
-            in overall company revenue.
+            I had ownership of onboarding customers and implementing enterprise white-label deliverables.
           </>,
         ],
         images: [],
@@ -155,11 +147,11 @@ const about = {
     institutions: [
       {
         name: "Sheffield Hallam University",
-        description: <>Studied software engineering.</>,
+        description: <>My MSc in IT Management provided an academic foundation for my career in tech, exploring how IT supports business operations and drives improvement through areas like database design, network management, and project management theories.</>,
       },
       {
         name: "University of Roehampton",
-        description: <>Studied online marketing and personal branding.</>,
+        description: <>I hold a Marketing BSc accredited by the Chartered Institute of Marketing (CIM), which explored topics including the rise of global brands, digital marketing, and the evolving intersections of technology and marketing practices.</>,
       },
     ],
   },
