@@ -38,7 +38,6 @@ export default function Work() {
     <Column maxWidth="m" gap="xl" horizontal="center">
       <Column paddingY="l" gap="m">
         <Column maxWidth="m">
-          
           <Projects  />
         </Column>
       </Column>

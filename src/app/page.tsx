@@ -113,10 +113,12 @@ export default function Home() {
         </Flex>
       )}
       <RevealFx translateY="16" delay={0.8}>
-        <Heading as="h2" variant="display-strong-xs" wrap="balance">
-          Case Studies
-        </Heading>
-        <Projects showCaseStudyOnly={true} />
+        <Column fillWidth paddingX="l" gap="m">
+          <Heading as="h2" variant="display-strong-xs" wrap="balance">
+            Case Studies
+          </Heading>
+          <Projects showCaseStudyOnly={true} />
+        </Column>
       </RevealFx>
       {newsletter.display && <Mailchimp newsletter={newsletter} />}
     </Column>

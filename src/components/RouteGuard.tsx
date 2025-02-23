@@ -31,50 +31,30 @@ export function RouteGuard({ children }: RouteGuardProps) {
   };
 
   useEffect(() => {
-    if (!pathname) return;
-    
-    if (protectedRoutes[pathname]) {
-      setIsPasswordRequired(true);
-      checkAuth();
-    } else {
-      setAuthorized(true);
-    }
-  }, [pathname]);
-
-  useEffect(() => {
     const performChecks = async () => {
       setLoading(true);
-      setIsRouteEnabled(false);
-      setIsPasswordRequired(false);
-      setIsAuthenticated(false);
+      
+      if (!pathname) {
+        setLoading(false);
+        return;
+      }
 
-      const checkRouteEnabled = () => {
-        if (!pathname) return false;
+      // Check if route is enabled
+      const isEnabled = pathname in routes || ["/blog", "/work"].some(route => 
+        pathname?.startsWith(route) && routes[route]
+      );
+      setIsRouteEnabled(isEnabled);
 
-        if (pathname in routes) {
-          return routes[pathname as keyof typeof routes];
-        }
-
-        const dynamicRoutes = ["/blog", "/work"] as const;
-        for (const route of dynamicRoutes) {
-          if (pathname?.startsWith(route) && routes[route]) {
-            return true;
-          }
-        }
-
-        return false;
-      };
-
-      const routeEnabled = checkRouteEnabled();
-      setIsRouteEnabled(routeEnabled);
-
-      if (protectedRoutes[pathname as keyof typeof protectedRoutes]) {
+      // Check if route needs password
+      if (protectedRoutes[pathname]) {
         setIsPasswordRequired(true);
-
         const response = await fetch("/api/check-auth");
         if (response.ok) {
           setIsAuthenticated(true);
+          setAuthorized(true);
         }
+      } else {
+        setAuthorized(true);
       }
 
       setLoading(false);
