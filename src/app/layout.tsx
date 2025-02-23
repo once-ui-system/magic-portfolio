@@ -15,15 +15,26 @@ import { Background, Column, Flex, ToastProvider } from "@/once-ui/components";
 export async function generateMetadata() {
   return {
     metadataBase: new URL(`https://${baseURL}`),
-    title: home.title,
-    description: home.description,
+    title: {
+      default: person.name,
+      template: `%s | ${person.name}`,
+    },
+    description: person.description,
     openGraph: {
-      title: `${person.firstName}'s Portfolio`,
-      description: "Portfolio website showcasing my work.",
-      url: baseURL,
-      siteName: `${person.firstName}'s Portfolio`,
+      title: person.name,
+      description: person.description,
+      url: `https://${baseURL}`,
+      siteName: person.name,
       locale: "en_US",
       type: "website",
+    },
+    icons: {
+      icon: [
+        {
+          rel: 'icon',
+          url: '/favicon.svg',
+        },
+      ],
     },
     robots: {
       index: true,
