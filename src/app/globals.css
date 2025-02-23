@@ -1,0 +1,13 @@
+.text-center {
+  text-align: center;
+}
+
+blockquote {
+  border-left: none;
+  padding: 2rem;
+  margin: 2rem 0;
+  font-size: 1.25rem;
+  color: var(--color-text-primary);
+  background: var(--color-background-subtle);
+  border-radius: var(--radius-m);
+} 
