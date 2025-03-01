@@ -45,7 +45,7 @@ export default function Post({ post, thumbnail }: PostProps) {
             {post.metadata.title}
           </Heading>
           <Text variant="label-default-s" onBackground="neutral-weak">
-            {formatDate(post.metadata.publishedAt, false)}
+            {post.metadata.publishedAt && formatDate(post.metadata.publishedAt, false)}
           </Text>
           {post.metadata.tag && (
             <Tag className="mt-8" label={post.metadata.tag} variant="neutral" />

@@ -104,7 +104,7 @@ export default function Blog({ params }: BlogParams) {
       <Row gap="12" vertical="center">
         {avatars.length > 0 && <AvatarGroup size="s" avatars={avatars} />}
         <Text variant="body-default-s" onBackground="neutral-weak">
-          {formatDate(post.metadata.publishedAt)}
+          {post.metadata.publishedAt && formatDate(post.metadata.publishedAt)}
         </Text>
       </Row>
       <Column as="article" fillWidth>
