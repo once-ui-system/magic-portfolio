@@ -7,6 +7,7 @@ import { Footer, Header, RouteGuard } from "@/components";
 import { baseURL, effects, style } from "@/app/resources";
 
 import { Inter } from "next/font/google";
+import NextTopLoader from "nextjs-toploader";
 import { Source_Code_Pro } from "next/font/google";
 
 import { person, home } from "@/app/resources/content";
@@ -87,7 +88,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
         primary.variable,
         secondary ? secondary.variable : "",
         tertiary ? tertiary.variable : "",
-        code.variable,
+        code.variable
       )}
     >
       <ToastProvider>
@@ -151,7 +152,10 @@ export default async function RootLayout({ children }: RootLayoutProps) {
             flex={1}
           >
             <Flex horizontal="center" fillWidth minHeight="0">
-              <RouteGuard>{children}</RouteGuard>
+              <RouteGuard>
+                <NextTopLoader showSpinner={false} color="white" />
+                {children}
+              </RouteGuard>
             </Flex>
           </Flex>
           <Footer />
