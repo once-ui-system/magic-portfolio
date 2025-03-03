@@ -47,7 +47,7 @@ export default function Post({ post, thumbnail }: PostProps) {
             {post.metadata.title}
           </Heading>
           <Text variant="label-default-s" onBackground="neutral-weak">
-            {formatDate(post.metadata.publishedAt, false)}
+            {post.metadata.publishedAt && formatDate(post.metadata.publishedAt, false)}
           </Text>
           {tags.length > 0 && (
             <Flex gap="8">

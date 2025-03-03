@@ -118,7 +118,7 @@ export default function Project({ params }: WorkParams) {
         <Flex gap="12" marginBottom="24" vertical="center">
           {post.metadata.team && <AvatarGroup reverse avatars={avatars} size="m" />}
           <Text variant="body-default-s" onBackground="neutral-weak">
-            {formatDate(post.metadata.publishedAt)}
+            {post.metadata.publishedAt && formatDate(post.metadata.publishedAt)}
           </Text>
         </Flex>
         <CustomMDX source={post.content} />
