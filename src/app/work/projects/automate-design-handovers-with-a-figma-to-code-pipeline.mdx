@@ -1,44 +1,54 @@
 ---
-title: "Automating Design Handovers with a Figma to Code Pipeline"
-publishedAt: "2024-04-01"
+title: "Deciphering Ancient Texts: The Vesuvius Challenge Approach"
+publishedAt: "2025-03-15"
 summary: "Explore the enduring debate between using spaces and tabs for code indentation, and why this choice matters more than you might think."
 images:
-  - "/images/projects/project-01/cover-02.jpg"
-  - "/images/projects/project-01/image-03.jpg"
-team:
-  - name: "John Doe"
-    role: "Software Engineer"
-    avatar: "/images/avatar.jpg"
-    linkedIn: "https://www.linkedin.com/company/once-ui/"
-link: "https://once-ui.com/"
+  - "/images/projects/project-01/img_1.png"
+  - "/images/projects/project-01/img_2.png"
+link: "https://prezi.com/view/4xnVsFq9OMTqflqqdJy2/"
 ---
 
-## Overview
+# Deciphering Ancient Texts: The Vesuvius Challenge Approach
 
-In this project, I focused on automating the often tedious design handover process. The goal was to create a pipeline that converts Figma designs directly into clean, production-ready code. By integrating design tokens, component libraries, and automated workflows, this solution significantly reduced the time spent on translating design assets into code, while maintaining design consistency across the product.
+## Introduction
+The Vesuvius Challenge on Kaggle presented a unique problem: deciphering ancient texts from the Herculaneum Papyri, which were carbonized in the eruption of Mount Vesuvius in 79 AD. The competition aimed to leverage modern machine learning techniques to detect ink in multispectral images of these ancient scrolls. The winning solution, which this paper aims to dissect, showcases a sophisticated approach combining data preprocessing, model training, and post-processing techniques.
 
-## Key Features
+## Problem Statement
+The primary challenge was to identify the presence of ink on the carbonized scrolls. These scrolls, being highly fragile and charred, provided a significant challenge for imaging and subsequent analysis. The task required precise detection of ink traces which are not visually distinguishable from the charred background with the naked eye.
 
-- **Figma Plugin Integration**: Developed a custom Figma plugin that extracts design tokens such as colors, typography, and spacing values, and exports them in a format compatible with our codebase.
-- **Code Generation**: Integrated an automated process that translates Figma components into React code using a combination of design tokens and pre-built component templates. This allowed developers to focus more on logic and less on repetitive UI coding.
-- **Continuous Sync**: Established a CI/CD pipeline that continuously synchronizes design changes from Figma to the codebase, ensuring design updates are reflected instantly without manual intervention.
-- **Scalable Design System**: Leveraged a design system that remains the single source of truth for both designers and developers, making it easy to maintain consistency even as the product evolves.
+## Data Preprocessing
+The preprocessing phase involved several critical steps to prepare the data for effective model training. Key steps included:
 
-## Technologies Used
+- **Image Alignment and Registration**: Ensuring that images from different spectral bands were perfectly aligned was crucial. Misalignment could lead to inaccurate detection of ink traces.
+- **Normalization**: Normalizing the spectral images to account for variations in lighting and exposure ensured that the model could focus on the relevant features rather than noise.
+- **Augmentation**: Data augmentation techniques such as rotation, scaling, and flipping were applied to increase the diversity of the training data, helping the model generalize better.
 
-- **Figma API**: For extracting design tokens and component data directly from the Figma designs.
-- **React and Next.js**: For building the front-end codebase with clean, reusable components.
-- **Styled-Components**: For managing styles dynamically using design tokens.
-- **GitHub Actions**: For automating the pipeline and syncing design changes to the repository.
+## Model Architecture
+The winning approach employed a deep learning model, specifically a convolutional neural network (CNN), tailored for image segmentation tasks.
 
-## Challenges and Learnings
+Key components of the model architecture included:
 
-One of the biggest challenges was ensuring that the generated code was clean and maintainable. This involved setting up intelligent mapping between Figma components and React code structures, as well as managing edge cases like responsive design and conditional rendering. Additionally, the continuous synchronization required a robust error-handling system to prevent conflicts during development.
+- **Encoder-Decoder Structure**: The model used an encoder-decoder structure, commonly found in segmentation models like U-Net, to capture features at multiple scales and then reconstruct the segmented image.
+- **Spectral Band Integration**: The model was designed to process multiple spectral bands simultaneously, allowing it to leverage information from various parts of the spectrum to detect ink.
 
-## Outcome
+## Training and Optimization
+Training the model required careful consideration of several factors:
 
-The automated Figma to code pipeline has streamlined the handoff process, cutting down design-to-development time by 40%. Designers now have more confidence that their designs will be accurately translated into code, and developers can focus on more complex logic and feature development. This project has proven the value of automation in bridging the gap between design and development.
+- **Loss Function**: A custom loss function combining cross-entropy loss and Dice coefficient was used to handle the imbalanced nature of the ink detection problem, where the ink regions were much smaller compared to the background.
+- **Learning Rate Scheduling**: Adaptive learning rate techniques, such as learning rate annealing and cyclical learning rates, were employed to optimize the training process.
+- **Validation and Early Stopping**: A portion of the data was set aside for validation to monitor the model's performance and apply early stopping to prevent overfitting.
 
----
+## Post-Processing
+Post-processing techniques were crucial to refine the model's predictions:
 
-This project demonstrates your ability to leverage automation and streamline workflows, which is highly relevant for design engineering portfolios focused on efficiency and innovation.
+- **Morphological Operations**: Techniques such as dilation and erosion were applied to the binary mask generated by the model to remove noise and small artifacts.
+- **Ensemble Methods**: Predictions from multiple models or multiple runs of the same model were combined to improve the robustness and accuracy of the final ink detection mask.
+
+## Results and Discussion
+The winning solution demonstrated remarkable performance in detecting ink on the ancient scrolls, significantly surpassing the baseline models. The use of multispectral imaging and advanced deep learning techniques enabled the model to identify subtle differences between the ink and the carbonized background.
+
+## Conclusion
+The Vesuvius Challenge highlighted the potential of modern machine learning techniques in the field of historical document analysis. The approach taken by the competition winner provides a robust framework for similar tasks, combining careful data preprocessing, advanced model architectures, and effective post-processing techniques. This methodology not only advances the field of digital humanities but also opens new avenues for the preservation and study of ancient texts.
+
+[View Presentation](https://prezi.com/view/4xnVsFq9OMTqflqqdJy2/)
+ leverage automation and streamline workflows, which is highly relevant for design engineering portfolios focused on efficiency and innovation.
