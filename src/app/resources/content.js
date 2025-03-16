@@ -156,40 +156,46 @@ const about = {
     ],
   },
   technical: {
-    display: false, // set to false to hide this section
+    display: true, // set to false to hide this section
     title: "Technical skills",
     skills: [
+      // {
+      //   title: "Next.js",
+      //   description: <>Building next gen apps with Next.js + Once UI + Supabase.</>,
+      //   // optional: leave the array empty if you don't want to display images
+      //   images: [
+      //     {
+      //       src: "/images/projects/project-01/cover-04.jpg",
+      //       alt: "Project image",
+      //       width: 16,
+      //       height: 9,
+      //     },
+      //   ],
+      // },
       {
-        title: "Figma",
-        description: <>Able to prototype in Figma with Once UI with unnatural speed.</>,
-        // optional: leave the array empty if you don't want to display images
-        images: [
-          {
-            src: "/images/projects/project-01/cover-02.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-          {
-            src: "/images/projects/project-01/cover-03.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-        ],
+        title: "AWS Cloud Computing",
+        description: <>Extensive experience with AWS services, including CDK, S3, EC2, ECS, Elastic Load Balancing, Kinesis, DynamoDB, EMR, SNS, Glue, and IAM, for scalable and efficient cloud infrastructure.</>,
+        images: [],
       },
       {
-        title: "Next.js",
-        description: <>Building next gen apps with Next.js + Once UI + Supabase.</>,
-        // optional: leave the array empty if you don't want to display images
-        images: [
-          {
-            src: "/images/projects/project-01/cover-04.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-        ],
+        title: "Big Data Processing",
+        description: <>Designed and optimized data processing pipelines using Snowflake, Apache PySpark, Airflow, and AWS EMR to handle petabyte-scale ad data.</>,
+        images: [],
+      },
+      {
+        title: "Backend Development",
+        description: <>Proficient in Java, Python for building RESTful APIs and microservices with authentication, security, and data processing capabilities.</>,
+        images: [],
+      },
+      {
+        title: "Infrastructure as Code (IaC)",
+        description: <>Experience in deploying infrastructure using AWS CDK, and container orchestration with Docker and Kubernetes.</>,
+        images: [],
+      },
+      {
+        title: "Database & Storage",
+        description: <>Worked with MySQL, Snowflake, and AWS S3 for data warehousing, efficient querying, and scalable storage solutions.</>,
+        images: [],
       },
     ],
   },
@@ -197,7 +203,7 @@ const about = {
 
 const blog = {
   label: "Blog",
-  title: "Writing about design and tech...",
+  title: "Writing about tech and life",
   description: `Read what ${person.name} has been up to recently`,
   // Create new blog posts by adding a new .mdx file to app/blog/posts
   // All posts will be listed on the /blog route
@@ -205,7 +211,7 @@ const blog = {
 
 const work = {
   label: "Work",
-  title: "My projects",
+  title: "Projects",
   description: `Projects by ${person.name}`,
   // Create new project pages by adding a new .mdx file to app/blog/posts
   // All projects will be listed on the /home and /work routes

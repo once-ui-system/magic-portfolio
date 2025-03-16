@@ -1,0 +1,90 @@
+---
+title: "Flask-based Product Management System"
+publishedAt: "2025-03-15"
+summary: "Detailed explanation of the backend and frontend implementation for the Organic Market project."
+images:
+  - "/images/projects/project-02/img_1.png"
+link: "https://github.com/ASabale/Flask-Demo"
+---
+## Project Overview
+
+This project is a **Flask-based Product Management System** that allows users to add, update, view, and delete products using a web interface and a RESTful API. It uses a **MySQL database** for data storage and features a simple **HTML and JavaScript frontend** for user interaction.
+
+## Features
+
+- **Add Products:** Users can add new products with name, price, and quantity.
+- **View Products:** The system retrieves and displays all available products.
+- **Update Products:** Users can update product details via API.
+- **Delete Products:** Products can be removed from the database.
+
+## Technologies Used
+
+- **Backend:** Flask (Python) with MySQL Database
+- **Frontend:** HTML, JavaScript, and Fetch API
+- **Database:** MySQL
+
+## API Endpoints
+
+### 1. Fetch All Products
+```http
+GET /products
+```
+Returns a JSON list of all products in the database.
+
+### 2. Add a New Product
+```http
+POST /products
+```
+Request Body (JSON):
+```json
+{
+    "name": "Product Name",
+    "price": 10.99,
+    "quantity": 5
+}
+```
+
+### 3. Update a Product
+```http
+PUT /products/{id}
+```
+Request Body (JSON):
+```json
+{
+    "name": "Updated Product",
+    "price": 15.99,
+    "quantity": 10
+}
+```
+
+### 4. Delete a Product
+```http
+DELETE /products/{id}
+```
+Deletes a product from the database by ID.
+
+## Project Structure
+
+```plaintext
+/Project
+│-- app.py  # Flask backend
+│-- templates/
+│   ├── index.html  # Frontend UI
+│-- static/
+│-- database.sql  # MySQL Database Schema
+```
+
+## How to Run the Project
+
+1. **Install dependencies:**
+```bash
+pip install flask mysql-connector-python
+```
+2. **Run the Flask application:**
+```bash
+python app.py
+```
+3. **Access the UI:** Open `http://127.0.0.1:5000/` in a web browser.
+
+This project provides a simple yet functional way to manage products using a lightweight Flask-based web application.
+[View on GitHub](https://github.com/ASabale/Flask-Demo)
