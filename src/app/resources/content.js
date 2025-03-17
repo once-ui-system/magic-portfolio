@@ -52,9 +52,7 @@ const home = {
   headline: <>Software Engineer</>,
   subline: (
     <>
-      I'm {person.name}, a software engineer passionate about building scalable and
-      <br /> efficient applications. I specialize in crafting robust solutions that enhance user
-      <br /> experiences and drive innovation.
+      I'm {person.name}, a software engineer passionate about building scalable and efficient applications. I specialize in crafting robust solutions that enhance user experiences and drive innovation.
     </>
   ),
 };
