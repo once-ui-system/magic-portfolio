@@ -1,24 +1,24 @@
 import { InlineCode } from "@/once-ui/components";
 
 const person = {
-  firstName: "Selene",
-  lastName: "Yu",
+  firstName: "Krishna",
+  midInit: "J.",
+  lastName: "Patel",
   get name() {
-    return `${this.firstName} ${this.lastName}`;
+    return `${this.firstName} ${this.midInit} ${this.lastName}`;
   },
-  role: "Design Engineer",
-  avatar: "/images/avatar.jpg",
-  location: "Asia/Jakarta", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
-  languages: ["English", "Bahasa"], // optional: Leave the array empty if you don't want to display languages
+  role: "Software Engineer",
+  avatar: "/images/avatar.png",
+  location: "America/Chicago", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
+  languages: ["English", "Gujarati", "Hindi"], // optional: Leave the array empty if you don't want to display languages
 };
 
 const newsletter = {
-  display: true,
+  display: false,
   title: <>Subscribe to {person.firstName}'s Newsletter</>,
   description: (
     <>
-      I occasionally write about design, technology, and share thoughts on the intersection of
-      creativity and engineering.
+      I occasionally share thoughts on the intersection of creativity and engineering.
     </>
   ),
 };
@@ -29,12 +29,12 @@ const social = [
   {
     name: "GitHub",
     icon: "github",
-    link: "https://github.com/once-ui-system/nextjs-starter",
+    link: "https://github.com/KrishnaPatel1552",
   },
   {
     name: "LinkedIn",
     icon: "linkedin",
-    link: "https://www.linkedin.com/company/once-ui/",
+    link: "https://www.linkedin.com/in/krishnapatel1552",
   },
   {
     name: "X",
@@ -44,7 +44,7 @@ const social = [
   {
     name: "Email",
     icon: "email",
-    link: "mailto:example@gmail.com",
+    link: "mailto:shivkrishna1552@gmail.com",
   },
 ];
 
@@ -52,11 +52,15 @@ const home = {
   label: "Home",
   title: `${person.name}'s Portfolio`,
   description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Design engineer and builder</>,
+  headline: <>Software Engineer</>,
   subline: (
     <>
-      I'm Selene, a design engineer at <InlineCode>FLY</InlineCode>, where I craft intuitive
-      <br /> user experiences. After hours, I build my own projects.
+      {person.firstName} is a Master's student in Computer Science at the University of
+      Texas at Arlington, specializing in Software Engineering and Intelligent Systems. With hands-on experience
+      in software development, UI/UX design, and machine learning, Krishna has worked on projects ranging from
+      FastAPI-based systems to Android apps and ML models. Skilled in Java, Python, SQL, and frameworks like
+      TensorFlow and React Native, Krishna is actively seeking opportunities in software development and AI to
+      apply technical expertise and innovative problem-solving.
     </>
   ),
 };
@@ -81,9 +85,12 @@ const about = {
     title: "Introduction",
     description: (
       <>
-        Selene is a Jakarta-based design engineer with a passion for transforming complex challenges
-        into simple, elegant design solutions. Her work spans digital interfaces, interactive
-        experiences, and the convergence of design and technology.
+        Krishna J. Patel is a skilled Software Engineer specializing in software development, UI/UX design, and
+        machine learning. Pursuing a Master's in Computer Science at UT Arlington, Krishna has hands-on experience
+        in optimizing UI/UX, real-time feature integration, and data efficiency. Proficient in Java, Python, SQL,
+        and frameworks like FastAPI and TensorFlow, Krishna has led projects in market systems, ML-based ink detection,
+        and Android apps. With a problem-solving mindset and strong technical acumen, Krishna is eager to drive
+        innovation in the software industry.
       </>
     ),
   },
@@ -92,41 +99,45 @@ const about = {
     title: "Work Experience",
     experiences: [
       {
-        company: "FLY",
-        timeframe: "2022 - Present",
-        role: "Senior Design Engineer",
+        company: "Raven Technolabs",
+        timeframe: "Jan 2023– May 2023",
+        role: "Software Developer, Intern",
         achievements: [
           <>
-            Redesigned the UI/UX for the FLY platform, resulting in a 20% increase in user
-            engagement and 30% faster load times.
+            Responsive UI/UX Design: Reduced development time by 25% by designing a responsive UI/UX for the eCommerce app
+            using Adobe XD, ensuring cross-platform consistency.
           </>,
           <>
-            Spearheaded the integration of AI tools into design workflows, enabling designers to
-            iterate 50% faster.
+            Real-time Feature Integration: Boosted user engagement by 40% by developing real-time features using Firebase
+            Firestore for the community board app.
+          </>,
+          <>
+            Automated Deployment: Accelerated app release cycles by 50% through automated build processes for App Store and
+            Play Store.
+          </>,
+          <>
+            Optimized Data Retrieval: Improved data retrieval speed by 35% by optimizing API calls and handling JSON data
+            efficiently for the Weather Forecast app.
           </>,
         ],
-        images: [
-          // optional: leave the array empty if you don't want to display images
-          {
-            src: "/images/projects/project-01/cover-01.jpg",
-            alt: "Once UI Project",
-            width: 16,
-            height: 9,
-          },
-        ],
+        images: [],
       },
       {
-        company: "Creativ3",
-        timeframe: "2018 - 2022",
-        role: "Lead Designer",
+        company: "Aryan Multimedia",
+        timeframe: "May 2022– Jul 2022",
+        role: "UI/UX Designer, Intern",
         achievements: [
           <>
-            Developed a design system that unified the brand across multiple platforms, improving
-            design consistency by 40%.
+            Visual Template Development: Designed visual templates for 20+ mobile screens, including dynamic splash screens and
+            multi-option login interfaces.
           </>,
           <>
-            Led a cross-functional team to launch a new product line, contributing to a 15% increase
-            in overall company revenue.
+            User-centric Dashboard Design: Created dashboards for student data like attendance, assignments, and exam schedules,
+            enhancing usability.
+          </>,
+          <>
+            Collaborative UI Design: Worked closely with the product team to ensure a user-friendly interface aligned with UX best
+            practices.
           </>,
         ],
         images: [],
@@ -138,12 +149,16 @@ const about = {
     title: "Studies",
     institutions: [
       {
-        name: "University of Jakarta",
-        description: <>Studied software engineering.</>,
+        name: "University of Texas at Arlington",
+        description:
+            <>
+              Master's in Computer Science; Specializations: Software Engineering, Intelligent Systems
+            </>,
+        timeframe: "Aug 2023 – May 2025",
       },
       {
-        name: "Build the Future",
-        description: <>Studied online marketing and personal branding.</>,
+        name: "Charusat University",
+        description: <>Bachelor of Technology in Information Technology</>,
       },
     ],
   },
@@ -152,38 +167,43 @@ const about = {
     title: "Technical skills",
     skills: [
       {
-        title: "Figma",
-        description: <>Able to prototype in Figma with Once UI with unnatural speed.</>,
-        // optional: leave the array empty if you don't want to display images
-        images: [
-          {
-            src: "/images/projects/project-01/cover-02.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-          {
-            src: "/images/projects/project-01/cover-03.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-        ],
+        title: "Programming Languages",
+        description: <>Proficient in Java, Python, SQL, JavaScript, and Dart for software development.</>,
+        images: [ ],
       },
       {
-        title: "Next.js",
-        description: <>Building next gen apps with Next.js + Once UI + Supabase.</>,
-        // optional: leave the array empty if you don't want to display images
-        images: [
-          {
-            src: "/images/projects/project-01/cover-04.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-        ],
+        title: "Backend Development",
+        description: <>Experienced in building scalable APIs using FastAPI and Flask.</>,
+        images: [ ],
       },
+      {
+        title: "Machine Learning & AI",
+        description: <>Hands-on experience with TensorFlow, PyTorch, and Apache Spark for deep learning and data processing.</>,
+        images: [ ],
+      },
+      {
+        title: "Mobile Development",
+        description: <>Developing cross-platform apps using React Native and Android (Java/Kotlin).</>,
+        images: [ ],
+      },
+      {
+        title: "Frontend & UI/UX",
+        description: <>Designing responsive interfaces using Figma, Adobe XD, and frontend tools.</>,
+        images: [ ],
+      },
+      {
+        title: "Databases",
+        description: <>Skilled in MySQL, PostgreSQL, and Firebase for data storage and retrieval.</>,
+        images: [ ],
+      },
+      {
+        title: "Version Control & Project Management",
+        description: <>Collaborating effectively with Git, GitHub, Jira, and Confluence.</>,
+        images: [ ],
+      }
     ],
+
+
   },
 };
 
@@ -216,66 +236,6 @@ const gallery = {
     },
     {
       src: "/images/gallery/img-02.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/img-03.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
-    {
-      src: "/images/gallery/img-04.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/img-05.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/img-06.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
-    {
-      src: "/images/gallery/img-07.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/img-08.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
-    {
-      src: "/images/gallery/img-09.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/img-10.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/img-11.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
-    {
-      src: "/images/gallery/img-12.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/img-13.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/img-14.jpg",
       alt: "image",
       orientation: "horizontal",
     },
