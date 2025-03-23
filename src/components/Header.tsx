@@ -4,6 +4,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 import { Fade, Flex, Line, ToggleButton } from "@/once-ui/components";
+import { ThemeToggle } from "./ThemeToggle";
 import styles from "@/components/Header.module.scss";
 
 import { routes, display } from "@/app/resources";
@@ -135,14 +136,15 @@ export const Header = () => {
                     label={gallery.label}
                     selected={pathname.startsWith("/gallery")}
                   />
-                  <ToggleButton
-                    className="s-flex-show"
-                    prefixIcon="gallery"
-                    href="/gallery"
-                    selected={pathname.startsWith("/gallery")}
-                  />
-                </>
-              )}
+                <ToggleButton
+                  className="s-flex-show"
+                  prefixIcon="gallery"
+                  href="/gallery"
+                  selected={pathname.startsWith("/gallery")}
+                />
+              </>
+            )}
+            <ThemeToggle />
             </Flex>
           </Flex>
         </Flex>
