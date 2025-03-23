@@ -1,3 +1,5 @@
+const { fontConfig } = require('./fonts')
+
 const baseURL = "demo.magic-portfolio.com";
 
 const routes = {
@@ -24,6 +26,7 @@ const style = {
   border: "playful", // rounded | playful | conservative
   surface: "translucent", // filled | translucent
   transition: "all", // all | micro | macro
+  fonts: fontConfig
 };
 
 const effects = {
