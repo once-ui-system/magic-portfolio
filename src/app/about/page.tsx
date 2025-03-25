@@ -14,6 +14,7 @@ import { baseURL } from "@/app/resources";
 import TableOfContents from "@/components/about/TableOfContents";
 import styles from "@/components/about/about.module.scss";
 import { person, about, social } from "@/app/resources/content";
+import PostImage from "@/components/PostImage"; // Import the new PostImage component
 
 export async function generateMetadata() {
   const title = about.title;
@@ -206,6 +207,13 @@ export default function About() {
           {about.intro.display && (
             <Column textVariant="body-default-l" fillWidth gap="m" marginBottom="xl">
               {about.intro.description}
+              {/* Example usage of PostImage */}
+              <PostImage
+                src="/path/to/image.jpg"
+                alt="Descriptive alt text"
+                width={600}
+                height={400}
+              />
             </Column>
           )}
 
