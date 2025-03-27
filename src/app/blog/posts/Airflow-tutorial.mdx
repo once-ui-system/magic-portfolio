@@ -8,161 +8,30 @@ tag: "Tech Tutorial"
 
 [Tutorial](https://www.youtube.com/watch?v=wukuctUu2zY)
 
-Apache Airflow is a powerful open-source platform for programmatically authoring, scheduling, and monitoring workflows. In this tutorial, we’ll explore Airflow's core components, understand how Directed Acyclic Graphs (DAGs) work, and set up a running instance using Docker.
+If you're working in data engineering, backend systems, or any automation-heavy role, **Apache Airflow** is a tool you should definitely have in your arsenal.
 
-## What is Apache Airflow?
+## What Makes Apache Airflow Special?
 
-At its core, Airflow is a **workflow management system** written in Python. It allows users to define workflows as code using DAGs — Directed Acyclic Graphs — where each task is a node in a graph and dependencies define the execution order.
+Airflow is a powerful open-source platform for **programmatically authoring, scheduling, and monitoring workflows**. It uses Python to define workflows as **DAGs (Directed Acyclic Graphs)**, which gives you full control and visibility over complex pipelines.
 
-### Key Concepts
+But beyond the tech, here’s why it’s actually useful:
 
-- **DAG (Directed Acyclic Graph):** A collection of tasks with a clear execution order, without loops or cycles.
-- **Task:** A unit of work in a DAG.
-- **Dependencies:** Relationships between tasks defining upstream and downstream execution.
+- 🔁 **Reliable Workflow Management** – Schedule and manage recurring jobs like ETL, ML pipelines, data transformations, and more.
+- 🛠 **Custom & Scalable** – Easily extendable with Python code, and scalable to handle enterprise-grade workflows.
+- 📊 **Built-in Monitoring** – The UI provides clear visibility into what’s running, failed, or needs attention — a huge productivity booster.
+- 🌐 **Wide Adoption** – Used by companies like Airbnb, Netflix, and Stripe. It's an industry standard for orchestrating data workflows.
 
-## Installing Airflow with Docker
+## Where It Shines
 
-To get started, we’ll use **Docker Compose**, as it simplifies running Airflow’s multi-container setup.
+- **Data Engineering**: Automating and managing ETL/ELT processes across large datasets.
+- **Machine Learning Pipelines**: Scheduling model training, validation, and deployment.
+- **DevOps/Backend**: Orchestrating scheduled tasks, reports, or monitoring systems.
 
-### Step 1: Install Docker & Docker Compose
+## Why Learn It?
 
-Head over to the official [Docker](https://www.docker.com/products/docker-desktop/) website and install Docker Desktop for your platform. Once installed, Docker Compose comes bundled.
+Learning Airflow teaches you more than just workflow management. It introduces concepts like task dependencies, retries, failure handling, and parallel execution — **skills that translate across multiple domains in tech**.
 
-### Step 2: Setup Project Directory
-
-```bash
-mkdir airflow-docker-tutorial
-cd airflow-docker-tutorial
-```
-
-### Step 3: Download the Docker Compose YAML
-
-```bash
-curl -LfO 'https://airflow.apache.org/docs/apache-airflow/stable/docker-compose.yaml'
-```
-
-### Step 4: Create Required Directories
-
-```bash
-mkdir dags logs plugins
-echo -e "AIRFLOW_UID=$(id -u)" > .env
-```
-
-### Step 5: Initialize the Airflow Database
-
-```bash
-docker compose up airflow-init
-```
-
-### Step 6: Start Airflow
-
-```bash
-docker compose up
-```
-
-Visit `http://localhost:8080` in your browser. Use default credentials:
-- **Username:** airflow
-- **Password:** airflow
-
-## Writing Your First DAG
-
-Create a file named `tutorial_dag.py` inside the `dags` folder:
-
-```python
-from airflow import DAG
-from airflow.operators.bash import BashOperator
-from datetime import datetime, timedelta
-
-default_args = {
-    'owner': 'airflow',
-    'depends_on_past': False,
-    'start_date': datetime(2021, 9, 28),
-    'email_on_failure': False,
-    'email_on_retry': False,
-    'retries': 1,
-    'retry_delay': timedelta(minutes=1),
-}
-
-with DAG(
-    'tutorial',
-    default_args=default_args,
-    description='A simple tutorial DAG',
-    schedule_interval=timedelta(days=1),
-    catchup=True,
-    tags=['example'],
-) as dag:
-
-    t1 = BashOperator(
-        task_id='print_date',
-        bash_command='date',
-    )
-
-    t2 = BashOperator(
-        task_id='sleep',
-        bash_command='sleep 5',
-        retries=3,
-    )
-
-    t3 = BashOperator(
-        task_id='templated',
-        bash_command="""
-            echo "Execution date is {{ ds }}"
-            echo "Previous execution was {{ prev_ds }}"
-        """,
-    )
-
-    t1 >> [t2, t3]
-```
-
-## Testing with CLI
-
-```bash
-docker exec -it <webserver_container_id> airflow dags list
-docker exec -it <webserver_container_id> airflow tasks list tutorial --tree
-docker exec -it <webserver_container_id> airflow tasks test tutorial print_date 2021-09-29
-```
-
-## Creating a Custom DAG with PythonOperator
-
-Create a new file `sample_dag.py`:
-
-```python
-from airflow import DAG
-from airflow.operators.python import PythonOperator
-from airflow.operators.empty import EmptyOperator
-from datetime import datetime, timedelta
-
-def print_number(**kwargs):
-    print(f"Number is {kwargs['number']}")
-
-default_args = {
-    'owner': 'aay',
-    'start_date': datetime(2021, 9, 29),
-    'email_on_failure': False,
-    'email_on_retry': False,
-    'retries': 1,
-    'retry_delay': timedelta(minutes=1),
-}
-
-with DAG(
-    'aay_test',
-    default_args=default_args,
-    schedule_interval='@daily',
-    catchup=False,
-    max_active_runs=3,
-    tags=['custom'],
-) as dag:
-
-    start = EmptyOperator(task_id='start')
-
-    for i in range(1, 6):
-        task = PythonOperator(
-            task_id=f'print_number_{i}',
-            python_callable=print_number,
-            op_kwargs={'number': i}
-        )
-        start >> task
-```
+Whether you're building daily ETL jobs or orchestrating complex data pipelines, **Airflow gives you structure, reliability, and control**.
 
 ## Final Thoughts
 
