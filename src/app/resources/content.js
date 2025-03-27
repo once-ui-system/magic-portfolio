@@ -12,18 +12,18 @@ const person = {
   languages: ["English", "Marathi", "Hindi"], // optional: Leave the array empty if you don't want to display languages
 };
 
-// const newsletter = {
-//   display: true,
-//   title: <>Subscribe to {person.firstName}'s Newsletter</>,
-//   description: (
-//     <>
-//       Dynamic and results-driven Software Engineer with over two years of industry experience in designing, building, and optimizing large-scale data processing pipelines, cloud-based architectures, and machine learning workflows.
-//       Currently pursuing a Master’s in Computer Science at the University of Texas at Arlington, specializing in Big Data Management and Intelligent Systems.
-//       Technical expertise includes Python, Java, SQL, Scala, TensorFlow, PyTorch, Apache Spark, Hadoop, Kubernetes, Docker, and FastAPI.
-//       Always eager to explore innovative data-driven solutions and leverage cutting-edge technologies to enhance business intelligence and decision-making.
-//     </>
-//   ),
-// };
+const newsletter = {
+  display: false,
+  title: <>Subscribe to {person.firstName}'s Newsletter</>,
+  description: (
+    <>
+      Dynamic and results-driven Software Engineer with over two years of industry experience in designing, building, and optimizing large-scale data processing pipelines, cloud-based architectures, and machine learning workflows.
+      Currently pursuing a Master’s in Computer Science at the University of Texas at Arlington, specializing in Big Data Management and Intelligent Systems.
+      Technical expertise includes Python, Java, SQL, Scala, TensorFlow, PyTorch, Apache Spark, Hadoop, Kubernetes, Docker, and FastAPI.
+      Always eager to explore innovative data-driven solutions and leverage cutting-edge technologies to enhance business intelligence and decision-making.
+    </>
+  ),
+};
 
 const social = [
   // Links are automatically displayed.
@@ -233,4 +233,4 @@ const gallery = {
   ],
 };
 
-export { person, social, home, about, blog, work, gallery };
+export { person, social, newsletter, home, about, blog, work, gallery };
