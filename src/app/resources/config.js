@@ -11,8 +11,8 @@ const routes = {
 // Enable password protection on selected routes
 // Set password in pages/api/authenticate.ts
 const protectedRoutes = {
-  "/work/pm-roadmap-tool": true,
-  "/work/pendo-free-growth": true
+  // "/work/pm-roadmap-tool": true,
+  // "/work/pendo-free-growth": true
 };
 
 const style = {
