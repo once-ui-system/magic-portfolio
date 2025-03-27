@@ -1,20 +1,20 @@
 import { InlineCode } from "@/once-ui/components";
 
 const person = {
-  firstName: "Selene",
-  lastName: "Yu",
+  firstName: "Antony",
+  lastName: "Lambinon",
   get name() {
     return `${this.firstName} ${this.lastName}`;
   },
-  role: "Design Engineer",
+  role: "SEO Expert & Fullstack Developer with Blockchain & AI Skills",
   avatar: "/images/avatar.jpg",
-  location: "Asia/Jakarta", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
-  languages: ["English", "Bahasa"], // optional: Leave the array empty if you don't want to display languages
+  location: "Europe/Amsterdam", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
+  languages: ["English", "Dutch", "French"], // optional: Leave the array empty if you don't want to display languages
 };
 
 const newsletter = {
   display: true,
-  title: <>Subscribe to {person.firstName}'s Newsletter</>,
+  title: <>Subscribe to {person.firstName}&apos;s Newsletter</>,
   description: (
     <>
       I occasionally write about design, technology, and share thoughts on the intersection of
@@ -29,12 +29,12 @@ const social = [
   {
     name: "GitHub",
     icon: "github",
-    link: "https://github.com/once-ui-system/nextjs-starter",
+    link: "https://github.com/antonylambinon",
   },
   {
     name: "LinkedIn",
     icon: "linkedin",
-    link: "https://www.linkedin.com/company/once-ui/",
+    link: "https://www.linkedin.com/in/antonylambinon",
   },
   {
     name: "X",
@@ -44,19 +44,19 @@ const social = [
   {
     name: "Email",
     icon: "email",
-    link: "mailto:example@gmail.com",
+    link: "mailto:antony@lambinon.com",
   },
 ];
 
 const home = {
   label: "Home",
-  title: `${person.name}'s Portfolio`,
+  title: `${person.name}&apos;s Portfolio`,
   description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Design engineer and builder</>,
+  headline: <>AI & Blockchain Developer</>,
   subline: (
     <>
-      I'm Selene, a design engineer at <InlineCode>FLY</InlineCode>, where I craft intuitive
-      <br /> user experiences. After hours, I build my own projects.
+      I'm Antony, specializing in AI Chatbot development and blockchain solutions with <InlineCode>AIFTW</InlineCode>. 
+      <br /> I create intelligent conversational interfaces and decentralized applications.
     </>
   ),
 };
@@ -81,9 +81,11 @@ const about = {
     title: "Introduction",
     description: (
       <>
-        Selene is a Jakarta-based design engineer with a passion for transforming complex challenges
-        into simple, elegant design solutions. Her work spans digital interfaces, interactive
-        experiences, and the convergence of design and technology.
+        Antony is an Amsterdam-based AI & Blockchain developer with expertise in developing intelligent chatbots
+        and decentralized applications. His work focuses on leveraging cutting-edge AI technologies and blockchain
+        solutions to create innovative products that solve real-world problems. With a strong background in fullstack
+        development and a passion for emerging technologies, Antony builds secure, scalable, and user-friendly
+        applications at the intersection of AI, blockchain, and web development.
       </>
     ),
   },
@@ -92,41 +94,69 @@ const about = {
     title: "Work Experience",
     experiences: [
       {
-        company: "FLY",
+        company: "AIFTW",
         timeframe: "2022 - Present",
-        role: "Senior Design Engineer",
+        role: "AI Developer & SEO Expert",
         achievements: [
           <>
-            Redesigned the UI/UX for the FLY platform, resulting in a 20% increase in user
-            engagement and 30% faster load times.
+            Developed advanced AI chatbots that leverage natural language processing to deliver human-like
+            interactions, resulting in 40% increase in customer satisfaction for client businesses.
           </>,
           <>
-            Spearheaded the integration of AI tools into design workflows, enabling designers to
-            iterate 50% faster.
+            Implemented SEO optimization strategies that improved client website rankings by an average of 35%
+            and increased organic traffic by 50%.
+          </>,
+          <>
+            Built custom AI solutions for content generation and analysis, helping clients reduce content
+            production time by 60%.
           </>,
         ],
         images: [
           // optional: leave the array empty if you don't want to display images
           {
             src: "/images/projects/project-01/cover-01.jpg",
-            alt: "Once UI Project",
+            alt: "AIFTW AI Chatbot",
             width: 16,
             height: 9,
           },
         ],
       },
       {
-        company: "Creativ3",
-        timeframe: "2018 - 2022",
-        role: "Lead Designer",
+        company: "Tehen",
+        timeframe: "2021 - 2022",
+        role: "Blockchain Developer",
         achievements: [
           <>
-            Developed a design system that unified the brand across multiple platforms, improving
-            design consistency by 40%.
+            Architected and developed a decentralized finance (DeFi) application that enabled secure
+            peer-to-peer transactions without intermediaries.
           </>,
           <>
-            Led a cross-functional team to launch a new product line, contributing to a 15% increase
-            in overall company revenue.
+            Created smart contracts for NFT marketplaces, implementing ERC-721 and ERC-1155 standards
+            with enhanced security features.
+          </>,
+          <>
+            Built a green energy monitoring platform using blockchain to track and verify renewable
+            energy production and consumption in real-time.
+          </>,
+        ],
+        images: [],
+      },
+      {
+        company: "GreenChain",
+        timeframe: "2019 - 2021",
+        role: "Fullstack Developer",
+        achievements: [
+          <>
+            Developed a blockchain-based platform for tracking carbon credits and environmental impact,
+            helping businesses reduce their carbon footprint.
+          </>,
+          <>
+            Built a comprehensive dashboard for monitoring renewable energy production across solar and wind
+            farms, providing real-time analytics and predictive maintenance alerts.
+          </>,
+          <>
+            Implemented smart contract solutions for automated carbon credit trading, increasing transaction
+            efficiency by 75% compared to traditional methods.
           </>,
         ],
         images: [],
@@ -138,12 +168,16 @@ const about = {
     title: "Studies",
     institutions: [
       {
-        name: "University of Jakarta",
-        description: <>Studied software engineering.</>,
+        name: "Utrecht University",
+        description: <>Master&apos;s in Computer Science with focus on Artificial Intelligence and Distributed Systems.</>,
       },
       {
-        name: "Build the Future",
-        description: <>Studied online marketing and personal branding.</>,
+        name: "Amsterdam Blockchain Academy",
+        description: <>Specialized certification in Smart Contract Development and Blockchain Architecture.</>,
+      },
+      {
+        name: "Google AI Professional",
+        description: <>Professional certification in Machine Learning and Natural Language Processing.</>,
       },
     ],
   },
@@ -152,36 +186,46 @@ const about = {
     title: "Technical skills",
     skills: [
       {
-        title: "Figma",
-        description: <>Able to prototype in Figma with Once UI with unnatural speed.</>,
+        title: "AI & Machine Learning",
+        description: <>Expert in developing conversational AI using GPT models, LangChain, and custom NLP solutions.</>,
         // optional: leave the array empty if you don't want to display images
         images: [
           {
             src: "/images/projects/project-01/cover-02.jpg",
-            alt: "Project image",
+            alt: "AI Project",
             width: 16,
             height: 9,
           },
           {
             src: "/images/projects/project-01/cover-03.jpg",
-            alt: "Project image",
+            alt: "AI Project",
             width: 16,
             height: 9,
           },
         ],
       },
       {
-        title: "Next.js",
-        description: <>Building next gen apps with Next.js + Once UI + Supabase.</>,
+        title: "Blockchain Development",
+        description: <>Building secure smart contracts, dApps, and decentralized systems using Ethereum, Solidity, and Web3.js.</>,
         // optional: leave the array empty if you don't want to display images
         images: [
           {
             src: "/images/projects/project-01/cover-04.jpg",
-            alt: "Project image",
+            alt: "Blockchain Project",
             width: 16,
             height: 9,
           },
         ],
+      },
+      {
+        title: "Fullstack Development",
+        description: <>Creating modern web applications with Next.js, React, Node.js, and various database technologies.</>,
+        images: [],
+      },
+      {
+        title: "SEO & Digital Marketing",
+        description: <>Implementing advanced SEO strategies to improve website visibility and drive organic traffic.</>,
+        images: [],
       },
     ],
   },

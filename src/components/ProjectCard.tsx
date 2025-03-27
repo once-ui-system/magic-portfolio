@@ -1,6 +1,7 @@
 "use client";
 
 import {
+  Avatar,
   AvatarGroup,
   Carousel,
   Column,
@@ -8,7 +9,15 @@ import {
   Heading,
   SmartLink,
   Text,
+  Tooltip,
 } from "@/once-ui/components";
+
+interface TeamMember {
+  name: string;
+  role: string;
+  avatar: string;
+  linkedIn?: string;
+}
 
 interface ProjectCardProps {
   href: string;
@@ -17,7 +26,8 @@ interface ProjectCardProps {
   title: string;
   content: string;
   description: string;
-  avatars: { src: string }[];
+  team?: TeamMember[];
+  avatars?: { src: string }[]; // Keep for backward compatibility
   link: string;
 }
 
@@ -27,9 +37,16 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
   title,
   content,
   description,
+  team,
   avatars,
   link,
 }) => {
+  // Convert old avatars format to new team format for backward compatibility
+  const teamMembers = team || (avatars?.map(avatar => ({
+    name: "Team Member",
+    role: "Contributor",
+    avatar: avatar.src,
+  })) || []);
   return (
     <Column fillWidth gap="m">
       <Carousel
@@ -54,9 +71,34 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
             </Heading>
           </Flex>
         )}
-        {(avatars?.length > 0 || description?.trim() || content?.trim()) && (
+        {(teamMembers.length > 0 || description?.trim() || content?.trim()) && (
           <Column flex={7} gap="16">
-            {avatars?.length > 0 && <AvatarGroup avatars={avatars} size="m" reverse />}
+            {teamMembers.length > 0 && (
+              <Flex direction="column" gap="s">
+                <AvatarGroup 
+                  avatars={teamMembers.map(member => ({ src: member.avatar }))} 
+                  size="m" 
+                  reverse 
+                />
+                <Flex wrap gap="l" paddingTop="xs">
+                  {teamMembers.map((member, index) => (
+                    <Flex key={index} direction="column" gap="xxs">
+                      <Text variant="body-strong-xs">{member.name}</Text>
+                      <Text variant="body-default-xs" onBackground="neutral-weak">{member.role}</Text>
+                      {member.linkedIn && (
+                        <SmartLink 
+                          href={member.linkedIn}
+                          suffixIcon="arrowUpRightFromSquare"
+                          style={{ margin: "0", width: "fit-content" }}
+                        >
+                          <Text variant="body-default-xs">LinkedIn</Text>
+                        </SmartLink>
+                      )}
+                    </Flex>
+                  ))}
+                </Flex>
+              </Flex>
+            )}
             {description?.trim() && (
               <Text wrap="balance" variant="body-default-s" onBackground="neutral-weak">
                 {description}
