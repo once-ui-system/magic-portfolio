@@ -114,7 +114,7 @@ function createHomePageSchema(): WebPageSchema {
 export default function Home(): React.ReactElement {
   return (
     <Column maxWidth="m" gap="xl" horizontal="center">
-      <JsonLdSchema schema={createHomePageSchema()} />
+      <JsonLdSchema websiteSchema={createHomePageSchema()} />
       
       {/* Hero section with headline and about button */}
       <Column fillWidth paddingY="l" gap="m">
