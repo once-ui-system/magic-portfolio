@@ -1,4 +1,4 @@
-const baseURL = "demo.magic-portfolio.com";
+const baseURL = "antony.lambinon.com";
 
 const routes = {
   "/": true,
@@ -16,9 +16,9 @@ const protectedRoutes = {
 
 const style = {
   theme: "dark", // dark | light
-  neutral: "gray", // sand | gray | slate
-  brand: "emerald", // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan
-  accent: "orange", // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan
+  neutral: "slate", // sand | gray | slate
+  brand: "#193A59", // Deep blue color for a professional look
+  accent: "blue", // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan
   solid: "contrast", // color | contrast
   solidStyle: "flat", // flat | plastic
   border: "playful", // rounded | playful | conservative
@@ -35,14 +35,14 @@ const effects = {
   },
   gradient: {
     display: true,
-    x: 50,
-    y: 0,
+    x: 40,
+    y: 30,
     width: 100,
     height: 100,
     tilt: 0,
-    colorStart: "brand-background-strong",
-    colorEnd: "static-transparent",
-    opacity: 50,
+    colorStart: "brand",
+    colorEnd: "brand",
+    opacity: 40,
   },
   dots: {
     display: true,

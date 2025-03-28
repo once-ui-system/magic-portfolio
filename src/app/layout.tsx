@@ -1,17 +1,21 @@
-import "@/once-ui/styles/index.scss";
-import "@/once-ui/tokens/index.scss";
-
+// External dependencies
+import { Inter, Source_Code_Pro } from "next/font/google";
 import classNames from "classnames";
 
+// Internal dependencies
 import { Footer, Header, RouteGuard } from "@/components";
 import { baseURL, effects, style } from "@/app/resources";
-
-import { Inter } from "next/font/google";
-import { Source_Code_Pro } from "next/font/google";
-
 import { person, home } from "@/app/resources/content";
 import { Background, Column, Flex, ToastProvider } from "@/once-ui/components";
 
+// Styles
+import "@/once-ui/styles/index.scss";
+import "@/once-ui/tokens/index.scss";
+
+/**
+ * Generates metadata for the application including SEO-related information
+ * @returns Metadata object for Next.js
+ */
 export async function generateMetadata() {
   return {
     metadataBase: new URL(`https://${baseURL}`),
@@ -45,18 +49,16 @@ const primary = Inter({
   display: "swap",
 });
 
+/**
+ * Configuration type for fonts used in the application
+ */
 type FontConfig = {
   variable: string;
 };
 
-/*
-	Replace with code for secondary and tertiary fonts
-	from https://once-ui.com/customize
-*/
+// TODO: Add secondary and tertiary fonts from https://once-ui.com/customize when needed
 const secondary: FontConfig | undefined = undefined;
 const tertiary: FontConfig | undefined = undefined;
-/*
- */
 
 const code = Source_Code_Pro({
   variable: "--font-code",
@@ -64,10 +66,17 @@ const code = Source_Code_Pro({
   display: "swap",
 });
 
+/**
+ * Props for the RootLayout component
+ */
 interface RootLayoutProps {
   children: React.ReactNode;
 }
 
+/**
+ * Root layout component that wraps the entire application
+ * Provides styling, fonts, and global UI elements like Header and Footer
+ */
 export default async function RootLayout({ children }: RootLayoutProps) {
   return (
     <Flex
@@ -108,35 +117,24 @@ export default async function RootLayout({ children }: RootLayoutProps) {
               tilt: effects.gradient.tilt,
               colorStart: effects.gradient.colorStart,
               colorEnd: effects.gradient.colorEnd,
-              opacity: effects.gradient.opacity as
-                | 0
-                | 10
-                | 20
-                | 30
-                | 40
-                | 50
-                | 60
-                | 70
-                | 80
-                | 90
-                | 100,
+              opacity: effects.gradient.opacity,
             }}
             dots={{
               display: effects.dots.display,
               color: effects.dots.color,
-              size: effects.dots.size as any,
-              opacity: effects.dots.opacity as any,
+              size: effects.dots.size,
+              opacity: effects.dots.opacity,
             }}
             grid={{
               display: effects.grid.display,
               color: effects.grid.color,
-              width: effects.grid.width as any,
-              height: effects.grid.height as any,
-              opacity: effects.grid.opacity as any,
+              width: effects.grid.width,
+              height: effects.grid.height,
+              opacity: effects.grid.opacity,
             }}
             lines={{
               display: effects.lines.display,
-              opacity: effects.lines.opacity as any,
+              opacity: effects.lines.opacity,
             }}
           />
           <Flex fillWidth minHeight="16"></Flex>

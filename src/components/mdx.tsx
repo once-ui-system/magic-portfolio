@@ -1,7 +1,7 @@
 import { MDXRemote, MDXRemoteProps } from "next-mdx-remote/rsc";
 import React, { ReactNode } from "react";
 
-import { SmartImage, SmartLink, Text } from "@/once-ui/components";
+import { SmartImage, SmartLink, Text, Flex } from "@/once-ui/components";
 import { CodeBlock } from "@/once-ui/modules";
 import { HeadingLink } from "@/components";
 
@@ -97,9 +97,17 @@ function slugify(str: string): string {
 function createHeading(level: 1 | 2 | 3 | 4 | 5 | 6) {
   const CustomHeading = ({ children, ...props }: TextProps) => {
     const slug = slugify(children as string);
+    const marginTop = level === 1 ? "40" : level === 2 ? "32" : "24";
+    const marginBottom = level === 1 ? "20" : level === 2 ? "16" : "12";
+    
     return (
       <HeadingLink
-        style={{ marginTop: "var(--static-space-24)", marginBottom: "var(--static-space-12)" }}
+        style={{ 
+          marginTop: `var(--static-space-${marginTop})`, 
+          marginBottom: `var(--static-space-${marginBottom})`,
+          fontWeight: level <= 2 ? "600" : "500",
+          letterSpacing: level <= 2 ? "-0.02em" : "normal"
+        }}
         level={level}
         id={slug}
         {...props}
@@ -121,10 +129,93 @@ function createParagraph({ children }: TextProps) {
       variant="body-default-m"
       onBackground="neutral-medium"
       marginTop="8"
-      marginBottom="12"
+      marginBottom="16"
     >
       {children}
     </Text>
+  );
+}
+
+function createUnorderedList({ children }: React.HTMLAttributes<HTMLUListElement>) {
+  return (
+    <ul style={{
+      listStyleType: "disc",
+      marginLeft: "var(--static-space-16)",
+      marginTop: "var(--static-space-8)",
+      marginBottom: "var(--static-space-16)",
+    }}>
+      {children}
+    </ul>
+  );
+}
+
+function createOrderedList({ children }: React.HTMLAttributes<HTMLOListElement>) {
+  return (
+    <ol style={{
+      listStyleType: "decimal",
+      marginLeft: "var(--static-space-16)",
+      marginTop: "var(--static-space-8)",
+      marginBottom: "var(--static-space-16)",
+    }}>
+      {children}
+    </ol>
+  );
+}
+
+function createListItem({ children }: React.HTMLAttributes<HTMLLIElement>) {
+  return (
+    <li style={{
+      marginBottom: "var(--static-space-4)",
+      lineHeight: "175%",
+    }}>
+      <Text
+        variant="body-default-m"
+        onBackground="neutral-medium"
+        as="span"
+      >
+        {children}
+      </Text>
+    </li>
+  );
+}
+
+function createBlockquote({ children }: React.HTMLAttributes<HTMLQuoteElement>) {
+  return (
+    <Flex
+      as="blockquote"
+      marginY="24"
+      paddingY="16"
+      paddingX="20"
+      style={{
+        borderLeft: "4px solid var(--color-brand-normal)",
+        backgroundColor: "var(--color-brand-lighter)",
+        borderRadius: "var(--radius-m)",
+      }}
+    >
+      <Text
+        variant="body-default-m"
+        onBackground="neutral-medium"
+        style={{ fontStyle: "italic", lineHeight: "175%" }}
+      >
+        {children}
+      </Text>
+    </Flex>
+  );
+}
+
+function createInlineCode({ children }: React.HTMLAttributes<HTMLElement>) {
+  return (
+    <code
+      style={{
+        fontFamily: "var(--fonts-mono)",
+        backgroundColor: "var(--color-neutral-bg-subtle)",
+        padding: "0.2em 0.4em",
+        borderRadius: "var(--radius-s)",
+        fontSize: "0.9em",
+      }}
+    >
+      {children}
+    </code>
   );
 }
 
@@ -136,6 +227,11 @@ const components = {
   h4: createHeading(4) as any,
   h5: createHeading(5) as any,
   h6: createHeading(6) as any,
+  ul: createUnorderedList as any,
+  ol: createOrderedList as any,
+  li: createListItem as any,
+  blockquote: createBlockquote as any,
+  code: createInlineCode as any,
   img: createImage as any,
   a: CustomLink as any,
   Table,
@@ -148,7 +244,9 @@ type CustomMDXProps = MDXRemoteProps & {
 
 export function CustomMDX(props: CustomMDXProps) {
   return (
-    // @ts-ignore: Suppressing type error for MDXRemote usage
-    <MDXRemote {...props} components={{ ...components, ...(props.components || {}) }} />
+    <div className="mdx-content">
+      {/* @ts-ignore: Suppressing type error for MDXRemote usage */}
+      <MDXRemote {...props} components={{ ...components, ...(props.components || {}) }} />
+    </div>
   );
 }
