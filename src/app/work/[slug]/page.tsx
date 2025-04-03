@@ -114,6 +114,7 @@ export default function Project({ params }: WorkParams) {
             radius="m"
             alt="image"
             src={post.metadata.images[0]}
+            unoptimized={post.metadata.images[0].endsWith('.gif')}
           />
         )}
         <Column style={{ margin: "auto" }} as="article" maxWidth="xs">
