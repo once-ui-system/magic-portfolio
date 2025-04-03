@@ -20,6 +20,7 @@ type Metadata = {
   link?: string;
   featured?: boolean;
   case_study?: boolean;
+  feature_order?: number;
 };
 
 import { notFound } from 'next/navigation';
@@ -51,6 +52,7 @@ function readMDXFile(filePath: string) {
     link: data.link || "",
     featured: data.featured || false,
     case_study: data.case_study || false,
+    feature_order: data.feature_order || 999,
   };
 
   return { metadata, content };

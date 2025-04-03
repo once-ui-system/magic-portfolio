@@ -19,9 +19,16 @@ export function Projects({ showFeaturedOnly, showCaseStudyOnly }: ProjectsProps)
       )
     : getPosts(["src", "app", "work", "projects"]); // Get all projects
 
+  // Sort projects by feature_order
+  const sortedProjects = [...projects].sort((a, b) => {
+    const orderA = a.metadata.feature_order || 999;
+    const orderB = b.metadata.feature_order || 999;
+    return orderA - orderB;
+  });
+
   return (
     <Column fillWidth gap="xl" marginBottom="40" paddingX="l">
-      {projects.map((project) => (
+      {sortedProjects.map((project) => (
         <ProjectCard
           key={project.slug}
           href={`/work/${project.slug}`}

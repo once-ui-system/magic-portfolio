@@ -209,10 +209,10 @@ export default function About() {
               {about.intro.description}
               {/* Example usage of PostImage */}
               <PostImage
-                src="/path/to/image.jpg"
+                src="/images/projects/project-01/me-2.png"
                 alt="Descriptive alt text"
-                width={600}
-                height={400}
+                width={300}
+                height={190}
               />
             </Column>
           )}
