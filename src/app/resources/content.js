@@ -9,7 +9,7 @@ const person = {
   role: "Software Engineer",
   avatar: "/images/avatar.jpg",
   location: "America/Chicago", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
-  languages: ["English", "Marathi", "Hindi"], // optional: Leave the array empty if you don't want to display languages
+  languages: [ ], // optional: Leave the array empty if you don't want to display languages
 };
 
 const newsletter = {
@@ -69,7 +69,7 @@ const about = {
     display: true,
   },
   calendar: {
-    display: true,
+    display: false,
     link: "https://cal.com",
   },
   intro: {
