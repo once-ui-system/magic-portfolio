@@ -60,7 +60,7 @@ const home = {
 const about = {
   label: "About",
   title: "About me",
-  description: `Meet ${person.name}, ${person.role} from ${person.location}`,
+  description: `Meet ${person.name}, ${person.role} from Texas, USA`,
   tableOfContent: {
     display: true,
     subItems: false,
@@ -226,7 +226,7 @@ const gallery = {
       orientation: "horizontal", // vertical | horizontal
     },
     {
-      src: "/images/gallery/Virginia_tech_2.jpg",
+      src: "/images/gallery/UTA-1.jpg",
       alt: "image",
       orientation: "horizontal",
     },
