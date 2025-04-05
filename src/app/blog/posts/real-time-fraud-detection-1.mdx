@@ -1,0 +1,100 @@
+---
+title: "Real-Time Fraud Detection Lakehouse – Project Progress & Architecture Rationale"
+publishedAt: "2025-04-04"
+image: "/images/gallery/blog-fraud-lakehouse-1.png"
+summary: "An in-depth walkthrough of setting up a real-time fraud detection system using Kafka, Spark, Apache Iceberg, and Docker — including current progress, tech choices, and what’s next."
+tag: "Project Progress"
+---
+
+[Inspiration](https://medium.com/@MarinAgli1/learning-apache-iceberg-an-introspection)
+
+I'm currently developing a real-time fraud detection system designed to catch suspicious financial transactions as they happen. The system mimics what modern fintech and banking platforms aim to achieve: **sub-second anomaly detection, traceability of decisions, and a unified architecture for both real-time and historical analysis**.
+
+The project brings together the best of streaming data processing, machine learning, and modern data lakehouse principles.
+
+## 🚧 Current Progress
+
+At this stage, I've successfully containerized and deployed the foundational components of the system using Docker. The setup includes:
+
+- **Apache Kafka** – for scalable, real-time ingestion of transaction events
+- **Kafka UI** – to inspect, debug, and monitor Kafka topics
+- **Apache Spark with Iceberg support** – for structured streaming, batch processing, and unified data access
+- **MinIO** – an S3-compatible object store for scalable, cost-effective data storage
+- **PostgreSQL Catalog** – stores metadata for Iceberg tables, enabling schema evolution and snapshot management
+
+These components form the base of a **streaming analytics pipeline** that can ingest, process, and store transaction data in real time — enabling immediate fraud detection and long-term analytics.
+
+> 💡 Special thanks to Marin Aglić for his insightful article ["Learning Apache Iceberg: An Introspection"](https://medium.com/@MarinAgli1/learning-apache-iceberg-an-introspection), which helped clarify the internal workings of Iceberg. His deep dive into snapshots, metadata layering, and consistency guarantees inspired how I structured the storage layer in this project.
+
+## 🔧 Technology Choices – And Why They Matter
+
+Each component in this stack plays a critical, well-justified role in enabling low-latency fraud detection with auditability and scale:
+
+### 1. Apache Kafka – Streaming Backbone
+
+Kafka acts as the **central nervous system** of the architecture. It's responsible for transporting high-throughput, real-time transaction events (e.g., credit card swipes, online purchases). Kafka ensures:
+
+- Durable buffering of events until they’re processed
+- Per-account ordering using partitioning
+- Scalability to millions of events/second, making it ideal for financial workloads
+
+Kafka also decouples data producers (e.g. payment systems) from consumers (e.g. Spark jobs, alert systems), enabling modular design.
+
+### 2. Apache Spark (Structured Streaming + SQL) – Real-Time and Batch Engine
+
+Spark serves dual purposes:
+
+- **Structured Streaming** to process each transaction within seconds, enrich it, score it using ML/DL models, and decide if it's fraudulent
+- **Batch Processing** to periodically retrain models, compute aggregate features, and support historical analysis
+
+With its **unified programming model**, Spark simplifies the data pipeline — the same platform supports both real-time decisions and deep analytics.
+
+### 3. Apache Iceberg – The Lakehouse Core
+
+Iceberg transforms raw storage (like MinIO) into a **transactional data lake** with database-like capabilities. It enables:
+
+- ACID compliance for concurrent writes/reads (critical for correctness)
+- Time travel and snapshots for querying data at any point in the past (important for auditing)
+- Schema evolution without breaking historical data
+- High-performance reads via metadata pruning and optimized file layouts
+
+Iceberg also enables **model reproducibility**, ensuring consistent training datasets across retraining cycles.
+
+### 4. MinIO – S3-Compatible Object Store
+
+MinIO serves as the underlying data store, compatible with Iceberg’s needs. It offers:
+
+- Scalable, cloud-native storage for Parquet/ORC files
+- S3 API support, making it compatible with other tools in the ecosystem
+- On-prem or cloud deployment flexibility, useful for local testing or cloud migration
+
+### 5. PostgreSQL + Iceberg Catalog – Metadata Management
+
+A catalog (backed by PostgreSQL) keeps track of:
+
+- Table schemas
+- Snapshots and versions
+- Table locations and partitioning
+
+This enables Spark to discover and query Iceberg tables seamlessly across jobs. It's essential for table introspection, schema changes, and reproducibility.
+
+### 6. Kafka UI – Observability and Debugging
+
+Having a web-based UI to inspect Kafka topics is a huge productivity boost. Kafka UI lets you:
+
+- Verify events are being published
+- Inspect message structure
+- Monitor topic lag and consumer offsets
+
+This helps debug the streaming job and ensure real-time performance.
+
+## 🛠️ What's Next?
+
+Next steps include:
+
+- Creating the **streaming pipeline in Spark** that reads from Kafka, scores transactions using ML/DL models, and writes flagged events to Iceberg
+- Setting up **monitoring with Prometheus and Grafana** for Kafka + Spark
+- Integrating **Apache Superset** for interactive fraud analytics dashboards
+- Starting **model training pipelines** for supervised (XGBoost) and unsupervised (autoencoder) fraud detection
+
+
