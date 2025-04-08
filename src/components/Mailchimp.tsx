@@ -1,10 +1,22 @@
 "use client";
 
 import { mailchimp } from "@/app/resources";
-import { Button, Flex, Heading, Input, Text, Background, Column } from "@/once-ui/components";
+import {
+  Button,
+  Flex,
+  Heading,
+  Input,
+  Text,
+  Background,
+  Column,
+} from "@/once-ui/components";
 import { useState } from "react";
+import { useToast } from "@/once-ui/components";
 
-function debounce<T extends (...args: any[]) => void>(func: T, delay: number): T {
+function debounce<T extends (...args: any[]) => void>(
+  func: T,
+  delay: number
+): T {
   let timeout: ReturnType<typeof setTimeout>;
   return ((...args: Parameters<T>) => {
     clearTimeout(timeout);
@@ -22,6 +34,8 @@ export const Mailchimp = ({ newsletter }: { newsletter: NewsletterProps }) => {
   const [email, setEmail] = useState<string>("");
   const [error, setError] = useState<string>("");
   const [touched, setTouched] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const { addToast } = useToast();
 
   const validateEmail = (email: string): boolean => {
     if (email === "") {
@@ -49,6 +63,45 @@ export const Mailchimp = ({ newsletter }: { newsletter: NewsletterProps }) => {
     setTouched(true);
     if (!validateEmail(email)) {
       setError("Please enter a valid email address.");
+    }
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!validateEmail(email)) {
+      setError("Please enter a valid email address.");
+      return;
+    }
+
+    setIsLoading(true);
+    try {
+      const response = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "Failed to subscribe");
+      }
+
+      setEmail("");
+      addToast({
+        variant: "success",
+        message: "Successfully subscribed to newsletter!",
+      });
+    } catch (error) {
+      addToast({
+        variant: "danger",
+        message: "Failed to subscribe. Please try again later.",
+      });
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -112,7 +165,11 @@ export const Mailchimp = ({ newsletter }: { newsletter: NewsletterProps }) => {
           opacity: mailchimp.effects.lines.opacity as any,
         }}
       />
-      <Heading style={{ position: "relative" }} marginBottom="s" variant="display-strong-xs">
+      <Heading
+        style={{ position: "relative" }}
+        marginBottom="s"
+        variant="display-strong-xs"
+      >
         {newsletter.title}
       </Heading>
       <Text
@@ -132,10 +189,7 @@ export const Mailchimp = ({ newsletter }: { newsletter: NewsletterProps }) => {
           display: "flex",
           justifyContent: "center",
         }}
-        action={mailchimp.action}
-        method="post"
-        id="mc-embedded-subscribe-form"
-        name="mc-embedded-subscribe-form"
+        onSubmit={handleSubmit}
       >
         <Flex id="mc_embed_signup_scroll" fillWidth maxWidth={24} gap="8">
           <Input
@@ -146,13 +200,8 @@ export const Mailchimp = ({ newsletter }: { newsletter: NewsletterProps }) => {
             type="email"
             label="Email"
             required
-            onChange={(e) => {
-              if (error) {
-                handleChange(e);
-              } else {
-                debouncedHandleChange(e);
-              }
-            }}
+            value={email}
+            onChange={handleChange}
             onBlur={handleBlur}
             errorMessage={error}
           />
@@ -167,10 +216,21 @@ export const Mailchimp = ({ newsletter }: { newsletter: NewsletterProps }) => {
             />
           </div>
           <div id="mce-responses" className="clearfalse">
-            <div className="response" id="mce-error-response" style={{ display: "none" }}></div>
-            <div className="response" id="mce-success-response" style={{ display: "none" }}></div>
+            <div
+              className="response"
+              id="mce-error-response"
+              style={{ display: "none" }}
+            ></div>
+            <div
+              className="response"
+              id="mce-success-response"
+              style={{ display: "none" }}
+            ></div>
           </div>
-          <div aria-hidden="true" style={{ position: "absolute", left: "-5000px" }}>
+          <div
+            aria-hidden="true"
+            style={{ position: "absolute", left: "-5000px" }}
+          >
             <input
               type="text"
               readOnly
@@ -181,8 +241,14 @@ export const Mailchimp = ({ newsletter }: { newsletter: NewsletterProps }) => {
           </div>
           <div className="clear">
             <Flex height="48" vertical="center">
-              <Button id="mc-embedded-subscribe" value="Subscribe" size="m" fillWidth>
-                Subscribe
+              <Button
+                id="mc-embedded-subscribe"
+                type="submit"
+                size="m"
+                fillWidth
+                disabled={isLoading || !!error}
+              >
+                {isLoading ? "Subscribing..." : "Subscribe"}
               </Button>
             </Flex>
           </div>

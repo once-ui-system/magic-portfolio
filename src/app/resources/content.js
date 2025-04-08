@@ -1,15 +1,15 @@
 import { InlineCode } from "@/once-ui/components";
 
 const person = {
-  firstName: "Selene",
-  lastName: "Yu",
+  firstName: "Yannick",
+  lastName: "Nyami",
   get name() {
     return `${this.firstName} ${this.lastName}`;
   },
-  role: "Design Engineer",
-  avatar: "/images/avatar.jpg",
-  location: "Asia/Jakarta", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
-  languages: ["English", "Bahasa"], // optional: Leave the array empty if you don't want to display languages
+  role: "Mobile Engineer",
+  avatar: "/images/avatar.png",
+  location: "Europe/Paris", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
+  languages: ["English", "French", "German"], // optional: Leave the array empty if you don't want to display languages
 };
 
 const newsletter = {
@@ -17,8 +17,8 @@ const newsletter = {
   title: <>Subscribe to {person.firstName}'s Newsletter</>,
   description: (
     <>
-      I occasionally write about design, technology, and share thoughts on the intersection of
-      creativity and engineering.
+      I occasionally write about design, technology, and share thoughts on the
+      intersection of creativity and engineering.
     </>
   ),
 };
@@ -29,12 +29,12 @@ const social = [
   {
     name: "GitHub",
     icon: "github",
-    link: "https://github.com/once-ui-system/nextjs-starter",
+    link: "https://github.com/javabbt",
   },
   {
     name: "LinkedIn",
     icon: "linkedin",
-    link: "https://www.linkedin.com/company/once-ui/",
+    link: "https://www.linkedin.com/in/lo%C3%AFc-ngapmen-98b51a124/",
   },
   {
     name: "X",
@@ -44,7 +44,7 @@ const social = [
   {
     name: "Email",
     icon: "email",
-    link: "mailto:example@gmail.com",
+    link: "mailto:ngapmennyamiyannickloic@gmail.com",
   },
 ];
 
@@ -52,10 +52,11 @@ const home = {
   label: "Home",
   title: `${person.name}'s Portfolio`,
   description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Design engineer and builder</>,
+  headline: <>Mobile engineer and builder</>,
   subline: (
     <>
-      I'm Selene, a design engineer at <InlineCode>FLY</InlineCode>, where I craft intuitive
+      I'm Yannick, a mobile engineer (android) at{" "}
+      <InlineCode>Adevinta/Leboncoin</InlineCode>, where I craft intuitive
       <br /> user experiences. After hours, I build my own projects.
     </>
   ),
@@ -81,9 +82,10 @@ const about = {
     title: "Introduction",
     description: (
       <>
-        Selene is a Jakarta-based design engineer with a passion for transforming complex challenges
-        into simple, elegant design solutions. Her work spans digital interfaces, interactive
-        experiences, and the convergence of design and technology.
+        Yannick is a Paris-based mobile engineer with a passion for building
+        scalable and maintainable mobile applications. His expertise lies in
+        system design, architecture patterns, and creating robust solutions that
+        can handle millions of users.
       </>
     ),
   },
@@ -92,41 +94,149 @@ const about = {
     title: "Work Experience",
     experiences: [
       {
-        company: "FLY",
-        timeframe: "2022 - Present",
-        role: "Senior Design Engineer",
+        company: "Adevinta/Leboncoin",
+        timeframe: "05/2024 - Present",
+        role: "Senior Android Engineer",
         achievements: [
           <>
-            Redesigned the UI/UX for the FLY platform, resulting in a 20% increase in user
-            engagement and 30% faster load times.
+            leboncoin, is the leading generalist site for sales between
+            individuals in France, leader in the real estate and automobile
+            markets, key player in employment and vacation rentals. With nearly
+            28.8 million unique monthly visitors on average, leboncoin is the
+            leading French e-commerce site, and the 2nd most visited e-commerce
+            site in France.
           </>,
           <>
-            Spearheaded the integration of AI tools into design workflows, enabling designers to
-            iterate 50% faster.
+            Working on leboncoin's mobile android app. This includes bugs and
+            new features.
           </>,
         ],
-        images: [
-          // optional: leave the array empty if you don't want to display images
-          {
-            src: "/images/projects/project-01/cover-01.jpg",
-            alt: "Once UI Project",
-            width: 16,
-            height: 9,
-          },
-        ],
+        images: [],
       },
       {
-        company: "Creativ3",
-        timeframe: "2018 - 2022",
-        role: "Lead Designer",
+        company: "Droidcoin",
+        timeframe: "01/2023 - Present",
+        role: "Android Instructor",
         achievements: [
           <>
-            Developed a design system that unified the brand across multiple platforms, improving
-            design consistency by 40%.
+            Making paid videos and courses on Android programming for Droidcon,
+            teaching android development to thousands of learners.
+          </>,
+        ],
+        images: [],
+      },
+
+      {
+        company: "Treatwell",
+        timeframe: "05/2022 - 04/2024",
+        role: "Senior Android Engineer",
+        achievements: [
+          <>
+            Worked on Treatwell's mobile android app, the #1 booking platform in
+            Europe for arranging your hair and beauty appointments 8 million
+            bookings per month and growing.
           </>,
           <>
-            Led a cross-functional team to launch a new product line, contributing to a 15% increase
-            in overall company revenue.
+            Worked on the onboarding and offline to online flow that increased
+            user retention of new users of about 3% and total revenue of about
+            1%
+          </>,
+          <>
+            Moved the app from a "Mortar and Flow" architecture to a modular
+            MVVM architecture.
+          </>,
+          <>
+            Worked on the Loyalty feature for loyal customers using clean
+            architecture methods and SOLID principles.
+          </>,
+          <>
+            Continuous Integration/Deployment Pipeline Integration, pull
+            requests, code reviews, load/stress testing, unit/integration/e2e
+            testing
+          </>,
+        ],
+        images: [],
+      },
+      {
+        company: "Kreactive",
+        timeframe: "06/2023 - 09/2023",
+        role: "Senior Android Engineer",
+        achievements: [
+          <>
+            Worked on the Louis Vuitton's official android app, app with over 1
+            million users, resolved some bugs to improve the app's quality,
+            worked on some intuitive animations to gamify the user's experience.
+          </>,
+        ],
+        images: [],
+      },
+      {
+        company: "Appsolute",
+        timeframe: "09/2021 - 09/2022",
+        role: "Senior Android Engineer",
+        achievements: [
+          <>
+            Worked on Adoma, android application of the French Ministry of
+            Housing. Refactored the app to make it work 100% offline, redesigned
+            the app's architecture, moving from MVP to MVVM to make it more
+            scalable, rapid and bug free, implemented all the unit and
+            instrumented tests of the app, decreasing bugs from 58% to 27%.
+          </>,
+          <>
+            Developed Smile and DHR, mobile apps of the Sisley beauty group.
+            Built the mobile apps of the Sisley group Paris, one of the most
+            notorious and prestigious beauty company in the world, from scratch.
+            Feature modular app with MVVM architecture.
+          </>,
+          <>
+            Worked on Beaba, an IOT project that connects a baby cook to a
+            mobile phone to automate baby meals, the app was entirely designed
+            from scratch using the MVVM + MVI architecture.
+          </>,
+          <>
+            Continuous Integration/Deployment Pipeline Integration, pull
+            requests, code reviews, load/stress testing, unit/integration/e2e
+            testing
+          </>,
+        ],
+        images: [],
+      },
+      {
+        company: "SDK GAMES AFRICA",
+        timeframe: "01/2019 - 04/2021",
+        role: "Android Engineer",
+        achievements: [
+          <>
+            Designed and developed GCTV, the mobile application of one of the
+            most popular TV channels in Cameroon. Thousands downloads on
+            playstore. The app was built using Java and the MVP architecture,
+            built the video streaming player. Integrated multiple third-party
+            systems with the escrow platform, including Alipay, increasing
+            global revenue.
+          </>,
+          <>
+            Developed an augmented reality kit for the Cameroon breweries, one
+            of the very first in Cameroon, which has enabled them to
+            substantially increase their customer base.
+          </>,
+          <>
+            Continuous Integration/Deployment Pipeline Integration, pull
+            requests, code reviews, load/stress testing, unit/integration/e2e
+            testing
+          </>,
+        ],
+        images: [],
+      },
+      {
+        company: "Innovative group tech",
+        timeframe: "01/2018 - 12/2018",
+        role: "Software Engineer, Intern",
+        achievements: [
+          <>
+            Developed Babillard: the official mobile application for Cameroonian
+            universities which purpose is to connect the students and the
+            administration and facilitate communication between these two
+            entities.
           </>,
         ],
         images: [],
@@ -138,12 +248,8 @@ const about = {
     title: "Studies",
     institutions: [
       {
-        name: "University of Jakarta",
-        description: <>Studied software engineering.</>,
-      },
-      {
-        name: "Build the Future",
-        description: <>Studied online marketing and personal branding.</>,
+        name: "University of Yaounde I",
+        description: <>Studied Physics, Mechanical Engineering</>,
       },
     ],
   },
@@ -152,36 +258,54 @@ const about = {
     title: "Technical skills",
     skills: [
       {
-        title: "Figma",
-        description: <>Able to prototype in Figma with Once UI with unnatural speed.</>,
-        // optional: leave the array empty if you don't want to display images
-        images: [
-          {
-            src: "/images/projects/project-01/cover-02.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-          {
-            src: "/images/projects/project-01/cover-03.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-        ],
+        title: "Android",
+        description: (
+          <>
+            Jetpack Compose, Kotlin Coroutines, Dagger Hilt, Room DB, MVVM
+            Architecture, Material Design 3...
+          </>
+        ),
+        images: [],
       },
       {
-        title: "Next.js",
-        description: <>Building next gen apps with Next.js + Once UI + Supabase.</>,
-        // optional: leave the array empty if you don't want to display images
-        images: [
-          {
-            src: "/images/projects/project-01/cover-04.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-        ],
+        title: "KMP",
+        description: (
+          <>
+            Kotlin Multiplatform, Compose Multiplatform, SQLDelight, Ktor
+            Client, Koin DI...
+          </>
+        ),
+        images: [],
+      },
+      {
+        title: "Flutter",
+        description: (
+          <>
+            Riverpod, Bloc, GoRouter, Dio, Freezed, Flutter Bloc, Material 3
+            Design...
+          </>
+        ),
+        images: [],
+      },
+      {
+        title: "NextJs with Typescript",
+        description: (
+          <>
+            Server Components, App Router, tRPC, Prisma, TailwindCSS,
+            NextAuth.js...
+          </>
+        ),
+        images: [],
+      },
+      {
+        title: "SpringBoot java and kotlin",
+        description: (
+          <>
+            Spring WebFlux, Spring Security, Spring Data JPA, Kotlin Coroutines,
+            Docker, Kubernetes...
+          </>
+        ),
+        images: [],
       },
     ],
   },
