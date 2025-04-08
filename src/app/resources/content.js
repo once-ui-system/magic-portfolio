@@ -76,12 +76,16 @@ const about = {
     title: "Introduction",
     description: (
       <>
-        Arnab is a student at Cornell University majoring in Computer Science
-        and Mathematics, with a passion for socially impactful technology and
-        national security. He is an experienced full-stack developer proficient
-        in Kotlin, Java, and TypeScript, specializing in security and
-        cryptography. His interests include security, cryptography, quantum
-        computing, post-quantum cryptography, and secure AI.
+        Arnab is a Computer Science and Mathematics student at Cornell
+        University with a passion for quantum computing, cryptography, and
+        full-stack development. He has professional experience as a Software
+        Development Intern at HRL Laboratories' Quantum Technology division and
+        as a Software Engineer at Cornell CMSx. His technical expertise spans
+        TypeScript, Java/Kotlin, Next.js, and Spring Boot, with specialized
+        knowledge in post-quantum cryptography. As Education Lead for the
+        Quantum Computing Association, he creates educational content and
+        organizes events like the IBM Qiskit Fall Fest. His projects demonstrate
+        skills in building secure, AI-enhanced applications.
       </>
     ),
   },
