@@ -1,0 +1,101 @@
+---
+title: "Real-Time Fraud Detection Lakehouse – Project Progress & Architecture Rationale"
+publishedAt: "2025-04-08"
+image: "/images/gallery/blog-fraud-lakehouse-2.png"
+summary: "Apache Iceberg: Bridging Data Lakes and Warehouses with Time Travel and ACID Power"
+tag: "Project Progress"
+---
+
+Below is a concise, high-level blog post you can adapt for your own site or sharing platform. It explains what Apache Iceberg is, how it compares to traditional data warehouses and data lakes, and then highlights key features such as time travel, compute-storage decoupling, and ACID guarantees. At the end, there’s a spot for you to embed (or link to) the output of your JupyterLab notebook (saved as an HTML file) so readers can see everything in action.
+
+---
+
+## Title: A Quick Introduction to Apache Iceberg
+
+### 1. What Is Apache Iceberg?
+[Apache Iceberg](https://iceberg.apache.org/) is an open table format designed for large analytic datasets in data lakes. It provides a standard way to track data files and metadata, enabling high-performance queries across vast volumes of data. By delivering features like **schema evolution** and **time travel** within a data lake setting, Iceberg bridges the gap between traditional data warehouse capabilities and the simplicity of storing data in an object store or HDFS.
+
+**Key points at a glance:**
+- **Open table format**: You can query and manage your data using multiple engines (Spark, Trino, Flink, etc.).
+- **ACID transactions**: Iceberg ensures consistent reads/writes, preventing partial updates or data corruption.
+- **Time travel**: Easily query historical snapshots of your data at any point in time.
+- **Schema evolution**: Add, rename, or drop columns without breaking existing queries or data.
+- **Partition pruning & metadata management**: Efficient queries and easy maintenance even as data grows.
+
+### 2. How Is It Different from a Traditional Data Warehouse?
+Traditional on-prem or cloud data warehouses often lock you into proprietary storage and formats. With Iceberg:
+- You **own your data** in open formats (e.g., Parquet, ORC).
+- You can **decouple compute from storage**, choosing the best query engine or cluster manager for the job.
+- You still get **ACID guarantees** and robust metadata management—benefits typically associated with warehouses—without being tied to a single vendor.
+
+### 3. How Is It Better Than a Simple Data Lake?
+Basic data lakes often store data files (like Parquet) in directories, but they may lack robust transaction handling. This can lead to issues with partial writes, schema mismatches, or untracked file changes. Iceberg brings:
+- **Atomic commits** and safe file rewrites (no “small files” chaos).
+- **Easier queries** via a table abstraction—no need to manually manage partition paths.
+- **Built-in time travel** and versioning, making it easy to roll back or audit historical data states.
+
+### 4. Why Time Travel Matters
+Iceberg’s time travel lets you query data “as of” a particular moment. This is crucial for:
+- **Auditing**: Investigating data as it appeared at a specific time (e.g., during a fraud event).
+- **Debugging & reproducibility**: Re-running the same query or model training exactly as it was done before.
+- **Regression testing**: Comparing new data transformations or schema changes against a previous snapshot.
+
+```sql
+-- Example: Query the table as of a certain snapshot_id (or timestamp)
+SELECT *
+FROM default.my_iceberg_table
+FOR SYSTEM_TIME AS OF '2023-04-01 00:00:00';
+```
+
+### 5. ACID Properties
+Iceberg ensures **atomicity**, **consistency**, **isolation**, and **durability** through its snapshot-based design. When you write data using Iceberg, it creates new data files and a new manifest, then atomically commits them to the table’s metadata. There’s no partial state—either the write completes fully, or it doesn’t happen at all.
+
+### 6. Decoupling Compute from Storage
+By default, Iceberg is “compute engine–agnostic.” You can store your data files in object storage (e.g., S3, GCS, or MinIO) or HDFS, then query those files with Spark, Trino, Flink, or anything else that supports Iceberg. This approach unlocks:
+- **Scalability**: Spin up more compute as needed without replicating data.
+- **Flexibility**: Mix and match engines or frameworks (Spark for batch/streaming, Trino/Presto for interactive SQL, etc.).
+- **Cost optimization**: Only pay for storage plus the compute time used, rather than for an all-in-one, always-on warehouse.
+
+### 7. Demo: Working with Iceberg in JupyterLab
+Below is a quick snapshot of what it looks like to use Iceberg from within a JupyterLab environment. This example demonstrates:
+1. **Creating a table** in Spark using the Iceberg format.
+2. **Writing data** via PySpark DataFrames to that table.
+3. **Running a compaction job** to merge small files.
+
+```python
+# A very brief example of creating an Iceberg table via Spark SQL
+spark.sql("CREATE TABLE default.my_iceberg_table (id INT, name STRING) USING ICEBERG")
+
+# Example: Insert data into the table
+data = [(1, "Alice"), (2, "Bob"), (3, "Charlie")]
+df = spark.createDataFrame(data, ["id", "name"])
+df.write.format("iceberg").mode("append").save("default.my_iceberg_table")
+
+# Example: Calling a compaction job (rewriting data files) if your data was streamed
+spark.sql("""CALL catalog.system.rewrite_data_files(
+ table => 'my_iceberg_table',
+ strategy => 'binpack',
+ where => 'created_at between "2025-04-08 09:00:00" and "2025-04-09 09:59:59" ',
+ options => map(
+ 'rewrite-job-order','bytes-asc',
+ 'target-file-size-bytes','1073741824',
+ 'max-file-group-size-bytes','10737418240',
+ 'partial-progress-enabled', 'true'
+ )
+)
+')""")
+```
+
+### 8. See It in Action
+I’ve saved an HTML snapshot of my JupyterLab notebook so you can see the exact code cells and their outputs. Click below to review it:
+
+**[View JupyterLab Output (HTML)](public/files/iceberg_practice.html)**
+
+*If you’d rather embed the HTML directly, copy/paste the relevant snippet or use an `<iframe>` (depending on your blogging platform’s capabilities).*
+
+---
+
+## Conclusion
+Apache Iceberg delivers the best of both worlds—open storage plus data warehouse–style guarantees—making it a leading choice for modern data lakehouse architectures. With features like time travel, schema evolution, and ACID transactions, you can build reliable data pipelines and analytics solutions on practically any storage system. When you’re ready to dive in, spinning up a simple PySpark + Iceberg environment is straightforward, and you’ll have powerful table management and data querying features right out of the box.
+
+Feel free to adapt this structure and text as you wish. You can expand on code samples, add real-life usage stats, or include more screenshots from your environment to illustrate the workflow end-to-end. Enjoy exploring Apache Iceberg!
