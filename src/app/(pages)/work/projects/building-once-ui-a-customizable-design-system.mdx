@@ -1,0 +1,45 @@
+---
+title: "Building Once UI, a Customizable Design System"
+publishedAt: "2024-04-08"
+summary: "Development of a flexible and highly customizable design system using Next.js for front-end and Figma for design collaboration."
+images:
+  - "/images/projects/project-01/cover-01.jpg"
+  - "/images/projects/project-01/cover-02.jpg"
+  - "/images/projects/project-01/cover-03.jpg"
+  - "/images/projects/project-01/cover-04.jpg"
+team:
+  - name: "Selene Yu"
+    role: "Software Engineer"
+    avatar: "/images/avatar.jpg"
+    linkedIn: "https://www.linkedin.com/company/once-ui/"
+  - name: "Jane Smith"
+    role: "Product Manager"
+    avatar: "/images/projects/project-01/avatar-01.png"
+    linkedIn: "https://www.linkedin.com/company/once-ui/"
+---
+
+## Overview
+
+Development of a flexible and highly customizable design system using Next.js for front-end and Figma for design collaboration.
+
+## Key Features
+
+- **Component Library**: Built a set of modular, reusable UI components using React and styled-components in Next.js, focusing on accessibility and responsiveness.
+- **Theming and Customization**: Integrated a theming system that allows easy switching and customization of color palettes, typography, and layout styles using CSS variables and Figma tokens.
+- **Figma Integration**: Collaborated closely with designers by setting up a shared design library in Figma. This library was synchronized with the codebase, ensuring design handoffs were seamless and that design tokens remained consistent across both platforms.
+- **Documentation and Usage Guidelines**: Developed comprehensive documentation with Storybook to showcase components, usage patterns, and best practices, ensuring the design system is easy to adopt by other teams.
+
+## Technologies Used
+
+- **Next.js**: For fast, server-rendered React applications.
+- **Figma**: For creating and managing design assets and prototypes.
+- **Styled-Components**: For styling React components with a modular, themable approach.
+- **Storybook**: For building an interactive, documented component library.
+
+## Challenges and Learnings
+
+One key challenge was balancing the need for flexibility with the desire to maintain design consistency. The solution involved creating well-defined design tokens and establishing clear guidelines for when and how components could be customized. Additionally, setting up effective collaboration workflows between designers and developers using Figma and Git was a learning experience that greatly improved the process.
+
+## Outcome
+
+The design system is now actively used across multiple projects, leading to faster development cycles, fewer design inconsistencies, and improved collaboration between design and development teams. It has become a foundation for scaling our products efficiently while ensuring a cohesive user experience.

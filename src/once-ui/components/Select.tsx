@@ -184,7 +184,7 @@ const Select = forwardRef<HTMLDivElement, SelectProps>(
         dropdown={
           <>
             {searchable && (
-              <Flex fillWidth position="relative">
+              <Flex fillWidth>
                 <Input
                   data-scaling="90"
                   style={{

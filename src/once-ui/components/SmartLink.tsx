@@ -4,10 +4,11 @@ import React, { forwardRef, ReactNode } from "react";
 import classNames from "classnames";
 import { Icon } from ".";
 import { ElementType } from "./ElementType";
+import { IconName } from "../icons";
 
 interface CommonProps {
-  prefixIcon?: string;
-  suffixIcon?: string;
+  prefixIcon?: IconName;
+  suffixIcon?: IconName;
   fillWidth?: boolean;
   iconSize?: "xs" | "s" | "m" | "l" | "xl";
   selected?: boolean;
@@ -18,7 +19,8 @@ interface CommonProps {
   className?: string;
 }
 
-export type SmartLinkProps = CommonProps & React.AnchorHTMLAttributes<HTMLAnchorElement>;
+export type SmartLinkProps = CommonProps &
+  React.AnchorHTMLAttributes<HTMLAnchorElement>;
 
 const SmartLink = forwardRef<HTMLAnchorElement, SmartLinkProps>(
   (
@@ -35,7 +37,7 @@ const SmartLink = forwardRef<HTMLAnchorElement, SmartLinkProps>(
       children,
       ...props
     },
-    ref,
+    ref
   ) => {
     const content = (
       <>
@@ -47,11 +49,15 @@ const SmartLink = forwardRef<HTMLAnchorElement, SmartLinkProps>(
 
     const commonProps = {
       ref,
-      className: classNames(className, "align-items-center display-inline-flex g-8 radius-s", {
-        "fill-width": fillWidth,
-        "fit-width": !fillWidth,
-        "px-4 mx-4": !unstyled,
-      }),
+      className: classNames(
+        className,
+        "reset-button-styles focus-ring align-center display-inline-flex g-8 radius-s",
+        {
+          "fill-width": fillWidth,
+          "fit-width": !fillWidth,
+          "px-2 mx-2": !unstyled,
+        }
+      ),
       style: !unstyled
         ? {
             ...(selected && {
@@ -71,7 +77,7 @@ const SmartLink = forwardRef<HTMLAnchorElement, SmartLinkProps>(
         {content}
       </ElementType>
     );
-  },
+  }
 );
 
 SmartLink.displayName = "SmartLink";

@@ -53,10 +53,12 @@ interface LinesProps {
   display?: boolean;
   opacity?: DisplayProps["opacity"];
   size?: SpacingToken;
+  thickness?: number;
+  angle?: number;
+  color?: string;
 }
 
 interface BackgroundProps extends React.ComponentProps<typeof Flex> {
-  position?: CSSProperties["position"];
   gradient?: GradientProps;
   dots?: DotsProps;
   grid?: GridProps;
@@ -70,7 +72,6 @@ interface BackgroundProps extends React.ComponentProps<typeof Flex> {
 const Background = forwardRef<HTMLDivElement, BackgroundProps>(
   (
     {
-      position = "fixed",
       gradient = {},
       dots = {},
       grid = {},
@@ -177,7 +178,6 @@ const Background = forwardRef<HTMLDivElement, BackgroundProps>(
       <Flex
         ref={backgroundRef}
         fill
-        position={position}
         className={classNames(mask && styles.mask, className)}
         top="0"
         left="0"
@@ -238,9 +238,23 @@ const Background = forwardRef<HTMLDivElement, BackgroundProps>(
             pointerEvents="none"
             className={styles.lines}
             opacity={lines.opacity}
-            style={{
-              backgroundImage: `repeating-linear-gradient(45deg, var(--brand-on-background-weak) 0, var(--brand-on-background-weak) 0.5px, var(--static-transparent) 0.5px, var(--static-transparent) ${dots.size})`,
-            }}
+            style={
+              {
+                "--lines-angle": `${lines.angle ?? 45}deg`,
+                "--lines-color": `var(--${lines.color ?? "brand-on-background-weak"})`,
+                "--lines-thickness": `${lines.thickness ?? 0.5}px`,
+                "--lines-spacing": `var(--static-space-${lines.size ?? "24"})`,
+                background: `
+                repeating-linear-gradient(
+                  var(--lines-angle),
+                  var(--static-transparent),
+                  var(--static-transparent) calc(var(--lines-spacing) - var(--lines-thickness)),
+                  var(--lines-color) calc(var(--lines-spacing) - var(--lines-thickness)),
+                  var(--lines-color) var(--lines-spacing)
+                )
+              `,
+              } as React.CSSProperties
+            }
           />
         )}
         {grid.display && (

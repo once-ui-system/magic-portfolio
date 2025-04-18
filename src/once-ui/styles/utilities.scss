@@ -8,3 +8,10 @@
   outline: 0;
   border: 0;
 }
+
+.focus-ring {
+  &:focus-visible {
+    outline: var(--static-space-2) solid var(--brand-solid-strong);
+    outline-offset: 2px;
+  }
+}

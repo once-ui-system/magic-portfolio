@@ -12,17 +12,17 @@
   
     &:hover, &:focus {
         background: var(--neutral-alpha-weak);
-        border-color: var(--neutral-alpha-medium);
+        border-color: var(--neutral-alpha-weak);
     }
   
     &.selected {
         background-color: var(--neutral-alpha-medium);
-        border-color: var(--neutral-alpha-medium);
+        border-color: var(--neutral-alpha-weak);
     }
 
     &:disabled {
-        background: var(--neutral-solid-weak);
-        color: var(--neutral-on-solid-weak);
+        background: var(--neutral-alpha-weak);
+        color: var(--neutral-on-background-medium);
 		border: none;
 		pointer-events: none;
 		cursor: not-allowed;
@@ -52,5 +52,5 @@
 }
 
 .outline {
-    border-color: var(--neutral-alpha-medium);
+    border-color: var(--neutral-alpha-weak);
 }

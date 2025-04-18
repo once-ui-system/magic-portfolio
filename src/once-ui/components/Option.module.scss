@@ -7,12 +7,12 @@
     }
     
     &.selected {
-        background-color: var(--neutral-alpha-medium);
+        background: var(--neutral-alpha-medium);
         border-color: var(--neutral-alpha-medium);
     }
   
     &.highlighted {
-        background: var(--neutral-alpha-weak);
+        background: var(--static-transparent);
         border-color: var(--neutral-alpha-medium);
     }
   
@@ -20,7 +20,7 @@
         color: var(--danger-on-background-medium);
   
         &:hover, &:focus {
-            background-color: var(--danger-solid-strong);
+            background: var(--danger-solid-strong);
             color: var(--danger-on-solid-strong);
             border-color: var(--danger-border-strong);
         }
@@ -28,5 +28,5 @@
   }
   
   .focused {
-    background-color: var(--neutral-background-strong);
+    background: var(--neutral-background-strong);
   }

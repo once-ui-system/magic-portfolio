@@ -22,7 +22,6 @@ const AvatarGroup = forwardRef<HTMLDivElement, AvatarGroupProps>(
 
     return (
       <Flex
-        position="relative"
         vertical="center"
         ref={ref}
         className={classNames(styles.avatarGroup, className)}
@@ -32,7 +31,6 @@ const AvatarGroup = forwardRef<HTMLDivElement, AvatarGroupProps>(
       >
         {displayedAvatars.map((avatarProps, index) => (
           <Avatar
-            position="relative"
             key={index}
             size={size}
             {...avatarProps}

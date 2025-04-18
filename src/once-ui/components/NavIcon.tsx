@@ -17,7 +17,6 @@ const NavIcon = forwardRef<HTMLDivElement, Partial<NavIconProps>>(
         ref={ref}
         tabIndex={0}
         radius="m"
-        position="relative"
         cursor="interactive"
         width="40"
         height="40"

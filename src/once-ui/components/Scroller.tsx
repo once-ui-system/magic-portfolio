@@ -102,13 +102,7 @@ const Scroller: React.FC<ScrollerProps> = ({
   });
 
   return (
-    <Flex
-      fillWidth
-      position="relative"
-      className={classNames(styles.container, className)}
-      style={style}
-      {...rest}
-    >
+    <Flex fillWidth className={classNames(styles.container, className)} style={style} {...rest}>
       {showPrevButton && (
         <Fade to="right" width={4} fillHeight position="absolute" left="0" zIndex={1}>
           <IconButton
@@ -130,7 +124,6 @@ const Scroller: React.FC<ScrollerProps> = ({
       <Flex
         fillWidth
         zIndex={0}
-        position="relative"
         radius="m"
         direction={direction}
         className={classNames(styles.scroller, styles[direction])}

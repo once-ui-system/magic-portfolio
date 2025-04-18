@@ -5,7 +5,7 @@ import { Flex, Text, SegmentedControl, IconButton, Scroller, Column } from ".";
 
 import styles from "./StylePanel.module.scss";
 import classNames from "classnames";
-import { style } from "@/app/resources";
+import { style } from "@/app/resources/config";
 
 interface StylePanelProps extends React.ComponentProps<typeof Flex> {
   style?: React.CSSProperties;
@@ -274,7 +274,6 @@ const StylePanel = forwardRef<HTMLDivElement, StylePanelProps>(({ ...rest }, ref
                       data-solid="color"
                       border="brand-strong"
                       solid="brand-weak"
-                      position="relative"
                       width="24"
                       height="24"
                       radius="s"
@@ -292,7 +291,6 @@ const StylePanel = forwardRef<HTMLDivElement, StylePanelProps>(({ ...rest }, ref
                       data-solid="inverse"
                       border="brand-strong"
                       solid="brand-strong"
-                      position="relative"
                       width="24"
                       height="24"
                       radius="s"
@@ -310,7 +308,6 @@ const StylePanel = forwardRef<HTMLDivElement, StylePanelProps>(({ ...rest }, ref
                       data-solid="contrast"
                       border="brand-strong"
                       solid="brand-strong"
-                      position="relative"
                       width="24"
                       height="24"
                       radius="s"
@@ -345,7 +342,6 @@ const StylePanel = forwardRef<HTMLDivElement, StylePanelProps>(({ ...rest }, ref
                     <Flex
                       border="brand-strong"
                       solid="brand-weak"
-                      position="relative"
                       width="24"
                       height="24"
                       radius="s"
@@ -366,7 +362,6 @@ const StylePanel = forwardRef<HTMLDivElement, StylePanelProps>(({ ...rest }, ref
                           "inset 0 calc(-1 * var(--static-space-8)) var(--static-space-8) var(--brand-solid-strong)",
                       }}
                       solid="brand-weak"
-                      position="relative"
                       width="24"
                       height="24"
                       radius="s"

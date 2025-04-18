@@ -1,0 +1,24 @@
+.container {
+    &:hover, &:focus {
+        background-color: var(--neutral-background-strong);
+    }
+}
+
+.text {
+    display: none;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.upload {
+    &:hover {
+        background: var(--backdrop);
+        backdrop-filter: blur(0.25rem);
+
+        .text {
+            display: block;
+            visibility: visible;
+            opacity: 1;
+        }
+    }
+}

@@ -121,7 +121,6 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
 
     return (
       <Flex
-        position="relative"
         direction="column"
         gap="8"
         style={style}
@@ -135,7 +134,6 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           transition="micro-medium"
           border="neutral-medium"
           background="neutral-alpha-weak"
-          position="relative"
           overflow="hidden"
           vertical="stretch"
           className={classNames(
@@ -150,11 +148,11 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           )}
         >
           {hasPrefix && (
-            <Flex paddingLeft="12" className={styles.prefix}>
+            <Flex paddingLeft="12" className={styles.prefix} position="static">
               {hasPrefix}
             </Flex>
           )}
-          <Flex fillWidth direction="column" position="relative">
+          <Flex fillWidth direction="column">
             <input
               {...props}
               ref={ref}
@@ -181,7 +179,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             {children}
           </Flex>
           {hasSuffix && (
-            <Flex paddingRight="12" className={styles.suffix}>
+            <Flex paddingRight="12" className={styles.suffix} position="static">
               {hasSuffix}
             </Flex>
           )}

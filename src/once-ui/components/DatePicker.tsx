@@ -204,14 +204,13 @@ const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
       for (let i = 0; i < firstDay; i++) {
         const prevMonthDay = daysInPrevMonth - firstDay + i + 1;
         days.push(
-          //@ts-ignore
           <Flex
             paddingY="2"
             width="40"
             height="40"
             key={`prev-${currentYear}-${currentMonth}-${i}`}
           >
-            <Button fillWidth weight="default" variant="tertiary" size="m" disabled>
+            <Button fillWidth weight="default" variant="tertiary" size="m" type="button" disabled>
               {prevMonthDay}
             </Button>
           </Flex>,
@@ -237,7 +236,6 @@ const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
         const isDisabled = (minDate && currentDate < minDate) || (maxDate && currentDate > maxDate);
 
         days.push(
-          //@ts-ignore
           <Flex paddingY="2" key={`day-${currentYear}-${currentMonth}-${day}`}>
             <Flex
               width="40"
@@ -269,14 +267,13 @@ const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
 
       for (let i = 1; i <= remainingDays; i++) {
         days.push(
-          //@ts-ignore
           <Flex
             marginTop="2"
             width="40"
             height="40"
             key={`next-${currentYear}-${currentMonth}-${i}`}
           >
-            <Button fillWidth weight="default" variant="tertiary" size="m" disabled>
+            <Button fillWidth weight="default" variant="tertiary" size="m" type="button" disabled>
               {i}
             </Button>
           </Flex>,

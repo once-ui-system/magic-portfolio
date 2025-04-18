@@ -43,25 +43,25 @@ h1, h2, h3, h4, h5, h6, p {
     &.font-xl, & > .font-xl {
         font-size:   calc(var(--font-size-display-xl) * var(--font-size-heading-multiplier));
         line-height: calc(var(--line-height-display-xl) * var(--line-height-heading-multiplier));
-        letter-spacing: -2%;
+        letter-spacing: -0.05em;
     }
     
     &.font-l, & > .font-l {
         font-size:   calc(var(--font-size-display-l) * var(--font-size-heading-multiplier));
         line-height: calc(var(--line-height-display-l) * var(--line-height-heading-multiplier));
-        letter-spacing: -1.5%;
+        letter-spacing: -0.04em;
     }
     
     &.font-m, & > .font-m {
         font-size:   calc(var(--font-size-display-m) * var(--font-size-heading-multiplier));
         line-height: calc(var(--line-height-display-m) * var(--line-height-heading-multiplier));
-        letter-spacing: -1%;
+        letter-spacing: -0.03em;
     }
     
     &.font-s, & > .font-s {
         font-size:   calc(var(--font-size-display-s) * var(--font-size-heading-multiplier));
         line-height: calc(var(--line-height-display-s) * var(--line-height-heading-multiplier));
-        letter-spacing: -0.5%;
+        letter-spacing: -0.02em;
     }
 
     &.font-xs, & > .font-xs {

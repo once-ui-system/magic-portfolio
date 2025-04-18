@@ -6,8 +6,8 @@ import classNames from "classnames";
 import { Footer, Header, RouteGuard } from "@/components";
 import { baseURL, effects, style } from "@/app/resources";
 
-import { Inter } from "next/font/google";
-import { Source_Code_Pro } from "next/font/google";
+import { Geist } from "next/font/google";
+import { Geist_Mono } from "next/font/google";
 
 import { person, home } from "@/app/resources/content";
 import { Background, Column, Flex, ToastProvider } from "@/once-ui/components";
@@ -39,7 +39,7 @@ export async function generateMetadata() {
   };
 }
 
-const primary = Inter({
+const primary = Geist({
   variable: "--font-primary",
   subsets: ["latin"],
   display: "swap",
@@ -58,7 +58,7 @@ const tertiary: FontConfig | undefined = undefined;
 /*
  */
 
-const code = Source_Code_Pro({
+const code = Geist_Mono({
   variable: "--font-code",
   subsets: ["latin"],
   display: "swap",

@@ -1,7 +1,6 @@
 .pre {
     display: flex;
     isolation: isolate;
-    padding: var(--static-space-8);
     font-family: var(--font-family-code);
     color: var(--neutral-on-background-strong);
     font-size: var(--font-size-body-s);
@@ -14,6 +13,14 @@
     min-height: var(--static-space-32);
     tab-size: 2;
     line-height: 1.75;
+}
+
+.padding {
+    padding: var(--static-space-8);
+}
+
+.lineNumberPadding {
+    padding: var(--static-space-8) var(--static-space-8) var(--static-space-8) var(--static-space-40);
 }
 
 .code {
