@@ -83,7 +83,6 @@ export const CompareImage = ({ leftContent, rightContent, ...rest }: CompareImag
 
   return (
     <Flex
-      position="relative"
       ref={containerRef}
       aspectRatio="16/9"
       fillWidth

@@ -307,7 +307,7 @@ export const KbarContent: React.FC<KbarContentProps> = ({ isOpen, onClose, items
         className={`${styles.content} ${isClosing ? styles.closing : ''}`}
         onClick={(e) => e.stopPropagation()}
       >
-        <Flex fillWidth position="relative">
+        <Flex fillWidth>
           <Input
             id="kbar-search"
             label="Search docs..."

@@ -93,6 +93,9 @@ export default async function RootLayout({ children }: RootLayoutProps) {
       <ToastProvider>
         <Column style={{ minHeight: "100vh" }} as="body" fillWidth margin="0" padding="0">
           <Background
+            fill
+            position="fixed"
+            pointerEvents="none"
             mask={{
               cursor: effects.mask.cursor,
               x: effects.mask.x,
@@ -142,7 +145,6 @@ export default async function RootLayout({ children }: RootLayoutProps) {
           <Flex fillWidth minHeight="16"></Flex>
           <Header />
           <Flex
-            position="relative"
             zIndex={0}
             fillWidth
             paddingY="l"

@@ -84,7 +84,6 @@ const Checkbox: React.FC<CheckboxProps> = forwardRef<HTMLInputElement, CheckboxP
             borderRadius: "min(var(--static-space-4), var(--radius-xs))",
           }}
           role="checkbox"
-          position="relative"
           tabIndex={0}
           horizontal="center"
           vertical="center"

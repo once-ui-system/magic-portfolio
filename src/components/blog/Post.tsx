@@ -21,7 +21,6 @@ export default function Post({ post, thumbnail }: PostProps) {
       href={`/blog/${post.slug}`}
     >
       <Flex
-        position="relative"
         mobileDirection="column"
         fillWidth
         paddingY="12"
@@ -42,7 +41,7 @@ export default function Post({ post, thumbnail }: PostProps) {
             aspectRatio="16 / 9"
           />
         )}
-        <Column position="relative" fillWidth gap="8" vertical="center">
+        <Column fillWidth gap="8" vertical="center">
           <Heading as="h2" variant="heading-strong-l" wrap="balance">
             {post.metadata.title}
           </Heading>

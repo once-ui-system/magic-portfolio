@@ -47,7 +47,6 @@ const Arrow: React.FC<ArrowProps> = ({
   return (
     <Flex
       ref={ref}
-      position="relative"
       vertical="center"
       horizontal="center"
       className={classNames(styles.arrowContainer, className)}

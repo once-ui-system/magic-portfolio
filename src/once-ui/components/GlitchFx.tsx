@@ -64,7 +64,6 @@ const GlitchFx = forwardRef<HTMLDivElement, GlitchFxProps>(
     return (
       <Flex
         ref={ref}
-        position="relative"
         inline
         zIndex={0}
         className={classNames(speedClass, isGlitching && styles.active)}
