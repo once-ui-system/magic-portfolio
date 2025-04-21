@@ -18,10 +18,10 @@ export async function generateStaticParams(): Promise<{ slug: string }[]> {
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ slug: string[] }>;
+  params: Promise<{ slug: string | string[] }>;
 }): Promise<Metadata> {
   const routeParams = await params;
-  const slugPath = routeParams.slug ? routeParams.slug.join('/') : '';
+  const slugPath = Array.isArray(routeParams.slug) ? routeParams.slug.join('/') : routeParams.slug || '';
 
   const posts = getPosts(["src", "app", "blog", "posts"])
   const post = posts.find((post) => post.slug === slugPath);
@@ -62,9 +62,9 @@ export async function generateMetadata({
 
 export default async function Blog({
   params
-}: { params: Promise<{ slug: string[] }> }) {
+}: { params: Promise<{ slug: string | string[] }> }) {
   const routeParams = await params;
-  const slugPath = routeParams.slug.join('/');
+  const slugPath = Array.isArray(routeParams.slug) ? routeParams.slug.join('/') : routeParams.slug || '';
 
   let post = getPosts(["src", "app", "blog", "posts"]).find((post) => post.slug === slugPath);
 
