@@ -8,6 +8,10 @@ const withMDX = mdx({
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   pageExtensions: ["ts", "tsx", "md", "mdx"],
+  sassOptions: {
+    compiler: "modern",
+    silenceDeprecations: ["legacy-js-api"],
+  },
 };
 
 export default withMDX(nextConfig);

@@ -1,3 +1,26 @@
+import { Geist } from "next/font/google";
+import { Geist_Mono } from "next/font/google";
+
+// Initialize fonts at module scope
+const primaryFont = Geist({
+  variable: "--font-primary",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const monoFont = Geist_Mono({
+  variable: "--font-code",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const font = {
+  primary: primaryFont,
+  secondary: primaryFont,
+  tertiary: primaryFont,
+  code: monoFont,
+};
+
 const baseURL = "demo.magic-portfolio.com";
 
 const routes = {
@@ -24,41 +47,47 @@ const style = {
   border: "playful", // rounded | playful | conservative
   surface: "translucent", // filled | translucent
   transition: "all", // all | micro | macro
+  scaling: "100" // 90 | 95 | 100 | 105 | 110
 };
 
 const effects = {
   mask: {
-    cursor: true,
-    x: 0,
+    cursor: false,
+    x: 50,
     y: 0,
-    radius: 75,
+    radius: 100,
   },
   gradient: {
     display: true,
-    x: 50,
-    y: 0,
-    width: 100,
-    height: 100,
-    tilt: 0,
-    colorStart: "brand-background-strong",
-    colorEnd: "static-transparent",
-    opacity: 50,
+    opacity: 90,
+    x: 100,
+    y: 60,
+    width: 70,
+    height: 50,
+    tilt: -40,
+    colorStart: "accent-background-strong",
+    colorEnd: "page-background",
   },
   dots: {
     display: true,
-    size: 2,
-    color: "brand-on-background-weak",
     opacity: 20,
+    size: "2",
+    color: "brand-on-background-weak",
+  },
+  grid: {
+    display: true,
+    opacity: 100,
+    color: "neutral-alpha-medium",
+    width: "0.25rem",
+    height: "0.25rem",
   },
   lines: {
     display: false,
-    color: "neutral-alpha-weak",
     opacity: 100,
-  },
-  grid: {
-    display: false,
     color: "neutral-alpha-weak",
-    opacity: 100,
+    size: "16",
+    thickness: 1,
+    angle: 45,
   },
 };
 
@@ -72,38 +101,43 @@ const mailchimp = {
   effects: {
     mask: {
       cursor: false,
-      x: 100,
+      x: 50,
       y: 0,
       radius: 100,
     },
     gradient: {
       display: true,
-      x: 100,
-      y: 50,
-      width: 100,
-      height: 100,
-      tilt: -45,
+      opacity: 90,
+      x: 50,
+      y: 0,
+      width: 50,
+      height: 50,
+      tilt: 0,
       colorStart: "accent-background-strong",
       colorEnd: "static-transparent",
-      opacity: 100,
     },
     dots: {
       display: false,
-      size: 24,
+      opacity: 20,
+      size: "2",
       color: "brand-on-background-weak",
-      opacity: 100,
-    },
-    lines: {
-      display: false,
-      color: "neutral-alpha-weak",
-      opacity: 100,
     },
     grid: {
-      display: true,
-      color: "neutral-alpha-weak",
+      display: false,
       opacity: 100,
+      color: "neutral-alpha-medium",
+      width: "0.25rem",
+      height: "0.25rem",
+    },
+    lines: {
+      display: true,
+      opacity: 100,
+      color: "neutral-alpha-medium",
+      size: "16",
+      thickness: 1,
+      angle: 90,
     },
   },
 };
 
-export { routes, protectedRoutes, effects, style, display, mailchimp, baseURL };
+export { routes, protectedRoutes, effects, style, display, mailchimp, baseURL, font };

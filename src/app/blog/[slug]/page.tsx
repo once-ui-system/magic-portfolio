@@ -6,12 +6,7 @@ import { baseURL } from "@/app/resources";
 import { person } from "@/app/resources/content";
 import { formatDate } from "@/app/utils/formatDate";
 import ScrollToHash from "@/components/ScrollToHash";
-
-interface BlogParams {
-  params: {
-    slug: string;
-  };
-}
+import { Metadata } from 'next';
 
 export async function generateStaticParams(): Promise<{ slug: string }[]> {
   const posts = getPosts(["src", "app", "blog", "posts"]);
@@ -20,20 +15,24 @@ export async function generateStaticParams(): Promise<{ slug: string }[]> {
   }));
 }
 
-export function generateMetadata({ params: { slug } }: BlogParams) {
-  let post = getPosts(["src", "app", "blog", "posts"]).find((post) => post.slug === slug);
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string[] }>;
+}): Promise<Metadata> {
+  const routeParams = await params;
+  const slugPath = routeParams.slug ? routeParams.slug.join('/') : '';
 
-  if (!post) {
-    return;
-  }
+  const posts = getPosts(["src", "app", "blog", "posts"])
+  const post = posts.find((post) => post.slug === slugPath);
+
+  if (!post) return {};
 
   let {
     title,
     publishedAt: publishedTime,
     summary: description,
-    images,
     image,
-    team,
   } = post.metadata;
   let ogImage = image ? `https://${baseURL}${image}` : `https://${baseURL}/og?title=${title}`;
 
@@ -61,8 +60,13 @@ export function generateMetadata({ params: { slug } }: BlogParams) {
   };
 }
 
-export default function Blog({ params }: BlogParams) {
-  let post = getPosts(["src", "app", "blog", "posts"]).find((post) => post.slug === params.slug);
+export default async function Blog({
+  params
+}: { params: Promise<{ slug: string[] }> }) {
+  const routeParams = await params;
+  const slugPath = routeParams.slug.join('/');
+
+  let post = getPosts(["src", "app", "blog", "posts"]).find((post) => post.slug === slugPath);
 
   if (!post) {
     notFound();

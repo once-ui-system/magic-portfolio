@@ -175,7 +175,7 @@ export default function About() {
               {person.role}
             </Text>
             {social.length > 0 && (
-              <Flex className={styles.blockAlign} paddingTop="20" paddingBottom="8" gap="8" wrap horizontal="center" fitWidth>
+              <Flex className={styles.blockAlign} paddingTop="20" paddingBottom="8" gap="8" wrap horizontal="center" fitWidth data-border="rounded">
                 {social.map(
                   (item) =>
                     item.link && (
@@ -247,19 +247,14 @@ export default function About() {
                             key={index}
                             border="neutral-medium"
                             radius="m"
-                            //@ts-ignore
                             minWidth={image.width}
-                            //@ts-ignore
                             height={image.height}
                           >
                             <SmartImage
                               enlarge
                               radius="m"
-                              //@ts-ignore
                               sizes={image.width.toString()}
-                              //@ts-ignore
                               alt={image.alt}
-                              //@ts-ignore
                               src={image.src}
                             />
                           </Flex>
@@ -316,19 +311,14 @@ export default function About() {
                             key={index}
                             border="neutral-medium"
                             radius="m"
-                            //@ts-ignore
                             minWidth={image.width}
-                            //@ts-ignore
                             height={image.height}
                           >
                             <SmartImage
                               enlarge
                               radius="m"
-                              //@ts-ignore
                               sizes={image.width.toString()}
-                              //@ts-ignore
                               alt={image.alt}
-                              //@ts-ignore
                               src={image.src}
                             />
                           </Flex>
