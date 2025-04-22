@@ -39,9 +39,9 @@ export async function generateMetadata({
 
 export default async function Blog({
   params
-}: { params: Promise<{ slug: string[] }> }) {
+}: { params: Promise<{ slug: string | string[] }> }) {
   const routeParams = await params;
-  const slugPath = routeParams.slug.join('/');
+  const slugPath = Array.isArray(routeParams.slug) ? routeParams.slug.join('/') : routeParams.slug || '';
 
   let post = getPosts(["src", "app", "blog", "posts"]).find((post) => post.slug === slugPath);
 
