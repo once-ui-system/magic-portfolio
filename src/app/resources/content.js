@@ -8,6 +8,7 @@ const person = {
   },
   role: "Design Engineer",
   avatar: "/images/avatar.jpg",
+  email: "example@gmail.com",
   location: "Asia/Jakarta", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
   languages: ["English", "Bahasa"], // optional: Leave the array empty if you don't want to display languages
 };
@@ -21,16 +22,6 @@ const newsletter = {
       creativity and engineering.
     </>
   ),
-};
-
-const schema = {
-  logo: "",
-  type: "Organization",
-  name: "Once UI",
-  title: "Once UI: The open-source stack for indie creators",
-  description: "An open-source design system for indie creators. Deploy fully functional, branded web apps in hours.",
-  email: "lorant@once-ui.com",
-  locale: "en_US"
 };
 
 const social = [
@@ -54,7 +45,7 @@ const social = [
   {
     name: "Email",
     icon: "email",
-    link: "mailto:example@gmail.com",
+    link: `mailto:${person.email}`,
   },
 ];
 
@@ -212,7 +203,7 @@ const blog = {
 const work = {
   path: "/work",
   label: "Work",
-  title: "My projects",
+  title: `Projects – ${person.name}`,
   description: `Design and dev projects by ${person.name}`,
   // Create new project pages by adding a new .mdx file to app/blog/posts
   // All projects will be listed on the /home and /work routes
@@ -221,7 +212,7 @@ const work = {
 const gallery = {
   path: "/gallery",
   label: "Gallery",
-  title: "My photo gallery",
+  title: `Photo gallery – ${person.name}`,
   description: `A photo collection by ${person.name}`,
   // Images by https://lorant.one
   // These are placeholder images, replace with your own
@@ -269,4 +260,4 @@ const gallery = {
   ],
 };
 
-export { person, schema, social, newsletter, home, about, blog, work, gallery };
+export { person, social, newsletter, home, about, blog, work, gallery };
