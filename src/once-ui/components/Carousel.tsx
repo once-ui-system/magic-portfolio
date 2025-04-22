@@ -119,6 +119,7 @@ const Carousel: React.FC<CarouselProps> = ({
                   }}
                   cursor="interactive"
                   fillWidth
+                  radius="full"
                   height="2"
                 ></Flex>
               ))}

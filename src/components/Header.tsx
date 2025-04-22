@@ -145,6 +145,7 @@ export const Header = () => {
                   />
                 </>
               )}
+              <Line background="neutral-alpha-medium" vert maxHeight="24" />
               <ThemeToggle />
             </Flex>
           </Flex>
