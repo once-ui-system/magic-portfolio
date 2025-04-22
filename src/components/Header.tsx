@@ -7,7 +7,8 @@ import { Fade, Flex, Line, ToggleButton } from "@/once-ui/components";
 import styles from "@/components/Header.module.scss";
 
 import { routes, display } from "@/app/resources";
-import { person, home, about, blog, work, gallery } from "@/app/resources/content";
+import { person, about, blog, work, gallery } from "@/app/resources/content";
+import { ThemeToggle } from "./ThemeToggle";
 
 type TimeDisplayProps = {
   timeZone: string;
@@ -144,6 +145,7 @@ export const Header = () => {
                   />
                 </>
               )}
+              <ThemeToggle />
             </Flex>
           </Flex>
         </Flex>
