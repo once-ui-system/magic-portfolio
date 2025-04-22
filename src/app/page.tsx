@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Heading, Flex, Text, Button, Avatar, RevealFx, Column } from "@/once-ui/components";
+import { Heading, Flex, Text, Button, Avatar, RevealFx, Column, Badge } from "@/once-ui/components";
 import { Projects } from "@/components/work/Projects";
 
 import { baseURL, routes } from "@/app/resources";
@@ -36,6 +36,11 @@ export default function Home() {
       />
       <Column fillWidth paddingY="l" gap="m">
         <Column maxWidth="s">
+          {home.featured && (
+          <RevealFx fillWidth horizontal="start" paddingBottom="m">
+            <Badge background="brand-alpha-weak" paddingX="16" paddingY="8" onBackground="neutral-strong" textVariant="label-default-s" href={home.featured.href}>{home.featured.title}</Badge>
+          </RevealFx>
+          )}
           <RevealFx translateY="4" fillWidth horizontal="start" paddingBottom="m">
             <Heading wrap="balance" variant="display-strong-l">
               {home.headline}
