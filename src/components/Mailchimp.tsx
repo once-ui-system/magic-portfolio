@@ -63,7 +63,7 @@ export const Mailchimp = ({ newsletter }: { newsletter: NewsletterProps }) => {
       horizontal="center"
       align="center"
       background="surface"
-      border="neutral-medium"
+      border="neutral-alpha-weak"
     >
       <Background
             position="absolute"

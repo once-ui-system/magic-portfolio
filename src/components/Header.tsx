@@ -57,6 +57,7 @@ export const Header = () => {
         fillWidth
         padding="8"
         horizontal="center"
+        data-border="rounded"
       >
         <Flex paddingLeft="12" fillWidth vertical="center" textVariant="body-default-s">
           {display.location && <Flex hide="s">{person.location}</Flex>}
@@ -64,7 +65,7 @@ export const Header = () => {
         <Flex fillWidth horizontal="center">
           <Flex
             background="surface"
-            border="neutral-medium"
+            border="neutral-alpha-medium"
             radius="m-4"
             shadow="l"
             padding="4"
@@ -74,7 +75,7 @@ export const Header = () => {
               {routes["/"] && (
                 <ToggleButton prefixIcon="home" href="/" selected={pathname === "/"} />
               )}
-              <Line vert maxHeight="24" />
+              <Line background="neutral-alpha-medium" vert maxHeight="24" />
               {routes["/about"] && (
                 <>
                   <ToggleButton

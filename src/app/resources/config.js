@@ -40,8 +40,8 @@ const protectedRoutes = {
 const style = {
   theme: "dark", // dark | light
   neutral: "gray", // sand | gray | slate
-  brand: "emerald", // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan
-  accent: "orange", // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan
+  brand: "cyan", // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan
+  accent: "red", // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan
   solid: "contrast", // color | contrast
   solidStyle: "flat", // flat | plastic
   border: "playful", // rounded | playful | conservative
@@ -58,24 +58,24 @@ const effects = {
     radius: 100,
   },
   gradient: {
-    display: true,
-    opacity: 90,
-    x: 100,
+    display: false,
+    opacity: 100,
+    x: 50,
     y: 60,
-    width: 70,
+    width: 100,
     height: 50,
-    tilt: -40,
+    tilt: 0,
     colorStart: "accent-background-strong",
     colorEnd: "page-background",
   },
   dots: {
     display: true,
-    opacity: 20,
+    opacity: 40,
     size: "2",
-    color: "brand-on-background-weak",
+    color: "brand-background-strong",
   },
   grid: {
-    display: true,
+    display: false,
     opacity: 100,
     color: "neutral-alpha-medium",
     width: "0.25rem",
@@ -100,7 +100,7 @@ const mailchimp = {
   action: "https://url/subscribe/post?parameters",
   effects: {
     mask: {
-      cursor: false,
+      cursor: true,
       x: 50,
       y: 0,
       radius: 100,
@@ -117,7 +117,7 @@ const mailchimp = {
       colorEnd: "static-transparent",
     },
     dots: {
-      display: false,
+      display: true,
       opacity: 20,
       size: "2",
       color: "brand-on-background-weak",
@@ -130,7 +130,7 @@ const mailchimp = {
       height: "0.25rem",
     },
     lines: {
-      display: true,
+      display: false,
       opacity: 100,
       color: "neutral-alpha-medium",
       size: "16",
