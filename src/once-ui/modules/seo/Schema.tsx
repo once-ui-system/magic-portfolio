@@ -1,8 +1,9 @@
 import React from "react";
 import Script from "next/script";
+import { social } from "@/app/resources/content";
 
 export interface SchemaProps {
-  as: "website" | "article" | "blogPosting" | "techArticle" | "webPage" | "organization";
+  as: "website" | "article" | "blog" | "blogPosting" | "techArticle" | "webPage" | "organization";
   title: string;
   description: string;
   baseURL: string;
@@ -20,6 +21,7 @@ export interface SchemaProps {
 const schemaTypeMap = {
   website: "WebSite",
   article: "Article",
+  blog: "Blog",
   blogPosting: "BlogPosting",
   techArticle: "TechArticle",
   webPage: "WebPage",
@@ -53,6 +55,8 @@ export function Schema({
     "@type": schemaType,
     url,
   };
+  
+  schema.sameAs = Object.values(social).filter(Boolean)
 
   if (as === "website") {
     schema.name = title;

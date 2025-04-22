@@ -23,6 +23,16 @@ const newsletter = {
   ),
 };
 
+const schema = {
+  logo: "",
+  type: "Organization",
+  name: "Once UI",
+  title: "Once UI: The open-source stack for indie creators",
+  description: "An open-source design system for indie creators. Deploy fully functional, branded web apps in hours.",
+  email: "lorant@once-ui.com",
+  locale: "en_US"
+};
+
 const social = [
   // Links are automatically displayed.
   // Import new icons in /once-ui/icons.ts
@@ -49,6 +59,8 @@ const social = [
 ];
 
 const home = {
+  path: "/",
+  image: "/images/og/home.jpg",
   label: "Home",
   title: `${person.name}'s Portfolio`,
   description: `Portfolio website showcasing my work as a ${person.role}`,
@@ -62,8 +74,9 @@ const home = {
 };
 
 const about = {
+  path: "/about",
   label: "About",
-  title: "About me",
+  title: `About – ${person.name}`,
   description: `Meet ${person.name}, ${person.role} from ${person.location}`,
   tableOfContent: {
     display: true,
@@ -188,6 +201,7 @@ const about = {
 };
 
 const blog = {
+  path: "/blog",
   label: "Blog",
   title: "Writing about design and tech...",
   description: `Read what ${person.name} has been up to recently`,
@@ -196,6 +210,7 @@ const blog = {
 };
 
 const work = {
+  path: "/work",
   label: "Work",
   title: "My projects",
   description: `Design and dev projects by ${person.name}`,
@@ -204,6 +219,7 @@ const work = {
 };
 
 const gallery = {
+  path: "/gallery",
   label: "Gallery",
   title: "My photo gallery",
   description: `A photo collection by ${person.name}`,
@@ -253,4 +269,4 @@ const gallery = {
   ],
 };
 
-export { person, social, newsletter, home, about, blog, work, gallery };
+export { person, schema, social, newsletter, home, about, blog, work, gallery };

@@ -4,37 +4,20 @@ import "@/once-ui/tokens/index.scss";
 import classNames from "classnames";
 
 import { Footer, Header, RouteGuard } from "@/components";
-import { baseURL, effects, style, font } from "@/app/resources";
+import { baseURL, effects, style, font, home } from "@/app/resources";
 
-import { person, home } from "@/app/resources/content";
 import { Background, Column, Flex, ThemeProvider, ToastProvider } from "@/once-ui/components";
 import { opacity, SpacingToken } from "@/once-ui/types";
+import { Meta } from "@/once-ui/modules";
 
 export async function generateMetadata() {
-  return {
-    metadataBase: new URL(`https://${baseURL}`),
+  return Meta.generate({
     title: home.title,
     description: home.description,
-    openGraph: {
-      title: `${person.firstName}'s Portfolio`,
-      description: "Portfolio website showcasing my work.",
-      url: baseURL,
-      siteName: `${person.firstName}'s Portfolio`,
-      locale: "en_US",
-      type: "website",
-    },
-    robots: {
-      index: true,
-      follow: true,
-      googleBot: {
-        index: true,
-        follow: true,
-        "max-video-preview": -1,
-        "max-image-preview": "large",
-        "max-snippet": -1,
-      },
-    },
-  };
+    baseURL: baseURL,
+    path: home.path,
+    image: home.image,
+  });
 }
 
 interface RootLayoutProps {

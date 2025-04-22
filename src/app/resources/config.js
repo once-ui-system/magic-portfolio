@@ -1,7 +1,22 @@
+const baseURL = process.env.NEXT_PUBLIC_BASE_URL || "https://demo.magic-portfolio.com";
+
+const routes = {
+  "/": true,
+  "/about": true,
+  "/work": true,
+  "/blog": true,
+  "/gallery": true,
+};
+
+// Enable password protection on selected routes
+// Set password in the .env file, refer to .env.example
+const protectedRoutes = {
+  "/work/automate-design-handovers-with-a-figma-to-code-pipeline": true,
+};
+
 import { Geist } from "next/font/google";
 import { Geist_Mono } from "next/font/google";
 
-// Initialize fonts at module scope
 const primaryFont = Geist({
   variable: "--font-primary",
   subsets: ["latin"],
@@ -19,22 +34,6 @@ const font = {
   secondary: primaryFont,
   tertiary: primaryFont,
   code: monoFont,
-};
-
-const baseURL = "demo.magic-portfolio.com";
-
-const routes = {
-  "/": true,
-  "/about": true,
-  "/work": true,
-  "/blog": true,
-  "/gallery": true,
-};
-
-// Enable password protection on selected routes
-// Set password in the .env file, refer to .env.example
-const protectedRoutes = {
-  "/work/automate-design-handovers-with-a-figma-to-code-pipeline": true,
 };
 
 const style = {
