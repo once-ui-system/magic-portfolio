@@ -52,7 +52,7 @@ export const Header = () => {
       <Fade show="s" fillWidth position="fixed" bottom="0" to="top" height="80" zIndex={9} />
       <Flex
         fitHeight
-        position={undefined}
+        position="sticky"
         className={styles.position}
         as="header"
         zIndex={9}
