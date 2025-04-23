@@ -1,0 +1,55 @@
+---
+title: "Enable or disable pages for your portfolio"
+summary: "Magic Portfolio's RouteGuard component takes care of conditionally rendering pages based on your settings."
+publishedAt: "2025-04-22"
+tag: "Magic Portfolio"
+---
+
+## Enable or disable pages
+
+Magic Portfolio's `RouteGuard` component takes care of conditionally rendering pages based on the `routes` object in the `resources/config.js` file.
+
+<CodeBlock
+    marginBottom="16"
+    highlight="6"
+    codeInstances={[
+  {
+    code:
+`const routes = {
+    '/':        true,
+    '/about':   true,
+    '/work':    true,
+    '/blog':    true,
+    '/gallery': false,
+};`,
+    language: "tsx",
+    label: "src/app/resources/config.js"
+  }
+]} />
+
+The code above will ensure that the `/gallery` page is not accessible and is not displayed in the navigation.
+
+## Add new pages
+
+When creating a new page, it needs to be added to the `routes` object in the `resources/config.js` file.
+
+<CodeBlock
+    marginBottom="16"
+    highlight="6"
+    codeInstances={[
+  {
+    code:
+`const routes = {
+    '/':        true,
+    '/about':   true,
+    '/work':    true,
+    '/blog':    true,
+    '/gallery': false,
+    '/music': true,
+};`,
+    language: "tsx",
+    label: "src/app/resources/config.js"
+  }
+]} />
+
+The code above will ensure that the `/music` page is accessible. Users will be able to navigate to it after adding it to the navigation menu in the `components/Header.tsx` file.

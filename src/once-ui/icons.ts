@@ -25,6 +25,7 @@ import {
   HiOutlineEyeSlash,
   HiMoon,
   HiSun,
+  HiOutlineDocument,
 } from "react-icons/hi2";
 
 import {
@@ -71,6 +72,7 @@ export const iconLibrary: Record<string, IconType> = {
   arrowUpRightFromSquare: HiArrowTopRightOnSquare,
   moon: HiMoon,
   sun: HiSun,
+  document: HiOutlineDocument,
 };
 
 export type IconLibrary = typeof iconLibrary;

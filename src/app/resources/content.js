@@ -64,7 +64,7 @@ const home = {
   subline: (
     <>
       I'm Selene, a design engineer at <Logo icon={false} style={{ display: "inline-flex", top: "0.25em", marginLeft: "-0.25em" }}/>, where I craft intuitive
-      <br /> user experiences. After hours, I build my own projects
+      <br /> user experiences. After hours, I build my own projects.
     </>
   ),
 };

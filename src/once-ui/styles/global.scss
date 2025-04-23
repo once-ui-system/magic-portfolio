@@ -14,7 +14,7 @@ ul, ol {
 }
 
 ul {
-    padding: 0 0 0 var(--static-space-12);
+    padding: 0 0 0 var(--static-space-20);
 
     li {
         padding-left: var(--static-space-8);
@@ -22,7 +22,7 @@ ul {
 }
 
 ol {
-    padding: 0 0 0 var(--static-space-16);
+    padding: 0 0 0 var(--static-space-20);
 
     li {
         padding-left: var(--static-space-16);
@@ -30,7 +30,6 @@ ol {
 }
 
 li {
-    list-style-position: inside;
     padding: 0;
     line-height: 175%;
     font-size: inherit;
