@@ -1,4 +1,5 @@
-const baseURL = process.env.NEXT_PUBLIC_BASE_URL || "https://demo.magic-portfolio.com";
+// IMPORTANT: Replace with your own domain address - it's used for SEO in meta tags and schema
+const baseURL = "https://" + process.env.NEXT_PUBLIC_BASE_URL || "https://demo.magic-portfolio.com";
 
 const routes = {
   "/": true,
@@ -93,6 +94,7 @@ const effects = {
 const display = {
   location: true,
   time: true,
+  themeSwitcher: true
 };
 
 const mailchimp = {
