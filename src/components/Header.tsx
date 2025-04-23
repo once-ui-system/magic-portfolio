@@ -72,6 +72,7 @@ export const Header = () => {
             shadow="l"
             padding="4"
             horizontal="center"
+            zIndex={1}
           >
             <Flex gap="4" vertical="center" textVariant="body-default-s">
               {routes["/"] && (
