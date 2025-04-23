@@ -112,7 +112,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
                 color: effects.lines.color,
               }}
             />
-            <Flex fillWidth minHeight="16"></Flex>
+            <Flex fillWidth minHeight="16" hide="s"></Flex>
             <Header />
             <Flex
               zIndex={0}
