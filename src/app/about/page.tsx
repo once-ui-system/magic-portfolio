@@ -14,34 +14,17 @@ import { baseURL } from "@/app/resources";
 import TableOfContents from "@/components/about/TableOfContents";
 import styles from "@/components/about/about.module.scss";
 import { person, about, social } from "@/app/resources/content";
+import React from "react";
+import { Meta, Schema } from "@/once-ui/modules";
 
 export async function generateMetadata() {
-  const title = about.title;
-  const description = about.description;
-  const ogImage = `https://${baseURL}/og?title=${encodeURIComponent(title)}`;
-
-  return {
-    title,
-    description,
-    openGraph: {
-      title,
-      description,
-      type: "website",
-      url: `https://${baseURL}/about`,
-      images: [
-        {
-          url: ogImage,
-          alt: title,
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title,
-      description,
-      images: [ogImage],
-    },
-  };
+  return Meta.generate({
+    title: about.title,
+    description: about.description,
+    baseURL: baseURL,
+    image: `${baseURL}/og?title=${encodeURIComponent(about.title)}`,
+    path: about.path,
+  });
 }
 
 export default function About() {
@@ -69,26 +52,17 @@ export default function About() {
   ];
   return (
     <Column maxWidth="m">
-      <script
-        type="application/ld+json"
-        suppressHydrationWarning
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Person",
-            name: person.name,
-            jobTitle: person.role,
-            description: about.intro.description,
-            url: `https://${baseURL}/about`,
-            image: `${baseURL}/images/${person.avatar}`,
-            sameAs: social
-              .filter((item) => item.link && !item.link.startsWith("mailto:")) // Filter out empty links and email links
-              .map((item) => item.link),
-            worksFor: {
-              "@type": "Organization",
-              name: about.work.experiences[0].company || "",
-            },
-          }),
+      <Schema
+        as="webPage"
+        baseURL={baseURL}
+        title={about.title}
+        description={about.description}
+        path={about.path}
+        image={`${baseURL}/og?title=${encodeURIComponent(about.title)}`}
+        author={{
+          name: person.name,
+          url: `${baseURL}${about.path}`,
+          image: `${baseURL}${person.avatar}`,
         }}
       />
       {about.tableOfContent.display && (
@@ -122,7 +96,7 @@ export default function About() {
             {person.languages.length > 0 && (
               <Flex wrap gap="8">
                 {person.languages.map((language, index) => (
-                  <Tag key={index} size="l">
+                  <Tag key={language} size="l">
                     {language}
                   </Tag>
                 ))}
@@ -174,11 +148,11 @@ export default function About() {
               {person.role}
             </Text>
             {social.length > 0 && (
-              <Flex className={styles.blockAlign} paddingTop="20" paddingBottom="8" gap="8" wrap horizontal="center" fitWidth>
+              <Flex className={styles.blockAlign} paddingTop="20" paddingBottom="8" gap="8" wrap horizontal="center" fitWidth data-border="rounded">
                 {social.map(
                   (item) =>
                     item.link && (
-                        <>
+                        <React.Fragment key={item.name}>
                             <Button
                                 className="s-flex-hide"
                                 key={item.name}
@@ -196,7 +170,7 @@ export default function About() {
                                 icon={item.icon}
                                 variant="secondary"
                             />
-                        </>
+                        </React.Fragment>
                     ),
                 )}
               </Flex>
@@ -246,19 +220,14 @@ export default function About() {
                             key={index}
                             border="neutral-medium"
                             radius="m"
-                            //@ts-ignore
                             minWidth={image.width}
-                            //@ts-ignore
                             height={image.height}
                           >
                             <SmartImage
                               enlarge
                               radius="m"
-                              //@ts-ignore
                               sizes={image.width.toString()}
-                              //@ts-ignore
                               alt={image.alt}
-                              //@ts-ignore
                               src={image.src}
                             />
                           </Flex>
@@ -315,19 +284,14 @@ export default function About() {
                             key={index}
                             border="neutral-medium"
                             radius="m"
-                            //@ts-ignore
                             minWidth={image.width}
-                            //@ts-ignore
                             height={image.height}
                           >
                             <SmartImage
                               enlarge
                               radius="m"
-                              //@ts-ignore
                               sizes={image.width.toString()}
-                              //@ts-ignore
                               alt={image.alt}
-                              //@ts-ignore
                               src={image.src}
                             />
                           </Flex>

@@ -8,7 +8,6 @@ export const Footer = () => {
   return (
     <Flex
       as="footer"
-      position="relative"
       fillWidth
       padding="8"
       horizontal="center"
@@ -30,7 +29,6 @@ export const Footer = () => {
             {/* Usage of this template requires attribution. Please don't remove the link to Once UI. */}
             / Build your portfolio with{" "}
             <SmartLink
-              style={{ marginLeft: "-0.125rem" }}
               href="https://once-ui.com/templates/magic-portfolio"
             >
               Once UI

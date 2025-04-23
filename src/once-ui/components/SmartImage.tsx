@@ -3,7 +3,7 @@
 import React, { CSSProperties, useState, useRef, useEffect } from "react";
 import Image from "next/image";
 
-import { Flex, Skeleton } from "@/once-ui/components";
+import { Flex, Skeleton } from ".";
 
 export interface SmartImageProps extends React.ComponentProps<typeof Flex> {
   aspectRatio?: string;
@@ -47,8 +47,19 @@ const SmartImage: React.FC<SmartImageProps> = ({
       }
     };
 
+    const handleWheel = (event: WheelEvent) => {
+      if (isEnlarged) {
+        setIsEnlarged(false);
+      }
+    };
+
     document.addEventListener("keydown", handleEscape);
-    return () => document.removeEventListener("keydown", handleEscape);
+    window.addEventListener("wheel", handleWheel, { passive: true });
+
+    return () => {
+      document.removeEventListener("keydown", handleEscape);
+      window.removeEventListener("wheel", handleWheel);
+    };
   }, [isEnlarged]);
 
   useEffect(() => {
@@ -79,7 +90,7 @@ const SmartImage: React.FC<SmartImageProps> = ({
         ? `translate(${translateX}px, ${translateY}px) scale(${scale})`
         : "translate(0, 0) scale(1)",
       transition: "all 0.3s ease-in-out",
-      zIndex: isEnlarged ? 2 : undefined,
+      zIndex: isEnlarged ? 10 : undefined,
     };
   };
 
@@ -107,7 +118,6 @@ const SmartImage: React.FC<SmartImageProps> = ({
         ref={imageRef}
         fillWidth
         overflow="hidden"
-        position="relative"
         zIndex={0}
         cursor={enlarge ? "interactive" : ""}
         style={{
@@ -170,24 +180,26 @@ const SmartImage: React.FC<SmartImageProps> = ({
           vertical="center"
           position="fixed"
           background="overlay"
+          pointerEvents="none"
           onClick={handleClick}
           top="0"
           left="0"
+          zIndex={isEnlarged ? 9 : undefined}
           opacity={isEnlarged ? 100 : 0}
           cursor="interactive"
           transition="macro-medium"
           style={{
+            backdropFilter: isEnlarged ? "var(--backdrop-filter)" : "0px",
             width: "100vw",
             height: "100vh",
           }}
         >
           <Flex
-            position="relative"
             style={{
               height: "100vh",
               transform: "translate(-50%, -50%)",
             }}
-            onClick={(e) => e.stopPropagation()}
+            onClick={(e: React.MouseEvent<HTMLDivElement>) => e.stopPropagation()}
           >
             {isVideo ? (
               <video

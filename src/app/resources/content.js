@@ -1,4 +1,4 @@
-import { InlineCode } from "@/once-ui/components";
+import { Logo } from "@/once-ui/components";
 
 const person = {
   firstName: "Selene",
@@ -8,6 +8,7 @@ const person = {
   },
   role: "Design Engineer",
   avatar: "/images/avatar.jpg",
+  email: "example@gmail.com",
   location: "Asia/Jakarta", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
   languages: ["English", "Bahasa"], // optional: Leave the array empty if you don't want to display languages
 };
@@ -44,26 +45,34 @@ const social = [
   {
     name: "Email",
     icon: "email",
-    link: "mailto:example@gmail.com",
+    link: `mailto:${person.email}`,
   },
 ];
 
 const home = {
+  path: "/",
+  image: "/images/og/home.jpg",
   label: "Home",
   title: `${person.name}'s Portfolio`,
   description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Design engineer and builder</>,
+  headline: <>Building bridges between design and code</>,
+  featured: {
+    display: true,
+    title: <>Recent project: <strong className="ml-4">Once UI</strong></>,
+    href: "/work/building-once-ui-a-customizable-design-system",
+  },
   subline: (
     <>
-      I'm Selene, a design engineer at <InlineCode>FLY</InlineCode>, where I craft intuitive
+      I'm Selene, a design engineer at <Logo icon={false} style={{ display: "inline-flex", top: "0.25em", marginLeft: "-0.25em" }}/>, where I craft intuitive
       <br /> user experiences. After hours, I build my own projects.
     </>
   ),
 };
 
 const about = {
+  path: "/about",
   label: "About",
-  title: "About me",
+  title: `About – ${person.name}`,
   description: `Meet ${person.name}, ${person.role} from ${person.location}`,
   tableOfContent: {
     display: true,
@@ -188,6 +197,7 @@ const about = {
 };
 
 const blog = {
+  path: "/blog",
   label: "Blog",
   title: "Writing about design and tech...",
   description: `Read what ${person.name} has been up to recently`,
@@ -196,88 +206,61 @@ const blog = {
 };
 
 const work = {
+  path: "/work",
   label: "Work",
-  title: "My projects",
+  title: `Projects – ${person.name}`,
   description: `Design and dev projects by ${person.name}`,
   // Create new project pages by adding a new .mdx file to app/blog/posts
   // All projects will be listed on the /home and /work routes
 };
 
 const gallery = {
+  path: "/gallery",
   label: "Gallery",
-  title: "My photo gallery",
+  title: `Photo gallery – ${person.name}`,
   description: `A photo collection by ${person.name}`,
-  // Images from https://pexels.com
+  // Images by https://lorant.one
+  // These are placeholder images, replace with your own
   images: [
     {
-      src: "/images/gallery/img-01.jpg",
+      src: "/images/gallery/horizontal-1.jpg",
+      alt: "image",
+      orientation: "horizontal",
+    },
+    {
+      src: "/images/gallery/horizontal-2.jpg",
+      alt: "image",
+      orientation: "horizontal",
+    },
+    {
+      src: "/images/gallery/horizontal-3.jpg",
+      alt: "image",
+      orientation: "horizontal",
+    },
+    {
+      src: "/images/gallery/horizontal-4.jpg",
+      alt: "image",
+      orientation: "horizontal",
+    },
+    {
+      src: "/images/gallery/vertical-1.jpg",
       alt: "image",
       orientation: "vertical",
     },
     {
-      src: "/images/gallery/img-02.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/img-03.jpg",
+      src: "/images/gallery/vertical-2.jpg",
       alt: "image",
       orientation: "vertical",
     },
     {
-      src: "/images/gallery/img-04.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/img-05.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/img-06.jpg",
+      src: "/images/gallery/vertical-3.jpg",
       alt: "image",
       orientation: "vertical",
     },
     {
-      src: "/images/gallery/img-07.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/img-08.jpg",
+      src: "/images/gallery/vertical-4.jpg",
       alt: "image",
       orientation: "vertical",
-    },
-    {
-      src: "/images/gallery/img-09.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/img-10.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/img-11.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
-    {
-      src: "/images/gallery/img-12.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/img-13.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/img-14.jpg",
-      alt: "image",
-      orientation: "horizontal",
     },
   ],
 };

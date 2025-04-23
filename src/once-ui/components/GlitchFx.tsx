@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState, forwardRef } from "react";
+import React, { useEffect, useState, forwardRef, useCallback } from "react";
 import styles from "./GlitchFx.module.scss";
 import { Flex } from "./Flex";
 import classNames from "classnames";
@@ -45,26 +45,25 @@ const GlitchFx = forwardRef<HTMLDivElement, GlitchFxProps>(
       }
     };
 
-    const triggerGlitch = () => {
+    const triggerGlitch = useCallback(() => {
       if (trigger === "custom") {
         setIsGlitching(true);
         setTimeout(() => setIsGlitching(false), 500);
       }
-    };
+    }, [trigger]);
 
     useEffect(() => {
       if (trigger === "custom") {
         const glitchInterval = setInterval(triggerGlitch, interval);
         return () => clearInterval(glitchInterval);
       }
-    }, [trigger, interval]);
+    }, [trigger, interval, triggerGlitch]);
 
     const speedClass = styles[speed];
 
     return (
       <Flex
         ref={ref}
-        position="relative"
         inline
         zIndex={0}
         className={classNames(speedClass, isGlitching && styles.active)}
@@ -72,7 +71,7 @@ const GlitchFx = forwardRef<HTMLDivElement, GlitchFxProps>(
         onMouseLeave={handleMouseLeave}
         {...rest}
       >
-        <Flex fillWidth inline position="relative" zIndex={1}>
+        <Flex fillWidth inline zIndex={1}>
           {children}
         </Flex>
 

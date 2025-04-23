@@ -70,14 +70,12 @@ const RadioButton: React.FC<RadioButtonProps> = forwardRef<HTMLInputElement, Rad
           disabled={disabled}
           className={styles.hidden}
           tabIndex={-1}
-          {...props}
         />
         <Flex
           role="radio"
           aria-checked={controlledIsChecked !== undefined ? controlledIsChecked : isChecked}
           aria-labelledby={radioId}
           aria-disabled={disabled}
-          position="relative"
           horizontal="center"
           vertical="center"
           radius="full"

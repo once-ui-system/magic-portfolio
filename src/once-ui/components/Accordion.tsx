@@ -1,67 +1,102 @@
 "use client";
 
-import React, { useState, forwardRef, useImperativeHandle } from "react";
-import { Flex, Icon, Heading, Column } from ".";
+import React, { useState, forwardRef, useImperativeHandle, useEffect, useCallback } from "react";
+import { Flex, Icon, Text, Column, Grid } from ".";
 import styles from "./Accordion.module.scss";
+
+export interface AccordionHandle extends HTMLDivElement {
+  toggle: () => void;
+  open: () => void;
+  close: () => void;
+}
 
 interface AccordionProps extends Omit<React.ComponentProps<typeof Flex>, "title"> {
   title: React.ReactNode;
   children: React.ReactNode;
+  icon?: string;
+  iconRotation?: number;
+  size?: "s" | "m" | "l";
+  radius?: "xs" | "s" | "m" | "l" | "full";
   open?: boolean;
 }
 
-const Accordion: React.FC<AccordionProps> = forwardRef(
-  ({ title, children, open = false, ...rest }, ref) => {
+const Accordion = forwardRef<AccordionHandle, AccordionProps>(
+  (
+    {
+      title,
+      children,
+      open = false,
+      iconRotation = 180,
+      radius,
+      icon = "chevronDown",
+      size = "m",
+      ...rest
+    },
+    ref,
+  ) => {
     const [isOpen, setIsOpen] = useState(open);
 
-    const toggleAccordion = () => {
-      setIsOpen(!isOpen);
-    };
+    useEffect(() => {
+      setIsOpen(open);
+    }, [open]);
 
-    useImperativeHandle(ref, () => ({
-      ...((ref as React.MutableRefObject<HTMLDivElement>)?.current ?? {}),
-      toggle: toggleAccordion,
-      open: () => {
-        setIsOpen(true);
+    const toggleAccordion = useCallback(() => {
+      setIsOpen((prev) => !prev);
+    }, []);
+
+    useImperativeHandle(
+      ref,
+      () => {
+        const methods = {
+          toggle: toggleAccordion,
+          open: () => setIsOpen(true),
+          close: () => setIsOpen(false),
+        };
+
+        return Object.assign(document.createElement("div"), methods) as unknown as AccordionHandle;
       },
-      close: () => {
-        setIsOpen(false);
-      },
-    }));
+      [toggleAccordion],
+    );
 
     return (
-      <Flex fillWidth direction="column" className={styles.border}>
+      <Column fillWidth className={styles.border}>
         <Flex
           tabIndex={0}
           className={styles.accordion}
           cursor="pointer"
           transition="macro-medium"
-          paddingY="16"
-          paddingX="20"
+          paddingY={size === "s" ? "8" : size === "m" ? "12" : "16"}
+          paddingX={size === "s" ? "12" : size === "m" ? "16" : "20"}
           vertical="center"
           horizontal="space-between"
           onClick={toggleAccordion}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              toggleAccordion();
+            }
+          }}
           aria-expanded={isOpen}
           aria-controls="accordion-content"
+          radius={radius}
+          role="button"
         >
-          <Heading as="h3" variant="heading-strong-s">
-            {title}
-          </Heading>
+          <Text variant="heading-strong-s">{title}</Text>
           <Icon
-            name="chevronDown"
-            size="m"
+            name={icon}
+            size={size === "s" ? "xs" : "s"}
+            onBackground={isOpen ? "neutral-strong" : "neutral-weak"}
             style={{
               display: "flex",
-              transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
+              transform: isOpen ? `rotate(${iconRotation}deg)` : "rotate(0deg)",
               transition: "var(--transition-micro-medium)",
             }}
           />
         </Flex>
-        <Flex
+        <Grid
           id="accordion-content"
           fillWidth
           style={{
-            display: "grid",
             gridTemplateRows: isOpen ? "1fr" : "0fr",
             transition:
               "grid-template-rows var(--transition-duration-macro-medium) var(--transition-eased)",
@@ -73,8 +108,8 @@ const Accordion: React.FC<AccordionProps> = forwardRef(
               {children}
             </Column>
           </Flex>
-        </Flex>
-      </Flex>
+        </Grid>
+      </Column>
     );
   },
 );

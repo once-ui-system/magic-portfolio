@@ -80,7 +80,6 @@ const RevealFx = forwardRef<HTMLDivElement, RevealFxProps>(
     return (
       <Flex
         fillWidth
-        position="relative"
         horizontal="center"
         ref={ref}
         style={revealStyle}

@@ -1,0 +1,34 @@
+.line-numbers {
+  position: relative;
+  counter-reset: linenumber;
+}
+
+.line-numbers > code {
+  position: relative;
+  white-space: inherit;
+}
+
+.line-numbers-rows {
+  padding-right: var(--static-space-4);
+  left: calc(-1 * var(--static-space-40));
+  position: absolute;
+  pointer-events: none;
+  top: 0;
+  font-size: 100%;
+  width: var(--static-space-48);
+  user-select: none;
+}
+
+.line-numbers-rows > span {
+  display: block;
+  counter-increment: linenumber;
+}
+
+.line-numbers-rows > span:before {
+  content: counter(linenumber);
+  color: var(--neutral-on-background-weak);
+  display: block;
+  padding-right: var(--static-space-8);
+  text-align: right;
+  transform: scale(0.9);
+}

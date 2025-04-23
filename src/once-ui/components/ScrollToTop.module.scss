@@ -1,0 +1,11 @@
+.scrollToTop {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 200ms ease-in-out, visibility 0ms linear 200ms;
+
+  &[data-visible="true"] {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 200ms ease-in-out, visibility 0ms linear;
+  }
+}

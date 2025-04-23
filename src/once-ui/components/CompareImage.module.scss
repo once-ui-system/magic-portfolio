@@ -1,0 +1,14 @@
+.hitArea {
+  cursor: col-resize;
+  transform: translateX(-50%);
+}
+
+.dragIcon {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  cursor: col-resize;
+  z-index: 2;
+  transition: none;
+  pointer-events: auto;
+}

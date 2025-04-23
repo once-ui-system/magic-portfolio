@@ -78,14 +78,12 @@ const Checkbox: React.FC<CheckboxProps> = forwardRef<HTMLInputElement, CheckboxP
           disabled={disabled}
           className={styles.hidden}
           tabIndex={-1}
-          {...props}
         />
         <Flex
           style={{
             borderRadius: "min(var(--static-space-4), var(--radius-xs))",
           }}
           role="checkbox"
-          position="relative"
           tabIndex={0}
           horizontal="center"
           vertical="center"

@@ -1,8 +1,11 @@
 import Link from "next/link";
 import React, { ReactNode, forwardRef } from "react";
+import { Flex } from "./Flex";
 
 interface ElementTypeProps {
   href?: string;
+  onClick?: () => void;
+  onLinkClick?: () => void;
   children: ReactNode;
   className?: string;
   style?: React.CSSProperties;
@@ -12,7 +15,7 @@ interface ElementTypeProps {
 const isExternalLink = (url: string) => /^https?:\/\//.test(url);
 
 const ElementType = forwardRef<HTMLElement, ElementTypeProps>(
-  ({ href, children, className, style, ...props }, ref) => {
+  ({ href, type, onClick, onLinkClick, children, className, style, ...props }, ref) => {
     if (href) {
       const isExternal = isExternalLink(href);
       if (isExternal) {
@@ -24,6 +27,7 @@ const ElementType = forwardRef<HTMLElement, ElementTypeProps>(
             ref={ref as React.Ref<HTMLAnchorElement>}
             className={className}
             style={style}
+            onClick={() => onLinkClick?.()}
             {...(props as React.AnchorHTMLAttributes<HTMLAnchorElement>)}
           >
             {children}
@@ -36,21 +40,37 @@ const ElementType = forwardRef<HTMLElement, ElementTypeProps>(
           ref={ref as React.Ref<HTMLAnchorElement>}
           className={className}
           style={style}
+          onClick={() => onLinkClick?.()}
           {...(props as React.AnchorHTMLAttributes<HTMLAnchorElement>)}
         >
           {children}
         </Link>
       );
     }
+
+    if (onClick || type === "submit" || type === "button") {
+      return (
+        <button
+          ref={ref as React.Ref<HTMLButtonElement>}
+          className={className}
+          onClick={onClick}
+          style={style}
+          {...(props as React.ButtonHTMLAttributes<HTMLButtonElement>)}
+        >
+          {children}
+        </button>
+      );
+    }
+
     return (
-      <button
-        ref={ref as React.Ref<HTMLButtonElement>}
+      <Flex
+        ref={ref as React.Ref<HTMLDivElement>}
         className={className}
         style={style}
-        {...(props as React.ButtonHTMLAttributes<HTMLButtonElement>)}
+        {...(props as React.HTMLAttributes<HTMLDivElement>)}
       >
         {children}
-      </button>
+      </Flex>
     );
   },
 );

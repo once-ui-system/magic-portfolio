@@ -6,9 +6,10 @@ import { Flex, Icon, Tooltip } from ".";
 import buttonStyles from "./Button.module.scss";
 import iconStyles from "./IconButton.module.scss";
 import classNames from "classnames";
+import { IconName } from "../icons";
 
 interface CommonProps {
-  icon?: string;
+  icon?: IconName;
   id?: string;
   size?: "s" | "m" | "l";
   radius?:
@@ -30,7 +31,8 @@ interface CommonProps {
   children?: ReactNode;
 }
 
-export type IconButtonProps = CommonProps & React.ButtonHTMLAttributes<HTMLButtonElement>;
+export type IconButtonProps = CommonProps &
+  React.ButtonHTMLAttributes<HTMLButtonElement>;
 type AnchorProps = CommonProps & React.AnchorHTMLAttributes<HTMLAnchorElement>;
 
 const IconButton = forwardRef<HTMLButtonElement, IconButtonProps | AnchorProps>(
@@ -49,7 +51,7 @@ const IconButton = forwardRef<HTMLButtonElement, IconButtonProps | AnchorProps>(
       style,
       ...props
     },
-    ref,
+    ref
   ) => {
     const [isTooltipVisible, setTooltipVisible] = useState(false);
     const [isHover, setIsHover] = useState(false);
@@ -71,7 +73,11 @@ const IconButton = forwardRef<HTMLButtonElement, IconButtonProps | AnchorProps>(
       <>
         {children ? children : <Icon name={icon} size="s" />}
         {tooltip && isTooltipVisible && (
-          <Flex position="absolute" zIndex={1} className={iconStyles[tooltipPosition]}>
+          <Flex
+            position="absolute"
+            zIndex={1}
+            className={iconStyles[tooltipPosition]}
+          >
             <Tooltip label={tooltip} />
           </Flex>
         )}
@@ -93,12 +99,12 @@ const IconButton = forwardRef<HTMLButtonElement, IconButtonProps | AnchorProps>(
           radius === "none"
             ? "radius-none"
             : radius
-              ? `radius-${radiusSize}-${radius}`
-              : `radius-${radiusSize}`,
+            ? `radius-${radiusSize}-${radius}`
+            : `radius-${radiusSize}`,
           "text-decoration-none",
           "button",
           "cursor-interactive",
-          className,
+          className
         )}
         style={style}
         onMouseEnter={() => setIsHover(true)}
@@ -111,7 +117,7 @@ const IconButton = forwardRef<HTMLButtonElement, IconButtonProps | AnchorProps>(
         </Flex>
       </ElementType>
     );
-  },
+  }
 );
 
 IconButton.displayName = "IconButton";

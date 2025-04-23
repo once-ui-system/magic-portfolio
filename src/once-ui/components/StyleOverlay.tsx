@@ -17,7 +17,7 @@ const StyleOverlay = forwardRef<HTMLDivElement, StyleOverlayProps>(
     };
 
     return (
-      <Flex ref={ref}>
+      <Flex ref={ref} position="static">
         <IconButton variant="primary" onClick={togglePanel} icon="sparkle" {...iconButtonProps} />
         <Flex
           as="aside"

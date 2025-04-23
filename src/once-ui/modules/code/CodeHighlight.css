@@ -78,12 +78,12 @@
 
 .line-highlight {
   position: absolute;
-  background-color: var(--brand-alpha-medium);
-  width: calc(100% - var(--static-space-16)) !important;
-  left: var(--static-space-8);
+  background-color: var(--brand-alpha-weak);
+  border-left: 2px solid var(--brand-alpha-strong);
+  width: 100%;
+  left: 0;
   margin-top: var(--static-space-8);
   z-index: 0;
-  border-radius: var(--radius-s);
 }
 
 .line-numbers .line-highlight:before,

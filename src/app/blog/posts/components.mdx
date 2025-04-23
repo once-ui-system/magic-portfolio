@@ -1,0 +1,603 @@
+---
+title: "Using custom components in markdown"
+publishedAt: "2025-04-20"
+summary: "Every career is a journey, filled with challenges, growth, and those significant moments that mark a shift in our path."
+tag: "Magic Portfolio"
+---
+
+Magic Portfolio will replace some default HTML elements to Once UI components to integrate better in the design and add additional functionality. Furthermore, many common Once UI components are already imported and available for use.
+
+## Feedback
+
+The feedback component is used to display critical information to visitors.
+
+<Column fillWidth gap="-1" marginBottom="16" marginTop="8">
+<CodeBlock
+    radius="none"
+    topRadius="l"
+    codeHeight={24}
+    codePreview={<Feedback icon title="Feedback element" variant="success" description="Longer description of the feedback message." marginBottom="24"/>}
+    codeInstances={[
+      {
+        code:
+`<Feedback
+    icon
+    variant="success"
+    title="Feedback element"
+    description="Longer description of the feedback message."
+/>`,
+        language: "tsx",
+        label: "Feedback"
+      }
+    ]}
+/>
+<Row fillWidth bottomRadius="l" padding="4" border="neutral-medium" background="surface">
+    <Button href="https://once-ui.com/docs/feedback" weight="default" label="View on Once UI" size="s" variant="tertiary" suffixIcon="chevronRight"/>
+</Row>
+</Column>
+
+## Table
+
+Tables are used to display data in a structured format.
+
+<Column fillWidth gap="-1" marginBottom="16" marginTop="8">
+<CodeBlock
+    radius="none"
+    topRadius="l"
+    codePreview={
+    <Table 
+      data={{
+        headers: [
+          { content: "Name", key: "name", sortable: true },
+          { content: "Type", key: "type", sortable: true },
+          { content: "Description", key: "description" }
+        ],
+        rows: [
+          ["title", "string", "The title of the document"],
+          ["summary", "string", "A brief summary of the document content"],
+          ["updatedAt", "string", "The date when the document was last updated"],
+          ["navLabel", "string", "The label used in navigation menus"]
+        ]
+      }}
+    />}
+    codeInstances={[
+      {
+        code:
+`<Table 
+    data={{
+      headers: [
+        { content: "Name", key: "name", sortable: true },
+        { content: "Type", key: "type", sortable: true },
+        { content: "Description", key: "description" }
+      ],
+      rows: [
+        ["title", "string", "The title of the document"],
+        ["summary", "string", "A brief summary of the document content"],
+        ["updatedAt", "string", "The date when the document was last updated"],
+        ["navLabel", "string", "The label used in navigation menus"]
+      ]
+    }}
+/>`,
+        language: "tsx",
+        label: "Table"
+      }
+    ]}
+/>
+<Row fillWidth bottomRadius="l" padding="4" border="neutral-medium" background="surface">
+    <Button disabled weight="default" label="View on Once UI" size="s" variant="tertiary" suffixIcon="chevronRight"/>
+</Row>
+</Column>
+
+## Code
+
+Use the CodeBlock component to display code snippets with code highlighting, preview, and copy to clipboard functionality. Use the InlineCode component for inline code snippets.
+
+### CodeBlock
+
+The code block component works based on Once UI's CodeBlock. You can access it with the complete syntax for full customization, or by using the standard markdown syntax (triple backticks) with pre-configured props.
+
+<Column fillWidth gap="-1" marginBottom="16" marginTop="8">
+<CodeBlock
+    radius="none"
+    topRadius="l"
+    codeInstances={[
+      {
+        code:
+`// Full component syntax
+<CodeBlock
+    codeInstances={[
+      {
+        code: "console.log('Hello, World!');",
+        language: "javascript",
+        label: "Example"
+      }
+    ]}
+/>
+
+// Short syntax example
+\`\`\`tsx
+function greeting(name) {
+    return \`Hello, \${name}!\`;
+}
+
+console.log(greeting('World'));
+\`\`\``,
+        language: "tsx",
+        label: "CodeBlock"
+      }
+    ]}
+/>
+<Row fillWidth bottomRadius="l" padding="4" border="neutral-medium" background="surface">
+    <Button href="https://once-ui.com/docs/codeBlock" weight="default" label="View on Once UI" size="s" variant="tertiary" suffixIcon="chevronRight"/>
+</Row>
+</Column>
+
+### InlineCode
+
+The `InlineCode` is another Once UI component that you can access either through the complete syntax or the short syntax (backticks). Usually the standard markdown syntax is recommended, since it doesn't have that much configuration options.
+
+<Column fillWidth gap="-1" marginBottom="16" marginTop="8">
+<CodeBlock
+    radius="none"
+    topRadius="l"
+    codeHeight={24}
+    codePreview={<InlineCode>
+        const x = 10;
+    </InlineCode>}
+    codeInstances={[
+      {
+        code:
+`// Full component syntax
+<InlineCode>
+    const x = 10;
+</InlineCode>
+
+// Short syntax example
+\`const x = 10;\``,
+        language: "tsx",
+        label: "InlineCode"
+      }
+    ]}
+/>
+<Row fillWidth bottomRadius="l" padding="4" border="neutral-medium" background="surface">
+    <Button href="https://once-ui.com/docs/inlineCode" weight="default" label="View on Once UI" size="s" variant="tertiary" suffixIcon="chevronRight"/>
+</Row>
+</Column>
+
+## Accordion
+
+Accordions are used to toggle between hiding and showing content.
+
+<Column fillWidth gap="-1" marginBottom="16" marginTop="8">
+<CodeBlock
+    radius="none"
+    topRadius="l"
+    codePreview={
+      <AccordionGroup 
+        items={[
+          {
+            title: "Section 1",
+            content: <Text variant="body-default-s" onBackground="neutral-weak">This is the content for section 1. You can include any components here.</Text>
+          },
+          {
+            title: "Section 2",
+            content: <Text variant="body-default-s" onBackground="neutral-weak">This is the content for section 2. Accordions are great for FAQs and other expandable content.</Text>
+          },
+          {
+            title: "Section 3",
+            content: <Text variant="body-default-s" onBackground="neutral-weak">This is the content for section 3. They help save space by hiding content until needed.</Text>
+          }
+        ]}
+      />
+    }
+    codeInstances={[
+      {
+        code:
+`<AccordionGroup 
+    items={[
+      {
+        title: "Section 1",
+        content: <Text>This is the content for section 1.</Text>
+      },
+      {
+        title: "Section 2",
+        content: <Text>This is the content for section 2.</Text>
+      },
+      {
+        title: "Section 3",
+        content: <Text>This is the content for section 3.</Text>
+      }
+    ]}
+/>`,
+        language: "tsx",
+        label: "Accordion"
+      }
+    ]}
+/>
+<Row fillWidth bottomRadius="l" padding="4" border="neutral-medium" background="surface">
+    <Button href="https://once-ui.com/docs/accordion" weight="default" label="View on Once UI" size="s" variant="tertiary" suffixIcon="chevronRight"/>
+</Row>
+</Column>
+
+## Button
+
+Buttons are used to trigger actions or navigate to other pages.
+
+<Column fillWidth gap="-1" marginBottom="16" marginTop="8">
+<CodeBlock
+    radius="none"
+    topRadius="l"
+    codeHeight={24}
+    codePreview={
+    <Row gap="8" marginBottom="16" marginTop="8">
+      <Button variant="primary" label="Primary" />
+      <Button variant="secondary" label="Secondary" />
+      <Button variant="tertiary" label="Tertiary" />
+    </Row>}
+    codeInstances={[
+      {
+        code:
+`<Row gap="8">
+  <Button variant="primary" label="Primary" />
+  <Button variant="secondary" label="Secondary" />
+  <Button variant="tertiary" label="Tertiary" />
+</Row>`,
+        language: "tsx",
+        label: "Button"
+      }
+    ]}
+/>
+<Row fillWidth bottomRadius="l" padding="4" border="neutral-medium" background="surface">
+    <Button href="https://once-ui.com/docs/button" weight="default" label="View on Once UI" size="s" variant="tertiary" suffixIcon="chevronRight"/>
+</Row>
+</Column>
+
+## Card
+
+Cards are used to group related content and actions.
+
+<Column fillWidth gap="-1" marginBottom="16" marginTop="8">
+<CodeBlock
+    radius="none"
+    topRadius="l"
+    codePreview={
+    <Row fillWidth horizontal="center">
+      <Card
+        href=" "
+        maxWidth={20}
+        radius="l-4"
+        direction="column"
+        padding="4"
+        gap="8"
+      >
+        <SmartImage src="/images/projects/project-01/cover-01.jpg" aspectRatio="16/9" radius="l" sizes="400px" />
+        <Column fillWidth padding="12" gap="8" horizontal="start">
+          <Text variant="heading-strong-m" onBackground="neutral-strong" align="left">
+            Card Title
+          </Text>
+          <Text variant="body-default-s" onBackground="neutral-weak" align="left">
+            This is a description of the card. It can contain multiple lines of text.
+          </Text>
+        </Column>
+      </Card>
+    </Row>
+    }
+    codeInstances={[
+      {
+        code:
+`<Card
+    href=" "
+    maxWidth={20}
+    radius="l-4"
+    direction="column"
+    padding="4"
+  >
+    <SmartImage src="/images/projects/project-01/cover-01.jpg" aspectRatio="16/9" radius="l" sizes="400px" />
+    <Column fillWidth padding="12" gap="8" horizontal="start">
+      <Text variant="heading-strong-m" onBackground="neutral-strong" align="left">
+        Card Title
+      </Text>
+      <Text variant="body-default-s" onBackground="neutral-weak" align="left">
+        This is a description of the card. It can contain multiple lines of text.
+      </Text>
+    </Column>
+</Card>`,
+        language: "tsx",
+        label: "Card"
+      }
+    ]}
+/>
+<Row fillWidth bottomRadius="l" padding="4" border="neutral-medium" background="surface">
+    <Button href="https://once-ui.com/docs/card" weight="default" label="View on Once UI" size="s" variant="tertiary" suffixIcon="chevronRight"/>
+</Row>
+</Column>
+
+## Icon
+
+Icons are used to visually represent actions, objects, or concepts. For instructions on importing new icons, head over to [the Once UI documentation](https://once-ui.com/docs/icons).
+
+<Column fillWidth gap="-1" marginBottom="16" marginTop="8">
+<CodeBlock
+    radius="none"
+    topRadius="l"
+    codeHeight={24}
+    codePreview={<Row gap="24" wrap>
+      <Icon name="rocket" onBackground="danger-medium" size="m" />
+      <Icon name="close" size="m" />
+      <Icon name="check" onBackground="success-medium" size="m" />
+      <Icon name="infoCircle" onBackground="info-medium" size="m" />
+      <Icon name="warningTriangle" onBackground="warning-medium" size="m" />
+      <Icon name="chevronDown" size="m" />
+      <Icon name="search" size="m" />
+    </Row>}
+    codeInstances={[
+      {
+        code:
+`<Icon name="rocket" size="m" />
+<Icon name="close" size="m" />
+<Icon name="check" onBackground="success-medium" size="m" />
+<Icon name="infoCircle" onBackground="info-medium" size="m" />
+<Icon name="warningTriangle" onBackground="warning-medium" size="m" />
+<Icon name="chevronDown" size="m" />
+<Icon name="search" size="m" />`,
+        language: "tsx",
+        label: "Icon"
+      }
+    ]}
+/>
+<Row fillWidth bottomRadius="l" padding="4" border="neutral-medium" background="surface">
+    <Button href="https://once-ui.com/docs/icon" weight="default" label="View on Once UI" size="s" variant="tertiary" suffixIcon="chevronRight"/>
+</Row>
+</Column>
+
+## Layout
+
+Layout components help structure content on the page.
+
+### Flex
+
+The Flex component is accessible as `Column` and `Row` and can handle a wide range of layout options and style properties.
+
+<Column fillWidth gap="-1" marginBottom="16" marginTop="8">
+<CodeBlock
+    radius="none"
+    topRadius="l"
+    codePreview={
+    <Row
+      fillWidth
+      mobileDirection="column"
+      gap="16"
+    >
+      <Column fillWidth border="neutral-alpha-medium" padding="16" radius="m">
+        <Row padding="8">Row Item</Row>
+        <Row padding="8">Row Item</Row>
+      </Column>
+      <Column fillWidth border="neutral-alpha-medium" padding="16" radius="m">
+        <Row padding="8">Row Item</Row>
+        <Row padding="8">Row Item</Row>
+      </Column>
+      <Column fillWidth border="neutral-alpha-medium" padding="16" radius="m">
+        <Row padding="8">Row Item</Row>
+        <Row padding="8">Row Item</Row>
+      </Column>
+      <Column fillWidth border="neutral-alpha-medium" padding="16" radius="m">
+        <Row padding="8">Row Item</Row>
+        <Row padding="8">Row Item</Row>
+      </Column>
+    </Row>}
+    codeHeight={24}
+    codeInstances={[
+      {
+        code:
+`<Row
+    fillWidth
+    mobileDirection="column"
+    gap="16"
+  >
+    <Column fillWidth border="neutral-alpha-medium" padding="16" radius="m">
+      <Row padding="8">Row Item</Row>
+      <Row padding="8">Row Item</Row>
+    </Column>
+    <Column fillWidth border="neutral-alpha-medium" padding="16" radius="m">
+      <Row padding="8">Row Item</Row>
+      <Row padding="8">Row Item</Row>
+    </Column>
+    <Column fillWidth border="neutral-alpha-medium" padding="16" radius="m">
+      <Row padding="8">Row Item</Row>
+      <Row padding="8">Row Item</Row>
+    </Column>
+    <Column fillWidth border="neutral-alpha-medium" padding="16" radius="m">
+      <Row padding="8">Row Item</Row>
+      <Row padding="8">Row Item</Row>
+    </Column>
+</Row>`,
+        language: "tsx",
+        label: "Layout"
+      }
+    ]}
+/>
+<Row fillWidth bottomRadius="l" padding="4" border="neutral-medium" background="surface">
+    <Button href="https://once-ui.com/docs/flex" weight="default" label="View on Once UI" size="s" variant="tertiary" suffixIcon="chevronRight"/>
+</Row>
+</Column>
+
+### Grid
+
+Use the grid to construct responsive grid layouts. It can be styled similarly to the Flex element.
+
+<Column fillWidth gap="-1" marginBottom="16" marginTop="8">
+<CodeBlock
+    radius="none"
+    topRadius="l"
+    codePreview={
+    <Grid
+      fillWidth
+      columns="3"
+      mobileColumns="2"
+      gap="16"
+    >
+      <Column border="neutral-alpha-medium" padding="16" radius="m">
+        <Text>Grid Item</Text>
+      </Column>
+      <Column border="neutral-alpha-medium" padding="16" radius="m">
+        <Text>Grid Item</Text>
+      </Column>
+      <Column border="neutral-alpha-medium" padding="16" radius="m">
+        <Text>Grid Item</Text>
+      </Column>
+      <Column border="neutral-alpha-medium" padding="16" radius="m">
+        <Text>Grid Item</Text>
+      </Column>
+      <Column border="neutral-alpha-medium" padding="16" radius="m">
+        <Text>Grid Item</Text>
+      </Column>
+      <Column border="neutral-alpha-medium" padding="16" radius="m">
+        <Text>Grid Item</Text>
+      </Column>
+    </Grid>}
+    codeHeight={24}
+    codeInstances={[
+      {
+        code:
+`<Grid
+    fillWidth
+    columns="3"
+    mobileColumns="2"
+    gap="16"
+  >
+    <Column border="neutral-alpha-medium" padding="16" radius="m">
+      <Text>Grid Item</Text>
+    </Column>
+    <Column border="neutral-alpha-medium" padding="16" radius="m">
+      <Text>Grid Item</Text>
+    </Column>
+    <Column border="neutral-alpha-medium" padding="16" radius="m">
+      <Text>Grid Item</Text>
+    </Column>
+    <Column border="neutral-alpha-medium" padding="16" radius="m">
+      <Text>Grid Item</Text>
+    </Column>
+    <Column border="neutral-alpha-medium" padding="16" radius="m">
+      <Text>Grid Item</Text>
+    </Column>
+    <Column border="neutral-alpha-medium" padding="16" radius="m">
+      <Text>Grid Item</Text>
+    </Column>
+</Grid>`,
+        language: "tsx",
+        label: "Layout"
+      }
+    ]}
+/>
+<Row fillWidth bottomRadius="l" padding="4" border="neutral-medium" background="surface">
+    <Button href="https://once-ui.com/docs/grid" weight="default" label="View on Once UI" size="s" variant="tertiary" suffixIcon="chevronRight"/>
+</Row>
+</Column>
+
+## Media
+
+SmartImage provides an optimized way to display images. Access it with the `SmartImage` component for full customization or use the markdown syntax.
+
+<Column fillWidth gap="-1" marginBottom="16" marginTop="8">
+<CodeBlock
+    radius="none"
+    topRadius="l"
+    codeHeight={24}
+    codePreview={<SmartImage src="/images/projects/project-01/cover-01.jpg" alt="Example image" sizes="640px" aspectRatio="16/9" radius="l" />}
+    codeInstances={[
+      {
+        code:
+`<SmartImage
+    src="/images/projects/project-01/cover-01.jpg"
+    sizes="640px"
+    alt="Example image"
+    aspectRatio="16/9"
+    radius="l"
+/>`,
+        language: "tsx",
+        label: "SmartImage"
+      }
+    ]}
+/>
+<Row fillWidth bottomRadius="l" padding="4" border="neutral-medium" background="surface">
+    <Button href="https://once-ui.com/docs/smartImage" weight="default" label="View on Once UI" size="s" variant="tertiary" suffixIcon="chevronRight"/>
+</Row>
+</Column>
+
+You can also use it to embed YouTube videos.
+
+<Column fillWidth gap="-1" marginBottom="16" marginTop="8">
+<CodeBlock
+    radius="none"
+    topRadius="l"
+    codeHeight={24}
+    codePreview={<SmartImage src="https://www.youtube.com/watch?v=TQT_FSdxbC8" alt="Example video" aspectRatio="16/9" radius="l" />}
+    codeInstances={[
+      {
+        code:
+`<SmartImage
+    src="https://www.youtube.com/watch?v=TQT_FSdxbC8"
+    alt="Example video"
+    aspectRatio="16/9"
+    radius="l"
+/>`,
+        language: "tsx",
+        label: "SmartImage"
+      }
+    ]}
+/>
+<Row fillWidth bottomRadius="l" padding="4" border="neutral-medium" background="surface">
+    <Button href="https://once-ui.com/docs/smartImage" weight="default" label="View on Once UI" size="s" variant="tertiary" suffixIcon="chevronRight"/>
+</Row>
+</Column>
+
+## Link
+
+SmartLink provides an enhanced way to link to internal and external resources. You can access it with the `SmartLink` component for full customization or with the standard markdown syntax.
+
+<Column fillWidth gap="-1" marginBottom="16" marginTop="8">
+<CodeBlock
+    radius="none"
+    topRadius="l"
+    codePreview={
+      <Row  fillWidth horizontal="center">
+        <SmartLink href=" " suffixIcon="chevronRight">Link with icon</SmartLink>
+      </Row>
+    }
+    codeInstances={[
+      {
+        code:
+`<SmartLink href=" " suffixIcon="chevronRight">Link with icon</SmartLink>`,
+        language: "tsx",
+        label: "SmartLink"
+      }
+    ]}
+/>
+<Row fillWidth bottomRadius="l" padding="4" border="neutral-medium" background="surface">
+    <Button href="https://once-ui.com/docs/smart-link" weight="default" label="View on Once UI" size="s" variant="tertiary" suffixIcon="chevronRight"/>
+</Row>
+</Column>
+
+## Custom components
+
+Since Magic Portfolio is based on Once UI, you can use all the components provided by Once UI in the `.mdx` files, but you need to import them first in the `src/product/mdx.tsx` file and pass it to the `components` object.
+
+<CodeBlock
+    marginBottom="16" marginTop="8"
+    highlight="2"
+    codeInstances={[
+      {
+        code:
+`const components = {
+    // Add new components
+    p: createParagraph as any,
+    h1: createHeading("h1") as any,
+    ...
+    SmartImage: dynamic(() => import("@/once-ui/components").then(mod => mod.SmartImage)),
+    SmartLink: dynamic(() => import("@/once-ui/components").then(mod => mod.SmartLink)),
+};`,
+        language: "tsx",
+        label: "src/product/mdx.tsx"
+      }
+    ]}
+/>

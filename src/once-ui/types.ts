@@ -18,6 +18,21 @@ export type StaticSpacingToken =
   | "128"
   | "160";
 
+export type Schemes =
+  | "blue"
+  | "indigo"
+  | "violet"
+  | "magenta"
+  | "pink"
+  | "red"
+  | "orange"
+  | "yellow"
+  | "moss"
+  | "green"
+  | "emerald"
+  | "aqua"
+  | "cyan";
+
 export type TShirtSizes = "xs" | "s" | "m" | "l" | "xl";
 
 export type ResponsiveSpacingToken = TShirtSizes;
@@ -25,6 +40,8 @@ export type ResponsiveSpacingToken = TShirtSizes;
 export type ShadowSize = TShirtSizes;
 
 export type SpacingToken = StaticSpacingToken | ResponsiveSpacingToken;
+
+export type opacity = 0 | 10 | 20 | 30 | 40 | 50 | 60 | 70 | 80 | 90 | 100;
 
 export type ColorScheme =
   | "neutral"

@@ -17,7 +17,7 @@ import styles from "./Dialog.module.scss";
 interface DialogProps extends Omit<React.ComponentProps<typeof Flex>, "title"> {
   isOpen: boolean;
   onClose: () => void;
-  title: ReactNode;
+  title: ReactNode | string;
   description?: ReactNode;
   children: ReactNode;
   footer?: ReactNode;
@@ -212,7 +212,7 @@ const Dialog: React.FC<DialogProps> = forwardRef<HTMLDivElement, DialogProps>(
         transition="macro-medium"
         background="overlay"
         position="fixed"
-        zIndex={base ? 9 : 10}
+        zIndex={base ? 8 : 9}
         top="0"
         left="0"
         right="0"
@@ -283,9 +283,13 @@ const Dialog: React.FC<DialogProps> = forwardRef<HTMLDivElement, DialogProps>(
               gap="4"
             >
               <Flex fillWidth horizontal="space-between" gap="8">
-                <Heading id="dialog-title" variant="heading-strong-l">
-                  {title}
-                </Heading>
+                {typeof title === "string" ? (
+                  <Heading id="dialog-title" variant="heading-strong-l">
+                    {title}
+                  </Heading>
+                ) : (
+                  title
+                )}
                 <IconButton
                   icon="close"
                   size="m"

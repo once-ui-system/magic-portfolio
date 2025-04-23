@@ -26,7 +26,14 @@ const Toaster: React.FC<ToasterProps> = ({ toasts, removeToast }) => {
   if (!mounted) return null;
 
   return createPortal(
-    <Flex zIndex={10} fillWidth direction="column" maxWidth={32} className={styles.toastContainer}>
+    <Flex
+      zIndex={10}
+      fillWidth
+      direction="column"
+      maxWidth={32}
+      position="fixed"
+      className={styles.toastContainer}
+    >
       {toasts.map((toast, index, array) => (
         <Flex
           padding="4"

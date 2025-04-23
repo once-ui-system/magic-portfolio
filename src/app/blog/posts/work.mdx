@@ -1,0 +1,78 @@
+---
+title: "Create,edit and delete projects"
+summary: "Create, edit and delete projects in the work section of your Magic Portfolio."
+publishedAt: "2025-04-19"
+tag: "Magic Portfolio"
+---
+
+## Manage projects
+
+You can create, edit and delete projects by adding, modifying or removing `*.mdx` files in the `src/app/work/projects` directory.
+
+## Frontmatter
+
+The frontmatter is used to set the project's metadata: title, description, image, and tags. It's used in the project's page and in meta- and open graph tags.
+
+<CodeBlock
+    marginBottom="16"
+    codeInstances={[
+      {
+        code:
+`---
+title: "Developing a design system for indie creators"
+publishedAt: "2025-03-17"
+summary: "Once UI is a design system that empowers indie creators, small teams, and startups to build web applications."
+images:
+  - "/images/projects/project-01/cover-02.jpg"
+  - "/images/projects/project-01/image-03.jpg"
+team:
+  - name: "Lorant One"
+    role: "Software Engineer"
+    avatar: "/images/avatar.jpg"
+    linkedIn: "https://www.linkedin.com/company/once-ui/"
+link: "https://once-ui.com/"
+---`,
+        language: "tsx",
+        label: "src/app/work/projects/project-1.mdx"
+      }
+    ]}
+/>
+
+## MDX syntax
+
+You can use MDX to write the content of your projects. It helps you write rich and dynamic content with minimal code. Some MDX elements will be automatically transformed to Once UI components to integrate better in the design and add additional functionality.
+
+## Custom components
+
+You can use custom components in MDX files, but you need to import them first in the `src/components/mdx.tsx` file.
+
+<CodeBlock
+    marginBottom="16"
+    highlight="11-12"
+    codeInstances={[
+      {
+        code:
+`const components = {
+    p: createParagraph as any,
+    h1: createHeading(1) as any,
+    h2: createHeading(2) as any,
+    h3: createHeading(3) as any,
+    h4: createHeading(4) as any,
+    h5: createHeading(5) as any,
+    h6: createHeading(6) as any,
+    img: createImage as any,
+    a: CustomLink as any,
+    Table,
+    CodeBlock,
+};`,
+        language: "tsx",
+        label: "src/components/mdx.tsx"
+      }
+    ]}
+/>
+
+As you can see, the `Table` and `CodeBlock` components are already imported and available for use. You can add more by simply importing them to this file and passing them to the `components` object.
+
+## Hot reload
+
+Hot reload of MDX files is currently not supported, but we're working on it.
