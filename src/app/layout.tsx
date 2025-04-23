@@ -36,7 +36,6 @@ export default async function RootLayout({ children }: RootLayoutProps) {
       data-accent={style.accent}
       data-solid={style.solid}
       data-solid-style={style.solidStyle}
-      data-theme={style.theme}
       data-border={style.border}
       data-surface={style.surface}
       data-transition={style.transition}
