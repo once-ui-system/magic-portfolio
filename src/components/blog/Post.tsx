@@ -14,14 +14,16 @@ export default function Post({ post, thumbnail, direction }: PostProps) {
     return (
         <SmartLink
             fillWidth
-            className={styles.hover}
             unstyled
             style={{ borderRadius: 'var(--radius-l)' }}
             key={post.slug}
             href={`/blog/${post.slug}`}>
             <Flex
                 position="relative"
+                transition="micro-medium"
                 direction={direction}
+                radius="l"
+                className={styles.hover}
                 mobileDirection="column"
                 fillWidth>
                 {post.metadata.image && thumbnail && (
