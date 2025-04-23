@@ -27,8 +27,12 @@ export function generateMetadata({
   const normalizedBaseURL = baseURL.endsWith("/") ? baseURL.slice(0, -1) : baseURL;
   const normalizedPath = path.startsWith("/") ? path : `/${path}`;
 
+  const isFullUrl = (url: string) => /^https?:\/\//.test(url);
+
   const ogImage = image
-    ? `${normalizedBaseURL}${image.startsWith("/") ? image : `/${image}`}`
+    ? isFullUrl(image)
+      ? image
+      : `${normalizedBaseURL}${image.startsWith("/") ? image : `/${image}`}`
     : `${normalizedBaseURL}/og?title=${encodeURIComponent(title)}`;
 
   const url = `${normalizedBaseURL}${normalizedPath}`;

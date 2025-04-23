@@ -1,5 +1,5 @@
 // IMPORTANT: Replace with your own domain address - it's used for SEO in meta tags and schema
-const baseURL = "https://" + process.env.NEXT_PUBLIC_BASE_URL || "https://demo.magic-portfolio.com";
+const baseURL = "https://demo.magic-portfolio.com";
 
 const routes = {
   "/": true,
