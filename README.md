@@ -1,8 +1,8 @@
-# **Build your portfolio with Once UI's Magic Portfolio**
+# **Magic Portfolio by Once UI**
 
 View the [demo here](https://demo.magic-portfolio.com).
 
-![Magic Portfolio](public/images/cover.png)
+![Magic Portfolio](public/og/home.jpg)
 
 
 # **Getting started**
@@ -38,6 +38,10 @@ src/app/resources/content
 ```
 Add a new .mdx file to src/app/blog/posts or src/app/work/projects
 ```
+
+# **Documentation**
+
+Docs available at: [docs.once-ui.com](https://docs.once-ui.com/docs/magic-portfolio/quick-start)
 
 # **Features**
 
@@ -82,6 +86,7 @@ Localization added by [François Hernandez](https://github.com/francoishernandez
 Distributed under the CC BY-NC 4.0 License.
 - Commercial usage is not allowed.
 - Attribution is required.
+- You can extend the license to commercial use by purchasing a [Once UI Pro](https://once-ui.com/pricing) license.
 
 See `LICENSE.txt` for more information.
 
