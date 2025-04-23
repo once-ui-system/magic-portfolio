@@ -41,8 +41,8 @@ export default async function RootLayout({ children }: RootLayoutProps) {
       data-transition={style.transition}
       className={classNames(
         font.primary.variable,
-        font.secondary,
-        font.tertiary,
+        font.secondary.variable,
+        font.tertiary.variable,
         font.code.variable,
       )}
     >
