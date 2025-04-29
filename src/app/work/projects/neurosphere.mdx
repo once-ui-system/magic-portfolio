@@ -1,0 +1,35 @@
+---
+title: "Neurosphere: ML-Powered MRI Scan Tracker for Cancer Detection"
+publishedAt: "2025-04-29"
+summary: "My team and I's submission for HackTech 2025 (Caltech's MLH Hackathon), winning MongoDB's best use of MongoDB Atlas."
+images:
+  - "/images/projects/neurosphere/dashboard.png"
+  - "/images/projects/neurosphere/scan.png"
+  - "/images/projects/neurosphere/scanlist.png"
+team:
+  - name: "Arnab Ghosh"
+    role: "Software Engineer"
+    avatar: "/images/avatar.jpg"
+    linkedIn: "https://www.linkedin.com/in/arnab-ghosh819/"
+link: "https://devpost.com/software/neurosphere"
+---
+## Inspiration
+We wanted to work on a project under the healthcare track. One interesting idea was to use deep learning and computer vision to detect and locate brain tumors given MRI scans. We wanted to build a project that would positively impact healthcare professionals and facilitate the diagnosis process for patients. Another goal of the project was to experiment with hardware, and the Leap Motion will enable touch-free interaction, which promotes a potential sanitary alternative to a typical interface.
+
+### What it does
+The website allows users to create accounts and upload their MRI scans for analysis. It checks for the existence of tumors, and the type if one exists. It also locates detected tumors and approximates their occupied lobe in the brain. The identified lobe is highlighted on an interactive 3D model of the brain, enabling easier analysis, and providing a more descriptive depiction of the tumor. Users can use the website and model using a Leap Motion for touch-free interaction.
+
+## How we built it
+We used a Kaggle dataset and transfer learning to train our own classifier for tumors on NVIDIA servers. We also added a Grad-CAM algorithm on the neural network's last layer in order to locate the tumor. We used MongoDB, FastAPI, and Clerk for backend on the website and React, Tailwind CSS, and React Router for the frontend. We also used a Docker container for running code to implement mouse controls using a Leap Motion.
+
+## Challenges we ran into
+The SDK for Leap Motion on Mac was deprecated and required many workarounds to feasibly use. Creating Docker containers on a Linux machine with a Mac created issues because the necessary SDK required a specific Linux distribution. Even though we ran a Linux machine in Docker, since the host machine was a Mac, it was unable to access input devices from the input in the Docker container. The reason input devices cannot be accessed is because of virtual machine isolation on Mac. Another challenge was setting up the FastAPI backend properly and configuring MongoDB as there were connectivity issues with MongoDB running on Windows whereas our backend was running on Linux. Luckily, there were no major problems with the model training and implementation.
+
+### Accomplishments that we're proud of
+We are proud of designing a clean user interface that enables users to upload brain scans and then outputs a clean summary dashboard with information regarding tumor location and patient health information.
+
+### What we learned
+We learned a lot about the new technologies that we used during this project. We explored a variety of options for a tech stack, including multiple database and authentication APIs. We also learned about how containerization can be used to integrate hardware such as the Leap Motion into projects. Grad-CAM was also a completely new algorithm for us, so it was insightful to see how it can be used for feature location.
+
+## What's next for Neurosphere
+Tumor location could be improved by training another machine learning model to determine more specific regions within the brain that might contain the tumor. In addition, fully integrating the 3D model touch-free interaction with more precision would also be a good addition to the project.
