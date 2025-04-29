@@ -1,0 +1,36 @@
+---
+title: "Check My Fridge: AI-Powered Meal Planning Assistant"
+publishedAt: "2025-02-03"
+summary: "Our team's submission for HackNYU 2025 (New York University's MLH Hackathon on Feb 2-3), creating a smart meal planning assistant that generates personalized recipes based on available ingredients and dietary preferences."
+images:
+  - "/images/projects/checkmyfridge/image.jpeg"
+  - "/images/projects/checkmyfridge/image2.png"
+  - "/images/projects/checkmyfridge/image3.jpeg"
+  - "/images/projects/checkmyfridge/image4.png"
+team:
+  - name: "Arnab Ghosh"
+    role: "Software Engineer"
+    avatar: "/images/avatar.jpg"
+    linkedIn: "https://www.linkedin.com/in/arnab-ghosh819/"
+link: "https://devpost.com/software/check-my-fridge-nyu2025"
+---
+## Inspiration
+Meal prep can be overwhelming, especially when balancing fitness goals, dietary restrictions, and ingredient availability. Many people struggle with planning meals efficiently, often leading to wasted groceries or unhealthy last-minute food choices. Check My Fridge was born from the idea that meal planning should be simple, flexible, and personalized—a smart assistant that helps you create meal schedules based on what you have, what you like, and what fits your lifestyle.
+
+### What it does
+The platform allows users to input fitness goals, skill level, available ingredients, and more. Mistral AI then generates a recipe based on what's in your fridge, and allows you to save favorite meals for future use. Users can also manually add recipes and adjust difficulty levels to match their culinary expertise. Whether you're meal prepping for the week or just looking for a quick dinner idea, Check My Fridge ensures you always have a plan. Users have the option to add their own recipes and rate all recipes in the system.
+
+## How we built it
+We used React.js for the frontend to create a responsive and interactive user interface. The backend was developed with Node.js and Express.js to handle API requests and database operations. We implemented MongoDB to store user profiles, recipes, and rating history. For the AI component, we integrated Mistral AI for recipe generation and personalization. We also developed a JWT-based user authentication system, implemented a 5-star rating system to gather user feedback, and created a personalized dashboard to track and manage saved recipes.
+
+## Challenges we ran into
+Fine-tuning the AI to generate realistic and executable recipes was one of our biggest challenges. We also faced difficulties handling edge cases with dietary restrictions and ingredient substitutions. Implementing an effective recipe rating system that could influence future AI generations required careful design. Ensuring recipe instructions were clear and followed a logical sequence took significant effort. Managing the balance between user preferences and nutritional requirements, and optimizing database queries for quick recipe retrieval and history management were additional challenges we had to overcome.
+
+### Accomplishments that we're proud of
+We successfully integrated Mistral AI to generate personalized recipes and created an intuitive user interface for recipe generation and management. We implemented a learning system that improves recipe suggestions over time based on user feedback. Our robust rating system influences future recipe generations, creating a more personalized experience. We developed a comprehensive solution for meal planning that considers multiple user factors and built a scalable architecture that can handle a growing user base and recipe database.
+
+### What we learned
+Working with AI models for creative content generation was a valuable learning experience. We gained insights into building systems that learn from user feedback and optimizing databases for storing and retrieving recipe data. We learned about the importance of user experience in recipe presentation and how to handle complex user preferences and dietary restrictions. The challenges of natural language processing in recipe generation gave us a deeper understanding of AI limitations and capabilities.
+
+## What's next for Check My Fridge
+We plan to develop mobile apps for iOS and Android and integrate with grocery delivery services. Future features include weekly meal planning with shopping lists, social features to share and discover recipes, nutritional analysis and tracking, and integration with smart kitchen devices. We're also exploring recipe video generation, community features for recipe sharing and modification, advanced dietary tracking and goal setting, and integration with fitness tracking apps.
