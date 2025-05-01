@@ -17,6 +17,13 @@ import { person, about, social } from "@/app/resources/content";
 import React from "react";
 import { Meta, Schema } from "@/once-ui/modules";
 
+interface ImageProps {
+  width: number;
+  height: number;
+  src: string;
+  alt: string;
+}
+
 export async function generateMetadata() {
   return Meta.generate({
     title: about.title,
@@ -153,25 +160,25 @@ export default function About() {
                 {social.map(
                   (item) =>
                     item.link && (
-                        <React.Fragment key={item.name}>
-                            <Button
-                                className="s-flex-hide"
-                                key={item.name}
-                                href={item.link}
-                                prefixIcon={item.icon}
-                                label={item.name}
-                                size="s"
-                                variant="secondary"
-                            />
-                            <IconButton
-                                className="s-flex-show"
-                                size="l"
-                                key={`${item.name}-icon`}
-                                href={item.link}
-                                icon={item.icon}
-                                variant="secondary"
-                            />
-                        </React.Fragment>
+                      <React.Fragment key={item.name}>
+                        <Button
+                          className="s-flex-hide"
+                          key={item.name}
+                          href={item.link}
+                          prefixIcon={item.icon}
+                          label={item.name}
+                          size="s"
+                          variant="secondary"
+                        />
+                        <IconButton
+                          className="s-flex-show"
+                          size="l"
+                          key={`${item.name}-icon`}
+                          href={item.link}
+                          icon={item.icon}
+                          variant="secondary"
+                        />
+                      </React.Fragment>
                     ),
                 )}
               </Flex>
@@ -214,9 +221,9 @@ export default function About() {
                         </Text>
                       ))}
                     </Column>
-                    {experience.images.length > 0 && (
-                      <Flex fillWidth paddingTop="m" paddingLeft="40" wrap>
-                        {experience.images.map((image, index) => (
+                    {experience.images && experience.images.length > 0 && (
+                      <Flex gap="m" wrap>
+                        {experience.images.map((image: ImageProps, index: number) => (
                           <Flex
                             key={index}
                             border="neutral-medium"
@@ -279,8 +286,8 @@ export default function About() {
                       {skill.description}
                     </Text>
                     {skill.images && skill.images.length > 0 && (
-                      <Flex fillWidth paddingTop="m" gap="12" wrap>
-                        {skill.images.map((image, index) => (
+                      <Flex gap="m" wrap>
+                        {skill.images.map((image: ImageProps, index: number) => (
                           <Flex
                             key={index}
                             border="neutral-medium"
