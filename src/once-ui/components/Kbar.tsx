@@ -19,7 +19,7 @@ export interface KbarItem {
 }
 
 const SectionHeader: React.FC<{ label: string }> = ({ label }) => (
-  <Flex 
+  <Flex
     paddingX="12"
     paddingBottom="8"
     paddingTop="12"
@@ -72,7 +72,7 @@ export const KbarContent: React.FC<KbarContentProps> = ({ isOpen, onClose, items
   const filteredItems = useMemo(() => {
     return items.filter((item) => {
       if (!searchQuery) return true;
-      
+
       const searchLower = searchQuery.toLowerCase();
       return (
         item.name.toLowerCase().includes(searchLower) ||
@@ -145,7 +145,7 @@ export const KbarContent: React.FC<KbarContentProps> = ({ isOpen, onClose, items
   // Handle keyboard navigation
   const handleKeyDown = useCallback((e: React.KeyboardEvent) => {
     if (!nonCustomOptions.length) return;
-    
+
     switch (e.key) {
       case "ArrowDown":
         e.preventDefault();
@@ -190,11 +190,11 @@ export const KbarContent: React.FC<KbarContentProps> = ({ isOpen, onClose, items
       requestAnimationFrame(() => {
         const highlightedElement = optionRefs.current[highlightedIndex];
         const scrollContainer = scrollContainerRef.current;
-        
+
         if (highlightedElement && scrollContainer) {
           const elementRect = highlightedElement.getBoundingClientRect();
           const containerRect = scrollContainer.getBoundingClientRect();
-          
+
           // Check if the element is not fully visible
           if (elementRect.bottom > containerRect.bottom) {
             // Element is below the visible area - scroll just enough to show it
@@ -236,7 +236,7 @@ export const KbarContent: React.FC<KbarContentProps> = ({ isOpen, onClose, items
       // Restore body scrolling when kbar is closed
       document.body.style.overflow = "unset";
     }
-    
+
     return () => {
       // Cleanup function to ensure body scroll is restored
       document.body.style.overflow = "unset";
@@ -263,7 +263,7 @@ export const KbarContent: React.FC<KbarContentProps> = ({ isOpen, onClose, items
       const timer = setTimeout(() => {
         inputRef.current?.focus();
       }, 50);
-      
+
       return () => clearTimeout(timer);
     }
   }, [isOpen]);
@@ -326,11 +326,11 @@ export const KbarContent: React.FC<KbarContentProps> = ({ isOpen, onClose, items
             }}
           />
         </Flex>
-        <Column 
+        <Column
           ref={scrollContainerRef}
-          fillWidth 
-          padding="4" 
-          gap="2" 
+          fillWidth
+          padding="4"
+          gap="2"
           overflowY="auto"
         >
           {groupedItems.map((option, index) => {
@@ -341,11 +341,11 @@ export const KbarContent: React.FC<KbarContentProps> = ({ isOpen, onClose, items
                 </React.Fragment>
               );
             }
-            
+
             // Find the index in the non-custom options array
             const optionIndex = nonCustomOptions.findIndex(item => item.value === option.value);
             const isHighlighted = optionIndex === highlightedIndex;
-            
+
             return (
               <Option
                 ref={(el) => {
@@ -359,8 +359,8 @@ export const KbarContent: React.FC<KbarContentProps> = ({ isOpen, onClose, items
                 hasPrefix={option.hasPrefix}
                 hasSuffix={option.hasSuffix}
                 description={option.description}
-                {...(option.href 
-                  ? { href: option.href, onClick: undefined, onLinkClick: onClose } 
+                {...(option.href
+                  ? { href: option.href, onClick: undefined, onLinkClick: onClose }
                   : { onClick: option.onClick }
                 )}
                 highlighted={isHighlighted}
@@ -393,23 +393,23 @@ export interface KbarProps {
 
 export const Kbar: React.FC<KbarProps> = ({ items, children, ...rest }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [pathname, setPathname] = useState("");
   const router = useRouter();
-  const pathname = usePathname();
 
   const handleOpen = () => {
     setIsOpen(true);
   };
 
-  const handleClose = () => {
+  const handleClose = useCallback(() => {
     setIsOpen(false);
-  };
+  }, []);
 
   // Close Kbar when pathname changes
   useEffect(() => {
     if (isOpen) {
       handleClose();
     }
-  }, [pathname]);
+  }, [pathname, isOpen, handleClose]);
 
   // Add keyboard shortcut listener
   useEffect(() => {
@@ -436,10 +436,10 @@ export const Kbar: React.FC<KbarProps> = ({ items, children, ...rest }) => {
         {children}
       </KbarTrigger>
       {isOpen && createPortal(
-        <KbarContent 
-          isOpen={isOpen} 
-          onClose={handleClose} 
-          items={items} 
+        <KbarContent
+          isOpen={isOpen}
+          onClose={handleClose}
+          items={items}
         />,
         document.body
       )}

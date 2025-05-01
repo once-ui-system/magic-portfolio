@@ -1,3 +1,11 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": "next/core-web-vitals",
+  "rules": {
+    "@next/next/no-img-element": [
+      "error",
+      {
+        "exclude": ["src/app/og/route.tsx"]
+      }
+    ]
+  }
 }

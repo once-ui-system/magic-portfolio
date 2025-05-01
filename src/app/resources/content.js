@@ -15,7 +15,7 @@ const person = {
 
 const newsletter = {
   display: false,
-  title: <>Subscribe to {person.firstName}'s Newsletter</>,
+  title: <>Subscribe to {person.firstName}&apos;s Newsletter</>,
   description: (
     <>
       I occasionally write about software development, technology, and share thoughts on the intersection of
@@ -46,7 +46,7 @@ const home = {
   path: "/",
   image: "/images/og/home.jpg",
   label: "Home",
-  title: `${person.name}'s Portfolio`,
+  title: `${person.name}&apos;s Portfolio`,
   description: `Portfolio website showcasing my work as a ${person.role}`,
   headline: <>Building innovative software solutions</>,
   featured: {
@@ -56,8 +56,8 @@ const home = {
   },
   subline: (
     <>
-      I'm Carlos, a software engineer at <strong>Neostore.cloud</strong>, where I build scalable
-      <br /> web applications. I'm passionate about creating impactful solutions.
+      I&apos;m Carlos, a software engineer at <strong>Neostore.cloud</strong>, where I build scalable
+      <br /> web applications. I&apos;m passionate about creating impactful solutions.
     </>
   ),
 };
@@ -143,11 +143,11 @@ const about = {
     institutions: [
       {
         name: "SOPHIA YNOV CAMPUS",
-        description: <>Master's Degree in Web Development (Expected October 2025)<br />GPA: 18.27/20 (≈ 3.65 U.S. GPA)<br />Majors: Web Dev, AI & Machine Learning</>,
+        description: <>Master&apos;s Degree in Web Development (Expected October 2025)<br />GPA: 18.27/20 (≈ 3.65 U.S. GPA)<br />Majors: Web Dev, AI & Machine Learning</>,
       },
       {
         name: "TECNOLÓGICA DE LEÓN & GRENOBLE ALPES UNIVERSITY",
-        description: <>Bachelor's Degree in Computer Science (Aug 2020 - Aug 2023)<br />GPA: 14.6/20<br />Majors: Software Engineering & Architecture<br />Minors: Mobile/Web Dev</>,
+        description: <>Bachelor&apos;s Degree in Computer Science (Aug 2020 - Aug 2023)<br />GPA: 14.6/20<br />Majors: Software Engineering & Architecture<br />Minors: Mobile/Web Dev</>,
       },
     ],
   },
@@ -200,8 +200,8 @@ const work = {
 const gallery = {
   path: "/gallery",
   label: "Gallery",
-  title: `Photo gallery – ${person.name}`,
-  description: `A photo collection by ${person.name}`,
+  title: `Gallery – ${person.name}`,
+  description: `A collection of ${person.name}&apos;s work`,
   // Images by https://lorant.one
   // These are placeholder images, replace with your own
   images: [

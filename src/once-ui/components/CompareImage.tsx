@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import { Flex, SmartImage, IconButton } from ".";
 import styles from "./CompareImage.module.scss";
 
@@ -43,11 +43,11 @@ export const CompareImage = ({ leftContent, rightContent, ...rest }: CompareImag
     isDragging.current = true;
   };
 
-  const handleMouseUp = () => {
+  const handleMouseUp = useCallback(() => {
     isDragging.current = false;
-  };
+  }, []);
 
-  const updatePosition = (clientX: number) => {
+  const updatePosition = useCallback((clientX: number) => {
     if (!isDragging.current || !containerRef.current) return;
 
     const rect = containerRef.current.getBoundingClientRect();
@@ -57,15 +57,15 @@ export const CompareImage = ({ leftContent, rightContent, ...rest }: CompareImag
     // Calculate percentage (constrained between 0 and 100)
     const newPosition = Math.max(0, Math.min(100, (x / containerWidth) * 100));
     setPosition(newPosition);
-  };
+  }, []);
 
-  const handleMouseMove = (e: MouseEvent) => {
+  const handleMouseMove = useCallback((e: MouseEvent) => {
     updatePosition(e.clientX);
-  };
+  }, [updatePosition]);
 
-  const handleTouchMove = (e: TouchEvent) => {
+  const handleTouchMove = useCallback((e: TouchEvent) => {
     updatePosition(e.touches[0].clientX);
-  };
+  }, [updatePosition]);
 
   useEffect(() => {
     document.addEventListener("mousemove", handleMouseMove);
@@ -79,7 +79,7 @@ export const CompareImage = ({ leftContent, rightContent, ...rest }: CompareImag
       document.removeEventListener("touchmove", handleTouchMove);
       document.removeEventListener("touchend", handleMouseUp);
     };
-  }, []);
+  }, [handleMouseMove, handleMouseUp, handleTouchMove]);
 
   return (
     <Flex
