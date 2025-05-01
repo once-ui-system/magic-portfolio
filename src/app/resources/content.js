@@ -1,46 +1,39 @@
 import { Logo } from "@/once-ui/components";
 
 const person = {
-  firstName: "Selene",
-  lastName: "Yu",
+  firstName: "Carlos",
+  lastName: "Vargas",
   get name() {
     return `${this.firstName} ${this.lastName}`;
   },
-  role: "Design Engineer",
-  avatar: "/images/avatar.jpg",
-  email: "example@gmail.com",
-  location: "Asia/Jakarta", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
-  languages: ["English", "Bahasa"], // optional: Leave the array empty if you don't want to display languages
+  role: "Software Engineer",
+  avatar: "https://github.com/varlopecar.png",
+  email: "varlopecar@gmail.com",
+  location: "Europe/Paris",
+  languages: ["Spanish", "English", "French"],
 };
 
 const newsletter = {
-  display: true,
+  display: false,
   title: <>Subscribe to {person.firstName}'s Newsletter</>,
   description: (
     <>
-      I occasionally write about design, technology, and share thoughts on the intersection of
-      creativity and engineering.
+      I occasionally write about software development, technology, and share thoughts on the intersection of
+      engineering and innovation.
     </>
   ),
 };
 
 const social = [
-  // Links are automatically displayed.
-  // Import new icons in /once-ui/icons.ts
   {
     name: "GitHub",
     icon: "github",
-    link: "https://github.com/once-ui-system/nextjs-starter",
+    link: "https://github.com/varlopecar",
   },
   {
     name: "LinkedIn",
     icon: "linkedin",
-    link: "https://www.linkedin.com/company/once-ui/",
-  },
-  {
-    name: "X",
-    icon: "x",
-    link: "",
+    link: "https://linkedin.com/in/varlopecar",
   },
   {
     name: "Email",
@@ -55,16 +48,16 @@ const home = {
   label: "Home",
   title: `${person.name}'s Portfolio`,
   description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Building bridges between design and code</>,
+  headline: <>Building innovative software solutions</>,
   featured: {
     display: true,
-    title: <>Recent project: <strong className="ml-4">Once UI</strong></>,
-    href: "/work/building-once-ui-a-customizable-design-system",
+    title: <>Recent project: <strong className="ml-4">FORMA</strong></>,
+    href: "/work/forma-ai-fitness-app",
   },
   subline: (
     <>
-      I'm Selene, a design engineer at <Logo icon={false} style={{ display: "inline-flex", top: "0.25em", marginLeft: "-0.25em" }}/>, where I craft intuitive
-      <br /> user experiences. After hours, I build my own projects.
+      I'm Carlos, a software engineer at <strong>Neostore.cloud</strong>, where I build scalable
+      <br /> web applications. I'm passionate about creating impactful solutions.
     </>
   ),
 };
@@ -82,60 +75,62 @@ const about = {
     display: true,
   },
   calendar: {
-    display: true,
-    link: "https://cal.com",
+    display: false,
+    link: "",
   },
   intro: {
     display: true,
     title: "Introduction",
     description: (
       <>
-        Selene is a Jakarta-based design engineer with a passion for transforming complex challenges
-        into simple, elegant design solutions. Her work spans digital interfaces, interactive
-        experiences, and the convergence of design and technology.
+        Carlos is a software engineer based in Nice, France, with a passion for building innovative
+        solutions that solve real-world problems. His work spans web development, mobile applications,
+        and AI integration.
       </>
     ),
   },
   work: {
-    display: true, // set to false to hide this section
+    display: true,
     title: "Work Experience",
     experiences: [
       {
-        company: "FLY",
-        timeframe: "2022 - Present",
-        role: "Senior Design Engineer",
+        company: "Neostore.cloud",
+        timeframe: "Apr 2024 - Present",
+        role: "Software Engineer Apprentice",
         achievements: [
           <>
-            Redesigned the UI/UX for the FLY platform, resulting in a 20% increase in user
-            engagement and 30% faster load times.
+            Automated pass creation with a bulk import tool using React, reducing manual input by 97% and saving 197+ hours/year.
           </>,
           <>
-            Spearheaded the integration of AI tools into design workflows, enabling designers to
-            iterate 50% faster.
+            Reduced client onboarding time by 8 hours/client by leading custom pass template designs for 5+ clients.
+          </>,
+          <>
+            Integrated 3+ systems (Shopify, HubSpot, etc.) with Neostore.cloud by consuming various APIs to enable seamless interaction between platforms.
           </>,
         ],
-        images: [
-          // optional: leave the array empty if you don't want to display images
-          {
-            src: "/images/projects/project-01/cover-01.jpg",
-            alt: "Once UI Project",
-            width: 16,
-            height: 9,
-          },
-        ],
+        images: [],
       },
       {
-        company: "Creativ3",
-        timeframe: "2018 - 2022",
-        role: "Lead Designer",
+        company: "INRIA (Startup Studio)",
+        timeframe: "Aug 2022 - May 2023",
+        role: "Frontend Engineer Intern",
         achievements: [
           <>
-            Developed a design system that unified the brand across multiple platforms, improving
-            design consistency by 40%.
+            Migrated a web-app from JavaScript to TypeScript, reducing bugs by 30% and improving long-term code maintainability.
           </>,
           <>
-            Led a cross-functional team to launch a new product line, contributing to a 15% increase
-            in overall company revenue.
+            Accelerated feature development by 66% by leveraging modern React ecosystem tools, including Redux, React Query, and Zustand for state and data management optimization.
+          </>,
+        ],
+        images: [],
+      },
+      {
+        company: "WICODE",
+        timeframe: "Feb 2022 - June 2022",
+        role: "Frontend Engineer Intern",
+        achievements: [
+          <>
+            Built and deployed 5+ responsive sites using Vite and Next.js, reducing average page load time from 8s to under 1.8s.
           </>,
         ],
         images: [],
@@ -143,54 +138,42 @@ const about = {
     ],
   },
   studies: {
-    display: true, // set to false to hide this section
-    title: "Studies",
+    display: true,
+    title: "Education",
     institutions: [
       {
-        name: "University of Jakarta",
-        description: <>Studied software engineering.</>,
+        name: "SOPHIA YNOV CAMPUS",
+        description: <>Master's Degree in Web Development (Expected October 2025)<br />GPA: 18.27/20 (≈ 3.65 U.S. GPA)<br />Majors: Web Dev, AI & Machine Learning</>,
       },
       {
-        name: "Build the Future",
-        description: <>Studied online marketing and personal branding.</>,
+        name: "TECNOLÓGICA DE LEÓN & GRENOBLE ALPES UNIVERSITY",
+        description: <>Bachelor's Degree in Computer Science (Aug 2020 - Aug 2023)<br />GPA: 14.6/20<br />Majors: Software Engineering & Architecture<br />Minors: Mobile/Web Dev</>,
       },
     ],
   },
   technical: {
-    display: true, // set to false to hide this section
-    title: "Technical skills",
+    display: true,
+    title: "Technical Skills",
     skills: [
       {
-        title: "Figma",
-        description: <>Able to prototype in Figma with Once UI with unnatural speed.</>,
-        // optional: leave the array empty if you don't want to display images
-        images: [
-          {
-            src: "/images/projects/project-01/cover-02.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-          {
-            src: "/images/projects/project-01/cover-03.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-        ],
+        title: "Frontend Development",
+        description: <>TypeScript, React, Vite, React Native (Expo), Next.js, Tailwind, MUI</>,
+        images: [],
       },
       {
-        title: "Next.js",
-        description: <>Building next gen apps with Next.js + Once UI + Supabase.</>,
-        // optional: leave the array empty if you don't want to display images
-        images: [
-          {
-            src: "/images/projects/project-01/cover-04.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-        ],
+        title: "AI Integration",
+        description: <>Vercel AI SDK, AI-based personalization</>,
+        images: [],
+      },
+      {
+        title: "Backend Development",
+        description: <>Node.js, Express, PostgreSQL, MongoDB, Supabase, Python, Django</>,
+        images: [],
+      },
+      {
+        title: "Tools & DevOps",
+        description: <>Git/GitHub, Azure Insights, CI/CD, Package managers (npm, pnpm, yarn)</>,
+        images: [],
       },
     ],
   },
