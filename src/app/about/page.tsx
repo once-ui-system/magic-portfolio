@@ -221,14 +221,19 @@ export default function About() {
                             key={index}
                             border="neutral-medium"
                             radius="m"
+                            //@ts-ignore
                             minWidth={image.width}
+                            //@ts-ignore
                             height={image.height}
                           >
                             <SmartImage
                               enlarge
                               radius="m"
+                              //@ts-ignore
                               sizes={image.width.toString()}
+                              //@ts-ignore
                               alt={image.alt}
+                              //@ts-ignore
                               src={image.src}
                             />
                           </Flex>
@@ -285,14 +290,19 @@ export default function About() {
                             key={index}
                             border="neutral-medium"
                             radius="m"
+                            //@ts-ignore
                             minWidth={image.width}
+                            //@ts-ignore
                             height={image.height}
                           >
                             <SmartImage
                               enlarge
                               radius="m"
+                              //@ts-ignore
                               sizes={image.width.toString()}
+                              //@ts-ignore
                               alt={image.alt}
+                              //@ts-ignore
                               src={image.src}
                             />
                           </Flex>
