@@ -48,7 +48,7 @@ const home = {
   label: "Home",
   title: `${person.name}&apos;s Portfolio`,
   description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Building innovative software solutions</>,
+  headline: <>Carlos Vargas</>,
   featured: {
     display: true,
     title: <>Recent project: <strong className="ml-4">FORMA</strong></>,
@@ -56,8 +56,7 @@ const home = {
   },
   subline: (
     <>
-      I&apos;m Carlos, a software engineer at <strong>Neostore.cloud</strong>, where I build scalable
-      <br /> web applications. I&apos;m passionate about creating impactful solutions.
+      Full-stack developer specializing in the modern JavaScript stack, with startup and open-source experience. Very eager to learn, strongly communicative, self-driven to solve and create.
     </>
   ),
 };
@@ -65,7 +64,7 @@ const home = {
 const about = {
   path: "/about",
   label: "About",
-  title: `About – ${person.name}`,
+  title: `About - ${person.name}`,
   description: `Meet ${person.name}, ${person.role} from ${person.location}`,
   tableOfContent: {
     display: true,
@@ -94,9 +93,9 @@ const about = {
     title: "Work Experience",
     experiences: [
       {
-        company: "Neostore.cloud",
+        company: "neostore.cloud",
         timeframe: "Apr 2024 - Present",
-        role: "Software Engineer Apprentice",
+        role: "Junior Software Engineer",
         achievements: [
           <>
             Automated pass creation with a bulk import tool using React, reducing manual input by 97% and saving 197+ hours/year.
@@ -111,7 +110,7 @@ const about = {
         images: [],
       },
       {
-        company: "INRIA (Startup Studio)",
+        company: "Inria",
         timeframe: "Aug 2022 - May 2023",
         role: "Frontend Engineer Intern",
         achievements: [
@@ -125,7 +124,7 @@ const about = {
         images: [],
       },
       {
-        company: "WICODE",
+        company: "Wicode",
         timeframe: "Feb 2022 - June 2022",
         role: "Frontend Engineer Intern",
         achievements: [
@@ -142,12 +141,12 @@ const about = {
     title: "Education",
     institutions: [
       {
-        name: "SOPHIA YNOV CAMPUS",
-        description: <>Master&apos;s Degree in Web Development (Expected October 2025)<br />GPA: 18.27/20 (≈ 3.65 U.S. GPA)<br />Majors: Web Dev, AI & Machine Learning</>,
+        name: "Sophia Ynov Campus",
+        description: <>Master&apos;s Degree in Web Development (Expected October 2025)<br />Majors: Web Dev, AI & Machine Learning</>,
       },
       {
-        name: "TECNOLÓGICA DE LEÓN & GRENOBLE ALPES UNIVERSITY",
-        description: <>Bachelor&apos;s Degree in Computer Science (Aug 2020 - Aug 2023)<br />GPA: 14.6/20<br />Majors: Software Engineering & Architecture<br />Minors: Mobile/Web Dev</>,
+        name: "Universidad Tecnológica de Leon y Université Grenoble Alpes",
+        description: <>Bachelor&apos;s Degree in Computer Science (Aug 2020 - Aug 2023)<br />Majors: Software Engineering & Architecture<br />Minors: Mobile/Web Dev</>,
       },
     ],
   },
