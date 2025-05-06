@@ -327,6 +327,8 @@ export default function About() {
                             </Flex>
                         </>
                     )}
+
+                    <script src="https://app.answerhq.co/widget.js" data-company-name="arnabcare" async></script>
                 </Flex>
             </Flex>
         </Flex>

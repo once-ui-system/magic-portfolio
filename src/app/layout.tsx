@@ -86,6 +86,9 @@ export default async function RootLayout({
 				secondary ? secondary.variable : '',
 				tertiary ? tertiary.variable : '',
 				code.variable)}>
+			<Flex as="head">
+				<script src="https://app.answerhq.co/widget.js" data-company-name="arnabcare" async></script>
+			</Flex>
 			<Flex style={{minHeight: '100vh'}}
 				as="body"
 				fillWidth margin="0" padding="0"

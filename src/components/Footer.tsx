@@ -45,6 +45,7 @@ export const Footer = () => {
                     ))}
                 </Flex>
             </Flex>
+            <script src="https://app.answerhq.co/widget.js" data-company-name="arnabcare" async></script>
             <Flex height="80" show="s"></Flex>
         </Flex>
     )
