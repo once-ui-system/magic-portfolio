@@ -1,41 +1,40 @@
+import { Geist, Geist_Mono } from "next/font/google"
+
 // IMPORTANT: Replace with your own domain address - it's used for SEO in meta tags and schema
-const baseURL = "https://demo.magic-portfolio.com";
+const baseURL = "https://clecardona.eu"
 
 const routes = {
-  "/": true,
+  "/": false,
   "/about": true,
   "/work": true,
-  "/blog": true,
-  "/gallery": true,
-};
+  "/blog": false,
+  "/gallery": false,
+}
 
 // Enable password protection on selected routes
 // Set password in the .env file, refer to .env.example
 const protectedRoutes = {
-  "/work/automate-design-handovers-with-a-figma-to-code-pipeline": true,
-};
-
-import { Geist } from "next/font/google";
-import { Geist_Mono } from "next/font/google";
+  "/admin": false,
+}
 
 const primaryFont = Geist({
   variable: "--font-primary",
   subsets: ["latin"],
   display: "swap",
-});
+})
 
 const monoFont = Geist_Mono({
   variable: "--font-code",
   subsets: ["latin"],
   display: "swap",
-});
+})
 
 const font = {
   primary: primaryFont,
   secondary: primaryFont,
   tertiary: primaryFont,
   code: monoFont,
-};
+}
 
 const style = {
   theme: "dark", // theme is not necessary when using ThemeProvider (default)
@@ -47,8 +46,8 @@ const style = {
   border: "playful", // rounded | playful | conservative
   surface: "translucent", // filled | translucent
   transition: "all", // all | micro | macro
-  scaling: "100" // 90 | 95 | 100 | 105 | 110
-};
+  scaling: "100", // 90 | 95 | 100 | 105 | 110
+}
 
 const effects = {
   mask: {
@@ -89,13 +88,13 @@ const effects = {
     thickness: 1,
     angle: 45,
   },
-};
+}
 
 const display = {
   location: true,
   time: true,
-  themeSwitcher: true
-};
+  themeSwitcher: true,
+}
 
 const mailchimp = {
   action: "https://url/subscribe/post?parameters",
@@ -139,6 +138,15 @@ const mailchimp = {
       angle: 90,
     },
   },
-};
+}
 
-export { routes, protectedRoutes, effects, style, display, mailchimp, baseURL, font };
+export {
+  baseURL,
+  display,
+  effects,
+  font,
+  mailchimp,
+  protectedRoutes,
+  routes,
+  style,
+}

@@ -1,28 +1,23 @@
-import { Logo } from "@/once-ui/components";
+import { Logo } from "@/once-ui/components"
 
 const person = {
-  firstName: "Selene",
-  lastName: "Yu",
+  firstName: "Clement",
+  lastName: "Cardona",
   get name() {
-    return `${this.firstName} ${this.lastName}`;
+    return `${this.firstName} ${this.lastName}`
   },
-  role: "Design Engineer",
-  avatar: "/images/avatar.jpg",
-  email: "example@gmail.com",
-  location: "Asia/Jakarta", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
-  languages: ["English", "Bahasa"], // optional: Leave the array empty if you don't want to display languages
-};
+  role: "Frontend Developer",
+  avatar: "/images/avatar.png", //TODO:
+  email: "clecardona@gmail.com",
+  location: "Europe/Stockholm", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
+  languages: ["English", "Swedish", "French"], // optional: Leave the array empty if you don't want to display languages
+}
 
 const newsletter = {
-  display: true,
+  display: false,
   title: <>Subscribe to {person.firstName}'s Newsletter</>,
-  description: (
-    <>
-      I occasionally write about design, technology, and share thoughts on the intersection of
-      creativity and engineering.
-    </>
-  ),
-};
+  description: <>_</>,
+}
 
 const social = [
   // Links are automatically displayed.
@@ -30,24 +25,24 @@ const social = [
   {
     name: "GitHub",
     icon: "github",
-    link: "https://github.com/once-ui-system/nextjs-starter",
+    link: "https://github.com/clecardona",
   },
   {
     name: "LinkedIn",
     icon: "linkedin",
-    link: "https://www.linkedin.com/company/once-ui/",
-  },
-  {
-    name: "X",
-    icon: "x",
-    link: "",
+    link: "https://www.linkedin.com/in/clecardona/",
   },
   {
     name: "Email",
     icon: "email",
     link: `mailto:${person.email}`,
   },
-];
+  {
+    name: "Download my CV",
+    icon: "document",
+    link: `https://clecardona.eu/assets/CV_clement_cardona.pdf`,
+  },
+]
 
 const home = {
   path: "/",
@@ -58,16 +53,25 @@ const home = {
   headline: <>Building bridges between design and code</>,
   featured: {
     display: true,
-    title: <>Recent project: <strong className="ml-4">Once UI</strong></>,
+    title: (
+      <>
+        Recent project: <strong className='ml-4'>Once UI</strong>
+      </>
+    ),
     href: "/work/building-once-ui-a-customizable-design-system",
   },
   subline: (
     <>
-      I'm Selene, a design engineer at <Logo icon={false} style={{ display: "inline-flex", top: "0.25em", marginLeft: "-0.25em" }}/>, where I craft intuitive
+      I'm Selene, a design engineer at{" "}
+      <Logo
+        icon={false}
+        style={{ display: "inline-flex", top: "0.25em", marginLeft: "-0.25em" }}
+      />
+      , where I craft intuitive
       <br /> user experiences. After hours, I build my own projects.
     </>
   ),
-};
+}
 
 const about = {
   path: "/about",
@@ -82,17 +86,21 @@ const about = {
     display: true,
   },
   calendar: {
-    display: true,
-    link: "https://cal.com",
+    display: false,
+    link: "_",
   },
   intro: {
     display: true,
     title: "Introduction",
     description: (
       <>
-        Selene is a Jakarta-based design engineer with a passion for transforming complex challenges
-        into simple, elegant design solutions. Her work spans digital interfaces, interactive
-        experiences, and the convergence of design and technology.
+        Highly curious and creative Front End Developer with a passion for
+        teamwork and collaboration. I have specialized in React and TypeScript,
+        delivering solutions that enhance user experiences. My long-term goal is
+        to grow as a Front End Developer, continuously learning new
+        technologies, including AI advancements, and adopting best practices to
+        ensure I remain adaptable and effective in the ever-evolving tech
+        landscape.
       </>
     ),
   },
@@ -101,17 +109,28 @@ const about = {
     title: "Work Experience",
     experiences: [
       {
-        company: "FLY",
+        company: "Folksam",
         timeframe: "2022 - Present",
-        role: "Senior Design Engineer",
+        role: "Frontend developer",
         achievements: [
           <>
-            Redesigned the UI/UX for the FLY platform, resulting in a 20% increase in user
-            engagement and 30% faster load times.
+            I developed and maintained a part of the logged-in pages for
+            Folksam's private clients, ensuring a responsive website optimized
+            for both desktop and mobile devices. The pages had 9.7 millions
+            visits a year with 1.7 millions unique connections.
           </>,
           <>
-            Spearheaded the integration of AI tools into design workflows, enabling designers to
-            iterate 50% faster.
+            I collaborated with Front End, Back End developers, UI/UX Designer
+            and a Product Owner in an Agile environment, following the SAFe
+            framework.
+          </>,
+          <>
+            I implemented pages and flows with forms and worked with tracking,
+            accessibility, logs.
+          </>,
+          <>
+            I contributed to the development of the internal Design System
+            library.
           </>,
         ],
         images: [
@@ -130,12 +149,12 @@ const about = {
         role: "Lead Designer",
         achievements: [
           <>
-            Developed a design system that unified the brand across multiple platforms, improving
-            design consistency by 40%.
+            Developed a design system that unified the brand across multiple
+            platforms, improving design consistency by 40%.
           </>,
           <>
-            Led a cross-functional team to launch a new product line, contributing to a 15% increase
-            in overall company revenue.
+            Led a cross-functional team to launch a new product line,
+            contributing to a 15% increase in overall company revenue.
           </>,
         ],
         images: [],
@@ -144,10 +163,10 @@ const about = {
   },
   studies: {
     display: true, // set to false to hide this section
-    title: "Studies",
+    title: "Education",
     institutions: [
       {
-        name: "University of Jakarta",
+        name: "NOVARE POTENTIAL ACADEMY ",
         description: <>Studied software engineering.</>,
       },
       {
@@ -162,7 +181,9 @@ const about = {
     skills: [
       {
         title: "Figma",
-        description: <>Able to prototype in Figma with Once UI with unnatural speed.</>,
+        description: (
+          <>Able to prototype in Figma with Once UI with unnatural speed.</>
+        ),
         // optional: leave the array empty if you don't want to display images
         images: [
           {
@@ -181,7 +202,9 @@ const about = {
       },
       {
         title: "Next.js",
-        description: <>Building next gen apps with Next.js + Once UI + Supabase.</>,
+        description: (
+          <>Building next gen apps with Next.js + Once UI + Supabase.</>
+        ),
         // optional: leave the array empty if you don't want to display images
         images: [
           {
@@ -194,7 +217,7 @@ const about = {
       },
     ],
   },
-};
+}
 
 const blog = {
   path: "/blog",
@@ -203,7 +226,7 @@ const blog = {
   description: `Read what ${person.name} has been up to recently`,
   // Create new blog posts by adding a new .mdx file to app/blog/posts
   // All posts will be listed on the /blog route
-};
+}
 
 const work = {
   path: "/work",
@@ -212,7 +235,7 @@ const work = {
   description: `Design and dev projects by ${person.name}`,
   // Create new project pages by adding a new .mdx file to app/blog/posts
   // All projects will be listed on the /home and /work routes
-};
+}
 
 const gallery = {
   path: "/gallery",
@@ -263,6 +286,6 @@ const gallery = {
       orientation: "vertical",
     },
   ],
-};
+}
 
-export { person, social, newsletter, home, about, blog, work, gallery };
+export { about, blog, gallery, home, newsletter, person, social, work }
