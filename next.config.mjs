@@ -15,22 +15,7 @@ const nextConfig = {
     silenceDeprecations: ["legacy-js-api"],
   },
   images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "*",
-      },
-    ],
-  },
-  async redirects() {
-    return [
-      // Basic redirect
-      {
-        source: "/",
-        destination: "/about",
-        permanent: true,
-      },
-    ]
+    unoptimized: true,
   },
 }
 

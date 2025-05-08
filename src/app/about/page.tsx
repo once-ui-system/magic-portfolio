@@ -205,6 +205,7 @@ export default function About() {
             </Column>
           )}
 
+          {/* Work experience */}
           {about.work.display && (
             <>
               <Heading
@@ -215,7 +216,7 @@ export default function About() {
               >
                 {about.work.title}
               </Heading>
-              <Column fillWidth gap='l' marginBottom='40'>
+              <Column fillWidth gap='l' marginBottom='l'>
                 {about.work.experiences.map((experience, index) => (
                   <Column
                     key={`${experience.company}-${experience.role}-${index}`}
@@ -288,7 +289,7 @@ export default function About() {
               </Column>
             </>
           )}
-
+          {/* Education */}
           {about.studies.display && (
             <>
               <Heading
@@ -296,10 +297,12 @@ export default function About() {
                 id={about.studies.title}
                 variant='display-strong-s'
                 marginBottom='m'
+                paddingTop='l'
+                style={{ borderTop: "1px solid gray" }}
               >
                 {about.studies.title}
               </Heading>
-              <Column fillWidth gap='l' marginBottom='40'>
+              <Column fillWidth gap='l' marginBottom='l'>
                 {about.studies.institutions.map((institution, index) => (
                   <Column
                     key={`${institution.name}-${index}`}
@@ -320,13 +323,15 @@ export default function About() {
               </Column>
             </>
           )}
-
+          {/* Technical skills */}
           {about.technical.display && (
             <>
               <Heading
                 as='h2'
                 id={about.technical.title}
                 variant='display-strong-s'
+                paddingTop='l'
+                style={{ borderTop: "1px solid gray" }}
                 marginBottom='40'
               >
                 {about.technical.title}

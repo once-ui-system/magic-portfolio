@@ -4,11 +4,9 @@ import { Geist, Geist_Mono } from "next/font/google"
 const baseURL = "https://clecardona.eu"
 
 const routes = {
-  "/": false,
+  "/": true,
   "/about": true,
   "/work": true,
-  "/blog": false,
-  "/gallery": false,
 }
 
 // Enable password protection on selected routes
