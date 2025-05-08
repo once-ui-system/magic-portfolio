@@ -7,15 +7,15 @@ const person = {
     return `${this.firstName} ${this.lastName}`
   },
   role: "Frontend Developer",
-  avatar: "/images/avatar.png", //TODO:
+  avatar: "https://clecardona.eu/assets/avatar.png",
   email: "clecardona@gmail.com",
   location: "Sweden/Stockholm", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
-  languages: ["English", "Swedish", "French"], // optional: Leave the array empty if you don't want to display languages
+  languages: ["English", "Swedish", "French"],
 }
 
 const newsletter = {
   display: false,
-  title: <>Subscribe to {person.firstName}'s Newsletter</>,
+  title: <>Subscribe to {person.firstName}&apos;s Newsletter</>,
   description: <>_</>,
 }
 
@@ -62,7 +62,7 @@ const home = {
   },
   subline: (
     <>
-      I'm Selene, a design engineer at{" "}
+      xxx
       <Logo
         icon={false}
         style={{ display: "inline-flex", top: "0.25em", marginLeft: "-0.25em" }}
@@ -115,9 +115,9 @@ const about = {
         achievements: [
           <>
             I developed and maintained a part of the logged-in pages for
-            Folksam's private clients, ensuring a responsive website optimized
-            for both desktop and mobile devices. The pages had 9.7 millions
-            visits a year with 1.7 millions unique connections.
+            Folksam&apos;s private clients, ensuring a responsive website
+            optimized for both desktop and mobile devices. The pages had 9.7
+            millions visits a year with 1.7 millions unique connections.
           </>,
           <>
             I collaborated with Front End, Back End developers, UI/UX Designer

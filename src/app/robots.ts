@@ -1,5 +1,6 @@
-import { baseURL } from "@/app/resources";
+import { baseURL } from "@/app/resources"
 
+export const dynamic = "force-static"
 export default function robots() {
   return {
     rules: [
@@ -8,5 +9,5 @@ export default function robots() {
       },
     ],
     sitemap: `${baseURL}/sitemap.xml`,
-  };
+  }
 }
