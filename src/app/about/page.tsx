@@ -1,5 +1,7 @@
 import React from "react"
 
+import Image from "next/image"
+
 import { baseURL } from "@/app/resources"
 import { about, person, social } from "@/app/resources/content"
 import styles from "@/components/about/about.module.scss"
@@ -337,26 +339,14 @@ export default function About() {
                       {skill.description}
                     </Text>
                     {skill.images && skill.images.length > 0 && (
-                      <Flex fillWidth paddingTop='m' gap='12' wrap>
+                      <Flex fillWidth gap='8' wrap>
                         {skill.images.map((image, index) => (
-                          <Flex
-                            key={index}
-                            border='neutral-medium'
-                            radius='m'
-                            //@ts-ignore
-                            minWidth={image.width}
-                            //@ts-ignore
-                            height={image.height}
-                          >
-                            <SmartImage
-                              enlarge
-                              radius='m'
-                              //@ts-ignore
-                              sizes={image.width.toString()}
-                              //@ts-ignore
-                              alt={image.alt}
-                              //@ts-ignore
+                          <Flex key={index}>
+                            <Image
                               src={image.src}
+                              alt={image.alt}
+                              width={50}
+                              height={50}
                             />
                           </Flex>
                         ))}

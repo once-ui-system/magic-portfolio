@@ -5,7 +5,7 @@ import { useEffect, useState } from "react"
 import { usePathname } from "next/navigation"
 
 import { display, routes } from "@/app/resources"
-import { about, blog, gallery, person, work } from "@/app/resources/content"
+import { about, blog, gallery, work } from "@/app/resources/content"
 import styles from "@/components/Header.module.scss"
 import { Fade, Flex, Line, ToggleButton } from "@/once-ui/components"
 
@@ -79,7 +79,7 @@ export const Header = () => {
           vertical='center'
           textVariant='body-default-s'
         >
-          {display.location && <Flex hide='s'>{person.location}</Flex>}
+          {/* {display.location && <Flex hide='s'>{person.location}</Flex>} */}
         </Flex>
         <Flex fillWidth horizontal='center'>
           <Flex

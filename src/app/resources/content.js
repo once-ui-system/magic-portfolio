@@ -9,7 +9,7 @@ const person = {
   role: "Frontend Developer",
   avatar: "/images/avatar.png", //TODO:
   email: "clecardona@gmail.com",
-  location: "Europe/Stockholm", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
+  location: "Sweden/Stockholm", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
   languages: ["English", "Swedish", "French"], // optional: Leave the array empty if you don't want to display languages
 }
 
@@ -72,7 +72,7 @@ const home = {
     </>
   ),
 }
-
+const baseUrl = "https://clecardona.eu/assets/tech/"
 const about = {
   path: "/about",
   label: "About",
@@ -133,30 +133,6 @@ const about = {
             library.
           </>,
         ],
-        images: [
-          // optional: leave the array empty if you don't want to display images
-          {
-            src: "/images/projects/project-01/cover-01.jpg",
-            alt: "Once UI Project",
-            width: 16,
-            height: 9,
-          },
-        ],
-      },
-      {
-        company: "Creativ3",
-        timeframe: "2018 - 2022",
-        role: "Lead Designer",
-        achievements: [
-          <>
-            Developed a design system that unified the brand across multiple
-            platforms, improving design consistency by 40%.
-          </>,
-          <>
-            Led a cross-functional team to launch a new product line,
-            contributing to a 15% increase in overall company revenue.
-          </>,
-        ],
         images: [],
       },
     ],
@@ -166,12 +142,17 @@ const about = {
     title: "Education",
     institutions: [
       {
-        name: "NOVARE POTENTIAL ACADEMY ",
-        description: <>Studied software engineering.</>,
+        name: "Novare Potential Academy ",
+        description: (
+          <>
+            5 months bootcamp with focus on Frontend <br /> React.js, Firebase
+            hosting
+          </>
+        ),
       },
       {
-        name: "Build the Future",
-        description: <>Studied online marketing and personal branding.</>,
+        name: "Software Development Academy - Novare Potential x KTH",
+        description: <>4 months bootcamp kickoff Frontend and Backend</>,
       },
     ],
   },
@@ -180,38 +161,168 @@ const about = {
     title: "Technical skills",
     skills: [
       {
-        title: "Figma",
-        description: (
-          <>Able to prototype in Figma with Once UI with unnatural speed.</>
-        ),
-        // optional: leave the array empty if you don't want to display images
+        title: "React",
+        description: <>4 years experience.</>,
         images: [
           {
-            src: "/images/projects/project-01/cover-02.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-          {
-            src: "/images/projects/project-01/cover-03.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
+            src: baseUrl + "react.svg",
+            alt: "react",
           },
         ],
       },
       {
-        title: "Next.js",
-        description: (
-          <>Building next gen apps with Next.js + Once UI + Supabase.</>
-        ),
-        // optional: leave the array empty if you don't want to display images
+        title: "Javascript, Typescript",
+        description: <>4 years experience.</>,
         images: [
           {
-            src: "/images/projects/project-01/cover-04.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
+            src: baseUrl + "javascript.svg",
+            alt: "Javascript",
+          },
+          {
+            src: baseUrl + "typescript.svg",
+            alt: "Typescript",
+          },
+        ],
+      },
+      {
+        title: "CSS , Sass, Scss",
+        description: <>Basic and advanced stylesheets languages.</>,
+        images: [
+          {
+            src: baseUrl + "css.svg",
+            alt: "CSS",
+          },
+          {
+            src: baseUrl + "sass.svg",
+            alt: "Sass",
+          },
+        ],
+      },
+      {
+        title: "Vite, Next",
+        description: (
+          <>
+            • I have participated to the migration of a complex project from CRA
+            to Vite.
+            <br />• I have developed small projects based on Next.js
+          </>
+        ),
+        images: [
+          {
+            src: baseUrl + "vite.svg",
+            alt: "vite",
+          },
+          {
+            src: baseUrl + "next.png",
+            alt: "next",
+          },
+        ],
+      },
+      {
+        title: "Testing : Jest, Testing Library, Cypress",
+        description: (
+          <>
+            • I have written unit test with Jest or Vitest.
+            <br />• I have written UI test with React Testing Library
+            <br />• I have written simple end to end tests with Cypress
+          </>
+        ),
+        images: [
+          {
+            src: baseUrl + "jest.svg",
+            alt: "jest",
+          },
+          {
+            src: baseUrl + "testing_library.png",
+            alt: "testing library",
+          },
+          {
+            src: baseUrl + "cypress.svg",
+            alt: "cypress",
+          },
+        ],
+      },
+      {
+        title: "Redux",
+        description: (
+          <>
+            I worked on projects using redux, and also migrate state management
+            to React context.
+          </>
+        ),
+        images: [
+          {
+            src: baseUrl + "redux.svg",
+            alt: "redux",
+          },
+        ],
+      },
+      {
+        title: "Figma",
+        description: <>Able to prototype in Figma.</>,
+        images: [
+          {
+            src: baseUrl + "figma.svg",
+            alt: "Figma",
+          },
+        ],
+      },
+      {
+        title: "Storybook",
+        description: <>I participated in an internal component library.</>,
+        images: [
+          {
+            src: baseUrl + "storybook.png",
+            alt: "storybook",
+          },
+        ],
+      },
+      {
+        title: "Openshift",
+        description: (
+          <>
+            I participated to the migration of frontend applications to
+            Openshift.
+          </>
+        ),
+        images: [
+          {
+            src: baseUrl + "openshift.svg",
+            alt: "Openshift",
+          },
+        ],
+      },
+      {
+        title: "Firebase",
+        description: (
+          <>
+            I developed projects based on Google Firebase solutions: hosting,
+            database etc.
+          </>
+        ),
+        images: [
+          {
+            src: baseUrl + "firebase.svg",
+            alt: "firebase",
+          },
+        ],
+      },
+      {
+        title: "Java",
+        description: (
+          <>
+            I have a basic understanding of the Java language and the Springboot
+            framework.
+          </>
+        ),
+        images: [
+          {
+            src: baseUrl + "java.svg",
+            alt: "java",
+          },
+          {
+            src: baseUrl + "spring.svg",
+            alt: "springboot",
           },
         ],
       },

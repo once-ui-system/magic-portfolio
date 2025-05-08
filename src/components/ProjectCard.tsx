@@ -1,4 +1,4 @@
-"use client";
+"use client"
 
 import {
   AvatarGroup,
@@ -8,17 +8,17 @@ import {
   Heading,
   SmartLink,
   Text,
-} from "@/once-ui/components";
+} from "@/once-ui/components"
 
 interface ProjectCardProps {
-  href: string;
-  priority?: boolean;
-  images: string[];
-  title: string;
-  content: string;
-  description: string;
-  avatars: { src: string }[];
-  link: string;
+  href: string
+  priority?: boolean
+  images: string[]
+  title: string
+  content: string
+  description: string
+  avatars: { src: string }[]
+  link: string
 }
 
 export const ProjectCard: React.FC<ProjectCardProps> = ({
@@ -31,54 +31,60 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
   link,
 }) => {
   return (
-    <Column fillWidth gap="m">
+    <Column fillWidth gap='m'>
       <Carousel
-        sizes="(max-width: 960px) 100vw, 960px"
+        sizes='(max-width: 960px) 100vw, 960px'
         images={images.map((image) => ({
           src: image,
           alt: title,
         }))}
       />
       <Flex
-        mobileDirection="column"
+        mobileDirection='column'
         fillWidth
-        paddingX="s"
-        paddingTop="12"
-        paddingBottom="24"
-        gap="l"
+        paddingX='s'
+        paddingTop='12'
+        paddingBottom='24'
+        gap='l'
       >
         {title && (
           <Flex flex={5}>
-            <Heading as="h2" wrap="balance" variant="heading-strong-xl">
+            <Heading as='h2' wrap='balance' variant='heading-strong-xl'>
               {title}
             </Heading>
           </Flex>
         )}
         {(avatars?.length > 0 || description?.trim() || content?.trim()) && (
-          <Column flex={7} gap="16">
-            {avatars?.length > 0 && <AvatarGroup avatars={avatars} size="m" reverse />}
+          <Column flex={7} gap='16'>
+            {avatars?.length > 0 && (
+              <AvatarGroup avatars={avatars} size='m' reverse />
+            )}
             {description?.trim() && (
-              <Text wrap="balance" variant="body-default-s" onBackground="neutral-weak">
+              <Text
+                wrap='balance'
+                variant='body-default-s'
+                onBackground='neutral-weak'
+              >
                 {description}
               </Text>
             )}
-            <Flex gap="24" wrap>
+            <Flex gap='24' wrap>
               {content?.trim() && (
                 <SmartLink
-                  suffixIcon="arrowRight"
+                  suffixIcon='arrowRight'
                   style={{ margin: "0", width: "fit-content" }}
                   href={href}
                 >
-                  <Text variant="body-default-s">Read case study</Text>
+                  <Text variant='body-default-s'>More about the project </Text>
                 </SmartLink>
               )}
               {link && (
                 <SmartLink
-                  suffixIcon="arrowUpRightFromSquare"
+                  suffixIcon='arrowUpRightFromSquare'
                   style={{ margin: "0", width: "fit-content" }}
                   href={link}
                 >
-                  <Text variant="body-default-s">View project</Text>
+                  <Text variant='body-default-s'>View project</Text>
                 </SmartLink>
               )}
             </Flex>
@@ -86,5 +92,5 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
         )}
       </Flex>
     </Column>
-  );
-};
+  )
+}
