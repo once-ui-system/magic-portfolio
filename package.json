@@ -1,6 +1,6 @@
 {
-  "name": "@once-ui-system/magic-portfolio",
-  "version": "2.0.0",
+  "name": "clecardona-portfolio",
+  "version": "1.0.0",
   "scripts": {
     "dev": "next dev",
     "export": "next export",
