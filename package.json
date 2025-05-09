@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && node generate-htaccess.js",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "generate htaccess": "node generate-htaccess.js"
   },
   "dependencies": {
     "@floating-ui/react-dom": "^2.1.2",
