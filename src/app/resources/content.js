@@ -44,24 +44,16 @@ const social = [
 
 const home = {
   path: "/",
-  image: "/images/og/home.jpg",
+  image: "",
   label: "Home",
   title: `${person.name}'s Portfolio`,
   description: `Portfolio website showcasing my work as a ${person.role}`,
   headline: <>Clement Cardona</>,
-  // featured: {
-  //   display: false,
-  //   title: (
-  //     <>
-  //       Recent project: <strong className='ml-4'>Once UI</strong>
-  //     </>
-  //   ),
-  //   href: "/work/building-once-ui-a-customizable-design-system",
-  // },
+
   subline: (
     <>
-      xxx, where I craft intuitive
-      <br /> user experiences. After hours, I build my own projects.
+      <b>Frontend developer</b> based in Stockholm
+      <br /> Specialized in <b>React + Typescript</b> projects.
     </>
   ),
 }
