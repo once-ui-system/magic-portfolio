@@ -1,4 +1,4 @@
-import { Geist, Geist_Mono } from "next/font/google"
+import { Geist_Mono, Montserrat } from "next/font/google"
 
 // IMPORTANT: Replace with your own domain address - it's used for SEO in meta tags and schema
 const baseURL = "https://clecardona.eu"
@@ -15,7 +15,7 @@ const protectedRoutes = {
   "/admin": false,
 }
 
-const primaryFont = Geist({
+const primaryFont = Montserrat({
   variable: "--font-primary",
   subsets: ["latin"],
   display: "swap",
