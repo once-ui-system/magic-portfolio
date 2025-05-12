@@ -44,9 +44,8 @@ const social = [
 
 const home = {
   path: "/",
-  image: "/images/og/home.jpg",
   label: "Home",
-  title: `${person.name}&apos;s Portfolio`,
+  title: `${person.name}`,
   description: `Portfolio website showcasing my work as a ${person.role}`,
   headline: <>Carlos Vargas</>,
   featured: {
@@ -201,29 +200,7 @@ const gallery = {
   label: "Gallery",
   title: `Gallery – ${person.name}`,
   description: `A collection of ${person.name}&apos;s work`,
-  // Images by https://lorant.one
-  // These are placeholder images, replace with your own
   images: [
-    {
-      src: "/images/gallery/horizontal-1.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/horizontal-2.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/horizontal-3.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/horizontal-4.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
     {
       src: "/images/gallery/vertical-1.jpeg",
       alt: "image",

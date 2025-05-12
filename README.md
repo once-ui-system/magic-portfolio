@@ -2,8 +2,6 @@
 
 View my portfolio [here](https://varlopecar.me).
 
-![Portfolio Preview](https://varlopecar.me/images/og/home.jpg)
-
 # **About This Project**
 
 This portfolio website was built using the [Magic Portfolio](https://github.com/once-ui-system/magic-portfolio) template, which is based on [Once UI](https://once-ui.com) for [Next.js](https://nextjs.org). The template provides a clean, modern, and responsive design that perfectly showcases my work and experience.
