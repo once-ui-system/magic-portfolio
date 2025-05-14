@@ -1,0 +1,144 @@
+export const metadata = {
+  title: "資訊軟體服務",
+  publishedAt: "2024-01-05",
+  summary: "專業的軟體開發與系統整合服務，協助企業數位轉型",
+  image: "/images/products/software-services.jpg",
+  tag: "軟體服務",
+  team: [
+    {
+      name: "軟體開發團隊",
+      role: "軟體工程師",
+      avatar: "/images/team/sw-engineer.jpg",
+      linkedIn: "",
+    },
+  ],
+  link: "",
+};
+
+## 資訊軟體服務
+
+提供全方位的軟體開發與系統整合服務，協助企業實現數位轉型目標。
+
+### 服務項目
+
+#### 客製化軟體開發
+- 企業管理系統 (ERP)
+- 客戶關係管理 (CRM)
+- 供應鏈管理系統
+- 生產管理系統 (MES)
+- 行動應用程式開發
+
+#### 系統整合服務
+- 異質系統整合
+- API 開發與串接
+- 資料庫遷移與整合
+- 雲端服務整合
+- IoT 物聯網整合
+
+#### 技術諮詢服務
+- IT 策略規劃
+- 系統架構設計
+- 技術選型建議
+- 資安評估與強化
+- 效能優化顧問
+
+### 技術專長
+
+<AccordionGroup>
+  <Accordion title="前端技術">
+    - React / Vue.js / Angular
+    - TypeScript / JavaScript
+    - HTML5 / CSS3
+    - 響應式網頁設計
+    - Progressive Web Apps
+  </Accordion>
+  
+  <Accordion title="後端技術">
+    - Node.js / Python / Java
+    - RESTful API / GraphQL
+    - 微服務架構
+    - 容器化技術 (Docker/Kubernetes)
+    - 雲端服務 (AWS/Azure/GCP)
+  </Accordion>
+  
+  <Accordion title="資料庫技術">
+    - MySQL / PostgreSQL
+    - MongoDB / Redis
+    - 資料倉儲設計
+    - 大數據處理
+    - 資料分析與視覺化
+  </Accordion>
+  
+  <Accordion title="開發方法">
+    - 敏捷開發 (Agile/Scrum)
+    - DevOps 實踐
+    - CI/CD 持續整合部署
+    - 測試驅動開發 (TDD)
+    - 版本控制 (Git)
+  </Accordion>
+</AccordionGroup>
+
+### 成功案例
+
+#### 製造業 ERP 系統
+為某大型製造商開發整合式 ERP 系統，包含：
+- 生產排程管理
+- 庫存即時監控
+- 財務會計整合
+- 供應商管理平台
+
+**成果**：提升 35% 營運效率，降低 20% 庫存成本
+
+#### 零售業 O2O 平台
+協助連鎖零售業者建立線上線下整合平台：
+- 會員管理系統
+- 線上商城開發
+- POS 系統整合
+- 數據分析儀表板
+
+**成果**：線上營收成長 150%，會員活躍度提升 80%
+
+#### IoT 監控系統
+為工廠開發智慧監控系統：
+- 感測器數據收集
+- 即時監控儀表板
+- 異常預警通知
+- 預測性維護分析
+
+**成果**：減少 40% 設備故障時間，節省 25% 維護成本
+
+### 開發流程
+
+1. **需求分析**
+   深入了解業務需求，制定解決方案
+
+2. **系統設計**
+   架構設計、UI/UX 設計、資料庫設計
+
+3. **敏捷開發**
+   採用 Scrum 方法，分階段交付功能
+
+4. **測試驗證**
+   完整的測試流程，確保系統品質
+
+5. **部署上線**
+   協助系統部署，提供教育訓練
+
+6. **維護支援**
+   持續維護更新，技術支援服務
+
+### 為什麼選擇我們？
+
+- ✓ **豐富經驗**：多年軟體開發經驗，成功案例眾多
+- ✓ **技術實力**：掌握最新技術趨勢，提供創新解決方案
+- ✓ **客製服務**：依據客戶需求，量身打造專屬系統
+- ✓ **品質保證**：嚴謹的開發流程，確保交付品質
+- ✓ **售後支援**：完善的維護服務，持續技術支援
+
+<Feedback>
+  準備好開始您的數位轉型了嗎？我們的專業團隊隨時為您服務！
+</Feedback>
+
+<Button href="/contact" variant="primary" size="l" arrowIcon>
+  立即諮詢
+</Button>

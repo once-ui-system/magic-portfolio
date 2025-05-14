@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 300 80" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景 -->
+  <defs>
+    <!-- 漸層定義 -->
+    <linearGradient id="techGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2E86AB;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1B4965;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="wGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3498DB;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#2E86AB;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1B4965;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Logo 圖形部分 -->
+  <g transform="translate(10, 10)">
+    <!-- 外圈 - 代表穩定 -->
+    <circle cx="30" cy="30" r="28" fill="none" stroke="url(#techGradient)" stroke-width="3"/>
+    
+    <!-- 內部結構 - 代表科技創新 -->
+    <g transform="translate(30, 30)">
+      <!-- 六邊形框架 - 代表精密機械 (更透明) -->
+      <path d="M-14,0 L-7,-12.12 L7,-12.12 L14,0 L7,12.12 L-7,12.12 Z" 
+            fill="none" stroke="url(#techGradient)" stroke-width="1" opacity="0.3"/>
+      
+      <!-- 中心 W 字母 - 完全置中 -->
+      <text x="0" y="0" text-anchor="middle" dominant-baseline="middle" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="url(#wGradient)">W</text>
+      
+      <!-- 電路線條和連接點 - 代表電子零組件 -->
+      <g stroke="#2E86AB" stroke-width="1.5" fill="none">
+        <path d="M0,-12.12 L0,-20 M0,12.12 L0,20"/>
+        <path d="M-12.12,-7 L-18,-9 M12.12,-7 L18,-9"/>
+        <path d="M-12.12,7 L-18,9 M12.12,7 L18,9"/>
+        <circle cx="0" cy="-20" r="2" fill="#2E86AB"/>
+        <circle cx="0" cy="20" r="2" fill="#2E86AB"/>
+        <circle cx="-18" cy="-9" r="2" fill="#2E86AB"/>
+        <circle cx="18" cy="-9" r="2" fill="#2E86AB"/>
+        <circle cx="-18" cy="9" r="2" fill="#2E86AB"/>
+        <circle cx="18" cy="9" r="2" fill="#2E86AB"/>
+      </g>
+    </g>
+    
+    <!-- 軌道環 - 代表創新循環 -->
+    <circle cx="30" cy="30" r="20" fill="none" stroke="#2E86AB" stroke-width="1" opacity="0.5" stroke-dasharray="2,4"/>
+  </g>
+  
+  <!-- 公司名稱 -->
+  <g transform="translate(85, 25)">
+    <!-- 中文名稱 -->
+    <text x="0" y="0" font-family="Microsoft JhengHei, SimHei, sans-serif" font-size="24" font-weight="bold" fill="#1B4965">
+      穩智科創
+    </text>
+    
+    <!-- 英文名稱 -->
+    <text x="0" y="22" font-family="Arial, sans-serif" font-size="11" fill="#2E86AB">
+      Wisdom Technology Innovation Limited
+    </text>
+    
+    <!-- 標語 -->
+    <text x="0" y="38" font-family="Microsoft JhengHei, SimHei, sans-serif" font-size="10" fill="#6C7A89">
+      創新科技 · 智慧未來
+    </text>
+  </g>
+  
+  <!-- 裝飾線 -->
+  <line x1="85" y1="50" x2="280" y2="50" stroke="#E5F4FF" stroke-width="1"/>
+</svg>

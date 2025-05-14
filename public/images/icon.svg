@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- 圖標版本 - 標準W字母 -->
+  <defs>
+    <linearGradient id="iconGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2E86AB;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1B4965;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="wIconGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3498DB;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1B4965;stop-opacity:1" />
+    </linearGradient>
+    
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+  
+  <!-- 背景 -->
+  <rect width="200" height="200" fill="#F8F9FA"/>
+  
+  <!-- 圖標主體 -->
+  <g transform="translate(100, 100)">
+    <!-- 外圈 - 代表穩定 -->
+    <circle cx="0" cy="0" r="90" fill="white" stroke="url(#iconGradient)" stroke-width="8"/>
+    
+    <!-- 六邊形框架 (很淡) -->
+    <path d="M-50,0 L-25,-43.3 L25,-43.3 L50,0 L25,43.3 L-25,43.3 Z" 
+          fill="none" stroke="url(#iconGradient)" stroke-width="2" opacity="0.2"/>
+    
+    <!-- 中心 W 字母 - 完全置中 -->
+    <text x="0" y="0" text-anchor="middle" dominant-baseline="middle" font-family="Arial Black, sans-serif" font-size="100" font-weight="900" fill="url(#wIconGradient)" filter="url(#shadow)">W</text>
+    
+    <!-- 電路線條和連接點 (更小) -->
+    <g stroke="#2E86AB" stroke-width="3" fill="none" opacity="0.5">
+      <path d="M0,-43.3 L0,-65"/>
+      <path d="M0,43.3 L0,65"/>
+      <path d="M-37.5,-21.65 L-55,-32"/>
+      <path d="M37.5,-21.65 L55,-32"/>
+      <path d="M-37.5,21.65 L-55,32"/>
+      <path d="M37.5,21.65 L55,32"/>
+      
+      <!-- 連接點 -->
+      <circle cx="0" cy="-65" r="4" fill="#2E86AB"/>
+      <circle cx="0" cy="65" r="4" fill="#2E86AB"/>
+      <circle cx="-55" cy="-32" r="4" fill="#2E86AB"/>
+      <circle cx="55" cy="-32" r="4" fill="#2E86AB"/>
+      <circle cx="-55" cy="32" r="4" fill="#2E86AB"/>
+      <circle cx="55" cy="32" r="4" fill="#2E86AB"/>
+    </g>
+    
+    <!-- 軌道環 -->
+    <circle cx="0" cy="0" r="70" fill="none" stroke="#2E86AB" stroke-width="2" opacity="0.3" stroke-dasharray="4,8"/>
+  </g>
+</svg>

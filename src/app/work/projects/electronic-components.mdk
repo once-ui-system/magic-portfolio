@@ -1,0 +1,97 @@
+export const metadata = {
+  title: "電子零組件與電腦週邊",
+  publishedAt: "2024-01-10",
+  summary: "高品質電子零組件與電腦週邊設備，滿足各種應用需求",
+  image: "/images/products/electronic-components.jpg",
+  tag: "電子產品",
+  team: [
+    {
+      name: "電子研發部",
+      role: "電子工程師",
+      avatar: "/images/team/ee-engineer.jpg",
+      linkedIn: "",
+    },
+  ],
+  link: "",
+};
+
+## 電子零組件與電腦週邊
+
+提供高品質的電子零組件與電腦週邊設備，從設計到製造一手包辦。
+
+### 產品線
+
+#### 電子零組件
+- 印刷電路板 (PCB)
+- 連接器與接頭
+- 感測器模組
+- 電源管理 IC
+- 被動元件
+
+#### 電腦週邊設備
+- USB 擴充設備
+- 轉接器與集線器
+- 儲存設備外接盒
+- 散熱解決方案
+
+### 技術優勢
+
+1. **先進製程**
+   - SMT 表面貼裝技術
+   - AOI 自動光學檢測
+   - X-Ray 檢測設備
+
+2. **品質認證**
+   - ISO 9001 品質管理系統
+   - RoHS 環保規範認證
+   - CE 安全認證
+
+3. **研發能力**
+   - 專業的研發團隊
+   - 完整的測試實驗室
+   - 快速原型開發
+
+### 應用範例
+
+<Grid columns="2">
+  <Card>
+    <Heading variant="heading-strong-m">消費性電子</Heading>
+    <Text>智慧型手機、平板電腦、穿戴式裝置等消費性電子產品的關鍵零組件。</Text>
+  </Card>
+  
+  <Card>
+    <Heading variant="heading-strong-m">工業控制</Heading>
+    <Text>工業電腦、自動化設備、監控系統等工業應用的電子元件。</Text>
+  </Card>
+  
+  <Card>
+    <Heading variant="heading-strong-m">醫療電子</Heading>
+    <Text>醫療儀器、診斷設備、健康監測裝置的專用電子零件。</Text>
+  </Card>
+  
+  <Card>
+    <Heading variant="heading-strong-m">車用電子</Heading>
+    <Text>汽車電子系統、車載資訊娛樂系統的電子元件。</Text>
+  </Card>
+</Grid>
+
+### 服務流程
+
+1. **需求評估**：了解客戶的具體需求與規格
+2. **設計提案**：提供設計方案與成本評估
+3. **原型製作**：快速製作原型供客戶測試
+4. **批量生產**：確認後進行大量生產
+5. **品質檢驗**：嚴格的品質控管流程
+6. **準時交貨**：確保按時交付產品
+
+### 合作夥伴
+
+我們與多家國際知名企業建立長期合作關係，產品廣泛應用於各種電子設備中。
+
+<Text variant="body-strong-m" marginTop="l">
+  想了解更多產品資訊或尋求合作機會？歡迎與我們聯絡！
+</Text>
+
+<Button href="/contact" variant="primary" size="m">
+  聯絡業務團隊
+</Button>

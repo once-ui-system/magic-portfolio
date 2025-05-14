@@ -2,7 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-
+import Image from 'next/image';
 import { Fade, Flex, Line, ToggleButton } from "@/once-ui/components";
 import styles from "@/components/Header.module.scss";
 
@@ -15,7 +15,7 @@ type TimeDisplayProps = {
   locale?: string; // Optionally allow locale, defaulting to 'en-GB'
 };
 
-const TimeDisplay: React.FC<TimeDisplayProps> = ({ timeZone, locale = "en-GB" }) => {
+const TimeDisplay: React.FC<TimeDisplayProps> = ({ timeZone, locale = "zh-TW" }) => {
   const [currentTime, setCurrentTime] = useState("");
 
   useEffect(() => {
@@ -45,6 +45,7 @@ export default TimeDisplay;
 
 export const Header = () => {
   const pathname = usePathname() ?? "";
+  const WenzhiLogo = '/images/icon.svg';
 
   return (
     <>
@@ -164,7 +165,11 @@ export const Header = () => {
             textVariant="body-default-s"
             gap="20"
           >
-            <Flex hide="s">{display.time && <TimeDisplay timeZone={person.location} />}</Flex>
+            <Flex hide="s">
+              {display.time && (
+                <TimeDisplay timeZone={person.timeZone || "Asia/Taipei"} />
+              )}
+            </Flex>
           </Flex>
         </Flex>
       </Flex>
