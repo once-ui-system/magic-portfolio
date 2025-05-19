@@ -23,6 +23,7 @@ export const Mailchimp = ({ newsletter }: { newsletter: NewsletterProps }) => {
   const [email, setEmail] = useState<string>("");
   const [error, setError] = useState<string>("");
   const [touched, setTouched] = useState<boolean>(false);
+  const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
 
   const validateEmail = (email: string): boolean => {
     if (email === "") {
@@ -48,8 +49,49 @@ export const Mailchimp = ({ newsletter }: { newsletter: NewsletterProps }) => {
 
   const handleBlur = () => {
     setTouched(true);
+    if (email && !validateEmail(email)) {
+      setError("Please enter a valid email address.");
+    } else {
+      setError("");
+    }
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) {
+      setError("Email is required");
+      return;
+    }
     if (!validateEmail(email)) {
       setError("Please enter a valid email address.");
+      return;
+    }
+    
+    try {
+      // Mostrar mensaje de éxito inmediatamente
+      setIsSubmitted(true);
+      setEmail("");
+      setTouched(false);
+      
+      // Ocultar el mensaje después de 5 segundos
+      setTimeout(() => {
+        setIsSubmitted(false);
+      }, 5000);
+      
+      // Enviar datos a Mailchimp manualmente
+      const formData = new FormData(e.target as HTMLFormElement);
+      const response = await fetch(mailchimp.action, {
+        method: 'POST',
+        body: formData,
+        mode: 'no-cors', // Importante para evitar problemas de CORS
+      });
+      
+      // No podemos verificar la respuesta en modo 'no-cors', pero asumimos éxito
+      console.log('Formulario enviado a Mailchimp');
+      
+    } catch (error) {
+      console.error('Error al enviar el formulario:', error);
+      // Aún así mostramos el mensaje de éxito para el usuario
     }
   };
 
@@ -123,24 +165,26 @@ export const Mailchimp = ({ newsletter }: { newsletter: NewsletterProps }) => {
       <form
         style={{
           width: "100%",
-          display: "flex",
+          display: isSubmitted ? "none" : "flex",
           justifyContent: "center",
+          transition: 'opacity 0.3s ease, transform 0.3s ease'
         }}
-        action={mailchimp.action}
-        method="post"
         id="mc-embedded-subscribe-form"
         name="mc-embedded-subscribe-form"
+        noValidate
+        onSubmit={handleSubmit}
       >
         <Flex id="mc_embed_signup_scroll" fillWidth maxWidth={24} mobileDirection="column" gap="8">
           <Input
-            formNoValidate
             labelAsPlaceholder
             id="mce-EMAIL"
             name="EMAIL"
             type="email"
             label="Email"
-            required
+            value={email}
             onChange={(e) => {
+              const value = e.target.value;
+              setEmail(value);
               if (error) {
                 handleChange(e);
               } else {
@@ -148,7 +192,7 @@ export const Mailchimp = ({ newsletter }: { newsletter: NewsletterProps }) => {
               }
             }}
             onBlur={handleBlur}
-            errorMessage={error}
+            errorMessage={touched ? error : ''}
           />
           <div style={{ display: "none" }}>
             <input
@@ -175,13 +219,133 @@ export const Mailchimp = ({ newsletter }: { newsletter: NewsletterProps }) => {
           </div>
           <div className="clear">
             <Flex height="48" vertical="center">
-              <Button id="mc-embedded-subscribe" value="Subscribe" size="m" fillWidth>
-                Subscribe
-              </Button>
+              <Button 
+              id="mc-embedded-subscribe" 
+              type="submit"
+              value="Subscribe" 
+              size="m" 
+              fillWidth
+              disabled={!email || !!error}
+            >
+              Subscribe
+            </Button>
             </Flex>
           </div>
         </Flex>
       </form>
+      {isSubmitted && (
+        <div style={{
+          width: '100%',
+          display: 'flex',
+          justifyContent: 'center',
+          marginTop: '1.5rem',
+          animation: 'fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
+          position: 'relative',
+          zIndex: 2
+        }}>
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.75rem',
+            padding: '0.875rem 1.25rem',
+            backgroundColor: 'var(--color-success-background-strong)',
+            color: 'var(--color-success-on-background-strong)',
+            borderRadius: 'var(--radius-m)',
+            boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
+            border: '1px solid rgba(255, 255, 255, 0.1)',
+            maxWidth: '90%',
+            width: 'fit-content',
+            position: 'relative',
+            overflow: 'hidden',
+            zIndex: 1
+          }}>
+            <svg 
+              width="20" 
+              height="20" 
+              viewBox="0 0 24 24" 
+              fill="none" 
+              stroke="currentColor" 
+              strokeWidth="2" 
+              strokeLinecap="round" 
+              strokeLinejoin="round"
+              style={{
+                flexShrink: 0,
+                animation: 'checkmark 0.5s cubic-bezier(0.65, 0, 0.45, 1) forwards'
+              }}
+            >
+              <path d="M20 6L9 17l-5-5" />
+            </svg>
+            <Text 
+              style={{
+                margin: 0,
+                fontWeight: 500,
+                fontSize: '0.95rem',
+                lineHeight: '1.4'
+              }}
+            >
+              Thanks for joining! I'll be sharing updates with you soon.
+            </Text>
+            <div style={{
+              position: 'absolute',
+              bottom: 0,
+              left: 0,
+              height: '3px',
+              backgroundColor: 'rgba(0, 0, 0, 0.15)',
+              animation: 'progress 4.5s linear forwards',
+              animationDelay: '0.5s',
+              transformOrigin: 'left',
+              width: '100%',
+              borderRadius: '0 0 0 3px',
+              mixBlendMode: 'multiply'
+            }}>
+              <div style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                backgroundColor: 'rgba(255, 255, 255, 0.3)',
+                mixBlendMode: 'screen'
+              }} />
+            </div>
+          </div>
+        </div>
+      )}
+      <style jsx global>{`
+        @keyframes fadeIn {
+          from { 
+            opacity: 0; 
+            transform: translateY(10px); 
+          }
+          to { 
+            opacity: 1; 
+            transform: translateY(0); 
+          }
+        }
+        
+        @keyframes checkmark {
+          0% {
+            opacity: 0;
+            transform: scale(0);
+          }
+          50% {
+            transform: scale(1.2);
+          }
+          100% {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+        
+        @keyframes progress {
+          0% {
+            transform: scaleX(1);
+          }
+          100% {
+            transform: scaleX(0);
+          }
+        }
+      `}</style>
     </Column>
   );
 };
