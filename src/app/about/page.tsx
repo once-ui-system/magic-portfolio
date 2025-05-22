@@ -112,7 +112,7 @@ export default function About() {
             fillWidth
             minHeight="160"
             vertical="center"
-            marginBottom="10"
+            marginBottom="m"
           >
             <Heading className={styles.textAlign} variant="display-strong-xl">
               {person.name}
@@ -330,7 +330,7 @@ export default function About() {
                 {about.technical.title}
               </Heading>
               <Column fillWidth gap="l">
-                <Flex direction="row" wrap="wrap" gap="16">
+                <Flex>
                   {about.technical.skills.map((skill, index) => (
                     <Column key={`${skill}-${index}`} align="center" flex="1">
                       {skill.link ? (
