@@ -3,7 +3,7 @@ import "@/once-ui/tokens/index.scss";
 
 import classNames from "classnames";
 
-import { Footer, Header, RouteGuard } from "@/components";
+import { Footer, Header, RouteGuard, CustomCursor } from "@/components";
 import { baseURL, effects, style, font, home } from "@/app/resources";
 
 import { Background, Column, Flex, ThemeProvider, ToastProvider } from "@/once-ui/components";
@@ -71,6 +71,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
       <ThemeProvider>
         <ToastProvider>
           <Column style={{ minHeight: "100vh" }} as="body" fillWidth margin="0" padding="0">
+            <CustomCursor />
             <Background
               position="fixed"
               mask={{

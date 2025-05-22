@@ -1,0 +1,24 @@
+.cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgb(172, 172, 172); /* iPadOS-like semi-transparent */
+  border: 2px solid rgba(255,255,255,0.5);
+  box-shadow: 0 2px 8px 2px rgba(0,0,0,0.10);
+  pointer-events: none;
+  z-index: 2147483647;
+  mix-blend-mode: normal;
+  transition: transform 0.12s cubic-bezier(0.22, 1, 0.36, 1), background 0.2s, box-shadow 0.2s;
+  will-change: transform, background;
+  display: block;
+  transform: translate3d(-50%, -50%, 0); /* Center the cursor on pointer */
+}
+
+@media (max-width: 768px) {
+  .cursor {
+    display: none;
+  }
+}
