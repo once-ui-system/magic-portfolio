@@ -1,25 +1,25 @@
 import { Logo } from "@/once-ui/components";
 
 const person = {
-  firstName: "Selene",
-  lastName: "Yu",
+  firstName: "Mindsend",
+  lastName: "Datatech",
   get name() {
     return `${this.firstName} ${this.lastName}`;
   },
-  role: "Design Engineer",
+  role: "Web3 Development",
   avatar: "/images/avatar.jpg",
   email: "example@gmail.com",
-  location: "Asia/Jakarta", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
-  languages: ["English", "Bahasa"], // optional: Leave the array empty if you don't want to display languages
+  location: "America/Sao_Paulo", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
+  languages: ["English", "Portuguese"], // optional: Leave the array empty if you don't want to display languages
 };
 
 const newsletter = {
-  display: true,
+  display: false,
   title: <>Subscribe to {person.firstName}'s Newsletter</>,
   description: (
     <>
-      I occasionally write about design, technology, and share thoughts on the intersection of
-      creativity and engineering.
+      I occasionally write about design, technology, and share thoughts on the
+      intersection of creativity and engineering.
     </>
   ),
 };
@@ -30,7 +30,7 @@ const social = [
   {
     name: "GitHub",
     icon: "github",
-    link: "https://github.com/once-ui-system/nextjs-starter",
+    link: "https://github.com/mindsend-datatech",
   },
   {
     name: "LinkedIn",
@@ -55,16 +55,20 @@ const home = {
   label: "Home",
   title: `${person.name}'s Portfolio`,
   description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Building bridges between design and code</>,
+  headline: <>Empowering the Web3 revolution with full-cycle development </>,
   featured: {
     display: true,
-    title: <>Recent project: <strong className="ml-4">Once UI</strong></>,
+    title: (
+      <>
+        Recent project: <strong className="ml-4">Kadena Cabinet</strong>
+      </>
+    ),
     href: "/work/building-once-ui-a-customizable-design-system",
   },
   subline: (
     <>
-      I'm Selene, a design engineer at <Logo icon={false} style={{ display: "inline-flex", top: "0.25em", marginLeft: "-0.25em" }}/>, where I craft intuitive
-      <br /> user experiences. After hours, I build my own projects.
+      Transforming complex technologies into accessible, seamless solutions for
+      the decentralized world{" "}
     </>
   ),
 };
@@ -75,7 +79,7 @@ const about = {
   title: `About – ${person.name}`,
   description: `Meet ${person.name}, ${person.role} from ${person.location}`,
   tableOfContent: {
-    display: true,
+    display: false,
     subItems: false,
   },
   avatar: {
@@ -83,67 +87,55 @@ const about = {
   },
   calendar: {
     display: true,
-    link: "https://cal.com",
+    link: "https://cal.com/mindsend",
   },
   intro: {
     display: true,
     title: "Introduction",
     description: (
       <>
-        Selene is a Jakarta-based design engineer with a passion for transforming complex challenges
-        into simple, elegant design solutions. Her work spans digital interfaces, interactive
-        experiences, and the convergence of design and technology.
+        Our mission is to transform complex challenges into simple, elegant
+        solutions, making intricate technologies accessible and providing
+        seamless, bleeding-edge solutions for the Web3 ecosystem and beyond.
       </>
     ),
   },
   work: {
     display: true, // set to false to hide this section
-    title: "Work Experience",
+    title: "Our team",
     experiences: [
       {
-        company: "FLY",
-        timeframe: "2022 - Present",
-        role: "Senior Design Engineer",
+        company: "Ariel Serranoni",
+        timeframe: " ",
+        role: "Web3 Developer",
         achievements: [
-          <>
-            Redesigned the UI/UX for the FLY platform, resulting in a 20% increase in user
-            engagement and 30% faster load times.
-          </>,
-          <>
-            Spearheaded the integration of AI tools into design workflows, enabling designers to
-            iterate 50% faster.
-          </>,
+          <>Master of Science (MSc) in Mathematical Optimization</>,
+          <>Bachelor's in Applied Mathematics </>,
         ],
         images: [
           // optional: leave the array empty if you don't want to display images
-          {
-            src: "/images/projects/project-01/cover-01.jpg",
-            alt: "Once UI Project",
-            width: 16,
-            height: 9,
-          },
+          // {
+          //   src: "/images/projects/project-01/cover-01.jpg",
+          //   alt: "Once UI Project",
+          //   width: 16,
+          //   height: 9,
+          // },
         ],
       },
       {
-        company: "Creativ3",
-        timeframe: "2018 - 2022",
-        role: "Lead Designer",
+        company: "Francisco Miranda",
+        timeframe: " ",
+        role: "Web3 Developer",
         achievements: [
-          <>
-            Developed a design system that unified the brand across multiple platforms, improving
-            design consistency by 40%.
-          </>,
-          <>
-            Led a cross-functional team to launch a new product line, contributing to a 15% increase
-            in overall company revenue.
-          </>,
+          <>MBA in Software Engineering</>,
+          <>Bachelor's in Statistics and Data Science</>,
         ],
         images: [],
       },
     ],
   },
   studies: {
-    display: true, // set to false to hide this section
+    display: false, // set to false to hide this section
     title: "Studies",
     institutions: [
       {
@@ -161,36 +153,74 @@ const about = {
     title: "Technical skills",
     skills: [
       {
-        title: "Figma",
-        description: <>Able to prototype in Figma with Once UI with unnatural speed.</>,
-        // optional: leave the array empty if you don't want to display images
-        images: [
-          {
-            src: "/images/projects/project-01/cover-02.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-          {
-            src: "/images/projects/project-01/cover-03.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-        ],
+        title: "Pact",
+        link: "https://kadena.io/pact",
+        img: "/images/gallery/horizontal-1.jpg",
+      },
+      {
+        title: "Solidity",
+        link: "https://kadena.io/pact",
+        img: "/images/gallery/horizontal-1.jpg",
+      },
+      {
+        title: "TypeScript",
+        link: "https://www.typescriptlang.org/",
+        img: "/images/gallery/horizontal-1.jpg",
       },
       {
         title: "Next.js",
-        description: <>Building next gen apps with Next.js + Once UI + Supabase.</>,
-        // optional: leave the array empty if you don't want to display images
-        images: [
-          {
-            src: "/images/projects/project-01/cover-04.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-        ],
+        link: "https://www.typescriptlang.org/",
+        img: "/images/gallery/horizontal-1.jpg",
+      },
+      {
+        title: "Vercel",
+        link: "https://www.typescriptlang.org/",
+        img: "/images/gallery/horizontal-1.jpg",
+      },
+      {
+        title: "C#",
+        link: "https://learn.microsoft.com/en-us/dotnet/csharp/",
+        img: "/images/gallery/horizontal-1.jpg",
+      },
+      {
+        title: "PostgreSQL",
+        link: "https://www.postgresql.org/",
+        img: "/images/gallery/horizontal-1.jpg",
+      },
+      {
+        title: "MongoDB",
+        link: "https://www.mongodb.com/",
+        img: "/images/gallery/horizontal-1.jpg",
+      },
+      {
+        title: "Python",
+        link: "https://python.org",
+        img: "/images/gallery/horizontal-1.jpg",
+      },
+      {
+        title: "R",
+        link: "https://www.r-project.org/",
+        img: "/images/gallery/horizontal-1.jpg",
+      },
+      {
+        title: "Linux",
+        link: "https://www.kernel.org/",
+        img: "/images/gallery/horizontal-1.jpg",
+      },
+      {
+        title: "Docker",
+        link: "https://www.docker.com/",
+        img: "/images/gallery/horizontal-1.jpg",
+      },
+      {
+        title: "DevOps",
+        link: "https://www.atlassian.com/devops",
+        img: "/images/gallery/horizontal-1.jpg",
+      },
+      {
+        title: "Git",
+        link: "https://git-scm.com/",
+        img: "/images/gallery/horizontal-1.jpg",
       },
     ],
   },
