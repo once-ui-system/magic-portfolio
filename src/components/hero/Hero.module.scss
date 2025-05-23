@@ -1,0 +1,74 @@
+.hero {
+  position: relative;
+  background: #000;
+  color: var(--brand-on-background-strong);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: var(--static-space-16);
+}
+
+.content {
+  position: relative;
+  max-width: var(--responsive-width-m);
+  text-align: center;
+  z-index: 2;
+}
+
+.network {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.svg {
+  width: 60%;
+  height: auto;
+}
+
+.nodeCenter {
+  fill: var(--accent-background-medium);
+  stroke: white;
+}
+
+.node {
+  fill: var(--accent-background-strong);
+  stroke: white;
+}
+
+.labelCenter {
+  fill: white;
+  font-size: 12px;
+}
+
+.label {
+  fill: white;
+  font-size: 8px;
+}
+
+.line {
+  stroke: var(--accent-background-medium);
+  stroke-width: 2;
+}
+
+.particles {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.beam {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.cta {
+  margin-top: var(--static-space-16);
+}

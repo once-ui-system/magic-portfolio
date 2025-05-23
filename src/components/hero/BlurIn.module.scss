@@ -1,0 +1,12 @@
+.blurIn {
+  opacity: 0;
+  filter: blur(8px);
+  animation: blurIn 1s forwards;
+}
+
+@keyframes blurIn {
+  to {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
