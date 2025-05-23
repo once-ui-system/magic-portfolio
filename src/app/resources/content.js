@@ -8,7 +8,7 @@ const person = {
   },
   role: "Web3 Development",
   avatar: "/images/avatar.jpg",
-  email: "example@gmail.com",
+  //email: "example@gmail.com",
   location: "America/Sao_Paulo", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
   languages: ["English", "Portuguese"], // optional: Leave the array empty if you don't want to display languages
 };
@@ -32,21 +32,21 @@ const social = [
     icon: "github",
     link: "https://github.com/mindsend-datatech",
   },
-  {
-    name: "LinkedIn",
-    icon: "linkedin",
-    link: "https://www.linkedin.com/company/once-ui/",
-  },
-  {
-    name: "X",
-    icon: "x",
-    link: "",
-  },
-  {
-    name: "Email",
-    icon: "email",
-    link: `mailto:${person.email}`,
-  },
+  // {
+  //   name: "LinkedIn",
+  //   icon: "linkedin",
+  //   link: "https://www.linkedin.com/company/once-ui/",
+  // },
+  // {
+  //   name: "X",
+  //   icon: "x",
+  //   link: "",
+  // },
+  // {
+  //   name: "Email",
+  //   icon: "email",
+  //   link: `mailto:${person.email}`,
+  // },
 ];
 
 const home = {
@@ -96,7 +96,7 @@ const about = {
       <>
         Our mission is to transform complex challenges into simple, elegant
         solutions, making intricate technologies accessible and providing
-        seamless, bleeding-edge solutions for the Web3 ecosystem and beyond.
+        accessible, bleeding-edge products for the Web3 ecosystem and beyond.
       </>
     ),
   },
@@ -150,80 +150,80 @@ const about = {
   },
   technical: {
     display: true, // set to false to hide this section
-    title: "Technical skills",
+    title: "Our Stack",
     skills: [
-      {
-        title: "Pact",
-        link: "https://kadena.io/pact",
-        img: "/images/gallery/horizontal-1.jpg",
-      },
-      {
-        title: "Solidity",
-        link: "https://kadena.io/pact",
-        img: "/images/gallery/horizontal-1.jpg",
-      },
-      {
-        title: "TypeScript",
-        link: "https://www.typescriptlang.org/",
-        img: "/images/gallery/horizontal-1.jpg",
-      },
-      {
-        title: "Next.js",
-        link: "https://www.typescriptlang.org/",
-        img: "/images/gallery/horizontal-1.jpg",
-      },
-      {
-        title: "Vercel",
-        link: "https://www.typescriptlang.org/",
-        img: "/images/gallery/horizontal-1.jpg",
-      },
-      {
-        title: "C#",
-        link: "https://learn.microsoft.com/en-us/dotnet/csharp/",
-        img: "/images/gallery/horizontal-1.jpg",
-      },
-      {
-        title: "PostgreSQL",
-        link: "https://www.postgresql.org/",
-        img: "/images/gallery/horizontal-1.jpg",
-      },
-      {
-        title: "MongoDB",
-        link: "https://www.mongodb.com/",
-        img: "/images/gallery/horizontal-1.jpg",
-      },
-      {
-        title: "Python",
-        link: "https://python.org",
-        img: "/images/gallery/horizontal-1.jpg",
-      },
-      {
-        title: "R",
-        link: "https://www.r-project.org/",
-        img: "/images/gallery/horizontal-1.jpg",
-      },
-      {
-        title: "Linux",
-        link: "https://www.kernel.org/",
-        img: "/images/gallery/horizontal-1.jpg",
-      },
-      {
-        title: "Docker",
-        link: "https://www.docker.com/",
-        img: "/images/gallery/horizontal-1.jpg",
-      },
-      {
-        title: "DevOps",
-        link: "https://www.atlassian.com/devops",
-        img: "/images/gallery/horizontal-1.jpg",
-      },
-      {
-        title: "Git",
-        link: "https://git-scm.com/",
-        img: "/images/gallery/horizontal-1.jpg",
-      },
-    ],
+  {
+    title: "Pact",
+    link: "https://kadena.io/pact",
+    img: "/images/logos/pact.png",
   },
+  {
+    title: "Solidity",
+    link: "https://soliditylang.org/",
+    img: "/images/logos/solidity.png",
+  },
+  {
+    title: "TypeScript",
+    link: "https://www.typescriptlang.org/",
+    img: "/images/logos/typescript.png",
+  },
+  {
+    title: "Next.js",
+    link: "https://nextjs.org/",
+    img: "/images/logos/nextjs.png",
+  },
+  {
+    title: "Vercel",
+    link: "https://vercel.com/",
+    img: "/images/logos/vercel.png",
+  },
+  {
+    title: "C#",
+    link: "https://learn.microsoft.com/en-us/dotnet/csharp/",
+    img: "/images/logos/csharp.png",
+  },
+  {
+    title: "PostgreSQL",
+    link: "https://www.postgresql.org/",
+    img: "/images/logos/postgresql.png",
+  },
+  {
+    title: "MongoDB",
+    link: "https://www.mongodb.com/",
+    img: "/images/logos/mongodb.png",
+  },
+  {
+    title: "Python",
+    link: "https://python.org",
+    img: "/images/logos/python.png",
+  },
+  {
+    title: "R",
+    link: "https://www.r-project.org/",
+    img: "/images/logos/r.png",
+  },
+  {
+    title: "Linux",
+    link: "https://www.kernel.org/",
+    img: "/images/logos/linux.png",
+  },
+  {
+    title: "Docker",
+    link: "https://www.docker.com/",
+    img: "/images/logos/docker.png",
+  },
+  {
+    title: "DevOps",
+    link: "https://www.atlassian.com/devops",
+    img: "/images/logos/devops.png",
+  },
+  {
+    title: "Git",
+    link: "https://git-scm.com/",
+    img: "/images/logos/git.png",
+  },
+]
+},
 };
 
 const blog = {
