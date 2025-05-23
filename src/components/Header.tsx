@@ -7,7 +7,18 @@ import { Fade, Flex, Line, ToggleButton } from "@/once-ui/components";
 import styles from "@/components/Header.module.scss";
 
 import { routes, display } from "@/app/resources";
-import { person, about, blog, work, gallery } from "@/app/resources/content";
+import {
+  person,
+  about,
+  expertise,
+  insights,
+  speaking,
+  advisory,
+  connect,
+  blog,
+  work,
+  gallery,
+} from "@/app/resources/content";
 import { ThemeToggle } from "./ThemeToggle";
 
 type TimeDisplayProps = {
@@ -93,6 +104,91 @@ export const Header = () => {
                     prefixIcon="person"
                     href="/about"
                     selected={pathname === "/about"}
+                  />
+                </>
+              )}
+              {routes["/expertise"] && (
+                <>
+                  <ToggleButton
+                    className="s-flex-hide"
+                    prefixIcon="grid"
+                    href="/expertise"
+                    label={expertise.label}
+                    selected={pathname.startsWith("/expertise")}
+                  />
+                  <ToggleButton
+                    className="s-flex-show"
+                    prefixIcon="grid"
+                    href="/expertise"
+                    selected={pathname.startsWith("/expertise")}
+                  />
+                </>
+              )}
+              {routes["/insights"] && (
+                <>
+                  <ToggleButton
+                    className="s-flex-hide"
+                    prefixIcon="book"
+                    href="/insights"
+                    label={insights.label}
+                    selected={pathname.startsWith("/insights")}
+                  />
+                  <ToggleButton
+                    className="s-flex-show"
+                    prefixIcon="book"
+                    href="/insights"
+                    selected={pathname.startsWith("/insights")}
+                  />
+                </>
+              )}
+              {routes["/speaking"] && (
+                <>
+                  <ToggleButton
+                    className="s-flex-hide"
+                    prefixIcon="calendar"
+                    href="/speaking"
+                    label={speaking.label}
+                    selected={pathname.startsWith("/speaking")}
+                  />
+                  <ToggleButton
+                    className="s-flex-show"
+                    prefixIcon="calendar"
+                    href="/speaking"
+                    selected={pathname.startsWith("/speaking")}
+                  />
+                </>
+              )}
+              {routes["/advisory"] && (
+                <>
+                  <ToggleButton
+                    className="s-flex-hide"
+                    prefixIcon="document"
+                    href="/advisory"
+                    label={advisory.label}
+                    selected={pathname.startsWith("/advisory")}
+                  />
+                  <ToggleButton
+                    className="s-flex-show"
+                    prefixIcon="document"
+                    href="/advisory"
+                    selected={pathname.startsWith("/advisory")}
+                  />
+                </>
+              )}
+              {routes["/connect"] && (
+                <>
+                  <ToggleButton
+                    className="s-flex-hide"
+                    prefixIcon="email"
+                    href="/connect"
+                    label={connect.label}
+                    selected={pathname.startsWith("/connect")}
+                  />
+                  <ToggleButton
+                    className="s-flex-show"
+                    prefixIcon="email"
+                    href="/connect"
+                    selected={pathname.startsWith("/connect")}
                   />
                 </>
               )}

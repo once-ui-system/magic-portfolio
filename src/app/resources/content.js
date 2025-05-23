@@ -1,16 +1,16 @@
 import { Logo } from "@/once-ui/components";
 
 const person = {
-  firstName: "Selene",
-  lastName: "Yu",
+  firstName: "Dave",
+  lastName: "Latshaw II",
   get name() {
     return `${this.firstName} ${this.lastName}`;
   },
-  role: "Design Engineer",
+  role: "Pharmaceutical AI Architect",
   avatar: "/images/avatar.jpg",
-  email: "example@gmail.com",
-  location: "Asia/Jakarta", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
-  languages: ["English", "Bahasa"], // optional: Leave the array empty if you don't want to display languages
+  email: "hello@davelatshaw.com",
+  location: "America/New_York", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
+  languages: ["English"], // optional: Leave the array empty if you don't want to display languages
 };
 
 const newsletter = {
@@ -18,8 +18,7 @@ const newsletter = {
   title: <>Subscribe to {person.firstName}'s Newsletter</>,
   description: (
     <>
-      I occasionally write about design, technology, and share thoughts on the intersection of
-      creativity and engineering.
+      I write about the future of pharmaceutical AI, lessons from building complex systems, and notes on resilient leadership.
     </>
   ),
 };
@@ -28,19 +27,14 @@ const social = [
   // Links are automatically displayed.
   // Import new icons in /once-ui/icons.ts
   {
-    name: "GitHub",
-    icon: "github",
-    link: "https://github.com/once-ui-system/nextjs-starter",
-  },
-  {
     name: "LinkedIn",
     icon: "linkedin",
-    link: "https://www.linkedin.com/company/once-ui/",
+    link: "https://www.linkedin.com/in/davelatshaw/",
   },
   {
     name: "X",
     icon: "x",
-    link: "",
+    link: "https://twitter.com/DaveLatshaw",
   },
   {
     name: "Email",
@@ -55,16 +49,17 @@ const home = {
   label: "Home",
   title: `${person.name}'s Portfolio`,
   description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Building bridges between design and code</>,
+  headline: (
+    <>I believe the future of pharmaceutical innovation lies in AI systems that think across the entire drug development lifecycle, not just in narrow slices of it.</>
+  ),
   featured: {
-    display: true,
-    title: <>Recent project: <strong className="ml-4">Once UI</strong></>,
-    href: "/work/building-once-ui-a-customizable-design-system",
+    display: false,
+    title: <></>,
+    href: "",
   },
   subline: (
     <>
-      I'm Selene, a design engineer at <Logo icon={false} style={{ display: "inline-flex", top: "0.25em", marginLeft: "-0.25em" }}/>, where I craft intuitive
-      <br /> user experiences. After hours, I build my own projects.
+      After building and scaling AI solutions at Johnson & Johnson and founding BioPhy, I've seen what works, what doesn't, and what's possible when we think bigger.<br />I'm {person.name}, and I'm working to accelerate the emergence of truly intelligent pharmaceutical systems.
     </>
   ),
 };
@@ -90,9 +85,7 @@ const about = {
     title: "Introduction",
     description: (
       <>
-        Selene is a Jakarta-based design engineer with a passion for transforming complex challenges
-        into simple, elegant design solutions. Her work spans digital interfaces, interactive
-        experiences, and the convergence of design and technology.
+        Most people in pharmaceutical AI are solving yesterday's problems with tomorrow's technology. My journey from computational biophysics PhD to pharma AI leader has taught me that the industry's challenges are systemic—and systemic challenges require systemic solutions.
       </>
     ),
   },
@@ -101,42 +94,32 @@ const about = {
     title: "Work Experience",
     experiences: [
       {
-        company: "FLY",
-        timeframe: "2022 - Present",
-        role: "Senior Design Engineer",
+        company: "Johnson & Johnson",
+        timeframe: "2014 - 2018",
+        role: "Senior Scientist, Advanced Technologies Center of Excellence",
         achievements: [
-          <>
-            Redesigned the UI/UX for the FLY platform, resulting in a 20% increase in user
-            engagement and 30% faster load times.
-          </>,
-          <>
-            Spearheaded the integration of AI tools into design workflows, enabling designers to
-            iterate 50% faster.
-          </>,
+          <>Implemented AI solutions across the drug development lifecycle.</>,
+          <>Learned that individual solutions wanted to form a coherent system.</>,
         ],
-        images: [
-          // optional: leave the array empty if you don't want to display images
-          {
-            src: "/images/projects/project-01/cover-01.jpg",
-            alt: "Once UI Project",
-            width: 16,
-            height: 9,
-          },
-        ],
+        images: [],
       },
       {
-        company: "Creativ3",
-        timeframe: "2018 - 2022",
-        role: "Lead Designer",
+        company: "BioPhy",
+        timeframe: "2019 - 2023",
+        role: "Co-founder & CEO",
         achievements: [
-          <>
-            Developed a design system that unified the brand across multiple platforms, improving
-            design consistency by 40%.
-          </>,
-          <>
-            Led a cross-functional team to launch a new product line, contributing to a 15% increase
-            in overall company revenue.
-          </>,
+          <>Built a pharmaceutical intelligence platform sold to major pharma companies.</>,
+          <>Generated millions in revenue and proved system-level AI could work.</>,
+        ],
+        images: [],
+      },
+      {
+        company: "Portfolio Career",
+        timeframe: "2024 - Present",
+        role: "Advisor and Speaker",
+        achievements: [
+          <>Helping organizations implement AI-driven drug development.</>,
+          <>Speaking and writing about the future of intelligent pharmaceutical systems.</>,
         ],
         images: [],
       },
@@ -147,12 +130,12 @@ const about = {
     title: "Studies",
     institutions: [
       {
-        name: "University of Jakarta",
-        description: <>Studied software engineering.</>,
+        name: "NC State University",
+        description: <>PhD in Computational Biophysics.</>,
       },
       {
-        name: "Build the Future",
-        description: <>Studied online marketing and personal branding.</>,
+        name: "The Wharton School",
+        description: <>MBA with focus on finance and operations.</>,
       },
     ],
   },
@@ -161,46 +144,139 @@ const about = {
     title: "Technical skills",
     skills: [
       {
-        title: "Figma",
-        description: <>Able to prototype in Figma with Once UI with unnatural speed.</>,
-        // optional: leave the array empty if you don't want to display images
-        images: [
-          {
-            src: "/images/projects/project-01/cover-02.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-          {
-            src: "/images/projects/project-01/cover-03.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-        ],
+        title: "Systems Architecture for Pharmaceutical AI",
+        description: <>Designing modular knowledge graphs that connect discovery, development, clinical, and commercial functions.</>,
+        images: [],
       },
       {
-        title: "Next.js",
-        description: <>Building next gen apps with Next.js + Once UI + Supabase.</>,
-        // optional: leave the array empty if you don't want to display images
-        images: [
-          {
-            src: "/images/projects/project-01/cover-04.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-        ],
+        title: "Cross-Functional Leadership",
+        description: <>Hands-on experience leading R&D, sales, and operations in life sciences organizations.</>,
+        images: [],
+      },
+      {
+        title: "Strategic Vision",
+        description: <>Crafting AI strategies that deliver commercial value today and discovery breakthroughs tomorrow.</>,
+        images: [],
       },
     ],
   },
 };
 
+const expertise = {
+  path: "/expertise",
+  label: "Expertise",
+  title: `Expertise – ${person.name}`,
+  description: `Deep dive into ${person.name}'s pharmaceutical AI skills`,
+  competencies: [
+    {
+      title: "Systems Architecture for Pharmaceutical AI",
+      description: (
+        <>During my time at BioPhy, we treated every function as part of a larger knowledge graph to shorten sales cycles and guide AI decisions.</>
+      ),
+    },
+    {
+      title: "Cross-Functional Leadership in Life Sciences",
+      description: (
+        <>I've led R&D, sales, and operations teams, learning that organizational barriers often limit AI adoption more than technology.</>
+      ),
+    },
+    {
+      title: "Strategic Vision for AI-Driven Drug Development",
+      description: (
+        <>Commercial and clinical applications will deliver ROI first, creating the foundation for discovery breakthroughs.</>
+      ),
+    },
+  ],
+};
+
+const insights = {
+  path: "/insights",
+  label: "Insights",
+  title: "Insights and Articles",
+  description: `Thought leadership from ${person.name}`,
+};
+
+const speaking = {
+  path: "/speaking",
+  label: "Speaking",
+  title: `Speaking – ${person.name}`,
+  description: `Keynotes and presentations by ${person.name}`,
+  topics: [
+    {
+      title: "The Pharma Agent Future",
+      description:
+        <>Building AI systems that think across the drug development lifecycle.</>,
+    },
+    {
+      title: "Learning from Failure",
+      description:
+        <>What my startup's end taught me about resilience and innovation.</>,
+    },
+    {
+      title: "Cross-Functional Leadership in the Age of AI",
+      description:
+        <>Why tomorrow's leaders must be fluent across technology, business, and domain expertise.</>,
+    },
+  ],
+};
+
+const advisory = {
+  path: "/advisory",
+  label: "Advisory",
+  title: `Advisory – ${person.name}`,
+  description: `Consulting and board services from ${person.name}`,
+  offerings: [
+    {
+      title: "Strategic Advisory",
+      items: [
+        <>Evaluating and architecting AI strategies across the lifecycle.</>,
+        <>Assessing build vs. buy vs. partner decisions.</>,
+        <>Designing organizations able to adopt and scale AI.</>,
+        <>Providing technical due diligence for AI investments.</>,
+      ],
+    },
+    {
+      title: "Board Positions",
+      items: [
+        <>Platform approaches to pharmaceutical AI.</>,
+        <>Cross-functional pharmaceutical technologies.</>,
+        <>Next-generation drug development tools.</>,
+      ],
+    },
+    {
+      title: "Consulting Engagements",
+      items: [
+        <>AI platform architecture and implementation.</>,
+        <>Pharmaceutical commercial intelligence systems.</>,
+        <>Cross-functional digital transformation in life sciences.</>,
+        <>Turnaround strategies for struggling AI initiatives.</>,
+      ],
+    },
+  ],
+};
+
+const connect = {
+  path: "/connect",
+  label: "Connect",
+  title: `Connect – ${person.name}`,
+  description: "Get in touch with me",
+  text: (
+    <>
+      I'm always interested in connecting with leaders who are thinking differently about the future of drug development.<br />
+      For Speaking Inquiries: <a href="mailto:speaking@davelatshaw.com">speaking@davelatshaw.com</a><br />
+      For Advisory and Consulting: <a href="mailto:advisory@davelatshaw.com">advisory@davelatshaw.com</a><br />
+      For Everything Else: <a href={`mailto:${person.email}`}>{person.email}</a><br />
+      Based in: Philadelphia, PA<br />
+      Working: Globally
+    </>
+  ),
+};
+
 const blog = {
   path: "/blog",
   label: "Blog",
-  title: "Writing about design and tech...",
-  description: `Read what ${person.name} has been up to recently`,
+  title: "Insights on Pharmaceutical AI",
+  description: `Read the latest perspectives from ${person.name}`,
   // Create new blog posts by adding a new .mdx file to app/blog/posts
   // All posts will be listed on the /blog route
 };
@@ -209,7 +285,7 @@ const work = {
   path: "/work",
   label: "Work",
   title: `Projects – ${person.name}`,
-  description: `Design and dev projects by ${person.name}`,
+  description: `Case studies and projects led by ${person.name}`,
   // Create new project pages by adding a new .mdx file to app/blog/posts
   // All projects will be listed on the /home and /work routes
 };
@@ -265,4 +341,18 @@ const gallery = {
   ],
 };
 
-export { person, social, newsletter, home, about, blog, work, gallery };
+export {
+  person,
+  social,
+  newsletter,
+  home,
+  about,
+  expertise,
+  insights,
+  speaking,
+  advisory,
+  connect,
+  blog,
+  work,
+  gallery,
+};
