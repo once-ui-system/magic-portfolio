@@ -34,7 +34,7 @@ const social = [
   },
   {
     name: "Impressum",
-    icon: "info",
+    icon: "infoCircle",
     link: `/impressum`,
   },
 ];
