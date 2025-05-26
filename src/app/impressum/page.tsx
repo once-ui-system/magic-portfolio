@@ -18,7 +18,7 @@ export default function Impressum() {
         <Text align="center" variant="body-default-m">Orffstraße 3</Text>
         <Text align="center" variant="body-default-m">90439 Nürnberg</Text>
       </Column>
-      <Heading as="h2" variant="display-default-xxs" align="center" marginTop="l">
+      <Heading as="h2" variant="display-default-xs" align="center" marginTop="l">
         Kontakt
       </Heading>
       <Column gap="0" align="center">
