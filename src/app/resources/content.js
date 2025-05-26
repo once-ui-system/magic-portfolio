@@ -107,30 +107,23 @@ const about = {
       {
         company: "Ariel Serranoni",
         timeframe: " ",
-        role: "Web3 Developer",
+        role: "Co-founder, Applied Mathematician, and Web3 Engineer",
         achievements: [
           <>Master of Science (MSc) in Mathematical Optimization</>,
           <>Bachelor's in Applied Mathematics </>,
         ],
-        images: [
-          // optional: leave the array empty if you don't want to display images
-          // {
-          //   src: "/images/projects/project-01/cover-01.jpg",
-          //   alt: "Once UI Project",
-          //   width: 16,
-          //   height: 9,
-          // },
-        ],
+        image: "/images/og/ariel.jpg",
+
       },
       {
         company: "Francisco Miranda",
         timeframe: " ",
-        role: "Web3 Developer",
+        role: "Co-founder, Data Scientist, and Web3 Engineer",
         achievements: [
           <>MBA in Software Engineering</>,
           <>Bachelor's in Statistics and Data Science</>,
         ],
-        images: [],
+        image: "/images/og/chico.jpg",
       },
     ],
   },
