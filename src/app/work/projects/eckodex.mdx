@@ -1,0 +1,87 @@
+---
+title: "eckoDEX Algorithmic Multiplier: Dynamic Liquidity Incentives"
+publishedAt: "2024-06-01"
+summary: "A self-adjusting liquidity mining multiplier using stochastic simulations to optimize rewards while mitigating impermanent loss."
+images:
+  - "/images/projects/dex/image-3.avif"
+  - "/images/projects/dex/image-1.avif"
+  - "/images/projects/dex/image-2.avif"
+  - "/images/projects/dex/image-3.webp"
+  - "/images/projects/dex/image.avif"
+team:
+  - name: "Ariel Serranoni"
+    role: "Quantitative Developer"
+    avatar: "/images/og/ariel.jpg"
+    linkedIn: "https://www.linkedin.com/in/ariel-serranoni-1b762815a/"
+    achievements:
+      - "Stochastic process modeling"
+      - "Convex optimization frameworks"
+  - name: "Francisco Miranda"
+    role: "Data Scientist"
+    avatar: "/images/og/chico.jpg"
+    linkedIn: "https://www.linkedin.com/in/chicodias/"
+    achievements:
+      - "Brownian motion simulations"
+      - "Sigmoid activation tuning"
+link: "https://dex.ecko.finance"
+---
+## Overview
+We developed an adaptive liquidity mining multiplier for eckoDEX that dynamically adjusts rewards based on real-time market conditions. This novel mechanism uses:
+- **Stochastic modeling** of asset volatility
+- **Pool health metrics** (Volume/TVL ratio)
+- **Time-decay factors** for long-term sustainability
+
+The system automatically compensates LPs for impermanent loss while preventing reward over-emission.
+
+## Key Features
+- **Self-Adjusting Multiplier**:
+  - Sigmoid-based response curve bounded between [0.3, 0.7]
+  - Real-time adaptation to:
+    - Pool diluted volume (Volume/TVL)
+    - Price rate volatility (Δa/b)
+    - Time since launch decay factor
+
+- **Impermanent Loss Mitigation**:
+  - Compensates 83-97% of IL through optimized KDX rewards
+  - Non-linear reward curves prevent gaming
+
+- **Monte Carlo Verified**:
+  - 30,000 simulated pool scenarios
+  - Validated across KDA/BTC, KDA/ETH, KDA/kFRAX pairs
+
+## Technologies Used
+- **Python**:
+  - NumPy/Pandas for financial modeling
+  - SciPy for sigmoid optimization
+  - Stochastic process simulations
+
+- **Pact**:
+  - On-chain multiplier logic
+  - Verifiable reward calculations
+
+- **TypeScript**:
+  - Frontend visualization of multiplier effects
+  - Real-time LP dashboard
+
+- **C#**:
+  - Backend analytics pipeline
+  - Market data processing
+
+## Challenges and Learnings
+1. **Volatility Modeling**:
+   - Discovered price rate volatility (a/b) more predictive than individual asset volatility
+   - Developed novel β-adjustment mechanism for sigmoid response
+
+2. **Simulation Complexity**:
+   - Modified Brownian motion to account for:
+     - Cross-asset correlations
+     - Liquidity depth effects
+     - Arbitrageur behavior patterns
+
+3. **Boundary Conditions**:
+   - Implemented convex combinations to enforce:
+     - Minimum reward floor (0.3x)
+     - Maximum reward ceiling (0.7x)
+   - Prevented reward cannibalization during high volatility
+
+This project demonstrates how advanced stochastic modeling can create sustainable DeFi incentive mechanisms.
