@@ -1,5 +1,6 @@
 import { Column, Heading, Text } from "@/once-ui/components";
 
+
 export default function Impressum() {
   return (
     <Column
@@ -22,8 +23,6 @@ export default function Impressum() {
         Kontakt
       </Heading>
       <Column gap="0" align="center">
-        <Text align="center" variant="body-default-m">Telefon: +49 (0) 176 456 088 09</Text>
-        <Text align="center" variant="body-default-m">Telefax: +49 (0) 911 968 47 XXX</Text>
         <Text align="center" variant="body-default-m">E-Mail: kontakt@marcelkuhn.dev</Text>
       </Column>
     </Column>
