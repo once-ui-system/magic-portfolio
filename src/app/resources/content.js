@@ -1,16 +1,16 @@
 import { Logo } from "@/once-ui/components";
 
 const person = {
-  firstName: "Lara",
-  lastName: "Kirkute",
+  firstName: "Jane",
+  lastName: "Doe",
   get name() {
     return `${this.firstName} ${this.lastName}`;
   },
-  role: "Sozialpädagogin",
+  role: "Professional",
   avatar: "/images/avatar.jpg",
-  email: "kontakt@kirkute.de",
-  location: "Europe/Berlin", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
-  languages: ["English", "German"], // optional: Leave the array empty if you don't want to display languages
+  email: "contact@example.com",
+  location: "Europe/Berlin",
+  languages: ["English", "German"],
 };
 
 const newsletter = {
@@ -18,15 +18,12 @@ const newsletter = {
   title: <>Subscribe to {person.firstName}'s Newsletter</>,
   description: (
     <>
-      I occasionally write about design, technology, and share thoughts on the intersection of
-      creativity and engineering.
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.
     </>
   ),
 };
 
 const social = [
-  // Links are automatically displayed.
-  // Import new icons in /once-ui/icons.ts
   {
     name: "E-Mail",
     icon: "email",
@@ -45,16 +42,16 @@ const home = {
   label: "Home",
   title: `Home - ${person.lastName}.de`,
   description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Soziale catchy headline</>,
+  headline: <>Lorem ipsum dolor sit amet</>,
   featured: {
     display: false,
-    title: <>Recent project: <strong className="ml-4">Once UI</strong></>,
-    href: "/work/building-once-ui-a-customizable-design-system",
+    title: <>Recent project: <strong className="ml-4">Project Name</strong></>,
+    href: "/work/project-example",
   },
   subline: (
     <>
-      Ich bin {person.firstName}, Sozialpädagogin mit Herz und Engagement. 
-      <br /> Mein Ziel ist es, Menschen in schwierigen Lebenslagen zu begleiten und gemeinsam Lösungen zu finden.
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+      <br /> Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
     </>
   ),
 };
@@ -77,35 +74,34 @@ const about = {
   },
   intro: {
     display: true,
-    title: "Einführung",
+    title: "Introduction",
     description: (
     <>
-      Lara ist Sozialpädagogin aus Nürnberg mit Leidenschaft für die Unterstützung von Menschen in herausfordernden Lebenssituationen.
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
       <br />
-      Ihr Schwerpunkt liegt auf individueller Beratung, sozialer Begleitung und der Entwicklung nachhaltiger Lösungswege.
+      Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
       <br />
-      Sie engagiert sich sowohl beruflich als auch ehrenamtlich für soziale Gerechtigkeit und Chancengleichheit.
+      Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
     </>
   ),
   },
   work: {
-    display: true, // set to false to hide this section
-    title: "Berufserfahrung",
+    display: true,
+    title: "Work Experience",
     experiences: [
       {
-        company: "Marburg Klinik",
-        timeframe: "2019 - 2020",
-        role: "Freiwilliges Soziales Jahr",
+        company: "Lorem Ipsum",
+        timeframe: "2020 - 2023",
+        role: "Lorem Specialist",
         achievements: [
           <>
-            Viel gelernt
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit
           </>,
         ],
         images: [
-          // optional: leave the array empty if you don't want to display images
           {
             src: "/images/projects/project-01/cover-05.jpg",
-            alt: "Marburg Klinik",
+            alt: "Lorem Ipsum",
             width: 16,
             height: 9,
           },
@@ -114,27 +110,22 @@ const about = {
     ],
   },
   studies: {
-    display: true, // set to false to hide this section
-    title: "Studium",
+    display: true,
+    title: "Education",
     institutions: [
       {
-        name: "Soziale Arbeit (B.A.)",
-        description: <>Technische Hochschule Nürnberg Georg Simon Ohm<br></br>(20xx - 20xx)</>,
+        name: "Lorem University",
+        description: <>Ipsum Department<br></br>(2015-2019)</>,
       },
     ],
   },
   technical: {
-    display: true, // set to false to hide this section
-    title: "Ausbildungen & Seminare",
+    display: true,
+    title: "Certifications",
     skills: [
       {
-        title: "Basisseminar PSNV (Psychische Erste Hilfe)",
-        description: <>Malteser<br></br>(20xx)</>,
-        images: [],
-      },
-      {
-        title: "Aufbauseminar Krisenintervention (Psychosoziale Akuthilfe)",
-        description: <>Malteser<br></br>(20xx)</>,
+        title: "Lorem Certification",
+        description: <>Dolor Institute<br></br>(2022)</>,
         images: [],
       },
     ],
@@ -144,19 +135,15 @@ const about = {
 const blog = {
   path: "/blog",
   label: "Blog",
-  title: "Writing about design and tech...",
+  title: "Lorem ipsum dolor sit amet...",
   description: `Read what ${person.name} has been up to recently`,
-  // Create new blog posts by adding a new .mdx file to app/blog/posts
-  // All posts will be listed on the /blog route
 };
 
 const work = {
   path: "/work",
   label: "Work",
   title: `Projects – ${person.name}`,
-  description: `Design and dev projects by ${person.name}`,
-  // Create new project pages by adding a new .mdx file to app/blog/posts
-  // All projects will be listed on the /home and /work routes
+  description: `Projects by ${person.name}`,
 };
 
 const gallery = {
@@ -164,8 +151,6 @@ const gallery = {
   label: "Gallery",
   title: `Photo gallery – ${person.name}`,
   description: `A photo collection by ${person.name}`,
-  // Images by https://lorant.one
-  // These are placeholder images, replace with your own
   images: [
     {
       src: "/images/gallery/horizontal-1.jpg",
