@@ -1,6 +1,11 @@
 import { Logo } from "@/once-ui/components";
 
 const person = {
+
+
+
+
+
   firstName: "Marcel",
   lastName: "Kuhn",
   get name() {
@@ -11,6 +16,9 @@ const person = {
   email: "kontakt@marcelkuhn.dev",
   location: "Europe/Berlin", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
   languages: ["English", "German", "Czech"], // optional: Leave the array empty if you don't want to display languages
+  street: "Orffstr. 3",
+  city: "Nuremberg", 
+  zip: "90439"
 };
 
 const newsletter = {
@@ -18,15 +26,12 @@ const newsletter = {
   title: <>Subscribe to {person.firstName}'s Newsletter</>,
   description: (
     <>
-      I occasionally write about design, technology, and share thoughts on the intersection of
-      creativity and engineering.
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.
     </>
   ),
 };
 
 const social = [
-  // Links are automatically displayed.
-  // Import new icons in /once-ui/icons.ts
   {
     name: "E-Mail",
     icon: "email",
@@ -45,16 +50,23 @@ const home = {
   label: "Home",
   title: `Home - ${person.name}`,
   description: `Portfolio website showcasing my work as a ${person.role}`,
+
+
   headline: <>Catchy headline</>,
+
   featured: {
     display: false,
-    title: <>Recent project: <strong className="ml-4">Once UI</strong></>,
-    href: "/work/building-once-ui-a-customizable-design-system",
+    title: <>Recent project: <strong className="ml-4">Project Name</strong></>,
+    href: "/work/project-example",
   },
   subline: (
     <>
+
+
+
       Ich bin {person.firstName}, Junior Developer mit Leidenschaft für effiziente Lösungen. 
       <br /> Mein Ziel ist es, benutzerfreundliche Anwendungen zu entwickeln und kontinuierlich meine Fähigkeiten zu erweitern.
+
     </>
   ),
 };
@@ -77,22 +89,31 @@ const about = {
   },
   intro: {
     display: true,
-    title: "Einführung",
+    title: "Introduction",
     description: (
     <>
+
+
+
+
+
+
+
         {person.firstName} ist Junior Developer aus Berlin mit einer Leidenschaft für effiziente und benutzerfreundliche Softwarelösungen.
         <br />
         Sein Schwerpunkt liegt auf moderner Webentwicklung, kontinuierlichem Lernen und der Umsetzung innovativer Projekte.
         <br />
         Er engagiert sich für sauberen Code, Teamarbeit und die stetige Weiterentwicklung seiner Fähigkeiten.
       </>
+
   ),
   },
   work: {
-    display: true, // set to false to hide this section
-    title: "Berufserfahrung",
+    display: true,
+    title: "Work Experience",
     experiences: [
       {
+
         company: "Eviden Germany GmbH",
         timeframe: "2023 - current",
         role: "Fachinformatiker Anwendungsentwicklung",
@@ -100,11 +121,13 @@ const about = {
         ],
         images: [
           // optional: leave the array empty if you don't want to display images
+
         ],
       },
     ],
   },
   studies: {
+
     display: true, // set to false to hide this section
     title: "Studium & Ausbildung",
     institutions: [
@@ -119,16 +142,19 @@ const about = {
       {
         name: "Fachberater für Softwaretechniken",
         description: <>Interne Ausbildung Siemens Energy<br></br>(2022 - 2025)</>,
+
       },
     ],
   },
   technical: {
+
     display: true, // set to false to hide this section
     title: "Fortbildungen & Zertifikate",
     skills: [
       {
         title: "Business English (C1)",
         description: <>Cambridge<br></br>(2023)</>,
+
         images: [],
       },
     ],
@@ -138,19 +164,15 @@ const about = {
 const blog = {
   path: "/blog",
   label: "Blog",
-  title: "Writing about design and tech...",
+  title: "Lorem ipsum dolor sit amet...",
   description: `Read what ${person.name} has been up to recently`,
-  // Create new blog posts by adding a new .mdx file to app/blog/posts
-  // All posts will be listed on the /blog route
 };
 
 const work = {
   path: "/work",
   label: "Work",
   title: `Projects – ${person.name}`,
-  description: `Design and dev projects by ${person.name}`,
-  // Create new project pages by adding a new .mdx file to app/blog/posts
-  // All projects will be listed on the /home and /work routes
+  description: `Projects by ${person.name}`,
 };
 
 const gallery = {
@@ -158,8 +180,6 @@ const gallery = {
   label: "Gallery",
   title: `Photo gallery – ${person.name}`,
   description: `A photo collection by ${person.name}`,
-  // Images by https://lorant.one
-  // These are placeholder images, replace with your own
   images: [
     {
       src: "/images/gallery/horizontal-1.jpg",

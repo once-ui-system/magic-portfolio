@@ -1,4 +1,5 @@
 import { Column, Heading, Text } from "@/once-ui/components";
+import { person } from "../resources";
 
 
 export default function Impressum() {
@@ -15,15 +16,16 @@ export default function Impressum() {
         Impressum
       </Heading>
       <Column gap="0" align="center">
-        <Text align="center" variant="body-default-m">Marcel Kuhn</Text>
-        <Text align="center" variant="body-default-m">Orffstraße 3</Text>
-        <Text align="center" variant="body-default-m">90439 Nürnberg</Text>
+        <Text align="center" variant="body-default-m">{person.name}</Text>
+        <Text align="center" variant="body-default-m">{person.street}</Text>
+        <Text align="center" variant="body-default-m">{person.zip} {person.city}</Text>
       </Column>
       <Heading as="h2" variant="display-default-xs" align="center" marginTop="l">
         Kontakt
       </Heading>
       <Column gap="0" align="center">
-        <Text align="center" variant="body-default-m">E-Mail: kontakt@marcelkuhn.dev</Text>
+
+        <Text align="center" variant="body-default-m">{person.email}</Text>
       </Column>
     </Column>
   );
