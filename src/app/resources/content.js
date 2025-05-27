@@ -1,23 +1,28 @@
 import { Logo } from "@/once-ui/components";
 
 const person = {
-  firstName: "Jane",
-  lastName: "Doe",
+
+
+
+
+
+  firstName: "Marcel",
+  lastName: "Kuhn",
   get name() {
     return `${this.firstName} ${this.lastName}`;
   },
-  role: "Professional",
+  role: "Junior Developer",
   avatar: "/images/avatar.jpg",
-  email: "contact@example.com",
-  location: "Europe/Berlin",
-  languages: ["English", "German"],
-  street: "123 Main St",
-  city: "Berlin",
-  zip: "10115",
+  email: "kontakt@marcelkuhn.dev",
+  location: "Europe/Berlin", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
+  languages: ["English", "German", "Czech"], // optional: Leave the array empty if you don't want to display languages
+  street: "Orffstr. 3",
+  city: "Nuremberg", 
+  zip: "90439"
 };
 
 const newsletter = {
-  display: false,
+  display: true,
   title: <>Subscribe to {person.firstName}'s Newsletter</>,
   description: (
     <>
@@ -43,9 +48,12 @@ const home = {
   path: "/",
   image: "/images/og/home.jpg",
   label: "Home",
-  title: `Home - ${person.lastName}.de`,
+  title: `Home - ${person.name}`,
   description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Lorem ipsum dolor sit amet</>,
+
+
+  headline: <>Catchy headline</>,
+
   featured: {
     display: false,
     title: <>Recent project: <strong className="ml-4">Project Name</strong></>,
@@ -53,8 +61,12 @@ const home = {
   },
   subline: (
     <>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-      <br /> Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+
+
+      Ich bin {person.firstName}, Junior Developer mit Leidenschaft für effiziente Lösungen. 
+      <br /> Mein Ziel ist es, benutzerfreundliche Anwendungen zu entwickeln und kontinuierlich meine Fähigkeiten zu erweitern.
+
     </>
   ),
 };
@@ -62,14 +74,14 @@ const home = {
 const about = {
   path: "/about",
   label: "About",
-  title: `About – ${person.lastName}.de`,
+  title: `About – ${person.name}`,
   description: `Meet ${person.name}, ${person.role} from ${person.location}`,
   tableOfContent: {
     display: true,
-    subItems: false,
+    subItems: true,
   },
   avatar: {
-    display: false,
+    display: true,
   },
   calendar: {
     display: false,
@@ -80,12 +92,20 @@ const about = {
     title: "Introduction",
     description: (
     <>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-      <br />
-      Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-      <br />
-      Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-    </>
+
+
+
+
+
+
+
+        {person.firstName} ist Junior Developer aus Berlin mit einer Leidenschaft für effiziente und benutzerfreundliche Softwarelösungen.
+        <br />
+        Sein Schwerpunkt liegt auf moderner Webentwicklung, kontinuierlichem Lernen und der Umsetzung innovativer Projekte.
+        <br />
+        Er engagiert sich für sauberen Code, Teamarbeit und die stetige Weiterentwicklung seiner Fähigkeiten.
+      </>
+
   ),
   },
   work: {
@@ -93,42 +113,48 @@ const about = {
     title: "Work Experience",
     experiences: [
       {
-        company: "Lorem Ipsum",
-        timeframe: "2020 - 2023",
-        role: "Lorem Specialist",
+
+        company: "Eviden Germany GmbH",
+        timeframe: "2023 - current",
+        role: "Fachinformatiker Anwendungsentwicklung",
         achievements: [
-          <>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit
-          </>,
         ],
         images: [
-          {
-            src: "/images/projects/project-01/cover-05.jpg",
-            alt: "Lorem Ipsum",
-            width: 16,
-            height: 9,
-          },
+          // optional: leave the array empty if you don't want to display images
+
         ],
       },
     ],
   },
   studies: {
-    display: true,
-    title: "Education",
+
+    display: true, // set to false to hide this section
+    title: "Studium & Ausbildung",
     institutions: [
       {
-        name: "Lorem University",
-        description: <>Ipsum Department<br></br>(2015-2019)</>,
+        name: "Wirtschaftsinformatik (Abbruch B.Sc.)",
+        description: <>Friedrich Alexander Universität Erlangen-Nürnberg<br></br>(2020 - 2021)</>,
+      },
+      {
+        name: "Fachinformatiker Anwendungsentwicklung",
+        description: <>IHK Ostwestfalen zu Bielefeld | Paderborn + Höxter<br></br>(2022 - 2025)</>,
+      },
+      {
+        name: "Fachberater für Softwaretechniken",
+        description: <>Interne Ausbildung Siemens Energy<br></br>(2022 - 2025)</>,
+
       },
     ],
   },
   technical: {
-    display: true,
-    title: "Certifications",
+
+    display: true, // set to false to hide this section
+    title: "Fortbildungen & Zertifikate",
     skills: [
       {
-        title: "Lorem Certification",
-        description: <>Dolor Institute<br></br>(2022)</>,
+        title: "Business English (C1)",
+        description: <>Cambridge<br></br>(2023)</>,
+
         images: [],
       },
     ],

@@ -1,6 +1,7 @@
 import { Column, Heading, Text } from "@/once-ui/components";
 import { person } from "../resources";
 
+
 export default function Impressum() {
   return (
     <Column
@@ -23,6 +24,7 @@ export default function Impressum() {
         Kontakt
       </Heading>
       <Column gap="0" align="center">
+
         <Text align="center" variant="body-default-m">{person.email}</Text>
       </Column>
     </Column>

@@ -1,5 +1,7 @@
 // IMPORTANT: Replace with your own domain address - it's used for SEO in meta tags and schema
-const baseURL = "https://domain.de";
+
+const baseURL = "https://marcelkuhn.dev";
+
 
 const routes = {
   "/": true,
