@@ -1,0 +1,157 @@
+---
+title: "How to Set Up a Chainweb Node for Testnet"
+summary: "Step-by-step guide to setting up a Chainweb node on Kadena's testnet using Docker, including optional bootstrap sync for faster initialization."
+publishedAt: "2025-05-27"
+tag: "Kadena Infrastructure"
+---
+
+## Overview
+
+The official documentation is comprehensive for setting up a Chainweb node on the mainnet ([Chainweb Get Started](https://docs.kadena.io/deploy/chainweb-get-started)). However, deploying on the testnet requires additional configuration, as detailed below.
+
+---
+
+## Prerequisites
+
+You’ll need a Linux machine with:
+
+- Docker
+- rsync
+- Git
+
+> 💡 **Tested configuration:** Digital Ocean droplet with **8GB RAM**, **2 vCPUs**, and an attached volume.
+
+For full history and dApp support, use higher disk space as needed.
+
+---
+
+## 🛠 Step-by-Step Guide
+
+### 1. Create a Folder and Add `docker-compose.yaml`
+
+```bash
+mkdir testnet && cd testnet
+````
+
+Paste this content into `docker-compose.yaml`:
+
+```yaml
+services:
+  chainweb-node:
+    image: chainweb-node-custom
+    environment:
+      - CHAINWEB_NETWORK=testnet04
+    container_name: chainweb-node
+    ports:
+     - mode: host
+       protocol: tcp
+       published: 1789
+       target: 1789
+     - mode: host
+       protocol: tcp
+       published: 1848
+       target: 1848
+    restart: unless-stopped
+    volumes:
+     - ./data:/data
+
+volumes: {}
+```
+
+---
+
+### 2. Clone the Chainweb Docker Repository
+
+```bash
+git clone https://github.com/kadena-io/chainweb-node-docker
+```
+
+---
+
+### 3. (Optional) Edit Configuration
+
+To allow Pact table reads, edit `chainweb.testnet04.yaml` in the repo and add:
+
+```yaml
+allowReadsInLocal: true
+```
+
+Only needed for specific dApps.
+
+---
+
+### 4. Build Docker Image
+
+```bash
+cd chainweb-node-docker
+docker build -t chainweb-node-custom .
+cd ../testnet
+```
+
+---
+
+### 5. (Optional) Use Bootstrap Database
+
+Use `rsync` to speed up node sync:
+
+```bash
+rsync -aP --no-compress --delete --progress "rsync://eu1.testnet.chainweb.com/db/0" ./data/chainweb-db
+```
+
+> 📌 Get bootstrap nodes [here](https://github.com/kadena-io/chainweb-node/blob/40f49aa32ce9b7029d565f53dd1c46ee4c7cad68/src/P2P/BootstrapNodes.hs#L56).
+
+---
+
+### 6. Start the Node
+
+```bash
+docker compose up -d
+```
+
+---
+
+### 7. Test the Node
+
+```bash
+curl -sk https://localhost:1789/chainweb/0.0/testnet04/cut
+```
+
+Compare your height to:
+
+[https://api.testnet.chainweb.com/chainweb/0.0/testnet04/cut](https://api.testnet.chainweb.com/chainweb/0.0/testnet04/cut)
+
+If the height is close and increasing, your node is working correctly.
+
+---
+
+## 🔐 Next Steps: Proxy & Certificates
+
+For production use, set up a reverse proxy with Nginx and Certbot for:
+
+* **1789** (P2P API)
+* **1848** (Service API)
+
+See [Chainweb API reference](https://docs.kadena.io/reference/chainweb-api) for endpoint info.
+
+---
+
+## 🔄 How to Update
+
+To update:
+
+```bash
+cd chainweb-node-docker
+git pull
+docker build -t chainweb-node-custom .
+```
+
+No changes needed to `docker-compose.yaml`.
+
+Let us know if you succeed! 🛠️
+
+---
+
+## 🙏 Acknowledgments
+
+* Thanks to **@peppinho89** for the base docker config.
+* Thanks to `xiownthisp` for support in [Kadena Discord](https://discord.com/channels/502858632178958377/641021540393025651/1266827209604333739).

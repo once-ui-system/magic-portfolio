@@ -1,0 +1,162 @@
+---
+title: "How to Make Two Pact Contracts Communicate with Each Other"
+summary: "Learn how to securely enable cross-contract communication in Pact using privilege tables and guarded capabilities. A practical example using eckoDAO's staking and aggregator contracts."
+publishedAt: "2025-05-27"
+tag: "Pact Smart Contracts"
+---
+
+## Introduction
+
+This guide demonstrates how to establish secure communication between Pact contracts. We will use the staking and aggregator contracts from the eckoDEX stack as an example. The respective contract addresses are `kaddex.aggregator` and `kaddex.staking`, both deployed on chain 2.
+
+For reference:
+
+- 📄 [Aggregator Contract](https://github.com/eckoDAO-org/smart-contracts/blob/main/dao/aggregator.pact)
+- 📄 [Staking Contract](https://github.com/eckoDAO-org/smart-contracts/blob/main/staking/staking.pact)
+
+---
+
+## Context
+
+The **aggregator contract** tracks voting power, while the **staking contract** manages user staking positions. Since users gain voting power by staking KDX tokens, the staking contract must update the aggregator's internal table. However, Pact contracts cannot call external capabilities or mutate foreign tables directly.
+
+To solve this, we use **guarded privilege enforcement**.
+
+---
+
+## Aggregator Contract Design
+
+### Privilege Schema and Table
+
+```pact
+(defschema privilege
+  guards:[guard]
+  action:string)
+
+(deftable privilege-table:{privilege})
+````
+
+### Guard Evaluation Helper
+
+```pact
+(defun or-guard:bool
+    ( a:bool
+      b:guard )
+  (or a (try false (enforce-guard b)))
+)
+```
+
+### Privilege Enforcement
+
+```pact
+(defun check-privilege:bool (action:string)
+  (with-default-read privilege-table action
+    { 'guards: [] }
+    { 'guards := guards }
+    (fold (or-guard) false guards)
+  )
+)
+
+(defun enforce-privilege:bool (action:string)
+  (let ((privilege-granted (check-privilege action)))
+    (enforce privilege-granted (format "Could not obtain privilege on action {}" [action]))
+  )
+)
+```
+
+### Action Constants
+
+```pact
+(defconst ACTION_AGGREGATE_STAKE:string 'aggregate-stake)
+(defconst ACTION_AGGREGATE_UNSTAKE:string 'aggregate-unstake)
+```
+
+### Granting Privileges
+
+```pact
+(defun grant-privilege:string (g:guard action:string)
+  (with-capability (OPS)
+    (with-default-read privilege-table action
+      {'guards:[],'action:action}
+      {'guards:=guards-read, 'action:=action-read}
+      (write privilege-table action{
+        'guards:(+ guards-read [g]),
+        'action:action
+      })
+    )
+  )
+)
+```
+
+### Privileged Operations
+
+```pact
+(defun aggregate-stake:string (requesting-account:string amount:decimal)
+  (with-capability (PRIVILEGE-GUARD ACTION_AGGREGATE_STAKE)
+    (with-capability (AGGREGATE)
+      ;; update staking-aggregator-table here
+    )
+  )
+)
+
+(defun aggregate-unstake:string (requesting-account:string unstaked-amount:decimal)
+  (with-capability (PRIVILEGE-GUARD ACTION_AGGREGATE_UNSTAKE)
+    (with-capability (AGGREGATE)
+      ;; update staking-aggregator-table here
+    )
+  )
+)
+```
+
+---
+
+## Staking Contract Implementation
+
+### Internal Capability for Updates
+
+```pact
+(defcap AGGREGATOR_NOTIFY () true)
+
+(defun enforce-aggregator-update () (require-capability (AGGREGATOR_NOTIFY)))
+```
+
+### Guard Definition
+
+```pact
+(defun aggregator-guard:guard () (create-user-guard (enforce-aggregator-update)))
+```
+
+### Privilege Granting on Deployment
+
+```pact
+(kaddex.aggregator.grant-privilege (kaddex.staking.aggregator-guard) "aggregate-stake")
+(kaddex.aggregator.grant-privilege (kaddex.staking.aggregator-guard) "aggregate-unstake")
+```
+
+### Performing the Cross-Contract Call
+
+```pact
+(with-capability (AGGREGATOR_NOTIFY)
+  (kaddex.aggregator.aggregate-stake account to-add))
+
+(with-capability (AGGREGATOR_NOTIFY)
+  (kaddex.aggregator.aggregate-unstake account unstake-amount))
+```
+
+---
+
+## Summary
+
+This approach allows a secure, minimal-trust link between contracts using:
+
+* **Guards in a privilege table** on the aggregator contract
+* **Local capabilities in the staking contract** to enforce access
+* **Explicit grants during deployment**, avoiding hard-coded trust
+
+This model is also used in [Kadena Cabinet](https://github.com/kadena-community/cabinet/tree/main/pact) to link bonder and poller contracts securely.
+
+---
+
+## Acknowledgements
+
+Thanks to [@aserranoni](https://github.com/aserranoni) for design contributions and review.

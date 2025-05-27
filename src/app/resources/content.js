@@ -63,7 +63,7 @@ const home = {
         Recent project: <strong className="ml-4">Kadena Cabinet</strong>
       </>
     ),
-    href: "/work/building-once-ui-a-customizable-design-system",
+    href: "/work/cabinet",
   },
   subline: (
     <>
@@ -77,9 +77,9 @@ const about = {
   path: "/about",
   label: "About",
   title: `About – ${person.name}`,
-  description: `Meet ${person.name}, ${person.role} from ${person.location}`,
+  description: `Meet the ${person.name} crew`,
   tableOfContent: {
-    display: false,
+    display: true,
     subItems: false,
   },
   avatar: {
@@ -113,7 +113,6 @@ const about = {
           <>Bachelor's in Applied Mathematics </>,
         ],
         image: "/images/og/ariel.jpg",
-
       },
       {
         company: "Francisco Miranda",
@@ -145,84 +144,84 @@ const about = {
     display: true, // set to false to hide this section
     title: "Our Stack",
     skills: [
-  {
-    title: "Pact",
-    link: "https://kadena.io/pact",
-    img: "/images/logos/pact.png",
+      {
+        title: "Pact",
+        link: "https://kadena.io/pact",
+        img: "/images/logos/pact.png",
+      },
+      {
+        title: "Solidity",
+        link: "https://soliditylang.org/",
+        img: "/images/logos/solidity.png",
+      },
+      {
+        title: "TypeScript",
+        link: "https://www.typescriptlang.org/",
+        img: "/images/logos/typescript.png",
+      },
+      {
+        title: "Next.js",
+        link: "https://nextjs.org/",
+        img: "/images/logos/nextjs.png",
+      },
+      {
+        title: "Vercel",
+        link: "https://vercel.com/",
+        img: "/images/logos/vercel.png",
+      },
+      {
+        title: "C#",
+        link: "https://learn.microsoft.com/en-us/dotnet/csharp/",
+        img: "/images/logos/csharp.png",
+      },
+      {
+        title: "PostgreSQL",
+        link: "https://www.postgresql.org/",
+        img: "/images/logos/postgresql.png",
+      },
+      {
+        title: "MongoDB",
+        link: "https://www.mongodb.com/",
+        img: "/images/logos/mongodb.png",
+      },
+      {
+        title: "Python",
+        link: "https://python.org",
+        img: "/images/logos/python.png",
+      },
+      {
+        title: "R",
+        link: "https://www.r-project.org/",
+        img: "/images/logos/r.png",
+      },
+      {
+        title: "Linux",
+        link: "https://www.kernel.org/",
+        img: "/images/logos/linux.png",
+      },
+      {
+        title: "Docker",
+        link: "https://www.docker.com/",
+        img: "/images/logos/docker.png",
+      },
+      {
+        title: "DevOps",
+        link: "https://www.atlassian.com/devops",
+        img: "/images/logos/devops.png",
+      },
+      {
+        title: "Git",
+        link: "https://git-scm.com/",
+        img: "/images/logos/git.png",
+      },
+    ],
   },
-  {
-    title: "Solidity",
-    link: "https://soliditylang.org/",
-    img: "/images/logos/solidity.png",
-  },
-  {
-    title: "TypeScript",
-    link: "https://www.typescriptlang.org/",
-    img: "/images/logos/typescript.png",
-  },
-  {
-    title: "Next.js",
-    link: "https://nextjs.org/",
-    img: "/images/logos/nextjs.png",
-  },
-  {
-    title: "Vercel",
-    link: "https://vercel.com/",
-    img: "/images/logos/vercel.png",
-  },
-  {
-    title: "C#",
-    link: "https://learn.microsoft.com/en-us/dotnet/csharp/",
-    img: "/images/logos/csharp.png",
-  },
-  {
-    title: "PostgreSQL",
-    link: "https://www.postgresql.org/",
-    img: "/images/logos/postgresql.png",
-  },
-  {
-    title: "MongoDB",
-    link: "https://www.mongodb.com/",
-    img: "/images/logos/mongodb.png",
-  },
-  {
-    title: "Python",
-    link: "https://python.org",
-    img: "/images/logos/python.png",
-  },
-  {
-    title: "R",
-    link: "https://www.r-project.org/",
-    img: "/images/logos/r.png",
-  },
-  {
-    title: "Linux",
-    link: "https://www.kernel.org/",
-    img: "/images/logos/linux.png",
-  },
-  {
-    title: "Docker",
-    link: "https://www.docker.com/",
-    img: "/images/logos/docker.png",
-  },
-  {
-    title: "DevOps",
-    link: "https://www.atlassian.com/devops",
-    img: "/images/logos/devops.png",
-  },
-  {
-    title: "Git",
-    link: "https://git-scm.com/",
-    img: "/images/logos/git.png",
-  },
-]
-},
 };
 
 const blog = {
   path: "/blog",
   label: "Blog",
-  title: "Writing about design and tech...",
+  title: "Writing about blockchain tech...",
   description: `Read what ${person.name} has been up to recently`,
   // Create new blog posts by adding a new .mdx file to app/blog/posts
   // All posts will be listed on the /blog route
@@ -232,7 +231,7 @@ const work = {
   path: "/work",
   label: "Work",
   title: `Projects – ${person.name}`,
-  description: `Design and dev projects by ${person.name}`,
+  description: `Web3 projects by ${person.name}`,
   // Create new project pages by adding a new .mdx file to app/blog/posts
   // All projects will be listed on the /home and /work routes
 };
@@ -246,44 +245,9 @@ const gallery = {
   // These are placeholder images, replace with your own
   images: [
     {
-      src: "/images/gallery/horizontal-1.jpg",
+      src: "/images/hero.png",
       alt: "image",
       orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/horizontal-2.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/horizontal-3.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/horizontal-4.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/vertical-1.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
-    {
-      src: "/images/gallery/vertical-2.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
-    {
-      src: "/images/gallery/vertical-3.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
-    {
-      src: "/images/gallery/vertical-4.jpg",
-      alt: "image",
-      orientation: "vertical",
     },
   ],
 };
