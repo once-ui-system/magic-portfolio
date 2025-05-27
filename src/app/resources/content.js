@@ -11,6 +11,9 @@ const person = {
   email: "contact@example.com",
   location: "Europe/Berlin",
   languages: ["English", "German"],
+  street: "123 Main St",
+  city: "Berlin",
+  zip: "10115",
 };
 
 const newsletter = {
