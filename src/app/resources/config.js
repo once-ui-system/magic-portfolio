@@ -1,12 +1,12 @@
 // IMPORTANT: Replace with your own domain address - it's used for SEO in meta tags and schema
-const baseURL = "https://kirkute.de";
+const baseURL = "https://marcelkuhn.dev";
 
 const routes = {
   "/": true,
   "/about": true,
-  "/work": false,
-  "/blog": false,
-  "/gallery": false,
+  "/work": true,
+  "/blog": true,
+  "/gallery": true,
   "/impressum": true,
 };
 
@@ -93,8 +93,8 @@ const effects = {
 };
 
 const display = {
-  location: false,
-  time: false,
+  location: true,
+  time: true,
   themeSwitcher: true
 };
 

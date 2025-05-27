@@ -1,20 +1,20 @@
 import { Logo } from "@/once-ui/components";
 
 const person = {
-  firstName: "Lara",
-  lastName: "Kirkute",
+  firstName: "Marcel",
+  lastName: "Kuhn",
   get name() {
     return `${this.firstName} ${this.lastName}`;
   },
-  role: "Sozialpädagogin",
+  role: "Junior Developer",
   avatar: "/images/avatar.jpg",
-  email: "kontakt@kirkute.de",
+  email: "kontakt@marcelkuhn.dev",
   location: "Europe/Berlin", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
-  languages: ["English", "German"], // optional: Leave the array empty if you don't want to display languages
+  languages: ["English", "German", "Czech"], // optional: Leave the array empty if you don't want to display languages
 };
 
 const newsletter = {
-  display: false,
+  display: true,
   title: <>Subscribe to {person.firstName}'s Newsletter</>,
   description: (
     <>
@@ -43,9 +43,9 @@ const home = {
   path: "/",
   image: "/images/og/home.jpg",
   label: "Home",
-  title: `Home - ${person.lastName}.de`,
+  title: `Home - ${person.name}`,
   description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Soziale catchy headline</>,
+  headline: <>Catchy headline</>,
   featured: {
     display: false,
     title: <>Recent project: <strong className="ml-4">Once UI</strong></>,
@@ -53,8 +53,8 @@ const home = {
   },
   subline: (
     <>
-      Ich bin {person.firstName}, Sozialpädagogin mit Herz und Engagement. 
-      <br /> Mein Ziel ist es, Menschen in schwierigen Lebenslagen zu begleiten und gemeinsam Lösungen zu finden.
+      Ich bin {person.firstName}, Junior Developer mit Leidenschaft für effiziente Lösungen. 
+      <br /> Mein Ziel ist es, benutzerfreundliche Anwendungen zu entwickeln und kontinuierlich meine Fähigkeiten zu erweitern.
     </>
   ),
 };
@@ -62,14 +62,14 @@ const home = {
 const about = {
   path: "/about",
   label: "About",
-  title: `About – ${person.lastName}.de`,
+  title: `About – ${person.name}`,
   description: `Meet ${person.name}, ${person.role} from ${person.location}`,
   tableOfContent: {
     display: true,
-    subItems: false,
+    subItems: true,
   },
   avatar: {
-    display: false,
+    display: true,
   },
   calendar: {
     display: false,
@@ -80,12 +80,12 @@ const about = {
     title: "Einführung",
     description: (
     <>
-      Lara ist Sozialpädagogin aus Nürnberg mit Leidenschaft für die Unterstützung von Menschen in herausfordernden Lebenssituationen.
-      <br />
-      Ihr Schwerpunkt liegt auf individueller Beratung, sozialer Begleitung und der Entwicklung nachhaltiger Lösungswege.
-      <br />
-      Sie engagiert sich sowohl beruflich als auch ehrenamtlich für soziale Gerechtigkeit und Chancengleichheit.
-    </>
+        {person.firstName} ist Junior Developer aus Berlin mit einer Leidenschaft für effiziente und benutzerfreundliche Softwarelösungen.
+        <br />
+        Sein Schwerpunkt liegt auf moderner Webentwicklung, kontinuierlichem Lernen und der Umsetzung innovativer Projekte.
+        <br />
+        Er engagiert sich für sauberen Code, Teamarbeit und die stetige Weiterentwicklung seiner Fähigkeiten.
+      </>
   ),
   },
   work: {
@@ -93,48 +93,42 @@ const about = {
     title: "Berufserfahrung",
     experiences: [
       {
-        company: "Marburg Klinik",
-        timeframe: "2019 - 2020",
-        role: "Freiwilliges Soziales Jahr",
+        company: "Eviden Germany GmbH",
+        timeframe: "2023 - current",
+        role: "Fachinformatiker Anwendungsentwicklung",
         achievements: [
-          <>
-            Viel gelernt
-          </>,
         ],
         images: [
           // optional: leave the array empty if you don't want to display images
-          {
-            src: "/images/projects/project-01/cover-05.jpg",
-            alt: "Marburg Klinik",
-            width: 16,
-            height: 9,
-          },
         ],
       },
     ],
   },
   studies: {
     display: true, // set to false to hide this section
-    title: "Studium",
+    title: "Studium & Ausbildung",
     institutions: [
       {
-        name: "Soziale Arbeit (B.A.)",
-        description: <>Technische Hochschule Nürnberg Georg Simon Ohm<br></br>(20xx - 20xx)</>,
+        name: "Wirtschaftsinformatik (Abbruch B.Sc.)",
+        description: <>Friedrich Alexander Universität Erlangen-Nürnberg<br></br>(2020 - 2021)</>,
+      },
+      {
+        name: "Fachinformatiker Anwendungsentwicklung",
+        description: <>IHK Ostwestfalen zu Bielefeld | Paderborn + Höxter<br></br>(2022 - 2025)</>,
+      },
+      {
+        name: "Fachberater für Softwaretechniken",
+        description: <>Interne Ausbildung Siemens Energy<br></br>(2022 - 2025)</>,
       },
     ],
   },
   technical: {
     display: true, // set to false to hide this section
-    title: "Ausbildungen & Seminare",
+    title: "Fortbildungen & Zertifikate",
     skills: [
       {
-        title: "Basisseminar PSNV (Psychische Erste Hilfe)",
-        description: <>Malteser<br></br>(20xx)</>,
-        images: [],
-      },
-      {
-        title: "Aufbauseminar Krisenintervention (Psychosoziale Akuthilfe)",
-        description: <>Malteser<br></br>(20xx)</>,
+        title: "Business English (C1)",
+        description: <>Cambridge<br></br>(2023)</>,
         images: [],
       },
     ],
