@@ -1,7 +1,7 @@
 ---
 title: "GastrOS"
 publishedAt: "2025-05-20"
-summary: "GastrOS ist ein umfassendes Managementsystem für Restaurants, das entwickelt wurde, um betriebliche Abläufe von der Zeiterfassung der Mitarbeiter über die Benutzer- und Rollenverwaltung bis hin zu einem geplanten Reservierungssystem mit Tischplan zu digitalisieren und zu optimieren."
+summary: "GastrOS is a comprehensive management system for restaurants, designed to digitize and optimize operational processes from employee time tracking and user/role management to a planned reservation system with a table layout."
 images:
   - "/images/projects/GastrOS.jpg"
 team:
@@ -10,50 +10,50 @@ team:
     avatar: "/images/avatar.jpg"
 ---
 
-## Überblick
+## Overview
 
-Das Projekt "GastrOS" zielt darauf ab, eine moderne, webbasierte Softwarelösung für das Management von Restaurantbetrieben zu schaffen. Der Fokus liegt auf der Digitalisierung und Automatisierung von Kernprozessen, um die Effizienz zu steigern und die Verwaltung für Restaurantbetreiber und Personal zu vereinfachen. Von der präzisen Zeiterfassung der Mitarbeiter über eine flexible Benutzer- und Rollenverwaltung bis hin zur Verwaltung von Trinkgeldern und einem geplanten, interaktiven Reservierungssystem mit grafischem Tischplan soll GastrOS eine All-in-One-Lösung bieten.
+The "GastrOS" project aims to create a modern, web-based software solution for managing restaurant operations. The focus is on digitizing and automating core processes to increase efficiency and simplify administration for restaurant operators and staff. From precise employee time tracking and flexible user/role management to tip administration and a planned interactive reservation system with a graphical table layout, GastrOS is intended to be an all-in-one solution.
 
-## Hauptmerkmale
+## Key Features
 
-* **Modulare Architektur**: Klare Trennung der Funktionalitäten in Module wie Benutzerauthentifizierung, Mitarbeiter-Dashboard, Admin-Dashboard mit erweiterten Verwaltungsfunktionen und ein geplantes Reservierungsmodul.
-* **Benutzerauthentifizierung & Autorisierung**: Sicheres Login-System mit passwortgeschützten Konten, "Passwort vergessen"-Funktion und rollenbasierten Zugriffsberechtigungen (Mitarbeiter, Administrator).
-* **Mitarbeiter-Zeiterfassung**: Ermöglicht Mitarbeitern die manuelle Erfassung ihrer Arbeitszeiten (Datum, Start, Ende) unter Angabe ihrer zugewiesenen Rolle und optionaler direkter Trinkgelder.
-* **Umfassendes Admin-Dashboard**:
-    * **Benutzerverwaltung**: Anlegen, Anzeigen und Löschen von Benutzern; Zuweisen von spezifischen Rollen zu Benutzern.
-    * **Rollenverwaltung**: Definieren und Verwalten von Rollentypen (z.B. Kellner, Koch) inklusive Stundenlohn und Berechtigung für direkte Trinkgelder.
-    * **Trinkgeldmanagement**: Erfassung von passivem Trinkgeld pro Mitarbeiter (z.B. für Thekenkräfte) mit Notizfunktion für Korrekturen. Anzeige einer Gesamt-Trinkgeldübersicht (direkt + passiv) pro Mitarbeiter.
-    * **Einsicht in alle Arbeitsstunden**: Zentrale Übersicht über die erfassten Zeiten aller Mitarbeiter.
-* **Profilverwaltung**: Benutzer können ihre E-Mail-Adresse (mit Bestätigungsprozess) und ihr Passwort ändern.
-* **(Geplant) Tisch- und Reservierungsmanagement**:
-    * **Tischverwaltung**: Erstellen, Bearbeiten und Löschen von Tischen mit Eigenschaften wie Name, Kapazität. (Grafischer Tischplan mit Drag & Drop für Positionierung ist geplant).
-    * **Reservierungsverwaltung**: Anlegen und Verwalten von Reservierungen mit Gastinformationen, Personenzahl, Datum/Uhrzeit und Status. (Drag & Drop Zuweisung zu Tischen im grafischen Plan ist geplant).
-* **Responsive Benutzeroberfläche**: Entwickelt mit Tailwind CSS für eine anpassungsfähige Darstellung auf verschiedenen Geräten.
+* **Modular Architecture**: Clear separation of functionalities into modules such as user authentication, employee dashboard, admin dashboard with extended management functions, and a planned reservation module.
+* **User Authentication & Authorization**: Secure login system with password-protected accounts, "forgot password" functionality, and role-based access permissions (employee, administrator).
+* **Employee Time Tracking**: Allows employees to manually record their working hours (date, start, end), specifying their assigned role and optional direct tips.
+* **Comprehensive Admin Dashboard**:
+    * **User Management**: Create, view, and delete users; assign specific roles to users.
+    * **Role Management**: Define and manage role types (e.g., waiter, chef) including hourly wage and eligibility for direct tips.
+    * **Tip Management**: Record passive tips per employee (e.g., for counter staff) with a notes function for corrections. Display of a total tip overview (direct + passive) per employee.
+    * **Access to All Work Hours**: Central overview of all recorded employee times.
+* **Profile Management**: Users can change their email address (with a confirmation process) and password.
+* **(Planned) Table and Reservation Management**:
+    * **Table Management**: Create, edit, and delete tables with properties like name, capacity. (Graphical table layout with drag & drop for positioning is planned).
+    * **Reservation Management**: Create and manage reservations with guest information, party size, date/time, and status. (Drag & drop assignment to tables in the graphical layout is planned).
+* **Responsive User Interface**: Developed with Tailwind CSS for an adaptable display on various devices.
 
-## Verwendete Technologien
+## Technologies Used
 
 * **Frontend**: Angular (Standalone Components, Reactive Forms, Signals), TypeScript, HTML5, CSS3
 * **Styling**: Tailwind CSS
-* **Backend-as-a-Service (BaaS)**: PocketBase (für Datenbank, Authentifizierung, API-Regeln und Dateispeicherung)
-* **Entwicklungsumgebung & Deployment (Konzeptionell)**: Docker, Docker Compose für eine containerisierte Ausführung des PocketBase-Backends.
+* **Backend-as-a-Service (BaaS)**: PocketBase (for database, authentication, API rules, and file storage)
+* **Development Environment & Deployment (Conceptual)**: Docker, Docker Compose for a containerized execution of the PocketBase backend.
 
-## Herausforderungen und Erkenntnisse
+## Challenges and Learnings
 
-* **Komplexität eines Full-Stack-Projekts**: Die Koordination von Frontend-Logik, Backend-Schema-Design, API-Regeln und Benutzerauthentifizierung stellt eine signifikante Herausforderung dar, bietet aber auch eine umfassende Lernerfahrung.
-* **Zustandsverwaltung in Angular**: Effektive Nutzung von Angular Signals und Services, um einen konsistenten Anwendungszustand über verschiedene Komponenten hinweg zu gewährleisten.
-* **Backend-Design mit PocketBase**: Entwurf eines flexiblen und sicheren Datenbankschemas sowie die Formulierung präziser API-Zugriffsregeln für die verschiedenen Benutzerrollen und Datenoperationen.
-* **Implementierung eines vielschichtigen Admin-Dashboards**: Die Entwicklung der zahlreichen Verwaltungsfunktionen (Benutzer, Rollen, Trinkgelder, geplante Reservierungen) erfordert sorgfältige Planung und Umsetzung der Benutzeroberfläche und der dahinterliegenden Logik.
-* **(Zukünftige Herausforderung) Grafischer Tischplan**: Die Realisierung eines interaktiven Tischplans mit Drag-and-Drop-Funktionen für Tischpositionierung und Reservierungszuweisung wird eine vertiefte Auseinandersetzung mit spezialisierten UI-Bibliotheken und komplexer Event-Handhabung erfordern.
-* **Performance-Optimierung**: Insbesondere bei der Aggregation von Daten (z.B. Gesamt-Trinkgeld pro Mitarbeiter) müssen N+1-Abfrageprobleme berücksichtigt und optimierte Lösungen gefunden werden.
+* **Complexity of a Full-Stack Project**: Coordinating frontend logic, backend schema design, API rules, and user authentication presents a significant challenge but also offers a comprehensive learning experience.
+* **State Management in Angular**: Effective use of Angular Signals and Services to ensure a consistent application state across various components.
+* **Backend Design with PocketBase**: Designing a flexible and secure database schema, as well as formulating precise API access rules for different user roles and data operations.
+* **Implementation of a Multi-faceted Admin Dashboard**: Developing numerous management functions (users, roles, tips, planned reservations) requires careful planning and implementation of the user interface and underlying logic.
+* **(Future Challenge) Graphical Table Layout**: Realizing an interactive table layout with drag-and-drop functionality for table positioning and reservation assignment will require in-depth engagement with specialized UI libraries and complex event handling.
+* **Performance Optimization**: Especially when aggregating data (e.g., total tips per employee), N+1 query problems must be considered, and optimized solutions found.
 
-## Ergebnis
+## Outcome
 
-* **Funktionale Basis**: GastrOS bietet bereits eine solide Grundlage für die Digitalisierung wesentlicher Restaurantprozesse, insbesondere in der Mitarbeiterverwaltung und Zeiterfassung.
-* **Effizienzsteigerung**: Die digitale Erfassung und zentrale Verwaltung von Arbeitszeiten, Benutzerrollen und Trinkgeldern reduziert manuellen Aufwand und Fehleranfälligkeit.
-* **Skalierbare Architektur**: Die gewählte Technologie-Kombination aus Angular und PocketBase ermöglicht eine flexible Weiterentwicklung und Erweiterung um neue Module wie das geplante Reservierungssystem.
-* **Umfassende Lernerfahrung**: Das Projekt dient als wertvolle praktische Erfahrung in der Entwicklung einer Full-Stack-Anwendung mit modernen Technologien und agilen Ansätzen.
-* **Grundstein für zukünftige Features**: Die bestehenden Komponenten und das Backend-Schema sind so konzipiert, dass zukünftige Erweiterungen, wie das detaillierte Reservierungssystem, darauf aufbauen können.
+* **Functional Basis**: GastrOS already provides a solid foundation for digitizing essential restaurant processes, particularly in employee management and time tracking.
+* **Increased Efficiency**: Digital recording and central management of working hours, user roles, and tips reduce manual effort and susceptibility to errors.
+* **Scalable Architecture**: The chosen technology combination of Angular and PocketBase allows for flexible further development and expansion with new modules like the planned reservation system.
+* **Comprehensive Learning Experience**: The project serves as valuable practical experience in developing a full-stack application with modern technologies and agile approaches.
+* **Foundation for Future Features**: Existing components and the backend schema are designed so that future extensions, such as the detailed reservation system, can build upon them.
 
 ---
 
-Dieses Projekt demonstriert die Fähigkeit, komplexe Anforderungen in eine funktionale Webanwendung umzusetzen, Arbeitsabläufe zu digitalisieren und eine skalierbare Softwarelösung mit modernen Technologien zu entwickeln.
+This project demonstrates the ability to translate complex requirements into a functional web application, digitize workflows, and develop a scalable software solution using modern technologies.
