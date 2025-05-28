@@ -102,14 +102,14 @@ const about = {
       {
         company: "Eviden Germany GmbH",
         timeframe: "2023 - 2025",
-        role: "Apprentice FIAE",
+        role: "Apprentice IT Specialist for Application Development",
         achievements: [],
         images: [],
       },
       {
         company: "Atos Information Technology GmbH",
         timeframe: "2022 - 2023",
-        role: "Apprentice FIAE",
+        role: "Apprentice IT Specialist for Application Development",
         achievements: [],
         images: [],
       },
