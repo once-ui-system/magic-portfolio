@@ -45,16 +45,16 @@ const home = {
   label: "Home",
   title: `Home - ${person.name}`,
   description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Catchy headline</>,
+  headline: <>Welcome to my portfolio!</>,
   featured: {
     display: true,
-    title: <>Recent project: <strong className="ml-4">Project Name</strong></>,
-    href: "/work/project-example",
+    title: <>Featured project: <strong className="ml-4">GastrOS</strong></>,
+    href: "/work/GastrOS",
   },
   subline: (
     <>
-      Ich bin {person.firstName}, Junior Developer mit Leidenschaft für effiziente Lösungen. 
-      <br /> Mein Ziel ist es, benutzerfreundliche Anwendungen zu entwickeln und kontinuierlich meine Fähigkeiten zu erweitern.
+      Hi, I'm {person.firstName}, a Junior Developer passionate about building efficient and user-friendly solutions.
+      <br /> My goal is to create impactful applications and continuously grow my skills.
     </>
   ),
 };
