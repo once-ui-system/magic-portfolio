@@ -134,12 +134,10 @@ const about = {
       {
         title: "Business English (C1)",
         description: <>Cambridge<br></br>(2023)</>,
-        images: [],
       },
       {
         title: "ITIL 4 Foundation",
         description: <>PeopleCert<br></br>(2023)</>,
-        images: [],
       },
     ],
   },
