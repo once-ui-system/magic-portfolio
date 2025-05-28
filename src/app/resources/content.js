@@ -53,7 +53,7 @@ const home = {
   },
   subline: (
     <>
-      Hi, I'm {person.firstName}, a Junior Developer passionate about building efficient and user-friendly solutions.
+      Hi, I'm {person.firstName}, a {person.role} passionate about building efficient and user-friendly solutions.
       <br /> My goal is to create impactful applications and continuously grow my skills.
     </>
   ),
@@ -79,15 +79,14 @@ const about = {
     display: true,
     title: "Introduction",
     description: (
-    <>
-        {person.firstName} ist Junior Developer aus Berlin mit einer Leidenschaft für effiziente und benutzerfreundliche Softwarelösungen.
+      <>
+        {person.firstName} is a {person.role} from {person.city} with a passion for efficient software solutions.
         <br />
-        Sein Schwerpunkt liegt auf moderner Webentwicklung, kontinuierlichem Lernen und der Umsetzung innovativer Projekte.
+        His focus is on backend development, continuous learning, and implementing innovative projects.
         <br />
-        Er engagiert sich für sauberen Code, Teamarbeit und die stetige Weiterentwicklung seiner Fähigkeiten.
+        He is committed to clean code, teamwork, and the ongoing development of his skills.
       </>
-
-  ),
+    ),
   },
   work: {
     display: true,
@@ -95,42 +94,57 @@ const about = {
     experiences: [
       {
         company: "Eviden Germany GmbH",
-        timeframe: "2023 - current",
-        role: "Fachinformatiker Anwendungsentwicklung",
-        achievements: [
-        ],
-        images: [
-          // optional: leave the array empty if you don't want to display images
-        ],
+        timeframe: "2025 - current",
+        role: "Junior Java Developer",
+        achievements: [],
+        images: [],
+      },
+      {
+        company: "Eviden Germany GmbH",
+        timeframe: "2023 - 2025",
+        role: "Apprentice FIAE",
+        achievements: [],
+        images: [],
+      },
+      {
+        company: "Atos Information Technology GmbH",
+        timeframe: "2022 - 2023",
+        role: "Apprentice FIAE",
+        achievements: [],
+        images: [],
       },
     ],
   },
   studies: {
     display: true, // set to false to hide this section
-    title: "Studium & Ausbildung",
+    title: "Studies & Education",
     institutions: [
       {
-        name: "Wirtschaftsinformatik (Abbruch B.Sc.)",
-        description: <>Friedrich Alexander Universität Erlangen-Nürnberg<br></br>(2020 - 2021)</>,
-      },
-      {
-        name: "Fachinformatiker Anwendungsentwicklung",
+        name: "IT Specialist for Application Development",
         description: <>IHK Ostwestfalen zu Bielefeld | Paderborn + Höxter<br></br>(2022 - 2025)</>,
       },
       {
-        name: "Fachberater für Softwaretechniken",
-        description: <>Interne Ausbildung Siemens Energy<br></br>(2022 - 2025)</>,
-
+        name: "Consultant for Software Technologies",
+        description: <>Internal Training Siemens Energy<br></br>(2022 - 2025)</>,
+      },
+      {
+        name: "Business Informatics (B.Sc. discontinued)",
+        description: <>Friedrich Alexander University Erlangen-Nuremberg<br></br>(2020 - 2021)</>,
       },
     ],
   },
   technical: {
     display: true, // set to false to hide this section
-    title: "Fortbildungen & Zertifikate",
+    title: "Further Training & Certificates",
     skills: [
       {
         title: "Business English (C1)",
         description: <>Cambridge<br></br>(2023)</>,
+        images: [],
+      },
+      {
+        title: "ITIL 4 Foundation",
+        description: <>PeopleCert<br></br>(2023)</>,
         images: [],
       },
     ],
