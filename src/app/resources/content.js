@@ -1,11 +1,6 @@
 import { Logo } from "@/once-ui/components";
 
 const person = {
-
-
-
-
-
   firstName: "Marcel",
   lastName: "Kuhn",
   get name() {
@@ -22,7 +17,7 @@ const person = {
 };
 
 const newsletter = {
-  display: true,
+  display: false,
   title: <>Subscribe to {person.firstName}'s Newsletter</>,
   description: (
     <>
@@ -50,23 +45,16 @@ const home = {
   label: "Home",
   title: `Home - ${person.name}`,
   description: `Portfolio website showcasing my work as a ${person.role}`,
-
-
   headline: <>Catchy headline</>,
-
   featured: {
-    display: false,
+    display: true,
     title: <>Recent project: <strong className="ml-4">Project Name</strong></>,
     href: "/work/project-example",
   },
   subline: (
     <>
-
-
-
       Ich bin {person.firstName}, Junior Developer mit Leidenschaft für effiziente Lösungen. 
       <br /> Mein Ziel ist es, benutzerfreundliche Anwendungen zu entwickeln und kontinuierlich meine Fähigkeiten zu erweitern.
-
     </>
   ),
 };
@@ -92,13 +80,6 @@ const about = {
     title: "Introduction",
     description: (
     <>
-
-
-
-
-
-
-
         {person.firstName} ist Junior Developer aus Berlin mit einer Leidenschaft für effiziente und benutzerfreundliche Softwarelösungen.
         <br />
         Sein Schwerpunkt liegt auf moderner Webentwicklung, kontinuierlichem Lernen und der Umsetzung innovativer Projekte.
@@ -113,7 +94,6 @@ const about = {
     title: "Work Experience",
     experiences: [
       {
-
         company: "Eviden Germany GmbH",
         timeframe: "2023 - current",
         role: "Fachinformatiker Anwendungsentwicklung",
@@ -121,13 +101,11 @@ const about = {
         ],
         images: [
           // optional: leave the array empty if you don't want to display images
-
         ],
       },
     ],
   },
   studies: {
-
     display: true, // set to false to hide this section
     title: "Studium & Ausbildung",
     institutions: [
@@ -147,14 +125,12 @@ const about = {
     ],
   },
   technical: {
-
     display: true, // set to false to hide this section
     title: "Fortbildungen & Zertifikate",
     skills: [
       {
         title: "Business English (C1)",
         description: <>Cambridge<br></br>(2023)</>,
-
         images: [],
       },
     ],
