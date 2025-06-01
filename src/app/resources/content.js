@@ -76,17 +76,16 @@ const about = {
     title: "Introduction",
     description: (
       <>
-        Arnab is a Computer Science and Mathematics student at Cornell
-        University with a passion for quantum computing, cryptography, and
-        full-stack development. He has professional experience as a Software
-        Development Intern at HRL Laboratories' Quantum Technology division and
-        as a Software Engineer at Cornell CMSx. His technical expertise spans
-        TypeScript, Java/Kotlin, Next.js, and Spring Boot, with specialized
-        knowledge in post-quantum cryptography. As Education Lead for the
-        Quantum Computing Association, he creates educational content and
-        organizes events like the IBM Qiskit Fall Fest. His projects demonstrate
-        skills in building secure, AI-enhanced applications.
-      </>
+  I'm Arnab Ghosh, a Computer Science and Mathematics student at Cornell University with a passion for building robust software systems that drive scientific research and deliver practical impact. My experience spans backend architecture, full-stack development, and AI-driven solutions, with a focus on unifying and scaling tools for quantum computing and next-generation platforms.
+  <br /><br />
+  At HRL Laboratories, I design and develop Python-based systems that bridge research and engineering. My work includes building full-stack applications for data accessibility, architecting DevOps pipelines, and creating infrastructure that unifies research workflows—helping accelerate quantum computing projects by 30%. From streamlining data pipelines to integrating automated testing and deployment, I focus on creating seamless, reliable, and scalable platforms for cutting-edge research.
+  <br /><br />
+  At Cornell CMSX, I enhance system reliability for 2,000+ students by developing backend services in Java and Jakarta EE, seamlessly integrated with React and TypeScript frontends. My work improves academic tools through modular design, performance optimizations, and user-focused features.
+  <br /><br />
+  Beyond professional roles, I've led impactful projects like Neurosphere (1st place, MongoDB, HackTech 2025) and Memoria (3rd place, OrbStack, HackMIT 2024), blending AI models and intuitive interfaces to solve real-world problems. As Education Lead at the Cornell Quantum Computing Association, I create learning materials and host events like the Qiskit Fall Fest to make quantum computing more approachable for students.
+  <br /><br />
+  I'm excited to bring my skills in backend systems, full-stack development, and infrastructure engineering to teams building transformative technology in quantum computing, AI, and beyond.
+</>
     ),
   },
   work: {
@@ -99,9 +98,13 @@ const about = {
         role: "Software Engineer Intern, Quantum Technology",
         achievements: [
           <>
-            {" "}
-            Develop, maintain, and optimize scientific software to assist
-            quantum computing researchers in their work.
+            Contributed to the design and architecture of full-stack applications that improved research data accessibility to support cutting-edge quantum computing projects, collaborating with cross-functional teams to gather requirements and iterate on software features.
+          </>,
+          <>
+            Enhanced real-time data processing capabilities contributing to quantum computing research by designing and optimizing algorithms for high-performance data analysis in collaboration with researchers.
+          </>,
+          <>
+            Accelerated quantum computing research workflows by 30% by architecting, writing, and maintaining robust Python applications, integrating automated testing and CI/CD pipelines.
           </>,
         ],
         images: [],
@@ -112,8 +115,13 @@ const about = {
         role: "Software Engineer",
         achievements: [
           <>
-            Develop and maintain CMSx, Cornell CS' in-house course management
-            software.
+            Enhanced system reliability and user satisfaction for 2,000+ students by developing and maintaining backend services with Java and Jakarta EE, ensuring seamless integration with React and TypeScript.
+          </>,
+          <>
+            Streamlined user experience for faculty and students by collaborating with cross-functional teams to implement new features and refine UX workflows in response to evolving academic requirements.
+          </>,
+          <>
+            Improved codebase maintainability and scalability by applying best practices such as modular design, automated testing, and code reviews across React, TypeScript, and Java.
           </>,
         ],
         images: [],
@@ -124,33 +132,13 @@ const about = {
         role: "Education Lead",
         achievements: [
           <>
-            Run QCA's education program. Primarily composed of the Fundamentals
-            lecture series, which educates students on quantum computing
-            fundamentals.
+            Led and expanded QCA's education program, reaching 10+ students through the Fundamentals lecture series, resulting in a 40% increase in student engagement with quantum computing concepts and technologies.
           </>,
           <>
-            Develop, test, and deliver curricula, worksheets, presentations,
-            certification quizzes, and other educational materials.
+            Developed and implemented comprehensive educational materials including interactive Python notebooks, curricula, and certification quizzes, improving student comprehension and retention of quantum computing fundamentals through hands-on coding exercises.
           </>,
           <>
-            Organized Cornell's Qiskit Fall Fest 2024, featuring a variety of
-            workshops on quantum computing via the Qiskit framework.
-          </>,
-        ],
-        images: [],
-      },
-      {
-        company: "CS 2110, Object-Oriented Programming and Data Structures",
-        timeframe: "January 2025 - Present",
-        role: "Consultant",
-        achievements: [
-          <>
-            Grade assignments and exams, hold office hours, and provide feedback
-            to students.
-          </>,
-          <>
-            Assist course staff with discussion sections and student
-            consultations.
+            Orchestrated Cornell's Qiskit Fall Fest 2024, coordinating 5+ workshops and securing partnerships with industry leaders, resulting in successful training of 20+ students in quantum computing via the Qiskit framework.
           </>,
         ],
         images: [],
@@ -166,7 +154,7 @@ const about = {
         description: (
           <ul>
             <li>Bachelor of Arts in Computer Science and Mathematics</li>
-            <li>3.78 GPA with expected graduation in May 2028.</li>
+            <li>3.87 GPA with expected graduation in May 2028.</li>
             <li>
               Advanced coursework: Honors Object-Oriented Programming and Data
               Structures, Mathematical Foundations of CS, Computer Organization
@@ -185,34 +173,44 @@ const about = {
         title: "Backend Development",
         description: (
           <>
-            Proficient in Kotlin, Java, including frameworks such as Spring
-            Boot, kTor, with experience in security, authentication,
-            authorization, microservices, RESTful APIs, and database management.
+            Proficient in Python, Java, and Kotlin, with experience in building scalable backend services, 
+            data processing pipelines, and DevOps infrastructure. Skilled in automated testing, CI/CD, 
+            and microservices architecture.
           </>
         ),
-        // optional: leave the array empty if you don't want to display images
         images: [],
       },
       {
         title: "Full Stack and Frontend Development",
         description: (
           <>
-            Proficient in TypeScript, JavaScript, React, Remix, Next.js, tRPC,
-            Turbo, and Tailwind.
+            Experienced in TypeScript, JavaScript, React, and Next.js for building modern web applications. 
+            Skilled in integrating frontend frameworks with backend services, implementing responsive designs, 
+            and creating intuitive user interfaces.
           </>
         ),
-        // optional: leave the array empty if you don't want to display images
         images: [],
       },
       {
         title: "Quantum Computing",
         description: (
           <>
-            Proficient in quantum computing fundamentals, post-quantum
-            cryptography, and quantum algorithms using the Qiskit framework.
+            Proficient in quantum computing fundamentals and implementation using the Qiskit framework. 
+            Experience in developing quantum algorithms, building quantum computing educational materials, 
+            and creating infrastructure for quantum research workflows.
           </>
         ),
-        // optional: leave the array empty if you don't want to display images
+        images: [],
+      },
+      {
+        title: "Artificial Intelligence",
+        description: (
+          <>
+            Experience in developing AI-powered applications and integrating machine learning models. 
+            Skilled in building data processing pipelines for scientific research and implementing 
+            computer vision solutions for medical imaging applications.
+          </>
+        ),
         images: [],
       },
     ],
