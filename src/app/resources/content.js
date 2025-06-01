@@ -8,7 +8,7 @@ const person = {
   },
   role: "Junior Developer",
   avatar: "/images/avatar.jpg",
-  email: "kontakt@marcelkuhn.dev",
+  email: "kontakt [at] marcelkuhn [dot] dev",
   location: "Europe/Berlin", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
   languages: ["English", "German", "Czech"], // optional: Leave the array empty if you don't want to display languages
   street: "Orffstr. 3",
