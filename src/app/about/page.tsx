@@ -118,7 +118,7 @@ export default function About() {
                             {person.name}
                         </Heading>
                         <Text
-                            className={styles.textAlign}
+                            className="${styles.textAlign} text-xs"
                             variant="display-default-xs"
                             onBackground="neutral-weak"
                         >
@@ -257,17 +257,7 @@ export default function About() {
                                                     flexShrink: 0,
                                                 }}
                                             />
-                                            <Column as="ul" gap="16" flex={1}>
-                                                {experience.achievements.map((achievement, index) => (
-                                                    <Text
-                                                        as="li"
-                                                        variant="body-default-m"
-                                                        key={`${experience.company}-${index}`}
-                                                    >
-                                                        {achievement}
-                                                    </Text>
-                                                ))}
-                                            </Column>
+                                            <Text className="mt-24">{experience.achievements[0]}</Text>
                                         </Flex>
 
                                         {/* {experience.images.length > 0 && (
