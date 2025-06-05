@@ -149,67 +149,83 @@ const about = {
       {
         title: "Solidity",
         link: "https://soliditylang.org/",
-        img: "/images/logos/solidity.png",
+        img: "/icons/solidity.svg",
       },
       {
         title: "TypeScript",
         link: "https://www.typescriptlang.org/",
-        img: "/images/logos/typescript.png",
+        img: "/icons/typescript.svg",
       },
       {
         title: "Next.js",
         link: "https://nextjs.org/",
-        img: "/images/logos/nextjs.png",
+        img: "/icons/nextdotjs.svg",
       },
       {
         title: "Vercel",
         link: "https://vercel.com/",
-        img: "/images/logos/vercel.png",
+        img: "/icons/vercel.svg",
       },
       {
         title: "C#",
         link: "https://learn.microsoft.com/en-us/dotnet/csharp/",
-        img: "/images/logos/csharp.png",
+        img: "/icons/dotnet.svg",
       },
       {
         title: "PostgreSQL",
         link: "https://www.postgresql.org/",
-        img: "/images/logos/postgresql.png",
+        img: "/icons/postgresql.svg",
       },
       {
         title: "MongoDB",
         link: "https://www.mongodb.com/",
-        img: "/images/logos/mongodb.png",
+        img: "/icons/mongodb.svg",
       },
       {
         title: "Python",
         link: "https://python.org",
-        img: "/images/logos/python.png",
+        img: "/icons/python.svg",
       },
       {
         title: "R",
         link: "https://www.r-project.org/",
-        img: "/images/logos/r.png",
+        img: "/icons/r.svg",
       },
       {
         title: "Linux",
         link: "https://www.kernel.org/",
-        img: "/images/logos/linux.png",
+        img: "/icons/linux.svg",
       },
       {
         title: "Docker",
         link: "https://www.docker.com/",
-        img: "/images/logos/docker.png",
+        img: "/icons/docker.svg",
       },
-      {
-        title: "DevOps",
-        link: "https://www.atlassian.com/devops",
-        img: "/images/logos/devops.png",
-      },
+{
+title: "TailwindCSS",
+link: "https://tailwindcss.com",
+img: "/icons/tailwindcss.svg"
+},
+{
+title: "Github",
+link: "https://github.com",
+img: "/icons/github.svg"
+},
+{
+title: "WalletConnect",
+link: "https://walletconnect.network",
+img: "/icons/walletconnect.svg"
+},
+// {
+// title: "Metamask",
+// link: "https://metamask.io",
+// img: "/icons/metamask"
+// },
+
       {
         title: "Git",
         link: "https://git-scm.com/",
-        img: "/images/logos/git.png",
+        img: "/icons/git.svg",
       },
     ],
   },
