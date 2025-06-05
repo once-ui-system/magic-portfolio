@@ -6,7 +6,7 @@ const person = {
   get name() {
     return `${this.firstName} ${this.lastName}`;
   },
-  role: "Web3 Development",
+  role: " Building real solutions for Web3 companies, developers, and users",
   avatar: "/images/avatar.jpg",
   //email: "example@gmail.com",
   location: "America/Sao_Paulo", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
@@ -94,9 +94,7 @@ const about = {
     title: "Introduction",
     description: (
       <>
-        Our mission is to transform complex challenges into simple, elegant
-        solutions, making intricate technologies accessible and providing
-        accessible, bleeding-edge products for the Web3 ecosystem and beyond.
+       We are a Web3-focused development team that designs, builds, and maintains robust blockchain solutions. From infrastructure to user-facing applications, we’ve helped shape core components of the Kadena ecosystem—contributing to some of its most impactful and widely used tools. Our mission is simple: to deliver practical, secure, and scalable products that meet the needs of modern decentralized systems.
       </>
     ),
   },
@@ -109,9 +107,9 @@ const about = {
         timeframe: " ",
         role: "Co-founder, Applied Mathematician, and Web3 Engineer",
         achievements: [
-          <>Master of Science (MSc) in Mathematical Optimization</>,
-          <>Bachelor's in Applied Mathematics </>,
-        ],
+"Ariel is an applied mathematician with a Master’s in Computer Science and a strong track record designing, implementing, and managing Web3 systems. With deep technical foundations and a hands-on approach, he thrives in the fast-moving blockchain space—adapting quickly to new technologies and pushing the boundaries of what’s possible in decentralized architecture."
+
+],
         image: "/images/og/ariel.jpg",
       },
       {
@@ -119,8 +117,7 @@ const about = {
         timeframe: " ",
         role: "Co-founder, Data Scientist, and Web3 Engineer",
         achievements: [
-          <>MBA in Software Engineering</>,
-          <>Bachelor's in Statistics and Data Science</>,
+"Francisco brings consistency and curiosity to every project. With a background in Statistics and Data Science and an ongoing MBA in Software Engineering, he excels in infrastructure, networking, and backend development. A disciplined engineer and proactive team player, Francisco is the one who’s always up-to-date and always digging into the docs."
         ],
         image: "/images/og/chico.jpg",
       },
