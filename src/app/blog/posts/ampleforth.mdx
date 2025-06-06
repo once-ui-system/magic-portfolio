@@ -1,0 +1,140 @@
+---
+title: "How Elastic Supply Tokens Like Ampleforth Work"
+summary: "Explore how AMPL uses algorithmic rebasing to maintain a stable price through elastic, non-dilutive supply adjustments."
+publishedAt: "2023-06-06"
+tag: "DeFi"
+---
+
+
+## What Is Ampleforth?
+
+Ampleforth (AMPL) is an elastic supply token built on Ethereum. It serves as a decentralized [unit of account](https://docs.ampleforth.org/learn/glossary#unit-of-account), and is the foundation of the Ampleforth Elastic Finance Ecosystem.
+
+Unlike stablecoins that use collateral to maintain a peg, AMPL programmatically adjusts its total supply based on market price. This process is called **rebasing**, and it ensures users always retain the same percentage share of the total supply — making it *non-dilutive*.
+
+---
+
+## Elastic vs. Dilutive Supply
+
+Elastic supply means the total number of tokens can expand or contract based on demand. In contrast, fixed (inelastic) supply assets like Bitcoin may suffer from illiquidity if holders refuse to sell, potentially breaking the market.
+
+Fiat currencies are elastic too — central banks can increase or decrease supply. However, this causes **dilution**:
+- More money in circulation 📈 → Your proportion shrinks 💸
+- Less money 📉 → Your proportion grows 🤑
+
+AMPL avoids this dilution through a unique design: when the supply rebases, everyone's balance adjusts proportionally.
+
+---
+
+## The Rebase Process
+
+AMPL’s rebasing happens once every 24 hours (around 2 A.M. UTC). Here's how it works:
+
+1. **Oracle-based Pricing**: AMPL checks the current price from decentralized oracles.
+2. **Compare to Target**: The target price is ~$1.10.
+3. **Adjust Supply**:
+   - If demand increased (price > $1.10), the supply expands.
+   - If demand decreased (price < $1.10), the supply contracts.
+4. **Smoothing**: To prevent sharp changes, the protocol smooths adjustments over 30 days.
+
+> Rebasing is **stateless** — it doesn't depend on historical price trends.
+
+### Example
+
+- Alice at _t₀_ holds **1 AMPL**, worth **$1.20**
+- At _t₁_ (after rebase), she holds **1.2 AMPL**, worth **$1.00**
+
+She now has more tokens, but the same portfolio value.
+
+---
+
+## Nonlinear Rebasing: The Sigmoid Curve
+
+Originally, rebasing followed a linear function. However, this was too sensitive to extreme market changes. The team introduced a more sophisticated [sigmoid function](https://aips.ampleforth.org/AIPs/aip-5):
+
+![S-curve Illustration](/images/blog/sigmoid.png)
+
+This curve helps:
+- Smooth extreme changes
+- Increase resilience to oracle manipulation
+- Improve predictability and decentralization potential
+
+```math
+F(x) = l + \frac{u - l}{1 - \left( \frac{u}{l} \right) \cdot 2^{-gx}}
+```
+
+---
+
+## Benefits and Risks
+
+- **Non-correlation with BTC**: One of AMPL's key advantages is its low correlation with Bitcoin.
+- **Portfolio Diversification**: As balances shift daily, AMPL behaves differently than most assets.
+- **Rebase Mechanics**: Helps maintain a stable price, without collateral or dilution.
+
+However, it's not without risks:
+- High volatility despite being designed as a “stable” asset
+- Technical bugs can break rebasing, as seen in projects like **YAM**:
+  - No formal audits
+  - Bugs allowed infinite minting
+  - Failed governance execution due to contract flaws
+
+> “Unauditable contracts” became a cautionary tale for rebasing tokens.
+
+---
+
+## Use Cases and Long-Term Vision
+
+- **Short term**: Portfolio diversification
+- **Medium term**: Collateral for DeFi applications
+- **Long term**: Adaptive monetary unit, responsive to economic shocks
+
+AMPL is a monetary experiment — it's not just another token. Its algorithm only controls the **supply**, not the demand. Market participants still play the key role in driving price behavior.
+
+AMPL is:
+- ERC-20 compatible
+- Chain-agnostic
+- Backed by programs like **Geyser** to incentivize LPs (`AMPL/ETH`)
+
+Always check both **token count** *and* **price** to understand your real portfolio value. Rebasing can be disorienting — but it’s part of what makes AMPL unique.
+
+---
+
+<div className="disclaimer-box">
+
+**Disclaimer (NFA)**: This article presents technical research about Ampleforth's protocol design. It is not financial advice. Cryptocurrencies involve substantial risk - always conduct your own research before making any financial decisions.
+
+</div>
+
+<style jsx>{`
+  .disclaimer-box {
+    border-left: 4px solid #f0ad4e;
+    background-color: rgba(240, 173, 78, 0.1);
+    padding: 1rem;
+    margin: 2rem 0;
+    border-radius: 4px;
+  }
+`}</style>
+
+---
+## Conclusion
+
+Ampleforth represents one of the most innovative monetary experiments in crypto. Its elastic supply mechanism offers several unique properties:
+
+- **Decentralized Stability**: Unlike collateral-backed stablecoins, AMPL achieves price stability through algorithmic supply adjustments
+- **Non-Dilutive**: Users maintain their network share percentage regardless of supply changes
+- **Low Correlation**: Its rebasing mechanism creates unique portfolio dynamics
+
+However, significant challenges remain:
+- Adoption hurdles for a monetary unit that changes balances daily
+- Volatility risks despite the stabilization mechanism
+- Dependence on robust oracle systems for accurate price feeds
+
+The protocol's long-term success will depend on:
+1. Continued development of the elastic finance ecosystem
+2. Wider understanding and acceptance of rebasing mechanics
+3. Maintaining security and decentralization as the system scales
+
+> "AMPL is not trying to be better money - it's trying to be different money."  
+> *— Evan Kuo, Ampleforth Founder*
+
+While the future is uncertain, AMPL's novel approach pushes the boundaries of what's possible in decentralized monetary systems. Its success or failure will provide valuable insights for the next generation of crypto-economic designs.
