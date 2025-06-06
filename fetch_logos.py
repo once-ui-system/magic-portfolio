@@ -27,26 +27,43 @@ TARGET_DIR = "./public/icons"
 os.makedirs(TARGET_DIR, exist_ok=True)
 
 
-def add_white_background(svg_data):
+def make_fill_currentcolor(svg_data):
     try:
-        # Parse SVG
         ET.register_namespace("", "http://www.w3.org/2000/svg")
         root = ET.fromstring(svg_data)
 
-        # Create white background rect
-        bg = ET.Element(
-            "rect",
-            {"x": "0", "y": "0", "width": "100%", "height": "100%", "fill": "#fff"},
-        )
+        # Clean root style if present
+        root.attrib.pop("fill", None)
+        root.attrib.pop("color", None)
 
-        # Insert background before any other child
-        root.insert(0, bg)
+        # Make all paths use `fill="currentColor"`
+        for el in root.iter():
+            if el.tag.endswith("path") or el.tag.endswith("g"):
+                el.set("fill", "currentColor")
 
-        # Return modified SVG as string
         return ET.tostring(root, encoding="unicode")
     except Exception as e:
-        print(f"✖ Failed to modify SVG: {e}")
-        return svg_data  # fallback
+        print(f"✖ Failed to process SVG: {e}")
+        return svg_data
+
+
+def make_svg_theme_friendly(svg_data):
+    try:
+        ET.register_namespace("", "http://www.w3.org/2000/svg")
+        root = ET.fromstring(svg_data)
+
+        # Remove background rects
+        root[:] = [el for el in root if el.tag.split("}")[-1] != "rect"]
+
+        # Set all fills to currentColor
+        for el in root.iter():
+            if el.tag.endswith("path") or el.tag.endswith("g"):
+                el.set("fill", "#000")
+
+        return ET.tostring(root, encoding="unicode")
+    except Exception as e:
+        print(f"✖ Failed to process SVG: {e}")
+        return svg_data
 
 
 for name in LOGOS:
@@ -59,10 +76,10 @@ for name in LOGOS:
         r.raise_for_status()
 
         original_svg = r.text
-        modified_svg = add_white_background(original_svg)
+        processed_svg = make_svg_theme_friendly(original_svg)
 
         with open(out_path, "w", encoding="utf-8") as f:
-            f.write(modified_svg)
+            f.write(processed_svg)
 
         print(f"✔ Saved to {out_path}")
     except Exception as e:

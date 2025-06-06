@@ -44,7 +44,7 @@ export function Hero() {
         gap="l"
         style={{ position: "relative", zIndex: 1 }}
       >
-        {home.featured && (
+              {/* {home.featured && (
           <RevealFx
             fillWidth
             horizontal="start"
@@ -53,7 +53,7 @@ export function Hero() {
             paddingLeft="12"
           >
             <Badge
-              background="brand-alpha-weak"
+              background="red "
               paddingX="12"
               paddingY="4"
               onBackground="neutral-strong"
@@ -65,7 +65,7 @@ export function Hero() {
             </Badge>
           </RevealFx>
         )}
-
+ */}
         <RevealFx
           translateY="4"
           fillWidth

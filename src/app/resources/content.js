@@ -57,7 +57,7 @@ const home = {
   description: `${person.role} Landing Page`,
   headline: <>Empowering the Web3 revolution with full-cycle development </>,
   featured: {
-    display: true,
+    display: false,
     title: (
       <>
         Recent project: <strong className="ml-4">Kadena Cabinet</strong>
