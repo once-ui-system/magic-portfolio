@@ -335,9 +335,9 @@ export default function About() {
                                 {about.technical.title}
                             </Heading>
 
-                            <Flex wrap="wrap" gap="l" justify="center" marginBottom="40">
+                            <Flex  wrap={true} gap="l" center={true} marginBottom="40">
                                 {about.technical.skills.map((skill, index) => (
-                                    <Column key={`${skill.title}-${index}`} align="center" flex="none">
+                                    <Column key={`${skill.title}-${index}`} align="center">
                                         {skill.link ? (
                                             <a
                                                 href={skill.link}

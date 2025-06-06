@@ -48,6 +48,7 @@ const style = {
   solidStyle: "flat",
   surface: "filled",
   transition: "all",
+  scaling: "1.0"
 }
 
 
