@@ -53,8 +53,8 @@ const home = {
   path: "/",
   image: "/images/og/home.jpg",
   label: "Home",
-  title: `${person.name}'s Portfolio`,
-  description: `Portfolio website showcasing my work as a ${person.role}`,
+  title: `${person.name}`,
+  description: `${person.role} Landing Page`,
   headline: <>Empowering the Web3 revolution with full-cycle development </>,
   featured: {
     display: true,
@@ -144,7 +144,7 @@ const about = {
       {
         title: "Pact",
         link: "https://kadena.io/pact",
-        img: "/images/logos/pact.png",
+        img: "/icons/pact.svg",
       },
       {
         title: "Solidity",

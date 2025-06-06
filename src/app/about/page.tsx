@@ -198,7 +198,7 @@ export default function About() {
                             fillWidth
                             gap="m"
                             marginBottom="l"
-                          marginTop="l"
+                            marginTop="l"
                         >
                             {about.intro.description}
                         </Column>
@@ -334,27 +334,76 @@ export default function About() {
                             >
                                 {about.technical.title}
                             </Heading>
-                            <Column fillWidth gap="l">
-                                <Flex>
-                                    {about.technical.skills.map((skill, index) => (
-                                        <Column key={`${skill}-${index}`} align="center" flex="1">
-                                            {skill.link ? (
-                                                <a
-                                                    href={skill.link}
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
+
+                            <Flex wrap="wrap" gap="l" justify="center" marginBottom="40">
+                                {about.technical.skills.map((skill, index) => (
+                                    <Column key={`${skill.title}-${index}`} align="center" flex="none">
+                                        {skill.link ? (
+                                            <a
+                                                href={skill.link}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                style={{ display: "block" }}
+                                            >
+                                                <div
+                                                    style={{
+                                                        width: 48,
+                                                        height: 48,
+                                                        borderRadius: "50%",
+                                                        backgroundColor: "var(--color-surface)",
+                                                        color: "black",
+                                                        display: "flex",
+                                                        alignItems: "center",
+                                                        justifyContent: "center",
+                                                        padding: 8,
+                                                        boxShadow: "0 0 0 1px var(--color-border)",
+                                                    }}
                                                 >
-                                                    <Avatar src={skill.img} size="l" />
-                                                </a>
-                                            ) : (
-                                                <Avatar src={skill.img} size="l" />
-                                            )}
-                                        </Column>
-                                    ))}
-                                </Flex>
-                            </Column>
+                                                    <img
+                                                        src={skill.img}
+                                                        alt={`${skill.title} logo`}
+                                                        style={{
+                                                            width: "100%",
+                                                            height: "100%",
+                                                            objectFit: "contain",
+                                                            filter: "invert(0.7)", // adapt if needed
+                                                        }}
+                                                    />
+                                                </div>
+                                            </a>
+                                        ) : (
+                                            <div
+                                                style={{
+                                                    width: 48,
+                                                    height: 48,
+                                                    borderRadius: "50%",
+                                                    backgroundColor: "var(--color-surface)",
+                                                    display: "flex",
+                                                    alignItems: "center",
+                                                    justifyContent: "center",
+                                                    padding: 8,
+                                                    boxShadow: "0 0 0 1px var(--color-border)",
+                                                }}
+                                            >
+                                                <img
+                                                    src={skill.img}
+                                                    alt={`${skill.title} logo`}
+                                                    style={{
+                                                        width: "100%",
+                                                        height: "100%",
+                                                        objectFit: "contain",
+                                                        filter: "invert(0.7)",
+                                                    }}
+                                                />
+                                            </div>
+                                        )}
+                                    </Column>
+                                ))}
+                            </Flex>
                         </>
                     )}
+
+
                 </Column>
             </Flex>
         </Column>

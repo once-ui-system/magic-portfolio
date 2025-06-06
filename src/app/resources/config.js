@@ -45,9 +45,10 @@ const style = {
   neutral: "custom",
   border: "playful",
   solid: "contrast",
+  solidStyle: "flat",
   surface: "filled",
   transition: "all",
-};
+}
 
 
 const effects = {
