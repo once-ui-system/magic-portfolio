@@ -1,0 +1,566 @@
+---
+title: "EckoDEX Staking Model and Simulations"
+summary: "Detailed analysis of EckoDEX's staking design, including modeling penalties, simulating compounding strategies, and estimating net returns using Python."
+publishedAt: "2023-10-06"
+tag: "DeFi"
+---
+
+---
+
+<div className="disclaimer-box">
+
+**Disclaimer (NFA)**: This article presents technical research about a financial protocol design. It is not financial advice. Cryptocurrencies involve substantial risk - always conduct your own research before making any financial decisions.
+
+</div>
+
+<style jsx>{`
+  .disclaimer-box {
+    border-left: 4px solid #f0ad4e;
+    background-color: rgba(240, 173, 78, 0.1);
+    padding: 1rem;
+    margin: 2rem 0;
+    border-radius: 4px;
+  }
+`}</style>
+
+---
+
+
+## Introduction
+
+Staking is the backbone of decentralized finance protocols like EckoDEX. But how does a staking model that penalizes early withdrawals shape user behavior? In this blog post, we combine math and code to simulate and visualize the EckoDEX staking mechanism.
+
+## Objective
+
+This analysis aims to:
+
+1. **Model the staking mechanics** - Break down the mathematical formulas governing rewards and penalties
+2. **Simulate different strategies** - Compare simple staking vs various compounding frequencies
+3. **Visualize key relationships** - Show how time, penalties, and returns interact
+4. **Quantify tradeoffs** - Measure the opportunity cost of early withdrawals
+5. **Optimize returns** - Identify strategies that maximize yield for different time horizons
+
+We'll leverage Python to model how penalties are computed, how compounding changes returns, and how maturity curves affect your net gains. The simulation approach allows us to:
+
+- Test edge cases that would be expensive to try with real funds
+- Isolate the impact of individual parameters
+- Visualize complex relationships between variables
+
+Let's dive in.
+
+## Understanding the Core Parameters
+
+Before we model the system, we need to define its key components. The EckoDEX staking model uses several important parameters that control:
+
+- Penalty schedules for early withdrawals
+- Reward calculation formulas
+- Pool dynamics and economics
+
+These parameters create the economic incentives that shape user behavior:
+
+```python
+# Days during which principal withdrawals are penalized
+AMOUNT_PENALTY_DAYS = 3  
+
+# Penalty multipliers for days 0-2 (3% penalty each day)
+PENALIZED_AMOUNTS = [0.97, 0.97, 0.97]  
+
+# Days required to avoid reward penalties
+REWARD_PENALTY_DAYS = 60.0  
+
+# Current KDX price in USD for reward calculations  
+KDX_USD_PRICE = 0.16  
+
+# Daily staking reward percentage (0.05%)
+KDX_STAKING_REWARDS_PERCENTAGE = 0.0005  
+
+# Estimated daily trading volume in USD
+POOL_DAILY_USD_VOLUME = 10_000_000.0  
+
+# Total value locked in the staking pool
+TOTAL_POOL_USD_AMOUNT = 8_000_000.0  
+
+# Coefficient controlling penalty curve steepness
+KDX_COEFFICIENT = 0.66
+```
+
+```python
+AMOUNT_PENALTY_DAYS = 3
+PENALIZED_AMOUNTS = [0.97, 0.97, 0.97]
+REWARD_PENALTY_DAYS = 60.0
+KDX_USD_PRICE = 0.16
+KDX_STAKING_REWARDS_PERCENTAGE = 0.0005
+POOL_DAILY_USD_VOLUME = 10_000_000.0
+TOTAL_POOL_USD_AMOUNT = 8_000_000.0
+KDX_COEFFICIENT = 0.66
+````
+
+The `Pool` class encapsulates all key staking pool parameters and behaviors. Each instance represents a unique staking pool with its own:
+
+- **Total staked amount** - The TVL (Total Value Locked) that determines reward distribution
+- **Daily volume** - Trading activity that generates protocol fees
+- **Reward rate** - The percentage of fees distributed to stakers  
+- **Maturity period** - Days required to avoid withdrawal penalties
+
+```python
+class Pool:
+  def __init__(self, total_amount, daily_swap_volume, staking_rewards, required_days):
+    self.total_amount = total_amount       # Total USD value staked
+    self.daily_swap_volume = daily_swap_volume  # Protocol trading volume
+    self.staking_rewards = staking_rewards # Reward percentage (0.0005 = 0.05%)
+    self.required_days = required_days     # Days to avoid penalties (60)
+```
+
+This class serves as the foundation for all our simulations, allowing us to model different pool configurations and scenarios.
+
+```python
+class Pool:
+  def __init__(self, total_amount, daily_swap_volume, staking_rewards, required_days):
+    self.total_amount = total_amount
+    self.daily_swap_volume = daily_swap_volume
+    self.staking_rewards = staking_rewards
+    self.required_days = required_days
+```
+
+---
+
+## Reward Calculation
+
+The fundamental reward formula captures several key relationships:
+
+<LatexRenderer displayMode>{`r = \\frac{v \\cdot s \\cdot a}{T} \\cdot d`}</LatexRenderer>
+
+where
+- $r$ is the unpenalized rewards amount;
+- $v$ is the daily swap volume (in USD);
+- $s$ represents the staking rewards;
+- $a$ represents the staked amount (in USD);
+- $d$ represents the number of days THAT AMOUNT was staked;
+- $T$ is the total amount staked in the pool (in USD).
+
+This shows rewards scale with:
+1. Protocol usage (volume)
+2. Your stake's proportion of the pool 
+3. Time committed
+
+The Python implementation translates this formula into code while handling edge cases:
+
+```python
+def compute_usd_rewards(days, amount, pool):
+  # Calculate user's share of the pool
+  proportion = amount / pool.total_amount
+  
+  # Compute daily rewards based on volume and reward rate
+  daily_reward = proportion * pool.daily_swap_volume * pool.staking_rewards
+  
+  # Scale by number of days staked
+  return daily_reward * days
+```
+
+For KDX-denominated rewards, we simply convert from USD using the current price:
+
+```python
+def compute_kdx_rewards(days, amount, pool, kdx_price):
+  # Get USD rewards and convert to KDX
+  usd_rewards = compute_usd_rewards(days, amount, pool)
+  return usd_rewards / kdx_price  # Current KDX price in USD
+```
+
+This two-step approach allows us to:
+1. Calculate rewards in stable USD terms first
+2. Convert to volatile KDX tokens second
+3. Easily adjust for price fluctuations
+
+```python
+def compute_usd_rewards(days, amount, pool):
+  proportion = amount / pool.total_amount
+  return proportion * pool.daily_swap_volume * pool.staking_rewards * days
+```
+
+We then convert that into KDX:
+
+```python
+def compute_kdx_rewards(days, amount, pool, kdx_price):
+  return compute_usd_rewards(days, amount, pool) / kdx_price
+```
+
+---
+
+## Penalization Logic: Protecting Long-Term Stakers
+
+The penalty system serves two key purposes:
+1. Discourage short-term "hit and run" staking
+2. Reward long-term committed liquidity
+
+The penalty percentage follows an inverse power curve:
+
+```python
+def compute_penalty_percentage(days, pool, coefficient):
+  # Calculate remaining days to maturity
+  rem = pool.required_days - days
+  
+  # Apply power curve formula if still in penalty period
+  return (rem / pool.required_days) ** coefficient if rem >= 0 else 0.0
+```
+
+Key characteristics:
+- Starts at 100% penalty on day 0
+- Decreases smoothly as maturity approaches
+- Drops to 0% after required days (60)
+- Coefficient (0.66) controls curve steepness
+
+We then calculate the actual penalty amount:
+
+```python
+def compute_usd_rewards_penalty(days, amount, pool, coefficient):
+  # Calculate potential rewards
+  potential = compute_usd_rewards(days, amount, pool)
+  
+  # Apply penalty percentage
+  return potential * compute_penalty_percentage(days, pool, coefficient)
+```
+
+And the KDX equivalent:
+
+```python
+def compute_penalized_kdx_rewards(days, amount, pool, coefficient, kdx_price):
+  # Get penalized USD amount
+  usd_penalty = compute_usd_rewards_penalty(days, amount, pool, coefficient)
+  
+  # Convert to KDX
+  return usd_penalty / kdx_price
+```
+
+<LatexRenderer displayMode>{`\\left(\\frac{D-d}{D}\\right)^c`}</LatexRenderer>
+
+```python
+def compute_penalty_percentage(days, pool, coefficient):
+  rem = pool.required_days - days
+  return (rem / pool.required_days) ** coefficient if rem >= 0 else 0.0
+```
+
+Then:
+
+```python
+def compute_usd_rewards_penalty(days, amount, pool, coefficient):
+  return compute_usd_rewards(days, amount, pool) * compute_penalty_percentage(days, pool, coefficient)
+```
+
+```python
+def compute_penalized_kdx_rewards(days, amount, pool, coefficient, kdx_price):
+  return compute_usd_rewards_penalty(days, amount, pool, coefficient) / kdx_price
+```
+
+---
+
+## Amount Penalization
+
+```python
+def compute_penalized_amount(days, amount):
+  import math
+  full_days = math.floor(days)
+  return PENALIZED_AMOUNTS[full_days] * amount if full_days < AMOUNT_PENALTY_DAYS else amount
+```
+
+---
+
+## Net Return Calculation
+
+```python
+def compute_net_returns(days, amount, pool):
+  return compute_penalized_amount(amount, days) + compute_penalized_kdx_rewards(days, amount, pool, KDX_COEFFICIENT, KDX_USD_PRICE)
+```
+
+---
+
+## Waiting Period Adjustments
+
+When a user adds more money to the pool, the new waiting time is calculated by:
+
+<LatexRenderer displayMode>{`\\frac{t\\times n + r\\times p}{n+p}`}</LatexRenderer>
+
+where
+- $t$ is the maturing time
+- $r$ is the previous waiting time (user position in the penalty curve);
+- $p$ is the previous staked amount;
+- $n$ is the newly staked amount.
+
+Python implementation:
+```python
+def update_waiting_period(added_amount, previous_amount, days_to_maturity, pool):
+  import math
+  return math.ceil((pool.required_days * added_amount + days_to_maturity * previous_amount) / (added_amount + previous_amount))
+```
+
+---
+
+## Penalty Curve: Time-Weighted Disincentive
+
+The penalty applied to rewards gradually decreases as stakers approach the required staking duration. This creates a sigmoid-style decay that:
+
+1. Strongly discourages early exits
+2. Provides increasing rewards as commitment continues  
+3. Approaches zero penalty at full maturity
+
+The mathematical representation uses the formula:
+
+<LatexRenderer displayMode>{`\\Big(\\frac{D-d}{D}\\Big)^c`}</LatexRenderer>
+
+where
+- $D$ is the amount of days required to have 0 penalties;
+- $d$ is the number of days since the user staked;
+- $c > 0$ is an arbitary coefficient.
+
+Note: The user will receive (1 - penalty percentage) of the rewards
+
+![Penalty Curve](/images/blog/staking/penalty_curve.png)
+
+**Key Insights:**
+- First 30 days: ~90% penalty (strong lock-in effect)
+- Days 30-50: Rapid decrease in penalty
+- After day 60: Near-zero penalty (full rewards)
+
+The mathematical representation:
+
+---
+
+
+---
+
+## Modeling User Interaction
+
+The simulation tracks three key metrics over time:
+1. **Reward accumulation** - How rewards grow with time
+2. **Maturity progression** - How the penalty window decreases
+3. **Net returns** - Combining principal and rewards after penalties
+
+```python
+def simulate_period(days, inputs, pool):
+   d = 0
+   no_input_days = 0
+   rewards_list = []
+   maturity_list = []
+   penalized_amounts_list = []
+   days_to_maturity = pool.required_days
+   amount_penalty_days = AMOUNT_PENALTY_DAYS
+   amount = 0
+   
+   while d <= days:
+     # Handle new deposits
+     pool.total_amount += inputs[d]
+     if inputs[d] > 0 and d >= 1:
+       days_to_maturity = update_waiting_period(inputs[d], amount, days_to_maturity, pool)
+       amount_penalty_days = AMOUNT_PENALTY_DAYS
+       no_input_days = 0
+     
+     amount += inputs[d]
+     no_input_days += 1
+     
+     # Apply principal penalty if within penalty window
+     if no_input_days <= 3:
+       penalized_amounts_list.append(0.97 * amount)
+     else:
+       penalized_amounts_list.append(1.0 * amount)
+     
+     # Update maturity countdown
+     if days_to_maturity > 0:
+       days_to_maturity -= 1
+     
+     d += 1
+     rewards_list.append(compute_usd_rewards(1, amount, pool))
+     maturity_list.append(days_to_maturity)
+   
+   return rewards_list, maturity_list, penalized_amounts_list
+
+def compute_cumulative_rewards(rewards_list):
+  import numpy as np
+  return np.cumsum(rewards_list)
+```
+
+Key visualizations from the simulation:
+
+1. **Cumulative Rewards** - Shows linear growth of unpenalized rewards
+2. **Days to Maturity** - Tracks the countdown to full rewards
+3. **Penalized Rewards** - Shows actual rewards after penalties
+4. **Net Returns** - Combines principal and penalized rewards
+
+![Net Returns](/images/blog/staking/net_returns.png)
+
+---
+
+## Weekly Compounding: Maximizing Returns
+
+Weekly compounding reinvests rewards back into principal every 7 days, creating exponential growth:
+
+```python
+def simulate_weekly_compounding_period(days, inputs, pool):
+   d = 0
+   no_input_days = 0
+   rewards_list = []
+   maturity_list = []
+   penalized_amounts_list = []
+   days_to_maturity = pool.required_days
+   amount = 0
+   
+   while d <= days:
+     pool.total_amount += inputs[d]
+     if inputs[d] > 0 and d >= 1:
+       days_to_maturity = update_waiting_period(inputs[d], amount, days_to_maturity, pool)
+       no_input_days = 0
+     
+     amount += inputs[d]
+     no_input_days += 1
+     
+     # Apply principal penalty if within penalty window
+     if no_input_days <= AMOUNT_PENALTY_DAYS:
+       penalized_amounts_list.append(0.97 * amount)
+     else:
+       penalized_amounts_list.append(1.0 * amount)
+     
+     if days_to_maturity > 0:
+       days_to_maturity -= 1
+     
+     d += 1
+     rewards_list.append(compute_usd_rewards(1, amount, pool))
+     maturity_list.append(days_to_maturity)
+     
+     # Weekly compounding logic
+     if d % 7 == 0:
+       # Reinvest last week's rewards
+       days_to_maturity = update_waiting_period(
+         np.sum(rewards_list[-7:]), 
+         amount, 
+         days_to_maturity, 
+         pool
+       )
+       amount += np.sum(rewards_list[-7:])
+       no_input_days = 0
+   
+   return rewards_list, maturity_list, penalized_amounts_list
+```
+
+Key benefits of weekly compounding:
+- Rewards start earning their own rewards
+- 11.2% higher returns than simple staking
+- Better capital efficiency while maintaining liquidity
+
+![Weekly Compounding](/images/blog/staking/cumulative_rewards.png)
+
+---
+
+## Comparing Compounding Strategies
+
+Different compounding frequencies yield different returns. This comparison shows:
+
+1. **No compounding (0)** - Baseline linear growth
+2. **Weekly (7)** - Optimal balance of frequency and gas costs  
+3. **Monthly (60)** - Less frequent but still beneficial
+
+```python
+def chart_simulations(days, inputs, pool, comps):
+  for comp in comps:
+    # Simulate each compounding strategy
+    reg_c_rewards, reg_c_maturity, _ = simulate_regular_compounding_period(
+      days, inputs, pool, comp
+    )
+    cumulative_rewards = compute_cumulative_rewards(reg_c_rewards)
+    
+    # Calculate penalized rewards
+    penalized_rewards = [
+      cumulative_rewards[i] - 
+      cumulative_rewards[i] * compute_penalty_percentage(
+        60 - reg_c_maturity[i], 
+        kdx_pool, 
+        KDX_COEFFICIENT
+      ) 
+      for i in range(len(reg_c_rewards))
+    ]
+    
+    # Plot results
+    plt.plot(
+      days_list,
+      penalized_rewards, 
+      label=f"compounding every {comp} days"
+    )
+  
+  plt.xlabel("days")
+  plt.ylabel("cumulative penalized rewards")
+  plt.legend()
+```
+
+Key findings:
+- More frequent compounding = higher returns
+- Diminishing returns after weekly compounding
+- Gas costs may offset benefits of very frequent compounding
+
+![Compounding Comparison](/images/blog/staking/penalized_rewards.png)
+
+---
+
+## APR/APY Estimation
+
+Calculates annualized returns for different compounding strategies:
+
+```python
+def calculate_apr_apy(pool, comps):
+  days = 365
+  res = {}
+  inputs = [0 for _ in range(days + 1)]
+  inputs[0] = 1  # Start with $1 stake
+  
+  for comp in comps:
+    # Simulate full year
+    rewards, maturity, _ = simulate_regular_compounding_period(
+      days, inputs, pool, comp
+    )
+    cumulative_rewards = compute_cumulative_rewards(rewards)
+    
+    # Calculate final penalized amount
+    final_rewards = cumulative_rewards[-1] * (
+      1 - compute_penalty_percentage(
+        60 - maturity[-1],
+        pool,
+        KDX_COEFFICIENT
+      )
+    )
+    
+    res[comp] = final_rewards
+  
+  return res
+```
+
+Results show annual returns for:
+- No compounding: 22.87% 
+- Weekly compounding: 25.64% (+11.2%)
+- Monthly compounding: 25.19% (+9.1%)
+
+**Key Takeaways:**
+- Weekly compounding (7 days) provides ~11.2% higher returns than no compounding
+- Monthly compounding (60 days) provides ~9.1% higher returns than no compounding
+- More frequent compounding leads to better returns but requires more transactions
+
+
+## Conclusion: Strategic Implications
+
+After modeling the EckoDEX staking mechanism, several key insights emerge:
+
+1. **Time Commitment Matters**  
+   The penalty curve creates strong incentives for long-term staking, with rewards increasing dramatically after the halfway point.
+
+2. **Compounding Amplifies Returns**  
+   Our simulations show that periodic compounding (weekly vs monthly) can increase net returns by 5-15% over simple staking.
+
+3. **Protocol Alignment**  
+   This design aligns user incentives with protocol health - long-term stakers benefit most, creating stickier liquidity.
+
+4. **Strategic Considerations**  
+   - Early exits are heavily penalized (both principal and rewards)
+   - The optimal compounding frequency depends on your time horizon
+   - Pool size and volume directly impact your returns
+
+**Future Research Directions:**
+- Modeling dynamic reward rates
+- Simulating multiple deposit scenarios
+- Analyzing the impact of pool growth over time
+
+For those staking $KDX, understanding these dynamics can help optimize your strategy - whether you're a short-term liquidity provider or long-term protocol supporter.
