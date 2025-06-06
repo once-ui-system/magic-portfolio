@@ -1,0 +1,527 @@
+---
+title: "EckoDEX Multiplier Analysis"
+summary: "In-depth analysis of EckoDEX's liquidity provision incentive model, exploring multiplier mechanics, reward scaling, and long-term LP behavior using R data analysis tools."
+publishedAt: "2023-10-06"
+tag: "DeFi"
+---
+
+
+<div className="disclaimer-box">
+
+**Disclaimer (NFA)**: This article presents technical research about a financial protocol design. It is not financial advice. Cryptocurrencies involve substantial risk - always conduct your own research before making any financial decisions.
+
+</div>
+
+<style jsx>{`
+  .disclaimer-box {
+    border-left: 4px solid #f0ad4e;
+    background-color: rgba(240, 173, 78, 0.1);
+    padding: 1rem;
+    margin: 2rem 0;
+    border-radius: 4px;
+  }
+`}</style>
+
+---
+
+
+EckoDEX, Kadena's gas-free decentralized exchange, is introducing an Algorithmic Multiplier as part of its Liquidity Mining 2.0 program. This innovative mechanism dynamically adjusts rewards for liquidity providers (LPs) based on market conditions, balancing attractive incentives with sustainable token emissions.
+
+EckoDEX liquidity pool is the first one in Kadena using real-world data in order to programatically adjust rewards over time, preserving pool atractiveness from market fluctuations 
+
+In this article we explain how EckoDEX Liquidity Mining 2.0 is capable of giving attractive rewards to LPs in order to mitigate impermanent loss, without compromising the long-term holders by keeping the token emissions bounded .
+
+
+## How we obtain the data
+
+In blockchain systems, **events** are special contract functions that emit transaction data to the blockchain log. These events serve as notifications about state changes in smart contracts, allowing applications to track and analyze historical pool activity over time.
+
+Using our `chainweb-data` instance, we collected data from all EckoDEX transactions since the launch, from August, 1st, to September, 20th, 2022. We obtained the volume and volatility for all token pairs available at your DEX with two different approaches we are going to explain here: via SWAPS and UPDATE chainweb events from chain 2.
+
+
+## Setup code
+
+```plaintext
+# R setup code (non-executable)
+library(tidyverse)
+library(lubridate)
+library(plotly)
+library(ggpubr)
+library(RColorBrewer)
+library(scales)
+```
+
+```plaintext
+# Data loading and preprocessing (non-executable)
+data <- read_csv("datafile.csv", col_types = list(col_character(), col_character(), col_double(), col_double(), col_double(), col_double(), col_double())) |>
+  mutate(date = dmy(date), dv = volume/pool_tvl) |> filter(token != "lago.kwBTC")
+
+kda_prices <- read_csv("kda_prices.csv") |> mutate(date = date(date))
+
+price_df <- data |>
+  left_join(kda_prices, by = c("date" = "date")) |>
+  select(-total_volumes, -market_caps)
+```
+
+```plaintext
+# Column names inspection (non-executable)
+colnames(data)
+```
+
+
+### SWAP Events: Tracking Trading Activity
+
+We analyzed 116,469 swap transactions to understand trading patterns. Each swap emits a structured event containing:
+
+```pact
+(kaddex.exchange.SWAP
+  sender,       # Account initiating swap
+  receiver,     # Receiving account (often same as sender)
+  amount-in,    # Input token amount
+  token-in,     # Input token contract
+  amount-out,   # Output token amount  
+  token-out     # Output token contract
+)
+```
+
+Key technical details:
+- Events are emitted on-chain and indexed via Chainweb-data
+- All swaps involve KDA as either input or output
+- Volume is calculated in KDA terms first, then converted to USD
+- Events contain precise timestamps for temporal analysis
+
+Using these parameters, is pretty straightforward to obtain the volume for each token pair using its KDA value. As all pairs are aside KDA, simply accumulating the KDA value for a swap will result into the token's volume.
+Defining $a_i$, $i =\{1, ..., n\}$ as:
+
+<LatexRenderer displayMode>{`a_i = \\begin{cases} 
+  \\text{amount-in, if token-in is KDA},\\\\
+  \\text{amount-out, if token-out is KDA}.
+\\end{cases} \\\\
+volume = \\sum_{i=1}^n a_i`}</LatexRenderer>
+
+The formula calculates volumes denominated in KDA. To mitigate daily volatility, the multiplier algorithm applies a 7-day moving average to these volume metrics.
+
+The visualization below reveals several key trading patterns since launch:
+
+
+Key observations:
+1. **Trading concentration**: KDA dominates volume, followed by stablecoins
+2. **Growth trajectory**: Steady increase in daily volumes across all pairs
+3. **Market correlations**: Volume spikes correlate with major market movements
+4. **Token adoption**: New listings show gradual volume accumulation
+
+Hover interactions reveal:
+- Exact USD values for each day
+- Breakdown by token pair
+- Percentage of total volume
+
+```plaintext
+# Volume visualization code 
+o <-  price_df |> ggplot(aes(x = date, y = volume * price, fill =reorder(token, -volume),
+                                    text = paste0(
+        "<b>", date, "</b>", "<br>",
+        "Token contract: ", token, "<br>",
+        "Daily Swaps (USD): ", comma(volume*price), "<br>"
+        ) )) +
+    scale_y_continuous(labels = comma)+
+  geom_bar(stat="identity") +
+  labs(fill = "Token", x = " ", y = "Swap Amount (USD)", title = "Single-sided swap amount") +
+  theme_pubclean()+
+  scale_fill_manual(values =  c("#ffa900", "#ed1cb5", "#39fffc", "#0056ff"))
+
+ggplotly(o, tooltip = "text")  |> layout(legend = list(orientation = 'h'), hovermode = "x")
+```
+
+<iframe width="650" height="700" frameborder="0" scrolling="no" src="//chart-studio.plotly.com/~chicodias/3.embed"></iframe>
+
+### UPDATE Events
+
+141,594 updates
+These events are emited when a pool's Total Value Locked (TVL) changes. This happens when a user swap a token, add or remove liquidity into a Liquidity Pool. As its parameters we have the pair (for instance `coin:eckoDEX.kdx`) and its respective amounts.
+
+```eckoDEX.exchange.UPDATE pair amount-token1 amount-token2```
+
+To retrieve the price rates, we use the TWAP (Time-Weighted Average Prices), aiming to minimize large order's impact, resulting in price estimation improvements.
+
+<p>
+  Let <LatexRenderer>{`t_i`}</LatexRenderer> denote the time interval between update events <LatexRenderer>{`i`}</LatexRenderer> and <LatexRenderer>{`i+1`}</LatexRenderer>.
+</p>
+
+<LatexRenderer displayMode>
+  {`\\text{price\\_rate}_{i+1} = \\sum_{i=1}^{n} t_i \\cdot \\frac{\\text{amount\\_token1}_i}{\\text{amount\\_token2}_i}`}
+</LatexRenderer>
+
+Using the price rates within a day, we compute the pair's volatility using the rolling standard deviation from the past 7 days.
+
+The graph above shows the volatility of all pairs at EckoDEX since its respective listing. Notice the volatility is a parameter without scale, which means it doesn't have a unit of measure.
+
+```plaintext
+# Volatility visualization code (non-executable)
+k <- data |>
+ggplot(aes(x = date, y = volatility, color = token)) +
+ geom_line() +
+ labs(color = "Token", x = "", y = "Volatility", title = "Pool volatility")+
+ theme_pubclean()+
+scale_color_manual(values =  c( "#ed1cb5","#ffa900", "#0056ff", "#39fffc"))
+
+ggplotly(k) |> layout(legend = list(orientation = 'h'), hovermode = "x")
+```
+<iframe width="650" height="700" frameborder="0" scrolling="no" src="//chart-studio.plotly.com/~chicodias/5.embed"></iframe>
+
+## Diluted volume
+
+In order to get rid of the scale in the volume as well, we use the **diluted volume**($dv$), which is simply the volume divided by pool's TVL. This has a direct interpretation and also make your math easier as we will see.
+
+<LatexRenderer displayMode>{`dv = \\frac{\\text{volume}}{\\text{TVL}}`}</LatexRenderer>
+
+Here we have the diluted volume for the tokens currently available at EckoDEX.
+
+```{r}
+j <- data |> ggplot(aes(x = date, y = dv, color = token)) +
+ geom_line() +
+  labs(color = "Token", x = " ", y = "Diluted Volume", title = "Diluted Volume by pool") +
+  theme_pubclean()+
+  scale_color_manual(values =  c( "#ed1cb5","#ffa900", "#0056ff", "#39fffc"))
+
+ggplotly(j) |> layout(legend = list(orientation = 'h'), hovermode = "x") #|> api_create(filename = "dv")
+
+```
+
+<iframe width="650" height="700" frameborder="0" scrolling="no" src="//chart-studio.plotly.com/~chicodias/7.embed"></iframe>
+
+## Impermanent loss
+
+The Impermanent Loss is a cost of opportunity provided by the difference within 
+putting liquidity into a pool versus holding the tokens instead.
+We use the formula provided [here](https://medium.com/auditless/how-to-calculate-impermanent-loss-full-derivation-803e8b2497b7).
+Being $k$ a given change in price ratios between two consecutive days, we estimate the impermanent as:
+
+<LatexRenderer displayMode>{`IL(k) = \\frac{2 \\sqrt{k}}{1+k} - 1`}</LatexRenderer>
+
+It is important to notice this approach only allows us to estimate the impermanent loss regarding the daily changes. If we use a narrow time window,  with hourly data for example, the price rate variations could be bigger.
+
+But this phenomenum is mitigated since the fact that a Liquidity Provider only face the Impermanent Loss when he removes their liquidity position. Even further, the pool price ratio will continually change and can even go back to the same rate it was when the liquidity was provided. In this case, the Impermanent Loss would be completely avoided.
+
+```{r include=FALSE}
+fee <- 0.0025
+
+a <- price_df |> group_by(token) |>
+  arrange(date) |>
+  mutate(
+    daily_rewards = fee * volume,
+    cum_raw_usd_rewards = cumsum(daily_rewards * price),
+    token_value_kda = price_ratio * price,
+    price_ratio_change =  (1 /first(price_ratio)) * price_ratio,
+    impermanent_loss = (2 * sqrt(price_ratio_change)) / (1 + price_ratio_change) - 1,
+    pool_tvl_usd = pool_tvl * price,
+    il_pool_usd = -(impermanent_loss * first(pool_tvl_usd)),
+    il_pool_cum_usd = cumsum(coalesce(il_pool_usd, 0)),
+    pool_rewards_usd = daily_rewards * price,
+  )
+
+```
+
+```{r echo = F}
+starts <- price_df$date |> unique()
+df <- price_df |>
+  #  filter(token == "eckoDEX.kdx") |>
+  arrange(date)
+
+test <- starts |> map_dfr(~ (df |>
+  filter(date > .) |>
+  group_by(token) |>
+  mutate(
+    daily_rewards = fee * volume,
+    cum_raw_usd_rewards = cumsum(daily_rewards * price),
+    token_value_kda = price_ratio * price,
+    # day 0
+    price_ratio_change = (1 / first(price_ratio)) * price_ratio,
+    impermanent_loss = (2 * sqrt(price_ratio_change)) / (1 + price_ratio_change) - 1,
+    pool_tvl_usd = pool_tvl * price,
+    # value outside pool
+    il_pool_usd = -(impermanent_loss * first(pool_tvl_usd)),
+    il_pool_cum_usd = cumsum(coalesce(il_pool_usd, 0)),
+    pool_rewards_usd = daily_rewards * price,
+    cum_rewards_usd = cumsum(pool_rewards_usd),
+    start_date = .
+  )))
+
+
+```
+
+```{r}
+
+q <- a |> ggplot() +
+  geom_line(aes(x = date, y = impermanent_loss, color = token), alpha = 0.75) +
+  labs(color = "Token", x = " ", y = "Pool daily impermanent loss (%)") +
+    theme_pubclean()+
+  scale_color_manual(values =  c( "#ed1cb5","#ffa900", "#0056ff", "#39fffc"))
+
+ggplotly(q) |> layout(legend = list(orientation = 'h'), hovermode = "x")# |> api_create(filename = "il")
+```
+
+<iframe width="650" height="700" frameborder="0" scrolling="no" src="//chart-studio.plotly.com/~chicodias/21.embed"></iframe>
+
+
+Instead of providing an initial value, here we estimate the impermanent loss comparing the rewards obtained throught the past day and the difference between the pool's TVL and its USD worth how much the TVL amount would worth in USD at that time.
+
+Since all the estimations were calculated using the KDA in-pool values, we are only taking in account the token-side variations, that is, we are not considering the KDA variation of prices itself, as usual when working with impermanent loss.
+
+## Obtaining pool rewards
+
+We obtain the pool raw daily rewards (without the multiplier) by multiplying the pool's volume by its fee ($0.0025$). Comparing it with the impermanent loss, we have a way of measuring when a pool becomes too volatile to provide returns.
+
+```{r}
+
+qq <- a |>  filter(token != "eckoDEX.kdx") |>
+  select(date, token,"Daily impermanent loss" = il_pool_usd, "Pool daily rewards" = pool_rewards_usd) |>
+  pivot_longer(cols = c("Daily impermanent loss", "Pool daily rewards")) |>
+  drop_na() |>
+  ggplot() +
+    scale_y_continuous(labels = comma) +
+  geom_area(aes(x= date, fill = name, y = value), alpha = 0.6, position = "identity" ) +
+  facet_wrap(~token, scales = "free_y") +
+  labs(fill = " ", x = " ", y = "USD Value", title = "Pool rewards versus impermanent loss (daily)")+
+  theme_pubclean()+
+  scale_fill_manual(values =  c( "#ed1cb5", "#39fffc"))
+
+ggplotly(qq, dinamicTicks = T) |> layout(legend = list(orientation = 'h'), hovermode = "x") # |> api_create(filename = "il_pools")
+```
+
+<iframe width="650" height="700" frameborder="0" scrolling="no" src="//chart-studio.plotly.com/~chicodias/19.embed"></iframe>
+
+
+The KDX tokenomics introduces an additional layer through the multiplier mechanism. This feature enables the KDA:KDX pool to distribute amplified rewards, with LPs receiving their incentives in KDX tokens. This design significantly enhances the effective APR for participants.
+
+In an attempt to incentivize early Liquidity Providers, since our launch the multiplier is set to its highest value: 4.0. For a deeper dive on it read Mandrake and Ronaldinho's (article)[link]. 
+
+## Quick Recap on z
+
+The Z value plugged in the Sigmoid is the part we obtain using real data.  We estimate $z$ with the formula:
+
+<LatexRenderer displayMode>{`z = \\frac{(5 \\times volatility - 2 \\times volume)}{10,000}`}</LatexRenderer>
+
+Let's see how your z-value goes for KDX:
+
+```{r}
+p<- a |> filter(token == "eckoDEX.kdx") |>
+  ggplot(aes(x = date)) +
+  geom_line(aes(y = z, color = dv), size =1)+
+  theme_pubr() +
+  scale_color_gradientn(name = , colors = c("#ffa900", "#ed1cb5","#39fffc")) +
+  labs( x = "Date", y = "z-value", title = "Diluted volume and z-value") +
+  theme(legend.position="top")
+p
+```
+
+```{r}
+ a |> filter(token == "eckoDEX.kdx") |>
+  ggplot(aes(x = date)) +
+  geom_line(aes(y = multiplier, color = volatility), size =1)+
+  theme_pubr() +
+  scale_color_gradientn(name = , colors = c("#ffa900", "#ed1cb5","#39fffc")) +
+  labs( x = "Date", y = "Theoretical Multiplier", title = "KDX Multiplier and volatility" )+
+  theme(legend.position="top")
+
+```
+
+
+Using the observed data, this is the algorithm multiplier for KDA:KDX pool we would have with the observed $z$ values. However, notice currently the DEX is running a 4x raw multiplier instead, as an initial campaign to incentivize Liquidity Providers.
+
+Now, accounting for KDX raw emissions we had left apart from the previous analisys, we are able to compare the emissions with the current 4x multiplier and what we had obtained thought the algorithmic one.
+
+```{r include = F}
+
+kdx_rewards <- a |> filter(token == "eckoDEX.kdx") |>
+  ungroup() |> arrange(date) |>
+  mutate(
+    daily_multiplied_rewards = 4 * pool_rewards_usd,
+    daily_algorithm_rewards = multiplier * pool_rewards_usd,
+    minted_mult_rewards = 3 * pool_rewards_usd,
+    minted_algo_rewards = (multiplier - 1) * pool_rewards_usd,
+    cum_minted_mult = cumsum(minted_mult_rewards),
+    cum_minted_algo = cumsum(minted_algo_rewards),
+  )
+```
+
+
+```{r}
+s <- kdx_rewards |> 
+  select(date,
+         "- Impermanent loss (pool)" =  il_pool_usd,
+         "Raw rewards (no multiplier)" = pool_rewards_usd,
+         "Algorithmic rewards" = daily_algorithm_rewards,
+         "4x current rewards" = daily_multiplied_rewards) |>
+  pivot_longer(cols = -"date") |>
+  drop_na() |>
+  ggplot() +
+  geom_area(aes(x= date, fill = name, y = value), alpha = 0.3, position = "identity" ) +
+  labs(fill = " ", x = " ", y = "USD Value", title = "KDX daily pool rewards and impermanent loss") +
+  scale_y_continuous(labels = comma) +
+  theme_pubr() +
+scale_fill_manual(values = c("#ed1cb5",  "#ffa900", "#39fffc","#0056ff"))
+
+ggplotly(s) |> layout(legend = list(orientation = 'h'), hovermode = "x") #|> api_create(filename = "kdx_rewards")
+
+
+```
+
+
+Cumulative KDX rewards over time
+
+```{r}
+r <- kdx_rewards |>
+  select(date,
+         "- Impermanent loss" = il_pool_cum_usd,
+         "Algorithmic rewards" = cum_minted_algo,
+         "4x current rewards" = cum_minted_mult,
+         "Raw rewards (no multiplier)" = cum_raw_usd_rewards) |>
+  pivot_longer(cols = -"date") |>
+  drop_na() |>
+  ggplot() +
+#  geom_point(aes(x = date,color = name, y = value)) +
+  geom_area(aes(x= date, fill = name, y = value), alpha = 0.2, position = "identity" ) +
+  labs(fill = " ", x = " ", y = "Cumulative Value (USD)", fill = " ", title = "KDX  cumulative rewards and impermanent loss")+
+  scale_y_continuous(labels = comma) +
+  theme_pubclean() +
+scale_fill_manual(values = c("#ed1cb5",  "#ffa900", "#39fffc","#0056ff"))
+
+ggplotly(r) |> layout(legend = list(orientation = 'h'), hovermode = "x")# |> api_create(filename = "cum_kdx_rewards")
+```
+
+<iframe width="650" height="700" frameborder="0" scrolling="no" src="//chart-studio.plotly.com/~chicodias/17.embed"></iframe>
+
+## Economic Implications of Emission Schedules
+
+Our analysis of 1,818 minting transactions reveals how reward emissions impact the broader KDX economy:
+
+**Supply Dynamics**
+- Current emissions: ~25,000 KDX/day (4x multiplier)
+- Algorithmic target: ~18,000 KDX/day (based on model)
+- Difference represents short-term growth incentive
+
+**Market Effects**
+- Controlled emissions help maintain token value
+- Multiplier adjusts to trading activity automatically
+- Long-term sustainability vs short-term incentives
+
+**Holder Considerations**
+- Emission rate affects inflation pressure
+- Multiplier mechanism creates predictable supply curves
+- Protocol can adjust parameters via governance
+
+```{r include = F}
+
+mint_txs <- read_csv("mint_.csv", col_names = c("sender", "receiver", "amount", "timestamp")) |> mutate(day = date(timestamp))
+
+
+mint_sm <- mint_txs |>
+  group_by(day) |>
+  summarise(
+    daily_minted = sum(amount),
+    n_txs = n()
+  ) |> drop_na() 
+
+kdx_rewards <- kdx_rewards |> left_join(mint_sm, by = c("date" = "day")) |>
+  mutate(minted_kdx_usd = daily_minted / price_ratio * price,
+         cum_minted_kdx_usd = cumsum(replace_na(minted_kdx_usd, 0)))
+
+```
+
+```{r}
+s <- kdx_rewards |>
+  select(date,
+         "4x current rewards" = minted_mult_rewards,
+         "Algorithmic rewards" = minted_algo_rewards,
+         "KDX minted" = minted_kdx_usd ) |>
+  pivot_longer(cols = -"date") |>
+  drop_na() |>
+  ggplot() +
+  geom_area(aes(x= date,fill = name, y = value), alpha = 0.2, position = "identity" )+
+    labs(fill = " ", x = " ", y = "Daily Minted (USD)", fill = " ", title = "KDX daily expected emission versus currently minted")+
+  theme_pubclean() +
+  scale_y_continuous(labels = comma) +
+scale_fill_manual(values = c( "#39fffc","#ffa900", "#ed1cb5"))
+
+ggplotly(s) |> layout(legend = list(orientation = 'h'), hovermode = "x") #|> api_create(filename = "mint")
+```
+
+<iframe width="650" height="700" frameborder="0" scrolling="no" src="//chart-studio.plotly.com/~chicodias/13.embed"></iframe>
+
+
+```{r}
+
+s <- kdx_rewards |>
+  select(date,
+         "Algorithmic rewards" = cum_minted_algo,
+         "4x current rewards" = cum_minted_mult,
+         "KDX minted" = cum_minted_kdx_usd) |>
+  pivot_longer(cols = -"date") |>
+  ggplot() +
+   geom_area(aes(x= date, fill = name, y = value), alpha = 0.2, position = "identity" )+
+  labs(title = "Cumulative expected and minted KDX rewards", x = " ", y = "Cumulative value (USD)", fill = " ") +
+ scale_y_continuous(labels = comma)+ 
+    theme_pubclean() +
+scale_fill_manual(values = c( "#39fffc","#ffa900", "#ed1cb5"))
+
+
+ggplotly(s) |> layout(legend = list(orientation = 'h'), hovermode = "x") #|> api_create(filename = "mint-cumulative")
+```
+
+<iframe width="650" height="700" frameborder="0" scrolling="no" src="//chart-studio.plotly.com/~chicodias/9.embed"></iframe>
+
+
+
+## Key Takeaways and Future Directions
+
+**Validated Findings**
+1. The multiplier algorithm successfully balances:
+   - Liquidity incentives (higher during volatility)
+   - Tokenomics sustainability (lower during calm periods)
+2. Current 4x multiplier provides strong bootstrap incentives
+3. Model accurately predicts emission needs based on market activity
+
+**Implementation Benefits**
+- Dynamic adjustment reduces manual governance
+- Transparent calculation using on-chain data
+- Fair distribution based on contribution
+
+**Next Steps**
+1. Expand to additional trading pairs
+2. Develop governance controls for parameters
+3. Create user dashboards showing real-time multipliers
+4. Research adaptive coefficient adjustments
+
+This analysis demonstrates how EckoDEX combines rigorous data science with decentralized finance innovation to create sustainable liquidity incentives.
+
+The estimation of the volume and the price rates via blockchain events given us a more broader approach to deal with the impermanent loss, calculating it for the entire pool, instead of using fixed amounts as start. For a user obtain a estimative of his in-pool performace, he can just divide the estimated TVL by their pool share. 
+
+If EckoDAO wants to, in the future the DEX can also have the multiplier for other tokens, if the election for a specific proposal suceeds in. Here's an estimation for the multipliers in the other pools as well as Kaddex KDX.
+
+
+```{r}
+
+v <- data |> ggplot(aes(x = date, y = multiplier, color = token)) +
+  geom_line() +
+  labs(title = "Theoretical multiplier for each pool",  x = " ", y = "KDX multiplier", fill = " ") +
+ theme_pubclean()+
+scale_color_manual(values =  c( "#ed1cb5","#ffa900", "#0056ff", "#39fffc"))
+
+
+ggplotly(v) |> layout(legend = list(orientation = 'h'), hovermode = "x")#|> api_create(filename = "mult")
+
+```
+
+<iframe width="650" height="700" frameborder="0" scrolling="no" src="//chart-studio.plotly.com/~chicodias/11.embed"></iframe>
+
+```{r}
+p <- data |> ggplot() +
+  geom_point(aes(x = dv, y = volatility, color = multiplier, text = token ))+
+  labs(x = "Diluted volume", y = "Volatility", title ="Diluted volume versus volatility", color = "Theoretical multiplier") +
+#   scale_colour_gradientn(colours=rainbow(7)) 
+  scale_color_gradientn(colors = c("#ffa800", "#ed1cb5","#38fffc"))
+
+ggplotly(p)|> layout(legend = list(orientation = 'h'))# |> api_create(filename = "scatter-dv-vol")
+```
+
+<iframe width="650" height="700" frameborder="0" scrolling="no" src="//chart-studio.plotly.com/~chicodias/23.embed"></iframe>

@@ -40,6 +40,7 @@
     "@types/node": "^20.17.30",
     "@types/react": "^18.3.20",
     "@types/react-dom": "^18.3.6",
+    "@types/react-katex": "^3.0.4",
     "eslint": "^9.25.0",
     "postcss-custom-media": "^10.0.8",
     "postcss-flexbugs-fixes": "^5.0.2",
