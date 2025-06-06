@@ -17,30 +17,38 @@ export async function generateMetadata() {
 
 export default function Blog() {
   return (
-    <Column maxWidth="s">
-      <Schema
-        as="blog"
-        baseURL={baseURL}
-        title={blog.title}
-        description={blog.description}
-        path={blog.path}
-        image={`${baseURL}/og?title=${encodeURIComponent(blog.title)}`}
-        author={{
-          name: person.name,
-          url: `${baseURL}/blog`,
-          image: `${baseURL}${person.avatar}`,
-        }}
-      />
-      <Heading marginBottom="l" variant="display-strong-s">
-        {blog.title}
-      </Heading>
-      <Column
-				fillWidth flex={1}>
-				<Posts range={[1,1]} thumbnail direction="column"/>
-				<Posts range={[2,3]} thumbnail/>
-				<Posts range={[4]} columns="2"/>
-			</Column>
-      {newsletter.display && <Mailchimp newsletter={newsletter} />}
-    </Column>
-  );
+        <Column maxWidth="s">
+            <Schema
+                as="blog"
+                baseURL={baseURL}
+                title={blog.title}
+                description={blog.description}
+                path={blog.path}
+                image={`${baseURL}/og?title=${encodeURIComponent(blog.title)}`}
+                author={{
+                    name: person.name,
+                    url: `${baseURL}/blog`,
+                    image: `${baseURL}${person.avatar}`,
+                }}
+            />
+            <Column marginBottom="xl">
+                <Heading variant="display-strong-xl" marginBottom="xs">
+                    {blog.title}
+                </Heading>
+                <Heading variant="display-default-xs" onBackground="neutral-weak">
+                    {blog.description}
+                </Heading>
+            </Column>
+            <Column
+                fillWidth flex={1}>
+                <Heading variant="display-strong-m" onBackground="neutral-weak">
+                    Posts
+                </Heading>
+                <Posts range={[1, 1]} thumbnail direction="column" />
+                <Posts range={[2, 3]} thumbnail />
+                <Posts range={[4]} columns="2" />
+            </Column>
+            {newsletter.display && <Mailchimp newsletter={newsletter} />}
+        </Column>
+    );
 }

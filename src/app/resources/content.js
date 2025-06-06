@@ -234,11 +234,12 @@ img: "/icons/walletconnect.svg"
 const blog = {
   path: "/blog",
   label: "Blog",
-  title: "Writing about blockchain tech...",
-  description: `Read what ${person.name} has been up to recently`,
+  title: "Building on the edge of Web3",
+  description: `Insights, deep dives, and lessons from ${person.name} on building decentralized systems, infrastructure, and real-world blockchain applications.`,
   // Create new blog posts by adding a new .mdx file to app/blog/posts
   // All posts will be listed on the /blog route
-};
+}
+
 
 const work = {
   path: "/work",
