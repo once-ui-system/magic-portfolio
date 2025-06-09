@@ -1,9 +1,9 @@
 "use client";
 
 import Masonry from "react-masonry-css";
-import { SmartImage } from "@/once-ui/components";
+import { Media } from "@once-ui-system/core";
 import styles from "./Gallery.module.scss";
-import { gallery } from "@/app/resources/content";
+import { gallery } from "@/resources";
 
 export default function MasonryGrid() {
   const breakpointColumnsObj = {
@@ -18,7 +18,7 @@ export default function MasonryGrid() {
       columnClassName={styles.masonryGridColumn}
     >
       {gallery.images.map((image, index) => (
-        <SmartImage
+        <Media
           priority={index < 10}
           sizes="(max-width: 560px) 100vw, 50vw"
           key={index}

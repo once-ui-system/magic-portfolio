@@ -1,19 +1,17 @@
 import React from "react";
 
-import { Heading, Flex, Text, Button, Avatar, RevealFx, Column, Badge, Row } from "@/once-ui/components";
-import { Projects } from "@/components/work/Projects";
-
-import { baseURL, routes } from "@/app/resources";
-import { home, about, person, newsletter } from "@/app/resources/content";
+import { Heading, Flex, Text, Button, Avatar, RevealFx, Column, Badge, Row, Meta, Schema } from "@once-ui-system/core";
+import { home, about, person, newsletter, baseURL, routes } from "@/resources";
 import { Mailchimp } from "@/components";
+import { Projects } from "@/components/work/Projects";
 import { Posts } from "@/components/blog/Posts";
-import { Meta, Schema } from "@/once-ui/modules";
 
 export async function generateMetadata() {
   return Meta.generate({
     title: home.title,
     description: home.description,
     baseURL: baseURL,
+    image: "/images/og/home.jpg",
     path: home.path,
   });
 }
@@ -27,7 +25,7 @@ export default function Home() {
         path={home.path}
         title={home.title}
         description={home.description}
-        image={`${baseURL}/og?title=${encodeURIComponent(home.title)}`}
+        image={`${baseURL}/generate-og?title=${encodeURIComponent(home.title)}`}
         author={{
           name: person.name,
           url: `${baseURL}${about.path}`,
@@ -61,12 +59,14 @@ export default function Home() {
               href={about.path}
               variant="secondary"
               size="m"
+              weight="default"
               arrowIcon
             >
-              <Flex gap="8" vertical="center">
+              <Flex gap="8" vertical="center" paddingRight="4">
                 {about.avatar.display && (
                   <Avatar
-                    style={{ marginLeft: "-0.75rem", marginRight: "0.25rem" }}
+                    marginRight="8"
+                    style={{ marginLeft: "-0.75rem" }}
                     src={person.avatar}
                     size="m"
                   />

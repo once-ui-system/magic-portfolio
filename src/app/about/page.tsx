@@ -6,23 +6,23 @@ import {
   Heading,
   Icon,
   IconButton,
-  SmartImage,
+  Media,
   Tag,
   Text,
-} from "@/once-ui/components";
-import { baseURL } from "@/app/resources";
+  Meta,
+  Schema
+} from "@once-ui-system/core";
+import { baseURL, about, person, social } from "@/resources";
 import TableOfContents from "@/components/about/TableOfContents";
 import styles from "@/components/about/about.module.scss";
-import { person, about, social } from "@/app/resources/content";
 import React from "react";
-import { Meta, Schema } from "@/once-ui/modules";
 
 export async function generateMetadata() {
   return Meta.generate({
     title: about.title,
     description: about.description,
     baseURL: baseURL,
-    image: `${baseURL}/og?title=${encodeURIComponent(about.title)}`,
+    image: `${baseURL}/generate-og?title=${encodeURIComponent(about.title)}`,
     path: about.path,
   });
 }
@@ -58,7 +58,7 @@ export default function About() {
         title={about.title}
         description={about.description}
         path={about.path}
-        image={`${baseURL}/og?title=${encodeURIComponent(about.title)}`}
+        image={`${baseURL}/generate-og?title=${encodeURIComponent(about.title)}`}
         author={{
           name: person.name,
           url: `${baseURL}${about.path}`,
@@ -226,7 +226,7 @@ export default function About() {
                             //@ts-ignore
                             height={image.height}
                           >
-                            <SmartImage
+                            <Media
                               enlarge
                               radius="m"
                               //@ts-ignore
@@ -295,7 +295,7 @@ export default function About() {
                             //@ts-ignore
                             height={image.height}
                           >
-                            <SmartImage
+                            <Media
                               enlarge
                               radius="m"
                               //@ts-ignore

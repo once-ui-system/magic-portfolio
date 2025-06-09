@@ -1,15 +1,13 @@
-import { Flex } from "@/once-ui/components";
+import { Flex, Meta, Schema } from "@once-ui-system/core";
 import MasonryGrid from "@/components/gallery/MasonryGrid";
-import { baseURL } from "@/app/resources";
-import { gallery, person } from "@/app/resources/content";
-import { Meta, Schema } from "@/once-ui/modules";
+import { baseURL, gallery, person } from "@/resources";
 
 export async function generateMetadata() {
   return Meta.generate({
     title: gallery.title,
     description: gallery.description,
     baseURL: baseURL,
-    image: `${baseURL}/og?title=${encodeURIComponent(gallery.title)}`,
+    image: `${baseURL}/generate-og?title=${encodeURIComponent(gallery.title)}`,
     path: gallery.path,
   });
 }
@@ -23,7 +21,7 @@ export default function Gallery() {
         title={gallery.title}
         description={gallery.description}
         path={gallery.path}
-        image={`${baseURL}/og?title=${encodeURIComponent(gallery.title)}`}
+        image={`${baseURL}/generate-og?title=${encodeURIComponent(gallery.title)}`}
         author={{
           name: person.name,
           url: `${baseURL}${gallery.path}`,

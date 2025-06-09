@@ -1,6 +1,6 @@
 {
   "name": "@once-ui-system/magic-portfolio",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "scripts": {
     "dev": "next dev",
     "export": "next export",
@@ -9,35 +9,26 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@floating-ui/react-dom": "^2.1.2",
     "@mdx-js/loader": "^3.1.0",
     "@next/mdx": "^15.3.1",
+    "@once-ui-system/core": "^1.0.28",
     "classnames": "^2.5.1",
     "cookie": "^1.0.2",
     "gray-matter": "^4.0.3",
     "next": "^15.3.1",
     "next-mdx-remote": "^5.0.0",
-    "postcss": "^8.5.3",
-    "postcss-preset-env": "^9.6.0",
-    "prismjs": "^1.30.0",
     "react": "19.0.0",
     "react-dom": "19.0.0",
     "react-icons": "^5.5.0",
     "react-masonry-css": "^1.0.16",
-    "remark": "^15.0.1",
-    "remark-html": "^16.0.1",
-    "sass": "^1.86.3",
-    "sharp": "^0.34.1"
+    "sass": "^1.86.3"
   },
   "devDependencies": {
-    "@csstools/postcss-global-data": "^2.1.1",
     "@types/cookie": "^0.6.0",
     "@types/node": "^20.17.30",
     "@types/react": "^18.3.20",
     "@types/react-dom": "^18.3.6",
     "eslint": "^9.25.0",
-    "postcss-custom-media": "^10.0.8",
-    "postcss-flexbugs-fixes": "^5.0.2",
     "typescript": "^5.8.3"
   }
 }

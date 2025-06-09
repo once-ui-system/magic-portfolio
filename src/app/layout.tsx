@@ -1,14 +1,15 @@
-import "@/once-ui/styles/index.scss";
-import "@/once-ui/tokens/index.scss";
+import '@once-ui-system/core/css/styles.css';
+import '@once-ui-system/core/css/tokens.css';
 
 import classNames from "classnames";
 
-import { Footer, Header, RouteGuard } from "@/components";
-import { baseURL, effects, style, font, home } from "@/app/resources";
+import { home } from "@/resources";
 
-import { Background, Column, Flex, ThemeProvider, ToastProvider } from "@/once-ui/components";
-import { opacity, SpacingToken } from "@/once-ui/types";
-import { Meta } from "@/once-ui/modules";
+import { Background, Column, Flex } from "@once-ui-system/core/components";
+import { Meta, opacity, SpacingToken } from "@once-ui-system/core";
+import { Providers } from '@/components/Providers';
+import { baseURL, effects, fonts } from '@/resources';
+import { Footer, Header, RouteGuard } from '@/components';
 
 export async function generateMetadata() {
   return Meta.generate({
@@ -30,36 +31,53 @@ export default async function RootLayout({ children }: RootLayoutProps) {
       suppressHydrationWarning
       as="html"
       lang="en"
-      background="page"
-      data-neutral={style.neutral}
-      data-brand={style.brand}
-      data-accent={style.accent}
-      data-solid={style.solid}
-      data-solid-style={style.solidStyle}
-      data-border={style.border}
-      data-surface={style.surface}
-      data-transition={style.transition}
+      fillWidth
       className={classNames(
-        font.primary.variable,
-        font.secondary.variable,
-        font.tertiary.variable,
-        font.code.variable,
+        fonts.primary.variable,
+        fonts.secondary.variable,
+        fonts.tertiary.variable,
+        fonts.code.variable,
       )}
     >
       <head>
         <script
+          // biome-ignore lint/security/noDangerouslySetInnerHtml: <It's not dynamic nor a security issue.>
           dangerouslySetInnerHTML={{
             __html: `
               (function() {
                 try {
-                  const theme = localStorage.getItem('theme') || 'system';
                   const root = document.documentElement;
-                  if (theme === 'system') {
-                    const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                    root.setAttribute('data-theme', isDark ? 'dark' : 'light');
-                  } else {
-                    root.setAttribute('data-theme', theme);
-                  }
+                  
+                  const defaultTheme = 'system';
+                  root.setAttribute('data-neutral', 'gray');
+                  root.setAttribute('data-brand', 'blue');
+                  root.setAttribute('data-accent', 'indigo');
+                  root.setAttribute('data-solid', 'contrast');
+                  root.setAttribute('data-solid-style', 'flat');
+                  root.setAttribute('data-border', 'playful');
+                  root.setAttribute('data-surface', 'filled');
+                  root.setAttribute('data-transition', 'all');
+                  root.setAttribute('data-scaling', '100');
+                  root.setAttribute('data-viz-style', 'categorical');
+                  
+                  const resolveTheme = (themeValue) => {
+                    if (!themeValue || themeValue === 'system') {
+                      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                    }
+                    return themeValue;
+                  };
+                  
+                  const theme = localStorage.getItem('data-theme');
+                  const resolvedTheme = resolveTheme(theme);
+                  root.setAttribute('data-theme', resolvedTheme);
+                  
+                  const styleKeys = ['neutral', 'brand', 'accent', 'solid', 'solid-style', 'viz-style', 'border', 'surface', 'transition', 'scaling'];
+                  styleKeys.forEach(key => {
+                    const value = localStorage.getItem('data-' + key);
+                    if (value) {
+                      root.setAttribute('data-' + key, value);
+                    }
+                  });
                 } catch (e) {
                   document.documentElement.setAttribute('data-theme', 'dark');
                 }
@@ -68,51 +86,50 @@ export default async function RootLayout({ children }: RootLayoutProps) {
           }}
         />
       </head>
-      <ThemeProvider>
-        <ToastProvider>
-          <Column style={{ minHeight: "100vh" }} as="body" fillWidth margin="0" padding="0">
-            <Background
-              position="fixed"
-              mask={{
-                x: effects.mask.x,
-                y: effects.mask.y,
-                radius: effects.mask.radius,
-                cursor: effects.mask.cursor
-              }}
-              gradient={{
-                display: effects.gradient.display,
-                opacity: effects.gradient.opacity as opacity,
-                x: effects.gradient.x,
-                y: effects.gradient.y,
-                width: effects.gradient.width,
-                height: effects.gradient.height,
-                tilt: effects.gradient.tilt,
-                colorStart: effects.gradient.colorStart,
-                colorEnd: effects.gradient.colorEnd,
-              }}
-              dots={{
-                display: effects.dots.display,
-                opacity: effects.dots.opacity as opacity,
-                size: effects.dots.size as SpacingToken,
-                color: effects.dots.color,
-              }}
-              grid={{
-                display: effects.grid.display,
-                opacity: effects.grid.opacity as opacity,
-                color: effects.grid.color,
-                width: effects.grid.width,
-                height: effects.grid.height,
-              }}
-              lines={{
-                display: effects.lines.display,
-                opacity: effects.lines.opacity as opacity,
-                size: effects.lines.size as SpacingToken,
-                thickness: effects.lines.thickness,
-                angle: effects.lines.angle,
-                color: effects.lines.color,
-              }}
-            />
-            <Flex fillWidth minHeight="16" hide="s"></Flex>
+      <Providers>
+        <Column as="body" background="page" fillWidth style={{minHeight: "100vh"}} margin="0" padding="0" horizontal="center">
+          <Background
+            position="fixed"
+            mask={{
+              x: effects.mask.x,
+              y: effects.mask.y,
+              radius: effects.mask.radius,
+              cursor: effects.mask.cursor,
+            }}
+            gradient={{
+              display: effects.gradient.display,
+              opacity: effects.gradient.opacity as opacity,
+              x: effects.gradient.x,
+              y: effects.gradient.y,
+              width: effects.gradient.width,
+              height: effects.gradient.height,
+              tilt: effects.gradient.tilt,
+              colorStart: effects.gradient.colorStart,
+              colorEnd: effects.gradient.colorEnd,
+            }}
+            dots={{
+              display: effects.dots.display,
+              opacity: effects.dots.opacity as opacity,
+              size: effects.dots.size as SpacingToken,
+              color: effects.dots.color,
+            }}
+            grid={{
+              display: effects.grid.display,
+              opacity: effects.grid.opacity as opacity,
+              color: effects.grid.color,
+              width: effects.grid.width,
+              height: effects.grid.height,
+            }}
+            lines={{
+              display: effects.lines.display,
+              opacity: effects.lines.opacity as opacity,
+              size: effects.lines.size as SpacingToken,
+              thickness: effects.lines.thickness,
+              angle: effects.lines.angle,
+              color: effects.lines.color,
+            }}
+          />
+          <Flex fillWidth minHeight="16" hide="s"></Flex>
             <Header />
             <Flex
               zIndex={0}
@@ -128,8 +145,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
             </Flex>
             <Footer />
           </Column>
-        </ToastProvider>
-      </ThemeProvider>
-    </Flex>
+        </Providers>
+      </Flex>
   );
 }

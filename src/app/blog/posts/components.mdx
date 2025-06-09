@@ -17,7 +17,7 @@ The feedback component is used to display critical information to visitors.
     topRadius="l"
     codeHeight={24}
     codePreview={<Feedback icon title="Feedback element" variant="success" description="Longer description of the feedback message." marginBottom="24"/>}
-    codeInstances={[
+    codes={[
       {
         code:
 `<Feedback
@@ -60,7 +60,7 @@ Tables are used to display data in a structured format.
         ]
       }}
     />}
-    codeInstances={[
+    codes={[
       {
         code:
 `<Table 
@@ -100,12 +100,12 @@ The code block component works based on Once UI's CodeBlock. You can access it w
 <CodeBlock
     radius="none"
     topRadius="l"
-    codeInstances={[
+    codes={[
       {
         code:
 `// Full component syntax
 <CodeBlock
-    codeInstances={[
+    codes={[
       {
         code: "console.log('Hello, World!');",
         language: "javascript",
@@ -144,7 +144,7 @@ The `InlineCode` is another Once UI component that you can access either through
     codePreview={<InlineCode>
         const x = 10;
     </InlineCode>}
-    codeInstances={[
+    codes={[
       {
         code:
 `// Full component syntax
@@ -190,7 +190,7 @@ Accordions are used to toggle between hiding and showing content.
         ]}
       />
     }
-    codeInstances={[
+    codes={[
       {
         code:
 `<AccordionGroup 
@@ -234,7 +234,7 @@ Buttons are used to trigger actions or navigate to other pages.
       <Button variant="secondary" label="Secondary" />
       <Button variant="tertiary" label="Tertiary" />
     </Row>}
-    codeInstances={[
+    codes={[
       {
         code:
 `<Row gap="8">
@@ -270,7 +270,7 @@ Cards are used to group related content and actions.
         padding="4"
         gap="8"
       >
-        <SmartImage src="/images/projects/project-01/cover-01.jpg" aspectRatio="16/9" radius="l" sizes="400px" />
+        <Media src="/images/projects/project-01/cover-01.jpg" aspectRatio="16/9" radius="l" sizes="400px" />
         <Column fillWidth padding="12" gap="8" horizontal="start">
           <Text variant="heading-strong-m" onBackground="neutral-strong" align="left">
             Card Title
@@ -282,7 +282,7 @@ Cards are used to group related content and actions.
       </Card>
     </Row>
     }
-    codeInstances={[
+    codes={[
       {
         code:
 `<Card
@@ -292,7 +292,7 @@ Cards are used to group related content and actions.
     direction="column"
     padding="4"
   >
-    <SmartImage src="/images/projects/project-01/cover-01.jpg" aspectRatio="16/9" radius="l" sizes="400px" />
+    <Media src="/images/projects/project-01/cover-01.jpg" aspectRatio="16/9" radius="l" sizes="400px" />
     <Column fillWidth padding="12" gap="8" horizontal="start">
       <Text variant="heading-strong-m" onBackground="neutral-strong" align="left">
         Card Title
@@ -330,7 +330,7 @@ Icons are used to visually represent actions, objects, or concepts. For instruct
       <Icon name="chevronDown" size="m" />
       <Icon name="search" size="m" />
     </Row>}
-    codeInstances={[
+    codes={[
       {
         code:
 `<Icon name="rocket" size="m" />
@@ -386,7 +386,7 @@ The Flex component is accessible as `Column` and `Row` and can handle a wide ran
       </Column>
     </Row>}
     codeHeight={24}
-    codeInstances={[
+    codes={[
       {
         code:
 `<Row
@@ -456,7 +456,7 @@ Use the grid to construct responsive grid layouts. It can be styled similarly to
       </Column>
     </Grid>}
     codeHeight={24}
-    codeInstances={[
+    codes={[
       {
         code:
 `<Grid
@@ -496,18 +496,18 @@ Use the grid to construct responsive grid layouts. It can be styled similarly to
 
 ## Media
 
-SmartImage provides an optimized way to display images. Access it with the `SmartImage` component for full customization or use the markdown syntax.
+Media provides an optimized way to display images. Access it with the `Media` component for full customization or use the markdown syntax.
 
 <Column fillWidth gap="-1" marginBottom="16" marginTop="8">
 <CodeBlock
     radius="none"
     topRadius="l"
     codeHeight={24}
-    codePreview={<SmartImage src="/images/projects/project-01/cover-01.jpg" alt="Example image" sizes="640px" aspectRatio="16/9" radius="l" />}
-    codeInstances={[
+    codePreview={<Media src="/images/projects/project-01/cover-01.jpg" alt="Example image" sizes="640px" aspectRatio="16/9" radius="l" />}
+    codes={[
       {
         code:
-`<SmartImage
+`<Media
     src="/images/projects/project-01/cover-01.jpg"
     sizes="640px"
     alt="Example image"
@@ -515,12 +515,12 @@ SmartImage provides an optimized way to display images. Access it with the `Smar
     radius="l"
 />`,
         language: "tsx",
-        label: "SmartImage"
+        label: "Media"
       }
     ]}
 />
 <Row fillWidth bottomRadius="l" padding="4" border="neutral-medium" background="surface">
-    <Button href="https://once-ui.com/docs/smartImage" weight="default" label="View on Once UI" size="s" variant="tertiary" suffixIcon="chevronRight"/>
+    <Button href="https://once-ui.com/docs/Media" weight="default" label="View on Once UI" size="s" variant="tertiary" suffixIcon="chevronRight"/>
 </Row>
 </Column>
 
@@ -531,23 +531,23 @@ You can also use it to embed YouTube videos.
     radius="none"
     topRadius="l"
     codeHeight={24}
-    codePreview={<SmartImage src="https://www.youtube.com/watch?v=TQT_FSdxbC8" alt="Example video" aspectRatio="16/9" radius="l" />}
-    codeInstances={[
+    codePreview={<Media src="https://www.youtube.com/watch?v=TQT_FSdxbC8" alt="Example video" aspectRatio="16/9" radius="l" />}
+    codes={[
       {
         code:
-`<SmartImage
+`<Media
     src="https://www.youtube.com/watch?v=TQT_FSdxbC8"
     alt="Example video"
     aspectRatio="16/9"
     radius="l"
 />`,
         language: "tsx",
-        label: "SmartImage"
+        label: "Media"
       }
     ]}
 />
 <Row fillWidth bottomRadius="l" padding="4" border="neutral-medium" background="surface">
-    <Button href="https://once-ui.com/docs/smartImage" weight="default" label="View on Once UI" size="s" variant="tertiary" suffixIcon="chevronRight"/>
+    <Button href="https://once-ui.com/docs/Media" weight="default" label="View on Once UI" size="s" variant="tertiary" suffixIcon="chevronRight"/>
 </Row>
 </Column>
 
@@ -564,7 +564,7 @@ SmartLink provides an enhanced way to link to internal and external resources. Y
         <SmartLink href=" " suffixIcon="chevronRight">Link with icon</SmartLink>
       </Row>
     }
-    codeInstances={[
+    codes={[
       {
         code:
 `<SmartLink href=" " suffixIcon="chevronRight">Link with icon</SmartLink>`,
@@ -585,7 +585,7 @@ Since Magic Portfolio is based on Once UI, you can use all the components provid
 <CodeBlock
     marginBottom="16" marginTop="8"
     highlight="2"
-    codeInstances={[
+    codes={[
       {
         code:
 `const components = {
@@ -593,8 +593,8 @@ Since Magic Portfolio is based on Once UI, you can use all the components provid
     p: createParagraph as any,
     h1: createHeading("h1") as any,
     ...
-    SmartImage: dynamic(() => import("@/once-ui/components").then(mod => mod.SmartImage)),
-    SmartLink: dynamic(() => import("@/once-ui/components").then(mod => mod.SmartLink)),
+    Media: dynamic(() => import("@once-ui-system/core").then(mod => mod.Media)),
+    SmartLink: dynamic(() => import("@once-ui-system/core").then(mod => mod.SmartLink)),
 };`,
         language: "tsx",
         label: "src/product/mdx.tsx"

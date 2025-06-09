@@ -5,14 +5,14 @@ import dynamic from "next/dynamic";
 import { 
   Heading,
   HeadingLink,
-  SmartImage,
+  Media,
   SmartLink,
   Text,
   InlineCode,
-} from "@/once-ui/components";
-import { CodeBlock } from "@/once-ui/modules/code/CodeBlock";
-import { TextProps } from "@/once-ui/interfaces";
-import { SmartImageProps } from "@/once-ui/components/SmartImage";
+} from "@once-ui-system/core";
+import { CodeBlock } from "@once-ui-system/core";
+import { TextProps } from "@once-ui-system/core";
+import { MediaProps } from "@once-ui-system/core";
 
 type CustomLinkProps = React.AnchorHTMLAttributes<HTMLAnchorElement> & {
   href: string;
@@ -43,14 +43,14 @@ function CustomLink({ href, children, ...props }: CustomLinkProps) {
   );
 }
 
-function createImage({ alt, src, ...props }: SmartImageProps & { src: string }) {
+function createImage({ alt, src, ...props }: MediaProps & { src: string }) {
   if (!src) {
-    console.error("SmartImage requires a valid 'src' property.");
+    console.error("Media requires a valid 'src' property.");
     return null;
   }
 
   return (
-    <SmartImage
+    <Media
       marginTop="8"
       marginBottom="16"
       enlarge
@@ -125,7 +125,7 @@ function createCodeBlock(props: any) {
       <CodeBlock
         marginTop="8"
         marginBottom="16"
-        codeInstances={[
+        codes={[
           {
             code: children,
             language,
@@ -157,18 +157,18 @@ const components = {
   Text,
   CodeBlock,
   InlineCode,
-  Accordion: dynamic(() => import("@/once-ui/components").then(mod => mod.Accordion)),
-  AccordionGroup: dynamic(() => import("@/once-ui/components").then(mod => mod.AccordionGroup)),
-  Table: dynamic(() => import("@/once-ui/components").then(mod => mod.Table)),
-  Feedback: dynamic(() => import("@/once-ui/components").then(mod => mod.Feedback)),
-  Button: dynamic(() => import("@/once-ui/components").then(mod => mod.Button)),
-  Card: dynamic(() => import("@/once-ui/components").then(mod => mod.Card)),
-  Grid: dynamic(() => import("@/once-ui/components").then(mod => mod.Grid)),
-  Row: dynamic(() => import("@/once-ui/components").then(mod => mod.Row)),
-  Column: dynamic(() => import("@/once-ui/components").then(mod => mod.Column)),
-  Icon: dynamic(() => import("@/once-ui/components").then(mod => mod.Icon)),
-  SmartImage: dynamic(() => import("@/once-ui/components").then(mod => mod.SmartImage)),
-  SmartLink: dynamic(() => import("@/once-ui/components").then(mod => mod.SmartLink)),
+  Accordion: dynamic(() => import("@once-ui-system/core").then(mod => mod.Accordion)),
+  AccordionGroup: dynamic(() => import("@once-ui-system/core").then(mod => mod.AccordionGroup)),
+  Table: dynamic(() => import("@once-ui-system/core").then(mod => mod.Table)),
+  Feedback: dynamic(() => import("@once-ui-system/core").then(mod => mod.Feedback)),
+  Button: dynamic(() => import("@once-ui-system/core").then(mod => mod.Button)),
+  Card: dynamic(() => import("@once-ui-system/core").then(mod => mod.Card)),
+  Grid: dynamic(() => import("@once-ui-system/core").then(mod => mod.Grid)),
+  Row: dynamic(() => import("@once-ui-system/core").then(mod => mod.Row)),
+  Column: dynamic(() => import("@once-ui-system/core").then(mod => mod.Column)),
+  Icon: dynamic(() => import("@once-ui-system/core").then(mod => mod.Icon)),
+  Media: dynamic(() => import("@once-ui-system/core").then(mod => mod.Media)),
+  SmartLink: dynamic(() => import("@once-ui-system/core").then(mod => mod.SmartLink)),
 };
 
 type CustomMDXProps = MDXRemoteProps & {

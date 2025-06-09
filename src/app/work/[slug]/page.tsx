@@ -1,13 +1,11 @@
 import { notFound } from "next/navigation";
-import { CustomMDX } from "@/components/mdx";
 import { getPosts } from "@/app/utils/utils";
-import { AvatarGroup, Button, Column, Flex, Heading, SmartImage, Text } from "@/once-ui/components";
-import { baseURL } from "@/app/resources";
-import { about, person, work } from "@/app/resources/content";
+import { Meta, Schema, AvatarGroup, Button, Column, Flex, Heading, Media, Text } from "@once-ui-system/core";
+import { baseURL, about, person, work } from "@/resources";
 import { formatDate } from "@/app/utils/formatDate";
 import ScrollToHash from "@/components/ScrollToHash";
+import { CustomMDX } from "@/components/mdx";
 import { Metadata } from "next";
-import { Meta, Schema } from "@/once-ui/modules";
 
 export async function generateStaticParams(): Promise<{ slug: string }[]> {
   const posts = getPosts(["src", "app", "work", "projects"]);
@@ -33,7 +31,7 @@ export async function generateMetadata({
     title: post.metadata.title,
     description: post.metadata.summary,
     baseURL: baseURL,
-    image: post.metadata.image ? `${baseURL}${post.metadata.image}` : `${baseURL}/og?title=${post.metadata.title}`,
+    image: post.metadata.image ? `${baseURL}${post.metadata.image}` : `${baseURL}/generate-og?title=${post.metadata.title}`,
     path: `${work.path}/${post.slug}`,
   });
 }
@@ -65,7 +63,7 @@ export default async function Project({
         description={post.metadata.summary}
         datePublished={post.metadata.publishedAt}
         dateModified={post.metadata.publishedAt}
-        image={`${baseURL}/og?title=${encodeURIComponent(post.metadata.title)}`}
+        image={`${baseURL}/generate-og?title=${encodeURIComponent(post.metadata.title)}`}
         author={{
           name: person.name,
           url: `${baseURL}${about.path}`,
@@ -79,7 +77,7 @@ export default async function Project({
         <Heading variant="display-strong-s">{post.metadata.title}</Heading>
       </Column>
       {post.metadata.images.length > 0 && (
-        <SmartImage
+        <Media
           priority
           aspectRatio="16 / 9"
           radius="m"

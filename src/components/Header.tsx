@@ -3,12 +3,11 @@
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
-import { Fade, Flex, Line, ToggleButton } from "@/once-ui/components";
-import styles from "@/components/Header.module.scss";
+import { Fade, Flex, Line, ToggleButton } from "@once-ui-system/core";
 
-import { routes, display } from "@/app/resources";
-import { person, about, blog, work, gallery } from "@/app/resources/content";
+import { routes, display, person, about, blog, work, gallery } from "@/resources";
 import { ThemeToggle } from "./ThemeToggle";
+import styles from "./Header.module.scss";
 
 type TimeDisplayProps = {
   timeZone: string;
@@ -66,15 +65,15 @@ export const Header = () => {
         </Flex>
         <Flex fillWidth horizontal="center">
           <Flex
-            background="surface"
-            border="neutral-alpha-medium"
+            background="page"
+            border="neutral-alpha-weak"
             radius="m-4"
             shadow="l"
             padding="4"
             horizontal="center"
             zIndex={1}
           >
-            <Flex gap="4" vertical="center" textVariant="body-default-s">
+            <Flex gap="4" vertical="center" textVariant="body-default-s" suppressHydrationWarning>
               {routes["/"] && (
                 <ToggleButton prefixIcon="home" href="/" selected={pathname === "/"} />
               )}

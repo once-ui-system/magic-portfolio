@@ -28,13 +28,13 @@ Social sharing images (open-graph and twitter) are automatically generated with 
 <CodeBlock
     marginBottom="16"
     highlight="4"
-    codeInstances={[
+    codes={[
       {
         code:
 `export async function generateMetadata() {
   const title = home.title;
   const description = home.description;
-  const ogImage = \`https://\${baseURL}/og?title=\${encodeURIComponent(title)}\`;
+  const ogImage = \`https://\${baseURL}/generate-og?title=\${encodeURIComponent(title)}\`;
    ...
 };`,
         language: "tsx",
