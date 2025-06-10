@@ -1,3 +1,5 @@
+@use "../breakpoints.scss" as breakpoints;
+
 .hover {
     transition: var(--transition-micro-medium);
 
@@ -12,7 +14,7 @@
     top: var(--static-space-64);
 }
 
-@media (--s) {
+@media (max-width: breakpoints.$s) {
     .avatar {
         top: auto;
     }

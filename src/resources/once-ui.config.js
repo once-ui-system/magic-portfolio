@@ -25,23 +25,35 @@ const protectedRoutes = {
 import { Geist } from "next/font/google";
 import { Geist_Mono } from "next/font/google";
 
-const primaryFont = Geist({
-  variable: "--font-primary",
+const heading = Geist({
+  variable: "--font-heading",
   subsets: ["latin"],
   display: "swap",
 });
 
-const monoFont = Geist_Mono({
+const body = Geist({
+  variable: "--font-body",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const label = Geist({
+  variable: "--font-label",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const code = Geist_Mono({
   variable: "--font-code",
   subsets: ["latin"],
   display: "swap",
 });
 
 const fonts = {
-  primary: primaryFont,
-  secondary: primaryFont,
-  tertiary: primaryFont,
-  code: monoFont,
+  heading: heading,
+  body: body,
+  label: label,
+  code: code,
 };
 
 // default customization applied to the HTML in the main layout.tsx

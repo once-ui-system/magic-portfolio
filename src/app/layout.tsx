@@ -3,13 +3,9 @@ import '@once-ui-system/core/css/tokens.css';
 
 import classNames from "classnames";
 
-import { home } from "@/resources";
-
-import { Background, Column, Flex } from "@once-ui-system/core/components";
-import { Meta, opacity, SpacingToken } from "@once-ui-system/core";
-import { Providers } from '@/components/Providers';
-import { baseURL, effects, fonts } from '@/resources';
-import { Footer, Header, RouteGuard } from '@/components';
+import { Background, Column, Flex, Meta, opacity, SpacingToken } from "@once-ui-system/core";
+import { Footer, Header, RouteGuard, Providers } from '@/components';
+import { baseURL, effects, fonts, style, dataStyle, home } from '@/resources';
 
 export async function generateMetadata() {
   return Meta.generate({
@@ -33,33 +29,42 @@ export default async function RootLayout({ children }: RootLayoutProps) {
       lang="en"
       fillWidth
       className={classNames(
-        fonts.primary.variable,
-        fonts.secondary.variable,
-        fonts.tertiary.variable,
+        fonts.heading.variable,
+        fonts.body.variable,
+        fonts.label.variable,
         fonts.code.variable,
       )}
     >
       <head>
         <script
-          // biome-ignore lint/security/noDangerouslySetInnerHtml: <It's not dynamic nor a security issue.>
+          id="theme-init"
           dangerouslySetInnerHTML={{
             __html: `
               (function() {
                 try {
                   const root = document.documentElement;
-                  
                   const defaultTheme = 'system';
-                  root.setAttribute('data-neutral', 'gray');
-                  root.setAttribute('data-brand', 'blue');
-                  root.setAttribute('data-accent', 'indigo');
-                  root.setAttribute('data-solid', 'contrast');
-                  root.setAttribute('data-solid-style', 'flat');
-                  root.setAttribute('data-border', 'playful');
-                  root.setAttribute('data-surface', 'filled');
-                  root.setAttribute('data-transition', 'all');
-                  root.setAttribute('data-scaling', '100');
-                  root.setAttribute('data-viz-style', 'categorical');
                   
+                  // Set defaults from config
+                  const config = ${JSON.stringify({
+                    brand: style.brand,
+                    accent: style.accent,
+                    neutral: style.neutral,
+                    solid: style.solid,
+                    'solid-style': style.solidStyle,
+                    border: style.border,
+                    surface: style.surface,
+                    transition: style.transition,
+                    scaling: style.scaling,
+                    'viz-style': dataStyle.variant,
+                  })};
+                  
+                  // Apply default values
+                  Object.entries(config).forEach(([key, value]) => {
+                    root.setAttribute('data-' + key, value);
+                  });
+                  
+                  // Resolve theme
                   const resolveTheme = (themeValue) => {
                     if (!themeValue || themeValue === 'system') {
                       return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
@@ -67,11 +72,13 @@ export default async function RootLayout({ children }: RootLayoutProps) {
                     return themeValue;
                   };
                   
-                  const theme = localStorage.getItem('data-theme');
-                  const resolvedTheme = resolveTheme(theme);
+                  // Apply saved theme
+                  const savedTheme = localStorage.getItem('data-theme');
+                  const resolvedTheme = resolveTheme(savedTheme);
                   root.setAttribute('data-theme', resolvedTheme);
                   
-                  const styleKeys = ['neutral', 'brand', 'accent', 'solid', 'solid-style', 'viz-style', 'border', 'surface', 'transition', 'scaling'];
+                  // Apply any saved style overrides
+                  const styleKeys = Object.keys(config);
                   styleKeys.forEach(key => {
                     const value = localStorage.getItem('data-' + key);
                     if (value) {
@@ -79,6 +86,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
                     }
                   });
                 } catch (e) {
+                  console.error('Failed to initialize theme:', e);
                   document.documentElement.setAttribute('data-theme', 'dark');
                 }
               })();
@@ -129,21 +137,22 @@ export default async function RootLayout({ children }: RootLayoutProps) {
               color: effects.lines.color,
             }}
           />
-          <Flex fillWidth minHeight="16" hide="s"></Flex>
+          <Flex fillWidth minHeight="16" hide="s"/>
             <Header />
             <Flex
               zIndex={0}
               fillWidth
-              paddingY="l"
-              paddingX="l"
+              padding="l"
               horizontal="center"
               flex={1}
             >
               <Flex horizontal="center" fillWidth minHeight="0">
-                <RouteGuard>{children}</RouteGuard>
+                <RouteGuard>
+                  {children}
+                </RouteGuard>
               </Flex>
             </Flex>
-            <Footer />
+            <Footer/>
           </Column>
         </Providers>
       </Flex>

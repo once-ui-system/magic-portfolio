@@ -161,6 +161,7 @@ export default function About() {
                                 prefixIcon={item.icon}
                                 label={item.name}
                                 size="s"
+                                weight="default"
                                 variant="secondary"
                             />
                             <IconButton
