@@ -1,14 +1,19 @@
 ---
 title: "EckoDEX Multiplier Analysis"
 summary: "In-depth analysis of EckoDEX's liquidity provision incentive model, exploring multiplier mechanics, reward scaling, and long-term LP behavior using R data analysis tools."
-publishedAt: "2023-10-06"
+publishedAt: "2022-10-06"
 tag: "DeFi"
 ---
 
+<div className="disclaimer-box-red">
+
+**Warning**: This article includes an analysis of historical DeFi infrastructure that is no longer active. Some services or protocols described here are no longer available.
+
+</div>
 
 <div className="disclaimer-box">
 
-**Disclaimer (NFA)**: This article presents technical research about a financial protocol design. It is not financial advice. Cryptocurrencies involve substantial risk - always conduct your own research before making any financial decisions.
+**Disclaimer (NFA)**: This article presents technical research about bridge fee models and protocol design. It is not financial advice. Cryptocurrencies involve substantial risk – always conduct your own research before making any financial decisions.
 
 </div>
 
@@ -20,12 +25,18 @@ tag: "DeFi"
     margin: 2rem 0;
     border-radius: 4px;
   }
+  .disclaimer-box-red {
+    border-left: 4px solid #d9534f;
+    background-color: rgba(217, 83, 79, 0.1);
+    padding: 1rem;
+    margin: 2rem 0;
+    border-radius: 4px;
+  }
 `}</style>
 
 ---
 
-
-EckoDEX, Kadena's gas-free decentralized exchange, is introducing an Algorithmic Multiplier as part of its Liquidity Mining 2.0 program. This innovative mechanism dynamically adjusts rewards for liquidity providers (LPs) based on market conditions, balancing attractive incentives with sustainable token emissions.
+EckoDEX, Kadena's gas-free decentralized exchange, introduced an Algorithmic Multiplier as part of its Liquidity Mining 2.0 program. This innovative mechanism dynamically adjusts rewards for liquidity providers (LPs) based on market conditions, balancing attractive incentives with sustainable token emissions.
 
 EckoDEX liquidity pool is the first one in Kadena using real-world data in order to programatically adjust rewards over time, preserving pool atractiveness from market fluctuations 
 
@@ -42,7 +53,7 @@ Using our `chainweb-data` instance, we collected data from all EckoDEX transacti
 ## Setup code
 
 ```plaintext
-# R setup code (non-executable)
+# R setup code
 library(tidyverse)
 library(lubridate)
 library(plotly)
@@ -52,7 +63,7 @@ library(scales)
 ```
 
 ```plaintext
-# Data loading and preprocessing (non-executable)
+# Data loading and preprocessing
 data <- read_csv("datafile.csv", col_types = list(col_character(), col_character(), col_double(), col_double(), col_double(), col_double(), col_double())) |>
   mutate(date = dmy(date), dv = volume/pool_tvl) |> filter(token != "lago.kwBTC")
 
@@ -64,7 +75,7 @@ price_df <- data |>
 ```
 
 ```plaintext
-# Column names inspection (non-executable)
+# Column names inspection
 colnames(data)
 ```
 
@@ -139,7 +150,7 @@ ggplotly(o, tooltip = "text")  |> layout(legend = list(orientation = 'h'), hover
 141,594 updates
 These events are emited when a pool's Total Value Locked (TVL) changes. This happens when a user swap a token, add or remove liquidity into a Liquidity Pool. As its parameters we have the pair (for instance `coin:eckoDEX.kdx`) and its respective amounts.
 
-```eckoDEX.exchange.UPDATE pair amount-token1 amount-token2```
+```(eckoDEX.exchange.UPDATE pair amount-token1 amount-token2)```
 
 To retrieve the price rates, we use the TWAP (Time-Weighted Average Prices), aiming to minimize large order's impact, resulting in price estimation improvements.
 

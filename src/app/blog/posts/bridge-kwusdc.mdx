@@ -1,0 +1,114 @@
+---
+
+title: "kwUSDC Bridge Analysis and Fee Model Evaluation"
+summary: "In-depth exploration of the Lago kwUSDC bridge on Kadena, including transaction data analysis and simulated revenue under different fee models."
+publishedAt: "2024-08-06"
+tag: "DeFi"
+-----------
+
+<div className="disclaimer-box-red">
+
+**Warning**: This article includes an analysis of historical DeFi infrastructure that is no longer active. Some services or protocols described here are no longer available.
+
+</div>
+
+<div className="disclaimer-box">
+
+**Disclaimer (NFA)**: This article presents technical research about bridge fee models and protocol design. It is not financial advice. Cryptocurrencies involve substantial risk – always conduct your own research before making any financial decisions.
+
+</div>
+
+<style jsx>{`
+  .disclaimer-box {
+    border-left: 4px solid #f0ad4e;
+    background-color: rgba(240, 173, 78, 0.1);
+    padding: 1rem;
+    margin: 2rem 0;
+    border-radius: 4px;
+  }
+  .disclaimer-box-red {
+    border-left: 4px solid #d9534f;
+    background-color: rgba(217, 83, 79, 0.1);
+    padding: 1rem;
+    margin: 2rem 0;
+    border-radius: 4px;
+  }
+`}</style>
+
+## Investigating bridge fee models in Kadena with Lago kwUSDC data
+
+The main goal of this analysis is to do some exploratory analysis with Lago Finance kwUSDC data and check how much fees could be collected according to different revenue models.
+
+Using our `chainweb-data` instance, we collected historical data from the chain, looking for triggered events from the `lago.kwUSDC` contract, specifically with interest on `MINT` and `BURN` events. Our sample consists of 514 transactions from August to December, 2022.
+
+### The rise and fall of kwUSDC
+
+We start by performing a sanity check by comparing [DefiLlama](https://defillama.com/protocol/lago-bridge) TVL chart for kwUSDC with our dataset. We estimated the TVL here by summing all mint events while subtracting all burns.
+
+![Lago kwUSDC Total Value Locked (USD)](/images/blog/bridge/tvl.png)
+
+It seems our results are consistent with the chart presented there, even estimating the protocol's TVL via a different and independent approach.
+
+The kwUSDC (kw stands for Kadena wrapped) token was one of the first bridged assets in Kadena - launched in July 21st 2022. As we’ve seen above, on the peak, the token achieved almost 300k in TVL before an unfortunate sequence of events.
+
+In September 2022, Lago experienced a major security breach. The attack was attributed to a vulnerability in the platform's smart contract, which allowed the attacker to exploit the system and steal funds from the bridge.
+
+The contract was paused for about 2 months, for auditing and maintenance. Lago resumed its activities on November 9th. However, they haven't recovered from the exploit: on November 21st the end of their activities was announced. Lago Bridge was finally closed down on December 24th 2022.
+
+During the period, 230 unique accounts interacted with the Lago Bridge contract by burning or minting kwUSDC. We present some transactions' descriptive statistics below.
+
+**Summary statistics for MINT and BURN events**
+
+<table>
+  <thead>
+    <tr>
+      <th>Event</th><th>Mean</th><th>Median</th><th>N txs</th><th>Minimum</th><th>Maximum</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>BURN</td><td>2,582</td><td>234</td><td>161</td><td>0.000002</td><td>29,000</td>
+    </tr>
+    <tr>
+      <td>MINT</td><td>1,218</td><td>231</td><td>353</td><td>0.000002</td><td>62,621</td>
+    </tr>
+  </tbody>
+</table>
+
+The histograms summarize the information on the table above. We use log10 scale to better accommodate the range of the values. It is worth mentioning that the average values on bridge operations seem to be higher than we see in Wallets or DEXes.
+
+![kwUSDC transaction distribution (USD)](/images/blog/bridge/hist-txs.png)
+
+However, this affirmation is only in an exploratory sense, without any statistical significance due to the lack of data, since currently there aren't any bridges operating in Kadena.
+
+With the 300k peak in TVL, the protocol achieved almost 100k USD in daily volume as we see below.
+
+![Lago kwUSDC daily volumes (USD)](/images/blog/bridge/volume.png)
+
+## The fee model
+
+Bridge fees in cryptocurrency refer to the cost charged for transferring tokens from one blockchain to another through a bridge. These fees are usually paid in the form of the native cryptocurrency of the target blockchain and are used to compensate the network's validators for processing the transaction.
+
+It is important to consider the cost of the bridge fee when making a transfer between blockchains, as it can impact the overall cost and profitability of the transaction. The amount of the fee may vary depending on the speed of processing desired and the current demand on the network.
+
+### How much the bridge would profit with each model
+
+We are interested here in seeing how much profit the bridge would have during the elapsed period if these three different fee models were adopted:
+
+* Fixed fee (\$0.1): \$51.4
+* Percentual fee (0.1%): \$846
+* Minimum fee (\$0.1 or 0.1% — whichever is higher): \$860
+
+The graphic below shows the cumulative value collected over the elapsed time via each of the three models.
+
+![Bridge incoming (USD)](/images/blog/bridge/fee.png)
+
+## Conclusions
+
+Even short-lived, the kwUSDC bridge managed to be relevant for the Kadena ecosystem, experiencing a bump in TVL which only ended because of an unfortunate succession of events. Extra precautions such as smart contract audits and bug bounty programs may help secure DeFi projects.
+
+Regarding the fee models, the hybrid one is the most profitable. However, more models could be tested, with different parameters, and even a fee-less model could be considered, since incentives for driving the entire ecosystem forward are important to speed up mass adoption.
+
+## Further studies/developments
+
+* Investigate ETH side

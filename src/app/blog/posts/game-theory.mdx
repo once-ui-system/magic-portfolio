@@ -1,0 +1,123 @@
+---
+title: "Notes and Simulations on Algorithmic Game Theory"
+summary: "An overview of foundational concepts in game theory through real-world examples, auction models, and simulations — with references to Tim Roughgarden’s lecture series."
+publishedAt: "2024-10-01"
+tag: "Game Theory"
+---
+
+## Introduction
+
+Algorithmic game theory sits at the intersection of computer science, economics, and strategic behavior. It provides the foundation for designing robust mechanisms in real-world systems — from auctions and ad markets to blockchain protocols and voting systems.
+
+This article distills key insights from foundational game theory lectures by Tim Roughgarden, combining them with illustrative examples and simulations. Whether you're exploring mechanism design for DeFi, understanding incentives in digital systems, or just curious about strategic decision-making, this overview lays the groundwork for deeper exploration.
+
+
+## The Olympics Badminton Example
+
+- **Tournament Format**: 16 teams divided into 4 groups of 4. Round-robin format.
+- **Participants' Goal**: Reach highest possible rank.
+- **Designer's Goal**: Ensure all matches are played at full effort.
+- **What Happened**: Some teams strategically lost matches to manipulate knockout matchups. [See actual news](https://www.youtube.com/watch?v=hdK4vPz0qaI). Result: disqualifications.
+
+> Lesson: Poor mechanism design enabled strategic underperformance.
+
+---
+
+## Braess Paradox
+
+- **Concept**: Adding a new path in a network (e.g., a road) may increase total congestion.
+- **Example**: Covered in Lecture 3.
+
+---
+
+## Auctions Overview
+
+To better understand strategic interaction in economics and digital systems, auction theory provides an ideal framework. Here's a brief walkthrough of the essential types and properties of auctions — laying the groundwork for our next post, where we'll implement one of these models in Pact.
+
+- **Good**: The item being sold
+- **Seller**: Owner of the good
+- **Bidders**: Buyers with private valuations
+
+### Common Types
+
+- Single-item
+- Sealed-bid
+- Quasilinear utility (value - price)
+
+### First-Price Auction
+
+- Highest bidder wins
+- Pays their own bid
+
+### Second-Price (Vickery) Auction
+
+- Highest bidder wins
+- Pays the second-highest bid
+
+### Dominant-Strategy Incentive-Compatible (DSIC) Auctions
+
+**Definition**: A DSIC auction ensures that **bidding your true valuation is always optimal**, regardless of others' actions.
+
+### Awesome Auctions
+
+An auction is **awesome** if it is:
+
+- DSIC
+- Socially efficient: <LatexRenderer children="\sum_{i=1}^n v_i x_i" />
+
+
+- Computationally efficient: <LatexRenderer>O(n)</LatexRenderer>
+
+**Fact**: The Vickery auction is awesome.
+
+### Vickery is DSIC — Proof Idea
+
+Let bidder <LatexRenderer>{"i"}</LatexRenderer> have valuation <LatexRenderer>{"v_i"}</LatexRenderer>, and define
+
+<LatexRenderer>{"B = \\max_{j \\neq i} b_j"}</LatexRenderer>
+
+Utility of bidder <LatexRenderer>{"i"}</LatexRenderer>
+
+<LatexRenderer displayMode>
+  {"\\text{utility} = \\begin{cases} 0 & \\text{if } b_i < B \\\\ v_i - B & \\text{if } b_i \\geq B \\end{cases}"}
+</LatexRenderer>
+
+Truthful bidding always maximizes this utility.
+
+---
+
+## Case Study: Sponsored Search Auctions
+
+**Context**: Real-time auctions for ad slots on search engines.
+
+- **Goods**: Slot positions
+- **CTR**: Click-through rate per slot
+- **Objective**: Assign slots to maximize total value
+
+### Design Strategy
+
+- Assume truthful bidding
+- Allocate slots to maximize social surplus
+- Set prices to make DSIC
+
+Result: Efficient, incentive-compatible sponsored search auctions.
+
+---
+
+## Full Lecture Notes and Videos
+
+**Course:**
+
+- [Lecture 1: video](https://youtu.be/TM_QFmQU_VA?list=PLEGCF-WLh2RJBqmxvZ0_ie-mleCFhi2N4) | [notes](http://timroughgarden.org/f13/l/l1.pdf)
+
+- [Lecture 2: video](https://www.youtube.com/watch?v=z1QZqYuiGa8&list=PLEGCF-WLh2RJBqmxvZ0_ie-mleCFhi2N4&index=) | [notes](http://timroughgarden.org/f13/l/l2.pdf)
+
+- [Lecture 3: video](https://youtu.be/9qZwchMuslk?list=PLEGCF-WLh2RJBqmxvZ0_ie-mleCFhi2N4) | [notes](http://timroughgarden.org/f13/l/l3.pdf)
+
+- [Full Notes with Exercises](http://timroughgarden.org/f13/f13.pdf?utm_source=pocket_mylist)
+
+- [Tim Roughgarden's YouTube Channel](https://www.youtube.com/channel/UCcH4Ga14Y4ELFKrEYM1vXCg)
+
+---
+
+This wraps up our conceptual tour. In the next article, we’ll bring theory to practice by building a simplified implementation of the Vickery auction in Pact, Kadena’s smart contract language. Stay tuned.

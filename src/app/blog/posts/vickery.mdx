@@ -1,0 +1,361 @@
+---
+
+title: "Implementing a Vickery Auction on Kadena using Pact"
+summary: "A walkthrough of how to implement a simplified Vickery auction on the Kadena blockchain using the Pact smart contract language."
+publishedAt: "2024-10-10"
+tag: "Smart Contracts"
+---
+
+In this post, we'll explore a basic implementation of a Vickery-style auction on the Kadena blockchain using Pact. While not perfectly equivalent to its theoretical counterpart due to limitations such as unsealed bids and centralization, this example demonstrates core concepts and serves as a foundation for improvement.
+
+We'll go step-by-step, examining key schemas and methods with explanations.
+
+---
+
+## Module Setup and Namespacing
+
+First, we define the namespace and a keyset for governance control:
+
+```lisp
+(namespace (read-msg 'ns))
+
+(define-keyset "gov"
+  (read-keyset "gov"))
+```
+
+This ensures the module is namespaced properly and establishes a multisig-style keyset named `gov` that can control privileged functions.
+
+## Module Declaration and Imports
+
+We then declare the module and import the `coin` module for token transfers:
+
+```lisp
+(module vickery-auction 'gov
+  (use coin)
+```
+
+The module is governed by the `gov` keyset, and it will utilize coin functions for balance manipulation.
+
+## Capability Definitions
+
+Now let's define the capabilities that control access to specific functionality:
+
+```lisp
+(defcap SELLER (seller-guard:guard)
+  (enforce-guard seller-guard))
+
+(defcap BIDDER (bidder-guard:guard)
+  (enforce-guard bidder-guard))
+
+(defcap GOV ()
+  (enforce-keyset (read-keyset "gov")))
+
+(defcap TIME (auction:string) true)
+```
+
+* `SELLER`: Used to restrict auction creation to the designated seller.
+* `BIDDER`: Ensures only the bidding party can submit bids under their name.
+* `GOV`: Reserved for governance-level actions.
+* `TIME`: Placeholder for enforcing auction timing (not yet implemented).
+
+Next, we’ll explore the schemas that represent auctions and bids.
+
+Let’s now examine the data structure definitions — the **schemas** — which are foundational to organizing the auction’s on-chain state.
+
+---
+
+## Auction Schema
+
+This schema defines how an auction is stored in the system:
+
+```lisp
+(defschema auction
+  auction-seller:string
+  seller-guard:guard
+  auction-account:string
+  floor-value:decimal
+  starting-time:time
+  ending-time:time
+  first-bid:decimal
+  second-bid:decimal
+  current-winner:string)
+```
+
+### Breakdown:
+
+* `auction-seller`: Identifier for who created the auction.
+* `seller-guard`: Access control guard for privileged seller actions.
+* `auction-account`: Account where tokens are deposited (auto-generated hash).
+* `floor-value`: Minimum bid value allowed.
+* `starting-time` / `ending-time`: Time boundaries of the auction.
+* `first-bid` / `second-bid`: Top two bids received so far (used for Vickery logic).
+* `current-winner`: Keeps track of the bidder with the highest bid.
+
+We store these using a table:
+
+```lisp
+(deftable auctions-table:{auction})
+```
+
+---
+
+## Bid Schema
+
+Bids submitted for each auction are recorded in a separate structure:
+
+```lisp
+(defschema bid-schema
+  auction:string
+  bidder-account:string
+  bidder-guard:guard
+  bid-value:decimal
+  bid-status:bool)
+```
+
+### Breakdown:
+
+* `auction`: The auction this bid belongs to.
+* `bidder-account`: Kadena account making the bid.
+* `bidder-guard`: Guard that authorizes the bidder.
+* `bid-value`: The actual bid amount.
+* `bid-status`: Whether the bid is currently winning (not fully used in this version).
+
+And the table definition:
+
+```lisp
+(deftable bids-table:{bid-schema})
+```
+
+With these two tables, we have persistent storage for all auction states and submitted bids.
+
+Next, we’ll walk through the `create-auction` function that allows a seller to initialize an auction.
+
+Let's now look at the first key method of the contract: `create-auction`.
+
+---
+
+## Auction Creation Function
+
+This function allows a seller to initialize a new auction with some essential parameters:
+
+```lisp
+(defun create-auction (auction-id:string
+                       auction-seller:string
+                       duration:decimal
+                       seller-guard:guard
+                       floor-value:decimal)
+```
+
+### Parameters:
+
+* `auction-id`: A unique identifier for the auction.
+* `auction-seller`: The name of the seller (used in the auction account).
+* `duration`: Intended duration for the auction in days (though not directly used).
+* `seller-guard`: The guard that will control SELLER-level capabilities.
+* `floor-value`: The minimum allowed bid.
+
+---
+
+### Inside the Function
+
+```lisp
+(with-capability (SELLER seller-guard)
+  (insert auctions-table auction-id
+    { 'auction-seller: auction-seller
+    , 'auction-account: (hash (format "{}.{}" [auction-id auction-seller]))
+    , 'seller-guard: seller-guard
+    , 'floor-value: floor-value
+    , 'starting-time: (at 'block-time (chain-data))
+    , 'ending-time: (add-time (at 'block-time (chain-data)) (days 10))
+    , 'first-bid: 0.0
+    , 'second-bid: 0.0
+    , 'current-winner: "me" }))
+```
+
+### Explanation:
+
+* The `SELLER` capability is enforced to ensure only authorized users can create auctions.
+* We construct a new entry in `auctions-table` using the provided values.
+* The auction's account is deterministically derived from the auction ID and seller name.
+* The timing uses `block-time` from `chain-data` to set the auction’s window.
+* Initial values for top bids and winner are set to placeholders.
+
+> **Note**: The duration is passed but not used to compute `ending-time`; a fixed 10-day period is hardcoded. This could be improved by multiplying the user-provided `duration` via `(days duration)`.
+
+
+Continuing on with the explanation, let’s break down the **`bid`** function — the core logic for submitting and managing bids within an auction.
+
+---
+
+## Bid Submission Function
+
+```lisp
+(defun bid (auction:string
+            bidder-account:string
+            bidder-guard:guard
+            bid-value:decimal)
+```
+
+### Parameters:
+
+* `auction`: The ID of the auction to bid on.
+* `bidder-account`: The account string of the bidder.
+* `bidder-guard`: The guard controlling access to the bidder's capabilities.
+* `bid-value`: The amount (in KDA) the bidder is willing to offer.
+
+---
+
+### Step-by-step Logic
+
+```lisp
+(with-read auctions-table auction
+  { 'auction-account := auction-account
+  , 'first-bid := first-bid
+  , 'second-bid := second-bid}
+```
+
+We read from the `auctions-table` to get:
+
+* The account where bids should be deposited.
+* The current top two bids.
+
+---
+
+```lisp
+(with-capability (BIDDER bidder-guard)
+  (insert bids-table (hash (format "{}.{}" [auction bidder-account]))
+    { 'auction: auction
+    , 'bidder-account: (at 'sender (chain-data))
+    , 'bidder-guard: bidder-guard
+    , 'bid-value: bid-value
+    , 'bid-status: false })
+```
+
+* Ensures only the actual bidder can call this function.
+* Inserts a new record into the `bids-table` with the bid info.
+* `bid-status` is initialized as `false`, potentially to be updated upon resolution.
+
+---
+
+```lisp
+  (coin.transfer-create 'bidder-account 'auction-account bid-value)
+```
+
+* Transfers the bid amount from the bidder to the auction account (this uses the `coin` module).
+
+---
+
+### Updating the Leaderboard
+
+```lisp
+  (cond
+    ((and (> bid-value second-bid) (< bid-value first-bid))
+      (update auctions-table auction {"second-bid": bid-value}))
+    ((> bid-value first-bid)
+      (update auctions-table auction {
+        "second-bid": first-bid,
+        "first-bid": bid-value,
+        "current-winner": bidder-account }))
+    true)
+```
+
+This logic updates:
+
+* The second bid if the new bid is in between current top two.
+* Both first and second if it overtakes the highest.
+* `current-winner` is updated to reflect the new leader.
+
+---
+
+> 🔎 **Note**: The comment `TODO: Previous winner is now a loser!` implies that refunding the previous top bidder is not yet implemented — a critical feature for fair auctions.
+
+Continuing with the **auction resolution logic**, let’s now examine the (currently commented out) `resolve-auction` function. This function is essential for finalizing the auction: determining the winner, issuing the payout, and ideally triggering item delivery.
+
+---
+
+## Auction Resolution (commented-out logic)
+
+```lisp
+;; (defun resolve-auction (auction:string)
+;;    (with-capability (TIME)
+;;      (let* ((auction-bids (select bids-table ['auction, 'bidder-account, 'bid-value, 'bid-status]
+;;                          (where 'auction (= auction))))
+;;             (winner (at auctions-table auction 'current-winner))
+;;             (paid-value (at auctions-table auction 'second-bid)))
+;;     (with-capability (GOV)
+;;       (coin.transfer (at auctions-table auction 'auction-account) winner)
+;;       (item.transfer))) ;; Create transfer functions! We may need to require the  item to respect some interface
+;;      ))
+```
+
+---
+
+### Line-by-line Breakdown
+
+#### Function Signature:
+
+```lisp
+(defun resolve-auction (auction:string)
+```
+
+Takes an `auction` ID string as input, identifying the auction to be resolved.
+
+---
+
+#### Enforcing Time (planned):
+
+```lisp
+(with-capability (TIME)
+```
+
+A placeholder capability that would ideally ensure the auction’s end time has passed. This isn’t yet fully enforced, but it’s a good hook for time-based logic.
+
+---
+
+#### Reading the Winning Bid:
+
+```lisp
+(let* ((auction-bids (select bids-table [...] ...))
+       (winner (at auctions-table auction 'current-winner))
+       (paid-value (at auctions-table auction 'second-bid)))
+```
+
+* `auction-bids`: Selects all bids for the auction.
+* `winner`: Retrieves the current winner stored in the auction.
+* `paid-value`: Retrieves the second-highest bid, which becomes the price paid — matching the Vickery auction logic.
+
+---
+
+#### Performing Transfers:
+
+```lisp
+(with-capability (GOV)
+  (coin.transfer (at auctions-table auction 'auction-account) winner)
+  (item.transfer))
+```
+
+* Transfers the second-highest bid amount to the winner (needs proper payout logic).
+* Calls a stubbed `item.transfer`, indicating that item delivery logic needs to be built.
+
+---
+
+> ⚠️ **Note:** The function is not yet implemented because:
+>
+> * There's no `item` module defining ownership or transfer.
+> * Refunds for losing bidders are not processed.
+> * There’s no safeguard for resolving before auction ends.
+
+---
+
+In the next section, we can propose improvements for time-locking, bidder refunds, and enforcing auction validity periods. Let me know when to proceed.
+
+Continuing with the **auction resolution logic**, let’s now examine the (currently commented out) `resolve-auction` function. This function is essential for finalizing the auction: determining the winner, issuing the payout, and ideally triggering item delivery.
+
+---
+
+
+## Wrap-up
+
+While the auction resolution function is still a stub, the current implementation captures the core logic of a simplified Vickery auction. For production use, additional features like bid sealing, refund logic, time enforcement, and item delivery would need to be fully implemented.
+
+This implementation lays the foundation for experimenting with auction mechanics on-chain using Pact.
