@@ -29,7 +29,6 @@ export async function GET(request: Request) {
           flexDirection: "column",
           justifyContent: "center",
           gap: "4rem",
-          fontFamily: "Inter",
           fontStyle: "normal",
           color: "white",
         }}
