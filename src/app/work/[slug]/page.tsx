@@ -3,8 +3,7 @@ import { getPosts } from "@/app/utils/utils";
 import { Meta, Schema, AvatarGroup, Button, Column, Flex, Heading, Media, Text } from "@once-ui-system/core";
 import { baseURL, about, person, work } from "@/resources";
 import { formatDate } from "@/app/utils/formatDate";
-import ScrollToHash from "@/components/ScrollToHash";
-import { CustomMDX } from "@/components/mdx";
+import { ScrollToHash, CustomMDX } from "@/components";
 import { Metadata } from "next";
 
 export async function generateStaticParams(): Promise<{ slug: string }[]> {
