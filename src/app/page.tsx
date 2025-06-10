@@ -6,16 +6,6 @@ import { Mailchimp } from "@/components";
 import { Projects } from "@/components/work/Projects";
 import { Posts } from "@/components/blog/Posts";
 
-export async function generateMetadata() {
-  return Meta.generate({
-    title: home.title,
-    description: home.description,
-    baseURL: baseURL,
-    image: "/images/og/home.jpg",
-    path: home.path,
-  });
-}
-
 export default function Home() {
   return (
     <Column maxWidth="m" gap="xl" horizontal="center">
@@ -25,7 +15,7 @@ export default function Home() {
         path={home.path}
         title={home.title}
         description={home.description}
-        image={`${baseURL}/generate-og?title=${encodeURIComponent(home.title)}`}
+        image={`/generate-og?title=${encodeURIComponent(home.title)}`}
         author={{
           name: person.name,
           url: `${baseURL}${about.path}`,
