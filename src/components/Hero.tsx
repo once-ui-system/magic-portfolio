@@ -1,4 +1,3 @@
-// components/Hero.tsx
 import React from "react";
 import {
   Column,
@@ -14,8 +13,7 @@ import {
 import { home, about, person, gallery } from "@/app/resources/content";
 
 export function Hero() {
-  // raw `/images/...` path works in dev and prod
-  const bgSrc = gallery.images[0].src;
+  // const bgSrc = gallery.images[0].src;
 
   return (
     <section
@@ -23,7 +21,10 @@ export function Hero() {
         position: "relative",
         width: "100%",
         minHeight: "60vh",
-        background: `url(${bgSrc}) center/cover no-repeat`,
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        padding: "1rem",
         borderRadius: "1rem",
         overflow: "hidden",
       }}
@@ -33,68 +34,51 @@ export function Hero() {
         style={{
           position: "absolute",
           inset: 0,
-          backgroundColor: "rgba(0, 0, 0, 0.5)",
         }}
       />
 
       <Column
         maxWidth="s"
-        paddingY="l"
-        paddingX="l"
         gap="l"
-        style={{ position: "relative", zIndex: 1 }}
+        style={{
+          position: "relative",
+          zIndex: 1,
+          width: "100%",
+          maxWidth: "960px",
+        }}
       >
-              {/* {home.featured && (
-          <RevealFx
-            fillWidth
-            horizontal="start"
-            paddingTop="16"
-            paddingBottom="32"
-            paddingLeft="12"
-          >
-            <Badge
-              background="red "
-              paddingX="12"
-              paddingY="4"
-              onBackground="neutral-strong"
-              textVariant="label-default-s"
-              arrow={false}
-              href={home.featured.href}
-            >
-              <Row paddingY="2">{home.featured.title}</Row>
-            </Badge>
-          </RevealFx>
-        )}
- */}
         <RevealFx
           translateY="4"
           fillWidth
           horizontal="start"
           paddingBottom="16"
         >
-          <Heading
-            wrap="balance"
-            variant="display-strong-l"
-            style={{ color: "#fff", margin: 0 }}
-          >
-            {home.headline}
-          </Heading>
-        </RevealFx>
+          <Flex gap="32" vertical="center" style={{ textAlign: "center" }}>
+            <Avatar
+              src="/images/avatar.png"
+              size="xl"
+              radius="full"
+              style={{ flexShrink: 0 }}
+            />
 
-        <RevealFx
-          translateY="8"
-          delay={0.2}
-          fillWidth
-          horizontal="start"
-          paddingBottom="32"
-        >
-          <Text
-            wrap="balance"
-            variant="heading-default-xl"
-            style={{ color: "rgba(255,255,255,0.8)", margin: 0 }}
-          >
-            {home.subline}
-          </Text>
+            <Column gap="16" style={{ flex: 1 }}>
+              <Heading
+                wrap="balance"
+                variant="display-strong-l"
+                style={{ color: "var(--text-default-strong)", margin: 0 }}
+              >
+                {home.headline}
+              </Heading>
+
+              <Text
+                wrap="balance"
+                variant="heading-default-xl"
+                style={{ color: "var(--text-default)", margin: 0 }}
+              >
+                {home.subline}
+              </Text>
+            </Column>
+          </Flex>
         </RevealFx>
 
         <RevealFx
@@ -119,6 +103,28 @@ export function Hero() {
             </Flex>
           </Button>
         </RevealFx>
+
+        {/* {home.featured && (
+            <RevealFx
+            fillWidth
+            horizontal="start"
+            paddingTop="0"
+            paddingBottom="32"
+            paddingLeft="12"
+            >
+            <Badge
+            background="neutral-medium"
+            paddingX="12"
+            paddingY="4"
+            onBackground="neutral-strong"
+            textVariant="label-default-s"
+            arrow={false}
+            href={home.featured.href}
+            >
+            <Row paddingY="2">{home.featured.title}</Row>
+            </Badge>
+            </RevealFx>
+            )} */}
       </Column>
     </section>
   );
