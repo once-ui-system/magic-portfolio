@@ -7,6 +7,8 @@ interface PostsProps {
     columns?: '1' | '2' | '3';
     thumbnail?: boolean;
     direction?: 'row' | 'column';
+    draft?: boolean;
+
 }
 
 export function Posts({
@@ -15,9 +17,17 @@ export function Posts({
     thumbnail = false,
     direction
 }: PostsProps) {
+
     let allBlogs = getPosts(['src', 'app', 'blog', 'posts']);
 
-    const sortedBlogs = allBlogs.sort((a, b) => {
+    const isProd = process.env.NODE_ENV === 'production';
+
+
+    const visibleBlogs = allBlogs.filter(
+      (post) => !(isProd && post.metadata.draft === true)
+  );
+
+    const sortedBlogs = visibleBlogs.sort((a, b) => {
         return new Date(b.metadata.publishedAt).getTime() - new Date(a.metadata.publishedAt).getTime();
     });
 

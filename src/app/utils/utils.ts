@@ -15,9 +15,10 @@ type Metadata = {
   summary: string;
   image?: string;
   images: string[];
-  tag?: string;
+  tags?: string[];
   team: Team[];
   link?: string;
+  draft?: boolean;
 };
 
 import { notFound } from 'next/navigation';
@@ -44,9 +45,10 @@ function readMDXFile(filePath: string) {
     summary: data.summary || "",
     image: data.image || "",
     images: data.images || [],
-    tag: data.tag || [],
+    tags: data.tags || [],
     team: data.team || [],
     link: data.link || "",
+    draft: data.draft || false,
   };
 
   return { metadata, content };

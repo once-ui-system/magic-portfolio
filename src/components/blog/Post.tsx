@@ -55,12 +55,26 @@ export default function Post({ post, thumbnail, direction }: PostProps) {
                         onBackground="neutral-weak">
                         {formatDate(post.metadata.publishedAt, false)}
                     </Text>
-                    { post.metadata.tag &&
-                        <Tag
-                            className="mt-12"
-                            label={post.metadata.tag}
-                            variant="neutral" />
-                    }
+
+                    <div className="flex flex-wrap flex-row items-center gap-2 mt-4">
+                        {post.metadata.tags && post.metadata.tags?.map((t: string) => (
+                            <Tag
+                                key={t}
+                                className="px-2 py-1 text-xs font-medium uppercase"
+                                label={t}
+                                variant="neutral"
+                            />
+                        ))}
+
+                        {post.metadata.draft && (
+                            <Tag
+                                className="px-2 py-1 text-xs font-medium uppercase"
+                                label="Draft"
+                                variant="warning"
+                            />
+                        )}
+                    </div>
+
                 </Column>
             </Flex>
         </SmartLink>
