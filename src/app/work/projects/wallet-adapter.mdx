@@ -34,59 +34,13 @@ To address this, we developed a **standardized wallet adapter interface**. Inspi
 * **Modular Design:** Easily extendable for new wallets
 * **Event Hooks:** Listen for network/account changes with ease
 
-**Core Interface**
-
-```ts
-interface Adapter {
-  name: string;
-  connect(): Promise<AccountInfo>;
-  disconnect(): Promise<void>;
-  signTransaction(tx: IUnsignedCommand): Promise<ICommand>;
-  // ...other standard methods
-}
-```
-
-**Base Adapter Class**
-
-All wallet adapters extend from a common base, which handles shared functionality:
-
-```ts
-export abstract class BaseWalletAdapter implements Adapter {
-  public abstract name: string;
-  protected provider?: Provider;
-
-  async getActiveAccount(): Promise<AccountInfo> {
-    const response = await this.request({ method: "kadena_getAccount_v1" });
-    // ...standardized response handling
-  }
-}
-```
-
 **WalletConnect Integration**
 
 WalletConnect posed a unique challenge due to its session-based communication model. We implemented a wrapper provider to align its request format with our adapter interface:
 
-```ts
-private async onSessionConnected(session: SessionTypes.Struct) {
-  this.provider = {
-    request: async (args) => this.client!.request({
-      topic: session.topic,
-      chainId: `kadena:${this.networkId}`,
-      request: args
-    })
-  };
-}
-```
-
 **Developer Experience**
 
-dApps can now support multiple wallets with minimal changes:
-
-```ts
-const client = new WalletAdapterClient([EckoAdapter, ChainweaverAdapter]);
-await client.init();
-await client.connect('Ecko');
-```
+dApps can now support multiple wallets with minimal changes in application logic.
 
 **Technologies Utilized**
 
