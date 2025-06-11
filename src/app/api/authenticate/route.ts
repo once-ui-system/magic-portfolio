@@ -18,7 +18,7 @@ export async function POST(request: NextRequest) {
       "Set-Cookie",
       cookie.serialize("authToken", "authenticated", {
         httpOnly: true,
-        secure: process.env.NODE_ENV === "production",
+        secure: process.env.PROJECT_MODE === "production",
         maxAge: 60 * 60,
         sameSite: "strict",
         path: "/",

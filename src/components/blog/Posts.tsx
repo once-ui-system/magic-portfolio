@@ -20,8 +20,8 @@ export function Posts({
 
     let allBlogs = getPosts(['src', 'app', 'blog', 'posts']);
 
-    const isProd = process.env.NODE_ENV === 'production';
-
+    const isProd = process.env.PROJECT_MODE === 'production';
+    console.log("IS_PROD", isProd)
 
     const visibleBlogs = allBlogs.filter(
       (post) => !(isProd && post.metadata.draft === true)
