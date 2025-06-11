@@ -1,5 +1,5 @@
 ---
-title: "snaK Wallet: Kadena's MetaMask Snap"
+title: "snaK: Kadena's MetaMask Snap"
 publishedAt: "2025-06-10"
 summary: "A Snap for MetaMask that brings full Kadena blockchain support, enabling KDA account management, transactions, network switching, and testnet utilities."
 images:
@@ -25,41 +25,36 @@ link: "https://snak.mindsend.xyz/"
 
 **Overview**
 
-The snaK wallet is a MetaMask Snap that enables native Kadena (KDA) blockchain functionality within MetaMask. It allows users to manage KDA accounts, send and receive tokens, switch networks, and access testnet tools — all seamlessly integrated within the MetaMask interface.
+The snaK is a MetaMask Snap that enables native Kadena (KDA) blockchain functionality within MetaMask. It allows users to manage KDA accounts,
+send and receive tokens, switch networks, and interact with Kadena-native dapps, all without having to install yet another extension in your
+already bloated browser.
 
 **Key Features**
 
-- **Network Switching:** [Switch between Kadena networks](https://docs.mindsend.xyz/user-guide/switch-network)
-- **Transaction Signing:** [Send KDA tokens](https://docs.mindsend.xyz/user-guide/send-kda) securely with native support for `sign` and `quicksign`
-- **Testnet Support:** [Access faucets](https://docs.mindsend.xyz/user-guide/faucet) for test tokens and test your dApps in real environments
-- **Permissionless Integration:** No plugin installation required beyond standard Snap connection
-- **Full Account Management:** Interact with any Kadena chain and maintain full control over your public/private key pairs
+- **Token and Account Management:** [Send KDA tokens](https://docs.mindsend.xyz/user-guide/send-kda) and self-custody multiple accounts across the chainweb;
+- **Testnet Support:** [Access faucets](https://docs.mindsend.xyz/user-guide/faucet) for test tokens and test your dApps in open environments;
+- **Full dapp support:** Interact with any Kadena dapp;
+- **No extra packages:** No extra dependencies needed besides standard `window.ethereum` connection.
 
 **Technologies Utilized**
 
-- **MetaMask Snaps SDK:** Custom permissioned runtime inside MetaMask
-- **Kadena SDK (kadena.js):** Used to serialize/deserialize Pact code and handle signing workflows
-- **TypeScript & React:** Frontend development and Snap configuration UI
-- **Pact:** Kadena smart contract language powering chain interactions
-- **MdBook + GitHub Pages:** Documentation and developer portal
+- **MetaMask Snaps SDK:** Custom permissioned runtime inside MetaMask;
+- **Kadena SDK (kadena.js):** Used to serialize/deserialize Pact code and handle signing workflows;
+- **TypeScript, Nextjs, and Vercel:** snaK UI development and hosting;
+- **Pact:** Kadena smart contract language powering chain interactions;
+- **MdBook + GitHub Pages:** Documentation and developer portal.
 
 **Challenges & Insights**
 
-- **Cross-Chain Management:** Enabled flexible interaction across all 20 Kadena chains while maintaining signing integrity and transaction consistency
-- **Snap Permission Constraints:** Navigated Snap sandbox limitations to enable robust signing workflows without compromising security
-- **dApp Compatibility:** Built extensible RPC handlers to support WalletConnect and custom dApp integrations
+- **Cross-Chain Management:** Unified interaction across all 20 Kadena chains with on-the-go UI for cross-chain transaction finishing;
+- **Snap Permission Constraints:** Account for Snap sandbox limitations to provide robust signing workflows;
+- **dApp Compatibility:** Built extensible RPC handlers to support WalletConnect and custom dApp integrations.
 
 **Achievements**
 
-- **First MetaMask Integration for Kadena:** Introduced a fully functional Kadena wallet inside MetaMask for the first time
-- **Seamless Developer Onboarding:** Offers clear [SDK setup](https://docs.mindsend.xyz/sdk/setup-project) and [Snap integration guides](https://docs.mindsend.xyz/sdk/integrate-snap) for dApps
-- **Security-First Design:** Leverages MetaMask’s isolated execution model with strict permissions and validation
-
-**Coming Soon**
-
-- **Cross-dApp Session Management:** Streamlined UX for managing multiple Kadena dApps simultaneously
-- **Multisig & Ledger Support:** Planned support for advanced wallet features
-- **UI Enhancements:** Improved Snap configuration screens and onboarding prompts
+- **First MetaMask Integration for Kadena:** Provided access to Kadena's Chainweb for all Metamask userbase;
+- **Seamless Developer Onboarding:** Offers clear [SDK setup](https://docs.mindsend.xyz/sdk/setup-project) and [Snap integration guides](https://docs.mindsend.xyz/sdk/integrate-snap) for dApps;
+- **Security-First Design:** Leverages MetaMask’s isolated execution model with strict permissions and validation.
 
 **For Developers**
 
