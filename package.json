@@ -1,6 +1,6 @@
 {
   "name": "@once-ui-system/magic-portfolio",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "scripts": {
     "dev": "next dev",
     "export": "next export",
@@ -11,7 +11,7 @@
   "dependencies": {
     "@mdx-js/loader": "^3.1.0",
     "@next/mdx": "^15.3.1",
-    "@once-ui-system/core": "^1.1.5",
+    "@once-ui-system/core": "^1.2.4",
     "classnames": "^2.5.1",
     "cookie": "^1.0.2",
     "gray-matter": "^4.0.3",
