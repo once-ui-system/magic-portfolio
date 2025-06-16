@@ -3,11 +3,11 @@
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
-import { Fade, Flex, Line, ToggleButton } from "@/once-ui/components";
-import styles from "@/components/Header.module.scss";
+import { Fade, Flex, Line, ToggleButton } from "@once-ui-system/core";
 
-import { routes, display } from "@/app/resources";
-import { person, home, about, blog, work, gallery } from "@/app/resources/content";
+import { routes, display, person, about, blog, work, gallery } from "@/resources";
+import { ThemeToggle } from "./ThemeToggle";
+import styles from "./Header.module.scss";
 
 type TimeDisplayProps = {
   timeZone: string;
@@ -51,30 +51,33 @@ export const Header = () => {
       <Fade show="s" fillWidth position="fixed" bottom="0" to="top" height="80" zIndex={9} />
       <Flex
         fitHeight
+        position="unset"
         className={styles.position}
         as="header"
         zIndex={9}
         fillWidth
         padding="8"
         horizontal="center"
+        data-border="rounded"
       >
         <Flex paddingLeft="12" fillWidth vertical="center" textVariant="body-default-s">
           {display.location && <Flex hide="s">{person.location}</Flex>}
         </Flex>
         <Flex fillWidth horizontal="center">
           <Flex
-            background="surface"
-            border="neutral-medium"
+            background="page"
+            border="neutral-alpha-weak"
             radius="m-4"
             shadow="l"
             padding="4"
             horizontal="center"
+            zIndex={1}
           >
-            <Flex gap="4" vertical="center" textVariant="body-default-s">
+            <Flex gap="4" vertical="center" textVariant="body-default-s" suppressHydrationWarning>
               {routes["/"] && (
                 <ToggleButton prefixIcon="home" href="/" selected={pathname === "/"} />
               )}
-              <Line vert maxHeight="24" />
+              <Line background="neutral-alpha-medium" vert maxHeight="24" />
               {routes["/about"] && (
                 <>
                   <ToggleButton
@@ -141,6 +144,12 @@ export const Header = () => {
                     href="/gallery"
                     selected={pathname.startsWith("/gallery")}
                   />
+                </>
+              )}
+              {display.themeSwitcher && (
+                <>
+                  <Line background="neutral-alpha-medium" vert maxHeight="24" />
+                  <ThemeToggle />
                 </>
               )}
             </Flex>
