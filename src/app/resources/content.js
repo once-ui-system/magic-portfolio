@@ -55,7 +55,7 @@ const home = {
   label: "Home",
   title: `${person.name}`,
   description: `${person.role} Landing Page`,
-  headline: <>Empowering the Web3 revolution with full-cycle development </>,
+  headline: <>Powering the Web3 revolution with full-cycle development </>,
   featured: {
     display: false,
     title: (
@@ -94,7 +94,12 @@ const about = {
     title: "Introduction",
     description: (
       <>
-       We are a Web3-focused development team that designs, builds, and maintains robust blockchain solutions. From infrastructure to user-facing applications, we’ve helped shape core components of the Kadena ecosystem—contributing to some of its most impactful and widely used tools. Our mission is simple: to deliver practical, secure, and scalable products that meet the needs of modern decentralized systems.
+        We are a Web3-focused development team that designs, builds, and
+        maintains robust blockchain solutions. From infrastructure to
+        user-facing applications, we’ve helped shape core components of the
+        Kadena ecosystem—contributing to some of its most impactful and widely
+        used tools. Our mission is simple: to deliver practical, secure, and
+        scalable products that meet the needs of modern decentralized systems.
       </>
     ),
   },
@@ -107,9 +112,8 @@ const about = {
         timeframe: " ",
         role: "Co-founder, Applied Mathematician, and Web3 Engineer",
         achievements: [
-"Ariel is an applied mathematician with a Master’s in Computer Science and a strong track record designing, implementing, and managing Web3 systems. With deep technical foundations and a hands-on approach, he thrives in the fast-moving blockchain space—adapting quickly to new technologies and pushing the boundaries of what’s possible in decentralized architecture."
-
-],
+          "Ariel is an applied mathematician with a Master’s in Computer Science and a strong track record designing, implementing, and managing Web3 systems. With deep technical foundations and a hands-on approach, he thrives in the fast-moving blockchain space—adapting quickly to new technologies and pushing the boundaries of what’s possible in decentralized architecture.",
+        ],
         image: "/images/og/ariel.jpg",
       },
       {
@@ -117,7 +121,7 @@ const about = {
         timeframe: " ",
         role: "Co-founder, Data Scientist, and Web3 Engineer",
         achievements: [
-"Francisco brings consistency and curiosity to every project. With a background in Statistics and Data Science and an ongoing MBA in Software Engineering, he excels in infrastructure, networking, and backend development. A disciplined engineer and proactive team player, Francisco is the one who’s always up-to-date and always digging into the docs."
+          "Francisco brings consistency and curiosity to every project. With a background in Statistics and Data Science and an ongoing MBA in Software Engineering, he excels in infrastructure, networking, and backend development. A disciplined engineer and proactive team player, Francisco is the one who’s always up-to-date and always digging into the docs.",
         ],
         image: "/images/og/chico.jpg",
       },
@@ -201,26 +205,26 @@ const about = {
         link: "https://www.docker.com/",
         img: "/icons/docker.svg",
       },
-{
-title: "TailwindCSS",
-link: "https://tailwindcss.com",
-img: "/icons/tailwindcss.svg"
-},
-{
-title: "Github",
-link: "https://github.com",
-img: "/icons/github.svg"
-},
-{
-title: "WalletConnect",
-link: "https://walletconnect.network",
-img: "/icons/walletconnect.svg"
-},
-// {
-// title: "Metamask",
-// link: "https://metamask.io",
-// img: "/icons/metamask"
-// },
+      {
+        title: "TailwindCSS",
+        link: "https://tailwindcss.com",
+        img: "/icons/tailwindcss.svg",
+      },
+      {
+        title: "Github",
+        link: "https://github.com",
+        img: "/icons/github.svg",
+      },
+      {
+        title: "WalletConnect",
+        link: "https://walletconnect.network",
+        img: "/icons/walletconnect.svg",
+      },
+      // {
+      // title: "Metamask",
+      // link: "https://metamask.io",
+      // img: "/icons/metamask"
+      // },
 
       {
         title: "Git",
@@ -238,8 +242,7 @@ const blog = {
   description: `Insights, deep dives, and lessons from ${person.name} on building decentralized systems, infrastructure, and real-world blockchain applications.`,
   // Create new blog posts by adding a new .mdx file to app/blog/posts
   // All posts will be listed on the /blog route
-}
-
+};
 
 const work = {
   path: "/work",
