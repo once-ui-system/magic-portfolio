@@ -1,32 +1,17 @@
 import { IconType } from "react-icons";
 
 import {
-  HiChevronUp,
-  HiChevronDown,
-  HiChevronRight,
-  HiChevronLeft,
   HiArrowUpRight,
-  HiOutlineArrowPath,
-  HiCheck,
-  HiMiniQuestionMarkCircle,
-  HiMiniXMark,
   HiOutlineLink,
-  HiExclamationTriangle,
-  HiInformationCircle,
-  HiExclamationCircle,
-  HiCheckCircle,
-  HiMiniGlobeAsiaAustralia,
   HiArrowTopRightOnSquare,
   HiEnvelope,
   HiCalendarDays,
-  HiClipboard,
   HiArrowRight,
   HiOutlineEye,
   HiOutlineEyeSlash,
-  HiMoon,
-  HiSun,
   HiOutlineDocument,
   HiOutlineGlobeAsiaAustralia,
+  HiOutlineRocketLaunch,
 } from "react-icons/hi2";
 
 import {
@@ -60,6 +45,7 @@ export const iconLibrary: Record<string, IconType> = {
   threads: FaThreads,
   arrowUpRightFromSquare: HiArrowTopRightOnSquare,
   document: HiOutlineDocument,
+  rocket: HiOutlineRocketLaunch
 };
 
 export type IconLibrary = typeof iconLibrary;
