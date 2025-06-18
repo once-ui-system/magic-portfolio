@@ -1,16 +1,16 @@
 import { Logo } from "@once-ui-system/core";
 
 const person = {
-  firstName: "Selene",
-  lastName: "Yu",
+  firstName: "Yadu",
+  lastName: "Krishnan",
   get name() {
     return `${this.firstName} ${this.lastName}`;
   },
-  role: "Design Engineer",
-  avatar: "/images/avatar.jpg",
-  email: "example@gmail.com",
-  location: "Asia/Jakarta", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
-  languages: ["English", "Bahasa"], // optional: Leave the array empty if you don't want to display languages
+  role: "Multimedia Specialist",
+  avatar: "/images/yadu-avatar.jpg", // Will be replaced with Yadu's actual avatar
+  email: "yadu.krishnan.example@gmail.com", // Placeholder email
+  location: "Asia/Dubai", // For Abu Dhabi, UAE
+  languages: ["English", "Malayalam"],
 };
 
 const newsletter = {
@@ -25,55 +25,57 @@ const newsletter = {
 };
 
 const social = [
-  // Links are automatically displayed.
-  // Import new icons in /once-ui/icons.ts
-  {
-    name: "GitHub",
-    icon: "github",
-    link: "https://github.com/once-ui-system/nextjs-starter",
-  },
   {
     name: "LinkedIn",
-    icon: "linkedin",
-    link: "https://www.linkedin.com/company/once-ui/",
+    icon: "linkedin", // Assuming 'linkedin' icon exists
+    link: "https://www.linkedin.com/in/yadukrishnan-profile-url", // Placeholder
   },
   {
-    name: "Threads",
-    icon: "threads",
-    link: "https://www.threads.com/@once_ui",
+    name: "Instagram",
+    icon: "instagram", // Assuming 'instagram' icon exists
+    link: "https://www.instagram.com/yadukrishnan-profile-url", // Placeholder
+  },
+  {
+    name: "Behance",
+    icon: "behance", // Assuming 'behance' icon exists
+    link: "https://www.behance.net/yadukrishnan-profile-url", // Placeholder
+  },
+  {
+    name: "Website", // For your existing "Photography & Videography | Yadu Krishna - Abu Dhabi"
+    icon: "globe", // Assuming 'globe' or similar generic web icon exists
+    link: "https://www.yourwebsite.com", // Placeholder
   },
   {
     name: "Email",
     icon: "email",
-    link: `mailto:${person.email}`,
+    link: `mailto:${person.email}`, // This will use the updated email
   },
 ];
 
 const home = {
   path: "/",
-  image: "/images/og/home.jpg",
+  image: "/images/og/home.jpg", // This OG image might need to be updated by Yadu later
   label: "Home",
-  title: `${person.name}'s Portfolio`,
-  description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Building bridges between design and code</>,
+  title: `${person.name} | Multimedia Specialist & Visual Storyteller`, // Updated title
+  description: `Welcome to the portfolio of ${person.name}, a ${person.role} based in Abu Dhabi. Founder of Get Goated.`, // Updated description
+  headline: <>Capturing Moments, Crafting Stories.</>, // New headline
   featured: {
-    display: true,
-    title: <>Recent project: <strong className="ml-4">Once UI</strong></>,
-    href: "/work/building-once-ui-a-customizable-design-system",
+    display: false, // Disabled for now
+    title: <>Recent project: <strong className="ml-4">Your Awesome Project</strong></>,
+    href: "/work/your-awesome-project-slug", // Placeholder
   },
   subline: (
     <>
-      I'm Selene, a design engineer at <Logo icon="/trademarks/wordmark-dark.svg" style={{ display: "inline-flex", top: "0.25em", marginLeft: "-0.25em" }}/>, where I craft intuitive
-      <br /> user experiences. After hours, I build my own projects.
-    </>
+      I'm {person.firstName}, a {person.role} and the founder of Get Goated. I specialize in bringing visions to life through photography, videography, and compelling digital content.
+    </> // Updated subline
   ),
 };
 
 const about = {
   path: "/about",
   label: "About",
-  title: `About – ${person.name}`,
-  description: `Meet ${person.name}, ${person.role} from ${person.location}`,
+  title: `About ${person.name} | Multimedia Specialist & Creative Entrepreneur`,
+  description: `Learn more about ${person.name}, his skills, experience as a ${person.role}, and the story behind Get Goated.`,
   tableOfContent: {
     display: true,
     subItems: false,
@@ -82,17 +84,15 @@ const about = {
     display: true,
   },
   calendar: {
-    display: true,
+    display: false,
     link: "https://cal.com",
   },
   intro: {
     display: true,
-    title: "Introduction",
+    title: "Meet Yadu Krishnan",
     description: (
       <>
-        Selene is a Jakarta-based design engineer with a passion for transforming complex challenges
-        into simple, elegant design solutions. Her work spans digital interfaces, interactive
-        experiences, and the convergence of design and technology.
+        Yadu Krishnan is an Abu Dhabi-based Multimedia Specialist and the founder of Get Goated. With a robust background in photography, videography, and digital content creation, Yadu is passionate about bringing creative visions to life. Fluent in English and Malayalam, he combines technical expertise with a keen eye for storytelling and a commitment to high-quality results. His work is characterized by clean, vibrant visuals and balanced lighting, tailored to a Gen Z-friendly aesthetic.
       </>
     ),
   },
@@ -101,42 +101,42 @@ const about = {
     title: "Work Experience",
     experiences: [
       {
-        company: "FLY",
-        timeframe: "2022 - Present",
-        role: "Senior Design Engineer",
+        company: "SFC Plus",
+        timeframe: "YYYY - Present", // Placeholder
+        role: "Multimedia Specialist",
         achievements: [
-          <>
-            Redesigned the UI/UX for the FLY platform, resulting in a 20% increase in user
-            engagement and 30% faster load times.
-          </>,
-          <>
-            Spearheaded the integration of AI tools into design workflows, enabling designers to
-            iterate 50% faster.
-          </>,
+          <>Developed and executed diverse multimedia projects, enhancing brand presence.</>,
+          <>Managed video and photo production workflows, from concept to final delivery.</>,
         ],
-        images: [
-          // optional: leave the array empty if you don't want to display images
-          {
-            src: "/images/projects/project-01/cover-01.jpg",
-            alt: "Once UI Project",
-            width: 16,
-            height: 9,
-          },
-        ],
+        images: [], // Yadu can add project images later
       },
       {
-        company: "Creativ3",
-        timeframe: "2018 - 2022",
-        role: "Lead Designer",
+        company: "Get Goated",
+        timeframe: "YYYY - Present", // Placeholder for founding year
+        role: "Founder / Creative Director",
         achievements: [
-          <>
-            Developed a design system that unified the brand across multiple platforms, improving
-            design consistency by 40%.
-          </>,
-          <>
-            Led a cross-functional team to launch a new product line, contributing to a 15% increase
-            in overall company revenue.
-          </>,
+          <>Launched and managing a multimedia venture focused on innovative content creation.</>,
+          <>Leading creative direction, client projects, and business development.</>,
+        ],
+        images: [],
+      },
+      {
+        company: "Maven Events",
+        timeframe: "YYYY - YYYY", // Placeholder
+        role: "Photographer/Videographer", // Example role
+        achievements: [
+          <>Covered various events, delivering high-quality photographic and video content.</>,
+          <>Collaborated with clients to meet event documentation requirements.</>,
+        ],
+        images: [],
+      },
+      {
+        company: "Royal Swiss Auto Services",
+        timeframe: "YYYY - YYYY", // Placeholder
+        role: "Photographer/Videographer", // Example role
+        achievements: [
+          <>Produced promotional photo and video content for luxury automotive services.</>,
+          <>Enhanced online visibility through compelling visual assets.</>,
         ],
         images: [],
       },
@@ -147,13 +147,10 @@ const about = {
     title: "Studies",
     institutions: [
       {
-        name: "University of Jakarta",
-        description: <>Studied software engineering.</>,
-      },
-      {
-        name: "Build the Future",
-        description: <>Studied online marketing and personal branding.</>,
-      },
+        name: "Continuous Professional Development",
+        description: <>Dedicated to ongoing learning in multimedia, photography, videography, and emerging digital technologies.</>,
+      }
+      // Yadu can add specific institutions or courses here
     ],
   },
   technical: {
@@ -161,46 +158,34 @@ const about = {
     title: "Technical skills",
     skills: [
       {
-        title: "Figma",
-        description: <>Able to prototype in Figma with Once UI with unnatural speed.</>,
-        // optional: leave the array empty if you don't want to display images
-        images: [
-          {
-            src: "/images/projects/project-01/cover-02.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-          {
-            src: "/images/projects/project-01/cover-03.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-        ],
+        title: "Video Production & Editing",
+        description: <>Adobe Premiere Pro, After Effects, DaVinci Resolve, CapCut. Expertise in color grading, storytelling, camera movements, and lighting.</>,
+        images: [], // Yadu can add illustrative images/icons later
       },
       {
-        title: "Next.js",
-        description: <>Building next gen apps with Next.js + Once UI + Supabase.</>,
-        // optional: leave the array empty if you don't want to display images
-        images: [
-          {
-            src: "/images/projects/project-01/cover-04.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-        ],
+        title: "Photography & Photo Editing",
+        description: <>Adobe Lightroom, Photoshop. Skilled in capturing clean, vibrant visuals with balanced lighting.</>,
+        images: [],
       },
+      {
+        title: "Creative & Digital Strategy",
+        description: <>Creative direction, digital marketing, social media management, and leveraging AI tools for content creation.</>,
+        images: [],
+      },
+      {
+        title: "Professional Attributes",
+        description: <>Leadership, project management, client communication, and a hands-on approach to achieving high-quality results efficiently.</>,
+        images: [],
+      }
     ],
   },
 };
 
 const blog = {
   path: "/blog",
-  label: "Blog",
-  title: "Writing about design and tech...",
-  description: `Read what ${person.name} has been up to recently`,
+  label: "Blog", // Keeping label for now, can be removed from header later if blog is unused
+  title: `Insights & Stories by ${person.name}`,
+  description: `Explore articles on multimedia trends, creative processes, tech insights, and behind-the-scenes stories from ${person.name}.`,
   // Create new blog posts by adding a new .mdx file to app/blog/posts
   // All posts will be listed on the /blog route
 };
@@ -217,52 +202,11 @@ const work = {
 const gallery = {
   path: "/gallery",
   label: "Gallery",
-  title: `Photo gallery – ${person.name}`,
-  description: `A photo collection by ${person.name}`,
+  title: `Photography Showcase | ${person.name}`,
+  description: `A curated collection of vibrant photography by ${person.name}, showcasing diverse subjects and styles.`,
   // Images by https://lorant.one
   // These are placeholder images, replace with your own
-  images: [
-    {
-      src: "/images/gallery/horizontal-1.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/horizontal-2.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/horizontal-3.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/horizontal-4.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/vertical-1.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
-    {
-      src: "/images/gallery/vertical-2.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
-    {
-      src: "/images/gallery/vertical-3.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
-    {
-      src: "/images/gallery/vertical-4.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
-  ],
+  images: [],
 };
 
 export { person, social, newsletter, home, about, blog, work, gallery };
