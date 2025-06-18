@@ -16,7 +16,7 @@ The feedback component is used to display critical information to visitors.
     radius="none"
     topRadius="l"
     codeHeight={24}
-    codePreview={<Feedback icon title="Feedback element" variant="success" description="Longer description of the feedback message." marginBottom="24"/>}
+    preview={<Feedback icon title="Feedback element" variant="success" description="Longer description of the feedback message." marginBottom="24"/>}
     codes={[
       {
         code:
@@ -44,7 +44,7 @@ Tables are used to display data in a structured format.
 <CodeBlock
     radius="none"
     topRadius="l"
-    codePreview={
+    preview={
     <Table 
       data={{
         headers: [
@@ -84,7 +84,7 @@ Tables are used to display data in a structured format.
     ]}
 />
 <Row fillWidth bottomRadius="l" padding="4" border="neutral-medium" background="surface">
-    <Button disabled weight="default" label="View on Once UI" size="s" variant="tertiary" suffixIcon="chevronRight"/>
+    <Button href="https://once-ui.com/docs/table" weight="default" label="View on Once UI" size="s" variant="tertiary" suffixIcon="chevronRight"/>
 </Row>
 </Column>
 
@@ -141,7 +141,8 @@ The `InlineCode` is another Once UI component that you can access either through
     radius="none"
     topRadius="l"
     codeHeight={24}
-    codePreview={<InlineCode>
+    preview={
+    <InlineCode>
         const x = 10;
     </InlineCode>}
     codes={[
@@ -172,7 +173,7 @@ Accordions are used to toggle between hiding and showing content.
 <CodeBlock
     radius="none"
     topRadius="l"
-    codePreview={
+    preview={
       <AccordionGroup 
         items={[
           {
@@ -228,7 +229,7 @@ Buttons are used to trigger actions or navigate to other pages.
     radius="none"
     topRadius="l"
     codeHeight={24}
-    codePreview={
+    preview={
     <Row gap="8" marginBottom="16" marginTop="8">
       <Button variant="primary" label="Primary" />
       <Button variant="secondary" label="Secondary" />
@@ -260,7 +261,7 @@ Cards are used to group related content and actions.
 <CodeBlock
     radius="none"
     topRadius="l"
-    codePreview={
+    preview={
     <Row fillWidth horizontal="center">
       <Card
         href=" "
@@ -321,12 +322,12 @@ Icons are used to visually represent actions, objects, or concepts. For instruct
     radius="none"
     topRadius="l"
     codeHeight={24}
-    codePreview={<Row gap="24" wrap>
+    preview={<Row gap="24" wrap>
       <Icon name="rocket" onBackground="danger-medium" size="m" />
       <Icon name="close" size="m" />
       <Icon name="check" onBackground="success-medium" size="m" />
-      <Icon name="infoCircle" onBackground="info-medium" size="m" />
-      <Icon name="warningTriangle" onBackground="warning-medium" size="m" />
+      <Icon name="info" onBackground="info-medium" size="m" />
+      <Icon name="warning" onBackground="warning-medium" size="m" />
       <Icon name="chevronDown" size="m" />
       <Icon name="search" size="m" />
     </Row>}
@@ -336,8 +337,8 @@ Icons are used to visually represent actions, objects, or concepts. For instruct
 `<Icon name="rocket" size="m" />
 <Icon name="close" size="m" />
 <Icon name="check" onBackground="success-medium" size="m" />
-<Icon name="infoCircle" onBackground="info-medium" size="m" />
-<Icon name="warningTriangle" onBackground="warning-medium" size="m" />
+<Icon name="info" onBackground="info-medium" size="m" />
+<Icon name="warning" onBackground="warning-medium" size="m" />
 <Icon name="chevronDown" size="m" />
 <Icon name="search" size="m" />`,
         language: "tsx",
@@ -362,7 +363,7 @@ The Flex component is accessible as `Column` and `Row` and can handle a wide ran
 <CodeBlock
     radius="none"
     topRadius="l"
-    codePreview={
+    preview={
     <Row
       fillWidth
       mobileDirection="column"
@@ -429,7 +430,7 @@ Use the grid to construct responsive grid layouts. It can be styled similarly to
 <CodeBlock
     radius="none"
     topRadius="l"
-    codePreview={
+    preview={
     <Grid
       fillWidth
       columns="3"
@@ -503,7 +504,7 @@ Media provides an optimized way to display images. Access it with the `Media` co
     radius="none"
     topRadius="l"
     codeHeight={24}
-    codePreview={<Media src="/images/projects/project-01/cover-01.jpg" alt="Example image" sizes="640px" aspectRatio="16/9" radius="l" />}
+    preview={<Media src="/images/projects/project-01/cover-01.jpg" alt="Example image" sizes="640px" aspectRatio="16/9" radius="l" />}
     codes={[
       {
         code:
@@ -531,7 +532,7 @@ You can also use it to embed YouTube videos.
     radius="none"
     topRadius="l"
     codeHeight={24}
-    codePreview={<Media src="https://www.youtube.com/watch?v=TQT_FSdxbC8" alt="Example video" aspectRatio="16/9" radius="l" />}
+    preview={<Media src="https://www.youtube.com/watch?v=TQT_FSdxbC8" alt="Example video" aspectRatio="16/9" radius="l" />}
     codes={[
       {
         code:
@@ -559,7 +560,7 @@ SmartLink provides an enhanced way to link to internal and external resources. Y
 <CodeBlock
     radius="none"
     topRadius="l"
-    codePreview={
+    preview={
       <Row  fillWidth horizontal="center">
         <SmartLink href=" " suffixIcon="chevronRight">Link with icon</SmartLink>
       </Row>
@@ -593,8 +594,8 @@ Since Magic Portfolio is based on Once UI, you can use all the components provid
     p: createParagraph as any,
     h1: createHeading("h1") as any,
     ...
-    Media: dynamic(() => import("@once-ui-system/core").then(mod => mod.Media)),
-    SmartLink: dynamic(() => import("@once-ui-system/core").then(mod => mod.SmartLink)),
+    Media,
+    SmartLink,
 };`,
         language: "tsx",
         label: "src/product/mdx.tsx"

@@ -2,8 +2,8 @@ import { notFound } from "next/navigation";
 import { CustomMDX, ScrollToHash } from "@/components";
 import { Meta, Schema, AvatarGroup, Button, Column, Heading, HeadingNav, Icon, Row, Text } from "@once-ui-system/core";
 import { baseURL, about, blog, person } from "@/resources";
-import { formatDate } from "@/app/utils/formatDate";
-import { getPosts } from "@/app/utils/utils";
+import { formatDate } from "@/utils/formatDate";
+import { getPosts } from "@/utils/utils";
 import { Metadata } from 'next';
 
 export async function generateStaticParams(): Promise<{ slug: string }[]> {

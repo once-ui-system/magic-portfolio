@@ -1,18 +1,27 @@
 import { MDXRemote, MDXRemoteProps } from "next-mdx-remote/rsc";
 import React, { ReactNode } from "react";
-import dynamic from "next/dynamic";
 
 import { 
   Heading,
   HeadingLink,
-  Media,
-  SmartLink,
   Text,
   InlineCode,
+  CodeBlock,
+  TextProps,
+  MediaProps,
+  Accordion,
+  AccordionGroup,
+  Table,
+  Feedback,
+  Button,
+  Card,
+  Grid,
+  Row,
+  Column,
+  Icon,
+  Media,
+  SmartLink,
 } from "@once-ui-system/core";
-import { CodeBlock } from "@once-ui-system/core";
-import { TextProps } from "@once-ui-system/core";
-import { MediaProps } from "@once-ui-system/core";
 
 type CustomLinkProps = React.AnchorHTMLAttributes<HTMLAnchorElement> & {
   href: string;
@@ -158,18 +167,18 @@ const components = {
   Text,
   CodeBlock,
   InlineCode,
-  Accordion: dynamic(() => import("@once-ui-system/core").then(mod => mod.Accordion)),
-  AccordionGroup: dynamic(() => import("@once-ui-system/core").then(mod => mod.AccordionGroup)),
-  Table: dynamic(() => import("@once-ui-system/core").then(mod => mod.Table)),
-  Feedback: dynamic(() => import("@once-ui-system/core").then(mod => mod.Feedback)),
-  Button: dynamic(() => import("@once-ui-system/core").then(mod => mod.Button)),
-  Card: dynamic(() => import("@once-ui-system/core").then(mod => mod.Card)),
-  Grid: dynamic(() => import("@once-ui-system/core").then(mod => mod.Grid)),
-  Row: dynamic(() => import("@once-ui-system/core").then(mod => mod.Row)),
-  Column: dynamic(() => import("@once-ui-system/core").then(mod => mod.Column)),
-  Icon: dynamic(() => import("@once-ui-system/core").then(mod => mod.Icon)),
-  Media: dynamic(() => import("@once-ui-system/core").then(mod => mod.Media)),
-  SmartLink: dynamic(() => import("@once-ui-system/core").then(mod => mod.SmartLink)),
+  Accordion,
+  AccordionGroup,
+  Table,
+  Feedback,
+  Button,
+  Card,
+  Grid,
+  Row,
+  Column,
+  Icon,
+  Media,
+  SmartLink,
 };
 
 type CustomMDXProps = MDXRemoteProps & {

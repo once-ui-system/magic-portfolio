@@ -1,4 +1,4 @@
-import { getPosts } from '@/app/utils/utils';
+import { getPosts } from '@/utils/utils';
 import { Grid } from '@once-ui-system/core';
 import Post from './Post';
 

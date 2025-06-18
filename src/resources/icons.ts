@@ -26,6 +26,7 @@ import {
   HiMoon,
   HiSun,
   HiOutlineDocument,
+  HiOutlineGlobeAsiaAustralia,
 } from "react-icons/hi2";
 
 import {
@@ -39,25 +40,13 @@ import {
 import { FaDiscord, FaGithub, FaLinkedin, FaX, FaThreads } from "react-icons/fa6";
 
 export const iconLibrary: Record<string, IconType> = {
-  chevronUp: HiChevronUp,
-  chevronDown: HiChevronDown,
-  chevronRight: HiChevronRight,
-  chevronLeft: HiChevronLeft,
-  refresh: HiOutlineArrowPath,
   arrowUpRight: HiArrowUpRight,
-  check: HiCheck,
   arrowRight: HiArrowRight,
-  helpCircle: HiMiniQuestionMarkCircle,
-  infoCircle: HiInformationCircle,
-  warningTriangle: HiExclamationTriangle,
-  errorCircle: HiExclamationCircle,
-  checkCircle: HiCheckCircle,
   email: HiEnvelope,
-  globe: HiMiniGlobeAsiaAustralia,
+  globe: HiOutlineGlobeAsiaAustralia,
   person: PiUserCircleDuotone,
   grid: PiGridFourDuotone,
   book: PiBookBookmarkDuotone,
-  close: HiMiniXMark,
   openLink: HiOutlineLink,
   calendar: HiCalendarDays,
   home: PiHouseDuotone,
@@ -69,10 +58,7 @@ export const iconLibrary: Record<string, IconType> = {
   linkedin: FaLinkedin,
   x: FaX,
   threads: FaThreads,
-  clipboard: HiClipboard,
   arrowUpRightFromSquare: HiArrowTopRightOnSquare,
-  moon: HiMoon,
-  sun: HiSun,
   document: HiOutlineDocument,
 };
 
