@@ -109,7 +109,7 @@ export async function GET(request: Request) {
       fonts: [
         {
           name: "Geist",
-          data: await loadGoogleFont('Geist:opsz,wght@14..32,300'),
+          data: await loadGoogleFont('Geist:wght@400'),
           style: "normal",
         },
       ],
