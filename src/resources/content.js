@@ -206,7 +206,43 @@ const gallery = {
   description: `A curated collection of vibrant photography by ${person.name}, showcasing diverse subjects and styles.`,
   // Images by https://lorant.one
   // These are placeholder images, replace with your own
-  images: [],
+  images: [
+    {
+      src: "/images/projects/project-01/cover-01.jpg",
+      alt: "Gallery image 1",
+      orientation: "horizontal",
+    },
+    {
+      src: "/images/projects/project-01/cover-02.jpg",
+      alt: "Gallery image 2",
+      orientation: "horizontal",
+    },
+    {
+      src: "/images/projects/project-01/cover-03.jpg",
+      alt: "Gallery image 3",
+      orientation: "horizontal",
+    },
+    {
+      src: "/images/projects/project-01/cover-04.jpg",
+      alt: "Gallery image 4",
+      orientation: "horizontal",
+    },
+    {
+      src: "/images/projects/project-01/image-01.jpg",
+      alt: "Gallery image 5",
+      orientation: "horizontal",
+    },
+    {
+      src: "/images/projects/project-01/image-02.jpg",
+      alt: "Gallery image 6",
+      orientation: "horizontal",
+    },
+    {
+      src: "/images/projects/project-01/image-03.jpg",
+      alt: "Gallery image 7",
+      orientation: "horizontal",
+    },
+  ],
 };
 
 export { person, social, newsletter, home, about, blog, work, gallery };
