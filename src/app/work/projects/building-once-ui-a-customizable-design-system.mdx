@@ -1,45 +1,38 @@
 ---
-title: "Building Once UI, a Customizable Design System"
-publishedAt: "2024-04-08"
-summary: "Development of a flexible and highly customizable design system using Next.js for front-end and Figma for design collaboration."
+title: "Zoom Clone — Real-time Video Conferencing App"
+publishedAt: "2023-02-15"
+summary: "Built a real-time video conferencing web app using WebRTC and Socket.IO, enabling peer-to-peer video/audio communication and room-based interactions."
 images:
-  - "/images/projects/project-01/cover-01.jpg"
-  - "/images/projects/project-01/cover-02.jpg"
-  - "/images/projects/project-01/cover-03.jpg"
-  - "/images/projects/project-01/cover-04.jpg"
+  - "/images/projects/project-03/work1.jpg"
 team:
-  - name: "Selene Yu"
-    role: "Software Engineer"
+  - name: "Mohammed Mansour"
+    role: "Full Stack Developer"
     avatar: "/images/avatar.jpg"
-    linkedIn: "https://www.linkedin.com/company/once-ui/"
-  - name: "Jane Smith"
-    role: "Product Manager"
-    avatar: "/images/projects/project-01/avatar-01.jpg"
-    linkedIn: "https://www.linkedin.com/company/once-ui/"
+    linkedIn: "https://www.linkedin.com/in/mohammedmansourdev/"
 ---
 
 ## Overview
 
-Development of a flexible and highly customizable design system using Next.js for front-end and Figma for design collaboration.
+This project is a lightweight clone of Zoom, built from scratch to explore the core technologies behind video conferencing apps. It provides real-time peer-to-peer video and audio communication via the browser, supporting multiple participants in a shared room.
 
 ## Key Features
 
-- **Component Library**: Built a set of modular, reusable UI components using React and styled-components in Next.js, focusing on accessibility and responsiveness.
-- **Theming and Customization**: Integrated a theming system that allows easy switching and customization of color palettes, typography, and layout styles using CSS variables and Figma tokens.
-- **Figma Integration**: Collaborated closely with designers by setting up a shared design library in Figma. This library was synchronized with the codebase, ensuring design handoffs were seamless and that design tokens remained consistent across both platforms.
-- **Documentation and Usage Guidelines**: Developed comprehensive documentation with Storybook to showcase components, usage patterns, and best practices, ensuring the design system is easy to adopt by other teams.
+- **Real-time Video & Audio**: Utilizes WebRTC to establish direct peer-to-peer media streams.
+- **Room-Based Architecture**: Users can join and create unique rooms for private conferencing sessions.
+- **Socket.IO Integration**: Implements real-time signaling for session negotiation and room coordination.
+- **Dynamic Media Handling**: Supports media stream toggling (mute/unmute video/audio).
 
 ## Technologies Used
 
-- **Next.js**: For fast, server-rendered React applications.
+- **React Native**: For building cross-platform mobile applications.
 - **Figma**: For creating and managing design assets and prototypes.
 - **Styled-Components**: For styling React components with a modular, themable approach.
-- **Storybook**: For building an interactive, documented component library.
+- **Socket.IO**: For real-time communication between clients and server using WebSockets.
 
 ## Challenges and Learnings
 
-One key challenge was balancing the need for flexibility with the desire to maintain design consistency. The solution involved creating well-defined design tokens and establishing clear guidelines for when and how components could be customized. Additionally, setting up effective collaboration workflows between designers and developers using Figma and Git was a learning experience that greatly improved the process.
+Implementing WebRTC required a strong understanding of how media negotiation and ICE candidate exchange work. Managing signaling events with Socket.IO was key to ensuring seamless communication between users. Through this project, deepened knowledge of peer-to-peer connections and learned how real-time communication systems operate under the hood.
 
 ## Outcome
 
-The design system is now actively used across multiple projects, leading to faster development cycles, fewer design inconsistencies, and improved collaboration between design and development teams. It has become a foundation for scaling our products efficiently while ensuring a cohesive user experience.
+The app serves as a foundational implementation of a Zoom-like experience with essential features. It's a valuable learning resource for understanding the mechanics of WebRTC and real-time communication, and a strong base for adding features like chat, screen sharing, and authentication in future iterations.

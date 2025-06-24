@@ -1,16 +1,14 @@
-import { Logo } from "@once-ui-system/core";
-
 const person = {
-  firstName: "Selene",
-  lastName: "Yu",
+  firstName: "Mohammad",
+  lastName: "Mansour",
   get name() {
     return `${this.firstName} ${this.lastName}`;
   },
-  role: "Design Engineer",
+  role: "Software Engineer",
   avatar: "/images/avatar.jpg",
-  email: "example@gmail.com",
-  location: "Asia/Jakarta", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
-  languages: ["English", "Bahasa"], // optional: Leave the array empty if you don't want to display languages
+  email: "mohamed.mansour2622@gmail.com",
+  location: "Asia/Jerusalem",
+  languages: ["Arabic", "English"],
 };
 
 const newsletter = {
@@ -18,8 +16,8 @@ const newsletter = {
   title: <>Subscribe to {person.firstName}'s Newsletter</>,
   description: (
     <>
-      I occasionally write about design, technology, and share thoughts on the intersection of
-      creativity and engineering.
+      I occasionally write about frontend development, modern JavaScript
+      frameworks, and insights from my journey as a developer.
     </>
   ),
 };
@@ -30,17 +28,12 @@ const social = [
   {
     name: "GitHub",
     icon: "github",
-    link: "https://github.com/once-ui-system/nextjs-starter",
+    link: "https://github.com/mman9our",
   },
   {
     name: "LinkedIn",
     icon: "linkedin",
-    link: "https://www.linkedin.com/company/once-ui/",
-  },
-  {
-    name: "Threads",
-    icon: "threads",
-    link: "https://www.threads.com/@once_ui",
+    link: "https://www.linkedin.com/in/mman9our",
   },
   {
     name: "Email",
@@ -55,16 +48,20 @@ const home = {
   label: "Home",
   title: `${person.name}'s Portfolio`,
   description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Building bridges between design and code</>,
+  headline: <>Building dynamic apps that bring ideas to life</>,
   featured: {
     display: true,
-    title: <>Recent project: <strong className="ml-4">Once UI</strong></>,
-    href: "/work/building-once-ui-a-customizable-design-system",
+    title: (
+      <>
+        Recent project: <strong className="ml-4">Modern UI Systems</strong>
+      </>
+    ),
+    href: "/work/modern-ui-systems",
   },
   subline: (
     <>
-      I'm Selene, a design engineer at <Logo icon="/trademarks/wordmark-dark.svg" style={{ display: "inline-flex", top: "0.25em", marginLeft: "-0.25em" }}/>, where I craft intuitive
-      <br /> user experiences. After hours, I build my own projects.
+      I'm Mohammad, a software engineer specializing in building high-performance web and mobile applications using technologies like React, Next.js, React Native.
+      <br /> Let's build something amazing together.
     </>
   ),
 };
@@ -83,59 +80,63 @@ const about = {
   },
   calendar: {
     display: true,
-    link: "https://cal.com",
+    link: "https://cal.com/mman9our",
   },
   intro: {
     display: true,
     title: "Introduction",
     description: (
       <>
-        Selene is a Jakarta-based design engineer with a passion for transforming complex challenges
-        into simple, elegant design solutions. Her work spans digital interfaces, interactive
-        experiences, and the convergence of design and technology.
+        Mohammad Mansour is a Nablus-based frontend engineer with over 2 years
+        of experience building fast, accessible, and responsive web and mobile
+        applications. He thrives on solving complex UI challenges and crafting
+        intuitive user experiences using modern JavaScript frameworks.
       </>
     ),
   },
   work: {
-    display: true, // set to false to hide this section
+    display: true,
     title: "Work Experience",
     experiences: [
       {
-        company: "FLY",
-        timeframe: "2022 - Present",
-        role: "Senior Design Engineer",
+        company: "Xngage",
+        timeframe: "Mar 2024 - Present",
+        role: "Frontend Engineer",
         achievements: [
           <>
-            Redesigned the UI/UX for the FLY platform, resulting in a 20% increase in user
-            engagement and 30% faster load times.
+            Collaborated with UX teams to enhance product usability and visual
+            design.
           </>,
           <>
-            Spearheaded the integration of AI tools into design workflows, enabling designers to
-            iterate 50% faster.
+            Implemented responsive designs ensuring seamless experience across
+            devices.
           </>,
         ],
-        images: [
-          // optional: leave the array empty if you don't want to display images
-          {
-            src: "/images/projects/project-01/cover-01.jpg",
-            alt: "Once UI Project",
-            width: 16,
-            height: 9,
-          },
-        ],
+        images: [],
       },
       {
-        company: "Creativ3",
-        timeframe: "2018 - 2022",
-        role: "Lead Designer",
+        company: "Z Technologies",
+        timeframe: "Jun 2023 - Mar 2024",
+        role: "Frontend Engineer",
         achievements: [
           <>
-            Developed a design system that unified the brand across multiple platforms, improving
-            design consistency by 40%.
+            Optimized site performance, achieving a 30% reduction in load time.
           </>,
           <>
-            Led a cross-functional team to launch a new product line, contributing to a 15% increase
-            in overall company revenue.
+            Built and maintained reusable components for scalable development.
+          </>,
+        ],
+        images: [],
+      },
+      {
+        company: "Gaza Sky Geeks",
+        timeframe: "Aug 2023 - Oct 2023",
+        role: "Programming Instructor",
+        achievements: [
+          <>Delivered hands-on coding workshops and bootcamps to students.</>,
+          <>
+            Created instructional materials and engaged diverse learners in
+            programming.
           </>,
         ],
         images: [],
@@ -143,54 +144,45 @@ const about = {
     ],
   },
   studies: {
-    display: true, // set to false to hide this section
+    display: true,
     title: "Studies",
     institutions: [
       {
-        name: "University of Jakarta",
-        description: <>Studied software engineering.</>,
-      },
-      {
-        name: "Build the Future",
-        description: <>Studied online marketing and personal branding.</>,
+        name: "Arab American University",
+        description: <>Bachelor's degree in Computer Systems Engineering.</>,
       },
     ],
   },
   technical: {
-    display: true, // set to false to hide this section
+    display: true,
     title: "Technical skills",
     skills: [
       {
-        title: "Figma",
-        description: <>Able to prototype in Figma with Once UI with unnatural speed.</>,
-        // optional: leave the array empty if you don't want to display images
-        images: [
-          {
-            src: "/images/projects/project-01/cover-02.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-          {
-            src: "/images/projects/project-01/cover-03.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-        ],
+        title: "React / Next.js",
+        description: (
+          <>
+            Building scalable web apps using React, Next.js, and state
+            management libraries like Redux and Zustand.
+          </>
+        ),
+        images: [],
       },
       {
-        title: "Next.js",
-        description: <>Building next gen apps with Next.js + Once UI + Supabase.</>,
-        // optional: leave the array empty if you don't want to display images
-        images: [
-          {
-            src: "/images/projects/project-01/cover-04.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-        ],
+        title: "Tailwind CSS / MUI",
+        description: (
+          <>Expert in building responsive UIs using Tailwind and Material UI.</>
+        ),
+        images: [],
+      },
+      {
+        title: "Mobile Development",
+        description: (
+          <>
+            Experience in developing mobile apps using React Native, Flutter,
+            and Ionic.
+          </>
+        ),
+        images: [],
       },
     ],
   },
@@ -199,28 +191,22 @@ const about = {
 const blog = {
   path: "/blog",
   label: "Blog",
-  title: "Writing about design and tech...",
+  title: "Thoughts on frontend, tools, and performance...",
   description: `Read what ${person.name} has been up to recently`,
-  // Create new blog posts by adding a new .mdx file to app/blog/posts
-  // All posts will be listed on the /blog route
 };
 
 const work = {
   path: "/work",
   label: "Work",
   title: `Projects – ${person.name}`,
-  description: `Design and dev projects by ${person.name}`,
-  // Create new project pages by adding a new .mdx file to app/blog/posts
-  // All projects will be listed on the /home and /work routes
+  description: `Frontend projects built and maintained by ${person.name}`,
 };
 
 const gallery = {
   path: "/gallery",
   label: "Gallery",
   title: `Photo gallery – ${person.name}`,
-  description: `A photo collection by ${person.name}`,
-  // Images by https://lorant.one
-  // These are placeholder images, replace with your own
+  description: `Snapshots from ${person.name}'s personal and professional moments`,
   images: [
     {
       src: "/images/gallery/horizontal-1.jpg",
