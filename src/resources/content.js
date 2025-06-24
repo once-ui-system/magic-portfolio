@@ -23,8 +23,6 @@ const newsletter = {
 };
 
 const social = [
-  // Links are automatically displayed.
-  // Import new icons in /once-ui/icons.ts
   {
     name: "GitHub",
     icon: "github",
@@ -40,6 +38,11 @@ const social = [
     icon: "email",
     link: `mailto:${person.email}`,
   },
+  {
+    name: "Instagram",
+    icon: "instagram",
+    link: "https://www.instagram.com/m.man9our/",
+  }
 ];
 
 const home = {
@@ -53,10 +56,10 @@ const home = {
     display: true,
     title: (
       <>
-        Recent project: <strong className="ml-4">Modern UI Systems</strong>
+        Recent project: <strong className="ml-4">Unity Game 2D</strong>
       </>
     ),
-    href: "/work/modern-ui-systems",
+    href: "/work/unity-game-2d",
   },
   subline: (
     <>
