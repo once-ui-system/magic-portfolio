@@ -20,7 +20,7 @@ const display = {
 // Enable password protection on selected routes
 // Set password in the .env file, refer to .env.example
 const protectedRoutes = {
-  "/work/baselink": true,
+  "/work/baselink": false,
 };
 
 // Import and set font for each variant
