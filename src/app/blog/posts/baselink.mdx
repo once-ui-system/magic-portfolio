@@ -1,0 +1,99 @@
+---
+title: "Baselink – Real-Time Observability and Productivity Platform "
+summary: "Baselink is a real-time observability and productivity platform built with Devika’s BaselineJS and AWS, offering development teams enhanced visibility into code contributions, CI/CD activity, and team performance."
+image: "/images/projects/baselink/cover.png"
+publishedAt: "2025-06-09"
+tag: "Capstone Project"
+---
+
+## About
+Born out of a need to demystify software development performance and reduce productivity blind spots, Baselink leverages GitHub and Bitbucket integrations to track coding activity, detect bottlenecks, and visualise contributions in an accessible and actionable way. Whether it’s identifying inactive repositories, recognising top contributors, or visualising project momentum across sprints, Baselink serves as a central hub for team observability.
+
+The platform is built using Devika’s BaselineJS framework, a cloud-native JavaScript stack that enables rapid, scalable development across AWS services. Our solution leverages AWS Lambda, DynamoDB, Cognito, and API Gateway to ensure a secure, serverless backend that seamlessly integrates with the responsive React frontend. From ideation to deployment, every design choice prioritised speed, clarity, and collaboration.
+
+Baselink isn’t just a tool — it’s a mindset shift for teams seeking transparency, accountability, and improved delivery. By combining intuitive UI design, backend precision, and modern development practices, we built a platform that developers not only use — but trust.
+
+---
+
+## Features
+
+Baselink offers a robust set of features tailored for real-time software team productivity:
+
+* **Multi-Repository Integration**
+  Connects with both **GitHub** and **Bitbucket**, retrieving commit history, contributor activity, and repository stats across your organization.
+
+* **Commit Activity Visualisation**
+  Daily, weekly, and sprint-based visualisations of commit frequency, lines of code added/removed, and contributor graphs.
+
+* **Project-Level Dashboards**
+  View per-project insights including active contributors, contribution trends, inactive repos, and top commits.
+
+* **Role-Based Access Control**
+  Supports multiple user roles (Admin, Manager, Developer), each with scoped views and controls.
+
+* **Realtime Sync with DevOps Pipelines**
+  Displays status of CI/CD builds, code reviews, and pending pull requests via integrations with GitHub Actions.
+
+* **Interactive Charts and Reports**
+  Leveraging **Recharts**, **tooltip-rich graphs**, and **high-contrast accessibility-first colour palettes**, users gain immediate clarity on key metrics.
+
+* **Admin Tools**
+  Enable creation and editing of projects, managing integrations, and viewing activity logs in an admin-exclusive control panel.
+
+---
+
+## Design System
+
+As the **Project Manager** and also **UI and Frontend Lead**, I aimed to build an interface that’s as accessible as it is powerful. Inspired by the challenges of managing multiple dashboards during active sprints, I created a clean, intuitive layout using:
+
+* **Large, contrast-rich icons** for quick recognition
+* **Dynamic tooltips** across all charts and metrics
+* **High contrast theme**: predominantly red, black, and white for accessibility
+* **Responsive design** tested across screen sizes using our own UI element inspried by Shadcn UI, Once UI and MUI
+* **Custom-built UI component library** to ensure consistency and accelerate development
+
+I also finalised and documented our **internal UI library**, which was shared across components.
+---
+
+## Challenges & Solutions
+
+- **Webhook Debugging**: Required retries and payload validation for GitHub and Bitbucket.
+- **Permission Routing**: Implemented scoped dashboard views in React.
+- **Race Conditions**: Addressed write conflicts in Lambda → DynamoDB with retry logic.
+- **Rendering Performance**: Optimised real-time data visualisation for large commit datasets.
+
+---
+
+## Outcome
+
+Baselink is currently on the development process. We expected it will successfully deliver with all major features implemented, tested, and deployed through the Devika pipeline. Our client appreciated the clarity of insights, smooth GitHub/Bitbucket integration, and the UI’s simplicity. The platform is ready for real-world pilot deployments across internal Devika teams and external developer cohorts.
+
+---
+
+## Personal Reflection
+
+Working on Baselink was both technically intense and creatively fulfilling. As the **Frontend Lead**, I took on the responsibility of translating raw Git/CI data into digestible insights — without overwhelming users. I obsessed over every detail: from component spacing, color choice, to dashboard UX flow. This wasn’t just about frontend — it was about building clarity from chaos.
+
+A highlight for me was collaborating with **Matthew Bergamini** and **Matthew Gale** again. He handled the backend with precision, from parsing webhook payloads to implementing secure API routes. It was a huge relief knowing I could trust the data structure and focus fully on rendering it meaningfully. We synced regularly to iron out bugs and ensure frontend/backend alignment.
+
+Compared to our last project (*TicketExpert*), Baselink involved more system design, especially around live sync and observability metrics. I had to think like a user, a designer, and a data engineer — all at once.
+
+Also, finally completing our **UI component library** was a personal milestone. It accelerated our iterations, gave the team reusable design blocks, and set a new standard for our frontend work.
+
+---
+
+## Team
+
+- **Huu Khiem Nguyen** – Frontend Lead & UI Designer  
+- **Matthew Bergamini** – Backend Developer & Tester  
+- **Matthew Gale** – Frontend Developer  
+- **Luke Spratt** – Backend Data Developer  
+- **Damien Dorevski** – Backend Developer  
+- **Billy Lucas** – Frontend Data Developer  
+
+---
+
+## Subject Detail
+
+This project is the project assignment for subject **CSIT321: Project** (Final Year Capstone), run by the **University of Wollongong, Australia**, luckily I have worked with **Devika** - a software company base in Wollongong.
+

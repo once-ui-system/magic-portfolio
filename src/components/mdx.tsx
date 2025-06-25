@@ -74,7 +74,10 @@ function createImage({ alt, src, ...props }: MediaProps & { src: string }) {
   );
 }
 
-function slugify(str: string): string {
+function slugify(str: unknown): string {
+  if (typeof str !== "string") {
+    return "";
+  }
   return str
     .toLowerCase()
     .replace(/\s+/g, "-") // Replace spaces with -

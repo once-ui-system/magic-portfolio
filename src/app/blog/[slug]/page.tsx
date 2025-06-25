@@ -97,7 +97,7 @@ export default async function Blog({
         textVariant="label-default-s"
       >
         <Icon name="document" size="xs" />
-        On this page
+        Content of this page
       </Row>
       <HeadingNav fitHeight/>
     </Column>
