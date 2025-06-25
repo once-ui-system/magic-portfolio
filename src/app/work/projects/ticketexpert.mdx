@@ -1,0 +1,112 @@
+---
+title: "TicketExpert - A Scalable Event Management Platform for Organisers and Attendees"
+publishedAt: "2025-06-09"
+summary: "TicketExpert is a role-based, full-stack event management system that empowers organisers and attendees with secure digital ticketing, QR-based access, real-time analytics, and automated refund workflows—all within a modular and extensible architecture."
+images:
+  - "/images/projects/ticketexpert/cover-01.png"
+  - "/images/projects/ticketexpert/cover-02.png"
+  - "/images/projects/ticketexpert/cover-03.png"
+  - "/images/projects/ticketexpert/cover-04.png"
+team:
+  - name: "Huu Khiem Nguyen"
+    role: "Frontend Lead & UI Designer"
+    avatar: "/images/avatar.jpg"
+    linkedIn: "https://www.linkedin.com/in/huukhiemnguyen/"
+  - name: "Matthew Bergamini"
+    role: "Backend Developer & Tester"
+    avatar: "/images/avatar-mattb.jpg"
+    linkedIn: "https://www.linkedin.com/in/matthew-bergamini/"
+---
+
+## Overview
+
+**TicketExpert** is a multi-role, modular web application for managing the full lifecycle of event planning, ticketing, and entry operations. Designed for small to mid-sized organisers and communities, the platform bridges the gap between manual workflows and modern digital experiences.
+
+The system is composed of three distinct but interconnected portals:
+- **User Portal**: For attendees to discover, register for, and manage events and tickets.
+- **Organiser Portal**: A control panel for event creators to launch events, monitor attendees, and issue refunds or updates.
+- **Entry Staff Interface**: A real-time QR scanner interface for gate staff to verify tickets quickly and securely.
+
+Built using a scalable full-stack architecture, the platform ensures maintainability, real-time performance, and extensibility for future enhancements.
+
+
+---
+
+## Key Features
+
+### For Attendees
+- **Event Discovery & Booking**
+- **Multi-Tier Ticketing (General/VIP)**
+- **Secure Stripe Payment Integration**
+- **Digital QR Tickets & Email Confirmations**
+- **Refund Request & Tracking System**
+- **Automated Event Notifications**
+
+### For Organisers
+- **Event Creation & Scheduling**
+- **Attendee Management**
+- **Real-Time Sales Analytics Dashboard**
+- **Event Cancellation & Refund Triggers**
+- **Google Maps Venue Display**
+- **Approval Workflow for Registrations**
+
+### Shared System Features
+- **Role-Based Login System**
+- **Mobile-Responsive UI**
+- **Live QR Ticket Scanning**
+- **SendGrid for Email Delivery**
+- **Test Data Generator for Demonstration**
+
+---
+
+## Technologies Used
+
+### Frontend
+- **React**, **Vite**, **Next.js**
+- **MUI**, **Shadcn UI**
+- **React Router DOM**, **Context API**
+
+### Backend
+- **Node.js**, **Express.js**
+- **PostgreSQL** with **Sequelize ORM**
+
+### Testing
+- **Jest**, **Vitest**, **Postman**
+
+### DevOps & Tooling
+- **GitHub Actions**
+- **Code Climate**
+- **Mermaid.js**, **Docker (planned)**
+
+### Integrations
+- **Stripe (payments)**
+- **SendGrid (email notifications)**
+- **Tawk.to (live chat support)**
+
+## Challenges and Learnings
+
+- Aligning frontend/backend development required stronger API contracts.
+- Stripe’s error feedback improved via logging and better validation.
+- CI/CD setup was prioritized early to avoid mid-project bottlenecks.
+- Consolidating tools improved collaboration and version control clarity.
+
+
+## Outcome
+
+TicketExpert successfully delivered a scalable and secure ticketing solution, with all planned features built, tested, and deployed. Its architecture supports future enhancements, real-world pilot deployments, and potential productization for small to mid-size event organisers.
+
+
+## Personal Reflection
+
+Working on TicketExpert has been one of the most rewarding and collaborative experiences of my academic journey so far. As the lead developer team, frontend developer and UI designer, I was deeply involved in crafting intuitive user experiences and responsive layouts for both the attendee and organiser portals. Every pixel, interaction, and flow was built with the user in mind.
+
+A standout aspect of this project was working closely with **Matthew Bergamini**, who led much of the backend development. While I focused on building the interfaces and logic for users interacting with the platform, Matt ensured that every API, database transaction, and backend service functioned reliably behind the scenes. His work on ticket validation, refund workflows, and event management endpoints provided a strong and consistent backend that I could trust and build on confidently.
+
+Our collaboration was smooth and productive. We often synced mid-sprint to clarify API specs, align on integration expectations, and resolve any data-handling quirks. Matt was detail-oriented and always open to feedback — which made my job on the frontend significantly easier. Thanks to his solid backend structure, I was able to focus fully on user experience without worrying about the underlying logic falling apart.
+
+This project reminded me of how essential backend-frontend alignment is in real-world systems — and how powerful teamwork can be when everyone respects their roles and communicates effectively. I'm proud of what we built and even more grateful for the people I built it with.
+
+
+## Disclaimer
+
+This project is the project assignment for subject **CSIT314: System Development Methodologies** running by University of Wollongong, Australia.
