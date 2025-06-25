@@ -70,14 +70,14 @@ const home = {
   label: "Home",
   title: `${person.name}`,
   description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Hi! I am Khiêm</>,
+  headline: <>Xin chào!</>,
   featured: {
     display: true,
     title: <>Recent project: <strong className="ml-4">Baselink</strong></>,
     href: "",
   },
   subline: (
-    <>a Bachelor of Information Technology student at University of Wollongong, Australia. I am currently studying major in Website Design and Development, also doing photography as my hobby</>
+    <>I am Khiem, Bachelor of Information Technology student at University of Wollongong, Australia. I am currently studying major in Website Design and Development, also doing photography as my hobby</>
   ),
 };
 
@@ -100,7 +100,7 @@ const about = {
   intro: {
     display: true,
     title: 'Introduction',
-    description: <>Hi, I am Khiem Nguyen Huu. I am from Vietnam 🇻🇳, living in Wollongong, New South Wales, Australia 🇦🇺. I am doing Bachelor of Information Technology (Dean's Scholar) majoring in Website Design and Development. I have a big passion with coding and doing photography.</>
+    description: <>Xin chào, I am Khiem Nguyen Huu. I am from Vietnam 🇻🇳, living in Wollongong, New South Wales, Australia 🇦🇺. I am doing Bachelor of Information Technology (Dean's Scholar) majoring in Website Design and Development. I have a big passion with coding and doing photography.</>
   },
   work: {
     display: true, // set to false to hide this section
@@ -249,9 +249,9 @@ const about = {
 };
 
 const blog = {
-  path: "/work",
-  label: "Work",
-  title: "Projects and Works",
+  path: "/blog",
+  label: "Blog",
+  title: "",
   description: `Read what ${person.name} has been up to recently.`,
   // Create new blog posts by adding a new .mdx file to app/blog/posts
   // All posts will be listed on the /blog route

@@ -9,13 +9,25 @@ import { Footer, Header, RouteGuard, Providers } from '@/components';
 import { baseURL, effects, fonts, style, dataStyle, home } from '@/resources';
 
 export async function generateMetadata() {
-  return Meta.generate({
+  const baseMetadata = Meta.generate({
     title: home.title,
     description: home.description,
     baseURL: baseURL,
     path: home.path,
     image: home.image,
   });
+
+  return {
+    ...baseMetadata,
+    icons: {
+      icon: [
+        { url: '/favicon.png', sizes: '32x32', type: 'image/png' },
+      ],
+      apple: [
+        { url: '/favicon.png', sizes: '32x32', type: 'image/png' },
+      ],
+    },
+  };
 }
 
 export default async function RootLayout({
