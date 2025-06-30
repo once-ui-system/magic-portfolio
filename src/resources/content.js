@@ -194,7 +194,7 @@ const about = {
 const blog = {
   path: "/blog",
   label: "Blog",
-  title: "Thoughts on frontend, tools, and performance...",
+  title: "Thoughts on frontend, backend, AI, and tools...",
   description: `Read what ${person.name} has been up to recently`,
 };
 
