@@ -18,7 +18,6 @@ import TableOfContents from "@/components/about/TableOfContents";
 import styles from "@/components/about/about.module.scss";
 import React from "react";
 import { usePersonalInfo } from "@/components/PersonalInfoContext";
-import { capitalize } from 'lodash';
 
 export default function AboutClient() {
   const personalInfo = usePersonalInfo();
