@@ -50,16 +50,15 @@ const home = {
   label: "Home",
   title: `${person.name}'s Portfolio`,
   description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Building bridges between design and code</>,
+  headline: <>Behind every great app is an expert who loves the backend.</>,
   featured: {
-    display: true,
+    display: false,
     title: <>Recent project: <strong className="ml-4">Once UI</strong></>,
     href: "/work/building-once-ui-a-customizable-design-system",
   },
   subline: (
     <>
-      I'm Selene, a design engineer at <Logo icon="/trademarks/wordmark-dark.svg" style={{ display: "inline-flex", top: "0.25em", marginLeft: "-0.25em" }}/>, where I craft intuitive
-      <br /> user experiences. After hours, I build my own projects.
+      I'm Crispaul, a software engineer focused on building resilient, scalable systems and delivering end-to-end solutions.
     </>
   ),
 };
@@ -85,9 +84,8 @@ const about = {
     title: "Introduction",
     description: (
       <>
-        Selene is a Jakarta-based design engineer with a passion for transforming complex challenges
-        into simple, elegant design solutions. Her work spans digital interfaces, interactive
-        experiences, and the convergence of design and technology.
+        Crispaul is a backend engineer with hands-on experience in designing scalable APIs, event-driven architectures, and cloud-native systems on AWS.
+        He specializes in building resilient services, automating infrastructure with IaC, and occasionally working across the stack to ship end-to-end features.
       </>
     ),
   },
