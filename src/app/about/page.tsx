@@ -10,9 +10,14 @@ import {
   Tag,
   Text,
   Meta,
-  Schema
+  Schema,
+  Row,
+  Scroller,
+  Card,
+  Line,
+  RevealFx,
 } from "@once-ui-system/core";
-import { baseURL, about, person, social } from "@/resources";
+import { baseURL, about, person, social, teds, dov } from "@/resources";
 import TableOfContents from "@/components/about/TableOfContents";
 import styles from "@/components/about/about.module.scss";
 import React from "react";
@@ -105,6 +110,7 @@ export default function About() {
             )}
           </Column>
         )}
+        
         <Column className={styles.blockAlign} flex={9} maxWidth={40}>
           <Column
             id={about.intro.title}
@@ -138,9 +144,11 @@ export default function About() {
                 />
               </Flex>
             )}
-            <Heading className={styles.textAlign} variant="display-strong-xl">
-              {person.name}
-            </Heading>
+            <RevealFx>
+              <Heading className={styles.textAlign} variant="display-strong-xl">
+                {person.name}
+              </Heading>
+            </RevealFx>
             <Text
               className={styles.textAlign}
               variant="display-default-xs"
@@ -148,35 +156,37 @@ export default function About() {
             >
               {person.role}
             </Text>
-            {social.length > 0 && (
-              <Flex className={styles.blockAlign} paddingTop="20" paddingBottom="8" gap="8" wrap horizontal="center" fitWidth data-border="rounded">
-                {social.map(
-                  (item) =>
-                    item.link && (
-                        <React.Fragment key={item.name}>
-                            <Button
-                                className="s-flex-hide"
-                                key={item.name}
-                                href={item.link}
-                                prefixIcon={item.icon}
-                                label={item.name}
-                                size="s"
-                                weight="default"
-                                variant="secondary"
-                            />
-                            <IconButton
-                                className="s-flex-show"
-                                size="l"
-                                key={`${item.name}-icon`}
-                                href={item.link}
-                                icon={item.icon}
-                                variant="secondary"
-                            />
-                        </React.Fragment>
-                    ),
-                )}
-              </Flex>
-            )}
+            <RevealFx delay={0.1} translateY={0.5}>
+              {social.length > 0 && (
+                <Flex className={styles.blockAlign} paddingTop="20" paddingBottom="8" gap="8" wrap horizontal="center" fitWidth data-border="rounded">
+                  {social.map(
+                    (item) =>
+                      item.link && (
+                          <React.Fragment key={item.name}>
+                              <Button
+                                  className="s-flex-hide"
+                                  key={item.name}
+                                  href={item.link}
+                                  prefixIcon={item.icon}
+                                  label={item.name}
+                                  size="s"
+                                  weight="default"
+                                  variant="secondary"
+                              />
+                              <IconButton
+                                  className="s-flex-show"
+                                  size="l"
+                                  key={`${item.name}-icon`}
+                                  href={item.link}
+                                  icon={item.icon}
+                                  variant="secondary"
+                              />
+                          </React.Fragment>
+                      ),
+                  )}
+                </Flex>
+              )}
+            </RevealFx>
           </Column>
 
           {about.intro.display && (
@@ -184,7 +194,69 @@ export default function About() {
               {about.intro.description}
             </Column>
           )}
-
+          <RevealFx delay={0.2} translateY={0.5}>
+            <Scroller fadeColor="brand-medium">
+              <Row gap="16" paddingBottom="16">
+                <Row maxWidth={24}>
+                  <Card radius="l-4" direction="column" border="neutral-alpha-medium">
+                    {/* <Row fillWidth paddingX="20" paddingY="12" gap="8" vertical="center">
+                      <Text variant="label-default-s">{dov.name}</Text>
+                    </Row> */}
+                    <Media
+                      border="neutral-alpha-weak"
+                      sizes="400px"
+                      fillWidth
+                      aspectRatio="1 / 1"
+                      radius="l-4"
+                      alt={`${dov.name}`}
+                      src={`${dov.avatar}`}
+                      minWidth={12}
+                    />
+                    <Column fillWidth paddingX="20" paddingY="24" gap="8">
+                      <Text variant="body-default-xl">{dov.name}</Text>
+                      <Text variant="body-default-m" onBackground="neutral-weak">{dov.role}</Text>
+                      {/* <Text onBackground="neutral-weak" variant="body-default-s">
+                        Text
+                      </Text> */}
+                    </Column>
+                    <Line background="neutral-alpha-medium" />
+                    <Row
+                      paddingX="20" paddingY="12" gap="8" vertical="center"
+                      textVariant="label-default-s" onBackground="neutral-medium"
+                    >
+                      {dov.socials.length > 0 && (
+                        <Flex className={styles.blockAlign} paddingTop="2" paddingBottom="2" gap="2" wrap horizontal="center" fitWidth data-border="rounded">
+                          {dov.socials.map(
+                            (item) => item.link && (
+                              <React.Fragment key={item.name}>
+                                <Button
+                                  className="s-flex-hide"
+                                  key={item.name}
+                                          href={item.link}
+                                          prefixIcon={item.icon}
+                                          size="s"
+                                          weight="default"
+                                          variant="secondary"
+                                      />
+                                      {/* <IconButton
+                                          className="s-flex-show"
+                                          size="s"
+                                          key={`${item.name}-icon`}
+                                          href={item.link}
+                                          icon={item.icon}
+                                          variant="secondary"
+                                      /> */}
+                                  </React.Fragment>
+                              ),
+                          )}
+                        </Flex>
+                      )}
+                    </Row>
+                  </Card>
+                </Row>
+              </Row>
+            </Scroller>
+          </RevealFx>           
           {about.work.display && (
             <>
               <Heading as="h2" id={about.work.title} variant="display-strong-s" marginBottom="m">

@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import { CustomMDX, ScrollToHash } from "@/components";
 import { Meta, Schema, AvatarGroup, Button, Column, Heading, HeadingNav, Icon, Row, Text } from "@once-ui-system/core";
-import { baseURL, about, blog, person } from "@/resources";
+import { baseURL, about, blog, teds, dov } from "@/resources";
 import { formatDate } from "@/utils/formatDate";
 import { getPosts } from "@/utils/utils";
 import { Metadata } from 'next';
@@ -48,8 +48,8 @@ export default async function Blog({
   }
 
   const avatars =
-    post.metadata.team?.map((person) => ({
-      src: person.avatar,
+    post.metadata.team?.map((dov) => ({
+      src: dov.avatar,
     })) || [];
 
   return (
@@ -67,9 +67,9 @@ export default async function Blog({
             dateModified={post.metadata.publishedAt}
             image={post.metadata.image || `/api/og/generate?title=${encodeURIComponent(post.metadata.title)}`}
             author={{
-              name: person.name,
+              name: dov.name,
               url: `${baseURL}${about.path}`,
-              image: `${baseURL}${person.avatar}`,
+              image: `${baseURL}${dov.avatar}`,
             }}
           />
           <Button data-border="rounded" href="/blog" weight="default" variant="tertiary" size="s" prefixIcon="chevronLeft">

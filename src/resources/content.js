@@ -1,25 +1,66 @@
 import { Logo } from "@once-ui-system/core";
 
-const person = {
-  firstName: "Selene",
-  lastName: "Yu",
+const dov = {
+  id: 0,
+  firstName: "Dov",
+  lastName: "",
   get name() {
-    return `${this.firstName} ${this.lastName}`;
+    return `${this.firstName}`;
   },
-  role: "Design Engineer",
-  avatar: "/images/avatar.jpg",
-  email: "example@gmail.com",
-  location: "Asia/Jakarta", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
-  languages: ["English", "Bahasa"], // optional: Leave the array empty if you don't want to display languages
+  role: "Owner",
+  avatar: "/images/dov.png",
+  email: "dovydas@teds.one",
+  location: "Europe/London", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
+  languages: [], // optional: Leave the array empty if you don't want to display languages
+  socials: [
+  // Links are automatically displayed.
+  // Import new icons in /once-ui/icons.ts
+  {
+    name: "GitHub",
+    icon: "github",
+    link: "https://github.com/dovydasteds",
+  },
+  {
+    name: "YouTube",
+    icon: "youtube",
+    link: "https://youtube.com/@dovydasteds",
+  },
+  {
+    name: "TikTok",
+    icon: "tiktok",
+    link: "https://tiktok.com/@dovydasteds",
+  },
+  {
+    name: "Email",
+    icon: "email",
+    link: `mailto:dovydas@teds.one`,
+  },
+],
 };
+
+const teds = {
+  firstName: "TEDS",
+  lastName: "",
+  get name() {
+    return `${this.firstName}`;
+  },
+  role: "",
+  avatar: "/images/teds.png",
+  email: "dovydas@teds.one",
+  location: "Europe/London", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
+  languages: [], // optional: Leave the array empty if you don't want to display languages
+};
+
+const people = [dov]
+
+const person = teds;
 
 const newsletter = {
   display: true,
-  title: <>Subscribe to {person.firstName}'s Newsletter</>,
+  title: <>Subscribe to the TEDS Newsletter</>,
   description: (
     <>
-      I occasionally write about design, technology, and share thoughts on the intersection of
-      creativity and engineering.
+      Why not?
     </>
   ),
 };
@@ -30,32 +71,27 @@ const social = [
   {
     name: "GitHub",
     icon: "github",
-    link: "https://github.com/once-ui-system/nextjs-starter",
+    link: "https://github.com/teamteds",
   },
   {
-    name: "LinkedIn",
-    icon: "linkedin",
-    link: "https://www.linkedin.com/company/once-ui/",
+    name: "Discord",
+    icon: "discord",
+    link: "https://discord.gg/sFDuP7zyFj",
   },
-  {
-    name: "Threads",
-    icon: "threads",
-    link: "https://www.threads.com/@once_ui",
-  },
-  {
-    name: "Email",
-    icon: "email",
-    link: `mailto:${person.email}`,
-  },
+  // {
+  //   name: "Email",
+  //   icon: "email",
+  //   link: `mailto:${dov.email}`,
+  // },
 ];
 
 const home = {
   path: "/",
   image: "/images/og/home.jpg",
   label: "Home",
-  title: `${person.name}'s Portfolio`,
-  description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Building bridges between design and code</>,
+  title: `${teds.name}'s Portfolio`,
+  description: `TEDS Portfolio`,
+  headline: <>teds.one</>,
   featured: {
     display: true,
     title: <>Recent project: <strong className="ml-4">Once UI</strong></>,
@@ -63,8 +99,7 @@ const home = {
   },
   subline: (
     <>
-      I'm Selene, a design engineer at <Logo icon="/trademarks/wordmark-dark.svg" style={{ display: "inline-flex", top: "0.25em", marginLeft: "-0.25em" }}/>, where I craft intuitive
-      <br /> user experiences. After hours, I build my own projects.
+      Welcome to TEDS
     </>
   ),
 };
@@ -72,21 +107,21 @@ const home = {
 const about = {
   path: "/about",
   label: "About",
-  title: `About – ${person.name}`,
-  description: `Meet ${person.name}, ${person.role} from ${person.location}`,
+  title: `About – ${teds.name}`,
+  description: `Meet the team @${teds.name}`,
   tableOfContent: {
     display: true,
     subItems: false,
   },
   avatar: {
-    display: true,
+    display: false,
   },
   calendar: {
-    display: true,
+    display: false,
     link: "https://cal.com",
   },
   intro: {
-    display: true,
+    display: false,
     title: "Introduction",
     description: (
       <>
@@ -97,7 +132,7 @@ const about = {
     ),
   },
   work: {
-    display: true, // set to false to hide this section
+    display: false, // set to false to hide this section
     title: "Work Experience",
     experiences: [
       {
@@ -143,7 +178,7 @@ const about = {
     ],
   },
   studies: {
-    display: true, // set to false to hide this section
+    display: false, // set to false to hide this section
     title: "Studies",
     institutions: [
       {
@@ -157,7 +192,7 @@ const about = {
     ],
   },
   technical: {
-    display: true, // set to false to hide this section
+    display: false, // set to false to hide this section
     title: "Technical skills",
     skills: [
       {
@@ -200,7 +235,7 @@ const blog = {
   path: "/blog",
   label: "Blog",
   title: "Writing about design and tech...",
-  description: `Read what ${person.name} has been up to recently`,
+  description: `Read the latest articles by ${teds.name}`,
   // Create new blog posts by adding a new .mdx file to app/blog/posts
   // All posts will be listed on the /blog route
 };
@@ -208,8 +243,8 @@ const blog = {
 const work = {
   path: "/work",
   label: "Work",
-  title: `Projects – ${person.name}`,
-  description: `Design and dev projects by ${person.name}`,
+  title: `Projects – ${teds.name}`,
+  description: `Design and dev projects by ${teds.name}`,
   // Create new project pages by adding a new .mdx file to app/blog/posts
   // All projects will be listed on the /home and /work routes
 };
@@ -217,8 +252,8 @@ const work = {
 const gallery = {
   path: "/gallery",
   label: "Gallery",
-  title: `Photo gallery – ${person.name}`,
-  description: `A photo collection by ${person.name}`,
+  title: `Photo gallery – ${teds.name}`,
+  description: `A photo collection by ${teds.name}`,
   // Images by https://lorant.one
   // These are placeholder images, replace with your own
   images: [
@@ -265,4 +300,4 @@ const gallery = {
   ],
 };
 
-export { person, social, newsletter, home, about, blog, work, gallery };
+export { person, social, newsletter, home, about, blog, work, gallery, dov, teds };
