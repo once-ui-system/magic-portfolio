@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import * as cookie from "cookie";
 
+export const runtime = 'edge';
+
 export async function GET(request: NextRequest) {
   const cookieHeader = request.headers.get("cookie") || "";
   const cookies = cookie.parse(cookieHeader);
