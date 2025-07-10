@@ -58,7 +58,7 @@ const people = [
 const person = teds;
 
 const newsletter = {
-  display: true,
+  display: false,
   title: <>Subscribe to the TEDS Newsletter</>,
   description: (
     <>
@@ -80,22 +80,17 @@ const social = [
     icon: "discord",
     link: "https://discord.gg/sFDuP7zyFj",
   },
-  // {
-  //   name: "Email",
-  //   icon: "email",
-  //   link: `mailto:${dov.email}`,
-  // },
 ];
 
 const home = {
   path: "/",
-  image: "/images/og/home.jpg",
+  image: "/images/og/home.png",
   label: "Home",
   title: `${teds.name}'s Portfolio`,
   description: `TEDS Portfolio`,
   headline: <>teds.one</>,
   featured: {
-    display: true,
+    display: false,
     title: <>Recent project: <strong className="ml-4">Once UI</strong></>,
     href: "/work/building-once-ui-a-customizable-design-system",
   },
@@ -127,9 +122,7 @@ const about = {
     title: "Introduction",
     description: (
       <>
-        Selene is a Jakarta-based design engineer with a passion for transforming complex challenges
-        into simple, elegant design solutions. Her work spans digital interfaces, interactive
-        experiences, and the convergence of design and technology.
+        Meet the team @TEDS
       </>
     ),
   },
