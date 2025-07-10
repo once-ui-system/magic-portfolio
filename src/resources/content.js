@@ -86,7 +86,7 @@ const home = {
   path: "/",
   image: "/images/og/home.png",
   label: "Home",
-  title: `${teds.name}'s Portfolio`,
+  title: `${teds.name}`,
   description: `TEDS Portfolio`,
   headline: <>teds.one</>,
   featured: {
