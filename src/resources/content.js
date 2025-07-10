@@ -7,7 +7,7 @@ const dov = {
   get name() {
     return `${this.firstName}`;
   },
-  role: "Owner",
+  role: "Founder",
   avatar: "/images/dov.png",
   email: "dovydas@teds.one",
   location: "Europe/London", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
@@ -51,7 +51,9 @@ const teds = {
   languages: [], // optional: Leave the array empty if you don't want to display languages
 };
 
-const people = [dov]
+const people = [
+  dov,
+]
 
 const person = teds;
 
@@ -300,4 +302,4 @@ const gallery = {
   ],
 };
 
-export { person, social, newsletter, home, about, blog, work, gallery, dov, teds };
+export { person, social, newsletter, home, about, blog, work, gallery, dov, teds, people };

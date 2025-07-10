@@ -17,7 +17,7 @@ import {
   Line,
   RevealFx,
 } from "@once-ui-system/core";
-import { baseURL, about, person, social, teds, dov } from "@/resources";
+import { baseURL, about, person, social, teds, dov, people } from "@/resources";
 import TableOfContents from "@/components/about/TableOfContents";
 import styles from "@/components/about/about.module.scss";
 import React from "react";
@@ -194,69 +194,74 @@ export default function About() {
               {about.intro.description}
             </Column>
           )}
-          <RevealFx delay={0.2} translateY={0.5}>
-            <Scroller fadeColor="brand-medium">
-              <Row gap="16" paddingBottom="16">
-                <Row maxWidth={24}>
-                  <Card radius="l-4" direction="column" border="neutral-alpha-medium">
-                    {/* <Row fillWidth paddingX="20" paddingY="12" gap="8" vertical="center">
-                      <Text variant="label-default-s">{dov.name}</Text>
-                    </Row> */}
-                    <Media
-                      border="neutral-alpha-weak"
-                      sizes="400px"
-                      fillWidth
-                      aspectRatio="1 / 1"
-                      radius="l-4"
-                      alt={`${dov.name}`}
-                      src={`${dov.avatar}`}
-                      minWidth={12}
-                    />
-                    <Column fillWidth paddingX="20" paddingY="24" gap="8">
-                      <Text variant="body-default-xl">{dov.name}</Text>
-                      <Text variant="body-default-m" onBackground="neutral-weak">{dov.role}</Text>
-                      {/* <Text onBackground="neutral-weak" variant="body-default-s">
-                        Text
-                      </Text> */}
-                    </Column>
-                    <Line background="neutral-alpha-medium" />
-                    <Row
-                      paddingX="20" paddingY="12" gap="8" vertical="center"
-                      textVariant="label-default-s" onBackground="neutral-medium"
-                    >
-                      {dov.socials.length > 0 && (
-                        <Flex className={styles.blockAlign} paddingTop="2" paddingBottom="2" gap="2" wrap horizontal="center" fitWidth data-border="rounded">
-                          {dov.socials.map(
-                            (item) => item.link && (
-                              <React.Fragment key={item.name}>
-                                <Button
-                                  className="s-flex-hide"
-                                  key={item.name}
-                                          href={item.link}
-                                          prefixIcon={item.icon}
-                                          size="s"
-                                          weight="default"
-                                          variant="secondary"
-                                      />
-                                      {/* <IconButton
-                                          className="s-flex-show"
-                                          size="s"
-                                          key={`${item.name}-icon`}
-                                          href={item.link}
-                                          icon={item.icon}
-                                          variant="secondary"
-                                      /> */}
-                                  </React.Fragment>
-                              ),
+          {people.length > 0 && (
+            <RevealFx delay={0.2} translateY={0.5}>
+              <Scroller fadeColor="brand-medium">
+                <Row gap="16" paddingBottom="16">
+                  <Row maxWidth={24} gap="24">
+                    {people.map(
+                      (member) => member.name && (
+                      <Card radius="l-4" direction="column" border="neutral-alpha-medium">
+                        {/* <Row fillWidth paddingX="20" paddingY="12" gap="8" vertical="center">
+                          <Text variant="label-default-s">{member.name}</Text>
+                        </Row> */}
+                        <Media
+                          border="neutral-alpha-weak"
+                          sizes="400px"
+                          fillWidth
+                          aspectRatio="1 / 1"
+                          radius="l-4"
+                          alt={`${member.name}`}
+                          src={`${member.avatar}`}
+                          minWidth={12}
+                        />
+                        <Column fillWidth paddingX="20" paddingY="24" gap="8">
+                          <Text variant="body-default-xl">{member.name}</Text>
+                          <Text variant="body-default-m" onBackground="neutral-weak">{member.role}</Text>
+                          {/* <Text onBackground="neutral-weak" variant="body-default-s">
+                            Text
+                          </Text> */}
+                        </Column>
+                        <Line background="neutral-alpha-medium" />
+                        <Row
+                          paddingX="20" paddingY="12" gap="8" vertical="center"
+                          textVariant="label-default-s" onBackground="neutral-medium"
+                        >
+                          {member.socials.length > 0 && (
+                            <Flex className={styles.blockAlign} paddingTop="2" paddingBottom="2" gap="2" wrap horizontal="center" fitWidth data-border="rounded">
+                              {member.socials.map(
+                                (item) => item.link && (
+                                  <React.Fragment key={item.name}>
+                                    <Button
+                                      className="s-flex-hide"
+                                      key={item.name}
+                                              href={item.link}
+                                              prefixIcon={item.icon}
+                                              size="s"
+                                              weight="default"
+                                              variant="secondary"
+                                          />
+                                          <IconButton
+                                              className="s-flex-show"
+                                              size="m"
+                                              key={`${item.name}-icon`}
+                                              href={item.link}
+                                              icon={item.icon}
+                                              variant="secondary"
+                                          />
+                                      </React.Fragment>
+                                  ),
+                              )}
+                            </Flex>
                           )}
-                        </Flex>
-                      )}
-                    </Row>
-                  </Card>
+                        </Row>
+                      </Card>
+                      ))}
+                  </Row>
                 </Row>
-              </Row>
-            </Scroller>
-          </RevealFx>           
+              </Scroller>
+            </RevealFx>
+          )}           
           {about.work.display && (
             <>
               <Heading as="h2" id={about.work.title} variant="display-strong-s" marginBottom="m">
