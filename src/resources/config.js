@@ -173,18 +173,18 @@ const mailchimp = {
 
 // default schema data
 const schema = {
-  logo: "",
+  logo: "/public/images/avatar.jpg",
   type: "Organization",
-  name: "Once UI",
+  name: "RadicalSMP",
   description: home.description,
-  email: "lorant@once-ui.com",
+  email: "mail@example.com",
 };
 
 // social links
 const sameAs = {
-  threads: "https://www.threads.com/@once_ui",
-  linkedin: "https://www.linkedin.com/company/once-ui/",
-  discord: "https://discord.com/invite/5EyAQ4eNdS",
+  bilibili: "https://www.bilibili.com/",
+  xhs: "https://www.xiaohongshu.com/",
+  weibo: "https://weibo.com/",
 };
 
 export { display, mailchimp, routes, protectedRoutes, baseURL, fonts, style, schema, sameAs, effects, dataStyle };
