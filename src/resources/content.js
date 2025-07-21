@@ -2,15 +2,15 @@ import { Logo } from "@once-ui-system/core";
 
 const person = {
   firstName: "Radical",
-  lastName: "Server",
+  lastName: "SMP",
   get name() {
     return `${this.firstName} ${this.lastName}`;
   },
-  role: "Minecraft Server",
+  role: "Minecraft 服务器",
   avatar: "/images/avatar.jpg",
-  email: "example@gmail.com",
+  email: "have-not-email-yet@example.com",
   location: "Asia/Shanghai", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
-  languages: ["English", "Chinese"], // optional: Leave the array empty if you don't want to display languages
+  languages: ["English", "中文"], // optional: Leave the array empty if you don't want to display languages
 };
 
 const newsletter = {
@@ -29,7 +29,7 @@ const social = [
   {
     name: "GitHub",
     icon: "github",
-    link: "https://github.com/once-ui-system/nextjs-starter",
+    link: "https://www.github.com/RadicalSMP",
   },
   {
     name: "Bilibili",
@@ -37,9 +37,9 @@ const social = [
     link: "https://www.bilibili.com",
   },
   {
-    name: "XiaoHongShu",
-    icon: "xhs",
-    link: "https://www.xiaohongshu.com",
+    name: "QQ群",
+    icon: "qq",
+    link: "https://qm.qq.com/cgi-bin/qm/qr?k=HXg7R5F1Io2yZ7bSsyfFUokTCRX7NIhN&jump_from=webapi&authKey=JTUEgr+D3vS/qs5fl3aJG/UNAx/UbBb3ePZnVvDa3q3DSCRacNLPjt5htZYkUbz2",
   },
   {
     name: "Email",
@@ -53,26 +53,28 @@ const home = {
   image: "/images/og/home.jpg",
   label: "Home",
   title: `${person.name} Server`,
-  description: `Server website showcasing our work as a ${person.role}`,
-  headline: <>Building bridges between Minecraft and reality</>,
+  description: `${person.role} 的官方网站`,
+  headline: <>根号的离谱服务器</>,
   featured: {
     display: true,
-    title: <>Latest server: <strong className="ml-4">Radical Renaissance</strong></>,
+    title: <>目前的服务器版本: <strong className="ml-4">Java 1.21.7</strong></>,
     href: "/work/building-once-ui-a-customizable-design-system",
   },
   subline: (
     <>
-      We are Radical, a Minecraft server at <Logo icon="/trademarks/wordmark-dark.svg" style={{ display: "inline-flex", top: "0.25em", marginLeft: "-0.25em" }} /> where we craft a bridge between game and reality
-      <br /> After many attempts, we build our own servers.
+      欢迎来到根号的离谱服务器！<br />
+      作为一个Minecraft群组服务器, 我们不仅有着良好的游戏环境, 更有着丰富的社区活动和交流平台。<br />
+      目前, 我们以Velocity实现互通, 拥有Paper端大厅与Fabric端生存服务器, 版本为Java 1.21.7。<br />
+
     </>
   ),
 };
 
 const about = {
   path: "/about",
-  label: "About",
-  title: `About - ${person.name}`,
-  description: `Meet ${person.name}, ${person.role} from ${person.location}`,
+  label: "关于我们",
+  title: `关于 - ${person.name}`,
+  description: `遇见 ${person.name}, 一个Minecraft交流社区`,
   tableOfContent: {
     display: true,
     subItems: false,
@@ -86,49 +88,49 @@ const about = {
   },
   intro: {
     display: true,
-    title: "Introduction",
+    title: "概要",
     description: (
       <>
-        Radical is a Minecrafts server for players not only interacts in game but also in online chats and real life.
+        根号的离谱服务器是一个Minecraft群组服务器, 旨在为玩家提供一个良好的游戏环境和丰富的社区活动。<br />
       </>
     ),
   },
   work: {
     display: true, // set to false to hide this section
-    title: "History",
+    title: "发展历程",
     experiences: [
       {
-        company: "Radical Renaissance",
-        timeframe: "2025 - Present",
-        role: "Technical Survival",
+        company: "二周目",
+        timeframe: "2025 - 至今",
+        role: "新版本, 新特性, 新体验",
         achievements: [
           <>
-            Rebuilt with velocity proxy, paper lobby and fabric survival servers.
+            以Velocity实现互通, 开创根号新篇章; 从零开始, 打造全新服务器。
           </>,
           <>
-            More waiting you to add.
+            期待你的加入, 一起探索未知的Minecraft世界!
           </>,
         ],
         images: [
           // optional: leave the array empty if you don't want to display images
           {
             src: "/images/projects/project-01/cover-01.jpg",
-            alt: "Once UI Project",
+            alt: "二周目",
             width: 16,
             height: 9,
           },
         ],
       },
       {
-        company: "Radical",
+        company: "一周目",
         timeframe: "2022 - 2025",
-        role: "Technical Survival",
+        role: "根号起源",
         achievements: [
           <>
-            Built with single fabric server and MCDR plugins.
+            由Fabric+MCDR构建而成.
           </>,
           <>
-            Built industry base of technical survival in-game.
+            在众多玩家的努力下欣欣向荣.
           </>,
         ],
         images: [],
@@ -191,27 +193,27 @@ const about = {
 
 const blog = {
   path: "/blog",
-  label: "Blog",
-  title: "Server updates and community events...",
-  description: `Read what ${person.name} has been up to recently`,
+  label: "博客",
+  title: "服务器中的点点滴滴",
+  description: `${person.name}的点点滴滴`,
   // Create new blog posts by adding a new .mdx file to app/blog/posts
   // All posts will be listed on the /blog route
 };
 
 const work = {
   path: "/work",
-  label: "Work",
-  title: `Projects - ${person.name}`,
-  description: `Design and dev projects by ${person.name}`,
+  label: "展示",
+  title: `展示 - ${person.name}`,
+  description: `${person.name}的成果展示`,
   // Create new project pages by adding a new .mdx file to app/blog/posts
   // All projects will be listed on the /home and /work routes
 };
 
 const gallery = {
   path: "/gallery",
-  label: "Gallery",
-  title: `Photo gallery - ${person.name}`,
-  description: `A photo collection by ${person.name}`,
+  label: "图库",
+  title: `图库 - ${person.name}`,
+  description: `${person.name} 的图库`,
   // Images by https://lorant.one
   // These are placeholder images, replace with your own
   images: [

@@ -97,7 +97,7 @@ export default async function Blog({
         textVariant="label-default-s"
       >
         <Icon name="document" size="xs" />
-        On this page
+        此页的索引
       </Row>
       <HeadingNav fitHeight/>
     </Column>

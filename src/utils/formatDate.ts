@@ -21,8 +21,8 @@ export function formatDate(date: string, includeRelative = false) {
   } else {
     formattedDate = "Today";
   }
-
-  const fullDate = targetDate.toLocaleString("en-us", {
+  // 时间格式方法
+  const fullDate = targetDate.toLocaleString("zh-cn", {
     month: "long",
     day: "numeric",
     year: "numeric",

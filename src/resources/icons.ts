@@ -31,6 +31,7 @@ import {
   FaWeibo,
 } from "react-icons/fa6";
 import { SiBilibili, SiTiktok, SiXiaohongshu } from "react-icons/si";
+import { FaQq } from "react-icons/fa";
 
 export const iconLibrary: Record<string, IconType> = {
   arrowUpRight: HiArrowUpRight,
@@ -58,6 +59,7 @@ export const iconLibrary: Record<string, IconType> = {
   arrowUpRightFromSquare: HiArrowTopRightOnSquare,
   document: HiOutlineDocument,
   rocket: HiOutlineRocketLaunch,
+  qq: FaQq,
 };
 
 export type IconLibrary = typeof iconLibrary;

@@ -74,7 +74,7 @@ export default function Home() {
         <Flex fillWidth gap="24" mobileDirection="column">
           <Flex flex={1} paddingLeft="l" paddingTop="24">
             <Heading as="h2" variant="display-strong-xs" wrap="balance">
-              Latest from the blog
+              最新消息
             </Heading>
           </Flex>
           <Flex flex={3} paddingX="20">

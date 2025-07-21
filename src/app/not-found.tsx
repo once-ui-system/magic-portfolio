@@ -7,9 +7,9 @@ export default function NotFound() {
         404
       </Text>
       <Heading marginBottom="l" variant="display-default-xs">
-        Page Not Found
+        未找到页面
       </Heading>
-      <Text onBackground="neutral-weak">The page you are looking for does not exist.</Text>
+      <Text onBackground="neutral-weak">你所寻找的页面不存在</Text>
     </Column>
   );
 }
