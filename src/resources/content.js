@@ -56,13 +56,12 @@ const home = {
   featured: {
     display: true,
     title: <>Recent Project: <strong className="ml-4">AI-Powered Iridology</strong></>,
-    href: "/work/iridology-ai",
+    href: "/work/iridology-ai", 
   },
   subline: (
     <>
       I'm Vishal, a final-year BNYS student, integrating ancient naturopathy with modern AI-driven diagnostics.
-      <br /> Exploring holistic wellness through my venture <Logo icon="/trademarks/wordmark-dark.svg" style={{ display: "inline-flex", top: "0.25em", marginLeft: "-0.25em" }} />.
-    </>
+      <br /> Exploring holistic wellness through my venture </>
   ),
 };
 
