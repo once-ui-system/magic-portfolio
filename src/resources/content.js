@@ -91,6 +91,7 @@ const about = {
           "Developing AI-powered Iris diagnostic system focusing on preventive wellness insights aligned with Naturopathy.",
           "Creating practitioner-assisting tools blending AI precision with human empathy for BNYS doctors.",
         ],
+        images: [], // Added empty images array
       },
       {
         company: "BNYS Internship – Pain Management Clinic",
@@ -100,6 +101,7 @@ const about = {
           "Performed supervised clinical assessments for musculoskeletal disorders using Chiropractic & Acupuncture modalities.",
           "Assisted in therapeutic Yoga sessions for lifestyle disease management and stress reduction.",
         ],
+        images: [], // Added empty images array
       },
     ],
   },
@@ -127,21 +129,25 @@ const about = {
         title: "AI-Driven Iridology",
         description:
           "Integrating AI vision systems to automate Iris diagnostics for preventive health assessments and practitioner-support tools.",
+        images: [], // Added empty images array
       },
       {
         title: "Holistic Pain & Lifestyle Disease Management",
         description:
           "Proficient in Acupuncture, Hydrotherapy, Mud Therapy, and Manual Chiropractic techniques for managing chronic conditions.",
+        images: [], // Added empty images array
       },
       {
         title: "Wellness Retreat Conceptualization",
         description:
           "Planning nature-integrated retreat experiences blending yoga therapy, hydrotherapy, and personalized wellness programs.",
+        images: [], // Added empty images array
       },
       {
         title: "Business Development & Brand Strategy",
         description:
           "Strategizing e-commerce and wellness brand positioning with a focus on holistic health products and services.",
+        images: [], // Added empty images array
       },
     ],
   },
