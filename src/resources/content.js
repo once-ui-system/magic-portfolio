@@ -6,11 +6,11 @@ const person = {
   get name() {
     return `${this.firstName} ${this.lastName}`;
   },
-  role: "Aspiring Naturopathic Doctor & Wellness Entrepreneur",
-  avatar: "/images/avatar.jpg",
-  email: "thevishalbnys@gmail.com", // Change to your email
+  role: "Aspiring Doctor & Entrepreneur | Health & Wellness Enthusiast | Building Praneon — A New Way of Holistic Healing",
+  avatar: "/images/avatar.png",
+  email: "thevishalbnys@gmail.com",
   location: "Asia/Kolkata",
-  languages: ["English", "Tamil"], 
+  languages: ["English", "French", "Hindi", "Japanese", "Marathi", "Tamil"],
 };
 
 const newsletter = {
@@ -36,7 +36,7 @@ const social = [
   },
   {
     name: "LinkTree",
-    icon: "linktree",
+    icon: "link",
     link: "https://linktr.ee/Bruzilla",
   },
   {
@@ -52,7 +52,7 @@ const home = {
   label: "Home",
   title: `${person.name}'s Portfolio`,
   description: `Showcasing my journey as a ${person.role}`,
-  headline: <> Align. Heal. Thrive</>,
+  headline: <>Align. Heal. Thrive.</>,
   featured: {
     display: true,
     title: <>Recent Project: <strong className="ml-4">AI-Powered Iridology</strong></>,
@@ -60,8 +60,8 @@ const home = {
   },
   subline: (
     <>
-      I'm Vishal, a final-year BNYS student, integrating ancient naturopathy with modern AI-driven diagnostics.
-      <br /> Exploring holistic wellness through my venture <Logo icon="/trademarks/wordmark-dark.svg" style={{ display: "inline-flex", top: "0.25em", marginLeft: "-0.25em" }} />.
+      I'm Vishal, a final-year BNYS student, integrating ancient naturopathy with modern AI-driven diagnostics.<br />
+      Exploring holistic wellness through my venture Praneon.
     </>
   ),
 };
@@ -79,7 +79,7 @@ const about = {
     display: true,
   },
   calendar: {
-    display: false, // You can enable this if you want to embed Calendly link
+    display: false,
     link: "https://cal.com",
   },
   intro: {
@@ -87,24 +87,31 @@ const about = {
     title: "Introduction",
     description: (
       <>
-        A BNYS (Bachelor of Naturopathy & Yogic Sciences) student with a passion for integrative healthcare,
-        AI-driven Iridology, and holistic wellness ventures. Currently building Praneon, a wellness brand focusing on personalized healing.
+        An aspiring BNYS (Bachelor of Naturopathy & Yogic Sciences) doctor who's passionate about integrative healthcare, AI-driven Iridology, and holistic wellness ventures. Founder of Praneon Wellness Retreat Centre (in planning) — blending traditional healing sciences with modern wellness approaches.
       </>
     ),
   },
   work: {
     display: true,
-    title: "Clinical Experience",
+    title: "Experience",
     experiences: [
       {
+        company: "Integrating AI in Iridology — Praneon Wellness",
+        timeframe: "Jan 2023 - Present",
+        role: "Founder & Innovator",
+        achievements: [
+          <>Developing AI-powered Iris diagnostic system focusing on preventive wellness insights aligned with Naturopathy.</>,
+          <>Creating practitioner-assisting tools blending AI precision with human empathy for BNYS doctors.</>,
+        ],
+      },
+      {
         company: "BNYS Internship – Pain Management Clinic",
-        timeframe: "2025 - Present",
+        timeframe: "2026 - 2027",
         role: "Internship Trainee",
         achievements: [
           <>Performed supervised clinical assessments for musculoskeletal disorders using Chiropractic & Acupuncture modalities.</>,
           <>Assisted in therapeutic Yoga sessions for lifestyle disease management and stress reduction.</>,
         ],
-        images: [],
       },
     ],
   },
@@ -113,31 +120,42 @@ const about = {
     title: "Academic Pathway",
     institutions: [
       {
-        name: "Bachelor of Naturopathy & Yogic Sciences (BNYS)",
-        description: <>Pursuing from XYZ Naturopathy College, specializing in holistic pain management and lifestyle medicine.</>,
+        name: "Sona Medical College of Naturopathy & Yoga",
+        description: <>Pursuing BNYS with specialization in holistic pain management, lifestyle medicine, and wellness retreat planning.</>,
+      },
+      {
+        name: "Holy Cross Matriculation Higher Secondary School",
+        description: <>Completed Higher Secondary with active participation in Science Club, Debate Club, Health Camps, Cultural Events, and Environmental Initiatives.</>,
       },
     ],
   },
   technical: {
     display: true,
-    title: "My Wellness Toolkit",
+    title: "Core Skills",
     skills: [
       {
         title: "AI-Driven Iridology",
-        description: <>Working on integrating AI vision systems to automate Iris diagnostics for personalized health assessments.</>,
-        images: [
-          {
-            src: "/images/projects/project-01/cover-01.jpg",
-            alt: "Iridology AI Project",
-            width: 16,
-            height: 9,
-          },
-        ],
+        description: <>Integrating AI vision systems to automate Iris diagnostics for preventive health assessments and practitioner-support tools.</>,
+      //  images: [
+      //    {
+      //      src: "/images/projects/project-01/cover.jpg",
+      //      alt: "Iridology AI Project",
+      //      width: 16,
+      //      height: 9,
+      //    },
+      //  ],
       },
       {
-        title: "Naturopathic Healing Modalities",
-        description: <>Hands-on practice with Hydrotherapy, Mud Therapy, Acupuncture, and Manual Chiropractic Techniques.</>,
-        images: [],
+        title: "Holistic Pain & Lifestyle Disease Management",
+        description: <>Proficient in Acupuncture, Hydrotherapy, Mud Therapy, and Manual Chiropractic techniques for managing chronic conditions.</>,
+      },
+      {
+        title: "Wellness Retreat Conceptualization",
+        description: <>Planning nature-integrated retreat experiences blending yoga therapy, hydrotherapy, and personalized wellness programs.</>,
+      },
+      {
+        title: "Business Development & Brand Strategy",
+        description: <>Strategizing e-commerce and wellness brand positioning with a focus on holistic health products and services.</>,
       },
     ],
   },
@@ -164,16 +182,15 @@ const gallery = {
   description: `A visual showcase of my journey in wellness & personal ventures`,
   images: [
     {
-      src: "/images/gallery/horizontal-1.jpg",
-      alt: "Workshop Session",
+      src: "/images/gallery/Personal Bio Pic.jpg",
+      alt: "Personal Bio Pic",
       orientation: "horizontal",
     },
     {
-      src: "/images/gallery/vertical-1.jpg",
-      alt: "Chiropractic Practice",
-      orientation: "vertical",
+      src: "/images/gallery/Price Reciving Pic.jpg",
+      alt: "Price Reciving Pic",
+      orientation: "horizontal",
     },
-    // Add more image objects as you add images.
   ],
 };
 
