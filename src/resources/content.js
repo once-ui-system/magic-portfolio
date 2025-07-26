@@ -179,7 +179,7 @@ const gallery = {
       orientation: "horizontal",
     },
     {
-      src: "/images/gallery/Price Reciving Pic",
+      src: "/images/gallery/Prize Receiving Pic.jpg",
       alt: "Prize Receiving Pic",
       orientation: "horizontal",
     },
