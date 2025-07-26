@@ -62,7 +62,8 @@ const home = {
   subline: (
     <>
       I'm Vishal, a final-year BNYS student, integrating ancient naturopathy with modern AI-driven diagnostics.
-      <br /> Exploring holistic wellness through my venture </>
+      <br /> 
+      Exploring holistic wellness through my venture </>
   ),
 };
 
