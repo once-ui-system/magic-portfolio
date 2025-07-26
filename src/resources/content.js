@@ -15,12 +15,8 @@ const person = {
 
 const newsletter = {
   display: true,
-  title: <>Subscribe to {person.firstName}'s Wellness Insights</>,
-  description: (
-    <>
-      I share articles on holistic healing, AI in Iridology, and modern wellness entrepreneurship.
-    </>
-  ),
+  title: `Subscribe to ${person.firstName}'s Wellness Insights`,
+  description: "I share articles on holistic healing, AI in Iridology, and modern wellness entrepreneurship.",
 };
 
 const social = [
@@ -52,19 +48,13 @@ const home = {
   label: "Home",
   title: `${person.name}'s Portfolio`,
   description: `Showcasing my journey as a ${person.role}`,
-  headline: <>Align. Heal. Thrive.</>,
+  headline: "Align. Heal. Thrive.",
   featured: {
     display: true,
-    title: <>Recent Project: <strong className="ml-4">AI-Powered Iridology</strong></>,
-    href: "/work/iridology-ai", 
-    href: "/work/iridology-ai", 
+    title: "Recent Project: AI-Powered Iridology",
+    href: "/work/iridology-ai",
   },
-  subline: (
-    <>
-      I'm Vishal, a final-year BNYS student, integrating ancient naturopathy with modern AI-driven diagnostics.
-      <br /> 
-      Exploring holistic wellness through my venture </>
-  ),
+  subline: "I'm Vishal, a final-year BNYS student, integrating ancient naturopathy with modern AI-driven diagnostics. Exploring holistic wellness through my venture.",
 };
 
 const about = {
@@ -86,11 +76,8 @@ const about = {
   intro: {
     display: true,
     title: "Introduction",
-    description: (
-      <>
-        An aspiring BNYS (Bachelor of Naturopathy & Yogic Sciences) doctor who's passionate about integrative healthcare, AI-driven Iridology, and holistic wellness ventures. Founder of Praneon Wellness Retreat Centre (in planning) — blending traditional healing sciences with modern wellness approaches.
-      </>
-    ),
+    description:
+      "An aspiring BNYS (Bachelor of Naturopathy & Yogic Sciences) doctor who's passionate about integrative healthcare, AI-driven Iridology, and holistic wellness ventures. Founder of Praneon Wellness Retreat Centre (in planning) — blending traditional healing sciences with modern wellness approaches.",
   },
   work: {
     display: true,
@@ -101,8 +88,8 @@ const about = {
         timeframe: "Jan 2023 - Present",
         role: "Founder & Innovator",
         achievements: [
-          <>Developing AI-powered Iris diagnostic system focusing on preventive wellness insights aligned with Naturopathy.</>,
-          <>Creating practitioner-assisting tools blending AI precision with human empathy for BNYS doctors.</>,
+          "Developing AI-powered Iris diagnostic system focusing on preventive wellness insights aligned with Naturopathy.",
+          "Creating practitioner-assisting tools blending AI precision with human empathy for BNYS doctors.",
         ],
       },
       {
@@ -110,8 +97,8 @@ const about = {
         timeframe: "2026 - 2027",
         role: "Internship Trainee",
         achievements: [
-          <>Performed supervised clinical assessments for musculoskeletal disorders using Chiropractic & Acupuncture modalities.</>,
-          <>Assisted in therapeutic Yoga sessions for lifestyle disease management and stress reduction.</>,
+          "Performed supervised clinical assessments for musculoskeletal disorders using Chiropractic & Acupuncture modalities.",
+          "Assisted in therapeutic Yoga sessions for lifestyle disease management and stress reduction.",
         ],
       },
     ],
@@ -122,11 +109,13 @@ const about = {
     institutions: [
       {
         name: "Sona Medical College of Naturopathy & Yoga",
-        description: <>Pursuing BNYS with specialization in holistic pain management, lifestyle medicine, and wellness retreat planning.</>,
+        description:
+          "Pursuing BNYS with specialization in holistic pain management, lifestyle medicine, and wellness retreat planning.",
       },
       {
         name: "Holy Cross Matriculation Higher Secondary School",
-        description: <>Completed Higher Secondary with active participation in Science Club, Debate Club, Health Camps, Cultural Events, and Environmental Initiatives.</>,
+        description:
+          "Completed Higher Secondary with active participation in Science Club, Debate Club, Health Camps, Cultural Events, and Environmental Initiatives.",
       },
     ],
   },
@@ -136,27 +125,23 @@ const about = {
     skills: [
       {
         title: "AI-Driven Iridology",
-        description: <>Integrating AI vision systems to automate Iris diagnostics for preventive health assessments and practitioner-support tools.</>,
-      //  images: [
-      //    {
-      //      src: "/images/projects/project-01/cover.jpg",
-      //      alt: "Iridology AI Project",
-      //      width: 16,
-      //      height: 9,
-      //    },
-      //  ],
+        description:
+          "Integrating AI vision systems to automate Iris diagnostics for preventive health assessments and practitioner-support tools.",
       },
       {
         title: "Holistic Pain & Lifestyle Disease Management",
-        description: <>Proficient in Acupuncture, Hydrotherapy, Mud Therapy, and Manual Chiropractic techniques for managing chronic conditions.</>,
+        description:
+          "Proficient in Acupuncture, Hydrotherapy, Mud Therapy, and Manual Chiropractic techniques for managing chronic conditions.",
       },
       {
         title: "Wellness Retreat Conceptualization",
-        description: <>Planning nature-integrated retreat experiences blending yoga therapy, hydrotherapy, and personalized wellness programs.</>,
+        description:
+          "Planning nature-integrated retreat experiences blending yoga therapy, hydrotherapy, and personalized wellness programs.",
       },
       {
         title: "Business Development & Brand Strategy",
-        description: <>Strategizing e-commerce and wellness brand positioning with a focus on holistic health products and services.</>,
+        description:
+          "Strategizing e-commerce and wellness brand positioning with a focus on holistic health products and services.",
       },
     ],
   },
@@ -188,8 +173,8 @@ const gallery = {
       orientation: "horizontal",
     },
     {
-      src: "/images/gallery/Price Reciving Pic.jpg",
-      alt: "Price Reciving Pic",
+      src: "/images/gallery/Price Reciving Pic",
+      alt: "Prize Receiving Pic",
       orientation: "horizontal",
     },
   ],
