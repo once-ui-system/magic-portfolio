@@ -28,7 +28,7 @@ const social = [
   {
     name: "Instagram",
     icon: "instagram",
-    link: "https://www.instagram.com/thebruzilla/",
+    link: "https://www.instagram.com/praneon/",
   },
   {
     name: "LinkTree",
