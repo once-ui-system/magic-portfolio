@@ -38,6 +38,39 @@ const dov = {
 ],
 };
 
+const ned = {
+  id: 1,
+  firstName: "Ned",
+  lastName: "",
+  get name() {
+    return `${this.firstName}`;
+  },
+  role: "Aura Farmer",
+  avatar: "/images/ned.png",
+  email: "ned@teds.one",
+  location: "Europe/London", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
+  languages: [], // optional: Leave the array empty if you don't want to display languages
+  socials: [
+  // Links are automatically displayed.
+  // Import new icons in /once-ui/icons.ts
+  {
+    name: "YouTube",
+    icon: "youtube",
+    link: "https://youtube.com/",
+  },
+  {
+    name: "TikTok",
+    icon: "tiktok",
+    link: "https://tiktok.com/@ned_puzon2",
+  },
+  {
+    name: "Email",
+    icon: "email",
+    link: `mailto:ned@teds.one`,
+  },
+],
+};
+
 const teds = {
   firstName: "TEDS",
   lastName: "",
@@ -52,7 +85,7 @@ const teds = {
 };
 
 const people = [
-  dov,
+  dov, ned,
 ]
 
 const person = teds;
@@ -105,7 +138,7 @@ const about = {
   path: "/about",
   label: "About",
   title: `About – ${teds.name}`,
-  description: `Meet the team @${teds.name}`,
+  description: `Meet the team @TEDS`,
   tableOfContent: {
     display: true,
     subItems: false,
