@@ -15,8 +15,8 @@ function debounce<T extends (...args: any[]) => void>(func: T, delay: number): T
 
 type NewsletterProps = {
   display: boolean;
-  title: string | JSX.Element;
-  description: string | JSX.Element;
+  title: string | React.ReactNode;
+  description: string | React.ReactNode;
 };
 
 export const Mailchimp = ({ newsletter }: { newsletter: NewsletterProps }) => {
