@@ -26,8 +26,8 @@
   "devDependencies": {
     "@types/cookie": "^0.6.0",
     "@types/node": "^20.17.30",
-    "@types/react": "^18.3.20",
-    "@types/react-dom": "^18.3.6",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
     "eslint": "^9.25.0",
     "typescript": "^5.8.3"
   }
