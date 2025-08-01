@@ -101,10 +101,10 @@ const about = {
             Architected and maintained a critical full-stack web application managing quantum computing research infrastructure using Python and Vue.js, serving researchers across multiple teams while developing interactive analysis dashboards with dynamic graphs and real-time performance metrics.
           </>,
           <>
-            Improved application performance by 50% by designing and implementing a comprehensive Redis integration strategy, serving as both persistent database and intelligent caching layer for high-frequency operations, while leading containerization efforts with custom Docker configurations and nginx setup for secure deployments.
+            Improved application performance by 50% by designing and implementing a comprehensive Redis integration strategy, serving as both persistent database and intelligent caching layer for high-frequency operations.
           </>,
           <>
-            Implemented secure AI integration by self-hosting and integrating large language models within organizational infrastructure, providing scientists and developers with intelligent assistant capabilities while maintaining strict data privacy and security protocols required for sensitive IP environments.
+            Led containerization and continuous integration/delivery (CI/CD) efforts with custom Docker configurations and reverse proxy (nginx) setup for seamless and secure deployments.
           </>,
           <>
             Collaborated with cross-functional research teams to gather requirements, iterate on software features, and deliver robust solutions that enhanced data accessibility and streamlined experimental workflows across quantum computing projects.
