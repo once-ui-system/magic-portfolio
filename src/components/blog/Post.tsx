@@ -23,8 +23,7 @@ export default function Post({ post, thumbnail, direction }: PostProps) {
                 transition="micro-medium"
                 direction={direction}
                 radius="l"
-                className={styles.hover}
-                mobileDirection="column"
+                className={`${styles.hover} mobile-column`}
                 fillWidth>
                 {post.metadata.image && thumbnail && (
                     <Media

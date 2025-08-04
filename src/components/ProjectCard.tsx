@@ -40,7 +40,8 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
         }))}
       />
       <Flex
-        mobileDirection="column"
+        direction="row"
+        className="mobile-column"
         fillWidth
         paddingX="s"
         paddingTop="12"

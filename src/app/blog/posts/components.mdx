@@ -366,7 +366,8 @@ The Flex component is accessible as `Column` and `Row` and can handle a wide ran
     preview={
     <Row
       fillWidth
-      mobileDirection="column"
+      direction="row"
+      className="mobile-column"
       gap="16"
     >
       <Column fillWidth border="neutral-alpha-medium" padding="16" radius="m">
@@ -392,7 +393,8 @@ The Flex component is accessible as `Column` and `Row` and can handle a wide ran
         code:
 `<Row
     fillWidth
-    mobileDirection="column"
+    direction="row"
+    className="mobile-column"
     gap="16"
   >
     <Column fillWidth border="neutral-alpha-medium" padding="16" radius="m">
@@ -434,7 +436,7 @@ Use the grid to construct responsive grid layouts. It can be styled similarly to
     <Grid
       fillWidth
       columns="3"
-      mobileColumns="2"
+      className="mobile-two-columns"
       gap="16"
     >
       <Column border="neutral-alpha-medium" padding="16" radius="m">
@@ -463,7 +465,7 @@ Use the grid to construct responsive grid layouts. It can be styled similarly to
 `<Grid
     fillWidth
     columns="3"
-    mobileColumns="2"
+    className="mobile-two-columns"
     gap="16"
   >
     <Column border="neutral-alpha-medium" padding="16" radius="m">

@@ -71,7 +71,7 @@ export default function Home() {
         <Projects range={[1, 1]} />
       </RevealFx>
       {routes["/blog"] && (
-        <Flex fillWidth gap="24" mobileDirection="column">
+        <Flex fillWidth gap="24" direction="row" style={{ flexDirection: 'row' }} className="mobile-column">
           <Flex flex={1} paddingLeft="l" paddingTop="24">
             <Heading as="h2" variant="display-strong-xs" wrap="balance">
               Latest from the blog

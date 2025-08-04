@@ -1,0 +1,70 @@
+/* Mobile responsive styles for direction changes */
+@media (max-width: 768px) {
+  .mobile-column {
+    flex-direction: column !important;
+  }
+  
+  /* Mobile responsive grid columns */
+  .mobile-single-column {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .mobile-two-columns {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+/* Responsive display utilities */
+/* Hide on small screens (max-width: 768px) */
+@media (max-width: 768px) {
+  [hide="s"] {
+    display: none !important;
+  }
+}
+
+/* Hide on medium screens (max-width: 1024px) */
+@media (max-width: 1024px) {
+  [hide="m"] {
+    display: none !important;
+  }
+}
+
+/* Hide on large screens (max-width: 1440px) */
+@media (max-width: 1440px) {
+  [hide="l"] {
+    display: none !important;
+  }
+}
+
+/* Show only on small screens (max-width: 768px) */
+[show="s"] {
+  display: none !important;
+}
+
+@media (max-width: 768px) {
+  [show="s"] {
+    display: flex !important;
+  }
+}
+
+/* Show only on medium screens (max-width: 1024px) */
+[show="m"] {
+  display: none !important;
+}
+
+@media (max-width: 1024px) and (min-width: 769px) {
+  [show="m"] {
+    display: flex !important;
+  }
+}
+
+/* Show only on large screens (max-width: 1440px) */
+[show="l"] {
+  display: none !important;
+}
+
+@media (max-width: 1440px) and (min-width: 1025px) {
+  [show="l"] {
+    display: flex !important;
+  }
+}
