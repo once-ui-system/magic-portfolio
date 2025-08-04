@@ -17,6 +17,17 @@ export const ThemeToggle: React.FC = () => {
     setCurrentTheme(document.documentElement.getAttribute('data-theme') || 'light');
   }, [theme]);
 
+  // Prevent hydration mismatches by not rendering until mounted
+  if (!mounted) {
+    return (
+      <ToggleButton
+        prefixIcon="light"
+        aria-label="Loading theme toggle"
+        disabled
+      />
+    );
+  }
+
   const icon = currentTheme === 'dark' ? 'light' : 'dark';
   const nextTheme = currentTheme === 'light' ? 'dark' : 'light';
 

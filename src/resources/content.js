@@ -1,16 +1,16 @@
 import { Logo } from "@once-ui-system/core";
 
 const person = {
-  firstName: "Selene",
-  lastName: "Yu",
+  firstName: "Tom",
+  lastName: "Ulman",
   get name() {
     return `${this.firstName} ${this.lastName}`;
   },
-  role: "Design Engineer",
-  avatar: "/images/avatar.jpg",
-  email: "example@gmail.com",
-  location: "Asia/Jakarta", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
-  languages: ["English", "Bahasa"], // optional: Leave the array empty if you don't want to display languages
+  role: "Front-end Developer & Product Designer",
+  avatar: "/images/avatar.png",
+  email: "thomas.ulman@gmail.com",
+  location: "Australia/Sydney", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
+  languages: ["English"], // optional: Leave the array empty if you don't want to display languages
 };
 
 const newsletter = {
@@ -18,8 +18,8 @@ const newsletter = {
   title: <>Subscribe to {person.firstName}'s Newsletter</>,
   description: (
     <>
-      I occasionally write about design, technology, and share thoughts on the intersection of
-      creativity and engineering.
+      I write about SaaS growth, front-end development, and the intersection of
+      user experience and technical implementation.
     </>
   ),
 };
@@ -30,17 +30,12 @@ const social = [
   {
     name: "GitHub",
     icon: "github",
-    link: "https://github.com/once-ui-system/nextjs-starter",
+    link: "https://github.com/tomulman",
   },
   {
     name: "LinkedIn",
     icon: "linkedin",
-    link: "https://www.linkedin.com/company/once-ui/",
-  },
-  {
-    name: "Threads",
-    icon: "threads",
-    link: "https://www.threads.com/@once_ui",
+    link: "https://linkedin.com/in/tomulman",
   },
   {
     name: "Email",
@@ -55,16 +50,16 @@ const home = {
   label: "Home",
   title: `${person.name}'s Portfolio`,
   description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Building bridges between design and code</>,
+  headline: <>Building SaaS experiences that convert and scale</>,
   featured: {
     display: true,
-    title: <>Recent project: <strong className="ml-4">Once UI</strong></>,
-    href: "/work/building-once-ui-a-customizable-design-system",
+    title: <>Turning user leaks into <strong className="ml-4">422% revenue growth</strong></>,
+    href: "/work",
   },
   subline: (
     <>
-      I'm Selene, a design engineer at <Logo icon="/trademarks/wordmark-dark.svg" style={{ display: "inline-flex", top: "0.25em", marginLeft: "-0.25em" }}/>, where I craft intuitive
-      <br /> user experiences. After hours, I build my own projects.
+      I'm Tom, a front-end developer and product designer who combines technical implementation with user-centered design. By day, I lead growth initiatives at Reading Eggs.
+      <br /> By night, I help SaaS founders plug user leaks through AlmostHuman.digital.
     </>
   ),
 };
@@ -83,16 +78,16 @@ const about = {
   },
   calendar: {
     display: true,
-    link: "https://cal.com",
+    link: "mailto:thomas.ulman@gmail.com?subject=Consultation%20Request",
   },
   intro: {
     display: true,
     title: "Introduction",
     description: (
       <>
-        Selene is a Jakarta-based design engineer with a passion for transforming complex challenges
-        into simple, elegant design solutions. Her work spans digital interfaces, interactive
-        experiences, and the convergence of design and technology.
+        Tom is a front-end developer and product designer who thrives at the intersection of user experience and technical implementation.
+        Currently leading growth initiatives at Reading Eggs (3P Learning), where he's driven measurable business impact through optimised user experiences and technical leadership.
+        In 2023, he founded AlmostHuman.digital to help early-stage SaaS founders plug user leaks and improve activation rates.
       </>
     ),
   },
@@ -101,41 +96,41 @@ const about = {
     title: "Work Experience",
     experiences: [
       {
-        company: "FLY",
-        timeframe: "2022 - Present",
-        role: "Senior Design Engineer",
+        company: "Reading Eggs (3P Learning)",
+        timeframe: "Present",
+        role: "Growth & Development Lead",
         achievements: [
           <>
-            Redesigned the UI/UX for the FLY platform, resulting in a 20% increase in user
-            engagement and 30% faster load times.
+                    Drove 132% YOY subscription growth through cross-platform optimisation and UX improvements
+        for a globally-recognised educational platform serving millions of users worldwide.
           </>,
           <>
-            Spearheaded the integration of AI tools into design workflows, enabling designers to
-            iterate 50% faster.
+                    Achieved 150% navigation efficiency improvement and 6-figure revenue impact through
+        strategic technical leadership and user experience optimisation.
           </>,
         ],
         images: [
           // optional: leave the array empty if you don't want to display images
           {
             src: "/images/projects/project-01/cover-01.jpg",
-            alt: "Once UI Project",
+            alt: "Reading Eggs Growth Dashboard",
             width: 16,
             height: 9,
           },
         ],
       },
       {
-        company: "Creativ3",
-        timeframe: "2018 - 2022",
-        role: "Lead Designer",
+        company: "AlmostHuman.digital",
+        timeframe: "2023 - Present",
+        role: "Founder & SaaS Optimisation Consultant",
         achievements: [
           <>
-            Developed a design system that unified the brand across multiple platforms, improving
-            design consistency by 40%.
+                    Built and scaled Waitlist.Email to 422.5% revenue increase in 12 months using Next.js,
+        strategic optimisation, and growth marketing with zero churn rate achieved.
           </>,
           <>
-            Led a cross-functional team to launch a new product line, contributing to a 15% increase
-            in overall company revenue.
+            Led complex CMS migration projects resulting in 40% reduction in publishing time
+            and 30% increase in page speeds while improving editor satisfaction.
           </>,
         ],
         images: [],
@@ -144,15 +139,15 @@ const about = {
   },
   studies: {
     display: true, // set to false to hide this section
-    title: "Studies",
+    title: "Background",
     institutions: [
       {
-        name: "University of Jakarta",
-        description: <>Studied software engineering.</>,
+        name: "General Assembly",
+        description: <>Teaching and mentoring developers in modern web development practices.</>,
       },
       {
-        name: "Build the Future",
-        description: <>Studied online marketing and personal branding.</>,
+        name: "Continuous Learning",
+        description: <>Staying current with web performance optimisation, SaaS growth strategies, and emerging frontend technologies.</>,
       },
     ],
   },
@@ -161,36 +156,42 @@ const about = {
     title: "Technical skills",
     skills: [
       {
-        title: "Figma",
-        description: <>Able to prototype in Figma with Once UI with unnatural speed.</>,
+        title: "Frontend Development",
+        description: <>Expert in React, Next.js, JavaScript, TypeScript, TailwindCSS, and modern HTML5/CSS3 for building scalable SaaS experiences.</>,
         // optional: leave the array empty if you don't want to display images
         images: [
           {
             src: "/images/projects/project-01/cover-02.jpg",
-            alt: "Project image",
+            alt: "Frontend Development",
             width: 16,
             height: 9,
           },
           {
             src: "/images/projects/project-01/cover-03.jpg",
-            alt: "Project image",
+            alt: "React Applications",
             width: 16,
             height: 9,
           },
         ],
       },
       {
-        title: "Next.js",
-        description: <>Building next gen apps with Next.js + Once UI + Supabase.</>,
+        title: "UX & Growth Optimisation",
+        description: <>Specialising in user research, A/B testing, conversion optimisation, and data-driven design decisions that drive measurable business impact.</>,
         // optional: leave the array empty if you don't want to display images
         images: [
           {
             src: "/images/projects/project-01/cover-04.jpg",
-            alt: "Project image",
+            alt: "UX Optimisation",
             width: 16,
             height: 9,
           },
         ],
+      },
+      {
+        title: "Performance & Analytics",
+        description: <>Core Web Vitals optimisation, Google Analytics 4, GTM, Hotjar, and Lighthouse for technical performance and user behaviour analysis.</>,
+        // optional: leave the array empty if you don't want to display images
+        images: [],
       },
     ],
   },
@@ -199,8 +200,8 @@ const about = {
 const blog = {
   path: "/blog",
   label: "Blog",
-  title: "Writing about design and tech...",
-  description: `Read what ${person.name} has been up to recently`,
+  title: "Writing about SaaS growth and frontend development...",
+      description: `Read what ${person.name} has been up to recently - insights on SaaS optimisation, technical leadership, and user experience`,
   // Create new blog posts by adding a new .mdx file to app/blog/posts
   // All posts will be listed on the /blog route
 };
@@ -208,8 +209,8 @@ const blog = {
 const work = {
   path: "/work",
   label: "Work",
-  title: `Projects – ${person.name}`,
-  description: `Design and dev projects by ${person.name}`,
+  title: `Case Studies – ${person.name}`,
+  description: `SaaS growth and development case studies by ${person.name}`,
   // Create new project pages by adding a new .mdx file to app/blog/posts
   // All projects will be listed on the /home and /work routes
 };

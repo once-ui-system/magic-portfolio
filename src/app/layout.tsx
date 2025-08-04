@@ -43,9 +43,13 @@ export default async function RootLayout({
           dangerouslySetInnerHTML={{
             __html: `
               (function() {
+                // Prevent multiple executions
+                if (window.__themeInitialized) return;
+                window.__themeInitialized = true;
+                
                 try {
                   const root = document.documentElement;
-                  const defaultTheme = 'system';
+                  const defaultTheme = 'light'; // Use 'light' as default instead of 'system' for consistency
                   
                   // Set defaults from config
                   const config = ${JSON.stringify({
@@ -63,33 +67,53 @@ export default async function RootLayout({
                   
                   // Apply default values
                   Object.entries(config).forEach(([key, value]) => {
-                    root.setAttribute('data-' + key, value);
+                    if (!root.getAttribute('data-' + key)) {
+                      root.setAttribute('data-' + key, value);
+                    }
                   });
                   
-                  // Resolve theme
+                  // Resolve theme with better error handling
                   const resolveTheme = (themeValue) => {
                     if (!themeValue || themeValue === 'system') {
-                      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                      try {
+                        return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                      } catch (e) {
+                        return defaultTheme;
+                      }
                     }
                     return themeValue;
                   };
                   
-                  // Apply saved theme
-                  const savedTheme = localStorage.getItem('data-theme');
+                  // Apply saved theme with fallback
+                  let savedTheme = defaultTheme;
+                  try {
+                    savedTheme = localStorage.getItem('data-theme') || defaultTheme;
+                  } catch (e) {
+                    // localStorage might not be available
+                  }
+                  
                   const resolvedTheme = resolveTheme(savedTheme);
                   root.setAttribute('data-theme', resolvedTheme);
                   
                   // Apply any saved style overrides
                   const styleKeys = Object.keys(config);
                   styleKeys.forEach(key => {
-                    const value = localStorage.getItem('data-' + key);
-                    if (value) {
-                      root.setAttribute('data-' + key, value);
+                    try {
+                      const value = localStorage.getItem('data-' + key);
+                      if (value && !root.getAttribute('data-' + key)) {
+                        root.setAttribute('data-' + key, value);
+                      }
+                    } catch (e) {
+                      // Ignore localStorage errors
                     }
                   });
                 } catch (e) {
                   console.error('Failed to initialize theme:', e);
-                  document.documentElement.setAttribute('data-theme', 'dark');
+                  try {
+                    document.documentElement.setAttribute('data-theme', 'light');
+                  } catch (fallbackError) {
+                    // Even the fallback failed
+                  }
                 }
               })();
             `,
@@ -97,7 +121,7 @@ export default async function RootLayout({
         />
       </head>
       <Providers>
-        <Column as="body" background="page" fillWidth style={{minHeight: "100vh"}} margin="0" padding="0" horizontal="center">
+        <Column as="body" background="page" fillWidth style={{minHeight: "100vh"}} margin="0" padding="0" horizontal="center" suppressHydrationWarning={true}>
           <Background
             position="fixed"
             mask={{

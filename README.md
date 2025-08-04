@@ -53,9 +53,9 @@ Docs available at: [docs.once-ui.com](https://docs.once-ui.com/docs/magic-portfo
 - Automatic schema and metadata generation based on the content file
 
 ## **Design**
-- Responsive layout optimized for all screen sizes
+- Responsive layout optimised for all screen sizes
 - Timeless design without heavy animations and motion
-- Endless customization options through [data attributes](https://once-ui.com/docs/theming)
+- Endless customisation options through [data attributes](https://once-ui.com/docs/theming)
 
 ## **Content**
 - Render sections conditionally based on the content file
@@ -64,8 +64,8 @@ Docs available at: [docs.once-ui.com](https://docs.once-ui.com/docs/magic-portfo
 - Set up password protection for URLs
 
 ## **Localization**
-- A localized version of Magic Portfolio is available with the next-intl library
-- To use localization, switch to the 'i18n' branch
+- A localised version of Magic Portfolio is available with the next-intl library
+- To use localisation, switch to the 'i18n' branch
 
 # **Authors**
 
@@ -74,7 +74,7 @@ Connect with us on Threads or LinkedIn.
 Lorant Toth: [Threads](https://www.threads.net/@lorant.one), [LinkedIn](https://www.linkedin.com/in/tothlorant/)  
 Zsofia Komaromi: [Threads](https://www.threads.net/@zsofia_kom), [LinkedIn](https://www.linkedin.com/in/zsofiakomaromi/)
 
-Localization added by [François Hernandez](https://github.com/francoishernandez)
+Localisation added by [François Hernandez](https://github.com/francoishernandez)
 
 # **Get involved**
 
