@@ -175,7 +175,7 @@ const mailchimp = {
 const schema = {
   logo: "",
   type: "Organization",
-  name: "Once UI",
+  name: "Varun Creatives",
   description: home.description,
   email: "lorant@once-ui.com",
 };
