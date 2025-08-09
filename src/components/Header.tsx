@@ -146,6 +146,23 @@ export const Header = () => {
                   />
                 </>
               )}
+              {routes["/music"] && (
+                <>
+                  <ToggleButton
+                    className="s-flex-hide"
+                    prefixIcon="gallery"
+                    href="/music"
+                    label={gallery.label}
+                    selected={pathname.startsWith("/music")}
+                  />
+                  <ToggleButton
+                    className="s-flex-show"
+                    prefixIcon="gallery"
+                    href="/music"
+                    selected={pathname.startsWith("/music")}
+                  />
+                </>
+              )}
               {display.themeSwitcher && (
                 <>
                   <Line background="neutral-alpha-medium" vert maxHeight="24" />
