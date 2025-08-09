@@ -147,13 +147,9 @@ const about = {
     title: "Studies",
     institutions: [
       {
-        name: "University of Jakarta",
-        description: <>Studied software engineering.</>,
-      },
-      {
-        name: "Build the Future",
-        description: <>Studied online marketing and personal branding.</>,
-      },
+        name: "Comsats University Islamabad",
+        description: <>Studying computer science.</>,
+      }
     ],
   },
   technical: {
