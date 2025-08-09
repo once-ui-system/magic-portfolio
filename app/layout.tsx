@@ -1,12 +1,19 @@
-import '@once-ui-system/core/css/styles.css';
-import '@once-ui-system/core/css/tokens.css';
-import '@/resources/custom.css'
+import "@once-ui-system/core/css/styles.css";
+import "@once-ui-system/core/css/tokens.css";
+import "@/resources/custom.css";
 
 import classNames from "classnames";
 
-import { Background, Column, Flex, Meta, opacity, SpacingToken } from "@once-ui-system/core";
+import {
+  Background,
+  Column,
+  Flex,
+  Meta,
+  opacity,
+  SpacingToken,
+} from "@once-ui-system/core";
 import { Footer, Header, Providers, RouteGuard } from "@/components";
-import { baseURL, effects, fonts, style, dataStyle, home } from '@/resources';
+import { baseURL, effects, fonts, style, dataStyle, home } from "@/resources";
 
 export async function generateMetadata() {
   return Meta.generate({
@@ -33,7 +40,7 @@ export default async function RootLayout({
         fonts.heading.variable,
         fonts.body.variable,
         fonts.label.variable,
-        fonts.code.variable,
+        fonts.code.variable
       )}
     >
       <head>
@@ -52,12 +59,12 @@ export default async function RootLayout({
                     accent: style.accent,
                     neutral: style.neutral,
                     solid: style.solid,
-                    'solid-style': style.solidStyle,
+                    "solid-style": style.solidStyle,
                     border: style.border,
                     surface: style.surface,
                     transition: style.transition,
                     scaling: style.scaling,
-                    'viz-style': dataStyle.variant,
+                    "viz-style": dataStyle.variant,
                   })};
                   
                   // Apply default values
@@ -96,7 +103,15 @@ export default async function RootLayout({
         />
       </head>
       <Providers>
-        <Column as="body" background="page" fillWidth style={{minHeight: "100vh"}} margin="0" padding="0" horizontal="center">
+        <Column
+          as="body"
+          background="page"
+          fillWidth
+          style={{ minHeight: "100vh" }}
+          margin="0"
+          padding="0"
+          horizontal="center"
+        >
           <Background
             position="fixed"
             mask={{
@@ -138,24 +153,16 @@ export default async function RootLayout({
               color: effects.lines.color,
             }}
           />
-          <Flex fillWidth minHeight="16" hide="s"/>
-            <Header />
-            <Flex
-              zIndex={0}
-              fillWidth
-              padding="l"
-              horizontal="center"
-              flex={1}
-            >
-              <Flex horizontal="center" fillWidth minHeight="0">
-                <RouteGuard>
-                  {children}
-                </RouteGuard>
-              </Flex>
+          <Flex fillWidth minHeight="16" hide="s" />
+          <Header />
+          <Flex zIndex={0} fillWidth padding="l" horizontal="center" flex={1}>
+            <Flex horizontal="center" fillWidth minHeight="0">
+              {children}
             </Flex>
-            <Footer/>
-          </Column>
-        </Providers>
-      </Flex>
+          </Flex>
+          <Footer />
+        </Column>
+      </Providers>
+    </Flex>
   );
 }
