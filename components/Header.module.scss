@@ -1,0 +1,27 @@
+@use "./breakpoints.scss" as breakpoints;
+
+.position {
+    position: sticky;
+    top: 0;
+}
+
+.mask {
+    pointer-events: none;
+    backdrop-filter: blur(0.5rem);
+    background: linear-gradient(to bottom, var(--page-background), var(--static-transparent));
+    mask-image: linear-gradient(rgba(0,0,0) 25%, rgba(0, 0, 0, 0) 100%);
+    mask-size: 100% 100%;
+}
+
+@media (max-width: breakpoints.$s) {
+    .position {
+        top: auto;
+        position: fixed;
+        bottom: var(--static-space-24);
+    }
+
+    .mask {
+        transform: rotate(180deg);
+        bottom: 0;
+    }
+}
