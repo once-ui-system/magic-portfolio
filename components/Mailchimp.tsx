@@ -36,7 +36,6 @@ export const Mailchimp = ({ emailForm }: { emailForm: EmailFormProps }) => {
   const [email, setEmail] = useState<string>("");
   const [error, setError] = useState<string>("");
   const [touched, setTouched] = useState<boolean>(false);
-  const [message, setMessage] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
   const [form, setForm] = useState({
     email: "",
