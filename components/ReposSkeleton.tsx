@@ -1,78 +1,58 @@
 "use client";
-// components/ReposSkeleton.tsx
-export default function ReposSkeleton() {
+
+type ReposSkeletonProps = {
+  count?: number;
+  cardHeight?: number;
+  minCardWidth?: number;
+};
+
+export default function ReposSkeleton({
+  count = 6,
+  cardHeight = 140,
+  minCardWidth = 280,
+}: ReposSkeletonProps) {
   return (
-    <section>
-      
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
-          gap: "12px",
-        }}
-      >
-        {Array.from({ length: 6 }).map((_, i) => (
-          <div
-            key={i}
-            style={{
-              height: 140,
-              borderRadius: 8,
-              background: "linear-gradient(90deg, #eee, #f7f7f7, #eee)",
-              backgroundSize: "200% 100%",
-              animation: "shimmer 1.5s infinite",
-            }}
-          />
+    <section aria-busy="true" aria-live="polite" aria-label="Loading repositories">
+      <div className="grid" style={{ ["--minW" as any]: `${minCardWidth}px` }}>
+        {Array.from({ length: count }).map((_, i) => (
+          <div key={i} className="card" style={{ height: cardHeight }} aria-hidden="true" />
         ))}
       </div>
+
       <style jsx>{`
-        /* ---------- Theme tokens ---------- */
-        :root {
-          --fg-title: #111827;                /* slate-900 */
-          --skel-1: #e9ecef;                  /* light gray */
-          --skel-2: #f8f9fa;                  /* lighter gray */
+        /* ---------- Theme tokens for shimmer ---------- */
+        :global(html) {
+          --skel-1: #e9ecef; /* light gray */
+          --skel-2: #f8f9fa; /* lighter gray */
           --skel-3: #e9ecef;
         }
 
         /* System dark mode */
         @media (prefers-color-scheme: dark) {
-          :root {
-            --fg-title: #e5e7eb;              /* slate-200 */
-            --skel-1: #2a2f3a;                /* dark gray */
-            --skel-2: #3a4250;                /* mid gray */
+          :global(html) {
+            --skel-1: #2a2f3a; /* dark gray */
+            --skel-2: #3a4250; /* mid gray */
             --skel-3: #2a2f3a;
           }
         }
 
-        /* Optional class-based override (e.g., <html class="dark">) */
-        :global(.dark) :root,
-        :global(.dark) {
-          --fg-title: #e5e7eb;
+        /* Class-based or data-attribute dark modes */
+        :global(html.dark),
+        :global(.dark),
+        :global([data-theme="dark"]) {
           --skel-1: #2a2f3a;
           --skel-2: #3a4250;
           --skel-3: #2a2f3a;
         }
 
         /* ---------- Layout ---------- */
-        .repos-skeleton {
-          padding: 0;
-        }
-
-        .title {
-          font-size: 2rem;
-          font-weight: bold;
-          margin-bottom: 1.5rem;
-          text-align: center;
-          color: var(--fg-title);
-        }
-
         .grid {
           display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+          grid-template-columns: repeat(auto-fill, minmax(var(--minW, 280px), 1fr));
           gap: 12px;
         }
 
         .card {
-          height: 140px;
           border-radius: 8px;
           background: linear-gradient(90deg, var(--skel-1), var(--skel-2), var(--skel-3));
           background-size: 200% 100%;

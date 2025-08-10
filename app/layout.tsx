@@ -37,6 +37,7 @@ export default async function RootLayout({
       lang="en"
       fillWidth
       className={classNames(
+        fonts.body.className,
         fonts.heading.variable,
         fonts.body.variable,
         fonts.label.variable,
