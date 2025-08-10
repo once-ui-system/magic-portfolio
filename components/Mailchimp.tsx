@@ -1,11 +1,24 @@
 "use client";
 
 import { mailchimp } from "@/resources";
-import { Button, Flex, Heading, Input, Text, Background, Column } from "@once-ui-system/core";
+import {
+  Button,
+  Flex,
+  Heading,
+  Input,
+  Text,
+  Background,
+  Column,
+  Textarea,
+  useToast,
+} from "@once-ui-system/core";
 import { opacity, SpacingToken } from "@once-ui-system/core";
 import { useState } from "react";
 
-function debounce<T extends (...args: any[]) => void>(func: T, delay: number): T {
+function debounce<T extends (...args: any[]) => void>(
+  func: T,
+  delay: number
+): T {
   let timeout: ReturnType<typeof setTimeout>;
   return ((...args: Parameters<T>) => {
     clearTimeout(timeout);
@@ -13,16 +26,23 @@ function debounce<T extends (...args: any[]) => void>(func: T, delay: number): T
   }) as T;
 }
 
-type NewsletterProps = {
+type EmailFormProps = {
   display: boolean;
   title: string | React.ReactNode;
   description: string | React.ReactNode;
 };
 
-export const Mailchimp = ({ newsletter }: { newsletter: NewsletterProps }) => {
+export const Mailchimp = ({ emailForm }: { emailForm: EmailFormProps }) => {
   const [email, setEmail] = useState<string>("");
   const [error, setError] = useState<string>("");
   const [touched, setTouched] = useState<boolean>(false);
+  const [message, setMessage] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(false);
+  const [form, setForm] = useState({
+    email: "",
+    message: "",
+  });
+  const { addToast } = useToast();
 
   const validateEmail = (email: string): boolean => {
     if (email === "") {
@@ -41,6 +61,43 @@ export const Mailchimp = ({ newsletter }: { newsletter: NewsletterProps }) => {
       setError("Please enter a valid email address.");
     } else {
       setError("");
+    }
+  };
+  const handleEmailChange = (value: string) => {
+    setForm((f) => ({ ...f, email: value }));
+    setError(validateEmail(value) ? "" : "Please enter a valid email address.");
+  };
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!form.email || !form.message || !validateEmail(form.email)) {
+      setTouched(true);
+      if (!validateEmail(form.email))
+        setError("Please enter a valid email address.");
+      return;
+    }
+    setLoading(true);
+    try {
+      const res = await fetch("/api/send-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      const data = await res.json();
+      if (!res.ok || !data.ok)
+        throw new Error(data.error || "Failed to send email");
+      addToast({
+        variant: "success",
+        message: "Email sent successfully!",
+      });
+      setForm({ email: "", message: "" });
+    } catch (err) {
+      console.error(err);
+      addToast({
+        variant: "danger",
+        message: "❌ Failed to send email.",
+      });
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -72,7 +129,7 @@ export const Mailchimp = ({ newsletter }: { newsletter: NewsletterProps }) => {
           x: mailchimp.effects.mask.x,
           y: mailchimp.effects.mask.y,
           radius: mailchimp.effects.mask.radius,
-          cursor: mailchimp.effects.mask.cursor
+          cursor: mailchimp.effects.mask.cursor,
         }}
         gradient={{
           display: mailchimp.effects.gradient.display,
@@ -107,8 +164,12 @@ export const Mailchimp = ({ newsletter }: { newsletter: NewsletterProps }) => {
           color: mailchimp.effects.lines.color,
         }}
       />
-      <Heading style={{ position: "relative" }} marginBottom="s" variant="display-strong-xs">
-        {newsletter.title}
+      <Heading
+        style={{ position: "relative" }}
+        marginBottom="s"
+        variant="display-strong-xs"
+      >
+        {emailForm.title}
       </Heading>
       <Text
         style={{
@@ -119,7 +180,7 @@ export const Mailchimp = ({ newsletter }: { newsletter: NewsletterProps }) => {
         marginBottom="l"
         onBackground="neutral-medium"
       >
-        {newsletter.description}
+        {emailForm.description}
       </Text>
       <form
         style={{
@@ -127,29 +188,41 @@ export const Mailchimp = ({ newsletter }: { newsletter: NewsletterProps }) => {
           display: "flex",
           justifyContent: "center",
         }}
-        action={mailchimp.action}
-        method="post"
+        onSubmit={handleSubmit}
         id="mc-embedded-subscribe-form"
         name="mc-embedded-subscribe-form"
       >
-        <Flex id="mc_embed_signup_scroll" fillWidth maxWidth={24} mobileDirection="column" gap="8">
+        <Flex
+          id="mc_embed_signup_scroll"
+          fillWidth
+          maxWidth={24}
+          direction="column"
+          gap="8"
+        >
           <Input
-            formNoValidate
-            id="mce-EMAIL"
+            id="email"
             name="EMAIL"
             type="email"
             placeholder="Email"
             required
-            onChange={(e) => {
-              if (error) {
-                handleChange(e);
-              } else {
-                debouncedHandleChange(e);
-              }
-            }}
+            value={form.email}
+            onChange={(e) => handleEmailChange(e.target.value)}
             onBlur={handleBlur}
-            errorMessage={error}
+            errorMessage={touched ? error : ""}
           />
+
+          <Textarea
+            id="message"
+            name="message"
+            placeholder="Your Message"
+            required
+            rows={4}
+            value={form.message}
+            onChange={(e) =>
+              setForm((f) => ({ ...f, message: e.target.value }))
+            }
+          />
+
           <div style={{ display: "none" }}>
             <input
               type="checkbox"
@@ -161,10 +234,21 @@ export const Mailchimp = ({ newsletter }: { newsletter: NewsletterProps }) => {
             />
           </div>
           <div id="mce-responses" className="clearfalse">
-            <div className="response" id="mce-error-response" style={{ display: "none" }}></div>
-            <div className="response" id="mce-success-response" style={{ display: "none" }}></div>
+            <div
+              className="response"
+              id="mce-error-response"
+              style={{ display: "none" }}
+            ></div>
+            <div
+              className="response"
+              id="mce-success-response"
+              style={{ display: "none" }}
+            ></div>
           </div>
-          <div aria-hidden="true" style={{ position: "absolute", left: "-5000px" }}>
+          <div
+            aria-hidden="true"
+            style={{ position: "absolute", left: "-5000px" }}
+          >
             <input
               type="text"
               readOnly
@@ -175,8 +259,14 @@ export const Mailchimp = ({ newsletter }: { newsletter: NewsletterProps }) => {
           </div>
           <div className="clear">
             <Flex height="48" vertical="center">
-              <Button id="mc-embedded-subscribe" value="Subscribe" size="m" fillWidth>
-                Subscribe
+              <Button
+                type="submit"
+                id="mc-embedded-subscribe"
+                value="Subscribe"
+                size="m"
+                fillWidth
+              >
+                {loading ? "Sending Email..." : "Send Email"}
               </Button>
             </Flex>
           </div>

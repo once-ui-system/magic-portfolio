@@ -20,14 +20,12 @@ const person = {
   ),
 };
 
-const newsletter = {
+const emailForm = {
   display: true,
-  title: <>Subscribe to {person.firstName}'s Newsletter</>,
+  title: <>Send a message to {person.firstName}.</>,
   description: (
     <>
-      I occasionally share insights on full-stack development, Next.js,
-      Supabase, and lessons learned while building real-world projects from the
-      ground up.
+      Get in touch with {person.firstName} by sending a message below.
     </>
   ),
 };
@@ -266,4 +264,4 @@ const activity = {
   description: `Full-stack projects by ${person.name}`,
 };
 
-export { person, social, newsletter, home, about, blog, activity, work };
+export { person, social, emailForm, home, about, blog, activity, work };
