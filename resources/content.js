@@ -4,7 +4,7 @@ const person = {
   get name() {
     return `${this.firstName} ${this.lastName}`;
   },
-  role: "Remote Full-Stack Web Developer",
+  role: "Full-Stack Web Developer",
   avatar: "/images/avatar.jpg",
   email: "awaissmr@gmail.com",
   location: "Asia/Karachi",
@@ -47,7 +47,7 @@ const social = [
 
 const home = {
   path: "/",
-  image: "/images/og/home.jpg",
+  image: "/images/og/home.png",
   label: "Home",
   title: `${person.name}'s Portfolio`,
   description: `Portfolio website showcasing my work as a ${person.role}`,
