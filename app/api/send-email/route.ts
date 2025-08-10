@@ -2,8 +2,6 @@ import { NextResponse } from "next/server";
 import { sendEmail } from "@/utils/email";
 import { buildContactEmailHtml } from "@/utils/emailTemplate";
 
-export const runtime = "nodejs";
-
 export async function POST(req: Request) {
   try {
     const { email, message } = await req.json();
