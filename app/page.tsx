@@ -129,6 +129,7 @@ export default function Home() {
         </Flex>
       )}
       <Projects range={[2]} />
+      <WallOfLoveSection />
       {emailForm.display && <Mailchimp emailForm={emailForm} />}
     </Column>
   );
