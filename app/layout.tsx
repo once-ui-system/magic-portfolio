@@ -12,7 +12,9 @@ import {
   opacity,
   SpacingToken,
 } from "@once-ui-system/core";
-import { Footer, Header, Providers } from "@/components";
+import { Providers } from "@/components/Providers";
+import { Footer } from "@/components/Footer";
+import { Header } from "@/components/Header";
 import { baseURL, effects, fonts, style, dataStyle, home } from "@/resources";
 
 export async function generateMetadata() {

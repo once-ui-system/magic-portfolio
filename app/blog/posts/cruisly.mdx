@@ -6,26 +6,39 @@ tag: "Full-Stack Project"
 ---
 
 {/* Hero */}
-<section className="relative overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-800 bg-gradient-to-b from-slate-50 to-white dark:from-slate-900 dark:to-slate-950 p-6 md:p-10 mb-10">
-  <div className="text-2xl md:text-4xl font-semibold tracking-tight mb-3">Cruisly</div>
-  <p className="text-slate-600 dark:text-slate-300 max-w-2xl">
-    A next-generation cruise booking experience—offering live itineraries, ship profiles, and secure bookings in one place.
+
+<section className="relative overflow-hidden rounded-2xl border border-border bg-card p-6 md:p-10 mb-10">
+  <div className="text-2xl md:text-4xl font-semibold tracking-tight mb-3">
+    Cruisly
+  </div>
+  <p className="text-muted-foreground max-w-2xl">
+    A next-generation cruise booking experience—offering live itineraries, ship
+    profiles, and secure bookings in one place.
   </p>
 </section>
 
 {/* Quick Stats */}
+
 <section className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-10">
-  <div className="rounded-xl border border-slate-200 dark:border-slate-800 p-4">
-    <div className="text-xs font-bold uppercase text-slate-500 mb-1">My Role</div>
+  <div className="rounded-xl border border-border p-4 bg-card">
+    <div className="text-xs font-bold uppercase text-muted-foreground mb-1">
+      My Role
+    </div>
     <div className="font-medium">Full-Stack Web Developer</div>
   </div>
-  <div className="rounded-xl border border-slate-200 dark:border-slate-800 p-4">
-    <div className="text-xs font-bold uppercase text-slate-500 mb-1">Scope</div>
+  <div className="rounded-xl border border-border p-4 bg-card">
+    <div className="text-xs font-bold uppercase text-muted-foreground mb-1">
+      Scope
+    </div>
     <div className="font-medium">End-to-end build & deploy</div>
   </div>
-  <div className="rounded-xl border border-slate-200 dark:border-slate-800 p-4">
-    <div className="text-xs font-bold uppercase text-slate-500 mb-1">Stack</div>
-    <div className="font-medium">Next.js, Supabase, Widgety API, Tailwind CSS, Vercel</div>
+  <div className="rounded-xl border border-border p-4 bg-card">
+    <div className="text-xs font-bold uppercase text-muted-foreground mb-1">
+      Stack
+    </div>
+    <div className="font-medium">
+      Next.js, Supabase, Widgety API, Tailwind CSS, Vercel
+    </div>
   </div>
 </section>
 
@@ -45,34 +58,40 @@ I managed the platform’s full lifecycle—from architecture and data integrati
 ## Key Features
 
 <section className="grid grid-cols-1 md:grid-cols-3 gap-4">
-  <div className="rounded-xl border border-slate-200 dark:border-slate-800 p-5 bg-white/50 dark:bg-slate-900/50">
+  <div className="rounded-xl border border-border p-5 bg-muted">
     <div className="font-semibold mb-1">🛳 Live Cruise Data</div>
-    <p className="text-slate-600 dark:text-slate-300">Real-time itineraries, pricing, and availability from the Widgety API.</p>
+    <p className="text-muted-foreground">
+      Real-time itineraries, pricing, and availability from the Widgety API.
+    </p>
   </div>
-  <div className="rounded-xl border border-slate-200 dark:border-slate-800 p-5 bg-white/50 dark:bg-slate-900/50">
+  <div className="rounded-xl border border-border p-5 bg-muted">
     <div className="font-semibold mb-1">📍 Destination Search</div>
-    <p className="text-slate-600 dark:text-slate-300">Filter cruises by location, cruise line, date, or departure port.</p>
+    <p className="text-muted-foreground">
+      Filter cruises by location, cruise line, date, or departure port.
+    </p>
   </div>
-  <div className="rounded-xl border border-slate-200 dark:border-slate-800 p-5 bg-white/50 dark:bg-slate-900/50">
+  <div className="rounded-xl border border-border p-5 bg-muted">
     <div className="font-semibold mb-1">⭐ Saved Cruises</div>
-    <p className="text-slate-600 dark:text-slate-300">Bookmark favorite cruises securely in your Supabase account.</p>
+    <p className="text-muted-foreground">
+      Bookmark favorite cruises securely in your Supabase account.
+    </p>
   </div>
 </section>
 
 ## Architecture
 
 <section className="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
-  <div className="rounded-xl border border-slate-200 dark:border-slate-800 p-5">
+  <div className="rounded-xl border border-border p-5 bg-card">
     <div className="font-semibold mb-2">Frontend</div>
-    <ul className="list-disc pl-5 space-y-1 text-slate-700 dark:text-slate-300">
+    <ul className="list-disc pl-5 space-y-1 text-muted-foreground">
       <li>Next.js with Incremental Static Regeneration for performance</li>
       <li>Tailwind CSS for responsive, accessible design</li>
       <li>Dynamic UI for itinerary and booking flows</li>
     </ul>
   </div>
-  <div className="rounded-xl border border-slate-200 dark:border-slate-800 p-5">
+  <div className="rounded-xl border border-border p-5 bg-card">
     <div className="font-semibold mb-2">Backend</div>
-    <ul className="list-disc pl-5 space-y-1 text-slate-700 dark:text-slate-300">
+    <ul className="list-disc pl-5 space-y-1 text-muted-foreground">
       <li>Supabase PostgreSQL for cruise, user, and booking data</li>
       <li>Supabase Auth for secure sign-up/login</li>
       <li>Widgety API for live cruise itineraries, ship details, and media</li>
@@ -93,10 +112,10 @@ Cruisly offers travelers a reliable, modern platform to find and book cruises wi
 ## Tech & Tools
 
 <div className="flex flex-wrap gap-2">
-  <span className="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-sm">Next.js</span>
-  <span className="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-sm">Supabase</span>
-  <span className="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-sm">Widgety API</span>
-  <span className="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-sm">PostgreSQL</span>
-  <span className="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-sm">Tailwind CSS</span>
-  <span className="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-sm">Vercel</span>
+  <span className="px-3 py-1 rounded-full bg-muted text-sm">Next.js</span>
+  <span className="px-3 py-1 rounded-full bg-muted text-sm">Supabase</span>
+  <span className="px-3 py-1 rounded-full bg-muted text-sm">Widgety API</span>
+  <span className="px-3 py-1 rounded-full bg-muted text-sm">PostgreSQL</span>
+  <span className="px-3 py-1 rounded-full bg-muted text-sm">Tailwind CSS</span>
+  <span className="px-3 py-1 rounded-full bg-muted text-sm">Vercel</span>
 </div>

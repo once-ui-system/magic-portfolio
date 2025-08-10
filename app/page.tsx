@@ -14,9 +14,10 @@ import {
   Schema,
 } from "@once-ui-system/core";
 import { home, about, person, emailForm, baseURL, routes } from "@/resources";
-import { Mailchimp } from "@/components";
+import { Mailchimp } from "@/components/Mailchimp";
 import { Projects } from "@/components/work/Projects";
 import { Posts } from "@/components/blog/Posts";
+import WallOfLoveSection from "@/components/testimonials";
 
 export default function Home() {
   return (
@@ -128,6 +129,7 @@ export default function Home() {
         </Flex>
       )}
       <Projects range={[2]} />
+      <WallOfLoveSection />
       {emailForm.display && <Mailchimp emailForm={emailForm} />}
     </Column>
   );

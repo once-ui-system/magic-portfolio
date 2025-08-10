@@ -6,25 +6,25 @@ tag: "Full-Stack Project"
 ---
 
 {/* Hero */}
-<section className="relative overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-800 bg-gradient-to-b from-slate-50 to-white dark:from-slate-900 dark:to-slate-950 p-6 md:p-10 mb-10">
+<section className="relative overflow-hidden rounded-2xl border border-border bg-card p-6 md:p-10 mb-10">
   <div className="text-2xl md:text-4xl font-semibold tracking-tight mb-3">Rate My Cheer Gym</div>
-  <p className="text-slate-600 dark:text-slate-300 max-w-2xl">
+  <p className="text-muted-foreground max-w-2xl">
     A nationwide review platform for cheer gyms—helping athletes and parents make informed decisions with honest ratings and local search.
   </p>
 </section>
 
 {/* Quick Stats */}
 <section className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-10">
-  <div className="rounded-xl border border-slate-200 dark:border-slate-800 p-4">
-    <div className="text-xs font-bold uppercase text-slate-500 mb-1">My Role</div>
+  <div className="rounded-xl border border-border p-4 bg-card">
+    <div className="text-xs font-bold uppercase text-muted-foreground mb-1">My Role</div>
     <div className="font-medium">Full-Stack Web Developer</div>
   </div>
-  <div className="rounded-xl border border-slate-200 dark:border-slate-800 p-4">
-    <div className="text-xs font-bold uppercase text-slate-500 mb-1">Scope</div>
+  <div className="rounded-xl border border-border p-4 bg-card">
+    <div className="text-xs font-bold uppercase text-muted-foreground mb-1">Scope</div>
     <div className="font-medium">End-to-end build & deploy</div>
   </div>
-  <div className="rounded-xl border border-slate-200 dark:border-slate-800 p-4">
-    <div className="text-xs font-bold uppercase text-slate-500 mb-1">Stack</div>
+  <div className="rounded-xl border border-border p-4 bg-card">
+    <div className="text-xs font-bold uppercase text-muted-foreground mb-1">Stack</div>
     <div className="font-medium">Next.js, Supabase, Tailwind CSS, Cloudflare</div>
   </div>
 </section>
@@ -46,34 +46,40 @@ I handled the full lifecycle from architecture to deployment.
 ## Key Features
 
 <section className="grid grid-cols-1 md:grid-cols-3 gap-4">
-  <div className="rounded-xl border border-slate-200 dark:border-slate-800 p-5 bg-white/50 dark:bg-slate-900/50">
+  <div className="rounded-xl border border-border p-5 bg-muted">
     <div className="font-semibold mb-1">📍 Cheer Gym Directory</div>
-    <p className="text-slate-600 dark:text-slate-300">Profiles with location, photos, contact info, and specialties.</p>
+    <p className="text-muted-foreground">
+      Profiles with location, photos, contact info, and specialties.
+    </p>
   </div>
-  <div className="rounded-xl border border-slate-200 dark:border-slate-800 p-5 bg-white/50 dark:bg-slate-900/50">
+  <div className="rounded-xl border border-border p-5 bg-muted">
     <div className="font-semibold mb-1">⭐ Ratings & Reviews</div>
-    <p className="text-slate-600 dark:text-slate-300">User-generated reviews with spam prevention and rating validation.</p>
+    <p className="text-muted-foreground">
+      User-generated reviews with spam prevention and rating validation.
+    </p>
   </div>
-  <div className="rounded-xl border border-slate-200 dark:border-slate-800 p-5 bg-white/50 dark:bg-slate-900/50">
+  <div className="rounded-xl border border-border p-5 bg-muted">
     <div className="font-semibold mb-1">🔍 Search & Filtering</div>
-    <p className="text-slate-600 dark:text-slate-300">Find gyms by state, rating, or specialty using location-based search.</p>
+    <p className="text-muted-foreground">
+      Find gyms by state, rating, or specialty using location-based search.
+    </p>
   </div>
 </section>
 
 ## Architecture
 
 <section className="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
-  <div className="rounded-xl border border-slate-200 dark:border-slate-800 p-5">
+  <div className="rounded-xl border border-border p-5 bg-card">
     <div className="font-semibold mb-2">Frontend</div>
-    <ul className="list-disc pl-5 space-y-1 text-slate-700 dark:text-slate-300">
+    <ul className="list-disc pl-5 space-y-1 text-muted-foreground">
       <li>Next.js with server-side rendering for SEO</li>
       <li>Tailwind CSS for responsive layouts and accessibility</li>
       <li>Interactive search and filtering components</li>
     </ul>
   </div>
-  <div className="rounded-xl border border-slate-200 dark:border-slate-800 p-5">
+  <div className="rounded-xl border border-border p-5 bg-card">
     <div className="font-semibold mb-2">Backend</div>
-    <ul className="list-disc pl-5 space-y-1 text-slate-700 dark:text-slate-300">
+    <ul className="list-disc pl-5 space-y-1 text-muted-foreground">
       <li>Supabase PostgreSQL for structured gym, review, and user data</li>
       <li>Supabase Auth for secure sign-up/login with email or social providers</li>
       <li>API endpoints for gym listings, reviews, and search</li>
@@ -94,11 +100,11 @@ The platform is live, helping athletes, parents, and coaches find the right chee
 ## Tech & Tools
 
 <div className="flex flex-wrap gap-2">
-  <span className="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-sm">Next.js</span>
-  <span className="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-sm">Supabase</span>
-  <span className="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-sm">PostgreSQL</span>
-  <span className="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-sm">Tailwind CSS</span>
-  <span className="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-sm">Cloudflare</span>
+  <span className="px-3 py-1 rounded-full bg-muted text-sm">Next.js</span>
+  <span className="px-3 py-1 rounded-full bg-muted text-sm">Supabase</span>
+  <span className="px-3 py-1 rounded-full bg-muted text-sm">PostgreSQL</span>
+  <span className="px-3 py-1 rounded-full bg-muted text-sm">Tailwind CSS</span>
+  <span className="px-3 py-1 rounded-full bg-muted text-sm">Cloudflare</span>
 </div>
 
 ## Links
