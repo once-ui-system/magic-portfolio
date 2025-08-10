@@ -1,0 +1,163 @@
+---
+title: "GayUnity – A Modern Gay Dating Platform"
+summary: "A secure, inclusive, and scalable dating platform for the LGBTQ+ community with real-time chat, subscriptions, and a sleek, responsive UI."
+publishedAt: "2025-06-12"
+tag: "Full-Stack Project"
+---
+
+{/* Hero */}
+
+<section className="relative overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-800 bg-gradient-to-b from-slate-50 to-white dark:from-slate-900 dark:to-slate-950 p-6 md:p-10 mb-10">
+  <h1 className="text-2xl md:text-4xl font-semibold tracking-tight mb-3">
+    GayUnity
+  </h1>
+  <p className="text-slate-600 dark:text-slate-300 max-w-2xl">
+    A modern, real-time dating platform built for safety, inclusivity, and
+    connection—powered by React (Vite), Node.js, Stripe, and PostgreSQL.
+  </p>
+</section>
+
+{/* Quick Stats */}
+
+<section className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-10">
+  <div className="rounded-xl border border-slate-200 dark:border-slate-800 p-4">
+    <h1 className="text-xs font-bold uppercase text-slate-500 mb-1">My Role</h1>
+    <div className="font-medium">Full-Stack Web Developer</div>
+  </div>
+  <div className="rounded-xl border border-slate-200 dark:border-slate-800 p-4">
+    <h1 className="text-xs font-bold uppercase text-slate-500 mb-1">Scope</h1>
+    <div className="font-medium">End-to-end build & deploy</div>
+  </div>
+  <div className="rounded-xl border border-slate-200 dark:border-slate-800 p-4">
+    <h1 className="text-xs font-bold uppercase text-slate-500 mb-1">Stack</h1>
+    <div className="font-medium">
+      React (Vite), Node.js, Express, PostgreSQL, Stripe, Socket.io
+    </div>
+  </div>
+</section>
+
+## Project Overview
+
+**GayUnity** provides a safe, inclusive, and user-friendly platform for the LGBTQ+ community to connect. It features real-time messaging, premium membership options, secure authentication, and customizable user profiles—all built for performance and scalability.
+
+## My Role
+
+I led the entire development lifecycle:
+
+- **Frontend:** React (Vite) for speed and modularity.
+- **Backend:** Node.js with Express for scalable APIs.
+- **Real-time:** Socket.io for instant chat and notifications.
+- **Payments:** Stripe integration for subscription-based premium features.
+- **Database:** PostgreSQL for secure, relational data storage.
+- **Deployment:** Configured for high availability and SSL-secured connections.
+
+## Key Features
+
+<section className="grid grid-cols-1 md:grid-cols-3 gap-4">
+  <div className="rounded-xl border border-slate-200 dark:border-slate-800 p-5 bg-white/50 dark:bg-slate-900/50">
+    <div className="font-semibold mb-1">💬 Real-Time Messaging</div>
+    <p className="text-slate-600 dark:text-slate-300">
+      Secure instant chat built with Socket.io for a live connection experience.
+    </p>
+  </div>
+  <div className="rounded-xl border border-slate-200 dark:border-slate-800 p-5 bg-white/50 dark:bg-slate-900/50">
+    <div className="font-semibold mb-1">🔒 Authentication & Privacy</div>
+    <p className="text-slate-600 dark:text-slate-300">
+      Robust account verification, content moderation, and spam prevention.
+    </p>
+  </div>
+  <div className="rounded-xl border border-slate-200 dark:border-slate-800 p-5 bg-white/50 dark:bg-slate-900/50">
+    <div className="font-semibold mb-1">💳 Premium Memberships</div>
+    <p className="text-slate-600 dark:text-slate-300">
+      Stripe-powered subscription billing with role-based feature access.
+    </p>
+  </div>
+</section>
+
+## Architecture
+
+<section className="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
+  <div className="rounded-xl border border-slate-200 dark:border-slate-800 p-5">
+    <div className="font-semibold mb-2">Frontend</div>
+    <ul className="list-disc pl-5 space-y-1 text-slate-700 dark:text-slate-300">
+      <li>React (Vite) with modular components</li>
+      <li>Responsive UI optimized for mobile and desktop</li>
+      <li>State management for real-time updates</li>
+    </ul>
+  </div>
+  <div className="rounded-xl border border-slate-200 dark:border-slate-800 p-5">
+    <div className="font-semibold mb-2">Backend</div>
+    <ul className="list-disc pl-5 space-y-1 text-slate-700 dark:text-slate-300">
+      <li>Node.js + Express REST API</li>
+      <li>Socket.io WebSocket server for chat</li>
+      <li>PostgreSQL for relational data</li>
+      <li>Stripe integration for subscriptions</li>
+    </ul>
+  </div>
+</section>
+
+## Example
+
+Here’s a simplified look at how I implemented **Socket.io** for live messaging:
+
+<CodeBlock
+    highlight="3"
+    codes={[
+  {
+    code:
+`// server.js
+import { Server } from 'socket.io';
+const io = new Server(server, { cors: { origin: '*' } });
+
+io.on('connection', (socket) => {
+console.log('User connected:', socket.id);
+
+socket.on('send_message', (data) => {
+io.to(data.room).emit('receive_message', data);
+});
+
+socket.on('join_room', (room) => {
+socket.join(room);
+});
+});`,
+language: "javascript",
+label: "backend/server.js"
+}
+]} />
+
+## What I Optimised
+
+- Optimized WebSocket connections to handle high concurrent users.
+- Integrated role-based access so Stripe subscription status updated features in real-time.
+- Added spam-prevention tools for user safety.
+
+## Outcome
+
+GayUnity is live and providing a **modern, real-time dating experience** for the LGBTQ+ community, combining inclusive design with technical robustness.
+
+## Tech & Tools
+
+<div className="flex flex-wrap gap-2">
+  <span className="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-sm">
+    React (Vite)
+  </span>
+  <span className="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-sm">
+    Node.js
+  </span>
+  <span className="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-sm">
+    Express
+  </span>
+  <span className="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-sm">
+    PostgreSQL
+  </span>
+  <span className="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-sm">
+    Socket.io
+  </span>
+  <span className="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-sm">
+    Stripe
+  </span>
+</div>
+
+## Links
+
+- **Live Demo:** <a href="https://gayunity.me/">https://gayunity.me</a>

@@ -1,5 +1,6 @@
 import { Column, Grid } from "@once-ui-system/core";
 import Post from "@/components/blog/Post";
+import GitHubCalendar from "react-github-calendar";
 
 interface ProjectsProps {
   columns?: "1" | "2" | "3";
@@ -28,7 +29,29 @@ export default async function ProjectPage({
 
   return (
     <Column maxWidth="m">
-      <h2>Latest GitHub Projects</h2>
+      <h1
+        style={{
+          paddingBottom: "2rem",
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
+        GitHub Activity Calendar
+      </h1>
+      <div
+        style={{
+          paddingBottom: "5rem",
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
+        <GitHubCalendar
+          username="Awii21"
+          blockSize={13}
+          blockMargin={5}
+          fontSize={18}
+        />
+      </div>
       <Grid
         columns={columns}
         mobileColumns="1"

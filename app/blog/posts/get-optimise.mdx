@@ -1,0 +1,147 @@
+---
+title: "Get Optimise – AI-Powered SaaS Platform"
+summary: "An AI-driven SaaS application for workflow optimization and decision support—built with Next.js (TypeScript), Better Auth, Stripe, and a MySQL + Drizzle ORM backend."
+image: "/images/projects/get-optimise-cover.png"
+publishedAt: "2025-08-10"
+tag: "Full-Stack Project"
+---
+
+{/* Hero */}
+
+<section className="relative overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-800 bg-gradient-to-b from-slate-50 to-white dark:from-slate-900 dark:to-slate-950 p-6 md:p-10 mb-10">
+  <div className="text-2xl md:text-4xl font-semibold tracking-tight mb-3">
+    Get Optimise
+  </div>
+  <p className="text-slate-600 dark:text-slate-300 max-w-2xl">
+    An AI-powered SaaS platform that streamlines business workflows, surfaces
+    insights, and automates routine tasks.
+  </p>
+</section>
+
+{/* Quick Stats */}
+
+<section className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-10">
+  <div className="rounded-xl border border-slate-200 dark:border-slate-800 p-4">
+    <div className="text-xs font-bold uppercase text-slate-500 mb-1">
+      My Role
+    </div>
+    <div className="font-medium">Full-Stack Developer</div>
+  </div>
+  <div className="rounded-xl border border-slate-200 dark:border-slate-800 p-4">
+    <div className="text-xs font-bold uppercase text-slate-500 mb-1">Scope</div>
+    <div className="font-medium">End-to-end build & deploy</div>
+  </div>
+  <div className="rounded-xl border border-slate-200 dark:border-slate-800 p-4">
+    <div className="text-xs font-bold uppercase text-slate-500 mb-1">Stack</div>
+    <div className="font-medium">
+      Next.js (TS), Better Auth, Stripe, MySQL + Drizzle, Python (Flask/FastAPI)
+    </div>
+  </div>
+</section>
+
+## Project Overview
+
+**Get Optimise** is an AI-powered SaaS application designed for teams to automate workflows, make data-driven decisions, and manage subscriptions seamlessly. The frontend is built with **Next.js (TypeScript)**, the backend uses **MySQL** with **Drizzle ORM** for type-safe access, and AI features are powered by **Python** services (Flask/FastAPI). **Stripe** handles secure subscription billing.
+
+## My Role
+
+I owned architecture, implementation, and deployment:
+
+- <span className="font-semibold">Frontend:</span> Next.js (App Router) with TypeScript
+  and reusable UI patterns.
+- <span className="font-semibold">Backend:</span> MySQL + Drizzle ORM for schemas,
+  migrations, and queries.
+- <span className="font-semibold">AI Services:</span> Python microservices for inference,
+  recommendations, and content generation.
+- <span className="font-semibold">Auth & Payments:</span> Better Auth for RBAC +
+  sessions; Stripe for subscriptions and invoices.
+- <span className="font-semibold">Infra:</span> Containerized services with secure
+  environment configuration and CI/CD.
+
+## Key Features
+
+<section className="grid grid-cols-1 md:grid-cols-3 gap-4">
+  <div className="rounded-xl border border-slate-200 dark:border-slate-800 p-5 bg-white/50 dark:bg-slate-900/50">
+    <div className="font-semibold mb-1">🤖 AI Automations</div>
+    <p className="text-slate-600 dark:text-slate-300">
+      Python ML pipelines generate insights, recommendations, and smart
+      summaries from business data.
+    </p>
+  </div>
+  <div className="rounded-xl border border-slate-200 dark:border-slate-800 p-5 bg-white/50 dark:bg-slate-900/50">
+    <div className="font-semibold mb-1">🧱 Typed CRUD Modules</div>
+    <p className="text-slate-600 dark:text-slate-300">
+      End-to-end Create/Read/Update/Delete flows with TypeScript safety and Zod
+      validation.
+    </p>
+  </div>
+  <div className="rounded-xl border border-slate-200 dark:border-slate-800 p-5 bg-white/50 dark:bg-slate-900/50">
+    <div className="font-semibold mb-1">💳 Subscriptions</div>
+    <p className="text-slate-600 dark:text-slate-300">
+      Stripe billing, trials, proration, and webhooks synced to user roles via
+      Better Auth.
+    </p>
+  </div>
+</section>
+
+## Architecture
+
+<section className="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
+  <div className="rounded-xl border border-slate-200 dark:border-slate-800 p-5">
+    <div className="font-semibold mb-2">Frontend</div>
+    <ul className="list-disc pl-5 space-y-1 text-slate-700 dark:text-slate-300">
+      <li>Next.js App Router with Server Actions for secure data workflows</li>
+      <li>TypeScript-first components and form validation (Zod)</li>
+      <li>Optimistic UI and streaming for perceived performance</li>
+    </ul>
+  </div>
+  <div className="rounded-xl border border-slate-200 dark:border-slate-800 p-5">
+    <div className="font-semibold mb-2">Backend</div>
+    <ul className="list-disc pl-5 space-y-1 text-slate-700 dark:text-slate-300">
+      <li>MySQL with Drizzle ORM for schemas, relations, and migrations</li>
+      <li>Better Auth for RBAC, sessions, and OAuth2 providers</li>
+      <li>Stripe webhooks to sync subscription status → feature access</li>
+      <li>
+        Python (Flask/FastAPI) microservices for AI inference & batch jobs
+      </li>
+    </ul>
+  </div>
+</section>
+
+## What I Optimised
+
+- Hardened security with role-based access, input validation, and least-privilege API design.
+- Reduced runtime errors via end-to-end type safety (TypeScript + Drizzle).
+- Stabilized billing flows by reconciling Stripe events with auth roles in real time.
+- Improved responsiveness using streaming UI and queue-backed AI jobs.
+
+## Outcome
+
+A robust, scalable **AI SaaS** foundation: teams automate repetitive work, get actionable insights, and manage subscriptions without friction. The typed stack and clear service boundaries enable **fast releases** and **confident iteration**.
+
+## Tech & Tools
+
+<div className="flex flex-wrap gap-2">
+  <span className="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-sm">
+    Next.js (TypeScript)
+  </span>
+  <span className="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-sm">
+    MySQL
+  </span>
+  <span className="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-sm">
+    Drizzle ORM
+  </span>
+  <span className="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-sm">
+    Better Auth
+  </span>
+  <span className="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-sm">
+    Stripe
+  </span>
+  <span className="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-sm">
+    Python (Flask/FastAPI)
+  </span>
+</div>
+
+## Links
+
+- **Live Demo:** <a href="https://get-optimise.com">https://get-optimise.com</a>

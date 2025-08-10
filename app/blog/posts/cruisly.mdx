@@ -1,0 +1,102 @@
+---
+title: "Cruisly – A Cruise Booking Platform"
+summary: "A modern cruise booking platform with real-time itineraries, ship details, and secure booking powered by Next.js, Supabase, and the Widgety API."
+publishedAt: "2024-04-01"
+tag: "Full-Stack Project"
+---
+
+{/* Hero */}
+<section className="relative overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-800 bg-gradient-to-b from-slate-50 to-white dark:from-slate-900 dark:to-slate-950 p-6 md:p-10 mb-10">
+  <div className="text-2xl md:text-4xl font-semibold tracking-tight mb-3">Cruisly</div>
+  <p className="text-slate-600 dark:text-slate-300 max-w-2xl">
+    A next-generation cruise booking experience—offering live itineraries, ship profiles, and secure bookings in one place.
+  </p>
+</section>
+
+{/* Quick Stats */}
+<section className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-10">
+  <div className="rounded-xl border border-slate-200 dark:border-slate-800 p-4">
+    <div className="text-xs font-bold uppercase text-slate-500 mb-1">My Role</div>
+    <div className="font-medium">Full-Stack Web Developer</div>
+  </div>
+  <div className="rounded-xl border border-slate-200 dark:border-slate-800 p-4">
+    <div className="text-xs font-bold uppercase text-slate-500 mb-1">Scope</div>
+    <div className="font-medium">End-to-end build & deploy</div>
+  </div>
+  <div className="rounded-xl border border-slate-200 dark:border-slate-800 p-4">
+    <div className="text-xs font-bold uppercase text-slate-500 mb-1">Stack</div>
+    <div className="font-medium">Next.js, Supabase, Widgety API, Tailwind CSS, Vercel</div>
+  </div>
+</section>
+
+## Project Overview
+
+**Cruisly** is a platform designed to simplify cruise discovery and booking. By integrating the **Widgety API**, it delivers real-time itineraries, ship profiles, pricing, and destination details, while **Supabase** powers authentication, database management, and saved favorites.
+
+## My Role
+
+I managed the platform’s full lifecycle—from architecture and data integration to deployment and performance optimization.
+
+- **Frontend:** Next.js with ISR for SEO-friendly, real-time cruise listings.
+- **Backend:** Supabase for PostgreSQL data storage, authentication, and saved cruise management.
+- **Integration:** Widgety API for live cruise itineraries, ship data, and media.
+- **Deployment:** Hosted on Vercel with global CDN for fast worldwide access.
+
+## Key Features
+
+<section className="grid grid-cols-1 md:grid-cols-3 gap-4">
+  <div className="rounded-xl border border-slate-200 dark:border-slate-800 p-5 bg-white/50 dark:bg-slate-900/50">
+    <div className="font-semibold mb-1">🛳 Live Cruise Data</div>
+    <p className="text-slate-600 dark:text-slate-300">Real-time itineraries, pricing, and availability from the Widgety API.</p>
+  </div>
+  <div className="rounded-xl border border-slate-200 dark:border-slate-800 p-5 bg-white/50 dark:bg-slate-900/50">
+    <div className="font-semibold mb-1">📍 Destination Search</div>
+    <p className="text-slate-600 dark:text-slate-300">Filter cruises by location, cruise line, date, or departure port.</p>
+  </div>
+  <div className="rounded-xl border border-slate-200 dark:border-slate-800 p-5 bg-white/50 dark:bg-slate-900/50">
+    <div className="font-semibold mb-1">⭐ Saved Cruises</div>
+    <p className="text-slate-600 dark:text-slate-300">Bookmark favorite cruises securely in your Supabase account.</p>
+  </div>
+</section>
+
+## Architecture
+
+<section className="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
+  <div className="rounded-xl border border-slate-200 dark:border-slate-800 p-5">
+    <div className="font-semibold mb-2">Frontend</div>
+    <ul className="list-disc pl-5 space-y-1 text-slate-700 dark:text-slate-300">
+      <li>Next.js with Incremental Static Regeneration for performance</li>
+      <li>Tailwind CSS for responsive, accessible design</li>
+      <li>Dynamic UI for itinerary and booking flows</li>
+    </ul>
+  </div>
+  <div className="rounded-xl border border-slate-200 dark:border-slate-800 p-5">
+    <div className="font-semibold mb-2">Backend</div>
+    <ul className="list-disc pl-5 space-y-1 text-slate-700 dark:text-slate-300">
+      <li>Supabase PostgreSQL for cruise, user, and booking data</li>
+      <li>Supabase Auth for secure sign-up/login</li>
+      <li>Widgety API for live cruise itineraries, ship details, and media</li>
+    </ul>
+  </div>
+</section>
+
+## What I Optimised
+
+- Reduced API load times with ISR caching and Supabase persistence.
+- Minimized redundant Widgety API calls via cached responses.
+- Streamlined booking and saving workflows with Supabase Auth integration.
+
+## Outcome
+
+Cruisly offers travelers a reliable, modern platform to find and book cruises with confidence—delivering real-time data, secure accounts, and a smooth booking experience.
+
+## Tech & Tools
+
+<div className="flex flex-wrap gap-2">
+  <span className="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-sm">Next.js</span>
+  <span className="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-sm">Supabase</span>
+  <span className="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-sm">Widgety API</span>
+  <span className="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-sm">PostgreSQL</span>
+  <span className="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-sm">Tailwind CSS</span>
+  <span className="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-sm">Vercel</span>
+</div>
