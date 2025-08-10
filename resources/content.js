@@ -31,11 +31,11 @@ const emailForm = {
 };
 
 const social = [
-  { name: "GitHub", icon: "github", link: "https://github.com/awaisssoomro" },
+  { name: "GitHub", icon: "github", link: "https://github.com/Awii21" },
   {
     name: "LinkedIn",
     icon: "linkedin",
-    link: "https://linkedin.com/in/awaisssoomro",
+    link: "https://linkedin.com/in/awais-8458111b3",
   },
   {
     name: "Threads",
