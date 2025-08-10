@@ -1,55 +1,110 @@
 ---
-title: "Enable or disable pages for your portfolio"
-summary: "Magic Portfolio's RouteGuard component takes care of conditionally rendering pages based on your settings."
-publishedAt: "2025-04-22"
-tag: "Magic Portfolio"
+title: "Get Optimise – Web Performance Insights Platform"
+summary: "A full-stack app to analyse and improve website speed, SEO, and UX with clear, actionable insights."
+publishedAt: "2024-09-15"
+tag: "Full-Stack Project"
 ---
 
-## Enable or disable pages
+{/* Hero */}
+<section className="relative overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-800 bg-gradient-to-b from-slate-50 to-white dark:from-slate-900 dark:to-slate-950 p-6 md:p-10 mb-10">
+  <h1 className="text-2xl md:text-4xl font-semibold tracking-tight mb-3">Get Optimise</h1>
+  <p className="text-slate-600 dark:text-slate-300 max-w-2xl">
+    A data-driven platform for auditing loading speed, SEO, and performance—built for clarity and quick wins.
+  </p>
+</section>
 
-Magic Portfolio's `RouteGuard` component takes care of conditionally rendering pages based on the `routes` object in the `resources/config.js` file.
+{/* Quick Stats */}
+<section className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-10">
+  <div className="rounded-xl border border-slate-200 dark:border-slate-800 p-4">
+    <h1 className="text-xs font-bold uppercase text-slate-500 mb-1">My Role</h1>
+    <div className="font-medium">Full-Stack Developer</div>
+  </div>
+  <div className="rounded-xl border border-slate-200 dark:border-slate-800 p-4">
+    <h1 className="text-xs font-bold uppercase text-slate-500 mb-1">Scope</h1>
+    <div className="font-medium">End-to-end build & deploy</div>
+  </div>
+  <div className="rounded-xl border border-slate-200 dark:border-slate-800 p-4">
+    <h1 className="text-xs font-bold uppercase text-slate-500 mb-1">Stack</h1>
+    <div className="font-medium">Next.js, Python Flask FastAPI, MySQL Drizzle Better Auth</div>
+  </div>
+</section>
 
-<CodeBlock
-    marginBottom="16"
-    highlight="6"
-    codes={[
-  {
-    code:
-`const routes = {
-    '/':        true,
-    '/about':   true,
-    '/work':    true,
-    '/blog':    true,
-    '/gallery': false,
-};`,
-    language: "tsx",
-    label: "src/app/resources/config.js"
-  }
-]} />
+## Project Overview
 
-The code above will ensure that the `/gallery` page is not accessible and is not displayed in the navigation.
+**Get Optimise** helps teams measure what matters and act fast. Users run audits, compare baselines, and follow targeted recommendations to lift real-world performance and SEO.
 
-## Add new pages
+## My Role
 
-When creating a new page, it needs to be added to the `routes` object in the `resources/config.js` file.
+I owned the full lifecycle—architecture, development, deployment, and polish.
 
-<CodeBlock
-    marginBottom="16"
-    highlight="6"
-    codes={[
-  {
-    code:
-`const routes = {
-    '/':        true,
-    '/about':   true,
-    '/work':    true,
-    '/blog':    true,
-    '/gallery': false,
-    '/music': true,
-};`,
-    language: "tsx",
-    label: "src/app/resources/config.js"
-  }
-]} />
+- **Frontend:** Next.js with dynamic data views and chart components.
+- **Backend:** Node.js + Express, PostgreSQL for durable storage.
+- **Infra:** VPS deploy via **Coolify** with **Nginx** reverse proxy, Dockerized services.
+- **Collaboration:** Translated product goals into UI flows, and iterated quickly on feedback.
 
-The code above will ensure that the `/music` page is accessible. Users will be able to navigate to it after adding it to the navigation menu in the `components/Header.tsx` file.
+## Key Features
+
+<section className="grid grid-cols-1 md:grid-cols-3 gap-4">
+  <div className="rounded-xl border border-slate-200 dark:border-slate-800 p-5 bg-white/50 dark:bg-slate-900/50">
+    <h3 className="font-semibold mb-1">⚡ Speed Audits</h3>
+    <p className="text-slate-600 dark:text-slate-300">Runs lighthouse-style checks to surface TBT, LCP, CLS and more—no noise, just signals.</p>
+  </div>
+  <div className="rounded-xl border border-slate-200 dark:border-slate-800 p-5 bg-white/50 dark:bg-slate-900/50">
+    <h3 className="font-semibold mb-1">📈 SEO Insights</h3>
+    <p className="text-slate-600 dark:text-slate-300">Actionable fixes for meta, accessibility, indexability, and content structure.</p>
+  </div>
+  <div className="rounded-xl border border-slate-200 dark:border-slate-800 p-5 bg-white/50 dark:bg-slate-900/50">
+    <h3 className="font-semibold mb-1">🧭 Bottleneck Finder</h3>
+    <p className="text-slate-600 dark:text-slate-300">Highlights slow requests, render-blocking assets, and layout shift culprits.</p>
+  </div>
+</section>
+
+
+## Architecture
+
+<section className="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
+  <div className="rounded-xl border border-slate-200 dark:border-slate-800 p-5">
+    <h4 className="font-semibold mb-2">Frontend</h4>
+    <ul className="list-disc pl-5 space-y-1 text-slate-700 dark:text-slate-300">
+      <li>Next.js app router with server actions for data workflows</li>
+      <li>Progressive rendering for perceived speed</li>
+      <li>Accessible components and keyboard-friendly interactions</li>
+    </ul>
+  </div>
+  <div className="rounded-xl border border-slate-200 dark:border-slate-800 p-5">
+    <h4 className="font-semibold mb-2">Backend</h4>
+    <ul className="list-disc pl-5 space-y-1 text-slate-700 dark:text-slate-300">
+      <li>Python Flask FastAPI for high-performance REST APIs</li>
+      <li>MySQL with Drizzle ORM for type-safe database operations</li>
+      <li>Better Auth for secure authentication and session management</li>
+      <li>Background jobs for audit runs and report generation</li>
+    </ul>
+  </div>
+</section>
+
+## What I Optimised
+
+- Reduced initial TTFB via Nginx caching and tuned upstream timeouts.
+- Cut bundle size with route-level code-splitting and image optimization.
+- Shortened audit runs using queued workers and concurrency caps.
+
+## Outcome
+
+Teams ship faster sites with fewer guesswork cycles. The tool turns “we think it’s slow” into a prioritized, trackable to-do list.
+
+## Tech & Tools
+
+<div className="flex flex-wrap gap-2">
+  <span className="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-sm">Next.js</span>
+  <span className="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-sm">TypeScript</span>
+  <span className="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-sm">Node.js</span>
+  <span className="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-sm">Express</span>
+  <span className="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-sm">PostgreSQL</span>
+  <span className="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-sm">Docker</span>
+  <span className="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-sm">Coolify</span>
+  <span className="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-sm">Nginx</span>
+</div>
+
+## Links
+
+- **Live Demo:** <a href="https://get-optimise.com">https://get-optimise.com</a>
