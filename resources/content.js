@@ -2,15 +2,24 @@ import { Logo } from "@once-ui-system/core";
 
 const person = {
   firstName: "Awais",
-  lastName: "",
+  lastName: "Soomro",
   get name() {
     return `${this.firstName} ${this.lastName}`;
   },
-  role: "Full Stack Web Developer",
+  role: "Remote Full-Stack Web Developer",
   avatar: "/images/avatar.jpg",
   email: "awaissmr@gmail.com",
-  location: "Asia/Karachi", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
-  languages: ["English", "Sindhi", "Urdu"], // optional: Leave the array empty if you don't want to display languages
+  location: "Asia/Karachi",
+  languages: ["English", "Sindhi", "Urdu"],
+  about: (
+    <>
+      I’m a remote full-stack web developer with over 5 years of experience
+      delivering high-quality, scalable, and secure web applications for
+      international clients. I specialize in building modern web platforms using
+      Next.js, React, and Node.js, with expertise in both frontend and backend
+      development, API integrations, and VPS deployments.
+    </>
+  ),
 };
 
 const newsletter = {
@@ -18,35 +27,26 @@ const newsletter = {
   title: <>Subscribe to {person.firstName}'s Newsletter</>,
   description: (
     <>
-      I occasionally write about design, technology, and share thoughts on the intersection of
-      creativity and engineering.
+      I occasionally share insights on full-stack development, Next.js,
+      Supabase, and lessons learned while building real-world projects from the
+      ground up.
     </>
   ),
 };
 
 const social = [
-  // Links are automatically displayed.
-  // Import new icons in /once-ui/icons.ts
-  {
-    name: "GitHub",
-    icon: "github",
-    link: "https://github.com/Awii21",
-  },
+  { name: "GitHub", icon: "github", link: "https://github.com/awaisssoomro" },
   {
     name: "LinkedIn",
     icon: "linkedin",
-    link: "https://www.linkedin.com/in/awais-8458111b3/",
+    link: "https://linkedin.com/in/awaisssoomro",
   },
   {
     name: "Threads",
     icon: "threads",
     link: "https://www.threads.com/@awais_soomro_",
   },
-  {
-    name: "Email",
-    icon: "email",
-    link: `mailto:${person.email}`,
-  },
+  { name: "Email", icon: "email", link: `mailto:${person.email}` },
 ];
 
 const home = {
@@ -55,16 +55,27 @@ const home = {
   label: "Home",
   title: `${person.name}'s Portfolio`,
   description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Building bridges between design and code</>,
+  headline: (
+    <>
+      Crafting high-quality web applications that merge functionality with great
+      user experience
+    </>
+  ),
   featured: {
     display: true,
-    title: <>Recent project: <strong className="ml-4">Get Optimise</strong></>,
-    href: "/work/building-once-ui-a-customizable-design-system",
+    title: (
+      <>
+        Recent project: <strong className="ml-4">Rate My Cheer Gym</strong>
+      </>
+    ),
+    href: "/work/rate-my-cheer-gym",
   },
   subline: (
     <>
-      I'm Awais, a design engineer at <Logo icon="/trademarks/wordmark-dark.svg" style={{ display: "inline-flex", top: "0.25em", marginLeft: "-0.25em" }}/>, where I craft intuitive
-      <br /> user experiences. After hours, I build my own projects.
+      I’m Awais, a full-stack developer with a focus on modern JavaScript
+      frameworks and scalable backend solutions.
+      <br /> I specialize in building products with Next.js, Supabase, and other
+      cutting-edge tools.
     </>
   ),
 };
@@ -73,120 +84,163 @@ const about = {
   path: "/about",
   label: "About",
   title: `About – ${person.name}`,
-  description: `Meet ${person.name}, ${person.role} from ${person.location}`,
-  tableOfContent: {
-    display: true,
-    subItems: false,
-  },
-  avatar: {
-    display: true,
-  },
-  calendar: {
-    display: true,
-    link: "https://cal.com",
-  },
+  description: `Meet ${person.name}, ${person.role} (${person.location})`,
+  tableOfContent: { display: true, subItems: false },
+  avatar: { display: true },
+  calendar: { display: true, link: "https://cal.com" },
   intro: {
     display: true,
     title: "Introduction",
-    description: (
-      <>
-        Selene is a Jakarta-based design engineer with a passion for transforming complex challenges
-        into simple, elegant design solutions. Her work spans digital interfaces, interactive
-        experiences, and the convergence of design and technology.
-      </>
-    ),
+    description: person.about,
   },
   work: {
-    display: true, // set to false to hide this section
-    title: "Work Experience",
+    display: true,
+    title: "Work Experience & Projects",
     experiences: [
       {
-        company: "FLY",
-        timeframe: "2022 - Present",
-        role: "Senior Design Engineer",
+        company: "Freelance — Upwork, Fiverr, Direct Contracts",
+        timeframe: "2019 – Present",
+        role: "Remote Full-Stack Web Developer",
         achievements: [
           <>
-            Redesigned the UI/UX for the FLY platform, resulting in a 20% increase in user
-            engagement and 30% faster load times.
+            Developed and delivered custom web applications for international
+            clients across industries including travel, sports, and e-commerce.
           </>,
           <>
-            Spearheaded the integration of AI tools into design workflows, enabling designers to
-            iterate 50% faster.
+            Built secure, scalable systems integrating both frontend and backend
+            using modern JavaScript frameworks and Python APIs.
+          </>,
+          <>
+            Managed end-to-end deployment processes for production environments
+            on VPS and dedicated servers.
+          </>,
+          <>
+            Collaborated with designers and stakeholders to transform UI/UX
+            wireframes into fully functional, responsive web platforms.
+          </>,
+          <>
+            Maintained long-term client relationships by delivering projects on
+            time, with ongoing maintenance and feature updates.
           </>,
         ],
-        images: [
-          // optional: leave the array empty if you don't want to display images
-          {
-            src: "/images/projects/project-01/cover-01.jpg",
-            alt: "Once UI Project",
-            width: 16,
-            height: 9,
-          },
-        ],
+        images: [],
       },
       {
-        company: "Creativ3",
-        timeframe: "2018 - 2022",
-        role: "Lead Designer",
+        company: "Get Optimise",
+        timeframe: "2024",
+        role: "Full Stack Developer",
         achievements: [
           <>
-            Developed a design system that unified the brand across multiple platforms, improving
-            design consistency by 40%.
+            Built a data-driven web app enabling users to analyze and optimize
+            website loading speeds, SEO metrics, and performance insights.
           </>,
           <>
-            Led a cross-functional team to launch a new product line, contributing to a 15% increase
-            in overall company revenue.
+            Developed frontend in <strong>Next.js</strong> with dynamic data
+            visualization components.
           </>,
+          <>
+            Backend implemented using <strong>Node.js</strong> and{" "}
+            <strong>Express</strong> with <strong>PostgreSQL</strong> for data
+            storage.
+          </>,
+          <>
+            Deployed on a VPS using <strong>Coolify</strong> with custom{" "}
+            <strong>Nginx</strong> configuration for optimal performance.
+          </>,
+        ],
+        images: [],
+      },
+      {
+        company: "Rate My Cheer Gym",
+        timeframe: "2024",
+        role: "Full Stack Developer",
+        achievements: [
+          <>
+            Created a responsive and user-friendly interface using{" "}
+            <strong>Next.js</strong>.
+          </>,
+          <>
+            Integrated <strong>Supabase</strong> for backend database and
+            authentication.
+          </>,
+          <>Implemented location-based search and filtering for gyms.</>,
+          <>Designed database schema for reviews, ratings, and gym details.</>,
+        ],
+        images: [],
+      },
+      {
+        company: "Cruisly",
+        timeframe: "2024",
+        role: "Full Stack Developer",
+        achievements: [
+          <>
+            Developed using <strong>Next.js</strong> and{" "}
+            <strong>Supabase</strong> for backend database management.
+          </>,
+          <>
+            Integrated the <strong>Widgety API</strong> to fetch real-time
+            cruise data, itineraries, ship details, and pricing.
+          </>,
+          <>
+            Implemented search, filtering, and booking flow with secure
+            authentication.
+          </>,
+          <>Deployed on a VPS using custom deployment pipelines.</>,
         ],
         images: [],
       },
     ],
   },
   studies: {
-    display: true, // set to false to hide this section
+    display: true,
     title: "Studies",
     institutions: [
       {
         name: "Comsats University Islamabad",
-        description: <>Studying computer science.</>,
-      }
+        description: <>Studying Computer Science.</>,
+      },
     ],
   },
   technical: {
-    display: true, // set to false to hide this section
-    title: "Technical skills",
+    display: true,
+    title: "Technical Skills",
     skills: [
       {
-        title: "Figma",
-        description: <>Able to prototype in Figma with Once UI with unnatural speed.</>,
-        // optional: leave the array empty if you don't want to display images
-        images: [
-          {
-            src: "/images/projects/project-01/cover-02.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-          {
-            src: "/images/projects/project-01/cover-03.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-        ],
+        title: "Frontend",
+        description: (
+          <>Next.js, React, Vite, TypeScript, Tailwind CSS, styled-components</>
+        ),
       },
       {
-        title: "Next.js",
-        description: <>Building next gen apps with Next.js + Once UI + Supabase.</>,
-        // optional: leave the array empty if you don't want to display images
-        images: [
-          {
-            src: "/images/projects/project-01/cover-04.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-        ],
+        title: "Backend",
+        description: <>Node.js, Express, Flask (Python), FastAPI (Python)</>,
+      },
+      {
+        title: "Databases",
+        description: <>PostgreSQL, MySQL, Supabase, Drizzle ORM</>,
+      },
+      {
+        title: "Authentication",
+        description: <>Supabase Auth, Better Auth, JWT, OAuth</>,
+      },
+      {
+        title: "DevOps & Deployment",
+        description: (
+          <>
+            Linux server management, application deployment on VPS and dedicated
+            servers using Coolify, custom deployment scripts, Nginx reverse
+            proxy setup, Docker containerization
+          </>
+        ),
+      },
+      {
+        title: "Other Tools",
+        description: (
+          <>
+            Figma, Git/GitHub, REST API integrations, third-party SDKs, API
+            documentation implementation, CI/CD workflows
+          </>
+        ),
       },
     ],
   },
@@ -195,19 +249,15 @@ const about = {
 const blog = {
   path: "/blog",
   label: "Blog",
-  title: "Writing about design and tech...",
-  description: `Read what ${person.name} has been up to recently`,
-  // Create new blog posts by adding a new .mdx file to app/blog/posts
-  // All posts will be listed on the /blog route
+  title: "Writing about development and tech...",
+  description: `Read what ${person.name} has been building and learning recently`,
 };
 
 const work = {
   path: "/work",
   label: "Work",
   title: `Projects – ${person.name}`,
-  description: `Design and dev projects by ${person.name}`,
-  // Create new project pages by adding a new .mdx file to app/blog/posts
-  // All projects will be listed on the /home and /work routes
+  description: `Full-stack projects by ${person.name}`,
 };
 
 const gallery = {
@@ -215,8 +265,6 @@ const gallery = {
   label: "Gallery",
   title: `Photo gallery – ${person.name}`,
   description: `A photo collection by ${person.name}`,
-  // Images by https://lorant.one
-  // These are placeholder images, replace with your own
   images: [
     {
       src: "/images/gallery/horizontal-1.jpg",

@@ -1,0 +1,48 @@
+---
+title: "Building Cruisly – A Cruise Booking Platform"
+publishedAt: "2024-04-01"
+summary: "Development of a cruise booking platform built with Next.js, Supabase for backend database and authentication, and powered by the Widgety API for real-time cruise data, itineraries, ship details, and booking capabilities."
+images:
+  - "/images/projects/project-01/cover-01.jpg"
+  - "/images/projects/project-01/cover-03.jpg"
+team:
+  - name: "Awais"
+    role: "Full Stack Web Developer"
+    avatar: "/images/avatar.jpg"
+    linkedIn: "https://www.linkedin.com/in/awais-8458111b3/"
+---
+
+## Overview
+
+**Cruisly** is a modern web application designed to make browsing, comparing, and booking cruises easier than ever. Built with **Next.js**, it integrates the **Widgety API** to deliver up-to-date cruise information, itineraries, ship details, images, and pricing, while **Supabase** powers the backend database and authentication system.  
+
+The platform allows users to search and filter cruise options, save their favorites, and manage bookings securely.
+
+## Key Features
+
+- **Live Cruise Data**: Fetches real-time cruise itineraries, pricing, and availability directly from the Widgety API.
+- **Ship Profiles**: Detailed ship information including images, deck plans, and onboard amenities.
+- **Destination Search**: Filter cruises by destination, departure port, cruise line, or date range.
+- **Itinerary Details**: View day-by-day itineraries, including port stops and excursion details.
+- **User Accounts & Authentication**: Implemented with **Supabase Auth** for secure sign-up, login, and profile management.
+- **Saved Cruises**: Users can bookmark cruises to revisit later, stored in **Supabase**.
+- **Media Integration**: High-quality images and videos of ships, destinations, and cabins.
+- **Responsive UI**: Optimized for both desktop and mobile for a seamless booking experience.
+
+## Technologies Used
+
+- **Next.js**: For building a fast, SEO-optimized, and scalable frontend application.
+- **Supabase**: For database management, authentication, and user data storage.
+- **Widgety API**: For retrieving live cruise itineraries, ship details, and associated media.
+- **Tailwind CSS**: For modern, responsive, and easily customizable UI components.
+- **Vercel**: For deployment, hosting, and global CDN distribution.
+
+## Challenges and Learnings
+
+The main challenge was **handling and caching large volumes of API data** from Widgety while ensuring fast load times. To solve this, incremental static regeneration (ISR) in Next.js was combined with **Supabase** storage for persistent data, reducing redundant API calls.  
+
+Integrating **Supabase Auth** into the booking and saving workflow required careful synchronization between Widgety API data and local user data to ensure a seamless experience.
+
+## Outcome
+
+Cruisly delivers a **streamlined cruise discovery and booking experience** with secure user accounts, saved favorites, and real-time cruise information. By combining **Next.js**, **Supabase**, and the **Widgety API**, the platform achieves high performance, reliability, and scalability for the travel booking industry.

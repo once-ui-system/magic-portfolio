@@ -4,6 +4,8 @@ import { Column, Flex, Heading, Media, SmartLink, Tag, Text } from "@once-ui-sys
 import styles from "./Posts.module.scss";
 import { formatDate } from "@/utils/formatDate";
 import { Star, GitFork, Code } from "lucide-react";
+import { languageIcons } from "@/utils/languageIcons";
+import Image from "next/image";
 
 interface PostProps {
   post: any;
@@ -12,7 +14,8 @@ interface PostProps {
 }
 
 export default function Post({ post, thumbnail, direction }: PostProps) {
-  const isRepo = post.metadata.stars !== undefined; // works even if 0 stars
+  const isRepo = post.metadata.stars !== undefined;
+  const langIcon = post.metadata.language ? languageIcons[post.metadata.language] : null;
 
   return (
     <SmartLink
@@ -55,24 +58,30 @@ export default function Post({ post, thumbnail, direction }: PostProps) {
             {formatDate(post.metadata.publishedAt, false)}
           </Text>
 
-          {/* Repo-specific details */}
           {isRepo && (
             <>
               <Flex gap="12" marginTop="8" wrap>
                 <Flex gap="4" vertical="center">
-                  <Star size={14} /> {post.metadata.stars}
+                  <Star size={18} /> {post.metadata.stars}
                 </Flex>
-                <Flex gap="4" vertical="center">
+                {/* <Flex gap="4" vertical="center">
                   <GitFork size={14} /> {post.metadata.forks}
-                </Flex>
-                {post.metadata.language && (
-                  <Flex gap="4" vertical="center">
-                    <Code size={14} /> {post.metadata.language}
-                  </Flex>
+                </Flex> */}
+                {langIcon ? (
+                  <Image
+                    src={langIcon}
+                    alt={post.metadata.language}
+                    width={24}
+                    height={24}
+                    style={{ objectFit: "contain" }}
+                  />
+                ) : (
+                  post.metadata.language && (
+                    <Text variant="label-default-s">{post.metadata.language}</Text>
+                  )
                 )}
               </Flex>
 
-              {/* Repo topics */}
               {post.metadata.topics?.length > 0 && (
                 <Flex gap="8" marginTop="8" wrap>
                   {post.metadata.topics.map((topic: string) => (
@@ -83,7 +92,6 @@ export default function Post({ post, thumbnail, direction }: PostProps) {
             </>
           )}
 
-          {/* Blog-specific tag */}
           {!isRepo && post.metadata.tag && (
             <Tag className="mt-12" label={post.metadata.tag} variant="neutral" />
           )}

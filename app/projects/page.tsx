@@ -12,7 +12,7 @@ export default async function ProjectPage({
   thumbnail = false,
   direction,
 }: ProjectsProps) {
-  const projects = await fetch("http://localhost:3000/api/repos", {
+  const projects = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/repos`, {
     cache: "no-store",
   });
 

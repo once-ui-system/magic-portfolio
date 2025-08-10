@@ -33,7 +33,30 @@ export async function GET() {
           }
         );
         const detailData = await detailResponse.json();
-        return { ...repo, topics: detailData.topics || [] };
+
+          // Language breakdown
+        const langsResponse = await fetch(
+          `https://api.github.com/repos/${repo.owner.login}/${repo.name}/languages`
+        );
+        const langsData = await langsResponse.json();
+
+        const totalBytes = Object.values(langsData).reduce(
+          (sum: number, val: any) => sum + (val as number),
+          0
+        );
+
+        const langsPercentages = Object.entries(langsData).map(
+          ([lang, bytes]: [string, any]) => ({
+            name: lang,
+            percentage: ((bytes / totalBytes) * 100).toFixed(1),
+          })
+        );
+
+         return {
+          ...repo,
+          topics: detailData.topics || [],
+          languages: langsPercentages,
+        };
       })
     );
 
