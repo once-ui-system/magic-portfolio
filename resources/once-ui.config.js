@@ -174,8 +174,8 @@ const mailchimp = {
 // default schema data
 const schema = {
   logo: "",
-  type: "Organization",
-  name: "Once UI",
+  type: "Person",
+  name: "Awais",
   description: home.description,
   email: "lorant@once-ui.com",
 };
