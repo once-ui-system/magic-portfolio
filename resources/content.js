@@ -208,6 +208,7 @@ const about = {
         description: (
           <>Next.js, React, Vite, TypeScript, Tailwind CSS, styled-components</>
         ),
+        images: [],
       },
       {
         title: "Backend",
