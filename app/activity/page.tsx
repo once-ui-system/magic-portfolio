@@ -1,85 +1,32 @@
-import { Column, Grid } from "@once-ui-system/core";
-import Post from "@/components/blog/Post";
-import GitHubCalendar from "react-github-calendar";
+// app/projects/page.tsx
+import { Suspense } from "react";
+import { Column } from "@once-ui-system/core";
+import GitHubCalendarSection from "@/components/GitHubCalendarSection";
+import Repositories from "@/components/Repositories";
+import ReposSkeleton from "@/components/ReposSkeleton";
+import ClientErrorBoundary from "@/components/ClientErrorBoundary";
 
-interface ProjectsProps {
-  columns?: "1" | "2" | "3";
-  thumbnail?: boolean;
-  direction?: "row" | "column";
-}
-
-export default async function ProjectPage({
-  columns = "2",
-  thumbnail = false,
-  direction,
-}: ProjectsProps) {
-  const projects = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/repos`, {
-    cache: "no-store",
-  });
-
-  if (!projects.ok) {
-    return (
-      <Column maxWidth="m">
-        <p>Failed to load repositories.</p>
-      </Column>
-    );
-  }
-
-  const repos = await projects.json();
-
+export default async function ProjectPage() {
   return (
     <Column maxWidth="m">
-      <h1
-        style={{
-          paddingBottom: "2rem",
-          display: "flex",
-          justifyContent: "center",
-        }}
+      {/* Always renderable, independent of repo fetch */}
+      <GitHubCalendarSection />
+
+      {/* Only repositories are wrapped in Suspense */}
+      <ClientErrorBoundary
+        fallback={
+          <div style={{ textAlign: "center", padding: "2rem" }}>
+            <p>
+              We couldn’t load repositories right now. Please try again later.
+            </p>
+          </div>
+        }
       >
-        GitHub Activity Calendar
-      </h1>
-      <div
-        style={{
-          paddingBottom: "5rem",
-          display: "flex",
-          justifyContent: "center",
-        }}
-      >
-        <GitHubCalendar
-          username="Awii21"
-          blockSize={13}
-          blockMargin={5}
-          fontSize={18}
-        />
-      </div>
-      <Grid
-        columns={columns}
-        mobileColumns="1"
-        fillWidth
-        marginBottom="40"
-        gap="12"
-      >
-        {repos.map((repo: any) => (
-          <Post
-            key={repo.id}
-            post={{
-              slug: repo.name,
-              metadata: {
-                title: repo.name,
-                description: repo.description || "No description provided.",
-                publishedAt: repo.updated_at,
-                url: repo.html_url,
-                stars: repo.stargazers_count, // now works even if 0
-                forks: repo.forks_count,
-                language: repo.language,
-                topics: repo.topics || [],
-              },
-            }}
-            thumbnail={thumbnail}
-            direction={direction}
-          />
-        ))}
-      </Grid>
+        <Suspense fallback={<ReposSkeleton />}>
+          {/* Repos are a client component that can suspend/handle their own errors */}
+          <Repositories columns="2" thumbnail={false} />
+        </Suspense>
+      </ClientErrorBoundary>
     </Column>
   );
 }
