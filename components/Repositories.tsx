@@ -115,7 +115,7 @@ const ActivityItem = ({ activity }: { activity: ActivityEvent }) => {
       href={activity.url}
       target="_blank"
       rel="noreferrer"
-      className="flex items-start gap-3 rounded-lg border border-neutral-200 bg-white p-4 transition hover:shadow-sm dark:border-neutral-800 dark:bg-neutral-900"
+      className="flex items-start gap-3 rounded-lg border border-neutral-200 p-4 transition hover:shadow-sm dark:border-neutral-800"
     >
       <span className="text-xl" aria-hidden>
         {icon(activity.type)}
