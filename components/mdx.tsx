@@ -132,18 +132,46 @@ function createCodeBlock(props: any) {
     const label = language.charAt(0).toUpperCase() + language.slice(1);
     
     return (
-      <CodeBlock
-        marginTop="8"
-        marginBottom="16"
-        codes={[
-          {
-            code: children,
-            language,
-            label
-          }
-        ]}
-        copyButton={true}
-      />
+      <>
+        <style dangerouslySetInnerHTML={{
+          __html: `
+            .wrapped-code-block,
+            .wrapped-code-block * {
+              max-width: 100% !important;
+            }
+            .wrapped-code-block pre,
+            .wrapped-code-block code {
+              white-space: pre-wrap !important;
+              word-wrap: break-word !important;
+              overflow-wrap: break-word !important;
+              word-break: break-all !important;
+              overflow-x: hidden !important;
+              max-width: 100% !important;
+            }
+            .wrapped-code-block [data-code-block] {
+              overflow-x: hidden !important;
+              max-width: 100% !important;
+            }
+            .wrapped-code-block [data-code-block] > * {
+              overflow-x: hidden !important;
+              max-width: 100% !important;
+            }
+          `
+        }} />
+        <CodeBlock
+          className="wrapped-code-block"
+          marginTop="8"
+          marginBottom="16"
+          codes={[
+            {
+              code: children,
+              language,
+              label
+            }
+          ]}
+          copyButton={true}
+        />
+      </>
     );
   }
   
