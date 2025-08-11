@@ -19,8 +19,15 @@ import { Projects } from "@/components/work/Projects";
 import { Posts } from "@/components/blog/Posts";
 import WallOfLoveSection from "@/components/testimonials";
 import Image from "next/image";
+import { CustomMDX } from "@/components/mdx";
+import { getPosts } from "@/utils/utils";
 
 export default function Home() {
+  // ...inside your Home component, where WallOfLoveSection was:
+  const testimonialsPost = getPosts([".", "app", "blog", "posts"]).find(
+    (p) => p.slug === "testimonials-as-code"
+  );
+
   return (
     <Column maxWidth="m" gap="xl" horizontal="center">
       <Schema
@@ -160,7 +167,23 @@ export default function Home() {
         </Flex>
       )}
       <Projects range={[2]} />
-      <WallOfLoveSection />
+      {testimonialsPost && (
+        <Column as="section" fillWidth>
+          <Column
+            overflow="hidden"
+            fillWidth
+            padding="xl"
+            radius="l"
+            horizontal="center"
+            align="center"
+          >
+            <Text className="text-center text-4xl font-semibold lg:text-5xl">
+              Build by makers, loved by thousand developers
+            </Text>
+          </Column>
+          <CustomMDX source={testimonialsPost.content} />
+        </Column>
+      )}
       {emailForm.display && <Mailchimp emailForm={emailForm} />}
     </Column>
   );
