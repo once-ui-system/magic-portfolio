@@ -169,7 +169,7 @@ export default function Home() {
       {testimonialsPost && (
         <Column as="section" fillWidth>
           <Text className="text-center mb-10 text-4xl font-medium lg:text-5xl">
-            Loved by the Community{" "}
+            Client Testimonials{" "}
           </Text>
           <CustomMDX source={testimonialsPost.content} />
         </Column>
