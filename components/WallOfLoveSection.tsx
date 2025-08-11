@@ -72,31 +72,26 @@ export default function WallOfLoveSection() {
           </Card>
           <Card className="md:col-span-2 bg-transparent">
             <CardContent className="h-full">
-              <div className="grid h-full grid-rows-[1fr_auto] gap-6">
+              <div className="grid h-full grid-rows-[1fr_auto] gap-2">
                 <p className="text-xl font-medium">
-                  Absolutely thrilled with Awais's work on my web app
-                  development project! This project included front end and back
-                  end work using the Laravel framework. His professionalism
-                  shone through in the quality of delivery, and his politeness,
-                  fluency in communication, and willingness to go above and
-                  beyond made the entire process
+                  Seller went above and beyond for me - he addressed the complex problems, tried plenty of solutions, until we eventually came to a solution. No other seller would have tried as hard and put as much effort - they would have given up. If you are having any doubts about moving forward, don't. He is exceptional
                 </p>
 
                 <div className="grid grid-cols-[auto_1fr] items-center gap-3">
                   <Avatar className="size-12">
                     <AvatarImage
-                      src="https://tailus.io/images/reviews/jonathan.webp"
-                      alt="Jonathan Yombo"
+                      src="https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto,t_profile_small/v1/attachments/profile/photo/a22330e4e8a98a3c8a80a3b95396ee5f-1721833689644/1824fe88-56fd-45a7-9db0-e112c1197f3e.png"
+                      alt="Ronald Kok"
                       height="400"
                       width="400"
                       loading="lazy"
                     />
-                    <AvatarFallback>NL</AvatarFallback>
+                    <AvatarFallback>RK</AvatarFallback>
                   </Avatar>
                   <div>
-                    <cite className="text-sm font-medium">Nick Lockard</cite>
+                    <cite className="text-sm font-medium">dublinmaths</cite>
                     <span className="text-muted-foreground block text-sm">
-                      Rate My Cheer Gym
+                     Youtube Instructor
                     </span>
                   </div>
                 </div>
