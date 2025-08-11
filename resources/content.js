@@ -24,9 +24,7 @@ const emailForm = {
   display: true,
   title: <>Send a message to {person.firstName}.</>,
   description: (
-    <>
-      Get in touch with {person.firstName} by sending a message below.
-    </>
+    <>Get in touch with {person.firstName} by sending a message below.</>
   ),
 };
 
@@ -50,28 +48,29 @@ const home = {
   image: "/images/og/home.png",
   label: "Home",
   title: `${person.name}'s Portfolio`,
-  description: `Portfolio website showcasing my work as a ${person.role}`,
+  description: `Professional portfolio showcasing expertise in ${person.role}`,
   headline: (
     <>
-      Crafting high-quality web applications that merge functionality with great
-      user experience
+      Delivering enterprise-grade web applications with exceptional performance
+      and user experience
     </>
   ),
   featured: {
     display: true,
     title: (
       <>
-        Recent project: <strong className="ml-4">Get Optimise</strong>
+        Featured project: <strong className="ml-4">Get Optimise</strong>
       </>
     ),
     href: "/work/rate-my-cheer-gym",
   },
   subline: (
     <>
-      I’m Awais, a full-stack developer with a focus on modern JavaScript
-      frameworks and scalable backend solutions.
-      <br /> I specialize in building products with Next.js, Supabase, and other
-      cutting-edge tools.
+      I'm Awais, a full-stack developer specializing in modern JavaScript
+      frameworks and scalable backend architectures.
+      <br /> With expertise in Next.js, React, TypeScript, and comprehensive
+      full-stack development, I deliver robust solutions for complex business
+      requirements.
     </>
   ),
 };
@@ -127,21 +126,29 @@ const about = {
         role: "Full Stack Developer",
         achievements: [
           <>
-            Built a data-driven web app enabling users to analyze and optimize
-            website loading speeds, SEO metrics, and performance insights.
+            Designed and developed an AI-powered SaaS platform to help
+            businesses optimize workflows and make data-driven decisions.
           </>,
           <>
-            Developed frontend in <strong>Next.js</strong> with dynamic data
-            visualization components.
+            Built a strongly-typed frontend using <strong>Next.js</strong> with{" "}
+            <strong>TypeScript</strong>, featuring modular, scalable
+            architecture and dynamic data visualization.
           </>,
           <>
-            Backend implemented using <strong>Node.js</strong> and{" "}
-            <strong>Express</strong> with <strong>PostgreSQL</strong> for data
-            storage.
+            Implemented secure role-based authentication with{" "}
+            <strong>Better Auth</strong> and integrated <strong>Stripe</strong>{" "}
+            for payments, subscription billing, and invoice automation.
+          </>,
+          <>
+            Developed backend using <strong>MySQL</strong> with{" "}
+            <strong>Drizzle ORM</strong> for type-safe queries and schema
+            management, plus <strong>Python</strong> (Flask & FastAPI) for
+            AI-driven processing.
           </>,
           <>
             Deployed on a VPS using <strong>Coolify</strong> with custom{" "}
-            <strong>Nginx</strong> configuration for optimal performance.
+            <strong>Nginx</strong> configuration to ensure high performance and
+            scalability.
           </>,
         ],
         images: [],
