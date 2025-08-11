@@ -12,14 +12,14 @@ const testimonials: Testimonial[] = [
   {
     name: "Nick Lockard",
     role: "Owner | Rate My Cheer Gym",
-    image: "",
+    image:  " ",
     quote:
       "I have worked with Awais on several projects, and he consistently demonstrates exceptional dedication and expertise in ensuring project success. His technical proficiency and work ethic are commendable.",
   },
 
   {
     name: "shaneisaac",
-    role: "",
+    role:  " ",
     image:
       "https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto,t_profile_small/v1/attachments/profile/photo/91676a41a5783ec10b83a75021b6f1e2-1360940871665962083084/JPEG_20221016_191438_4850977579985655690.jpg",
     quote:
@@ -27,8 +27,8 @@ const testimonials: Testimonial[] = [
   },
   {
     name: "alika",
-    role: "",
-    image: "",
+    role:  " ",
+    image:  " ",
     quote:
       "Great job done with great expertise, patience and professionalism Thanks a lot",
   },
@@ -52,32 +52,25 @@ const testimonials: Testimonial[] = [
   {
     name: "marwane_ghost",
     role: "Student",
-    image: "",
+    image:  " ",
     quote: "All good, nice work, professional, I will work with him again",
   },
   {
     name: "sukhdosanjh",
-    role: "",
-    image: "",
+    role:  " ",
+    image:  " ",
     quote: "Was my second job always very professional definitely recommend!!",
   },
   {
     name: "sukhdosanjh",
-    role: "",
-    image: "",
+    role:  " ",
+    image:  " ",
     quote: "Very good and fast service",
   },
 
   {
-    name: "Nick Lockard",
-    role: "Owner | Rate My Cheer Gym",
-    image: "",
-    quote:
-      "Absolutely thrilled with Awais's work on my web app development project! This project included front end and back end work using the Laravel framework. His professionalism shone through in the quality of delivery, and his politeness, fluency in communication, and willingness to go above and beyond made the entire process",
-  },
-  {
     name: "gferrar",
-    role: "",
+    role:  " ",
     image:
       "https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto,t_profile_small/v1/attachments/profile/photo/d50560ef65b9a6427835f4eec7dfe2f9-1717976746252/d43b7c6c-0b4a-4736-ac3f-0bc44ede6f50.jpg",
     quote:
@@ -87,24 +80,16 @@ const testimonials: Testimonial[] = [
   {
     name: "Israel Serbesa",
     role: "Owner | Cruisly",
-    image: "",
+    image:  " ",
     quote: "One of the best freelancers I have worked with!",
   },
 
   {
     name: "Haris Khan",
     role: "USA Business Owner",
-    image: "",
+    image:  " ",
     quote:
       "Working with him was a breeze thanks to his quick responsiveness and excellent cooperation.",
-  },
-  {
-    name: "Harro M. Wiersma",
-    role: "XAPPO Enterprises Ltd, Naxxar, Malta",
-    image:
-      "https://media.licdn.com/dms/image/v2/D4E03AQGnEjtm9RLjqg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1682287472574?e=1757548800&v=beta&t=aPzWLEdy_wLc8XN2EZYdRVvBAjQBMCN9EZmEw6i4S7M",
-    quote:
-      "I had the pleasure of working with Awais as the main developer for get-optimise.com, and the collaboration was excellent from start to finish. He quickly understood the vision and requirements, brought valuable ideas to the table, and implemented them with precision and creativity. Communication was always clear and proactive, making it easy to align on priorities and solve challenges along the way. Awais consistently delivered high-quality work on time, showing both technical expertise and a strong sense of ownership. I would be happy to work with him again and can fully recommend him to anyone looking for a skilled and reliable developer.",
   },
 ];
 
@@ -129,10 +114,10 @@ export default function WallOfLoveSection() {
     <section>
       <div className="py-16 md:py-32">
         <div className="mx-auto max-w-6xl px-6">
-          <div className="text-center mb-12">
+          {/* <div className="text-center mb-12">
             <h2 className=" text-3xl font-semibold">Client Testimonials</h2>
-            {/* <p className=" mt-6">Harum quae dolore orrupti aut temporibus ariatur.</p> */}
-          </div>
+            <p className=" mt-6">Harum quae dolore orrupti aut temporibus ariatur.</p>
+          </div> */}
           <div className="mt-8 grid gap-3 sm:grid-cols-2 md:mt-12 lg:grid-cols-3">
             {testimonialChunks.map((chunk, chunkIndex) => (
               <div key={chunkIndex} className="space-y-3">

@@ -21,6 +21,7 @@ import Image from "next/image";
 import { CustomMDX } from "@/components/mdx";
 import { getPosts } from "@/utils/utils";
 import Testimonials from "@/components/testimonials";
+import WallOfLoveSection from "@/components/WallOfLoveSection";
 
 export default function Home() {
   const testimonialsPost = getPosts(["./", "app"]).find(
@@ -174,6 +175,7 @@ export default function Home() {
           <CustomMDX source={testimonialsPost.content} />
         </Column>
       )} */}
+      <WallOfLoveSection/>
       <Testimonials />
       {emailForm.display && <Mailchimp emailForm={emailForm} />}
     </Column>
