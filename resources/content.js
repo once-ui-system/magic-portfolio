@@ -118,7 +118,7 @@ const about = {
       },
       {
         company: "Get Optimise",
-        timeframe: "2024",
+        timeframe: "2025",
         role: "Full Stack Developer",
         achievements: [
           <>
@@ -151,7 +151,7 @@ const about = {
       },
       {
         company: "Rate My Cheer Gym",
-        timeframe: "2024",
+        timeframe: "2025",
         role: "Full Stack Developer",
         achievements: [
           <>
@@ -169,7 +169,7 @@ const about = {
       },
       {
         company: "Cruisly",
-        timeframe: "2024",
+        timeframe: "2025",
         role: "Full Stack Developer",
         achievements: [
           <>
