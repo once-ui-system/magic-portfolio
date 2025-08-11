@@ -50,10 +50,7 @@ const home = {
   title: `${person.name}'s Portfolio`,
   description: `Professional portfolio showcasing expertise in ${person.role}`,
   headline: (
-    <>
-      Delivering enterprise-grade web applications with exceptional performance
-      and user experience
-    </>
+    <>Transforming ideas into powerful web applications that drive results</>
   ),
   featured: {
     display: true,
@@ -66,11 +63,10 @@ const home = {
   },
   subline: (
     <>
-      I'm Awais, a full-stack developer specializing in modern JavaScript
-      frameworks and scalable backend architectures.
-      <br /> With expertise in Next.js, React, TypeScript, and comprehensive
-      full-stack development, I deliver robust solutions for complex business
-      requirements.
+      I'm Awais, a full-stack developer who delivers high-performance solutions
+      with Next.js and modern backend technologies.
+      <br /> Ready to turn your vision into reality with cutting-edge
+      technology.
     </>
   ),
 };
