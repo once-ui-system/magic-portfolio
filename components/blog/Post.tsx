@@ -1,9 +1,17 @@
 "use client";
 
-import { Column, Flex, Heading, Media, SmartLink, Tag, Text } from "@once-ui-system/core";
+import {
+  Column,
+  Flex,
+  Heading,
+  Media,
+  SmartLink,
+  Tag,
+  Text,
+} from "@once-ui-system/core";
 import styles from "./Posts.module.scss";
 import { formatDate } from "@/utils/formatDate";
-import { Star, GitFork, Code } from "lucide-react";
+import { Star, Lock } from "lucide-react";
 import { languageIcons } from "@/utils/languageIcons";
 import Image from "next/image";
 
@@ -15,7 +23,9 @@ interface PostProps {
 
 export default function Post({ post, thumbnail, direction }: PostProps) {
   const isRepo = post.metadata.stars !== undefined;
-  const langIcon = post.metadata.language ? languageIcons[post.metadata.language] : null;
+  const langIcon = post.metadata.language
+    ? languageIcons[post.metadata.language]
+    : null;
 
   return (
     <SmartLink
@@ -49,7 +59,13 @@ export default function Post({ post, thumbnail, direction }: PostProps) {
             aspectRatio="16 / 9"
           />
         )}
-        <Column position="relative" fillWidth gap="4" padding="24" vertical="center">
+        <Column
+          position="relative"
+          fillWidth
+          gap="4"
+          padding="24"
+          vertical="center"
+        >
           <Heading as="h2" variant="heading-strong-l" wrap="balance">
             {post.metadata.title}
           </Heading>
@@ -64,9 +80,9 @@ export default function Post({ post, thumbnail, direction }: PostProps) {
                 <Flex gap="4" vertical="center">
                   <Star size={18} /> {post.metadata.stars}
                 </Flex>
-                {/* <Flex gap="4" vertical="center">
-                  <GitFork size={14} /> {post.metadata.forks}
-                </Flex> */}
+                <Flex gap="4" vertical="center">
+                  {post.metadata.private ? <Lock size={14} /> : ""}
+                </Flex>
                 {langIcon ? (
                   <Image
                     src={langIcon}
@@ -77,7 +93,9 @@ export default function Post({ post, thumbnail, direction }: PostProps) {
                   />
                 ) : (
                   post.metadata.language && (
-                    <Text variant="label-default-s">{post.metadata.language}</Text>
+                    <Text variant="label-default-s">
+                      {post.metadata.language}
+                    </Text>
                   )
                 )}
               </Flex>
@@ -93,7 +111,11 @@ export default function Post({ post, thumbnail, direction }: PostProps) {
           )}
 
           {!isRepo && post.metadata.tag && (
-            <Tag className="mt-12" label={post.metadata.tag} variant="neutral" />
+            <Tag
+              className="mt-12"
+              label={post.metadata.tag}
+              variant="neutral"
+            />
           )}
         </Column>
       </Flex>

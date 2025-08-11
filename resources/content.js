@@ -83,7 +83,7 @@ const about = {
   description: `Meet ${person.name}, ${person.role} (${person.location})`,
   tableOfContent: { display: true, subItems: false },
   avatar: { display: true },
-  calendar: { display: true, link: "https://cal.com" },
+  calendar: { display: true, link: "https://cal.com/awaissoomro" },
   intro: {
     display: true,
     title: "Introduction",

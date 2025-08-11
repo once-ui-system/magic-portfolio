@@ -21,6 +21,7 @@ interface Repository {
   forks_count: number;
   language: string;
   topics: string[];
+  private: boolean;
   languages: Array<{ name: string; percentage: string }>;
   recent_commits: Array<{
     sha: string;
@@ -160,6 +161,7 @@ export default function GitHubActivity({
       if (!response.ok) throw new Error("Failed to fetch GitHub data");
       const gitHubData = (await response.json()) as GitHubData;
       setData(gitHubData);
+      console.log("GitHub data fetched successfully:", gitHubData);
     } catch (err) {
       setError(err instanceof Error ? err.message : "An error occurred");
     } finally {
@@ -297,6 +299,7 @@ export default function GitHubActivity({
                         forks: repo.forks_count,
                         language: repo.language,
                         topics: repo.topics || [],
+                        private: repo.private,
                       },
                     }}
                     thumbnail={thumbnail}
@@ -329,6 +332,7 @@ export default function GitHubActivity({
                       forks: repo.forks_count,
                       language: repo.language,
                       topics: repo.topics || [],
+                      private: repo.private,
                     },
                   }}
                   thumbnail={thumbnail}
