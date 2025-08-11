@@ -17,14 +17,12 @@ import { home, about, person, emailForm, baseURL, routes } from "@/resources";
 import { Mailchimp } from "@/components/Mailchimp";
 import { Projects } from "@/components/work/Projects";
 import { Posts } from "@/components/blog/Posts";
-import WallOfLoveSection from "@/components/testimonials";
 import Image from "next/image";
 import { CustomMDX } from "@/components/mdx";
 import { getPosts } from "@/utils/utils";
 
 export default function Home() {
-  // ...inside your Home component, where WallOfLoveSection was:
-  const testimonialsPost = getPosts([".", "app", "blog", "posts"]).find(
+  const testimonialsPost = getPosts(["./", "app"]).find(
     (p) => p.slug === "testimonials-as-code"
   );
 
