@@ -6,7 +6,7 @@ export default function WallOfLoveSection() {
   return (
     <section className="py-16 md:py-32">
       <div className="mx-auto max-w-6xl space-y-8 px-6 md:space-y-16">
-        <div className="relative mx-auto max-w-xl space-y-6 text-center md:space-y-12">
+        <div className="relative mx-auto max-w-xl mb-10 text-center">
           <h2 className="text-4xl font-medium lg:text-5xl">
             Client Testimonials
           </h2>
@@ -15,7 +15,7 @@ export default function WallOfLoveSection() {
           <Card className="grid grid-rows-[auto_1fr] bg-transparent gap-8 sm:col-span-2 sm:p-6 lg:row-span-2">
             <CardHeader>
               <Image
-                className=" dark:block hidden"
+                className="dark:block hidden"
                 src="https://get-optimise.com/images/logos/logo-dark.svg"
                 alt="Nike Logo"
                 height={100}
