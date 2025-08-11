@@ -20,6 +20,7 @@ import { Posts } from "@/components/blog/Posts";
 import Image from "next/image";
 import { CustomMDX } from "@/components/mdx";
 import { getPosts } from "@/utils/utils";
+import Testimonials from "@/components/testimonials";
 
 export default function Home() {
   const testimonialsPost = getPosts(["./", "app"]).find(
@@ -165,14 +166,15 @@ export default function Home() {
         </Flex>
       )}
       <Projects range={[2]} />
-      {testimonialsPost && (
+      {/* {testimonialsPost && (
         <Column as="section" fillWidth>
           <Text className="text-center mb-10 text-4xl font-medium lg:text-5xl">
             Loved by the Community{" "}
           </Text>
           <CustomMDX source={testimonialsPost.content} />
         </Column>
-      )}
+      )} */}
+      <Testimonials />
       {emailForm.display && <Mailchimp emailForm={emailForm} />}
     </Column>
   );
