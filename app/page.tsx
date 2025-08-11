@@ -167,18 +167,9 @@ export default function Home() {
       <Projects range={[2]} />
       {testimonialsPost && (
         <Column as="section" fillWidth>
-          <Column
-            overflow="hidden"
-            fillWidth
-            padding="xl"
-            radius="l"
-            horizontal="center"
-            align="center"
-          >
-            <Text className="text-center text-4xl font-semibold lg:text-5xl">
-              Build by makers, loved by thousand developers
-            </Text>
-          </Column>
+          <Text className="text-center mb-10 text-4xl font-medium lg:text-5xl">
+            Loved by the Community{" "}
+          </Text>
           <CustomMDX source={testimonialsPost.content} />
         </Column>
       )}
