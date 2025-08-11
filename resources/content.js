@@ -59,7 +59,7 @@ const home = {
         Recent project: <strong className="ml-4">Get Optimise</strong>
       </>
     ),
-    href: "/work/rate-my-cheer-gym",
+    href: "/work/building-get-optimise-an-ai-powered-web-application",
   },
   subline: (
     <>
