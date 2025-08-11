@@ -56,7 +56,7 @@ const home = {
     display: true,
     title: (
       <>
-        Featured project: <strong className="ml-4">Get Optimise</strong>
+        Recent project: <strong className="ml-4">Get Optimise</strong>
       </>
     ),
     href: "/work/rate-my-cheer-gym",
