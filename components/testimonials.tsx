@@ -1,156 +1,174 @@
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Card, CardContent } from "@/components/ui/card";
 
-export default function Testimonials() {
+type Testimonial = {
+  name: string;
+  role: string;
+  image: string;
+  quote: string;
+};
+
+const testimonials: Testimonial[] = [
+  {
+    name: "Nick Lockard",
+    role: "Owner | Rate My Cheer Gym",
+    image: "",
+    quote:
+      "I have worked with Awais on several projects, and he consistently demonstrates exceptional dedication and expertise in ensuring project success. His technical proficiency and work ethic are commendable.",
+  },
+
+  {
+    name: "shaneisaac",
+    role: "",
+    image:
+      "https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto,t_profile_small/v1/attachments/profile/photo/91676a41a5783ec10b83a75021b6f1e2-1360940871665962083084/JPEG_20221016_191438_4850977579985655690.jpg",
+    quote:
+      "Perfect. He knows exactly what he is doing. Will use in the future. This guy's a genius.",
+  },
+  {
+    name: "alika",
+    role: "",
+    image: "",
+    quote:
+      "Great job done with great expertise, patience and professionalism Thanks a lot",
+  },
+  {
+    name: "Ronald Kok",
+    role: "Researcher Analist.nl Valuespectrum.com Valuefokus.de | Finance university Kazakhstan",
+    image:
+      "https://media.licdn.com/dms/image/v2/C4E03AQGU5VzJ7gm3vw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1538067330231?e=1757548800&v=beta&t=0LjxBwTI1lzCYR-wtMBA21ALET8AJPWR0WUdRx4-EdY",
+    quote:
+      "Very quick, responsive and professional. He fixed our pc issue very quickly, we strongly recommend to cooperate with him, we will cooperate as well more in the future for many different IT issues.",
+  },
+
+  {
+    name: "dublinmaths",
+    role: "Youtube Instructor",
+    image:
+      "https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto,t_profile_small/v1/attachments/profile/photo/a22330e4e8a98a3c8a80a3b95396ee5f-1721833689644/1824fe88-56fd-45a7-9db0-e112c1197f3e.png",
+    quote:
+      "Seller went above and beyond for me - he addressed the complex problems, tried plenty of solutions, until we eventually came to a solution. No other seller would have tried as hard and put as much effort - they would have given up. If you are having any doubts about moving forward, don't. He is exceptional",
+  },
+  {
+    name: "marwane_ghost",
+    role: "Student",
+    image: "",
+    quote: "All good, nice work, professional, I will work with him again",
+  },
+  {
+    name: "sukhdosanjh",
+    role: "",
+    image: "",
+    quote: "Was my second job always very professional definitely recommend!!",
+  },
+  {
+    name: "sukhdosanjh",
+    role: "",
+    image: "",
+    quote: "Very good and fast service",
+  },
+
+  {
+    name: "Nick Lockard",
+    role: "Owner | Rate My Cheer Gym",
+    image: "",
+    quote:
+      "Absolutely thrilled with Awais's work on my web app development project! This project included front end and back end work using the Laravel framework. His professionalism shone through in the quality of delivery, and his politeness, fluency in communication, and willingness to go above and beyond made the entire process",
+  },
+  {
+    name: "gferrar",
+    role: "",
+    image:
+      "https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto,t_profile_small/v1/attachments/profile/photo/d50560ef65b9a6427835f4eec7dfe2f9-1717976746252/d43b7c6c-0b4a-4736-ac3f-0bc44ede6f50.jpg",
+    quote:
+      "Awais was very attentive to details and all the requirements of a job that I had difficulty with for several days until I got help from him. He found many good options for the different aspect of this job and I am very happy with it.",
+  },
+
+  {
+    name: "Israel Serbesa",
+    role: "Owner | Cruisly",
+    image: "",
+    quote: "One of the best freelancers I have worked with!",
+  },
+
+  {
+    name: "Haris Khan",
+    role: "USA Business Owner",
+    image: "",
+    quote:
+      "Working with him was a breeze thanks to his quick responsiveness and excellent cooperation.",
+  },
+  {
+    name: "Harro M. Wiersma",
+    role: "XAPPO Enterprises Ltd, Naxxar, Malta",
+    image:
+      "https://media.licdn.com/dms/image/v2/D4E03AQGnEjtm9RLjqg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1682287472574?e=1757548800&v=beta&t=aPzWLEdy_wLc8XN2EZYdRVvBAjQBMCN9EZmEw6i4S7M",
+    quote:
+      "I had the pleasure of working with Awais as the main developer for get-optimise.com, and the collaboration was excellent from start to finish. He quickly understood the vision and requirements, brought valuable ideas to the table, and implemented them with precision and creativity. Communication was always clear and proactive, making it easy to align on priorities and solve challenges along the way. Awais consistently delivered high-quality work on time, showing both technical expertise and a strong sense of ownership. I would be happy to work with him again and can fully recommend him to anyone looking for a skilled and reliable developer.",
+  },
+];
+
+const chunkArray = (
+  array: Testimonial[],
+  chunkSize: number
+): Testimonial[][] => {
+  const result: Testimonial[][] = [];
+  for (let i = 0; i < array.length; i += chunkSize) {
+    result.push(array.slice(i, i + chunkSize));
+  }
+  return result;
+};
+
+const testimonialChunks = chunkArray(
+  testimonials,
+  Math.ceil(testimonials.length / 3)
+);
+
+export default function WallOfLoveSection() {
   return (
-    <section className="py-16 md:py-32">
-      <div className="mx-auto max-w-6xl space-y-8 px-6 md:space-y-16">
-        <div className="relative mx-auto max-w-xl space-y-6 text-center md:space-y-12">
-          <h2 className="text-4xl font-medium lg:text-5xl">
-            Build by makers, loved by thousand developers
-          </h2>
-          <p>
-            Gemini is evolving to be more than just the models. It supports an
-            entire to the APIs and platforms helping developers and businesses
-            innovate.
-          </p>
-        </div>
+    <section>
+      <div className="py-16 md:py-32">
+        <div className="mx-auto max-w-6xl px-6">
+          <div className="text-center mb-12">
+            <h2 className=" text-3xl font-semibold">Client Testimonials</h2>
+            {/* <p className=" mt-6">Harum quae dolore orrupti aut temporibus ariatur.</p> */}
+          </div>
+          <div className="mt-8 grid gap-3 sm:grid-cols-2 md:mt-12 lg:grid-cols-3">
+            {testimonialChunks.map((chunk, chunkIndex) => (
+              <div key={chunkIndex} className="space-y-3">
+                {chunk.map(({ name, role, quote, image }, index) => (
+                  <Card key={index} className="bg-transparent">
+                    <CardContent className="grid grid-cols-[auto_1fr] gap-3 pt-6">
+                      <Avatar className="size-9">
+                        <AvatarImage
+                          alt={name}
+                          src={image}
+                          loading="lazy"
+                          width="120"
+                          height="120"
+                        />
+                        <AvatarFallback>{name.charAt(0)}</AvatarFallback>
+                      </Avatar>
 
-        <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-4 lg:grid-rows-2">
-          <Card className="grid grid-rows-[auto_1fr] gap-8 sm:col-span-2 sm:p-6 lg:row-span-2">
-            <CardHeader>
-              <img
-                className="h-6 w-fit dark:invert"
-                src="https://html.tailus.io/blocks/customers/nike.svg"
-                alt="Nike Logo"
-                height="24"
-                width="auto"
-              />
-            </CardHeader>
-            <CardContent>
-              <div className="grid h-full grid-rows-[1fr_auto] gap-6">
-                <p className="text-xl font-medium">
-                  Tailus has transformed the way I develop web applications.
-                  Their extensive collection of UI components, blocks, and
-                  templates has significantly accelerated my workflow. The
-                  flexibility to customize every aspect allows me to create
-                  unique user experiences. Tailus is a game-changer for modern
-                  web development
-                </p>
+                      <div>
+                        <h3 className="font-medium">{name}</h3>
 
-                <div className="grid grid-cols-[auto_1fr] items-center gap-3">
-                  <Avatar className="size-12">
-                    <AvatarImage
-                      src="https://tailus.io/images/reviews/shekinah.webp"
-                      alt="Shekinah Tshiokufila"
-                      height="400"
-                      width="400"
-                      loading="lazy"
-                    />
-                    <AvatarFallback>ST</AvatarFallback>
-                  </Avatar>
+                        <span className="text-muted-foreground block text-sm tracking-wide">
+                          {role}
+                        </span>
 
-                  <div>
-                    <cite className="text-sm font-medium">
-                      Shekinah Tshiokufila
-                    </cite>
-                    <span className="text-muted-foreground block text-sm">
-                      Software Ingineer
-                    </span>
-                  </div>
-                </div>
+                        <div className="mt-3">
+                          <p className="text-gray-700 dark:text-gray-300">
+                            {quote}
+                          </p>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
               </div>
-            </CardContent>
-          </Card>
-          <Card className="md:col-span-2">
-            <CardContent className="h-full pt-6">
-              <div className="grid h-full grid-rows-[1fr_auto] gap-6">
-                <p className="text-xl font-medium">
-                  Tailus is really extraordinary and very practical, no need to
-                  break your head. A real gold mine.
-                </p>
-
-                <div className="grid grid-cols-[auto_1fr] items-center gap-3">
-                  <Avatar className="size-12">
-                    <AvatarImage
-                      src="https://tailus.io/images/reviews/jonathan.webp"
-                      alt="Jonathan Yombo"
-                      height="400"
-                      width="400"
-                      loading="lazy"
-                    />
-                    <AvatarFallback>JY</AvatarFallback>
-                  </Avatar>
-                  <div>
-                    <cite className="text-sm font-medium">Jonathan Yombo</cite>
-                    <span className="text-muted-foreground block text-sm">
-                      Software Ingineer
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardContent className="h-full pt-6">
-              <div className="grid h-full grid-rows-[1fr_auto] gap-6">
-                <p>
-                  Great work on tailfolio template. This is one of the best
-                  personal website that I have seen so far!
-                </p>
-
-                <div className="grid items-center gap-3 [grid-template-columns:auto_1fr]">
-                  <Avatar className="size-12">
-                    <AvatarImage
-                      src="https://tailus.io/images/reviews/yucel.webp"
-                      alt="Yucel Faruksahan"
-                      height="400"
-                      width="400"
-                      loading="lazy"
-                    />
-                    <AvatarFallback>YF</AvatarFallback>
-                  </Avatar>
-                  <div>
-                    <cite className="text-sm font-medium">
-                      Yucel Faruksahan
-                    </cite>
-                    <span className="text-muted-foreground block text-sm">
-                      Creator, Tailkits
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-          <Card className="card variant-mixed">
-            <CardContent className="h-full pt-6">
-              <div className="grid h-full grid-rows-[1fr_auto] gap-6">
-                <p>
-                  Great work on tailfolio template. This is one of the best
-                  personal website that I have seen so far!
-                </p>
-
-                <div className="grid grid-cols-[auto_1fr] gap-3">
-                  <Avatar className="size-12">
-                    <AvatarImage
-                      src="https://tailus.io/images/reviews/rodrigo.webp"
-                      alt="Rodrigo Aguilar"
-                      height="400"
-                      width="400"
-                      loading="lazy"
-                    />
-                    <AvatarFallback>YF</AvatarFallback>
-                  </Avatar>
-                  <div>
-                    <p className="text-sm font-medium">Rodrigo Aguilar</p>
-                    <span className="text-muted-foreground block text-sm">
-                      Creator, TailwindAwesome
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+            ))}
+          </div>
         </div>
       </div>
     </section>

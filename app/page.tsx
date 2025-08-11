@@ -166,15 +166,15 @@ export default function Home() {
         </Flex>
       )}
       <Projects range={[2]} />
-      {testimonialsPost && (
+      {/* {testimonialsPost && (
         <Column as="section" fillWidth>
           <Text className="text-center mb-10 text-4xl font-medium lg:text-5xl">
             Client Testimonials{" "}
           </Text>
           <CustomMDX source={testimonialsPost.content} />
         </Column>
-      )}
-      {/* <Testimonials /> */}
+      )} */}
+      <Testimonials />
       {emailForm.display && <Mailchimp emailForm={emailForm} />}
     </Column>
   );
