@@ -55,18 +55,18 @@ const testimonials: Testimonial[] = [
     image:  " ",
     quote: "All good, nice work, professional, I will work with him again",
   },
-  {
-    name: "sukhdosanjh",
-    role:  " ",
-    image:  " ",
-    quote: "Was my second job always very professional definitely recommend!!",
-  },
-  {
-    name: "sukhdosanjh",
-    role:  " ",
-    image:  " ",
-    quote: "Very good and fast service",
-  },
+//   {
+//     name: "sukhdosanjh",
+//     role:  " ",
+//     image:  " ",
+//     quote: "Was my second job always very professional definitely recommend!!",
+//   },
+//   {
+//     name: "sukhdosanjh",
+//     role:  " ",
+//     image:  " ",
+//     quote: "Very good and fast service",
+//   },
 
   {
     name: "gferrar",
