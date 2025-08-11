@@ -1,6 +1,6 @@
 {
-  "name": "@once-ui-system/magic-portfolio",
-  "version": "2.2.0",
+  "name": "awais-magic-portfolio",
+  "version": "1.0.0",
   "scripts": {
     "dev": "next dev --turbopack",
     "export": "next export",
