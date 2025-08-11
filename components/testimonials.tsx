@@ -77,12 +77,12 @@ const testimonials: Testimonial[] = [
       "Awais was very attentive to details and all the requirements of a job that I had difficulty with for several days until I got help from him. He found many good options for the different aspect of this job and I am very happy with it.",
   },
 
-  {
-    name: "Israel Serbesa",
-    role: "Owner | Cruisly",
-    image:  " ",
-    quote: "One of the best freelancers I have worked with!",
-  },
+//   {
+//     name: "Israel Serbesa",
+//     role: "Owner | Cruisly",
+//     image:  " ",
+//     quote: "One of the best freelancers I have worked with!",
+//   },
 
   {
     name: "Haris Khan",
