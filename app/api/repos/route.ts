@@ -123,7 +123,7 @@ export async function GET() {
 
     // Process repositories with detailed info (existing logic)
     const detailedRepos = await Promise.all(
-      reposList.slice(0, 20).map(async (repo: any) => {
+      reposList.slice(0, 50).map(async (repo: any) => {
         const detailResponse = await fetch(
           `https://api.github.com/repos/${repo.owner.login}/${repo.name}`,
           {

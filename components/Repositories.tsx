@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Column, Grid, Card, Badge, Button } from "@once-ui-system/core";
 import Post from "@/components/blog/Post";
 import ReposSkeleton from "./ReposSkeleton";
+import clsx from "clsx";
 
 interface GitHubActivityProps {
   columns?: "1" | "2" | "3";
@@ -75,41 +75,15 @@ const StatCard = ({
   value: string | number;
   subtitle?: string;
 }) => (
-  <div
-    style={{
-      padding: "1.5rem",
-      backgroundColor: "var(--neutral-50)",
-      borderRadius: "12px",
-      textAlign: "center",
-      border: "1px solid var(--neutral-200)",
-    }}
-  >
-    <div
-      style={{
-        fontSize: "2rem",
-        fontWeight: "bold",
-        color: "var(--neutral-900)",
-      }}
-    >
+  <div className="rounded-xl border p-5 text-center shadow-sm">
+    <div className="text-3xl font-semibold text-neutral-900 dark:text-neutral-100">
       {value}
     </div>
-    <div
-      style={{
-        fontSize: "0.875rem",
-        color: "var(--neutral-600)",
-        marginTop: "0.25rem",
-      }}
-    >
+    <div className="mt-1 text-sm text-neutral-600 dark:text-neutral-400">
       {title}
     </div>
     {subtitle && (
-      <div
-        style={{
-          fontSize: "0.75rem",
-          color: "var(--neutral-500)",
-          marginTop: "0.25rem",
-        }}
-      >
+      <div className="mt-1 text-xs text-neutral-500 dark:text-neutral-500">
         {subtitle}
       </div>
     )}
@@ -117,7 +91,7 @@ const StatCard = ({
 );
 
 const ActivityItem = ({ activity }: { activity: ActivityEvent }) => {
-  const getActivityIcon = (type: string) => {
+  const icon = (type: string) => {
     switch (type) {
       case "Push":
         return "📝";
@@ -137,84 +111,30 @@ const ActivityItem = ({ activity }: { activity: ActivityEvent }) => {
   };
 
   return (
-    <div
-      style={{
-        display: "flex",
-        alignItems: "flex-start",
-        gap: "0.75rem",
-        padding: "1rem",
-        backgroundColor: "var(--neutral-50)",
-        borderRadius: "8px",
-        border: "1px solid var(--neutral-200)",
-      }}
+    <a
+      href={activity.url}
+      target="_blank"
+      rel="noreferrer"
+      className="flex items-start gap-3 rounded-lg border border-neutral-200 bg-white p-4 transition hover:shadow-sm dark:border-neutral-800 dark:bg-neutral-900"
     >
-      <span style={{ fontSize: "1.25rem" }}>
-        {getActivityIcon(activity.type)}
+      <span className="text-xl" aria-hidden>
+        {icon(activity.type)}
       </span>
-      <div style={{ flex: 1 }}>
-        <div
-          style={{
-            fontSize: "0.875rem",
-            color: "var(--neutral-800)",
-            marginBottom: "0.25rem",
-          }}
-        >
+      <div className="flex-1">
+        <div className="mb-1 text-sm text-neutral-900 dark:text-neutral-100">
           {activity.description}
         </div>
-        <div style={{ fontSize: "0.75rem", color: "var(--neutral-500)" }}>
+        <div className="text-xs text-neutral-500">
           {new Date(activity.date).toLocaleDateString()} • {activity.type}
         </div>
       </div>
-    </div>
+    </a>
   );
 };
 
-const GistCard = ({ gist }: { gist: any }) => (
-  <div
-    style={{
-      padding: "1rem",
-      backgroundColor: "var(--neutral-50)",
-      borderRadius: "8px",
-      border: "1px solid var(--neutral-200)",
-    }}
-  >
-    <div
-      style={{
-        fontSize: "0.875rem",
-        fontWeight: "500",
-        marginBottom: "0.5rem",
-      }}
-    >
-      {gist.description || "Untitled Gist"}
-    </div>
-    <div
-      style={{
-        display: "flex",
-        flexWrap: "wrap",
-        gap: "0.25rem",
-        marginBottom: "0.5rem",
-      }}
-    >
-      {gist.files.slice(0, 3).map((file: string, idx: number) => (
-        <span
-          key={idx}
-          style={{
-            fontSize: "0.75rem",
-            padding: "0.125rem 0.5rem",
-            backgroundColor: "var(--neutral-200)",
-            borderRadius: "12px",
-            color: "var(--neutral-700)",
-          }}
-        >
-          {file}
-        </span>
-      ))}
-    </div>
-    <div style={{ fontSize: "0.75rem", color: "var(--neutral-500)" }}>
-      Created {new Date(gist.created_at).toLocaleDateString()}
-    </div>
-  </div>
-);
+
+
+type TabKey = "overview" | "repos" | "activity";
 
 export default function GitHubActivity({
   columns = "2",
@@ -224,12 +144,11 @@ export default function GitHubActivity({
   const [data, setData] = useState<GitHubData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [activeTab, setActiveTab] = useState<
-    "overview" | "repos" | "activity" | "gists"
-  >("overview");
+  const [activeTab, setActiveTab] = useState<TabKey>("overview");
 
   useEffect(() => {
     fetchGitHubData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const fetchGitHubData = async () => {
@@ -239,8 +158,7 @@ export default function GitHubActivity({
         cache: "no-store",
       });
       if (!response.ok) throw new Error("Failed to fetch GitHub data");
-
-      const gitHubData = await response.json();
+      const gitHubData = (await response.json()) as GitHubData;
       setData(gitHubData);
     } catch (err) {
       setError(err instanceof Error ? err.message : "An error occurred");
@@ -253,172 +171,150 @@ export default function GitHubActivity({
 
   if (error) {
     return (
-      <Column maxWidth="m">
-        <div style={{ textAlign: "center", padding: "2rem" }}>
-          <p>Error: {error}</p>
-          <button
-            onClick={fetchGitHubData}
-            style={{
-              padding: "0.55rem 1rem",
-              backgroundColor: "#007bff",
-              color: "#fff",
-              border: "none",
-              borderRadius: 8,
-              cursor: "pointer",
-              fontWeight: 600,
-            }}
-          >
-            Retry
-          </button>
-        </div>
-      </Column>
+      <div className="mx-auto max-w-2xl rounded-xl border border-neutral-200 bg-white p-8 text-center shadow-sm dark:border-neutral-800 dark:bg-neutral-900">
+        <p className="mb-4 text-neutral-700 dark:text-neutral-300">
+          Error: {error}
+        </p>
+        <button
+          onClick={fetchGitHubData}
+          className="inline-flex items-center justify-center rounded-lg border border-neutral-200 bg-neutral-900 px-4 py-2 text-sm font-semibold text-white transition hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 active:opacity-100 dark:border-neutral-700"
+        >
+          Retry
+        </button>
+      </div>
     );
   }
 
   if (!data) return null;
 
-  const TabButton = ({
-    tab,
-    label,
-    isActive,
-    onClick,
-  }: {
-    tab: string;
-    label: string;
-    isActive: boolean;
-    onClick: () => void;
-  }) => (
-    <button
-      onClick={onClick}
-      style={{
-        padding: "0.75rem 1.5rem",
-        backgroundColor: isActive ? "var(--neutral-900)" : "transparent",
-        color: "var(--neutral-600)",
-        border: "1px solid var(--neutral-300)",
-        borderRadius: "8px",
-        cursor: "pointer",
-        fontWeight: isActive ? "600" : "400",
-        transition: "all 0.2s ease",
-      }}
-    >
-      {label}
-    </button>
-  );
+  const colClass =
+    columns === "3"
+      ? "md:grid-cols-3"
+      : columns === "2"
+      ? "md:grid-cols-2"
+      : "md:grid-cols-1";
+
+  const TabButton = ({ tab, label }: { tab: TabKey; label: string }) => {
+    const isActive = activeTab === tab;
+    return (
+      <button
+        onClick={() => setActiveTab(tab)}
+        aria-selected={isActive}
+        className={clsx(
+          "rounded-lg px-8 py-4 text-sm font-medium transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400",
+          isActive
+            ? "bg-neutral-900 text-white dark:bg-white dark:text-black"
+            : "border border-neutral-300 text-neutral-700 hover:bg-neutral-100 dark:border-neutral-700 dark:text-neutral-300 dark:hover:bg-neutral-800"
+        )}
+      >
+        {label}
+      </button>
+    );
+  };
 
   return (
-    <section style={{ marginTop: "1rem" }}>
-      <div style={{ textAlign: "center", marginBottom: "2rem" }}>
-        <h2
-          style={{
-            fontSize: "1.5rem",
-            fontWeight: "bold",
-            marginBottom: "0.5rem",
-          }}
-        >
+    <section className="mt-4">
+      <div className="mx-auto max-w-4xl text-center">
+        <h2 className="mb-2 text-xl font-semibold text-neutral-900 dark:text-neutral-100">
           Showcasing my development journey and contributions
         </h2>
       </div>
 
-      {/* Navigation Tabs */}
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          gap: "0.5rem",
-          marginBottom: "2rem",
-          flexWrap: "wrap",
-        }}
-      >
-        <TabButton
-          tab="overview"
-          label="Overview"
-          isActive={activeTab === "overview"}
-          onClick={() => setActiveTab("overview")}
-        />
+      {/* Tabs */}
+      <div className="mx-auto mt-6 flex max-w-4xl flex-wrap justify-center gap-2">
+        <TabButton tab="overview" label="Overview" />
         <TabButton
           tab="repos"
-          label={`Repositories (${data.repositories.length})`}
-          isActive={activeTab === "repos"}
-          onClick={() => setActiveTab("repos")}
+          label={`Repositories`}
         />
-        <TabButton
-          tab="activity"
-          label="Recent Activity"
-          isActive={activeTab === "activity"}
-          onClick={() => setActiveTab("activity")}
-        />
+        <TabButton tab="activity" label="Recent Activity" />
       </div>
 
-      {/* Tab Content */}
-      {activeTab === "overview" && (
-        <div>
-          {/* Stats Overview */}
-          <div style={{ marginBottom: "2rem" }}>
-            <h2
-              style={{
-                fontSize: "1.5rem",
-                fontWeight: "600",
-                marginBottom: "1rem",
-                textAlign: "center",
-              }}
-            >
-              GitHub Stats
-            </h2>
-            <Grid columns="3" mobileColumns="2" gap="1" marginBottom="24">
-              <StatCard
-                title="Public Repos"
-                value={data.profile.public_repos}
-              />
-              <StatCard
-                title="Stared Repos"
-                value={data.starred_repos.length}
-              />
-              <StatCard title="Followers" value={data.profile.followers} />
-            </Grid>
-          </div>
+      {/* Content */}
+      <div className="mx-auto mt-8 max-w-6xl px-2 sm:px-4">
+        {activeTab === "overview" && (
+          <div className="space-y-10">
+            {/* Stats */}
+            <div>
+              <h3 className="mb-4 text-center text-lg font-semibold text-neutral-900 dark:text-neutral-100">
+                GitHub Stats
+              </h3>
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
+                <StatCard
+                  title="Public Repos"
+                  value={data.profile.public_repos}
+                />
+                <StatCard
+                  title="Starred Repos"
+                  value={data.starred_repos.length}
+                />
+                <StatCard title="Followers" value={data.profile.followers} />
+              </div>
+            </div>
 
-          {/* Languages Used */}
-          <div style={{ marginBottom: "2rem" }}>
-            <h3
-              style={{
-                fontSize: "1.25rem",
-                fontWeight: "600",
-                marginBottom: "1rem",
-              }}
-            >
-              Languages I Work With ({data.profile.languages_used.length})
-            </h3>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem" }}>
-              {data.profile.languages_used.slice(0, 15).map((lang, idx) => (
-                <span
-                  key={idx}
-                  style={{
-                    padding: "0.25rem 0.75rem",
-                    backgroundColor: "var(--neutral-200)",
-                    borderRadius: "16px",
-                    fontSize: "0.875rem",
-                    fontWeight: "500",
-                  }}
-                >
-                  {lang}
-                </span>
-              ))}
+            {/* Languages */}
+            <div>
+              <h3 className="mb-8 text-lg font-semibold text-neutral-900 dark:text-neutral-100">
+                Languages I Work With (
+                {data.profile.languages_used?.length ?? 0})
+              </h3>
+              {data.profile.languages_used?.length ? (
+                <div className="flex flex-wrap gap-2">
+                  {data.profile.languages_used.slice(0, 15).map((lang, idx) => (
+                    <span
+                      key={idx}
+                      className="rounded-full px-3 py-2 text-sm font-medium text-neutral-800 border dark:text-neutral-200"
+                    >
+                      {lang}
+                    </span>
+                  ))}
+                </div>
+              ) : (
+                <div className="text-sm text-neutral-500">
+                  No languages detected yet.
+                </div>
+              )}
+            </div>
+
+            {/* Latest Repositories */}
+            <div>
+              <h3 className="mb-4 text-lg font-semibold text-neutral-900 dark:text-neutral-100">
+                Latest Repositories
+              </h3>
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+                {data.repositories.slice(0, 4).map((repo) => (
+                  <Post
+                    key={repo.id}
+                    post={{
+                      slug: repo.name,
+                      metadata: {
+                        title: repo.name,
+                        description:
+                          repo.description || "No description provided.",
+                        publishedAt: repo.updated_at,
+                        url: repo.html_url,
+                        stars: repo.stargazers_count,
+                        forks: repo.forks_count,
+                        language: repo.language,
+                        topics: repo.topics || [],
+                      },
+                    }}
+                    thumbnail={thumbnail}
+                    direction={direction}
+                  />
+                ))}
+              </div>
             </div>
           </div>
+        )}
 
-          {/* Recent Repositories Preview */}
+        {activeTab === "repos" && (
           <div>
-            <h3
-              style={{
-                fontSize: "1.25rem",
-                fontWeight: "600",
-                marginBottom: "1rem",
-              }}
-            >
-              Latest Repositories
-            </h3>
-            <Grid columns="2" mobileColumns="1" gap="12">
-              {data.repositories.slice(0, 4).map((repo) => (
+            <h2 className="mb-4 text-center text-lg font-semibold text-neutral-900 dark:text-neutral-100">
+              All Repositories ({data.repositories.length})
+            </h2>
+            <div className={clsx("grid grid-cols-1 gap-6", colClass)}>
+              {data.repositories.map((repo) => (
                 <Post
                   key={repo.id}
                   post={{
@@ -439,108 +335,25 @@ export default function GitHubActivity({
                   direction={direction}
                 />
               ))}
-            </Grid>
+            </div>
           </div>
-        </div>
-      )}
+        )}
 
-      {activeTab === "repos" && (
-        <div>
-          <h2
-            style={{
-              fontSize: "1.5rem",
-              fontWeight: "600",
-              marginBottom: "1rem",
-              textAlign: "center",
-            }}
-          >
-            All Repositories ({data.repositories.length})
-          </h2>
-          <Grid
-            columns={columns}
-            mobileColumns="1"
-            fillWidth
-            marginBottom="24"
-            gap="12"
-          >
-            {data.repositories.map((repo) => (
-              <Post
-                key={repo.id}
-                post={{
-                  slug: repo.name,
-                  metadata: {
-                    title: repo.name,
-                    description: repo.description || "No description provided.",
-                    publishedAt: repo.updated_at,
-                    url: repo.html_url,
-                    stars: repo.stargazers_count,
-                    forks: repo.forks_count,
-                    language: repo.language,
-                    topics: repo.topics || [],
-                  },
-                }}
-                thumbnail={thumbnail}
-                direction={direction}
-              />
-            ))}
-          </Grid>
-        </div>
-      )}
-
-      {activeTab === "activity" && (
-        <div>
-          <h2
-            style={{
-              fontSize: "1.5rem",
-              fontWeight: "600",
-              marginBottom: "1rem",
-              textAlign: "center",
-            }}
-          >
-            Recent Activity
-          </h2>
-          <div
-            style={{
-              display: "grid",
-              gap: "0.75rem",
-              maxWidth: "800px",
-              margin: "0 auto",
-            }}
-          >
-            {data.recent_activity.map((activity) => (
-              <ActivityItem key={activity.id} activity={activity} />
-            ))}
+        {activeTab === "activity" && (
+          <div>
+            <h2 className="mb-4 text-center text-lg font-semibold text-neutral-900 dark:text-neutral-100">
+              Recent Activity
+            </h2>
+            <div className="mx-auto grid max-w-3xl gap-3">
+              {data.recent_activity.map((activity) => (
+                <ActivityItem key={activity.id} activity={activity} />
+              ))}
+            </div>
           </div>
-        </div>
-      )}
+        )}
 
-      {activeTab === "gists" && (
-        <div>
-          <h2
-            style={{
-              fontSize: "1.5rem",
-              fontWeight: "600",
-              marginBottom: "1rem",
-              textAlign: "center",
-            }}
-          >
-            Code Gists ({data.gists.length})
-          </h2>
-          <Grid columns="3" mobileColumns="1" gap="1">
-            {data.gists.map((gist) => (
-              <a
-                key={gist.id}
-                href={gist.html_url}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{ textDecoration: "none" }}
-              >
-                <GistCard gist={gist} />
-              </a>
-            ))}
-          </Grid>
-        </div>
-      )}
+        
+      </div>
     </section>
   );
 }
