@@ -11,7 +11,7 @@ const person = {
   languages: ["English", "Sindhi", "Urdu"],
   about: (
     <>
-      I’m a remote full-stack web developer with over 5 years of experience
+      I’m a full-stack web developer with over 5 years of experience
       delivering high-quality, scalable, and secure web applications for
       international clients. I specialize in building modern web platforms using
       Next.js, React, and Node.js, with expertise in both frontend and backend
