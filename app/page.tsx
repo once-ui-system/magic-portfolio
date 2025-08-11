@@ -18,6 +18,7 @@ import { Mailchimp } from "@/components/Mailchimp";
 import { Projects } from "@/components/work/Projects";
 import { Posts } from "@/components/blog/Posts";
 import WallOfLoveSection from "@/components/testimonials";
+import Image from "next/image";
 
 export default function Home() {
   return (
@@ -108,6 +109,36 @@ export default function Home() {
                   />
                 )}
                 {about.title}
+              </Flex>
+            </Button>
+
+            <Button
+              id="upwork"
+              data-border="rounded"
+              href="https://www.upwork.com/freelancers/~01be2bea8b5cce7b15"
+              variant="secondary"
+              size="m"
+              weight="default"
+              arrowIcon
+              className="ml-4"
+            >
+              <Flex gap="8" vertical="center" paddingRight="4">
+                {/* Light mode icon */}
+                <Image
+                  src="/images/upwork-light.svg"
+                  alt="Upwork"
+                  width={60}
+                  height={60}
+                  className="block dark:hidden"
+                />
+                {/* Dark mode icon */}
+                <Image
+                  src="/images/upwork-dark.svg"
+                  alt="Upwork"
+                  width={60}
+                  height={60}
+                  className="hidden dark:block"
+                />
               </Flex>
             </Button>
           </RevealFx>

@@ -2,8 +2,7 @@
 @import "tw-animate-css";
 
 /* Make Tailwind's `dark:` work with .dark OR data-theme */
-@custom-variant dark (&:is(.dark, [data-theme='dark']) *);
-
+@custom-variant dark (:where(.dark, [data-theme='dark']) &);
 /* Light (explicit) — same as your :root */
 :root,
 html[data-theme='light'] {
