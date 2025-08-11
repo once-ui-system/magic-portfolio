@@ -217,7 +217,7 @@ const about = {
       },
       {
         title: "Databases",
-        description: <>PostgreSQL, MySQL, Supabase, Drizzle ORM</>,
+        description: <>PostgreSQL, MySQL, Supabase, Drizzle ORM, Prisma</>,
       },
       {
         title: "Authentication",
