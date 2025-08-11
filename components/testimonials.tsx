@@ -11,15 +11,15 @@ type Testimonial = {
 const testimonials: Testimonial[] = [
   {
     name: "Nick Lockard",
-    role: "Owner | Rate My Cheer Gym",
-    image:  " ",
+    role: "Rate My Cheer Gym",
+    image:  "",
     quote:
       "I have worked with Awais on several projects, and he consistently demonstrates exceptional dedication and expertise in ensuring project success. His technical proficiency and work ethic are commendable.",
   },
 
   {
     name: "shaneisaac",
-    role:  " ",
+    role:  "",
     image:
       "https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto,t_profile_small/v1/attachments/profile/photo/91676a41a5783ec10b83a75021b6f1e2-1360940871665962083084/JPEG_20221016_191438_4850977579985655690.jpg",
     quote:
@@ -27,14 +27,14 @@ const testimonials: Testimonial[] = [
   },
   {
     name: "alika",
-    role:  " ",
-    image:  " ",
+    role:  "",
+    image:  "",
     quote:
       "Great job done with great expertise, patience and professionalism Thanks a lot",
   },
   {
     name: "Ronald Kok",
-    role: "Researcher Analist.nl Valuespectrum.com Valuefokus.de | Finance university Kazakhstan",
+    role: "Researcher Analist.nl | Finance university Kazakhstan",
     image:
       "https://media.licdn.com/dms/image/v2/C4E03AQGU5VzJ7gm3vw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1538067330231?e=1757548800&v=beta&t=0LjxBwTI1lzCYR-wtMBA21ALET8AJPWR0WUdRx4-EdY",
     quote:
@@ -52,25 +52,25 @@ const testimonials: Testimonial[] = [
   {
     name: "marwane_ghost",
     role: "Student",
-    image:  " ",
+    image:  "",
     quote: "All good, nice work, professional, I will work with him again",
   },
 //   {
 //     name: "sukhdosanjh",
-//     role:  " ",
-//     image:  " ",
+//     role:  "",
+//     image:  "",
 //     quote: "Was my second job always very professional definitely recommend!!",
 //   },
 //   {
 //     name: "sukhdosanjh",
-//     role:  " ",
-//     image:  " ",
+//     role:  "",
+//     image:  "",
 //     quote: "Very good and fast service",
 //   },
 
   {
     name: "gferrar",
-    role:  " ",
+    role:  "",
     image:
       "https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto,t_profile_small/v1/attachments/profile/photo/d50560ef65b9a6427835f4eec7dfe2f9-1717976746252/d43b7c6c-0b4a-4736-ac3f-0bc44ede6f50.jpg",
     quote:
@@ -80,14 +80,14 @@ const testimonials: Testimonial[] = [
 //   {
 //     name: "Israel Serbesa",
 //     role: "Owner | Cruisly",
-//     image:  " ",
+//     image:  "",
 //     quote: "One of the best freelancers I have worked with!",
 //   },
 
   {
     name: "Haris Khan",
     role: "USA Business Owner",
-    image:  " ",
+    image:  "",
     quote:
       "Working with him was a breeze thanks to his quick responsiveness and excellent cooperation.",
   },

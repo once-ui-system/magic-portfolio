@@ -96,7 +96,7 @@ export default function WallOfLoveSection() {
                   <div>
                     <cite className="text-sm font-medium">Nick Lockard</cite>
                     <span className="text-muted-foreground block text-sm">
-                      Owner | Rate My Cheer Gym
+                      Rate My Cheer Gym
                     </span>
                   </div>
                 </div>
@@ -122,7 +122,7 @@ export default function WallOfLoveSection() {
                   <div>
                     <cite className="text-sm font-medium">Israel Serbesa</cite>
                     <span className="text-muted-foreground block text-sm">
-                      Creator, Tailkits
+                      Cruisly
                     </span>
                   </div>
                 </div>
