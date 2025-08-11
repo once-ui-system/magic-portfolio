@@ -52,6 +52,8 @@ export default function Home() {
               paddingTop="16"
               paddingBottom="32"
               paddingLeft="12"
+              delay={0}
+              speed="fast"
             >
               <Badge
                 background="brand-alpha-weak"
@@ -71,6 +73,8 @@ export default function Home() {
             fillWidth
             horizontal="start"
             paddingBottom="16"
+            delay={0}
+            speed="fast"
           >
             <Heading wrap="balance" variant="display-strong-l">
               {home.headline}
@@ -78,10 +82,11 @@ export default function Home() {
           </RevealFx>
           <RevealFx
             translateY="8"
-            delay={0.2}
             fillWidth
             horizontal="start"
             paddingBottom="32"
+            delay={0}
+            speed="fast"
           >
             <Text
               wrap="balance"
@@ -93,7 +98,8 @@ export default function Home() {
           </RevealFx>
           <RevealFx
             paddingTop="12"
-            delay={0.4}
+            delay={0}
+            speed="fast"
             horizontal="start"
             paddingLeft="12"
           >
@@ -175,7 +181,7 @@ export default function Home() {
           <CustomMDX source={testimonialsPost.content} />
         </Column>
       )} */}
-      <WallOfLoveSection/>
+      <WallOfLoveSection />
       <Testimonials />
       {emailForm.display && <Mailchimp emailForm={emailForm} />}
     </Column>
