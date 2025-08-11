@@ -14,6 +14,7 @@ import {
 } from "@once-ui-system/core";
 import { opacity, SpacingToken } from "@once-ui-system/core";
 import { useState } from "react";
+import Spinner from "./Spinner";
 
 function debounce<T extends (...args: any[]) => void>(
   func: T,
@@ -260,12 +261,14 @@ export const Mailchimp = ({ emailForm }: { emailForm: EmailFormProps }) => {
             <Flex height="48" vertical="center">
               <Button
                 type="submit"
+                disabled={loading}
                 id="mc-embedded-subscribe"
                 value="Subscribe"
                 size="m"
                 fillWidth
               >
-                {loading ? "Sending Email..." : "Send Email"}
+                {loading ? <Spinner />  : "Send email"}
+
               </Button>
             </Flex>
           </div>
@@ -274,3 +277,4 @@ export const Mailchimp = ({ emailForm }: { emailForm: EmailFormProps }) => {
     </Column>
   );
 };
+
