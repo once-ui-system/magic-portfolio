@@ -13,64 +13,30 @@ export default function ReposSkeleton({
 }: ReposSkeletonProps) {
   return (
     <section aria-busy="true" aria-live="polite" aria-label="Loading repositories">
-      <div className="grid" style={{ ["--minW" as any]: `${minCardWidth}px` }}>
+      <div 
+        className="grid gap-3" 
+        style={{ 
+          gridTemplateColumns: `repeat(auto-fill, minmax(${minCardWidth}px, 1fr))`
+        }}
+      >
         {Array.from({ length: count }).map((_, i) => (
-          <div key={i} className="card" style={{ height: cardHeight }} aria-hidden="true" />
+          <div 
+            key={i} 
+            className="rounded-lg bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 dark:from-gray-700 dark:via-gray-600 dark:to-gray-700 bg-[length:200%_100%] animate-shimmer motion-reduce:animate-none motion-reduce:bg-gray-200 motion-reduce:dark:bg-gray-700" 
+            style={{ height: cardHeight }} 
+            aria-hidden="true" 
+          />
         ))}
       </div>
 
       <style jsx>{`
-        /* ---------- Theme tokens for shimmer ---------- */
-        :global(html) {
-          --skel-1: #e9ecef; /* light gray */
-          --skel-2: #f8f9fa; /* lighter gray */
-          --skel-3: #e9ecef;
-        }
-
-        /* System dark mode */
-        @media (prefers-color-scheme: dark) {
-          :global(html) {
-            --skel-1: #2a2f3a; /* dark gray */
-            --skel-2: #3a4250; /* mid gray */
-            --skel-3: #2a2f3a;
-          }
-        }
-
-        /* Class-based or data-attribute dark modes */
-        :global(html.dark),
-        :global(.dark),
-        :global([data-theme="dark"]) {
-          --skel-1: #2a2f3a;
-          --skel-2: #3a4250;
-          --skel-3: #2a2f3a;
-        }
-
-        /* ---------- Layout ---------- */
-        .grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(var(--minW, 280px), 1fr));
-          gap: 12px;
-        }
-
-        .card {
-          border-radius: 8px;
-          background: linear-gradient(90deg, var(--skel-1), var(--skel-2), var(--skel-3));
-          background-size: 200% 100%;
-          animation: shimmer 1.5s infinite linear;
-        }
-
-        /* Respect reduced motion */
-        @media (prefers-reduced-motion: reduce) {
-          .card {
-            animation: none;
-            background: var(--skel-1);
-          }
-        }
-
-        /* ---------- Animation ---------- */
         @keyframes shimmer {
           0%   { background-position: 200% 0; }
           100% { background-position: -200% 0; }
+        }
+        
+        .animate-shimmer {
+          animation: shimmer 1.5s infinite linear;
         }
       `}</style>
     </section>
