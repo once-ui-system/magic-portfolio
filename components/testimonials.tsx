@@ -116,7 +116,7 @@ export default function WallOfLoveSection() {
                       <div>
                         <h3 className="font-medium">{name}</h3>
 
-                        <span className="text-muted-foreground block text-sm tracking-wide">
+                        <span className="block text-sm tracking-wide text-muted-foreground">
                           {role}
                         </span>
 
