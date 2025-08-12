@@ -6,16 +6,16 @@ export default function WallOfLoveSection() {
   return (
     <section className="py-16 md:py-32">
       <div className="mx-auto max-w-6xl space-y-8 px-6 md:space-y-16">
-        <div className="relative mx-auto max-w-xl mb-10 text-center">
+        <div className="relative mx-auto mb-10 max-w-xl text-center">
           <h2 className="text-4xl font-medium lg:text-5xl">
             Client Testimonials
           </h2>
         </div>
         <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-4 lg:grid-rows-2">
-          <Card className="grid grid-rows-[auto_1fr] bg-transparent gap-8 sm:col-span-2 sm:p-6 lg:row-span-2">
+          <Card className="grid grid-rows-[auto_1fr] gap-8 bg-transparent sm:col-span-2 sm:p-6 lg:row-span-2">
             <CardHeader>
               <Image
-                className="dark:block hidden"
+                className="hidden dark:block"
                 src="https://get-optimise.com/images/logos/logo-dark.svg"
                 alt="Nike Logo"
                 height={100}
@@ -23,7 +23,7 @@ export default function WallOfLoveSection() {
               />
 
               <Image
-                className=" dark:hidden block"
+                className="block dark:hidden"
                 src="https://get-optimise.com/images/logos/logo-light.svg"
                 alt="Nike Logo"
                 height={100}
@@ -62,7 +62,7 @@ export default function WallOfLoveSection() {
                     <cite className="text-sm font-medium">
                       Harro M. Wiersma
                     </cite>
-                    <span className="text-muted-foreground block text-sm">
+                    <span className="block text-sm text-muted-foreground">
                       XAPPO Enterprises Ltd, Naxxar, Malta
                     </span>
                   </div>
@@ -70,11 +70,16 @@ export default function WallOfLoveSection() {
               </div>
             </CardContent>
           </Card>
-          <Card className="md:col-span-2 bg-transparent">
+          <Card className="bg-transparent md:col-span-2">
             <CardContent className="h-full">
               <div className="grid h-full grid-rows-[1fr_auto] gap-2">
                 <p className="text-xl font-medium">
-                  Seller went above and beyond for me - he addressed the complex problems, tried plenty of solutions, until we eventually came to a solution. No other seller would have tried as hard and put as much effort - they would have given up. If you are having any doubts about moving forward, don't. He is exceptional
+                  Seller went above and beyond for me - he addressed the complex
+                  problems, tried plenty of solutions, until we eventually came
+                  to a solution. No other seller would have tried as hard and
+                  put as much effort - they would have given up. If you are
+                  having any doubts about moving forward, don't. He is
+                  exceptional
                 </p>
 
                 <div className="grid grid-cols-[auto_1fr] items-center gap-3">
@@ -90,8 +95,8 @@ export default function WallOfLoveSection() {
                   </Avatar>
                   <div>
                     <cite className="text-sm font-medium">dublinmaths</cite>
-                    <span className="text-muted-foreground block text-sm">
-                     Youtube Instructor
+                    <span className="block text-sm text-muted-foreground">
+                      Youtube Instructor
                     </span>
                   </div>
                 </div>
@@ -103,7 +108,7 @@ export default function WallOfLoveSection() {
               <div className="grid h-full grid-rows-[1fr_auto] gap-6">
                 <p>One of the best freelancers I have worked with!</p>
 
-                <div className="grid items-center gap-3 [grid-template-columns:auto_1fr]">
+                <div className="grid [grid-template-columns:auto_1fr] items-center gap-3">
                   <Avatar className="size-12">
                     <AvatarImage
                       src="https://tailus.io/images/reviews/yucel.webp"
@@ -116,7 +121,7 @@ export default function WallOfLoveSection() {
                   </Avatar>
                   <div>
                     <cite className="text-sm font-medium">Israel Serbesa</cite>
-                    <span className="text-muted-foreground block text-sm">
+                    <span className="block text-sm text-muted-foreground">
                       Cruisly
                     </span>
                   </div>
@@ -145,7 +150,7 @@ export default function WallOfLoveSection() {
                   </Avatar>
                   <div>
                     <p className="text-sm font-medium">Haris Khan</p>
-                    <span className="text-muted-foreground block text-sm">
+                    <span className="block text-sm text-muted-foreground">
                       USA Business Owner
                     </span>
                   </div>
@@ -156,6 +161,5 @@ export default function WallOfLoveSection() {
         </div>
       </div>
     </section>
-    
   );
 }

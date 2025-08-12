@@ -73,7 +73,7 @@ const testimonials: Testimonial[] = [
 
 const chunkArray = (
   array: Testimonial[],
-  chunkSize: number
+  chunkSize: number,
 ): Testimonial[][] => {
   const result: Testimonial[][] = [];
   for (let i = 0; i < array.length; i += chunkSize) {
@@ -84,7 +84,7 @@ const chunkArray = (
 
 const testimonialChunks = chunkArray(
   testimonials,
-  Math.ceil(testimonials.length / 3)
+  Math.ceil(testimonials.length / 3),
 );
 
 export default function WallOfLoveSection() {

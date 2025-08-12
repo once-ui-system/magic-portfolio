@@ -10,7 +10,12 @@ export default function GitHubCalendarSection() {
         GitHub Activity Calendar
       </h1>
       <div className="pb-8 flex justify-center">
-        <GitHubCalendar username="Awii21" blockSize={13} blockMargin={5} fontSize={18} />
+        <GitHubCalendar
+          username="Awii21"
+          blockSize={13}
+          blockMargin={5}
+          fontSize={18}
+        />
       </div>
     </section>
   );
