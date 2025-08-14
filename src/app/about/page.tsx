@@ -94,7 +94,7 @@ export default function About() {
               <Icon onBackground="accent-weak" name="globe" />
               {person.location}
             </Flex>
-            {person.languages.length > 0 && (
+            {person.languages && person.languages.length > 0 && (
               <Flex wrap gap="8">
                 {person.languages.map((language, index) => (
                   <Tag key={language} size="l">
@@ -215,7 +215,7 @@ export default function About() {
                         </Text>
                       ))}
                     </Column>
-                    {experience.images.length > 0 && (
+                    {experience.images && experience.images.length > 0 && (
                       <Flex fillWidth paddingTop="m" paddingLeft="40" gap="12" wrap>
                         {experience.images.map((image, index) => (
                           <Flex
