@@ -2,10 +2,10 @@
   "name": "@once-ui-system/magic-portfolio",
   "version": "2.2.0",
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 5000",
     "export": "next export",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p 5000",
     "lint": "next lint"
   },
   "dependencies": {
