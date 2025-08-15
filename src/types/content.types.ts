@@ -69,13 +69,15 @@ export interface BasePageConfig {
    *
    * The path should be relative to the public directory
    */
-  path: `/images/${string}` | string;
+  path: `/${string}` | string;
   /** Label for navigation or display */
   label: string;
   /** Title of the page */
   title: string;
   /** Description for SEO and metadata */
   description: string;
+  /** OG Image should be put inside `public/images` folder */
+  image: `/images/${string}` | string;
 }
 
 /**
