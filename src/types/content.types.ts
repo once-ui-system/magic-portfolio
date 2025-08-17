@@ -5,7 +5,7 @@ import { zones } from "tzdata";
  * IANA time zone string (e.g., 'Asia/Calcutta', 'Europe/Vienna').
  * See: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
  */
-export type IANATimeZone = keyof typeof zones; // Extend as needed
+export type IANATimeZone = Extract<keyof typeof zones, string>; // Narrow to string keys for React usage
 
 /**
  * Represents a person featured in the portfolio.
@@ -77,7 +77,7 @@ export interface BasePageConfig {
   /** Description for SEO and metadata */
   description: string;
   /** OG Image should be put inside `public/images` folder */
-  image: `/images/${string}` | string;
+  image?: `/images/${string}` | string;
 }
 
 /**
