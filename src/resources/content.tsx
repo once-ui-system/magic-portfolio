@@ -174,6 +174,12 @@ const about: About = {
         description: (
           <>Able to prototype in Figma with Once UI with unnatural speed.</>
         ),
+        tags: [
+          {
+            name: "Figma",
+            icon: "figma",
+          },
+        ],
         // optional: leave the array empty if you don't want to display images
         images: [
           {
@@ -195,6 +201,20 @@ const about: About = {
         description: (
           <>Building next gen apps with Next.js + Once UI + Supabase.</>
         ),
+        tags: [
+          {
+            name: "JavaScript",
+            icon: "javascript",
+          },
+          {
+            name: "Next.js",
+            icon: "nextjs",
+          },
+          {
+            name: "Supabase",
+            icon: "supabase",
+          },
+        ],
         // optional: leave the array empty if you don't want to display images
         images: [
           {
@@ -204,7 +224,7 @@ const about: About = {
             height: 9,
           },
         ],
-      },
+      },  
     ],
   },
 };

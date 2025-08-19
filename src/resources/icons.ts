@@ -22,6 +22,13 @@ import {
   PiImageDuotone,
 } from "react-icons/pi";
 
+import {
+  SiJavascript,
+  SiNextdotjs,
+  SiFigma,
+  SiSupabase,
+} from "react-icons/si";
+
 import { FaDiscord, FaGithub, FaLinkedin, FaX, FaThreads } from "react-icons/fa6";
 
 export const iconLibrary: Record<string, IconType> = {
@@ -45,7 +52,12 @@ export const iconLibrary: Record<string, IconType> = {
   threads: FaThreads,
   arrowUpRightFromSquare: HiArrowTopRightOnSquare,
   document: HiOutlineDocument,
-  rocket: HiOutlineRocketLaunch
+  rocket: HiOutlineRocketLaunch,
+
+  javascript: SiJavascript,
+  nextjs: SiNextdotjs,
+  supabase: SiSupabase,
+  figma: SiFigma,
 };
 
 export type IconLibrary = typeof iconLibrary;
