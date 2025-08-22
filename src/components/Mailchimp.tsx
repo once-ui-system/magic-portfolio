@@ -1,7 +1,7 @@
 "use client";
 
-import { mailchimp } from "@/resources";
-import { Button, Flex, Heading, Input, Text, Background, Column } from "@once-ui-system/core";
+import { mailchimp, newsletter } from "@/resources";
+import { Button, Heading, Input, Text, Background, Column, Row } from "@once-ui-system/core";
 import { opacity, SpacingToken } from "@once-ui-system/core";
 import { useState } from "react";
 
@@ -13,13 +13,7 @@ function debounce<T extends (...args: any[]) => void>(func: T, delay: number): T
   }) as T;
 }
 
-type NewsletterProps = {
-  display: boolean;
-  title: string | React.ReactNode;
-  description: string | React.ReactNode;
-};
-
-export const Mailchimp = ({ newsletter }: { newsletter: NewsletterProps }) => {
+export const Mailchimp: React.FC<React.ComponentProps<typeof Column>> = ({ ...flex }) => {
   const [email, setEmail] = useState<string>("");
   const [error, setError] = useState<string>("");
   const [touched, setTouched] = useState<boolean>(false);
@@ -53,6 +47,8 @@ export const Mailchimp = ({ newsletter }: { newsletter: NewsletterProps }) => {
     }
   };
 
+  if (newsletter.display === false) return null;
+
   return (
     <Column
       overflow="hidden"
@@ -64,6 +60,7 @@ export const Mailchimp = ({ newsletter }: { newsletter: NewsletterProps }) => {
       align="center"
       background="surface"
       border="neutral-alpha-weak"
+      {...flex}
     >
       <Background
         top="0"
@@ -107,20 +104,19 @@ export const Mailchimp = ({ newsletter }: { newsletter: NewsletterProps }) => {
           color: mailchimp.effects.lines.color,
         }}
       />
-      <Heading style={{ position: "relative" }} marginBottom="s" variant="display-strong-xs">
-        {newsletter.title}
-      </Heading>
-      <Text
-        style={{
-          position: "relative",
-          maxWidth: "var(--responsive-width-xs)",
-        }}
-        wrap="balance"
-        marginBottom="l"
-        onBackground="neutral-medium"
-      >
-        {newsletter.description}
-      </Text>
+      <Column maxWidth="xs" horizontal="center">
+        <Heading marginBottom="s" variant="display-strong-xs">
+          {newsletter.title}
+        </Heading>
+        <Text
+          wrap="balance"
+          marginBottom="l"
+          variant="body-default-l"
+          onBackground="neutral-weak"
+        >
+          {newsletter.description}
+        </Text>
+      </Column>
       <form
         style={{
           width: "100%",
@@ -132,7 +128,7 @@ export const Mailchimp = ({ newsletter }: { newsletter: NewsletterProps }) => {
         id="mc-embedded-subscribe-form"
         name="mc-embedded-subscribe-form"
       >
-        <Flex id="mc_embed_signup_scroll" fillWidth maxWidth={24} mobileDirection="column" gap="8">
+        <Row id="mc_embed_signup_scroll" fillWidth maxWidth={24} s={{direction: "column"}} gap="8">
           <Input
             formNoValidate
             id="mce-EMAIL"
@@ -174,13 +170,13 @@ export const Mailchimp = ({ newsletter }: { newsletter: NewsletterProps }) => {
             />
           </div>
           <div className="clear">
-            <Flex height="48" vertical="center">
+            <Row height="48" vertical="center">
               <Button id="mc-embedded-subscribe" value="Subscribe" size="m" fillWidth>
                 Subscribe
               </Button>
-            </Flex>
+            </Row>
           </div>
-        </Flex>
+        </Row>
       </form>
     </Column>
   );

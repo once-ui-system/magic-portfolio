@@ -1,5 +1,5 @@
 import { About, Blog, Gallery, Home, Newsletter, Person, Social, Work } from "@/types";
-import { Logo } from "@once-ui-system/core";
+import { Line, Logo, Row, Text } from "@once-ui-system/core";
 
 const person: Person = {
   firstName: "Selene",
@@ -14,11 +14,10 @@ const person: Person = {
 
 const newsletter: Newsletter = {
   display: true,
-  title: <>Subscribe to {person.name}'s Newsletter</>,
+  title: <>Subscribe to {person.firstName}'s Newsletter</>,
   description: (
     <>
-      I occasionally write about design, technology, and share thoughts on the
-      intersection of creativity and engineering.
+      My weekly newsletter about creativity and engineering
     </>
   ),
 };
@@ -29,7 +28,7 @@ const social: Social = [
   {
     name: "GitHub",
     icon: "github",
-    link: "https://github.com/once-ui-system/nextjs-starter",
+    link: "https://github.com/once-ui-system",
   },
   {
     name: "LinkedIn",
@@ -58,9 +57,9 @@ const home: Home = {
   featured: {
     display: true,
     title: (
-      <>
-        Recent project: <strong className="ml-4">Once UI</strong>
-      </>
+      <Row gap="12" vertical="center">
+        <strong className="ml-4">Once UI</strong> <Line background="brand-alpha-strong" vert height="20"/><Text marginRight="4" onBackground="brand-medium">Featured work</Text>
+      </Row>
     ),
     href: "/work/building-once-ui-a-customizable-design-system",
   },
@@ -68,6 +67,7 @@ const home: Home = {
     <>
       I'm Selene, a design engineer at{" "}
       <Logo
+        dark
         icon="/trademarks/wordmark-dark.svg"
         style={{ display: "inline-flex", top: "0.25em", marginLeft: "-0.25em" }}
       />
@@ -241,17 +241,12 @@ const gallery: Gallery = {
       orientation: "horizontal",
     },
     {
-      src: "/images/gallery/horizontal-2.jpg",
+      src: "/images/gallery/vertical-4.jpg",
       alt: "image",
-      orientation: "horizontal",
+      orientation: "vertical",
     },
     {
       src: "/images/gallery/horizontal-3.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/horizontal-4.jpg",
       alt: "image",
       orientation: "horizontal",
     },
@@ -266,12 +261,17 @@ const gallery: Gallery = {
       orientation: "vertical",
     },
     {
-      src: "/images/gallery/vertical-3.jpg",
+      src: "/images/gallery/horizontal-2.jpg",
       alt: "image",
-      orientation: "vertical",
+      orientation: "horizontal",
     },
     {
-      src: "/images/gallery/vertical-4.jpg",
+      src: "/images/gallery/horizontal-4.jpg",
+      alt: "image",
+      orientation: "horizontal",
+    },
+    {
+      src: "/images/gallery/vertical-3.jpg",
       alt: "image",
       orientation: "vertical",
     },

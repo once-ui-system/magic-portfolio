@@ -21,6 +21,9 @@ import {
   Icon,
   Media,
   SmartLink,
+  List,
+  ListItem,
+  Line,
 } from "@once-ui-system/core";
 
 type CustomLinkProps = React.AnchorHTMLAttributes<HTMLAnchorElement> & {
@@ -64,7 +67,6 @@ function createImage({ alt, src, ...props }: MediaProps & { src: string }) {
       marginBottom="16"
       enlarge
       radius="m"
-      aspectRatio="16 / 9"
       border="neutral-alpha-medium"
       sizes="(max-width: 960px) 100vw, 960px"
       alt={alt}
@@ -151,6 +153,34 @@ function createCodeBlock(props: any) {
   return <pre {...props} />;
 }
 
+function createList({ children }: { children: ReactNode }) {
+  return (
+    <List>
+      {children}
+    </List>
+  );
+}
+
+function createListItem({ children }: { children: ReactNode }) {
+  return (
+    <ListItem
+      marginTop="4"
+      marginBottom="8"
+      style={{ lineHeight: "175%" }}
+    >
+      {children}
+    </ListItem>
+  );
+}
+
+function createHR() {
+  return (
+    <Row fillWidth horizontal="center">
+      <Line maxWidth="40"/>
+    </Row>
+  );
+}
+
 const components = {
   p: createParagraph as any,
   h1: createHeading("h1") as any,
@@ -163,6 +193,10 @@ const components = {
   a: CustomLink as any,
   code: createInlineCode as any,
   pre: createCodeBlock as any,
+  ol: createList as any,
+  ul: createList as any,
+  li: createListItem as any,
+  hr: createHR as any,
   Heading,
   Text,
   CodeBlock,

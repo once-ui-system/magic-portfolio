@@ -1,10 +1,5 @@
 @use "./breakpoints.scss" as breakpoints;
 
-.position {
-    position: sticky;
-    top: 0;
-}
-
 .mask {
     pointer-events: none;
     backdrop-filter: blur(0.5rem);
@@ -16,7 +11,6 @@
 @media (max-width: breakpoints.$s) {
     .position {
         top: auto;
-        position: fixed;
         bottom: var(--static-space-24);
     }
 
