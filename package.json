@@ -15,6 +15,7 @@
     "classnames": "^2.5.1",
     "cookie": "^1.0.2",
     "gray-matter": "^4.0.3",
+    "lint-staged": "^16.1.5",
     "next": "^15.3.1",
     "next-mdx-remote": "^5.0.0",
     "react": "19.0.0",
@@ -23,6 +24,7 @@
     "sass": "^1.86.3"
   },
   "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
     "@types/cookie": "^0.6.0",
     "@types/node": "^20.17.30",
     "@types/react": "^19.0.0",
