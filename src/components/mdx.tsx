@@ -1,7 +1,7 @@
 import { MDXRemote, MDXRemoteProps } from "next-mdx-remote/rsc";
 import React, { ReactNode } from "react";
 
-import { 
+import {
   Heading,
   HeadingLink,
   Text,
@@ -86,16 +86,13 @@ function slugify(str: string): string {
 }
 
 function createHeading(as: "h1" | "h2" | "h3" | "h4" | "h5" | "h6") {
-  const CustomHeading = ({ children, ...props }: Omit<React.ComponentProps<typeof HeadingLink>, 'as' | 'id'>) => {
+  const CustomHeading = ({
+    children,
+    ...props
+  }: Omit<React.ComponentProps<typeof HeadingLink>, "as" | "id">) => {
     const slug = slugify(children as string);
     return (
-      <HeadingLink
-        marginTop="24"
-        marginBottom="12"
-        as={as}
-        id={slug}
-        {...props}
-      >
+      <HeadingLink marginTop="24" marginBottom="12" as={as} id={slug} {...props}>
         {children}
       </HeadingLink>
     );
@@ -128,11 +125,11 @@ function createCodeBlock(props: any) {
   // For pre tags that contain code blocks
   if (props.children && props.children.props && props.children.props.className) {
     const { className, children } = props.children.props;
-    
+
     // Extract language from className (format: language-xxx)
-    const language = className.replace('language-', '');
+    const language = className.replace("language-", "");
     const label = language.charAt(0).toUpperCase() + language.slice(1);
-    
+
     return (
       <CodeBlock
         marginTop="8"
@@ -141,33 +138,25 @@ function createCodeBlock(props: any) {
           {
             code: children,
             language,
-            label
-          }
+            label,
+          },
         ]}
         copyButton={true}
       />
     );
   }
-  
+
   // Fallback for other pre tags or empty code blocks
   return <pre {...props} />;
 }
 
 function createList({ children }: { children: ReactNode }) {
-  return (
-    <List>
-      {children}
-    </List>
-  );
+  return <List>{children}</List>;
 }
 
 function createListItem({ children }: { children: ReactNode }) {
   return (
-    <ListItem
-      marginTop="4"
-      marginBottom="8"
-      style={{ lineHeight: "175%" }}
-    >
+    <ListItem marginTop="4" marginBottom="8" style={{ lineHeight: "175%" }}>
       {children}
     </ListItem>
   );
@@ -176,7 +165,7 @@ function createListItem({ children }: { children: ReactNode }) {
 function createHR() {
   return (
     <Row fillWidth horizontal="center">
-      <Line maxWidth="40"/>
+      <Line maxWidth="40" />
     </Row>
   );
 }
@@ -220,7 +209,5 @@ type CustomMDXProps = MDXRemoteProps & {
 };
 
 export function CustomMDX(props: CustomMDXProps) {
-  return (
-    <MDXRemote {...props} components={{ ...components, ...(props.components || {}) }} />
-  );
+  return <MDXRemote {...props} components={{ ...components, ...(props.components || {}) }} />;
 }

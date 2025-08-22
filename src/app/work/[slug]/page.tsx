@@ -1,6 +1,20 @@
 import { notFound } from "next/navigation";
 import { getPosts } from "@/utils/utils";
-import { Meta, Schema, AvatarGroup, Button, Column, Flex, Heading, Media, Text, SmartLink, Row, Avatar, Line } from "@once-ui-system/core";
+import {
+  Meta,
+  Schema,
+  AvatarGroup,
+  Button,
+  Column,
+  Flex,
+  Heading,
+  Media,
+  Text,
+  SmartLink,
+  Row,
+  Avatar,
+  Line,
+} from "@once-ui-system/core";
 import { baseURL, about, person, work } from "@/resources";
 import { formatDate } from "@/utils/formatDate";
 import { ScrollToHash, CustomMDX } from "@/components";
@@ -20,9 +34,11 @@ export async function generateMetadata({
   params: Promise<{ slug: string | string[] }>;
 }): Promise<Metadata> {
   const routeParams = await params;
-  const slugPath = Array.isArray(routeParams.slug) ? routeParams.slug.join('/') : routeParams.slug || '';
+  const slugPath = Array.isArray(routeParams.slug)
+    ? routeParams.slug.join("/")
+    : routeParams.slug || "";
 
-  const posts = getPosts(["src", "app", "work", "projects"])
+  const posts = getPosts(["src", "app", "work", "projects"]);
   let post = posts.find((post) => post.slug === slugPath);
 
   if (!post) return {};
@@ -37,10 +53,14 @@ export async function generateMetadata({
 }
 
 export default async function Project({
-  params
-}: { params: Promise<{ slug: string | string[] }> }) {
+  params,
+}: {
+  params: Promise<{ slug: string | string[] }>;
+}) {
   const routeParams = await params;
-  const slugPath = Array.isArray(routeParams.slug) ? routeParams.slug.join('/') : routeParams.slug || '';
+  const slugPath = Array.isArray(routeParams.slug)
+    ? routeParams.slug.join("/")
+    : routeParams.slug || "";
 
   let post = getPosts(["src", "app", "work", "projects"]).find((post) => post.slug === slugPath);
 
@@ -63,7 +83,9 @@ export default async function Project({
         description={post.metadata.summary}
         datePublished={post.metadata.publishedAt}
         dateModified={post.metadata.publishedAt}
-        image={post.metadata.image || `/api/og/generate?title=${encodeURIComponent(post.metadata.title)}`}
+        image={
+          post.metadata.image || `/api/og/generate?title=${encodeURIComponent(post.metadata.title)}`
+        }
         author={{
           name: person.name,
           url: `${baseURL}${about.path}`,
@@ -71,13 +93,13 @@ export default async function Project({
         }}
       />
       <Column maxWidth="s" gap="16" horizontal="center" align="center">
-        <SmartLink href="/work"><Text variant="label-strong-m">Projects</Text></SmartLink>
+        <SmartLink href="/work">
+          <Text variant="label-strong-m">Projects</Text>
+        </SmartLink>
         <Text variant="body-default-xs" onBackground="neutral-weak" marginBottom="12">
           {post.metadata.publishedAt && formatDate(post.metadata.publishedAt)}
         </Text>
-        <Heading variant="display-strong-m">
-          {post.metadata.title}
-        </Heading>
+        <Heading variant="display-strong-m">{post.metadata.title}</Heading>
       </Column>
       <Row marginBottom="32" horizontal="center">
         <Row gap="16" vertical="center">
@@ -86,7 +108,9 @@ export default async function Project({
             {post.metadata.team?.map((member, idx) => (
               <span key={idx}>
                 {idx > 0 && (
-                  <Text as="span" onBackground="neutral-weak">, </Text>
+                  <Text as="span" onBackground="neutral-weak">
+                    ,{" "}
+                  </Text>
                 )}
                 <SmartLink href={member.linkedIn}>{member.name}</SmartLink>
               </span>
@@ -95,20 +119,16 @@ export default async function Project({
         </Row>
       </Row>
       {post.metadata.images.length > 0 && (
-        <Media
-          priority
-          aspectRatio="16 / 9"
-          radius="m"
-          alt="image"
-          src={post.metadata.images[0]}
-        />
+        <Media priority aspectRatio="16 / 9" radius="m" alt="image" src={post.metadata.images[0]} />
       )}
       <Column style={{ margin: "auto" }} as="article" maxWidth="xs">
         <CustomMDX source={post.content} />
       </Column>
       <Column fillWidth gap="40" horizontal="center" marginTop="40">
-        <Line maxWidth="40"/>
-        <Heading as="h2" variant="heading-strong-xl" marginBottom="24">Related projects</Heading>
+        <Line maxWidth="40" />
+        <Heading as="h2" variant="heading-strong-xl" marginBottom="24">
+          Related projects
+        </Heading>
         <Projects exclude={[post.slug]} range={[2]} />
       </Column>
       <ScrollToHash />

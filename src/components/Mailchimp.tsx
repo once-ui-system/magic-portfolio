@@ -69,7 +69,7 @@ export const Mailchimp: React.FC<React.ComponentProps<typeof Column>> = ({ ...fl
           x: mailchimp.effects.mask.x,
           y: mailchimp.effects.mask.y,
           radius: mailchimp.effects.mask.radius,
-          cursor: mailchimp.effects.mask.cursor
+          cursor: mailchimp.effects.mask.cursor,
         }}
         gradient={{
           display: mailchimp.effects.gradient.display,
@@ -108,12 +108,7 @@ export const Mailchimp: React.FC<React.ComponentProps<typeof Column>> = ({ ...fl
         <Heading marginBottom="s" variant="display-strong-xs">
           {newsletter.title}
         </Heading>
-        <Text
-          wrap="balance"
-          marginBottom="l"
-          variant="body-default-l"
-          onBackground="neutral-weak"
-        >
+        <Text wrap="balance" marginBottom="l" variant="body-default-l" onBackground="neutral-weak">
           {newsletter.description}
         </Text>
       </Column>
@@ -128,7 +123,13 @@ export const Mailchimp: React.FC<React.ComponentProps<typeof Column>> = ({ ...fl
         id="mc-embedded-subscribe-form"
         name="mc-embedded-subscribe-form"
       >
-        <Row id="mc_embed_signup_scroll" fillWidth maxWidth={24} s={{direction: "column"}} gap="8">
+        <Row
+          id="mc_embed_signup_scroll"
+          fillWidth
+          maxWidth={24}
+          s={{ direction: "column" }}
+          gap="8"
+        >
           <Input
             formNoValidate
             id="mce-EMAIL"

@@ -47,8 +47,17 @@ export const Header = () => {
 
   return (
     <>
-      <Fade s={{hide: true}} fillWidth position="fixed" height="80" zIndex={9} />
-      <Fade hide s={{hide: false}} fillWidth position="fixed" bottom="0" to="top" height="80" zIndex={9} />
+      <Fade s={{ hide: true }} fillWidth position="fixed" height="80" zIndex={9} />
+      <Fade
+        hide
+        s={{ hide: false }}
+        fillWidth
+        position="fixed"
+        bottom="0"
+        to="top"
+        height="80"
+        zIndex={9}
+      />
       <Row
         fitHeight
         className={styles.position}
@@ -64,7 +73,7 @@ export const Header = () => {
         }}
       >
         <Row paddingLeft="12" fillWidth vertical="center" textVariant="body-default-s">
-          {display.location && <Row s={{hide: true}}>{person.location}</Row>}
+          {display.location && <Row s={{ hide: true }}>{person.location}</Row>}
         </Row>
         <Row fillWidth horizontal="center">
           <Row
@@ -83,7 +92,7 @@ export const Header = () => {
               <Line background="neutral-alpha-medium" vert maxHeight="24" />
               {routes["/about"] && (
                 <>
-                  <Row s={{hide: true}}>
+                  <Row s={{ hide: true }}>
                     <ToggleButton
                       prefixIcon="person"
                       href="/about"
@@ -91,7 +100,7 @@ export const Header = () => {
                       selected={pathname === "/about"}
                     />
                   </Row>
-                  <Row hide s={{hide: false}}>
+                  <Row hide s={{ hide: false }}>
                     <ToggleButton
                       prefixIcon="person"
                       href="/about"
@@ -102,7 +111,7 @@ export const Header = () => {
               )}
               {routes["/work"] && (
                 <>
-                  <Row s={{hide: true}}>
+                  <Row s={{ hide: true }}>
                     <ToggleButton
                       prefixIcon="grid"
                       href="/work"
@@ -110,7 +119,7 @@ export const Header = () => {
                       selected={pathname.startsWith("/work")}
                     />
                   </Row>
-                  <Row hide s={{hide: false}}>
+                  <Row hide s={{ hide: false }}>
                     <ToggleButton
                       prefixIcon="grid"
                       href="/work"
@@ -121,7 +130,7 @@ export const Header = () => {
               )}
               {routes["/blog"] && (
                 <>
-                  <Row s={{hide: true}}>
+                  <Row s={{ hide: true }}>
                     <ToggleButton
                       prefixIcon="book"
                       href="/blog"
@@ -129,7 +138,7 @@ export const Header = () => {
                       selected={pathname.startsWith("/blog")}
                     />
                   </Row>
-                  <Row hide s={{hide: false}}>
+                  <Row hide s={{ hide: false }}>
                     <ToggleButton
                       prefixIcon="book"
                       href="/blog"
@@ -140,7 +149,7 @@ export const Header = () => {
               )}
               {routes["/gallery"] && (
                 <>
-                  <Row s={{hide: true}}>
+                  <Row s={{ hide: true }}>
                     <ToggleButton
                       prefixIcon="gallery"
                       href="/gallery"
@@ -148,7 +157,7 @@ export const Header = () => {
                       selected={pathname.startsWith("/gallery")}
                     />
                   </Row>
-                  <Row hide s={{hide: false}}>
+                  <Row hide s={{ hide: false }}>
                     <ToggleButton
                       prefixIcon="gallery"
                       href="/gallery"
@@ -174,7 +183,9 @@ export const Header = () => {
             textVariant="body-default-s"
             gap="20"
           >
-            <Flex s={{hide: true}}>{display.time && <TimeDisplay timeZone={person.location} />}</Flex>
+            <Flex s={{ hide: true }}>
+              {display.time && <TimeDisplay timeZone={person.location} />}
+            </Flex>
           </Flex>
         </Flex>
       </Row>
