@@ -1,0 +1,199 @@
+/* Masonry Grid Styles */
+.masonryGrid {
+    display: flex;
+    margin-left: calc(-1 * var(--static-space-16));
+    width: 100%;
+}
+
+.masonryGridColumn {
+    padding-left: var(--static-space-16);
+    background-clip: padding-box;
+}
+
+.gridItem {
+    margin-bottom: var(--static-space-16);
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.imageWrapper {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius-m-static);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+    
+    // Touch optimizations for gallery items
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    -webkit-user-select: none;
+    
+    // Better focus indicator for keyboard navigation
+    &:focus {
+        outline: 2px solid var(--neutral-600);
+        outline-offset: 2px;
+        border-radius: var(--radius-m-static);
+    }
+    
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+    
+    @media (max-width: 768px) {
+        // Ensure minimum touch target size on mobile
+        min-height: 44px;
+        
+        &:hover {
+            // Disable hover effects on touch devices
+            transform: none;
+            box-shadow: none;
+        }
+        
+        &:active {
+            opacity: 0.8;
+            transform: scale(0.98);
+            transition: all 0.1s ease;
+        }
+    }
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 20px;
+    box-sizing: border-box;
+    
+    background: rgba(0, 0, 0, 0.95);
+    border: 1px solid var(--neutral-alpha-weak);
+    border-radius: var(--radius-m-static, 8px);
+    backdrop-filter: blur(20px);
+    
+    // Mobile touch optimizations
+    touch-action: none;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+    
+    // Prevent mobile safari bouncing
+    overflow: hidden;
+    
+    @media (max-width: 768px) {
+        padding: 10px;
+        border-radius: 0;
+    }
+}
+
+.modalContent {
+    position: relative;
+    max-width: 90vw;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.closeButton {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 1001;
+    
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: 1px solid var(--neutral-alpha-weak);
+    border-radius: 50%;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    transition: all 0.2s ease;
+    
+    // Touch optimizations
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-user-select: none;
+    
+    &:hover {
+        background: rgba(239, 68, 68, 0.8);
+        border-color: rgba(239, 68, 68, 0.3);
+        transform: scale(1.1);
+    }
+    
+    &:active {
+        transform: scale(0.95);
+    }
+    
+    // Mobile specific styles
+    @media (max-width: 768px) {
+        &:hover {
+            // Disable hover on touch devices
+            background: rgba(0, 0, 0, 0.6);
+            border-color: var(--neutral-alpha-weak);
+            transform: none;
+        }
+        
+        &:active {
+            background: rgba(239, 68, 68, 0.8);
+            border-color: rgba(239, 68, 68, 0.3);
+            transform: scale(0.95);
+        }
+    }
+}
+
+/* Loading and error states */
+.loadingState {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    color: var(--neutral-500, #737373);
+    font-size: 1.1rem;
+    gap: var(--static-space-16);
+}
+
+.errorState {
+    aspect-ratio: 16 / 9;
+    background-color: var(--red-50, #fef2f2);
+    border-radius: var(--radius-m-static);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--red-500, #ef4444);
+    font-size: 0.875rem;
+    padding: var(--static-space-16);
+    text-align: center;
+    gap: var(--static-space-8);
+    border: 1px solid var(--red-200, #fecaca);
+}
+
+.retryButton {
+    background: var(--red-500, #ef4444);
+    color: white;
+    border: none;
+    padding: 4px 8px;
+    border-radius: var(--radius-s-static);
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    
+    &:hover {
+        background: var(--red-600, #dc2626);
+    }
+}

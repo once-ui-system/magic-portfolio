@@ -226,6 +226,8 @@ export interface Work extends BasePageConfig {}
  * @description Configuration for the Gallery page, including metadata, navigation label, and image list.
  */
 export interface Gallery extends BasePageConfig {
+  /** Subtitle for the gallery page */
+  subtitle?: string;
   /** List of images in the gallery */
   images: Array<{
     /** Image source path */
@@ -233,6 +235,10 @@ export interface Gallery extends BasePageConfig {
     /** Image alt text */
     alt: string;
     /** Image orientation (horizontal/vertical) */
-    orientation: string;
+    orientation?: string;
+    /** Image title */
+    title?: string;
+    /** Year the image was taken */
+    year?: string;
   }>;
 }
