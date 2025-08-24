@@ -148,6 +148,24 @@ export type SameAsConfig = {
 };
 
 /**
+ * Social sharing configuration for blog posts.
+ */
+export type SocialSharingConfig = {
+  enabled: boolean;
+  platforms: {
+    x: boolean;
+    linkedin: boolean;
+    facebook: boolean;
+    pinterest: boolean;
+    whatsapp: boolean;
+    reddit: boolean;
+    telegram: boolean;
+    email: boolean;
+    copyLink: boolean;
+  };
+};
+
+/**
  * Top-level config types for once-ui.config.js
  */
 export type OnceUIConfig = {
@@ -160,6 +178,7 @@ export type OnceUIConfig = {
   style: StyleConfig;
   schema: SchemaConfig;
   sameAs: SameAsConfig;
+  socialSharing: SocialSharingConfig;
   effects: EffectsConfig;
   dataStyle: DataStyleConfig;
 };
