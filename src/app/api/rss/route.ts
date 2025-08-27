@@ -18,13 +18,13 @@ export async function GET() {
       </image>
       <icon>${siteUrl}/images/teds.png</icon>
       ${posts.map((post: BlogPostMeta) => `
-        <item>
-          <title>${post.title}</title>
-          <link>${siteUrl}/blog/${post.slug}</link>
-          <pubDate>${post.date}</pubDate>
-          <description>${post.summary || ''}</description>
-          ${post.image ? `<enclosure url=\"${post.image}\" type=\"image/jpeg\" />` : ''}
-        </item>
+      <item>
+        <title>${post.title}</title>
+        <link>${siteUrl}/blog/${post.slug}</link>
+        <pubDate>${post.date}</pubDate>
+        <description>${post.summary || ''}</description>
+        ${post.image ? `<enclosure url=\"${post.image}\" type=\"image/jpeg\" />` : ''}
+      </item>
       `).join('')}
     </channel>
   </rss>`;
