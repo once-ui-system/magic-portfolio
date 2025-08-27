@@ -1,5 +1,7 @@
 import { posts, BlogPostMeta } from '../../blog/posts/manifest';
 
+export const runtime = 'edge';
+
 const siteUrl = 'https://teds.one';
 
 export async function GET() {
