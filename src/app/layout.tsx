@@ -37,6 +37,12 @@ export default async function RootLayout({
       )}
     >
       <head>
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title="TEDS Blog RSS"
+          href="/api/rss"
+        />
         <script
           id="theme-init"
           dangerouslySetInnerHTML={{
