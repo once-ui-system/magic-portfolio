@@ -11,6 +11,12 @@ export async function GET() {
       <title>TEDS Blog</title>
       <link>${siteUrl}/blog</link>
       <description>Latest blog posts from TEDS</description>
+      <image>
+        <url>${siteUrl}/images/teds.png</url>
+        <title>TEDS Blog</title>
+        <link>${siteUrl}/blog</link>
+      </image>
+      <icon>${siteUrl}/images/teds.png</icon>
       ${posts.map((post: BlogPostMeta) => `
         <item>
           <title>${post.title}</title>
