@@ -3,6 +3,8 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 
+export const runtime = 'edge'
+
 const BLOG_DIR = path.join(process.cwd(), 'src/app/blog/posts');
 
 function getAllPosts() {
