@@ -1,6 +1,7 @@
 import { Column, Meta, Schema } from "@once-ui-system/core";
 import { baseURL, about, person, work } from "@/resources";
 import { Projects } from "@/components/work/Projects";
+import { ProjectsGrid } from "@/components/work/ProjectsGrid";
 
 export async function generateMetadata() {
   return Meta.generate({
@@ -28,7 +29,7 @@ export default function Work() {
           image: `${baseURL}${person.avatar}`,
         }}
       />
-      <Projects />
+      <ProjectsGrid />
     </Column>
   );
 }

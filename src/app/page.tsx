@@ -98,6 +98,14 @@ export default function Home() {
         </Flex>
       )}
       <Flex fillWidth gap="24" mobileDirection="column">
+        <Flex flex={1} paddingLeft="l" paddingTop="24">
+          <Heading as="h2" variant="display-strong-xs" wrap="balance">
+            Featured Projects
+          </Heading>
+        </Flex>
+        <Projects featuredOnly limit={3} />
+      </Flex>
+      <Flex fillWidth gap="24" mobileDirection="column">
         <Flex flex={1} paddingLeft="l" paddingTop="0">
           <Heading as="h2" variant="display-strong-xs" wrap="balance">
             Playbooks Series
@@ -105,6 +113,9 @@ export default function Home() {
         </Flex>
         <Flex flex={3} paddingX="20">
           <PlaybooksList />
+        </Flex>
+        <Flex flex={1} paddingLeft="l" paddingBottom="24">
+          <SmartLink href="/blog/playbooks">View all playbooks</SmartLink>
         </Flex>
       </Flex>
       <Projects range={[2]} />

@@ -84,6 +84,11 @@ export default async function Blog({
           </Row>
           <Column as="article" fillWidth>
             <CustomMDX source={post.content} />
+            <Heading marginTop="32" variant="heading-strong-m">Related Playbooks</Heading>
+            <Text onBackground="neutral-weak" marginBottom="8">Explore sector playbooks for quick wins.</Text>
+            <Row>
+              <a href="/blog/playbooks">View all playbooks →</a>
+            </Row>
           </Column>
           <ScrollToHash />
         </Column>
