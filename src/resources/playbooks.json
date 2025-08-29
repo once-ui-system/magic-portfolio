@@ -1,0 +1,5 @@
+[
+  { "slug": "logistics", "title": "Logistics Operations Playbook", "summary": "Quick wins, KPIs, automation checklist.", "industry": "logistics", "pdf": "/samples/logistics-playbook.pdf" },
+  { "slug": "legal", "title": "Legal Automation Playbook", "summary": "Intake, docgen, matter dashboards.", "industry": "legal", "pdf": "/samples/legal-playbook.pdf" },
+  { "slug": "saas", "title": "SaaS Growth Playbook", "summary": "Onboarding, activation, support automation.", "industry": "saas", "pdf": "/samples/saas-playbook.pdf" }
+]

@@ -36,6 +36,12 @@ export const Footer = () => {
           </Text>
         </Text>
         <Flex gap="16">
+          <SmartLink href="/industries">Industries</SmartLink>
+          <SmartLink href="/playbooks">Playbooks</SmartLink>
+          <SmartLink href="/case-studies">Case Studies</SmartLink>
+          <SmartLink href="/pricing">Pricing</SmartLink>
+          
+          <SmartLink href="/pricing">Pricing</SmartLink>
           {social.map(
             (item) =>
               item.link && (

@@ -22,6 +22,12 @@ import {
   Media,
   SmartLink,
 } from "@once-ui-system/core";
+import { RoiCalculator } from "@/components/demos/RoiCalculator";
+import { DocumentGeneratorDemo } from "@/components/demos/DocumentGeneratorDemo";
+import { DocumentUploadDemo } from "@/components/demos/DocumentUploadDemo";
+import { AgentChatDemo } from "@/components/demos/AgentChatDemo";
+import { LeadCapture } from "@/components/funnels/LeadCapture";
+import { FunnelCTA } from "@/components/funnels/FunnelCTA";
 
 type CustomLinkProps = React.AnchorHTMLAttributes<HTMLAnchorElement> & {
   href: string;
@@ -179,6 +185,12 @@ const components = {
   Icon,
   Media,
   SmartLink,
+  RoiCalculator,
+  DocumentGeneratorDemo,
+  DocumentUploadDemo,
+  AgentChatDemo,
+  LeadCapture,
+  FunnelCTA,
 };
 
 type CustomMDXProps = MDXRemoteProps & {

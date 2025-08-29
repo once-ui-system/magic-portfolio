@@ -1,0 +1,16 @@
+{
+  "welcome": {
+    "message": "Hi! I'm the assistant. How can I help today?",
+    "next": "router"
+  },
+  "router": {
+    "keywords": {
+      "pricing": "pricing",
+      "estimate": "pricing",
+      "demo": "demo",
+      "playbook": "playbooks",
+      "case": "case_studies"
+    },
+    "fallback": "human"
+  }
+}

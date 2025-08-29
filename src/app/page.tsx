@@ -5,6 +5,13 @@ import { home, about, person, newsletter, baseURL, routes } from "@/resources";
 import { Mailchimp } from "@/components";
 import { Projects } from "@/components/work/Projects";
 import { Posts } from "@/components/blog/Posts";
+import { PlaybooksList } from "@/components/blog/PlaybooksList";
+import { ClientLogoRail } from "@/components/marketing/ClientLogoRail";
+import { TestimonialsCarousel } from "@/components/marketing/TestimonialsCarousel";
+import { ValueProps } from "@/components/marketing/ValueProps";
+import { PricingEstimator } from "@/components/marketing/PricingEstimator";
+import flags from "@/resources/flags.json";
+import { HomeCTA } from "@/components/marketing/HomeCTA";
 
 export default function Home() {
   return (
@@ -65,11 +72,19 @@ export default function Home() {
               </Flex>
             </Button>
           </RevealFx>
+          <RevealFx paddingTop="12" delay={0.5} horizontal="start" paddingLeft="12">
+            <HomeCTA />
+          </RevealFx>
         </Column>
       </Column>
+      {flags.home.valuePropsFirst && <ValueProps />}
       <RevealFx translateY="16" delay={0.6}>
         <Projects range={[1, 1]} />
       </RevealFx>
+      {!flags.home.valuePropsFirst && <ValueProps />}
+      <ClientLogoRail />
+      <TestimonialsCarousel />
+      <PricingEstimator />
       {routes["/blog"] && (
         <Flex fillWidth gap="24" mobileDirection="column">
           <Flex flex={1} paddingLeft="l" paddingTop="24">
@@ -82,6 +97,16 @@ export default function Home() {
           </Flex>
         </Flex>
       )}
+      <Flex fillWidth gap="24" mobileDirection="column">
+        <Flex flex={1} paddingLeft="l" paddingTop="0">
+          <Heading as="h2" variant="display-strong-xs" wrap="balance">
+            Playbooks Series
+          </Heading>
+        </Flex>
+        <Flex flex={3} paddingX="20">
+          <PlaybooksList />
+        </Flex>
+      </Flex>
       <Projects range={[2]} />
       {newsletter.display && <Mailchimp newsletter={newsletter} />}
     </Column>

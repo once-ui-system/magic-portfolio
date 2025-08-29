@@ -1,0 +1,63 @@
+{
+  "legal": [
+    "Draft an engagement letter for a new client",
+    "Summarize intake to matter plan",
+    "Outline steps to automate deadline tracking"
+  ],
+  "saas": [
+    "Map onboarding flows to reduce churn",
+    "Suggest a 3-email activation sequence",
+    "Identify top 3 support automations"
+  ],
+  "logistics": [
+    "Reduce dock dwell time by 20%",
+    "Automate BOL to billing workflow",
+    "Handle exception alerts for late arrivals"
+  ],
+  "accounting": [
+    "Automate monthly reconciliations",
+    "Design AP approval workflow",
+    "Create a close checklist with owners"
+  ],
+  "healthcare": [
+    "Streamline patient intake",
+    "Automate eligibility checks",
+    "Standardize referral workflows"
+  ],
+  "construction": [
+    "Automate RFIs and submittals",
+    "Track COIs and expirations",
+    "Connect progress billing to field updates"
+  ],
+  "manufacturing": [
+    "Connect QC to work orders",
+    "Create traceability reports",
+    "Reduce changeover time with checklists"
+  ],
+  "financial-services": [
+    "Automate KYC/AML document requests",
+    "Build investor reporting workflow",
+    "Map advisory onboarding steps"
+  ],
+  "real-estate": [
+    "Speed up leasing pipeline",
+    "Automate maintenance triage",
+    "Create investor update templates"
+  ],
+  "education": [
+    "Simplify admissions and enrollment",
+    "Automate certificate issuance",
+    "Set up LMS assignment reminders"
+  ],
+  "hospitality": [
+    "Automate booking confirmations",
+    "Create pre-arrival checklists",
+    "Manage vendor coordination workflows"
+  ],
+  "retail": [
+    "Reduce returns friction",
+    "Sync inventory and order statuses",
+    "Automate common support replies"
+  ]
+}
+

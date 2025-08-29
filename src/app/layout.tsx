@@ -5,7 +5,13 @@ import '@/resources/custom.css'
 import classNames from "classnames";
 
 import { Background, Column, Flex, Meta, opacity, SpacingToken } from "@once-ui-system/core";
+import Script from "next/script";
+import { initBehaviorTracker } from "@/lib/analytics/tracker";
 import { Footer, Header, RouteGuard, Providers } from '@/components';
+import { HeatmapOverlay } from "@/components/analytics/HeatmapOverlay";
+import { ChatWidget } from "@/components/chat/ChatWidget";
+import { GlobalDemoConsent } from "@/components/demos/GlobalDemoConsent";
+import { VitalsInit } from "@/components/analytics/VitalsInit";
 import { baseURL, effects, fonts, style, dataStyle, home } from '@/resources';
 
 export async function generateMetadata() {
@@ -37,6 +43,17 @@ export default async function RootLayout({
       )}
     >
       <head>
+        {process.env.NEXT_PUBLIC_POSTHOG_KEY && (
+          <>
+            <Script src={(process.env.NEXT_PUBLIC_POSTHOG_HOST || "https://cdn.posthog.com").includes("http") ? "https://cdn.posthog.com/posthog.js" : "https://cdn.posthog.com/posthog.js"} strategy="afterInteractive" />
+            <Script id="posthog-init" strategy="afterInteractive">{`
+              window.posthog = window.posthog || [];
+              if (window.posthog.init) {
+                window.posthog.init('${process.env.NEXT_PUBLIC_POSTHOG_KEY}', { api_host: '${process.env.NEXT_PUBLIC_POSTHOG_HOST || "https://us.i.posthog.com"}', capture_pageview: true });
+              }
+            `}</Script>
+          </>
+        )}
         <script
           id="theme-init"
           dangerouslySetInnerHTML={{
@@ -97,6 +114,8 @@ export default async function RootLayout({
       </head>
       <Providers>
         <Column as="body" background="page" fillWidth style={{minHeight: "100vh"}} margin="0" padding="0" horizontal="center">
+          <script dangerouslySetInnerHTML={{ __html: `(${initBehaviorTracker.toString()})();` }} />
+          <VitalsInit />
           <Background
             position="fixed"
             mask={{
@@ -140,6 +159,7 @@ export default async function RootLayout({
           />
           <Flex fillWidth minHeight="16" hide="s"/>
             <Header />
+            <Flex fillWidth padding="0 l"><GlobalDemoConsent /></Flex>
             <Flex
               zIndex={0}
               fillWidth
@@ -154,6 +174,8 @@ export default async function RootLayout({
               </Flex>
             </Flex>
             <Footer/>
+            <ChatWidget />
+            <HeatmapOverlay />
           </Column>
         </Providers>
       </Flex>

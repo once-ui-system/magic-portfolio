@@ -6,7 +6,8 @@
     "export": "next export",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "gen:industries": "node scripts/generate-industries.js"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.0",

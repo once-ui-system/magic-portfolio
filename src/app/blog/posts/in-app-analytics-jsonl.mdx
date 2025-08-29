@@ -1,0 +1,29 @@
+---
+title: "From JSONL to Insights: In‑App Analytics"
+publishedAt: "2025-08-29"
+summary: "Capturing behavior, building heatmaps, and exporting CSVs without external deps."
+image: "/images/og/home.jpg"
+images: []
+---
+
+## Goals
+
+Own your data, ship fast, keep cost low. We log events to JSONL, summarize on-demand, and stream updates via SSE.
+
+## Event Capture
+
+- Client tracker: clicks, moves, UTM, scroll depth, page time
+- Server enrichment: IP, UA, optional geolocation
+
+## Visualizations
+
+- Heatmap overlay (admin-only)
+- Live counters (SSE) in Admin Analytics
+- CSV export endpoints for events, errors, vitals
+
+## Upgrade Path
+
+Run a Prisma migration when ready and migrate JSONL → Postgres with a single script.
+
+<FunnelCTA label="Open Admin Analytics" href="/admin/analytics" funnel="cta" />
+

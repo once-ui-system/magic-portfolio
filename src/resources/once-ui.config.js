@@ -9,6 +9,10 @@ const routes = {
   "/work": true,
   "/blog": true,
   "/gallery": true,
+  "/pricing": true,
+  "/playbooks": true,
+  "/case-studies": true,
+  "/industries": true,
 };
 
 const display = {

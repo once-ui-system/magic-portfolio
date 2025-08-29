@@ -1,0 +1,59 @@
+// Prisma schema scaffold for future Postgres integration
+// Run: npx prisma init --datasource-provider postgresql (when installs permitted)
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Event {
+  id        String   @id @default(cuid())
+  sid       String?
+  type      String
+  path      String?
+  ref       String?
+  ua        String?
+  ip        String?
+  at        BigInt
+}
+
+model Lead {
+  id        String   @id
+  name      String
+  email     String
+  company   String?
+  industry  String?
+  funnel    String?
+  value     Float?
+  source    String?
+  consent   Boolean?
+  createdAt DateTime @default(now())
+}
+
+model PlaybookRequest {
+  id        String   @id @default(cuid())
+  email     String
+  slug      String
+  industry  String?
+  at        DateTime @default(now())
+}
+
+model ChatSession {
+  id        String   @id
+  createdAt DateTime @default(now())
+  takeover  Boolean  @default(false)
+}
+
+model ChatMessage {
+  id        String   @id @default(cuid())
+  sessionId String
+  role      String
+  content   String
+  at        DateTime @default(now())
+  session   ChatSession @relation(fields: [sessionId], references: [id])
+}
+

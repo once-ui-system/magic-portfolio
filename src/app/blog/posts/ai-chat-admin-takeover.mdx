@@ -1,0 +1,30 @@
+---
+title: "AI Chat With Admin Takeover: Architecture Notes"
+publishedAt: "2025-08-29"
+summary: "Designing an assistant that hands off to humans instantly when needed."
+image: "/images/og/home.jpg"
+images: []
+---
+
+## Requirements
+
+- Visible widget, low friction
+- Admin takeover switch in real time
+- Durable logs for QA and sales follow-up
+
+## Design
+
+- In-memory session store + JSONL/JSON rotation
+- `/api/chat/stream` SSE for live updates
+- Assistant replies pluggable (OpenAI Assistants API adapter seam)
+
+## Hand-off UX
+
+We announce when a teammate joins and stop AI replies. Admin replies are labeled clearly.
+
+## Next Steps
+
+Add vector search for answers and a knowledge toggle per industry page.
+
+<FunnelCTA label="Try the Chat" href="/industries/saas" funnel="cta" />
+

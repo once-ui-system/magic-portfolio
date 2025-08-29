@@ -266,3 +266,60 @@ const gallery = {
 };
 
 export { person, social, newsletter, home, about, blog, work, gallery };
+const industries = {
+  path: "/industries",
+  label: "Industries",
+  title: "Industry Solutions & Demos",
+  description: `Vertical-specific funnels, demos, and offers for ${person.name}`,
+};
+
+export { industries };
+
+// Marketing content
+const testimonials = [
+  {
+    quote: "From manual to measurable — 3x faster ops across dispatch.",
+    author: "COO, Logistics Firm",
+  },
+  {
+    quote: "Docs in minutes, not days. Intake → matter → filing automated.",
+    author: "Managing Partner, Law Practice",
+  },
+  {
+    quote: "Activation up 22% after product‑led onboarding improvements.",
+    author: "Founder, SaaS Startup",
+  },
+];
+
+const clients = [
+  { name: "Acme Logistics", logo: "" },
+  { name: "Beta Legal", logo: "" },
+  { name: "Gamma Manufacturing", logo: "" },
+  { name: "Delta Finance", logo: "" },
+  { name: "Epsilon Health", logo: "" },
+  { name: "Zeta Construction", logo: "" },
+];
+
+export { testimonials, clients };
+
+const pricing = {
+  path: "/pricing",
+  label: "Pricing",
+  title: "Pricing",
+  description: "Engagement tiers and estimator",
+};
+
+export { pricing };
+
+// Simple nav objects for new sections
+const playbooksNav = {
+  path: "/playbooks",
+  label: "Playbooks",
+};
+
+const caseStudiesNav = {
+  path: "/case-studies",
+  label: "Case Studies",
+};
+
+export { playbooksNav, caseStudiesNav };

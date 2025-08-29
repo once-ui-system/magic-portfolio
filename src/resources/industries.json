@@ -1,0 +1,14 @@
+[
+  { "slug": "logistics", "name": "Logistics & Transportation", "funnels": ["roi","audit","chat"], "demos": ["roi"] },
+  { "slug": "construction", "name": "Construction", "funnels": ["roi","audit"], "demos": ["roi"] },
+  { "slug": "manufacturing", "name": "Manufacturing", "funnels": ["roi","audit"], "demos": ["roi"] },
+  { "slug": "healthcare", "name": "Healthcare", "funnels": ["audit","chat"], "demos": ["roi"] },
+  { "slug": "legal", "name": "Legal Services", "funnels": ["roi","docgen"], "demos": ["roi"] },
+  { "slug": "accounting", "name": "Accounting", "funnels": ["roi","audit"], "demos": ["roi"] },
+  { "slug": "real-estate", "name": "Real Estate", "funnels": ["roi","audit"], "demos": ["roi"] },
+  { "slug": "financial-services", "name": "Financial Services", "funnels": ["roi","audit"], "demos": ["roi"] },
+  { "slug": "education", "name": "Education & Training", "funnels": ["roi","audit"], "demos": ["roi"] },
+  { "slug": "hospitality", "name": "Hospitality & Events", "funnels": ["roi","audit"], "demos": ["roi"] },
+  { "slug": "retail", "name": "Retail & E-commerce", "funnels": ["roi","audit"], "demos": ["roi"] },
+  { "slug": "saas", "name": "SaaS", "funnels": ["roi","chat"], "demos": ["roi"] }
+]

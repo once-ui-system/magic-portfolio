@@ -1,0 +1,37 @@
+---
+title: "Designing 90 Industry Funnels in Next.js"
+publishedAt: "2025-08-29"
+summary: "A data-driven approach to generate vertical pages with live demos, lead capture, and analytics."
+image: "/images/og/home.jpg"
+images: []
+---
+
+## Why 90 Funnels?
+
+Targeted funnels outperform generic landing pages. By modeling industries as data and rendering with MDX, we ship bespoke pages at scale without duplicate code.
+
+## Architecture in Brief
+
+- Content: `src/resources/industries.json` + `src/app/industries/pages/*`
+- Components: ROI calculator, chat, document generator/uploads
+- API: `/api/lead/submit`, HubSpot adapter, PostHog events
+- Scripts: content scaffolding via `gen:industries`
+
+## Data Model
+
+Each industry MDX frontmatter defines title, summary, and embeds components. Dynamic CTAs and demos are configured per page or via JSON.
+
+## SEO & Schema
+
+Service and Product JSON-LD are injected on index/detail pages.
+
+## What to Measure
+
+- Funnel step events, CTA impressions and clicks
+- Time on page, scroll depth, country/device
+- Lead submits → CRM enrichment
+
+## Try It
+
+<FunnelCTA label="Explore Industries" href="/industries" funnel="cta" />
+
