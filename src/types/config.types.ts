@@ -151,7 +151,7 @@ export type SameAsConfig = {
  * Social sharing configuration for blog posts.
  */
 export type SocialSharingConfig = {
-  enabled: boolean;
+  display: boolean;
   platforms: {
     x: boolean;
     linkedin: boolean;

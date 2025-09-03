@@ -1,8 +1,7 @@
 "use client";
 
-import { Column, Row, Text, SmartLink, Icon } from "@once-ui-system/core";
+import { Row, Text, Button, useToast } from "@once-ui-system/core";
 import { socialSharing } from "@/resources";
-import { CopyLinkButton } from "./CopyLinkButton";
 
 interface ShareSectionProps {
   title: string;
@@ -76,10 +75,27 @@ const socialPlatforms: Record<string, SocialPlatform> = {
 };
 
 export function ShareSection({ title, url }: ShareSectionProps) {
+  const { addToast } = useToast();
   // Don't render if sharing is disabled
-  if (!socialSharing.enabled) {
+  if (!socialSharing.display) {
     return null;
   }
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(url);
+      addToast({
+        variant: "success",
+        message: "Link copied to clipboard",
+      });
+    } catch (err) {
+      console.error('Failed to copy: ', err);
+      addToast({
+        variant: "danger",
+        message: "Failed to copy link",
+      });
+    }
+  };
 
   // Get enabled platforms
   const enabledPlatforms = Object.entries(socialSharing.platforms)
@@ -88,36 +104,24 @@ export function ShareSection({ title, url }: ShareSectionProps) {
     .filter(platform => platform.name); // Filter out platforms that don't exist in our definitions
 
   return (
-    <Column fillWidth horizontal="center" gap="16" marginTop="32" marginBottom="16">
-      <Text variant="label-default-m" onBackground="neutral-medium">
-        Share this post
+    <Row fillWidth center gap="16" marginTop="32" marginBottom="16">
+      <Text variant="label-default-m" onBackground="neutral-weak">
+        Share this post:
       </Text>
-      <Row gap="16" horizontal="center" wrap>
+      <Row data-border="rounded" gap="16" horizontal="center" wrap>
         {enabledPlatforms.map((platform) => (
-          <SmartLink
-            key={platform.key}
-            href={platform.generateUrl(title, url)}
-            target="_blank"
-          >
-            <Row
-              gap="8"
-              vertical="center"
-              padding="12"
-              radius="m"
-              border="neutral-alpha-weak"
-              background="surface"
-              style={{ cursor: 'pointer' }}
-            >
-              <Icon name={platform.icon as any} size="s" />
-              <Text variant="body-default-s">{platform.label}</Text>
-            </Row>
-          </SmartLink>
+          <Button variant="secondary" size="s" href={platform.generateUrl(title, url)} prefixIcon={platform.icon} />
         ))}
         
         {socialSharing.platforms.copyLink && (
-          <CopyLinkButton url={url} />
+          <Button
+            variant="secondary"
+            size="s"
+            onClick={handleCopy}
+            prefixIcon="openLink"
+          />
         )}
       </Row>
-    </Column>
+    </Row>
   );
 }

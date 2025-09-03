@@ -52,9 +52,3 @@
   --scheme-neutral-600-50: rgba(137,152,159,0.5);
   /*
 }*/
-
-/* Copy link button hover effect */
-.copy-link-button:hover {
-  border-color: var(--brand-alpha-medium) !important;
-  background-color: var(--brand-alpha-weak) !important;
-}
