@@ -22,7 +22,8 @@
     "react": "19.0.0",
     "react-dom": "19.0.0",
     "react-icons": "^5.5.0",
-    "sass": "^1.86.3"
+    "sass": "^1.86.3",
+    "transliteration": "^2.3.5"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
