@@ -155,7 +155,7 @@ export default function GitHubActivity({
   const fetchGitHubData = async () => {
     try {
       setLoading(true);
-      const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/repos`, {
+      const response = await fetch(`/api/repos`, {
         cache: "no-store",
       });
       if (!response.ok) throw new Error("Failed to fetch GitHub data");
