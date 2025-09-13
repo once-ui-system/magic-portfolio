@@ -1,3 +1,4 @@
+import BrandLogo from "@/components/BrandLogo";
 import { About, Blog, Gallery, Home, Newsletter, Person, Social, Work } from "@/types";
 import { Line, Logo, Row, Text } from "@once-ui-system/core";
 
@@ -66,11 +67,7 @@ const home: Home = {
   subline: (
     <>
       I'm Selene, a design engineer at{" "}
-      <Logo
-        dark
-        icon="/trademarks/wordmark-dark.svg"
-        style={{ display: "inline-flex", top: "0.25em", marginLeft: "-0.25em" }}
-      />
+      <BrandLogo />
       , where I craft intuitive
       <br /> user experiences. After hours, I build my own projects.
     </>
@@ -223,7 +220,7 @@ const about: About = {
             height: 9,
           },
         ],
-      },  
+      },
     ],
   },
 };
