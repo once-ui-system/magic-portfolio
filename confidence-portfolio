@@ -1,0 +1,104 @@
+// Confidence Portfolio - Single-file React component
+// Instructions: This component uses Tailwind CSS classes. To preview locally, create a React app (e.g., with create-react-app or Vite), add Tailwind, then drop this file into src/ and import it from App.jsx.
+// Deployment: See README block at the bottom of this file for one-click deploy steps (Vercel / Netlify / GitHub Pages).
+
+import React from 'react';
+
+export default function ConfidencePortfolio() {
+  return (
+    <main className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-900 to-black text-slate-100 antialiased">
+      <header className="max-w-4xl mx-auto p-8 flex flex-col md:flex-row items-center md:items-start gap-6">
+        <div className="w-28 h-28 rounded-full bg-gradient-to-br from-indigo-500 to-teal-400 flex items-center justify-center text-3xl font-bold">
+          C
+        </div>
+        <div>
+          <h1 className="text-3xl font-extrabold">Confidence Chucchisimdiri</h1>
+          <p className="mt-2 text-slate-300 max-w-xl">Motivated biochemistry graduate from the Federal University of Technology, Owerri, with a strong foundation in research, data analysis, and laboratory management. Passionate about applying scientific knowledge to solve real-world challenges and eager to grow within a dynamic team.</p>
+          <div className="mt-3 flex flex-wrap gap-3 items-center">
+            <a href="mailto:mbachucchisimdiri@gmail.com" className="px-4 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-sm font-medium">mbachucchisimdiri@gmail.com</a>
+            <a href="#contact" className="px-4 py-2 rounded-lg border border-slate-700 text-sm">Contact</a>
+          </div>
+        </div>
+      </header>
+
+      <section className="max-w-4xl mx-auto p-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+        <aside className="md:col-span-1 bg-slate-800/40 rounded-2xl p-6">
+          <h2 className="text-xl font-semibold">Quick facts</h2>
+          <ul className="mt-4 space-y-2 text-slate-300">
+            <li><strong>Degree:</strong> B.Sc. Biochemistry</li>
+            <li><strong>University:</strong> Federal University of Technology, Owerri</li>
+            <li><strong>Skills:</strong> Research, Data collection, Data presentation, Laboratory management</li>
+            <li><strong>Interests:</strong> Reading, Creative writing, Traveling, Exploring new ideas</li>
+          </ul>
+        </aside>
+
+        <div className="md:col-span-2 bg-slate-800/40 rounded-2xl p-6">
+          <h2 className="text-2xl font-semibold">About</h2>
+          <p className="mt-4 text-slate-300">During my academic journey I developed skills in data collection, presentation and research while building a reputation for diligence and adaptability. I am excited to begin my professional career, contribute meaningfully, and continue learning.</p>
+
+          <div className="mt-6">
+            <h3 className="text-lg font-semibold">Selected Projects</h3>
+            <div className="mt-4 space-y-4">
+              <article className="p-4 rounded-lg bg-slate-900/30">
+                <h4 className="font-semibold">Undergraduate Research Project</h4>
+                <p className="text-sm text-slate-300 mt-1">Designed and executed an experimental protocol to investigate [placeholder], including sample preparation, data collection, and statistical analysis.</p>
+                <div className="mt-3 text-xs text-slate-400">Tools used: Microsoft Excel, GraphPad/Prism, basic Python for data parsing</div>
+              </article>
+
+              <article className="p-4 rounded-lg bg-slate-900/30">
+                <h4 className="font-semibold">Laboratory Workflow Optimization</h4>
+                <p className="text-sm text-slate-300 mt-1">Analyzed lab processes and proposed improvements to sample tracking and data recording that reduced processing time and improved documentation clarity.</p>
+              </article>
+            </div>
+          </div>
+
+          <div className="mt-6">
+            <h3 className="text-lg font-semibold">Professional Goals</h3>
+            <p className="mt-2 text-slate-300">Seek a role in a research or lab-based position where I can apply experimental skills and data analysis expertise to support meaningful scientific outcomes. Long-term goal: specialize in a field that bridges laboratory research with data-driven decision making.</p>
+          </div>
+        </div>
+      </section>
+
+      <section className="max-w-4xl mx-auto p-8">
+        <div className="bg-slate-800/40 rounded-2xl p-6">
+          <h2 className="text-2xl font-semibold">Resume & Downloads</h2>
+          <p className="mt-3 text-slate-300">You can link a PDF resume here. In this template the button below is a placeholder that links to the contact email.</p>
+          <div className="mt-4 flex gap-3">
+            <a href="mailto:mbachucchisimdiri@gmail.com" className="px-4 py-2 rounded-lg bg-teal-600 hover:bg-teal-700 text-sm font-medium">Request Resume</a>
+            <a href="#projects" className="px-4 py-2 rounded-lg border border-slate-700 text-sm">See Projects</a>
+          </div>
+        </div>
+      </section>
+
+      <footer id="contact" className="max-w-4xl mx-auto p-8 text-center text-slate-400">
+        <p className="mb-4">Want to work together? Send a message to <a href="mailto:mbachucchisimdiri@gmail.com" className="underline">mbachucchisimdiri@gmail.com</a>.</p>
+        <p className="text-xs">Built with a clean Tailwind + React template — customize as needed.</p>
+      </footer>
+
+      {/* README / Deployment notes (keep this comment in the file) */}
+      {/*
+        DEPLOYMENT QUICK GUIDE
+
+        1) Create a new React app (Vite recommended):
+           npm create vite@latest confidence-portfolio --template react
+           cd confidence-portfolio
+
+        2) Install Tailwind (follow official Tailwind + React guide):
+           npm install -D tailwindcss postcss autoprefixer
+           npx tailwindcss init -p
+           Add Tailwind directives to ./src/index.css and configure content paths.
+
+        3) Replace src/App.jsx with this file or import this component in App.jsx.
+
+        4) Build & Deploy:
+           - Vercel: connect your GitHub repo and deploy (automatic).
+           - Netlify: drag & drop the build folder or connect repo.
+           - GitHub Pages: build and publish using gh-pages package.
+
+        For a one-file static fallback (no Tailwind required): you can convert this component to a simple index.html by extracting markup and adding minimal CSS.
+
+        If you'd like, tell me which hosting you prefer (Vercel/Netlify/GitHub) and I can give exact step-by-step commands or prepare a ZIP ready to push to GitHub.
+      */}
+    </main>
+  );
+}
