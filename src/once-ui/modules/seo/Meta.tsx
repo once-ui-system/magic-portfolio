@@ -19,62 +19,35 @@ export function generateMetadata({
   description,
   baseURL,
   path = "",
-  type = "website",
-  image,
-  publishedTime,
-  author,
+  image = "https://opengraph.b-cdn.net/production/images/c53b648f-c423-4882-b67f-b10117ea61e5.jpg?token=-m4wfD7XKjkhxfcKZRbRrPyQYbCEX3VdsTSShF51NbY&height=630&width=1200&expires=33295179384",
 }: MetaProps): NextMetadata {
-  const normalizedBaseURL = baseURL.endsWith("/") ? baseURL.slice(0, -1) : baseURL;
-  const normalizedPath = path.startsWith("/") ? path : `/${path}`;
-  const metadataBase = new URL(normalizedBaseURL);
-
-  const isFullUrl = (url: string) => /^https?:\/\//.test(url);
-
-  const ogImage = image
-    ? isFullUrl(image)
-      ? image
-      : `${normalizedBaseURL}${image.startsWith("/") ? image : `/${image}`}`
-    : `${normalizedBaseURL}/og?title=${encodeURIComponent(title)}`;
-
-  const url = `${normalizedBaseURL}${normalizedPath}`;
+  const url = "https://mindsend.xyz"; // Hardcoded as per your example
 
   return {
-    metadataBase,
-    alternates: {
-      canonical: normalizedPath,
-    },
-    title,
-    description,
+    title, // <title>
+    description, // <meta name="description" content="">
+
     openGraph: {
-      title,
-      description,
-      type,
-      ...(publishedTime && type === "article" ? { publishedTime } : {}),
-      url,
-      siteName: title,
+      url, // <meta property="og:url" content="https://mindsend.xyz">
+      type: "website", // <meta property="og:type" content="website">
+      title, // <meta property="og:title" content="">
+      description, // <meta property="og:description" content="">
       images: [
         {
-          url: ogImage,
+          url: image, // <meta property="og:image" content="...">
           alt: title,
         },
       ],
     },
     twitter: {
-      card: "summary_large_image",
-      title,
-      description,
-      images: [ogImage],
+      card: "summary_large_image", // <meta name="twitter:card" content="summary_large_image">
+      title, // <meta name="twitter:title" content="">
+      description, // <meta name="twitter:description" content="">
+      images: [image], // <meta name="twitter:image" content="...">
     },
-    other: {
-      "twitter:domain": metadataBase.hostname,
-      "twitter:url": url,
-    },
-    ...(author ? { authors: [{ name: author.name, url: author.url }] } : {}),
   };
 }
 
 export const Meta = {
   generate: generateMetadata,
 };
-
-export default Meta;
