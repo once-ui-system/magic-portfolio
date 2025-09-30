@@ -6,7 +6,7 @@ const person = {
   get name() {
     return `${this.firstName} ${this.lastName}`;
   },
-  role: " Building real solutions for the decentralized web",
+  role: "Building real solutions for the decentralized web",
   avatar: "/images/avatar.png",
   //email: "example@gmail.com",
   location: "America/Sao_Paulo", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
@@ -51,10 +51,12 @@ const social = [
 
 const home = {
   path: "/",
-  image: "/images/og/home.jpg",
+  image:
+    "https://opengraph.b-cdn.net/production/images/c53b648f-c423-4882-b67f-b10117ea61e5.jpg?token=-m4wfD7XKjkhxfcKZRbRrPyQYbCEX3VdsTSShF51NbY&height=630&width=1200&expires=33295179384",
   label: "Home",
   title: `${person.name}`,
-  description: `${person.role} Landing Page`,
+  description:
+    `${person.name}`,
   headline: <>Powering the Web3 revolution with full-cycle development </>,
   featured: {
     display: false,

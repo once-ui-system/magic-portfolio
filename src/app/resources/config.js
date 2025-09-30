@@ -1,5 +1,5 @@
 // IMPORTANT: Replace with your own domain address - it's used for SEO in meta tags and schema
-const baseURL = "https://mindsend.xyz";
+const baseURL = "https://preview.mindsend.xyz";
 
 const routes = {
   "/": true,

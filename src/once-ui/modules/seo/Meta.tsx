@@ -26,6 +26,7 @@ export function generateMetadata({
 }: MetaProps): NextMetadata {
   const normalizedBaseURL = baseURL.endsWith("/") ? baseURL.slice(0, -1) : baseURL;
   const normalizedPath = path.startsWith("/") ? path : `/${path}`;
+  const metadataBase = new URL(normalizedBaseURL);
 
   const isFullUrl = (url: string) => /^https?:\/\//.test(url);
 
@@ -38,6 +39,10 @@ export function generateMetadata({
   const url = `${normalizedBaseURL}${normalizedPath}`;
 
   return {
+    metadataBase,
+    alternates: {
+      canonical: normalizedPath,
+    },
     title,
     description,
     openGraph: {
@@ -46,6 +51,7 @@ export function generateMetadata({
       type,
       ...(publishedTime && type === "article" ? { publishedTime } : {}),
       url,
+      siteName: title,
       images: [
         {
           url: ogImage,
@@ -58,6 +64,10 @@ export function generateMetadata({
       title,
       description,
       images: [ogImage],
+    },
+    other: {
+      "twitter:domain": metadataBase.hostname,
+      "twitter:url": url,
     },
     ...(author ? { authors: [{ name: author.name, url: author.url }] } : {}),
   };
