@@ -21,7 +21,7 @@ export function generateMetadata({
   path = "",
   image = "https://opengraph.b-cdn.net/production/images/c53b648f-c423-4882-b67f-b10117ea61e5.jpg?token=-m4wfD7XKjkhxfcKZRbRrPyQYbCEX3VdsTSShF51NbY&height=630&width=1200&expires=33295179384",
 }: MetaProps): NextMetadata {
-  const url = "https://mindsend.xyz"; // Hardcoded as per your example
+  const url = "https://prerview.home.mindsend.xyz"; // Hardcoded as per your example
 
   return {
     title, // <title>
