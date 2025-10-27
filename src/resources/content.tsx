@@ -1,40 +1,40 @@
 import { About, Blog, Gallery, Home, Newsletter, Person, Social, Work } from "@/types";
-import { Line, Logo, Row, Text } from "@once-ui-system/core";
+import { Line, Row, Text } from "@once-ui-system/core";
 
 const person: Person = {
-  firstName: "Selene",
-  lastName: "Yu",
-  name: `Selene Yu`,
-  role: "Design Engineer",
+  firstName: "Mohammed",
+  lastName: "AlGhussein",
+  name: `Mohammed AlGhussein`,
+  role: "Full Stack Developer & Digital Marketer",
   avatar: "/images/avatar.jpg",
-  email: "example@gmail.com",
-  location: "Asia/Jakarta", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
-  languages: ["English", "Bahasa"], // optional: Leave the array empty if you don't want to display languages
+  email: "mogh166@gmail.com",
+  location: "Europe/Istanbul", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
+  languages: ["Arabic (عربي)", "English", "Turkish"], // optional: Leave the array empty if you don't want to display languages
 };
 
 const newsletter: Newsletter = {
-  display: true,
-  title: <>Subscribe to {person.firstName}'s Newsletter</>,
-  description: <>My weekly newsletter about creativity and engineering</>,
+  display: false,
+  title: <>Insights from {person.firstName}</>,
+  description: <>Stay up to date with web, automation, and growth strategies.</>,
 };
 
 const social: Social = [
   // Links are automatically displayed.
   // Import new icons in /once-ui/icons.ts
   {
-    name: "GitHub",
-    icon: "github",
-    link: "https://github.com/once-ui-system",
-  },
-  {
     name: "LinkedIn",
     icon: "linkedin",
-    link: "https://www.linkedin.com/company/once-ui/",
+    link: "https://www.linkedin.com/in/madoharb/",
   },
   {
-    name: "Threads",
-    icon: "threads",
-    link: "https://www.threads.com/@once_ui",
+    name: "GitHub",
+    icon: "github",
+    link: "https://github.com/MadoHarb",
+  },
+  {
+    name: "WhatsApp",
+    icon: "whatsapp",
+    link: "https://wa.me/905373718535",
   },
   {
     name: "Email",
@@ -47,32 +47,27 @@ const home: Home = {
   path: "/",
   image: "/images/og/home.jpg",
   label: "Home",
-  title: `${person.name}'s Portfolio`,
+  title: `${person.name} – Portfolio`,
   description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Building bridges between design and code</>,
+  headline: <>Building revenue-driving web products & growth systems</>,
   featured: {
     display: true,
     title: (
       <Row gap="12" vertical="center">
-        <strong className="ml-4">Once UI</strong>{" "}
+        <strong className="ml-4">Selected work</strong>{" "}
         <Line background="brand-alpha-strong" vert height="20" />
         <Text marginRight="4" onBackground="brand-medium">
-          Featured work
+          Case studies
         </Text>
       </Row>
     ),
-    href: "/work/building-once-ui-a-customizable-design-system",
+    href: "/work",
   },
   subline: (
     <>
-      I'm Selene, a design engineer at{" "}
-      <Logo
-        dark
-        icon="/trademarks/wordmark-dark.svg"
-        style={{ display: "inline-flex", top: "0.25em", marginLeft: "-0.25em" }}
-      />
-      , where I craft intuitive
-      <br /> user experiences. After hours, I build my own projects.
+      I'm Mohammed, a hands-on full stack developer and marketer based in Istanbul.
+      <br />I build high-converting websites, automation, and growth programs for founders,
+      agencies, and property portfolios.
     </>
   ),
 };
@@ -81,7 +76,7 @@ const about: About = {
   path: "/about",
   label: "About",
   title: `About – ${person.name}`,
-  description: `Meet ${person.name}, ${person.role} from ${person.location}`,
+  description: `Meet ${person.name}, ${person.role} based in Istanbul, Turkey`,
   tableOfContent: {
     display: true,
     subItems: false,
@@ -90,7 +85,7 @@ const about: About = {
     display: true,
   },
   calendar: {
-    display: true,
+    display: false,
     link: "https://cal.com",
   },
   intro: {
@@ -98,9 +93,10 @@ const about: About = {
     title: "Introduction",
     description: (
       <>
-        Selene is a Jakarta-based design engineer with a passion for transforming complex challenges
-        into simple, elegant design solutions. Her work spans digital interfaces, interactive
-        experiences, and the convergence of design and technology.
+        Mohammed is a full stack developer, digital marketer, and entrepreneur who turns business
+        goals into measurable outcomes. Based in Istanbul, he blends web development, automation,
+        and property management know-how to help companies launch products, scale acquisition
+        funnels, and deliver memorable customer experiences.
       </>
     ),
   },
@@ -109,41 +105,96 @@ const about: About = {
     title: "Work Experience",
     experiences: [
       {
-        company: "FLY",
-        timeframe: "2022 - Present",
-        role: "Senior Design Engineer",
+        company: "ProjeLife",
+        timeframe: "2022 – Present",
+        role: "Co-Founder & Manager",
         achievements: [
           <>
-            Redesigned the UI/UX for the FLY platform, resulting in a 20% increase in user
-            engagement and 30% faster load times.
+            Manage end-to-end digital marketing and web development engagements for clients across
+            Turkey and the Gulf.
           </>,
           <>
-            Spearheaded the integration of AI tools into design workflows, enabling designers to
-            iterate 50% faster.
+            Lead Airbnb property management operations, coordinating service partners and customer
+            communications for high guest satisfaction.
+          </>,
+          <>
+            Direct cross-functional teams on SEO, automation, and analytics initiatives that grow
+            client acquisition pipelines.
           </>,
         ],
-        images: [
-          // optional: leave the array empty if you don't want to display images
-          {
-            src: "/images/projects/project-01/cover-01.jpg",
-            alt: "Once UI Project",
-            width: 16,
-            height: 9,
-          },
-        ],
+        images: [],
       },
       {
-        company: "Creativ3",
-        timeframe: "2018 - 2022",
-        role: "Lead Designer",
+        company: "Honey Bee Clever",
+        timeframe: "2020",
+        role: "Web Developer",
         achievements: [
           <>
-            Developed a design system that unified the brand across multiple platforms, improving
-            design consistency by 40%.
+            Planned and executed digital marketing, SEO, and social media strategies aligned with
+            business goals.
           </>,
           <>
-            Led a cross-functional team to launch a new product line, contributing to a 15% increase
-            in overall company revenue.
+            Designed, developed, and maintained the company website and landing pages to improve
+            conversions.
+          </>,
+          <>
+            Coordinated lead generation campaigns and delivered performance reports to stakeholders.
+          </>,
+        ],
+        images: [],
+      },
+      {
+        company: "Ural Medical / Viskolove",
+        timeframe: "2021",
+        role: "Web Developer & B2B Platform Builder",
+        achievements: [
+          <>
+            Developed corporate and brand websites that strengthened the organization’s digital
+            presence.
+          </>,
+          <>
+            Built and managed the B2B platform to streamline partner onboarding and collaboration.
+          </>,
+          <>
+            Produced multilingual content tailored to both corporate and B2B audiences.
+          </>,
+        ],
+        images: [],
+      },
+      {
+        company: "Fanar Realty",
+        timeframe: "2018 – 2019",
+        role: "Digital Marketing Director & Web Developer",
+        achievements: [
+          <>
+            Directed full-funnel digital marketing campaigns that boosted the brand’s online reach
+            and lead generation.
+          </>,
+          <>
+            Developed and maintained web properties, elevating user experience for property
+            investors.
+          </>,
+          <>
+            Authored data-driven marketing plans and optimized CRM processes to improve conversion
+            rates.
+          </>,
+        ],
+        images: [],
+      },
+      {
+        company: "Pal-Think for Strategic Studies",
+        timeframe: "2017 – 2018",
+        role: "Project Coordinator",
+        achievements: [
+          <>
+            Coordinated cross-functional teams to deliver reconciliation and civic engagement
+            programs on deadline.
+          </>,
+          <>
+            Managed digital content and campaign reporting across web, email, and social channels.
+          </>,
+          <>
+            Maintained large contact databases and documentation to support grant compliance.
           </>,
         ],
         images: [],
@@ -155,12 +206,12 @@ const about: About = {
     title: "Studies",
     institutions: [
       {
-        name: "University of Jakarta",
-        description: <>Studied software engineering.</>,
+        name: "Istanbul Aydin University",
+        description: <>MBA in Business Administration, 2020.</>,
       },
       {
-        name: "Build the Future",
-        description: <>Studied online marketing and personal branding.</>,
+        name: "University of Palestine",
+        description: <>BSc in Information Technology, 2013 – 2017.</>,
       },
     ],
   },
@@ -169,36 +220,9 @@ const about: About = {
     title: "Technical skills",
     skills: [
       {
-        title: "Figma",
+        title: "Full-stack web development",
         description: (
-          <>Able to prototype in Figma with Once UI with unnatural speed.</>
-        ),
-        tags: [
-          {
-            name: "Figma",
-            icon: "figma",
-          },
-        ],
-        // optional: leave the array empty if you don't want to display images
-        images: [
-          {
-            src: "/images/projects/project-01/cover-02.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-          {
-            src: "/images/projects/project-01/cover-03.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-        ],
-      },
-      {
-        title: "Next.js",
-        description: (
-          <>Building next gen apps with Next.js + Once UI + Supabase.</>
+          <>Design and build responsive websites, web apps, and e-commerce experiences aligned with business goals.</>
         ),
         tags: [
           {
@@ -213,17 +237,93 @@ const about: About = {
             name: "Supabase",
             icon: "supabase",
           },
-        ],
-        // optional: leave the array empty if you don't want to display images
-        images: [
           {
-            src: "/images/projects/project-01/cover-04.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
+            name: "TypeScript",
+          },
+          {
+            name: "React",
+          },
+          {
+            name: "PHP",
+          },
+          {
+            name: "Laravel",
+          },
+          {
+            name: "WordPress",
+          },
+          {
+            name: "SQL",
           },
         ],
-      },  
+        images: [],
+      },
+      {
+        title: "Digital marketing & growth",
+        description: (
+          <>Plan and execute SEO, paid campaigns, and content strategies that generate qualified leads and conversions.</>
+        ),
+        tags: [
+          {
+            name: "SEO",
+          },
+          {
+            name: "Content Marketing",
+          },
+          {
+            name: "Social Media",
+          },
+          {
+            name: "Analytics",
+          },
+        ],
+        images: [],
+      },
+      {
+        title: "Automation & AI tooling",
+        description: (
+          <>Automate workflows with AI platforms, no-code tools, and integrations that keep teams moving fast.</>
+        ),
+        tags: [
+          {
+            name: "ChatGPT",
+          },
+          {
+            name: "Zapier",
+          },
+          {
+            name: "Make.com",
+          },
+          {
+            name: "n8n",
+          },
+        ],
+        images: [],
+      },
+      {
+        title: "Cloud & operations",
+        description: (
+          <>Deploy on AWS, GCP, and VPS providers while managing domains, hosting, and secure infrastructure.</>
+        ),
+        tags: [
+          {
+            name: "AWS",
+          },
+          {
+            name: "GCP",
+          },
+          {
+            name: "Docker",
+          },
+          {
+            name: "Linux Administration",
+          },
+          {
+            name: "Cloudflare",
+          },
+        ],
+        images: [],
+      },
     ],
   },
 };
@@ -231,8 +331,8 @@ const about: About = {
 const blog: Blog = {
   path: "/blog",
   label: "Blog",
-  title: "Writing about design and tech...",
-  description: `Read what ${person.name} has been up to recently`,
+  title: "Insights on web, growth, and automation",
+  description: `Read what ${person.name} has been building and learning lately`,
   // Create new blog posts by adding a new .mdx file to app/blog/posts
   // All posts will be listed on the /blog route
 };
@@ -241,7 +341,7 @@ const work: Work = {
   path: "/work",
   label: "Work",
   title: `Projects – ${person.name}`,
-  description: `Design and dev projects by ${person.name}`,
+  description: `Web, marketing, and automation projects delivered by ${person.name}`,
   // Create new project pages by adding a new .mdx file to app/blog/posts
   // All projects will be listed on the /home and /work routes
 };
