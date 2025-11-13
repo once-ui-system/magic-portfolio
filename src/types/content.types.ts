@@ -143,7 +143,7 @@ export interface About extends BasePageConfig {
     /** List of work experiences */
     experiences: Array<{
       /** Company name */
-      company: string;
+      company: any;
       /** Timeframe of employment */
       timeframe: string;
       /** Role or job title */
