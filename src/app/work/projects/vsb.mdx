@@ -1,0 +1,45 @@
+---
+title: "Value Shopping Basket: An App for tracking your shopping habits compared to your personal values"
+publishedAt: "2024-02-01"
+summary: "Flutter + Node.js Implementation of the Values@Runtime Research Paper for Open University"
+images:
+  - "/images/projects/project-01/vsb.png"
+team:
+  - name: "Paulis Gributs"
+    role: "Software Engineer"
+    avatar: "/images/avatar.jpg"
+    linkedIn: "https://www.linkedin.com/in/paulis-gributs/"
+link: "https://value-shopping-basket.codemagic.app/"
+---
+
+## Overview
+
+Value Shopping Basket Application, was developed to create a framework for articulating, measuring, and reflecting on values within user-centric software. I built a robust, full-stack application with the core purpose of tracking my purchasing habits and seeing how well they aligned with my established ethical and personal values.
+The system is split into two main components: a frontend written in Flutter and a backend written in Node.js. This architecture allowed for the full integration of user values throughout the process, from finding products that matched my ethics to calculating the final price of the basket.
+
+## Key Features
+
+- **Customizable Value Refinement**: I implemented a system that allows users to concretize their values in terms of attributes and instantiations. I could categorize attributes using a colour system: Green (Required) for values I strongly adhered to (e.g., vegan food), Yellow (Preference) for items I preferred but were not mandatory (e.g., locally sourced food), and Red if I had no preference.
+- **AI Recommendation System**: To ensure alignment, the application provides recommended alternative food products that better match my values if a chosen item fails the specified attribute checks.
+- **Historical Tracking**: The history section provides a basket-by-basket display of all saved shopping instances, showing the percentage of products that failed the value checks. Each product is visually coded: green for passed values, yellow for failing only preferences, and red for failing one or more requirements.
+- **Physical Shopping Support**: I included optional location permissions to calculate the "distance from origin" attribute and display the supermarket location where the basket was generated. I also integrated a barcode scanning feature using the camera permission for use during actual shopping trips.
+- **Data Security**: I leveraged Firebase for user login and Firebase Firestore to securely store my previous baskets and personal value configurations linked to my account.
+## Technologies Used
+
+- **Frontend (Cross-Platform)**: I chose Flutter/Dart for the frontend. This cross-platform language allowed me to create an application compatible with iOS, Android, and Web platforms from a single codebase, making the application easier to use for subsequent evaluation.
+- **Backend Server**: The backend logic was handled by Node.js, selected for its rapid development time and ease of integrating multiple different services required for value integration.
+- **Database**: The core food data uses MongoDB as the main source of information, Open Food Facts, which already supplied its large dataset in a NoSQL format. This NoSQL approach was optimal given the weak relationships between the millions of food products, enabling faster queries and lower storage usage compared to a traditional SQL system.
+- **API Connection**: I used GraphQL for the backend connection. It proved more versatile than a traditional REST approach by allowing filtering of return values and providing return types for superior error handling, working seamlessly with the NoSQL schema.
+- **Intelligent Recommendations**: Due to the large size of the dataset (around 3 million products) and the lack of comprehensive tags/attributes in the source data, I implemented a large language model. I used ChatGPT (OpenAI API) to provide five "healthier" alternatives to a given product, leveraging its training on vast amounts of product data.
+- **Data Tools**: Python was used for generating the initial MongoDB database from Open Food Facts data and for executing necessary data analysis tools.
+
+## Challenges and Learnings
+
+- **Handling Massive Data Comparisons**: The sheer scale of the Open Food Facts dataset meant that comparing all 3 million products using a traditional algorithmic approach was computationally infeasible during a query. This constraint was what prompted my shift toward the LLM API for dynamic recommendations.
+- **LLM Prompt Engineering**: I encountered challenges when attempting to incorporate detailed attributes and values directly into the ChatGPT prompt, which often caused the model to enter a generation loop and fail to return results. I learned that simplifying the prompt was crucial, leading to much more reliable and useful alternative suggestions.
+- **Data Fragmentation**: I had to integrate data from multiple sources; while Open Food Facts provided product information, I needed to fetch images separately through the Open Food Facts API and incorporate live pricing information (using prices from ASDA UK) to provide a comprehensive, functional shopping experience.
+
+## Outcome
+
+The Value Shopping Basket Application successfully functioned as a proof-of-concept for the [Values@Runtime](https://ieeexplore.ieee.org/document/10173877) research, demonstrating that providing recommendations leads to better alignment with user values.
+The resulting architecture effectively combined multiple modern technologies—Flutter, GraphQL, MongoDB, and an external LLM—into a coherent, high-performance system. The integration of the LLM recommender system was highly effective, contributing to a reported 35% increase in user satisfaction. The implementation process provided significant experience in handling large NoSQL datasets and integrating advanced AI capabilities into a production-ready application.

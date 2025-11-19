@@ -8,7 +8,7 @@ const person: Person = {
     role: "Senior Fullstack Developer",
     avatar: "/images/avatar.jpg",
     email: "paulis@gributs.com",
-    location: "Europe/Paris", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
+    location: "Europe/Paris", // Expecting the IANA time zone identifier, e.g. 'Europe/Vienna'
     languages: ["English", "French"], // optional: Leave the array empty if you don't want to display languages
 };
 
@@ -59,14 +59,14 @@ const home: Home = {
         display: true,
         title: (
             <Row gap="12" vertical="center">
-                <strong className="ml-4">Once UI</strong>{" "}
+                <strong className="ml-4">VSB</strong>{" "}
                 <Line background="brand-alpha-strong" vert height="20"/>
                 <Text marginRight="4" onBackground="brand-medium">
                     Featured work
                 </Text>
             </Row>
         ),
-        href: "/work/building-once-ui-a-customizable-design-system",
+        href: "/work/vsb",
     },
     subline: (
         <>

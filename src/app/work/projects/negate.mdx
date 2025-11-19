@@ -1,0 +1,47 @@
+---
+title: "Negate: Automated Mood Tracking via Sentiment Analysis"
+publishedAt: "2023-03-01"
+summary: "A mental wellness application designed to track my overall mood (negativity or positivity) by monitoring app usage and analysing the tone of messages I type using a Natural Language Processing AI"
+images:
+  - "/images/projects/project-01/negate.png"
+team:
+  - name: "Paulis Gributs"
+    role: "Software Engineer"
+    avatar: "/images/avatar.jpg"
+    linkedIn: "https://www.linkedin.com/in/paulis-gributs/"
+link: "https://github.com/KevinX8/Negate"
+---
+
+## Overview
+
+My final year project, Negate – Automated Mood Tracking, is fundamentally a mental wellness application designed to evaluate how my interaction with digital devices affects my mental wellbeing in terms of overall mood, measured as negativity or positivity.
+The core of the application relies on monitoring the tone of messages I type. This text is processed using a Natural Language Processing (NLP) AI to calculate a positivity or negativity score for the given sentence. My overall goal was to leverage the collected data to bring awareness to the mental health effects certain applications are having on me. I implemented Negate to be fully functional across Windows and Android platforms, ensuring accurate cross-device tracking.
+
+## Key Features
+
+- **On-Device Sentiment Processing**: I mandated that all sentence processing and sentiment analysis must be performed entirely on-device using TensorFlow Lite. This was a non-negotiable step to maintain absolute user privacy, ensuring that sensitive, logged sentences never leave the device.
+- **Intuitive Visualisation**: I developed two main visual tools: the Hourly Sentiment UI, which uses coloured bars (from dark green for highly positive to dark red for highly negative) to show hourly sentiment averages, and the Daily Sentiment UI, a pie chart breakdown showing app usage time grouped into green (positive) and red (negative) categories.
+- **Recommendations Feature**: This feature displays the top 5 apps with the highest average positivity score and the bottom 5 apps with the lowest score, typically aggregated over the past 7 days. This provides me with tangible data on which apps I might want to avoid or use more often.
+- **Customisation and Control**: Users can fully configure an application blacklist to exclude applications like system utilities or keyboard apps from the analysis, ensuring the sentiment data is relevant.
+- **Mobile Translation Capability**: Specifically for Android, I integrated ML Kit to translate non-English sentences locally before sentiment analysis, which significantly broadened the potential audience for the app.
+
+## Technologies Used
+
+- **Front-end and Cross-Platform Development**: I developed the entire application using Dart and Flutter. I chose Flutter because it compiles efficiently to both Windows and Android without requiring major code changes, while still allowing me to utilize native system APIs easily for core functionality.
+- **Natural Language Processing (NLP)**: TensorFlow Lite was my choice for machine learning. It fully supports all Flutter platforms and, crucially, operates entirely offline and locally on the device, upholding the strict privacy requirement. I used a binary sentiment classification model trained on approximately 50,000 positive and negative movie reviews.
+- **Data Handling**: I used the drift database library for the local encrypted NoSQL database where logged sentiment scores are stored. I needed drift because the application architecture required the Windows logging process to run in its own separate isolate (thread), and drift supports this cross-isolate functionality.
+- **Platform Integration**: Implementing the sentence capture required deep integration with platform-specific APIs: I used the Win32 API (specifically, keyboard and mouse hooks) for Windows, and the Android Accessibility API for Android event tracking.
+
+## Challenges and Learnings
+
+The initial scoring algorithm, which simply calculated the average of all sentiment scores within an hour, was heavily biased toward neutrality (hovering around 45–50%). This meant the scores often failed to match my actual perceived mood when using the applications. I solved this by implementing an occurrence-based algorithm. Instead of a pure average, this algorithm counts how many times the generated score is above 45% versus below or equal to 45%. This single adjustment made the calculated scores far more accurate in reflecting the emotional sentiment during typing.
+Furthermore, integrating the system APIs was technically challenging. For instance, on Windows, I had to configure the logger to consider a sentence complete only upon pressing the enter key or if typing paused for over 10 seconds. On the Android side, due to API limitations, I had to trigger logging when the text box character count reached 1.
+Finally, while Flutter supports many platforms, I determined that supporting iOS was outside the project scope because established APIs for text tracking are non-existent, meaning I would have required complex workarounds like building a custom keyboard, which also presents significant hurdles for privacy compliance and publishing on the Apple App Store.
+
+## Outcome
+
+Negate was a success, achieving its objective of creating a functional product for mood tracking based on device usage and sentiment analysis.
+The architecture I designed offers strong flexibility, making it trivial to substitute the existing binary sentiment model with other binary classification models in the future—for example, a model trained to detect signs of anxiety or depression. The user interface, built with Flutter, adheres to the Material UI 3 design language and was highly praised for its consistent and polished look.
+I gained invaluable, hands-on experience utilizing complex Windows and Android system APIs effectively within the Flutter environment. While Negate provides useful personal insight into which applications influence mood, I must stress that the tool is strictly for personal awareness and is not a medical device capable of providing diagnosis or medical advice.
+
+[![Google Play link](https://raw.githubusercontent.com/steverichey/google-play-badge-svg/master/img/en_get.svg)](https://play.google.com/store/apps/details?id=com.kevinx8.negate)
