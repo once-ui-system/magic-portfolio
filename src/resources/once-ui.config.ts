@@ -16,7 +16,7 @@ import {home} from "./index";
 import {Geist, Geist_Mono} from "next/font/google";
 
 // IMPORTANT: Replace with your own domain address - it's used for SEO in meta tags and schema
-const baseURL: string = "https://demo.magic-portfolio.com";
+const baseURL: string = "https://paulis.gributs.com";
 
 const routes: RoutesConfig = {
     "/": true,
