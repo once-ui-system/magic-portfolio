@@ -11,6 +11,7 @@ const nextConfig = {
     output: 'export',
   transpilePackages: ["next-mdx-remote"],
   images: {
+      unoptimized: true,
     remotePatterns: [
       {
         protocol: "https",

@@ -4,7 +4,7 @@
   "scripts": {
     "dev": "next dev",
     "export": "next export",
-    "build": "next build --turbopack",
+    "build": "next build",
     "biome-write": "npx @biomejs/biome format --write .",
     "start": "next start",
     "lint": "next lint"
