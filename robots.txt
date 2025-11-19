@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Disallow common non-content routes
+Disallow: /node_modules/
+Disallow: /favicon.ico
+
+Sitemap: https://paulis.gributs.com/sitemap.xml
+
