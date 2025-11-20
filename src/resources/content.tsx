@@ -100,9 +100,8 @@ const about: About = {
                 I am a software engineer with a passion for building intelligent,
                 full-stack applications that bridge the gap between cutting-edge research
                 and real-world impact. My expertise spans from developing and deploying AI
-                systems—like the LLM recommender that boosted user satisfaction by 35%—to managing
-                complex projects for global audiences, such as leading a team for an Android app with
-                over 120 million users.
+                systems to managing complex projects for global audiences, such as leading a
+                team for an Android app with over 120 million users.
             </>
         ),
     },
@@ -150,7 +149,7 @@ const about: About = {
                 ],
             },
             {
-                company: <a href="https://wikipedia.org/wiki/YouTube_Vanced">Youtube Vanced (Google CA)</a>,
+                company: <a href="https://wikipedia.org/wiki/YouTube_Vanced" target="_blank">Youtube Vanced (Google CA)</a>,
                 timeframe: "2018 - 2022",
                 role: "Lead Developer",
                 achievements: [
@@ -212,11 +211,11 @@ const about: About = {
                 description: (
                     [<>Created Several Mobile Applications including their backends;</>,
                         <br/>,
-                        <a href="https://play.google.com/store/apps/details?id=com.kevinx8.negate">Negate</a>,
+                        <a href="https://play.google.com/store/apps/details?id=com.kevinx8.negate" target="_blank">Negate</a>,
                         <br/>,
-                        <a href="https://value-shopping-basket.codemagic.app/">Value Shopping Basket</a>,
+                        <a href="https://value-shopping-basket.codemagic.app/" target="_blank">Value Shopping Basket</a>,
                         <br/>,
-                        <a href="https://wikipedia.org/wiki/YouTube_Vanced">YouTube Vanced</a>
+                        <a href="https://wikipedia.org/wiki/YouTube_Vanced" target="_blank">YouTube Vanced</a>
                     ]
                 ),
                 tags: [
@@ -264,7 +263,7 @@ const about: About = {
                 description: (
                     [<>Able to build Backends and Discord Bots with 99.99% uptime.</>,
                         <br/>,
-                        <a href="https://codefling.com/discord-bots/update-checker-bot">Link to an example bot of
+                        <a href="https://codefling.com/discord-bots/update-checker-bot" target="_blank">Link to an example bot of
                             mine.</a>]
                 ),
                 tags: [
@@ -300,7 +299,7 @@ const about: About = {
                 description: ([
                         <>Writing Plugins and Backend Applications in C# since 2018.</>,
                         <br/>,
-                        <a href="https://magicservices.co/">Contracted developer on Magic Services.</a>
+                        <a href="https://magicservices.co/" target="_blank">Contracted developer on Magic Services.</a>
                     ]
                 ),
                 tags: [
@@ -323,7 +322,7 @@ const about: About = {
                 description: ([
                         <>Building robust websites using Vite, Next.js and React.js.</>,
                         <br/>,
-                        <a href="https://attraperevesint.fr/">Link to a client's site.</a>
+                        <a href="https://attraperevesint.fr/" target="_blank">Link to a client's site.</a>
                     ]
                 ),
                 tags: [
