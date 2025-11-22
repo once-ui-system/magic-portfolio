@@ -1,20 +1,9 @@
-import {
-  Heading,
-  Text,
-  Button,
-  Avatar,
-  RevealFx,
-  Column,
-  Badge,
-  Row,
-  Schema,
-  Meta,
-  Line,
-} from "@once-ui-system/core";
-import { home, about, person, baseURL, routes } from "@/resources";
-import { Mailchimp } from "@/components";
-import { Projects } from "@/components/work/Projects";
-import { Posts } from "@/components/blog/Posts";
+import {Avatar, Badge, Button, Column, Heading, Line, Meta, RevealFx, Row, Schema, Text,} from "@once-ui-system/core";
+import {about, baseURL, home, person, routes} from "@/resources";
+import {Mailchimp} from "@/components";
+import {Projects} from "@/components/work/Projects";
+import {Posts} from "@/components/blog/Posts";
+import {redirect, RedirectType} from 'next/navigation';
 
 export async function generateMetadata() {
   return Meta.generate({
@@ -27,6 +16,10 @@ export async function generateMetadata() {
 }
 
 export default function Home() {
+    const userLanguage = navigator.language;
+    if (userLanguage && userLanguage.toLowerCase().includes("fr")) {
+        redirect("https://fr.paulis.gributs.com/",RedirectType.replace);
+    }
   return (
     <Column maxWidth="m" gap="xl" paddingY="12" horizontal="center">
       <Schema
