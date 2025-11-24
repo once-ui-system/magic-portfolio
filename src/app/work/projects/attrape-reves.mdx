@@ -1,0 +1,45 @@
+---
+title: "Building a Digital Presence for Attrape-Rêves International a Non-profit Organisation for Native Americans"
+publishedAt: "2025-11-24"
+summary: "My time building a website and donation page for a non-profit organisation whose mission is to support Native American populations living in distress and poverty on reservations."
+images:
+  - "/images/projects/project-01/cover-03.jpg"
+team:
+  - name: "Paulis Gributs"
+    role: "Frontend Engineer"
+    avatar: "/images/avatar.jpg"
+    linkedIn: "https://www.linkedin.com/in/paulis-gributs/"
+link: "https://attraperevesint.fr/"
+---
+
+## Overview
+
+My work with [Attrape-Rêves International](https://attraperevesint.fr/nous-connaitre) centered on creating a complete web presence for this French charity dedicated to supporting Native American populations in Navajo, Hopi, Zuni, and Apache reservations. The organisation, established in 2025, needed a digital platform to amplify their mission of providing essential support—from school supplies and clean water access to heating during harsh winters—to Indigenous communities facing hardship.
+The project was fundamentally about translating their humanitarian vision into a functional, accessible website that could effectively facilitate donations and communicate their cause to the French public. I developed the entire platform using ReactJS, Figma, and Tailwind CSS, transforming initial design concepts into a live donation platform that has since processed over 500 contributions.
+
+## Key Features
+
+- **Seamless Donation Integration**: I integrated HelloAsso, a leading French donation platform, directly into the website. This integration was critical for the charity's operations, enabling secure, compliant donation processing while maintaining a smooth user experience. The platform handles all payment processing, receipt generation, and donor management within the French regulatory framework.
+- **Responsive Design Philosophy**: I built the interface to be fully responsive across all device types, but with particular attention to older, lower-resolution displays. Many of the charity's supporters use legacy devices—low-end laptops and monitors from the 2000s era—so I ensured the website remained functional and visually coherent even at uncommon resolutions.
+- **Clear Information Architecture**: The site structure prioritises the charity's core message with dedicated sections: "Nous connaître" (About Us), "Notre Action" (Our Action), and "Nos Campagnes" (Our Campaigns). Each section communicates the organisation's work with partner organisation Native American Emergency Relief and their focus on sustainable support for reservation communities.
+- **Professional Identity**: Using Figma for the design phase allowed for rapid iteration and client feedback cycles. The final design reflects the organisation's values while maintaining professional credibility—important for building donor trust and meeting the expectations of a charity operating under French association law (loi 1901).
+
+## Technologies Used
+
+- **Front-end Development**: I chose ReactJS for its component-based architecture, which made it straightforward to build reusable UI elements and maintain consistency across pages. React's virtual DOM also ensured smooth performance even on older devices with limited processing power.
+- **Styling Framework**: Tailwind CSS was instrumental in achieving the responsive design goals. Its utility-first approach allowed me to rapidly prototype different layout configurations and fine-tune the responsiveness without writing extensive custom CSS. This was particularly valuable when addressing the unusual viewport requirements for legacy devices.
+- **Design and Prototyping**: Figma served as the collaborative design tool throughout the two-month development process. It enabled the client to visualize concepts early, provide feedback on layouts and user flows, and approve design decisions before I committed development time to implementation.
+- **Donation Platform Integration**: HelloAsso's API integration required careful attention to user flow—ensuring donors could contribute without leaving the site's visual context while still completing secure transactions through HelloAsso's trusted payment infrastructure.
+
+## Challenges and Learnings
+
+The most significant technical challenge was ensuring true scalability across the full spectrum of display resolutions, particularly targeting older hardware still prevalent among the charity's audience. Standard responsive breakpoints (mobile, tablet, desktop) were insufficient. I had to create additional CSS rules targeting resolutions like 1024×768 and even 800×600, testing extensively on virtual machines running older operating systems to verify text remained readable and interactive elements remained accessible.
+This required strategic decisions about font sizing, button dimensions, and content hierarchy. For instance, I implemented a fluid typography system that scaled gracefully rather than jumping between fixed sizes at breakpoints. Navigation had to collapse intelligently on smaller screens while remaining discoverable, and the donation call-to-action needed to stay prominent without overwhelming the limited screen real estate.
+Working directly with the client over two months taught me the importance of iterative development in the nonprofit sector. Charity stakeholders often have limited technical backgrounds but deep insight into their audience's needs. I learned to translate their mission-focused language into technical requirements and, conversely, to present technical constraints in terms of user impact rather than implementation details.
+Finally, integrating HelloAsso required understanding French donation regulations and ensuring the website met accessibility standards expected of public-facing charity platforms. This meant implementing proper ARIA labels, ensuring keyboard navigation worked throughout, and verifying that the donation flow was clear even for users with limited digital literacy.
+
+## Outcome
+
+The website successfully launched and has facilitated over 500 donations, establishing a sustainable digital fundraising channel for Attrape-Rêves International. The platform enables the organization to reach French donors effectively while communicating their partnership with Native American Emergency Relief and their focus on long-term, dignified support for reservation communities.
+The responsive architecture I built ensures the website remains accessible to the charity's diverse supporter base, from young professionals on smartphones to older donors using decade-old desktop computers. The clean, professional design establishes credibility while the HelloAsso integration removes technical barriers to giving.
+Beyond the immediate technical deliverables, this project reinforced the importance of understanding end users beyond typical personas. Designing for real-world constraints—legacy hardware, varying digital literacy, regulatory compliance—produces more resilient, inclusive web applications. The website now serves as a lasting digital foundation for Attrape-Rêves International's humanitarian mission, connecting French donors with Native American communities in need.
