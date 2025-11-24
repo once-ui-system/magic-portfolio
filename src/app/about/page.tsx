@@ -163,7 +163,9 @@ export default function About() {
                 fitWidth
                 data-border="rounded"
               >
-                {social.map(
+                {social
+                      .filter((item) => item.essential)
+                      .map(
                   (item) =>
                     item.link && (
                       <React.Fragment key={item.name}>
