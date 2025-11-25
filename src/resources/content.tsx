@@ -66,9 +66,7 @@ const home: Home = {
   },
   subline: (
     <>
-      I'm Selene, a design engineer at{" "}
-      <BrandLogo />
-      , where I craft intuitive
+      I'm Selene, a design engineer at <BrandLogo />, where I craft intuitive
       <br /> user experiences. After hours, I build my own projects.
     </>
   ),
