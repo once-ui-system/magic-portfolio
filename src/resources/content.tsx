@@ -1,6 +1,5 @@
-import BrandLogo from "@/components/BrandLogo";
 import { About, Blog, Gallery, Home, Newsletter, Person, Social, Work } from "@/types";
-import { Line, Logo, Row, Text } from "@once-ui-system/core";
+import { Line, Row, Text } from "@once-ui-system/core";
 
 const person: Person = {
   firstName: "Selene",
@@ -66,9 +65,8 @@ const home: Home = {
   },
   subline: (
     <>
-      I'm Selene, a design engineer at <BrandLogo />, where I craft intuitive
-      <br /> user experiences. After hours, I build my own projects.
-    </>
+    I'm Selene, a design engineer at <Text as="span" size="xl" weight="strong">ONCE UI</Text>, where I craft intuitive <br /> user experiences. After hours, I build my own projects.
+</>
   ),
 };
 
