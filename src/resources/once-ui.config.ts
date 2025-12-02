@@ -14,7 +14,7 @@ import {
 import { home } from "./index";
 
 // IMPORTANT: Replace with your own domain address - it's used for SEO in meta tags and schema
-const baseURL: string = "https://demo.magic-portfolio.com";
+const baseURL: string = "https://michaelanticoli.com";
 
 const routes: RoutesConfig = {
   "/": true,
@@ -195,9 +195,8 @@ const schema: SchemaConfig = {
 
 // social links
 const sameAs: SameAsConfig = {
-  threads: "https://www.threads.com/@once_ui",
-  linkedin: "https://www.linkedin.com/company/once-ui/",
-  discord: "https://discord.com/invite/5EyAQ4eNdS",
+  instagram: "https://instagram.com/quantumelodies",
+  linkedin: "https://www.linkedin.com/in/michael-anticoli",
 };
 
 // social sharing configuration for blog posts
