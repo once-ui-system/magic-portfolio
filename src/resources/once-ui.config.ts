@@ -187,10 +187,10 @@ const mailchimp: MailchimpConfig = {
 // default schema data
 const schema: SchemaConfig = {
   logo: "",
-  type: "Organization",
-  name: "Once UI",
-  description: home.description,
-  email: "lorant@once-ui.com",
+  type: "Person",
+  name: "Michael Anticoli",
+  description: "Creative Technologist, AI Content Strategist & Sonic Systems Architect",
+  email: "michaelanticoli@gmail.com",
 };
 
 // social links
