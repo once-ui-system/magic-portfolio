@@ -197,7 +197,6 @@ const schema: SchemaConfig = {
 const sameAs: SameAsConfig = {
   instagram: "https://instagram.com/quantumelodies",
   linkedin: "https://www.linkedin.com/in/michael-anticoli",
-  github: "https://github.com/michaelanticoli",
 };
 
 // social sharing configuration for blog posts
