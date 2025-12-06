@@ -13,8 +13,9 @@ import {
 } from "@/types";
 import { home } from "./index";
 
-// IMPORTANT: Replace with your own domain address - it's used for SEO in meta tags and schema
-const baseURL: string = "https://michaelanticoli.com";
+// The baseURL will be set by the deployment platform (e.g., Vercel auto-generated domain)
+// Update this after deployment if using a custom domain
+const baseURL: string = "";
 
 const routes: RoutesConfig = {
   "/": true,
