@@ -2,20 +2,20 @@ import { About, Blog, Gallery, Home, Newsletter, Person, Social, Work } from "@/
 import { Line, Row, Text } from "@once-ui-system/core";
 
 const person: Person = {
-  firstName: "Selene",
-  lastName: "Yu",
-  name: `Selene Yu`,
-  role: "Design Engineer",
+  firstName: "Michael",
+  lastName: "Anticoli",
+  name: `Michael Anticoli`,
+  role: "Creative Technologist, AI Content Strategist & Sonic Systems Architect",
   avatar: "/images/avatar.jpg",
-  email: "example@gmail.com",
-  location: "Asia/Jakarta", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
-  languages: ["English", "Bahasa"], // optional: Leave the array empty if you don't want to display languages
+  email: "michaelanticoli@gmail.com",
+  location: "America/Los_Angeles", // IANA time zone for Los Angeles
+  languages: ["English"], // optional: Leave the array empty if you don't want to display languages
 };
 
 const newsletter: Newsletter = {
   display: true,
   title: <>Subscribe to {person.firstName}'s Newsletter</>,
-  description: <>My weekly newsletter about creativity and engineering</>,
+  description: <>Insights on creative technology, AI systems, and sonic architecture</>,
 };
 
 const social: Social = [
@@ -25,25 +25,13 @@ const social: Social = [
   {
     name: "GitHub",
     icon: "github",
-    link: "https://github.com/once-ui-system",
+    link: "https://github.com/michaelanticoli",
     essential: true,
   },
   {
     name: "LinkedIn",
     icon: "linkedin",
-    link: "https://www.linkedin.com/company/once-ui/",
-    essential: true,
-  },
-  {
-    name: "Instagram",
-    icon: "instagram",
-    link: "https://www.instagram.com/once_ui/",
-    essential: false,
-  },
-  {
-    name: "Threads",
-    icon: "threads",
-    link: "https://www.threads.com/@once_ui",
+    link: "https://www.linkedin.com/in/michael-anticoli",
     essential: true,
   },
   {
@@ -52,32 +40,51 @@ const social: Social = [
     link: `mailto:${person.email}`,
     essential: true,
   },
+  {
+    name: "MoonTuner",
+    icon: "globe",
+    link: "https://moontuner.xyz",
+    essential: true,
+  },
+  {
+    name: "Quantumelodies",
+    icon: "globe",
+    link: "https://quantumelodies.com",
+    essential: false,
+  },
+  {
+    name: "Instagram",
+    icon: "instagram",
+    link: "https://instagram.com/quantumelodies",
+    essential: false,
+  },
 ];
 
 const home: Home = {
   path: "/",
   image: "/images/og/home.jpg",
   label: "Home",
-  title: `${person.name}'s Portfolio`,
-  description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Building bridges between design and code</>,
+  title: `${person.name} – Creative Technologist & Sonic Systems Architect`,
+  description: `Portfolio showcasing interdisciplinary work at the intersection of music, astrology, and intelligent systems design`,
+  headline: <>Building bridges between sound, symbolism, and code</>,
   featured: {
     display: true,
     title: (
       <Row gap="12" vertical="center">
-        <strong className="ml-4">Once UI</strong>{" "}
+        <strong className="ml-4">Quantumelodic MetaSystem</strong>{" "}
         <Line background="brand-alpha-strong" vert height="20" />
         <Text marginRight="4" onBackground="brand-medium">
           Featured work
         </Text>
       </Row>
     ),
-    href: "/work/building-once-ui-a-customizable-design-system",
+    href: "/work", // Update this with specific project URL when created
   },
   subline: (
     <>
-    I'm Selene, a design engineer at <Text as="span" size="xl" weight="strong">ONCE UI</Text>, where I craft intuitive <br /> user experiences. After hours, I build my own projects.
-</>
+      I'm Michael, a creative technologist working at the <Text as="span" size="xl" weight="strong">intersection of music, astrology, and AI</Text>.<br />
+      I build innovative frameworks that merge sound, symbolism, and computational logic into practical tools and immersive experiences.
+    </>
   ),
 };
 
@@ -85,7 +92,7 @@ const about: About = {
   path: "/about",
   label: "About",
   title: `About – ${person.name}`,
-  description: `Meet ${person.name}, ${person.role} from ${person.location}`,
+  description: `Meet ${person.name}, ${person.role} from Los Angeles, California`,
   tableOfContent: {
     display: true,
     subItems: false,
@@ -95,16 +102,20 @@ const about: About = {
   },
   calendar: {
     display: true,
-    link: "https://cal.com",
+    link: "https://cal.com", // Update with your actual calendar link if you use Cal.com
   },
   intro: {
     display: true,
     title: "Introduction",
     description: (
       <>
-        Selene is a Jakarta-based design engineer with a passion for transforming complex challenges
-        into simple, elegant design solutions. Her work spans digital interfaces, interactive
-        experiences, and the convergence of design and technology.
+        Michael Anticoli is a creative technologist and interdisciplinary strategist working at the 
+        intersection of music, astrology, and intelligent systems design. He builds innovative 
+        frameworks that merge sound, symbolism, and computational logic—most notably the 
+        Quantumelodic MetaSystem—to translate complex metaphysical structures into practical tools 
+        and immersive digital experiences. His work blends creative direction, technical architecture, 
+        and conceptual storytelling to help brands and individuals communicate with clarity, 
+        resonance, and emotional precision.
       </>
     ),
   },
@@ -113,120 +124,139 @@ const about: About = {
     title: "Work Experience",
     experiences: [
       {
-        company: "FLY",
-        timeframe: "2022 - Present",
-        role: "Senior Design Engineer",
+        company: "Independent Practice",
+        timeframe: "2020 - Present",
+        role: "Creative Technologist & AI Content Strategist",
         achievements: [
           <>
-            Redesigned the UI/UX for the FLY platform, resulting in a 20% increase in user
-            engagement and 30% faster load times.
+            Developed the Quantumelodic MetaSystem, a comprehensive framework merging music theory, 
+            astrological symbolism, and AI-driven content generation to create personalized sonic 
+            and narrative experiences.
           </>,
           <>
-            Spearheaded the integration of AI tools into design workflows, enabling designers to
-            iterate 50% faster.
+            Architected AI-assisted workflows for brands and creators, integrating generative AI tools 
+            (OpenAI, Claude, Suno, Runway) to accelerate creative production and strategic messaging.
+          </>,
+          <>
+            Designed and deployed web-based applications using Flask, Node.js, and Supabase for 
+            interactive experiences and data-driven content platforms.
           </>,
         ],
         images: [
           // optional: leave the array empty if you don't want to display images
-          {
-            src: "/images/projects/project-01/cover-01.jpg",
-            alt: "Once UI Project",
-            width: 16,
-            height: 9,
-          },
+          // Add your project images here later
         ],
       },
-      {
-        company: "Creativ3",
-        timeframe: "2018 - 2022",
-        role: "Lead Designer",
-        achievements: [
-          <>
-            Developed a design system that unified the brand across multiple platforms, improving
-            design consistency by 40%.
-          </>,
-          <>
-            Led a cross-functional team to launch a new product line, contributing to a 15% increase
-            in overall company revenue.
-          </>,
-        ],
-        images: [],
-      },
+      // Add more work experience entries here as needed
+      // We'll populate these in Round 2
     ],
   },
   studies: {
-    display: true, // set to false to hide this section
+    display: false, // set to true when you want to add education details
     title: "Studies",
     institutions: [
-      {
-        name: "University of Jakarta",
-        description: <>Studied software engineering.</>,
-      },
-      {
-        name: "Build the Future",
-        description: <>Studied online marketing and personal branding.</>,
-      },
+      // Add your education details here in Round 2
+      // {
+      //   name: "University Name",
+      //   description: <>Studied [subject].</>,
+      // },
     ],
   },
   technical: {
     display: true, // set to false to hide this section
-    title: "Technical skills",
+    title: "Technical Skills & Expertise",
     skills: [
       {
-        title: "Figma",
+        title: "AI-Assisted Content Architecture",
         description: (
-          <>Able to prototype in Figma with Once UI with unnatural speed.</>
+          <>
+            Designing and implementing generative AI workflows using OpenAI, Claude, Suno, and Runway 
+            for content creation, brand strategy, and creative production.
+          </>
         ),
         tags: [
           {
-            name: "Figma",
-            icon: "figma",
-          },
-        ],
-        // optional: leave the array empty if you don't want to display images
-        images: [
-          {
-            src: "/images/projects/project-01/cover-02.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
+            name: "OpenAI",
+            icon: "openai",
           },
           {
-            src: "/images/projects/project-01/cover-03.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
+            name: "Python",
+            icon: "python",
+          },
+          {
+            name: "API Integration",
+            icon: "code",
           },
         ],
+        images: [],
       },
       {
-        title: "Next.js",
+        title: "Sonic Architecture & Music Systems",
         description: (
-          <>Building next gen apps with Next.js + Once UI + Supabase.</>
+          <>
+            Music theory, sound design, and sonic branding through the Quantumelodic MetaSystem—
+            translating astrological and symbolic structures into harmonic frameworks.
+          </>
         ),
         tags: [
           {
-            name: "JavaScript",
-            icon: "javascript",
+            name: "Music Theory",
+            icon: "music",
+          },
+          {
+            name: "Sound Design",
+            icon: "audio",
+          },
+        ],
+        images: [],
+      },
+      {
+        title: "Web Architecture & Development",
+        description: (
+          <>
+            Building web applications with Flask, Node.js, Next.js, and Supabase. 
+            Orchestrating full-stack experiences with Python backends and modern JavaScript frameworks.
+          </>
+        ),
+        tags: [
+          {
+            name: "Python",
+            icon: "python",
           },
           {
             name: "Next.js",
             icon: "nextjs",
           },
           {
+            name: "JavaScript",
+            icon: "javascript",
+          },
+          {
             name: "Supabase",
             icon: "supabase",
           },
         ],
-        // optional: leave the array empty if you don't want to display images
-        images: [
+        images: [],
+      },
+      {
+        title: "Brand Strategy & Narrative Design",
+        description: (
+          <>
+            Creative direction, messaging architecture, UX writing, and systems thinking for 
+            brand storytelling and audience engagement.
+          </>
+        ),
+        tags: [
           {
-            src: "/images/projects/project-01/cover-04.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
+            name: "Strategy",
+            icon: "strategy",
+          },
+          {
+            name: "Content",
+            icon: "document",
           },
         ],
+        images: [],
       },
     ],
   },
@@ -235,8 +265,8 @@ const about: About = {
 const blog: Blog = {
   path: "/blog",
   label: "Blog",
-  title: "Writing about design and tech...",
-  description: `Read what ${person.name} has been up to recently`,
+  title: "Thoughts on creative technology, AI, and sonic systems...",
+  description: `Read what ${person.name} has been exploring recently`,
   // Create new blog posts by adding a new .mdx file to app/blog/posts
   // All posts will be listed on the /blog route
 };
@@ -245,16 +275,16 @@ const work: Work = {
   path: "/work",
   label: "Work",
   title: `Projects – ${person.name}`,
-  description: `Design and dev projects by ${person.name}`,
-  // Create new project pages by adding a new .mdx file to app/blog/posts
+  description: `Interdisciplinary projects merging sound, systems, and storytelling by ${person.name}`,
+  // Create new project pages by adding a new .mdx file to app/work/projects
   // All projects will be listed on the /home and /work routes
 };
 
 const gallery: Gallery = {
   path: "/gallery",
   label: "Gallery",
-  title: `Photo gallery – ${person.name}`,
-  description: `A photo collection by ${person.name}`,
+  title: `Visual explorations – ${person.name}`,
+  description: `A visual collection by ${person.name}`,
   // Images by https://lorant.one
   // These are placeholder images, replace with your own
   images: [

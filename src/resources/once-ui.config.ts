@@ -13,8 +13,9 @@ import {
 } from "@/types";
 import { home } from "./index";
 
-// IMPORTANT: Replace with your own domain address - it's used for SEO in meta tags and schema
-const baseURL: string = "https://demo.magic-portfolio.com";
+// The baseURL will be set by the deployment platform (e.g., Vercel auto-generated domain)
+// Update this after deployment if using a custom domain
+const baseURL: string = "";
 
 const routes: RoutesConfig = {
   "/": true,
@@ -33,7 +34,7 @@ const display: DisplayConfig = {
 // Enable password protection on selected routes
 // Set password in the .env file, refer to .env.example
 const protectedRoutes: ProtectedRoutesConfig = {
-  "/work/automate-design-handovers-with-a-figma-to-code-pipeline": true,
+  // No routes are currently password protected
 };
 
 // Import and set font for each variant
@@ -187,17 +188,17 @@ const mailchimp: MailchimpConfig = {
 // default schema data
 const schema: SchemaConfig = {
   logo: "",
-  type: "Organization",
-  name: "Once UI",
-  description: home.description,
-  email: "lorant@once-ui.com",
+  type: "Person",
+  name: "Michael Anticoli",
+  description: "Creative Technologist, AI Content Strategist & Sonic Systems Architect",
+  email: "michaelanticoli@gmail.com",
 };
 
 // social links
 const sameAs: SameAsConfig = {
-  threads: "https://www.threads.com/@once_ui",
-  linkedin: "https://www.linkedin.com/company/once-ui/",
-  discord: "https://discord.com/invite/5EyAQ4eNdS",
+  instagram: "https://instagram.com/quantumelodies",
+  linkedin: "https://www.linkedin.com/in/michael-anticoli",
+  github: "https://github.com/michaelanticoli",
 };
 
 // social sharing configuration for blog posts
