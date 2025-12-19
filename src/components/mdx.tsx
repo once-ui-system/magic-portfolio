@@ -1,6 +1,7 @@
 import { MDXRemote, MDXRemoteProps } from "next-mdx-remote/rsc";
 import React, { ReactNode } from "react";
 import { slugify as transliterate } from "transliteration";
+import { BlockMath, InlineMath } from "react-katex";
 
 import {
   Heading,
@@ -202,6 +203,8 @@ const components = {
   Icon,
   Media,
   SmartLink,
+  BlockMath,
+  InlineMath,
 };
 
 type CustomMDXProps = MDXRemoteProps & {
