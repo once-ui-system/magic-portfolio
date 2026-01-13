@@ -80,6 +80,14 @@ export const iconLibrary: Record<string, IconType> = {
     rocket: HiOutlineRocketLaunch,
     javascript: SiJavascript,
     nextjs: SiNextdotjs,
+    supabase: SiSupabase,
+    figma: SiFigma,
+    facebook: FaFacebook,
+    pinterest: FaPinterest,
+    whatsapp: FaWhatsapp,
+    reddit: FaReddit,
+    telegram: FaTelegram,
+    instagram: FaInstagram,
     nodejs: SiNodedotjs,
     csharp: TbBrandCSharp,
     java: FaJava,
@@ -93,13 +101,6 @@ export const iconLibrary: Record<string, IconType> = {
     adguard: SiAdguard,
     mongodb: SiMongodb,
     sql: SiMariadb,
-    supabase: SiSupabase,
-    figma: SiFigma,
-    facebook: FaFacebook,
-    pinterest: FaPinterest,
-    whatsapp: FaWhatsapp,
-    reddit: FaReddit,
-    telegram: FaTelegram,
 };
 
 export type IconLibrary = typeof iconLibrary;

@@ -1,5 +1,5 @@
-import {About, Blog, Gallery, Home, Newsletter, Person, Social, Work} from "@/types";
-import {Line, Row, Text} from "@once-ui-system/core";
+import { About, Blog, Gallery, Home, Newsletter, Person, Social, Work } from "@/types";
+import { Line, Row, Text } from "@once-ui-system/core";
 
 const person: Person = {
     firstName: "Paulis",
@@ -25,16 +25,19 @@ const social: Social = [
         name: "GitHub",
         icon: "github",
         link: "https://github.com/kevinx8",
+        essential: true,
     },
     {
         name: "LinkedIn",
         icon: "linkedin",
         link: "https://www.linkedin.com/in/paulis-gributs/",
+        essential: true,
     },
     {
         name: "Email",
         icon: "email",
         link: `mailto:${person.email}`,
+        essential: true,
     },
     {
         name: "Rover",
