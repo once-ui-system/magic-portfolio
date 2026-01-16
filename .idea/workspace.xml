@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="259029b4-411b-48e9-9840-25635e3c4ed5" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/public/images/blog/DSC_0204.JPG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/blog/DSC_0204_detail.JPG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/blog/DSC_0394.JPG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/blog/DSC_0397.JPG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/blog/DSC_1914.JPG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/blog/okutama1 copy.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/blog/posts/blog.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/blog/posts/blog.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/blog/posts/pages.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/blog/posts/pages.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/blog/posts/styling.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/blog/posts/styling.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/blog/posts/work.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/blog/posts/work.mdx" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="EmbeddingIndexingInfo">
+    <option name="cachedIndexableFilesCount" value="131" />
+    <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="37v9o2878wa14Gzd2yn4jLU032B" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;JavaScript Debug.Next.js: debug client-side.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;js.debugger.nextJs.config.created.client&quot;: &quot;true&quot;,
+    &quot;js.debugger.nextJs.config.created.server&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/akirakata/magic-portfolio&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.Next.js: server-side.executor&quot;: &quot;Run&quot;,
+    &quot;npm.install.executor&quot;: &quot;Run&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Users/akirakata/magic-portfolio/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/app/work/projects" />
+      <recent name="$PROJECT_DIR$/src/app/blog/posts" />
+      <recent name="$PROJECT_DIR$/src/app/work" />
+      <recent name="$PROJECT_DIR$/src/app/blog" />
+    </key>
+  </component>
+  <component name="RunManager" selected="npm.Next.js: server-side">
+    <configuration name="Next.js: debug client-side" type="JavascriptDebugType" uri="http://localhost:3000/">
+      <method v="2" />
+    </configuration>
+    <configuration name="Next.js: server-side" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-30f59d01ecdd-cffe25b9f5b3-intellij.indexing.shared.core-IU-253.28294.334" />
+        <option value="bundled-js-predefined-d6986cc7102b-c7e53b3be11b-JavaScript-IU-253.28294.334" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="259029b4-411b-48e9-9840-25635e3c4ed5" name="Changes" comment="" />
+      <created>1767772849622</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1767772849622</updated>
+      <workItem from="1767772851242" duration="2126000" />
+      <workItem from="1767848275549" duration="8646000" />
+      <workItem from="1767856949537" duration="144000" />
+      <workItem from="1767857540132" duration="3902000" />
+      <workItem from="1767942920193" duration="1605000" />
+      <workItem from="1767944531613" duration="2389000" />
+      <workItem from="1767946939895" duration="748000" />
+      <workItem from="1768304509226" duration="671000" />
+      <workItem from="1768560598716" duration="3921000" />
+      <workItem from="1768565041149" duration="194000" />
+      <workItem from="1768565269724" duration="1339000" />
+      <workItem from="1768566648686" duration="371000" />
+      <workItem from="1768567079039" duration="836000" />
+      <workItem from="1768571143224" duration="196000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
