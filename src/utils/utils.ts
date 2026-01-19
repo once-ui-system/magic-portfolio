@@ -16,7 +16,7 @@ type Metadata = {
   summary: string;
   image?: string;
   images: string[];
-  tags?: string[];
+  tag?: string[];
   team: Team[];
   link?: string;
 };

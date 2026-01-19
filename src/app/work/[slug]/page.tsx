@@ -129,9 +129,9 @@ export default async function Project({
         </Row>
       </Row>
 
-      {post.metadata.tags && post.metadata.tags.length > 0 && (
+      {post.metadata.tag && post.metadata.tag.length > 0 && (
         <Flex gap="8" wrap horizontal="center" marginBottom="32">
-          {post.metadata.tags.map((tag: string) => (
+          {post.metadata.tag.map((tag: string) => (
             <Text
               key={tag}
               variant="label-default-s"
