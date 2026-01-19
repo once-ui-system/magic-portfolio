@@ -30,10 +30,16 @@ import {
   SiAdobephotoshop,
   SiAdobeillustrator,
   SiNotion,
+  SiTypescript,
+  SiTailwindcss,
+  SiVercel,
+  SiGooglegemini,
+  SiGoogleanalytics,
+  SiOpenai,
+  SiPerplexity,
 } from "react-icons/si";
 
 import { CgMaze } from "react-icons/cg";
-import { TbBrandGoogleAnalytics } from "react-icons/tb";
 
 import {
   FaDiscord,
@@ -52,8 +58,11 @@ import {
   FaPeopleGroup,
   FaConfluence,
   FaJira,
+  FaReact,
+  FaHotjar,
 } from "react-icons/fa6";
 import { noSSR } from "next/dynamic";
+import { types } from "util";
 
 export const iconLibrary: Record<string, IconType> = {
   arrowUpRight: HiArrowUpRight,
@@ -68,6 +77,10 @@ export const iconLibrary: Record<string, IconType> = {
   home: PiHouseDuotone,
   gallery: PiImageDuotone,
   discord: FaDiscord,
+  typescript: SiTypescript,
+  tailwind: SiTailwindcss,
+  vercel: SiVercel,
+  hotjar: FaHotjar,
   eye: HiOutlineEye,
   eyeOff: HiOutlineEyeSlash,
   github: FaGithub,
@@ -80,6 +93,7 @@ export const iconLibrary: Record<string, IconType> = {
   rocket: HiOutlineRocketLaunch,
   javascript: SiJavascript,
   nextjs: SiNextdotjs,
+  react: FaReact,
   supabase: SiSupabase,
   figma: SiFigma,
   facebook: FaFacebook,
@@ -90,13 +104,16 @@ export const iconLibrary: Record<string, IconType> = {
   instagram: FaInstagram,
   google: FaGoogle,
   maze: CgMaze,
-  analytics: TbBrandGoogleAnalytics,
+  analytics: SiGoogleanalytics,
   lead: FaPeopleGroup,
   photoshop: SiAdobephotoshop,
   illustrator: SiAdobeillustrator,
   jira: FaJira,
   confluence: FaConfluence,
   notion: SiNotion,
+  gemini: SiGooglegemini,
+  chatgpt: SiOpenai,
+  perplexity: SiPerplexity,
 };
 
 export type IconLibrary = typeof iconLibrary;

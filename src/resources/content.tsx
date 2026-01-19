@@ -43,18 +43,7 @@ const social: Social = [
     link: "https://www.linkedin.com/in/alancisgon/",
     essential: true,
   },
-  {
-    name: "Instagram",
-    icon: "instagram",
-    link: "https://www.instagram.com/once_ui/",
-    essential: false,
-  },
-  {
-    name: "Threads",
-    icon: "threads",
-    link: "https://www.threads.com/@once_ui",
-    essential: false,
-  },
+
   {
     name: "Email",
     icon: "email",
@@ -149,7 +138,7 @@ const about: About = {
         images: [
           // optional: leave the array empty if you don't want to display images
           {
-            src: "/images/projects/helix/inner-cover.jpg",
+            src: "/images/projects/helix/inner-cover.webp",
             alt: "Coppel, Checkout Flow Redesign",
             width: 16,
             height: 9,
@@ -254,6 +243,64 @@ const about: About = {
           {
             name: "Maze",
             icon: "maze",
+          },
+          {
+            name: "Hotjar",
+            icon: "hotjar",
+          },
+        ],
+        // optional: leave the array empty if you don't want to display images
+        images: [],
+      },
+      {
+        title: "Web Development",
+        description:
+          "Creation and maintenance of websites and web applications using front-end and back-end technologies",
+        tags: [
+          {
+            name: "NextJS",
+            icon: "nextjs",
+          },
+          {
+            name: "React",
+            icon: "react",
+          },
+          {
+            name: "TypeScript",
+            icon: "typescript",
+          },
+          {
+            name: "GitHub",
+            icon: "github",
+          },
+          {
+            name: "Tailwind CSS",
+            icon: "tailwind",
+          },
+          {
+            name: "Vercel",
+            icon: "vercel",
+          },
+        ],
+        // optional: leave the array empty if you don't want to display images
+        images: [],
+      },
+      {
+        title: "Generative AI & Design Innovation",
+        description:
+          "Actively integrating **Generative AI** tools and methodologies into UX strategy, research, and design operations, focused on augmenting creativity, speed, and decision-making across product teams while maintaining human-centered integrity.",
+        tags: [
+          {
+            name: "Gemini AI",
+            icon: "gemini",
+          },
+          {
+            name: "ChatGPT",
+            icon: "chatgpt",
+          },
+          {
+            name: "Perplexity",
+            icon: "perplexity",
           },
         ],
         // optional: leave the array empty if you don't want to display images

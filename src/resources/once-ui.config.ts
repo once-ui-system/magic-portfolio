@@ -120,7 +120,7 @@ const effects: EffectsConfig = {
   dots: {
     display: true,
     opacity: 80,
-    size: "2",
+    size: "4",
     color: "brand-background-strong",
   },
   grid: {
@@ -195,8 +195,8 @@ const schema: SchemaConfig = {
 
 // social links
 const sameAs: SameAsConfig = {
-  threads: "https://www.threads.com/@once_ui",
-  linkedin: "https://www.linkedin.com/company/once-ui/",
+  threads: " ",
+  linkedin: "https://www.linkedin.com/in/alancisgon/",
   discord: " ",
 };
 
@@ -204,7 +204,7 @@ const sameAs: SameAsConfig = {
 const socialSharing: SocialSharingConfig = {
   display: true,
   platforms: {
-    x: true,
+    x: false,
     linkedin: true,
     facebook: false,
     pinterest: false,

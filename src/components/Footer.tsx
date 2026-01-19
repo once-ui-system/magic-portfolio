@@ -29,14 +29,13 @@ export const Footer = () => {
       >
         <Text variant="body-default-s" onBackground="neutral-strong">
           <Text onBackground="neutral-weak">© {currentYear} /</Text>
-          <Text paddingX="4">By {person.name}</Text>
+          <Text paddingX="4"> From 🇲🇽 by {person.name}</Text>
           <Text onBackground="neutral-weak">
             {/* Usage of this template requires attribution. Please don't remove the link to Once UI unless you have a Pro license. */}
-            / created using{" "}
+            / Created using{" "}
             <SmartLink href="https://once-ui.com/products/magic-portfolio">
-              Once UI
+              Once UI & Magic Portfolio
             </SmartLink>{" "}
-            from Mexico
           </Text>
         </Text>
         <Row gap="16">
