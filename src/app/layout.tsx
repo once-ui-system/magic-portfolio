@@ -11,6 +11,7 @@ import { Footer, Header, RouteGuard, Providers } from "@/components";
 import { baseURL, effects, fonts, style, dataStyle, home } from "@/resources";
 // Enable Vercel Speed Insights
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/next";
 
 export async function generateMetadata() {
   return Meta.generate({
@@ -109,6 +110,8 @@ export default async function RootLayout({
           padding="0"
           horizontal="center"
         >
+          <SpeedInsights />
+          <Analytics />
           <RevealFx fill position="absolute">
             <Background
               mask={{
