@@ -92,7 +92,13 @@ function createHeading(as: "h1" | "h2" | "h3" | "h4" | "h5" | "h6") {
   }: Omit<React.ComponentProps<typeof HeadingLink>, "as" | "id">) => {
     const slug = slugify(children as string);
     return (
-      <HeadingLink marginTop="24" marginBottom="12" as={as} id={slug} {...props}>
+      <HeadingLink
+        marginTop="24"
+        marginBottom="12"
+        as={as}
+        id={slug}
+        {...props}
+      >
         {children}
       </HeadingLink>
     );
@@ -123,7 +129,11 @@ function createInlineCode({ children }: { children: ReactNode }) {
 
 function createCodeBlock(props: any) {
   // For pre tags that contain code blocks
-  if (props.children && props.children.props && props.children.props.className) {
+  if (
+    props.children &&
+    props.children.props &&
+    props.children.props.className
+  ) {
     const { className, children } = props.children.props;
 
     // Extract language from className (format: language-xxx)
@@ -192,7 +202,7 @@ const components = {
   InlineCode,
   Accordion,
   AccordionGroup,
-  Table,
+  Table: MdxTable,
   Feedback,
   Button,
   Card,
@@ -209,5 +219,46 @@ type CustomMDXProps = MDXRemoteProps & {
 };
 
 export function CustomMDX(props: CustomMDXProps) {
-  return <MDXRemote {...props} components={{ ...components, ...(props.components || {}) }} />;
+  return (
+    <MDXRemote
+      {...props}
+      components={{ ...components, ...(props.components || {}) }}
+    />
+  );
+}
+
+function normalizeCell(value: any): React.ReactNode {
+  if (value == null) return "";
+  // Si viene como { content: ... }, extraemos content
+  if (typeof value === "object" && "content" in value)
+    return (value as any).content;
+  // ReactNode válido: string, number, JSX, etc.
+  return value as React.ReactNode;
+}
+
+function MdxTable({
+  data,
+  onRowClick,
+  ...props
+}: {
+  data: {
+    headers: { key: string; content: React.ReactNode; sortable?: boolean }[];
+    rows: Record<string, any>[]; // forma “editorial” en MDX
+  };
+  onRowClick?: (index: number) => void;
+}) {
+  const headers = Array.isArray(data?.headers) ? data.headers : [];
+  const objectRows = Array.isArray(data?.rows) ? data.rows : [];
+
+  const matrixRows: React.ReactNode[][] = objectRows.map((rowObj) =>
+    headers.map((h) => normalizeCell(rowObj?.[h.key])),
+  );
+
+  return (
+    <Table
+      data={{ headers, rows: matrixRows }}
+      onRowClick={onRowClick}
+      {...props}
+    />
+  );
 }

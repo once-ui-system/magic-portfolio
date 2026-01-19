@@ -1,4 +1,4 @@
-import { IconType } from "react-icons";
+import type { IconType } from "react-icons";
 
 import {
   HiArrowUpRight,
@@ -27,9 +27,33 @@ import {
   SiNextdotjs,
   SiFigma,
   SiSupabase,
+  SiAdobephotoshop,
+  SiAdobeillustrator,
+  SiNotion,
 } from "react-icons/si";
 
-import { FaDiscord, FaGithub, FaLinkedin, FaX, FaThreads, FaInstagram, FaXTwitter, FaFacebook, FaPinterest, FaWhatsapp, FaReddit, FaTelegram, } from "react-icons/fa6";
+import { CgMaze } from "react-icons/cg";
+import { TbBrandGoogleAnalytics } from "react-icons/tb";
+
+import {
+  FaDiscord,
+  FaGithub,
+  FaLinkedin,
+  FaX,
+  FaThreads,
+  FaInstagram,
+  FaXTwitter,
+  FaFacebook,
+  FaPinterest,
+  FaWhatsapp,
+  FaReddit,
+  FaTelegram,
+  FaGoogle,
+  FaPeopleGroup,
+  FaConfluence,
+  FaJira,
+} from "react-icons/fa6";
+import { noSSR } from "next/dynamic";
 
 export const iconLibrary: Record<string, IconType> = {
   arrowUpRight: HiArrowUpRight,
@@ -64,6 +88,15 @@ export const iconLibrary: Record<string, IconType> = {
   reddit: FaReddit,
   telegram: FaTelegram,
   instagram: FaInstagram,
+  google: FaGoogle,
+  maze: CgMaze,
+  analytics: TbBrandGoogleAnalytics,
+  lead: FaPeopleGroup,
+  photoshop: SiAdobephotoshop,
+  illustrator: SiAdobeillustrator,
+  jira: FaJira,
+  confluence: FaConfluence,
+  notion: SiNotion,
 };
 
 export type IconLibrary = typeof iconLibrary;

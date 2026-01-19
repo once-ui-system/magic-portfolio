@@ -1,4 +1,4 @@
-import {
+import type {
   About,
   Blog,
   Gallery,
@@ -13,7 +13,7 @@ import { Line, Row, Text } from "@once-ui-system/core";
 const person: Person = {
   firstName: "Alan",
   lastName: "Cisneros",
-  name: `Alan Cisneros`,
+  name: "Alan Cisneros",
   role: " Product Experience Strategist",
   avatar: "/images/avatar.jpg",
   email: "alancisgon@gmail.com",
@@ -67,9 +67,9 @@ const home: Home = {
   path: "/",
   image: "/images/og/home.jpg",
   label: "Home",
-  title: `${person.name}'s Portfolio`,
+  title: `${person.name} | Product Designer & Strategist`,
   description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Designing amazing digital experiences</>,
+  headline: <>Hi, I'm {person.firstName}</>,
   featured: {
     display: true,
     title: (
@@ -85,13 +85,16 @@ const home: Home = {
   },
   subline: (
     <>
-      I'm Alan, a product designer at{" "}
+      A product designer at{" "}
       <Text as="span" size="xl" weight="strong">
         Coppel
       </Text>
-      , with 8+ years creating exceptional digital experiences. <br />{" "}
-      Specialized in eCommerce, financial services, and user research, always
-      focusing on solving real user problems through design.
+      , with 8+ years creating exceptional digital experiences. <br /> Focused
+      in{" "}
+      <Text as="span" size="xl" weight="strong">
+        eCommerce, Banking, and User Research
+      </Text>
+      . <br /> Solving real user problems through design.
     </>
   ),
 };
@@ -110,7 +113,7 @@ const about: About = {
   },
   calendar: {
     display: true,
-    link: "https://cal.com",
+    link: "https://cal.com/alan-cisneros-phqijd/15min",
   },
   intro: {
     display: true,
@@ -133,42 +136,44 @@ const about: About = {
     title: "Work Experience",
     experiences: [
       {
-        company: "FLY",
+        company: "Coppel",
         timeframe: "2022 - Present",
-        role: "Senior Design Engineer",
+        role: "UX Design Lead — Purchase & Payments",
         achievements: [
-          <>
-            Redesigned the UI/UX for the FLY platform, resulting in a 20%
-            increase in user engagement and 30% faster load times.
-          </>,
-          <>
-            Spearheaded the integration of AI tools into design workflows,
-            enabling designers to iterate 50% faster.
-          </>,
+          "Led bottom-funnel redesign and Salesforce Commerce Cloud implementation, improving conversion and checkout performance (+12% est.)",
+          "Designed and launched digital services: Motorcycle Insurance, Extended Warranties, and Recurrent Shipping (Web & App). (+25% up avg. ticket)",
+          "Established UX Writing Strategy for credit card BIN logic, reducing Dynamic CVV2 rejects. (-60% down rejection)",
+          "Championed adoption of Design System standards across “Coppel Soluciones” landing pages and in-store systems. (+80% adoption across operative teams)",
+          "Implemented UX metrics governance, tracking usability, accessibility, NPS, CSAT, TCR, and drop-off rate improvements.",
         ],
         images: [
           // optional: leave the array empty if you don't want to display images
           {
-            src: "/images/projects/project-01/cover-01.jpg",
-            alt: "Once UI Project",
+            src: "/images/projects/helix/inner-cover.jpg",
+            alt: "Coppel, Checkout Flow Redesign",
             width: 16,
             height: 9,
           },
         ],
       },
       {
-        company: "Creativ3",
-        timeframe: "2018 - 2022",
-        role: "Lead Designer",
+        company: "Coppel",
+        timeframe: "2020 - 2022",
+        role: "UX Researcher — eCommerce New Customers",
         achievements: [
-          <>
-            Developed a design system that unified the brand across multiple
-            platforms, improving design consistency by 40%.
-          </>,
-          <>
-            Led a cross-functional team to launch a new product line,
-            contributing to a 15% increase in overall company revenue.
-          </>,
+          "Designed and institutionalized Heuristic Evaluation and Contribution Process frameworks across the UX team.",
+          "Conducted UX Research for the Digital Credit Application (100% online acquisition).",
+        ],
+        images: [],
+      },
+      {
+        company: "Onikom Systems",
+        timeframe: "2019 - 2020",
+        role: "Design & Research Team Lead — UX/UI",
+        achievements: [
+          "Introduced Lean UX and Validation Onion methods.",
+          "Designed and taught Lean UX internal course.",
+          "Delivered UX design for major clients: Movistar MX, CFE Contigo, Nadro.",
         ],
         images: [],
       },
@@ -179,12 +184,12 @@ const about: About = {
     title: "Studies",
     institutions: [
       {
-        name: "University of Jakarta",
-        description: <>Studied software engineering.</>,
+        name: "Universidad Nacional Autónoma de México (UNAM)",
+        description: "Bachelor's Degree - Design & Visual Communication.",
       },
       {
-        name: "Build the Future",
-        description: <>Studied online marketing and personal branding.</>,
+        name: "Sperientia",
+        description: "Service Design & Jobs-to-be-Done Methodologies.",
       },
     ],
   },
@@ -193,60 +198,66 @@ const about: About = {
     title: "Technical skills",
     skills: [
       {
-        title: "Figma",
-        description: (
-          <>Able to prototype in Figma with Once UI with unnatural speed.</>
-        ),
+        title: "Design Leadership & Operations",
+        description: "Team management, UX governance, design process scaling",
+        tags: [
+          {
+            name: "Team Leadership",
+            icon: "lead",
+          },
+          {
+            name: "Jira",
+            icon: "jira",
+          },
+          {
+            name: "Confluence",
+            icon: "confluence",
+          },
+          {
+            name: "Notion",
+            icon: "notion",
+          },
+        ],
+        // optional: leave the array empty if you don't want to display images
+        images: [],
+      },
+      {
+        title: "Design & Prototyping",
+        description:
+          "User interface design, tokens, UI component libraries, design documentation",
         tags: [
           {
             name: "Figma",
             icon: "figma",
           },
+          {
+            name: "Adobe Photoshop",
+            icon: "photoshop",
+          },
+          {
+            name: "Adobe Illustrator",
+            icon: "illustrator",
+          },
         ],
         // optional: leave the array empty if you don't want to display images
-        images: [
-          {
-            src: "/images/projects/project-01/cover-02.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-          {
-            src: "/images/projects/project-01/cover-03.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-        ],
+        images: [],
       },
       {
-        title: "Next.js",
-        description: (
-          <>Building next gen apps with Next.js + Once UI + Supabase.</>
-        ),
+        title: "Research & Analytics",
+        description:
+          "Heuristic analysis, A/B testing, accessibility, usability, quantitative UX metrics",
         tags: [
           {
-            name: "JavaScript",
-            icon: "javascript",
+            name: "Google Analytics",
+            icon: "analytics",
           },
           {
-            name: "Next.js",
-            icon: "nextjs",
-          },
-          {
-            name: "Supabase",
-            icon: "supabase",
+            name: "Maze",
+            icon: "maze",
           },
         ],
         // optional: leave the array empty if you don't want to display images
-        images: [
-          {
-            src: "/images/projects/project-01/cover-04.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-        ],
+        images: [],
       },
     ],
   },
