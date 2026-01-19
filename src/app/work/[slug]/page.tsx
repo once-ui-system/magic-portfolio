@@ -153,7 +153,7 @@ export default async function Project({
           aspectRatio="16 / 9"
           radius="m"
           alt={"image"}
-          src={post.metadata.images[1]}
+          src={post.metadata.images[0]}
         />
       )}
       <Column style={{ margin: "auto" }} as="article" maxWidth="xs">
