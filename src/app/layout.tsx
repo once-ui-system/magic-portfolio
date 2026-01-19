@@ -9,6 +9,8 @@ import { Background, Column, Flex, Meta, RevealFx } from "@once-ui-system/core";
 import type { opacity, SpacingToken } from "@once-ui-system/core";
 import { Footer, Header, RouteGuard, Providers } from "@/components";
 import { baseURL, effects, fonts, style, dataStyle, home } from "@/resources";
+// Enable Vercel Speed Insights
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export async function generateMetadata() {
   return Meta.generate({
