@@ -110,6 +110,8 @@ export default async function RootLayout({
           padding="0"
           horizontal="center"
         >
+          <SpeedInsights />
+          <Analytics />
           <RevealFx fill position="absolute">
             <Background
               mask={{
