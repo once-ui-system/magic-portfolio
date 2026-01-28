@@ -2,18 +2,18 @@ import { About, Blog, Gallery, Home, Newsletter, Person, Social, Work } from "@/
 import { Line, Row, Text } from "@once-ui-system/core";
 
 const person: Person = {
-  firstName: "Selene",
-  lastName: "Yu",
-  name: `Selene Yu`,
-  role: "Design Engineer",
+  firstName: "Oscar",
+  lastName: "Garcia",
+  name: `Oscar Garcia`,
+  role: "Développeur web / DevOps Junior",
   avatar: "/images/avatar.jpg",
-  email: "example@gmail.com",
-  location: "Asia/Jakarta", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
-  languages: ["English", "Bahasa"], // optional: Leave the array empty if you don't want to display languages
+  email: "oscargarcia.og@proton.me",
+  location: "Europe/Paris", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
+  languages: ["Français", "Anglais"], // optional: Leave the array empty if you don't want to display languages
 };
 
 const newsletter: Newsletter = {
-  display: true,
+  display: false,
   title: <>Subscribe to {person.firstName}'s Newsletter</>,
   description: <>My weekly newsletter about creativity and engineering</>,
 };
@@ -23,15 +23,21 @@ const social: Social = [
   // Import new icons in /once-ui/icons.ts
   // Set essentials: true for links you want to show on the about page
   {
+    name: "CV",
+    icon: "document",
+    link: "/public/CV.pdf",
+    essential: true,
+  },
+  {
     name: "GitHub",
     icon: "github",
-    link: "https://github.com/once-ui-system",
+    link: "https://github.com/PabloHavane",
     essential: true,
   },
   {
     name: "LinkedIn",
     icon: "linkedin",
-    link: "https://www.linkedin.com/company/once-ui/",
+    link: "https://www.linkedin.com/in/oscargarcia-dev/",
     essential: true,
   },
   {
@@ -44,7 +50,7 @@ const social: Social = [
     name: "Threads",
     icon: "threads",
     link: "https://www.threads.com/@once_ui",
-    essential: true,
+    essential: false,
   },
   {
     name: "Email",
@@ -59,16 +65,16 @@ const home: Home = {
   image: "/images/og/home.jpg",
   label: "Home",
   title: `${person.name}'s Portfolio`,
-  description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Building bridges between design and code</>,
+  description: `Portfolio montrant mon travail en tant que ${person.role}`,
+  headline: <>Bonjour,</>,
   featured: {
     display: true,
     title: (
       <Row gap="12" vertical="center">
-        <strong className="ml-4">Once UI</strong>{" "}
+        <strong className="ml-4">Mon CV</strong>{" "}
         <Line background="brand-alpha-strong" vert height="20" />
         <Text marginRight="4" onBackground="brand-medium">
-          Featured work
+          (cliquez ici pour le télécharger)
         </Text>
       </Row>
     ),
@@ -76,16 +82,16 @@ const home: Home = {
   },
   subline: (
     <>
-    I'm Selene, a design engineer at <Text as="span" size="xl" weight="strong">ONCE UI</Text>, where I craft intuitive <br /> user experiences. After hours, I build my own projects.
+    Je m'appelle Oscar, je suis alternant développeur web / Devops chez <Text as="span" size="xl" weight="strong">VIASANTE Mutuelle</Text>. Et ceci est mon portfolio.
 </>
   ),
 };
 
 const about: About = {
   path: "/about",
-  label: "About",
-  title: `About – ${person.name}`,
-  description: `Meet ${person.name}, ${person.role} from ${person.location}`,
+  label: "A propos",
+  title: `A propos – ${person.name}`,
+  description: `Rencontrez ${person.name}, ${person.role} de ${person.location}`,
   tableOfContent: {
     display: true,
     subItems: false,
@@ -94,7 +100,7 @@ const about: About = {
     display: true,
   },
   calendar: {
-    display: true,
+    display: false,
     link: "https://cal.com",
   },
   intro: {
@@ -102,28 +108,32 @@ const about: About = {
     title: "Introduction",
     description: (
       <>
-        Selene is a Jakarta-based design engineer with a passion for transforming complex challenges
-        into simple, elegant design solutions. Her work spans digital interfaces, interactive
-        experiences, and the convergence of design and technology.
+        Etudiant alternant en informatique âgé de 21 ans passionné par la programmation web, le DevOps et la cybersécurité. 
+        <br />
+        Actuellement en 3e année de BUT Informatique à l'IUT Paul Sabatier de Toulouse, je suis à la recherche d'une alternance en cybersécurité ou DevSecOps pour continuer mes études en école d'ingénieur.
       </>
     ),
   },
   work: {
     display: true, // set to false to hide this section
-    title: "Work Experience",
+    title: "Experience",
     experiences: [
       {
-        company: "FLY",
-        timeframe: "2022 - Present",
-        role: "Senior Design Engineer",
+        company: "VIASANTE Mutuelle",
+        timeframe: "Aout 2025 - Présent",
+        role: "Alternant Développeur / DevOps",
         achievements: [
           <>
-            Redesigned the UI/UX for the FLY platform, resulting in a 20% increase in user
-            engagement and 30% faster load times.
+            Conteneurisation et industrialisation des développements et des déploiements de l’équipe grâce au DevOps.
           </>,
           <>
-            Spearheaded the integration of AI tools into design workflows, enabling designers to
-            iterate 50% faster.
+            Déploiement de l'application interne d’archivage développée lors de mon stage.
+          </>,
+          <>
+            Participation au RUN et au traitement de tickets GLPI.
+          </>,
+          <>
+            Développement d’évolutions sur les applications internes.
           </>,
         ],
         images: [
@@ -137,18 +147,47 @@ const about: About = {
         ],
       },
       {
-        company: "Creativ3",
-        timeframe: "2018 - 2022",
-        role: "Lead Designer",
+        company: "VIASANTE Mutuelle",
+        timeframe: "Avril 2025 - Juin 2025",
+        role: "Stagiaire Développeur Web / DevOps",
         achievements: [
           <>
-            Developed a design system that unified the brand across multiple platforms, improving
-            design consistency by 40%.
+            Développement d’une application web full-stack interne pour le suivi d’archivage de documents contenant des données personnelles.
           </>,
           <>
-            Led a cross-functional team to launch a new product line, contributing to a 15% increase
-            in overall company revenue.
+            Conteneurisation de l’application pour préparer au déploiement futur.
           </>,
+        ],
+        images: [],
+      },
+      {
+        company: "E. Leclerc Saint-Orens",
+        timeframe: "Avril 2024 - Juillet 2025",
+        role: "Job étudiant - Employé Polyvalent",
+        achievements: [
+          <>
+            Samedi : Mise en rayon au rayon Fruits et Légumes
+          </>,
+          <>
+            Dimanche : Vendeur et Conseiller au rayon Multimédia en autonomie
+          </>,
+        ],
+        images: [],
+      },
+      {
+        company: "BDE ATIDUT",
+        timeframe: "Mars 2023 - Mars 2024",
+        role: "Président du Bureau des Étudiants",
+        achievements: [
+          <>
+            Gestion/Pilotage de l’association et de la vie étudiante sur le campus
+          </>,
+          <>
+            Organisation d’événements (soirées, voyages, activités sportives, culturelles, etc.) pour les étudiants.
+          </>,
+          <>
+            Encadrement et gestion d’équipe lors du Week-End d’Intégration Inter-IUT (850 participants)
+          </>
         ],
         images: [],
       },
@@ -156,24 +195,24 @@ const about: About = {
   },
   studies: {
     display: true, // set to false to hide this section
-    title: "Studies",
+    title: "Formation",
     institutions: [
       {
-        name: "University of Jakarta",
-        description: <>Studied software engineering.</>,
+        name: "BUT Informatique",
+        description: <>En 3e année à l'IUT Paul Sabatier (Toulouse, 31), parcours Déploiement d’Applications Communicantes et Sécurisées</>,
       },
       {
-        name: "Build the Future",
-        description: <>Studied online marketing and personal branding.</>,
+        name: "Baccalauréat Général",
+        description: <>Physique/Science de l’ingénieur option Mathématiques complémentaires, mention Bien - Parcours Espace - Lycée Pierre Paul Riquet, St-Orens de Gameville 31</>,
       },
     ],
   },
   technical: {
     display: true, // set to false to hide this section
-    title: "Technical skills",
+    title: "Compétences",
     skills: [
-      {
-        title: "Figma",
+      { // Réaliser
+        title: "Réaliser",
         description: (
           <>Able to prototype in Figma with Once UI with unnatural speed.</>
         ),
@@ -199,8 +238,124 @@ const about: About = {
           },
         ],
       },
-      {
-        title: "Next.js",
+      { // Optimiser
+        title: "Optimiser",
+        description: (
+          <>Building next gen apps with Next.js + Once UI + Supabase.</>
+        ),
+        tags: [
+          {
+            name: "JavaScript",
+            icon: "javascript",
+          },
+          {
+            name: "Next.js",
+            icon: "nextjs",
+          },
+          {
+            name: "Supabase",
+            icon: "supabase",
+          },
+        ],
+        // optional: leave the array empty if you don't want to display images
+        images: [
+          {
+            src: "/images/projects/project-01/cover-04.jpg",
+            alt: "Project image",
+            width: 16,
+            height: 9,
+          },
+        ],
+      },
+      { // Adminisrer
+        title: "Adminisrer",
+        description: (
+          <>Building next gen apps with Next.js + Once UI + Supabase.</>
+        ),
+        tags: [
+          {
+            name: "JavaScript",
+            icon: "javascript",
+          },
+          {
+            name: "Next.js",
+            icon: "nextjs",
+          },
+          {
+            name: "Supabase",
+            icon: "supabase",
+          },
+        ],
+        // optional: leave the array empty if you don't want to display images
+        images: [
+          {
+            src: "/images/projects/project-01/cover-04.jpg",
+            alt: "Project image",
+            width: 16,
+            height: 9,
+          },
+        ],
+      },
+      { // Gérer
+        title: "Gérer",
+        description: (
+          <>Building next gen apps with Next.js + Once UI + Supabase.</>
+        ),
+        tags: [
+          {
+            name: "JavaScript",
+            icon: "javascript",
+          },
+          {
+            name: "Next.js",
+            icon: "nextjs",
+          },
+          {
+            name: "Supabase",
+            icon: "supabase",
+          },
+        ],
+        // optional: leave the array empty if you don't want to display images
+        images: [
+          {
+            src: "/images/projects/project-01/cover-04.jpg",
+            alt: "Project image",
+            width: 16,
+            height: 9,
+          },
+        ],
+      },
+      { // Conduire
+        title: "Conduire",
+        description: (
+          <>Building next gen apps with Next.js + Once UI + Supabase.</>
+        ),
+        tags: [
+          {
+            name: "JavaScript",
+            icon: "javascript",
+          },
+          {
+            name: "Next.js",
+            icon: "nextjs",
+          },
+          {
+            name: "Supabase",
+            icon: "supabase",
+          },
+        ],
+        // optional: leave the array empty if you don't want to display images
+        images: [
+          {
+            src: "/images/projects/project-01/cover-04.jpg",
+            alt: "Project image",
+            width: 16,
+            height: 9,
+          },
+        ],
+      },
+      { // Collaborer
+        title: "Collaborer",
         description: (
           <>Building next gen apps with Next.js + Once UI + Supabase.</>
         ),
@@ -243,9 +398,9 @@ const blog: Blog = {
 
 const work: Work = {
   path: "/work",
-  label: "Work",
-  title: `Projects – ${person.name}`,
-  description: `Design and dev projects by ${person.name}`,
+  label: "Expériences",
+  title: `Projets – ${person.name}`,
+  description: `Projets de développement par ${person.name}`,
   // Create new project pages by adding a new .mdx file to app/blog/posts
   // All projects will be listed on the /home and /work routes
 };
