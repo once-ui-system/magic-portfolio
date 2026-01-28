@@ -1,4 +1,4 @@
-import { About, Blog, Gallery, Home, Newsletter, Person, Social, Work } from "@/types";
+import { About, Blog, Gallery, Home, Newsletter, Person, Social, Work, CV } from "@/types";
 import { Line, Row, Text } from "@once-ui-system/core";
 
 const person: Person = {
@@ -25,7 +25,7 @@ const social: Social = [
   {
     name: "CV",
     icon: "document",
-    link: "/public/CV.pdf",
+    link: "/cv",
     essential: true,
   },
   {
@@ -39,18 +39,6 @@ const social: Social = [
     icon: "linkedin",
     link: "https://www.linkedin.com/in/oscargarcia-dev/",
     essential: true,
-  },
-  {
-    name: "Instagram",
-    icon: "instagram",
-    link: "https://www.instagram.com/once_ui/",
-    essential: false,
-  },
-  {
-    name: "Threads",
-    icon: "threads",
-    link: "https://www.threads.com/@once_ui",
-    essential: false,
   },
   {
     name: "Email",
@@ -78,7 +66,7 @@ const home: Home = {
         </Text>
       </Row>
     ),
-    href: "/work/building-once-ui-a-customizable-design-system",
+    href: "/cv",
   },
   subline: (
     <>
@@ -456,4 +444,12 @@ const gallery: Gallery = {
   ],
 };
 
-export { person, social, newsletter, home, about, blog, work, gallery };
+const cv : CV = {
+  path: "/cv",
+  label: "CV",
+  title: `CV – ${person.name}`,
+  description: `Curriculum Vitae de ${person.name}`,
+  filePath: "/cv-oscar-garcia.pdf",
+};
+
+export { person, social, newsletter, home, about, blog, work, gallery, cv };

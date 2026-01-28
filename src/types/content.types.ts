@@ -238,3 +238,12 @@ export interface Gallery extends BasePageConfig {
     orientation: string;
   }>;
 }
+
+/** 
+ * CV page configuration.
+ * @description Configuration for the CV page, including metadata and path to the CV file.
+ */
+export interface CV extends BasePageConfig {
+  /** Path to the CV file */
+  filePath: `/${string}` | string;
+}
