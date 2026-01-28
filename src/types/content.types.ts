@@ -209,6 +209,19 @@ export interface About extends BasePageConfig {
       }>;
     }>;
   };
+  hobbies: {
+    /** Whether to display hobbies section */
+    display: boolean;
+    /** Title for the hobbies section */
+    title: string;
+    /** List of hobbies */
+    list: Array<{
+      /** Hobby name */
+      name: string;
+      /** Hobby description */
+      description?: React.ReactNode;
+    }>;
+  };
 }
 
 /**

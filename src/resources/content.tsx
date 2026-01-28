@@ -124,15 +124,7 @@ const about: About = {
             Développement d’évolutions sur les applications internes.
           </>,
         ],
-        images: [
-          // optional: leave the array empty if you don't want to display images
-          {
-            src: "/images/projects/project-01/cover-01.jpg",
-            alt: "Once UI Project",
-            width: 16,
-            height: 9,
-          },
-        ],
+        images: [],
       },
       {
         company: "VIASANTE Mutuelle",
@@ -202,13 +194,24 @@ const about: About = {
       { // Réaliser
         title: "Réaliser",
         description: (
-          <>Able to prototype in Figma with Once UI with unnatural speed.</>
+          <>Conception et développement de solutions techniques robustes et adaptées aux besoins métiers.</>
         ),
         tags: [
           {
-            name: "Figma",
-            icon: "figma",
+            name: "HTML/CSS/JavaScript",
           },
+          {
+            name: "PHP",
+          },
+          {
+            name: "Java",
+          },
+          {
+            name: "Python",
+          },
+          {
+            name: "C",
+          }
         ],
         // optional: leave the array empty if you don't want to display images
         images: [
@@ -229,21 +232,21 @@ const about: About = {
       { // Optimiser
         title: "Optimiser",
         description: (
-          <>Building next gen apps with Next.js + Once UI + Supabase.</>
+          <>Proposer des applications informatiques optimisées et efficaces.</>
         ),
         tags: [
           {
-            name: "JavaScript",
-            icon: "javascript",
+            name: "Programmation Orientée Objet",
           },
           {
-            name: "Next.js",
-            icon: "nextjs",
+            name: "Design Patterns",
           },
           {
-            name: "Supabase",
-            icon: "supabase",
+            name: "Tests"
           },
+          {
+            name: "Modélisation UML"
+          }
         ],
         // optional: leave the array empty if you don't want to display images
         images: [
@@ -258,21 +261,24 @@ const about: About = {
       { // Adminisrer
         title: "Adminisrer",
         description: (
-          <>Building next gen apps with Next.js + Once UI + Supabase.</>
+          <>Gestion, maintenance et optimisation des infrastructures systèmes et réseaux.</>
         ),
         tags: [
           {
-            name: "JavaScript",
-            icon: "javascript",
+            name: "Docker",
           },
           {
-            name: "Next.js",
-            icon: "nextjs",
+            name: "Kubernetes",
           },
           {
-            name: "Supabase",
-            icon: "supabase",
+            name: "Ansible",
           },
+          {
+            name: "CI/CD",
+          },
+          {
+            name: "Linux",
+          }
         ],
         // optional: leave the array empty if you don't want to display images
         images: [
@@ -287,20 +293,16 @@ const about: About = {
       { // Gérer
         title: "Gérer",
         description: (
-          <>Building next gen apps with Next.js + Once UI + Supabase.</>
+          <>Administrer et exploiter les données de l'entreprise pour permettre un bon pilotage de l'entreprise.</>
         ),
         tags: [
           {
-            name: "JavaScript",
-            icon: "javascript",
+            name: "SQL",
+            icon: "database",
           },
-          {
-            name: "Next.js",
-            icon: "nextjs",
-          },
-          {
-            name: "Supabase",
-            icon: "supabase",
+          { 
+            name: "MCD/MLD",
+            icon: "relation",
           },
         ],
         // optional: leave the array empty if you don't want to display images
@@ -316,20 +318,20 @@ const about: About = {
       { // Conduire
         title: "Conduire",
         description: (
-          <>Building next gen apps with Next.js + Once UI + Supabase.</>
+          <>Piloter un projet informatique avec des méthodes classiques ou agiles.</>
         ),
         tags: [
           {
-            name: "JavaScript",
-            icon: "javascript",
+            name: "Agile SCRUM",
+            icon: "agile",
           },
           {
-            name: "Next.js",
-            icon: "nextjs",
+            name: "Kanban",
+            icon: "kanban",
           },
           {
-            name: "Supabase",
-            icon: "supabase",
+            name: "Suite Office",
+            icon: "office",
           },
         ],
         // optional: leave the array empty if you don't want to display images
@@ -345,20 +347,14 @@ const about: About = {
       { // Collaborer
         title: "Collaborer",
         description: (
-          <>Building next gen apps with Next.js + Once UI + Supabase.</>
+          <>Travailler efficacement dans une équipe informatique.</>
         ),
         tags: [
           {
-            name: "JavaScript",
-            icon: "javascript",
+            name: "Git",
           },
           {
-            name: "Next.js",
-            icon: "nextjs",
-          },
-          {
-            name: "Supabase",
-            icon: "supabase",
+            name: "Suite Office",
           },
         ],
         // optional: leave the array empty if you don't want to display images
@@ -373,6 +369,39 @@ const about: About = {
       },
     ],
   },
+  hobbies: {
+    display: true,
+    title: "Hobbies",
+    list: [
+      {
+        name: "Cybersécurité",
+        description: <>
+          <strong>- Formation autodidacte</strong> sur la cybersécurité grâce à des plateformes comme TryHackMe (Top 10%) et HackTheBox.
+          <br />
+          <br />
+          <strong>- Certificat "Junior Penetration Tester"</strong> obtenu sur TryHackMe : <a href="https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-QOHUZIZZBM.pdf" target="_blank" rel="noopener noreferrer">Voir le certificat</a>
+          <br />
+          <br />
+          <strong>- Acquisition en cours</strong> du certificat SOC Analyst L1 sur TryHackMe.
+        </>,
+      },
+      {
+        name: "Sport",
+        description: <>
+          <strong>- Boxe française (Savate) :</strong> Pratiquant depuis 5 ans, j'apprécie la discipline et la rigueur que ce sport m'apporte.
+          <br />
+          <br />
+          <strong>- Surf :</strong> Passionné par le surf depuis mon enfance, j'essaie de profiter de chaque occasion pour pratiquer ce sport dès que je suis près de l'océan. Je surfe principalement dans les Landes à Hossegor, et sur la côte basque.
+          <br />
+          <br />
+          <strong>- Roller (loisir) :</strong> Pratiquant depuis 2 ans à l'université, cela m'a permis de reprendre doucement cette discipline que j'avais pratiquée avant de commencer mes études supérieurs.
+          <br />
+          <br />
+          <strong>- Roller hockey (compétition) :</strong> J'ai pratiqué ce sport en club pendant 10 ans à un niveau compétitif avant de me concentrer sur mes études en entrant dans le supérieur. J'ai également été arbitre officiel de la Fédération Française de Roller et Skateboard (FFRS) pendant 5 ans.
+        </>,
+      },
+    ],
+  },  
 };
 
 const blog: Blog = {

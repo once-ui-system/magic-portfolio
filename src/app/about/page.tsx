@@ -335,6 +335,26 @@ export default function About() {
               </Column>
             </>
           )}
+
+          {about.hobbies.display && (
+            <>
+              <Heading as="h2" id={about.hobbies.title} variant="display-strong-s" marginBottom="m" marginTop="xl">
+                {about.hobbies.title}
+              </Heading>
+              <Column fillWidth gap="1" marginBottom="40">
+                {about.hobbies.list.map((hobby, index) => (
+                  <Column key={`${hobby.name}-${index}`} fillWidth gap="4" marginBottom="s">
+                    <Text id={hobby.name} variant="heading-strong-l" margin="xs">
+                      {hobby.name}
+                    </Text>
+                    <Text variant="heading-default-xs" onBackground="neutral-weak">
+                      {hobby.description}
+                    </Text>
+                  </Column>
+                ))}
+              </Column>
+            </>
+          )}
         </Column>
       </Row>
     </Column>
