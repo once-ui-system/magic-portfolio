@@ -1,0 +1,83 @@
+---
+title: "Site web du Club Photo Nailloux"
+publishedAt: "2024-09-15"
+summary: "Conception et développement d’un site web pour une association de photographie, avec un backend Laravel 11 et un frontend Vue.js pour moderniser la gestion administrative, le partage de photos et la communication entre les membres."
+images:
+  - "/images/projects/club-photo-nailloux/cover.jpg"
+  - "/images/projects/club-photo-nailloux/gallery.jpg"
+team:
+  - name: "Oscar Garcia"
+    role: "Développeur web / DevOps"
+    avatar: "/images/avatar.jpg"
+    linkedIn: "https://www.linkedin.com/in/oscargarcia-dev/"
+link: ""
+---
+
+## Overview
+
+Ce projet a consisté à concevoir et développer un site web complet pour l’association **Club Photo Nailloux**, dans un contexte réel avec de vrais utilisateurs.  
+L’objectif principal était de remplacer des outils hétérogènes (mails, stockage non centralisé, gestion manuelle) par une plateforme unique facilitant la gestion de l’association et les échanges entre ses membres.
+
+Le site s’appuie sur une architecture moderne combinant **une API Laravel 11** et **un frontend Vue.js**, afin d’offrir une expérience utilisateur fluide tout en conservant une base technique robuste et maintenable.
+
+## Objectifs du projet
+
+- Centraliser la gestion administrative de l’association  
+- Faciliter le partage et la consultation de photos entre les membres  
+- Améliorer la communication interne autour des événements et actualités  
+- Mettre en place une base technique pérenne, maintenable et déployable facilement  
+
+## Fonctionnalités principales
+
+- **Gestion des utilisateurs et des rôles** : distinction entre membres, administrateurs et responsables
+- **Galerie photo** : publication, consultation et organisation des photos du club
+- **Gestion des événements** : création et diffusion d’événements (sorties photo, expositions, réunions)
+- **Espace membre sécurisé** : accès réservé aux membres authentifiés
+- **Interface moderne en Vue.js** : navigation dynamique, affichage des galeries, formulaires ergonomiques
+- **Administration** : interface permettant de gérer les contenus et les utilisateurs
+
+## Architecture et choix techniques
+
+Le projet repose sur une architecture **backend / frontend découplée**, pensée pour être évolutive.
+
+- **Backend** : API REST développée avec **Laravel 11**  
+  - Gestion des entités, relations et règles métier  
+  - Authentification et contrôle d’accès  
+  - Sécurisation des données et des accès  
+
+- **Frontend** : application **Vue.js**  
+  - Consommation de l’API Laravel 11  
+  - Composants réutilisables pour les pages (galeries, événements, espace membre)  
+  - Expérience utilisateur fluide sans rechargement complet des pages  
+
+- **Base de données** : MySQL pour le stockage des utilisateurs, photos et événements  
+- **Déploiement** : conteneurisation avec Docker afin de simplifier l’installation et la mise en production  
+
+Cette approche permet de garantir une bonne séparation des responsabilités et facilite la maintenance à long terme.
+
+## Technologies utilisées
+
+- **Laravel 11** : développement de l’API backend
+- **Vue.js** : développement du frontend et de l’interface utilisateur
+- **PHP & SQL (MySQL)** : logique métier et persistance des données
+- **Docker & Docker Compose** : environnement de développement et déploiement
+- **Git** : gestion de version et travail collaboratif
+- **Méthodologie Agile** : organisation du projet via user stories et itérations
+
+## Difficultés rencontrées et apprentissages
+
+L’un des principaux défis a été de concevoir une application adaptée à un **usage associatif réel**, avec des contraintes de sécurité, de confidentialité et de simplicité d’utilisation.  
+La gestion du stockage des photos, la modélisation de la base de données et la sécurisation des accès ont demandé une réflexion approfondie.
+
+Au niveau technique, l’intégration **Laravel 11 + Vue.js** m’a permis de renforcer mes compétences sur :
+- la conception et l’exposition d’une API REST  
+- la consommation d’API côté frontend avec Vue.js  
+- la modélisation de bases de données relationnelles  
+- le déploiement d’applications conteneurisées avec Docker  
+
+## Résultat
+
+Le site du Club Photo Nailloux constitue aujourd’hui une base solide pour la vie de l’association.  
+Il apporte une meilleure organisation, une communication plus fluide et une valorisation du travail photographique des membres.
+
+Ce projet illustre ma capacité à **mener un projet web de bout en bout**, depuis l’analyse des besoins jusqu’au déploiement, en combinant **Laravel 11** pour le backend et **Vue.js** pour le frontend dans un contexte proche du monde professionnel.
