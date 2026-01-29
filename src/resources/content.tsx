@@ -216,13 +216,19 @@ const about: About = {
         // optional: leave the array empty if you don't want to display images
         images: [
           {
-            src: "/images/projects/project-01/cover-02.jpg",
+            src: "/images/projects/aeon.jpg",
             alt: "Project image",
             width: 16,
             height: 9,
           },
           {
-            src: "/images/projects/project-01/cover-03.jpg",
+            src: "/images/projects/cpn2.png",
+            alt: "Project image",
+            width: 16,
+            height: 9,
+          },
+          {
+            src: "/images/projects/fromage.jpg",
             alt: "Project image",
             width: 16,
             height: 9,
@@ -251,11 +257,17 @@ const about: About = {
         // optional: leave the array empty if you don't want to display images
         images: [
           {
-            src: "/images/projects/project-01/cover-04.jpg",
+            src: "/images/projects/fromage.jpg",
             alt: "Project image",
             width: 16,
             height: 9,
           },
+          {
+            src: "/images/projects/hacker.png",
+            alt: "Project image",
+            width: 16,
+            height: 9,
+          }
         ],
       },
       { // Adminisrer
@@ -283,11 +295,17 @@ const about: About = {
         // optional: leave the array empty if you don't want to display images
         images: [
           {
-            src: "/images/projects/project-01/cover-04.jpg",
+            src: "/images/projects/aeon.jpg",
             alt: "Project image",
             width: 16,
             height: 9,
           },
+          {
+            src: "/images/projects/cpn2.png",
+            alt: "Project image",
+            width: 16,
+            height: 9,
+          }
         ],
       },
       { // Gérer
@@ -308,11 +326,17 @@ const about: About = {
         // optional: leave the array empty if you don't want to display images
         images: [
           {
-            src: "/images/projects/project-01/cover-04.jpg",
+            src: "/images/projects/aeon.jpg",
             alt: "Project image",
             width: 16,
             height: 9,
           },
+          {
+            src: "/images/projects/cpn2.png",
+            alt: "Project image",
+            width: 16,
+            height: 9,
+          }
         ],
       },
       { // Conduire
@@ -337,11 +361,29 @@ const about: About = {
         // optional: leave the array empty if you don't want to display images
         images: [
           {
-            src: "/images/projects/project-01/cover-04.jpg",
+            src: "/images/projects/aeon.jpg",
             alt: "Project image",
             width: 16,
             height: 9,
           },
+          {
+            src: "/images/projects/cpn2.png",
+            alt: "Project image",
+            width: 16,
+            height: 9,
+          },
+          {
+            src: "/images/projects/fromage.jpg",
+            alt: "Project image",
+            width: 16,
+            height: 9,
+          },
+          {
+            src: "/images/projects/hacker.png",
+            alt: "Project image",
+            width: 16,
+            height: 9,
+          }
         ],
       },
       { // Collaborer
@@ -360,11 +402,17 @@ const about: About = {
         // optional: leave the array empty if you don't want to display images
         images: [
           {
-            src: "/images/projects/project-01/cover-04.jpg",
+            src: "/images/projects/cpn2.png",
             alt: "Project image",
             width: 16,
             height: 9,
           },
+          {
+            src: "/images/projects/hacker.png",
+            alt: "Project image",
+            width: 16,
+            height: 9,
+          }
         ],
       },
     ],
