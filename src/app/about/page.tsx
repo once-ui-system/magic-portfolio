@@ -324,13 +324,27 @@ export default function About() {
                             minWidth={image.width}
                             height={image.height}
                           >
-                            <Media
-                              enlarge
-                              radius="m"
-                              sizes={image.width.toString()}
-                              alt={image.alt}
-                              src={image.src}
-                            />
+                            {image.link ? (
+                              <a 
+                                href={image.link}
+                                style={{ display: 'contents' }}
+                              >
+                                <Media
+                                  radius="m"
+                                  sizes={image.width.toString()}
+                                  alt={image.alt}
+                                  src={image.src}
+                                />
+                              </a>
+                            ) : (
+                              <Media
+                                enlarge
+                                radius="m"
+                                sizes={image.width.toString()}
+                                alt={image.alt}
+                                src={image.src}
+                              />
+                            )}
                           </Row>
                         ))}
                       </Row>

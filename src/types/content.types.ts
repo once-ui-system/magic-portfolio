@@ -206,6 +206,8 @@ export interface About extends BasePageConfig {
         width: number;
         /** Image height ratio */
         height: number;
+        /** Optional link to the associated project */
+        link?: string;
       }>;
     }>;
   };
