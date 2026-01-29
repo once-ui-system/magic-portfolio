@@ -49,6 +49,11 @@ export default function About() {
       display: about.technical.display,
       items: about.technical.skills.map((skill) => skill.title),
     },
+    {
+      title: about.hobbies.title,
+      display: about.hobbies.display,
+      items: about.hobbies.list.map((hobby) => hobby.name),
+    },
   ];
   return (
     <Column maxWidth="m">
