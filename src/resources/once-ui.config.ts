@@ -14,7 +14,7 @@ import {
 import { home } from "./index";
 
 // IMPORTANT: Replace with your own domain address - it's used for SEO in meta tags and schema
-const baseURL: string = "https://demo.magic-portfolio.com";
+const baseURL = "https://www.samiullahjaved.com";
 
 const routes: RoutesConfig = {
   "/": true,
@@ -141,7 +141,7 @@ const effects: EffectsConfig = {
 };
 
 const mailchimp: MailchimpConfig = {
-  action: "https://url/subscribe/post?parameters",
+  action: "https://app.us12.list-manage.com/subscribe/post?u=41cb82e5860cda9b036218e3a&amp;id=114e3d3110&amp;f_id=007151e0f0",
   effects: {
     mask: {
       cursor: true,
@@ -204,7 +204,7 @@ const sameAs: SameAsConfig = {
 const socialSharing: SocialSharingConfig = {
   display: true,
   platforms: {
-    x: true,
+    x: false,
     linkedin: true,
     facebook: false,
     pinterest: false,
