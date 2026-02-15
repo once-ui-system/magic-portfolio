@@ -10,7 +10,8 @@ import {
   Tag,
   Text,
   Meta,
-  Schema
+  Schema,
+  Row
 } from "@once-ui-system/core";
 import { baseURL, about, person, social } from "@/resources";
 import TableOfContents from "@/components/about/TableOfContents";
@@ -72,16 +73,20 @@ export default function About() {
           position="fixed"
           paddingLeft="24"
           gap="32"
-          hide="s"
+          s={{ hide: true }}
         >
           <TableOfContents structure={structure} about={about} />
         </Column>
       )}
-      <Flex fillWidth mobileDirection="column" horizontal="center">
+      <Row fillWidth s={{ direction: "column" }} horizontal="center">
         {about.avatar.display && (
           <Column
             className={styles.avatar}
+            top="64"
+            fitHeight
             position="sticky"
+            s={{ position: "relative", style: { top: "auto" } }}
+            xs={{ style: { top: "auto" } }}
             minWidth="160"
             paddingX="l"
             paddingBottom="xl"
@@ -90,18 +95,18 @@ export default function About() {
             horizontal="center"
           >
             <Avatar src={person.avatar} size="xl" />
-            <Flex gap="8" vertical="center">
+            <Row gap="8" vertical="center">
               <Icon onBackground="accent-weak" name="globe" />
               {person.location}
-            </Flex>
-            {person.languages.length > 0 && (
-              <Flex wrap gap="8">
+            </Row>
+            {person.languages && person.languages.length > 0 && (
+              <Row wrap gap="8">
                 {person.languages.map((language, index) => (
-                  <Tag key={language} size="l">
+                  <Tag key={index} size="l">
                     {language}
                   </Tag>
                 ))}
-              </Flex>
+              </Row>
             )}
           </Column>
         )}
@@ -149,33 +154,46 @@ export default function About() {
               {person.role}
             </Text>
             {social.length > 0 && (
-              <Flex className={styles.blockAlign} paddingTop="20" paddingBottom="8" gap="8" wrap horizontal="center" fitWidth data-border="rounded">
-                {social.map(
-                  (item) =>
-                    item.link && (
+              <Row
+                className={styles.blockAlign}
+                paddingTop="20"
+                paddingBottom="8"
+                gap="8"
+                wrap
+                horizontal="center"
+                fitWidth
+                data-border="rounded"
+              >
+                {social
+                  .filter((item) => item.link)
+                  .map(
+                    (item) =>
+                      item.link && (
                         <React.Fragment key={item.name}>
+                          <Row s={{ hide: true }}>
                             <Button
-                                className="s-flex-hide"
-                                key={item.name}
-                                href={item.link}
-                                prefixIcon={item.icon}
-                                label={item.name}
-                                size="s"
-                                weight="default"
-                                variant="secondary"
+                              key={item.name}
+                              href={item.link}
+                              prefixIcon={item.icon}
+                              label={item.name}
+                              size="s"
+                              weight="default"
+                              variant="secondary"
                             />
+                          </Row>
+                          <Row hide s={{ hide: false }}>
                             <IconButton
-                                className="s-flex-show"
-                                size="l"
-                                key={`${item.name}-icon`}
-                                href={item.link}
-                                icon={item.icon}
-                                variant="secondary"
+                              size="l"
+                              key={`${item.name}-icon`}
+                              href={item.link}
+                              icon={item.icon}
+                              variant="secondary"
                             />
+                          </Row>
                         </React.Fragment>
-                    ),
-                )}
-              </Flex>
+                      ),
+                  )}
+              </Row>
             )}
           </Column>
 
@@ -193,14 +211,15 @@ export default function About() {
               <Column fillWidth gap="l" marginBottom="40">
                 {about.work.experiences.map((experience, index) => (
                   <Column key={`${experience.company}-${experience.role}-${index}`} fillWidth>
-                    <Flex fillWidth horizontal="space-between" vertical="end" marginBottom="4">
+                    <Row fillWidth horizontal="between" vertical="end" marginBottom="4">
+
                       <Text id={experience.company} variant="heading-strong-l">
                         {experience.company}
                       </Text>
                       <Text variant="heading-default-xs" onBackground="neutral-weak">
                         {experience.timeframe}
                       </Text>
-                    </Flex>
+                    </Row>
                     <Text variant="body-default-s" onBackground="brand-weak" marginBottom="m">
                       {experience.role}
                     </Text>
@@ -215,10 +234,10 @@ export default function About() {
                         </Text>
                       ))}
                     </Column>
-                    {experience.images.length > 0 && (
-                      <Flex fillWidth paddingTop="m" paddingLeft="40" gap="12" wrap>
+                    {experience.images && experience.images.length > 0 && (
+                      <Row fillWidth paddingTop="m" paddingLeft="40" gap="12" wrap>
                         {experience.images.map((image, index) => (
-                          <Flex
+                          <Row
                             key={index}
                             border="neutral-medium"
                             radius="m"
@@ -237,9 +256,9 @@ export default function About() {
                               //@ts-ignore
                               src={image.src}
                             />
-                          </Flex>
+                          </Row>
                         ))}
-                      </Flex>
+                      </Row>
                     )}
                   </Column>
                 ))}
@@ -316,7 +335,7 @@ export default function About() {
             </>
           )}
         </Column>
-      </Flex>
+      </Row>
     </Column>
   );
 }
