@@ -1,0 +1,143 @@
+---
+title: "Como funcionam os Tokens de Suprimento Elástico como o Ampleforth"
+summary: "Explore como o AMPL usa o rebasing algorítmico para manter um preço estável por meio de ajustes de suprimento elásticos e não diluidores."
+publishedAt: "2023-06-06"
+image: "/images/blog/sigmoid.png"
+tags: ["DeFi"]
+draft: true
+---
+
+---
+
+<div className="disclaimer-box">
+
+**Aviso Legal (NFA)**: Este artigo apresenta uma pesquisa técnica sobre o design do protocolo do Ampleforth. Não é um conselho financeiro. As criptomoedas envolvem riscos substanciais - sempre faça sua própria pesquisa antes de tomar qualquer decisão financeira.
+
+</div>
+
+<style jsx>{`
+  .disclaimer-box {
+    border-left: 4px solid #f0ad4e;
+    background-color: rgba(240, 173, 78, 0.1);
+    padding: 1rem;
+    margin: 2rem 0;
+    border-radius: 4px;
+  }
+`}</style>
+
+---
+
+## O que é Ampleforth?
+
+Ampleforth (AMPL) é um token de suprimento elástico construído no Ethereum. Ele atua como uma [unidade de conta](https://docs.ampleforth.org/learn/glossary#unit-of-account) descentralizada, e é a base do Ecossistema de Finanças Elásticas do Ampleforth.
+
+Diferente das stablecoins que usam colaterais para manter a paridade, o AMPL ajusta programaticamente seu suprimento total com base no preço de mercado. Esse processo é chamado de **rebasing** e garante que os usuários sempre mantenham a mesma porcentagem de participação no suprimento total — tornando-o *não diluidor*.
+
+---
+
+## Suprimento Elástico vs. Diluidor
+
+O suprimento elástico significa que o número total de tokens pode se expandir ou contrair com base na demanda. Em contraste, ativos de suprimento fixo (inelástico) como o Bitcoin podem sofrer de falta de liquidez se os detentores se recusarem a vender, podendo quebrar o mercado.
+
+As moedas fiduciárias também são elásticas — os bancos centrais podem aumentar ou diminuir o suprimento. No entanto, isso causa **diluição**:
+- Mais dinheiro em circulação 📈 → Sua proporção encolhe 💸
+- Menos dinheiro 📉 → Sua proporção cresce 🤑
+
+O AMPL evita essa diluição por meio de um design único: quando o suprimento sofre rebase, o saldo de todos se ajusta proporcionalmente.
+
+---
+
+## O Processo de Rebase
+
+O rebasing do AMPL acontece a cada 24 horas (por volta das 2 A.M. UTC). Veja como funciona:
+
+1. **Preço Baseado em Oráculo**: O AMPL verifica o preço atual a partir de oráculos descentralizados.
+2. **Comparação com a Meta**: O preço-alvo é de ~$1.10.
+3. **Ajuste de Suprimento**:
+   - Se a demanda aumentou (preço > $1.10), o suprimento se expande.
+   - Se a demanda diminuiu (preço < $1.10), o suprimento se contrai.
+4. **Suavização**: Para evitar mudanças bruscas, o protocolo suaviza os ajustes ao longo de 30 dias.
+
+> O rebasing é **sem estado (stateless)** — não depende de tendências históricas de preço.
+
+### Exemplo
+
+- Alice em _t₀_ detém **1 AMPL**, valendo **$1.20**
+- Em _t₁_ (após o rebase), ela detém **1.2 AMPL**, valendo **$1.00**
+
+Ela agora tem mais tokens, mas o mesmo valor de portfólio.
+
+---
+
+## Rebasing Não Linear: A Curva Sigmoide
+
+Originalmente, o rebasing seguia uma função linear. No entanto, isso era muito sensível a mudanças extremas no mercado. A equipe introduziu uma [função sigmoide](https://aips.ampleforth.org/AIPs/aip-5) mais sofisticada:
+
+![Ilustração da Curva S](/images/blog/sigmoid.png)
+
+Esta curva ajuda a:
+- Suavizar mudanças extremas
+- Aumentar a resiliência contra manipulação de oráculos
+- Melhorar a previsibilidade e o potencial de descentralização
+
+```math
+F(x) = l + \frac{u - l}{1 - \left( \frac{u}{l} \right) \cdot 2^{-gx}}
+```
+<LatexRenderer displayMode>{`F(x) = l + \\frac{u - l}{1 - \\left( \\frac{u}{l} \\right) \\cdot 2^{-gx}}`}</LatexRenderer>
+---
+
+## Benefícios e Riscos
+
+- **Não correlação com o BTC**: Uma das principais vantagens do AMPL é sua baixa correlação com o Bitcoin.
+- **Diversificação de Portfólio**: Como os saldos mudam diariamente, o AMPL se comporta de forma diferente da maioria dos ativos.
+- **Mecânica de Rebase**: Ajuda a manter um preço estável, sem colateral ou diluição.
+
+No entanto, não é sem riscos:
+- Alta volatilidade, apesar de ser projetado como um ativo "estável"
+- Bugs técnicos podem quebrar o rebasing, como visto em projetos como o **YAM**:
+  - Sem auditorias formais
+  - Bugs permitiram cunhagem infinita
+  - Falha na execução de governança devido a falhas no contrato
+
+> "Contratos não auditáveis" tornaram-se um conto de advertência para os tokens de rebasing.
+
+---
+
+## Casos de Uso e Visão de Longo Prazo
+
+- **Curto prazo**: Diversificação de portfólio
+- **Médio prazo**: Colateral para aplicativos DeFi
+- **Longo prazo**: Unidade monetária adaptável, responsiva a choques econômicos
+
+O AMPL é um experimento monetário — não é apenas mais um token. Seu algoritmo controla apenas o **suprimento**, não a demanda. Os participantes do mercado ainda têm o papel principal em impulsionar o comportamento do preço.
+
+O AMPL é:
+- Compatível com ERC-20
+- Agnóstico em relação à rede (chain-agnostic)
+- Apoiado por programas como o **Geyser** para incentivar provedores de liquidez (LPs) (`AMPL/ETH`)
+
+Sempre verifique a **quantidade de tokens** *e* o **preço** para entender o valor real do seu portfólio. O rebasing pode ser desorientador — mas é parte do que torna o AMPL único.
+
+---
+## Conclusão
+
+O Ampleforth representa um dos experimentos monetários mais inovadores no mercado de criptomoedas. Seu mecanismo de suprimento elástico oferece várias propriedades únicas:
+
+- **Estabilidade Descentralizada**: Diferente das stablecoins com suporte colateral, o AMPL alcança estabilidade de preço por meio de ajustes algorítmicos de suprimento.
+- **Não Diluidor**: Os usuários mantêm sua porcentagem de participação na rede independentemente das mudanças no suprimento.
+- **Baixa Correlação**: Seu mecanismo de rebasing cria dinâmicas únicas de portfólio.
+
+No entanto, desafios significativos permanecem:
+- Barreiras de adoção para uma unidade monetária que altera os saldos diariamente
+- Riscos de volatilidade, apesar do mecanismo de estabilização
+- Dependência de sistemas robustos de oráculo para alimentações de preço precisas
+
+O sucesso a longo prazo do protocolo dependerá de:
+1. Desenvolvimento contínuo do ecossistema de finanças elásticas
+2. Maior compreensão e aceitação das mecânicas de rebasing
+3. Manutenção da segurança e descentralização à medida que o sistema escala
+
+> "AMPL não está tentando ser um dinheiro melhor - está tentando ser um dinheiro diferente."  
+> *— Evan Kuo, Fundador do Ampleforth*
+
+Embora o futuro seja incerto, a abordagem inovadora do AMPL expande os limites do que é possível nos sistemas monetários descentralizados. Seu sucesso ou fracasso fornecerá insights valiosos para a próxima geração de designs criptoeconômicos.

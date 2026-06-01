@@ -1,0 +1,109 @@
+---
+title: "Construa um dApp na Kadena com a snaK Usando o Wallet Adapter"
+summary: "Aprenda como estruturar e integrar um dApp compatível com o Kadena Snap usando o SDK oficial, o wallet adapter e as ferramentas do Next.js."
+publishedAt: "2025-06-10"
+tags: ["Desenvolvedor", "Carteiras"]
+draft: true
+---
+
+---
+
+<div className="disclaimer-box">
+
+**Aviso Legal**: Este guia é destinado a desenvolvedores construindo dApps na Kadena. Ele se concentra na integração do Snap baseada no SDK e pressupõe conhecimento prático de React, TypeScript e desenvolvimento com MetaMask.
+
+</div>
+
+<style jsx>{`
+  .disclaimer-box {
+    border-left: 4px solid #f0ad4e;
+    background-color: rgba(240, 173, 78, 0.1);
+    padding: 1rem;
+    margin: 2rem 0;
+    border-radius: 4px;
+  }
+`}</style>
+
+---
+
+## Por que usar o SDK?
+
+O [Kadena Snap SDK](https://github.com/kadena-community/kadena-snap) fornece ferramentas modernas para construir dApps seguros e integrados ao Snap usando:
+
+- 🧱 `create-kadena-app`: CLI para estruturar aplicativos Next.js
+- 🔌 `@kadena/wallet-adapter-snap`: Wallet adapter plug-and-play para o MetaMask Snap
+- ⚙️ Interfaces totalmente tipadas e extensibilidade
+
+## Passo 1: Estruture Seu Projeto
+
+Comece gerando um novo dApp usando a CLI:
+
+```bash
+npx @kadena/create-kadena-app generate-project -t nextjs -n my-kadena-dapp
+cd my-kadena-dapp
+```
+
+Instale as dependências:
+
+```bash
+pnpm install
+# ou npm install / yarn install
+```
+
+## Passo 2: Adicione o Snap Wallet Adapter
+
+Na entrada do seu aplicativo (`pages/_app.tsx` ou similar):
+
+```ts
+import { snapAdapter } from '@kadena/wallet-adapter-snap';
+import { AdapterFactory } from '@kadena/wallet-adapter-base';
+
+const adapters: AdapterFactory[] = [
+  snapAdapter(),
+];
+```
+
+Isso permite que seu aplicativo se conecte com a MetaMask e acesse as funcionalidades do Kadena Snap usando uma interface de carteira comum.
+
+## Passo 3: Conecte a Carteira na Interface
+
+Use a API do wallet adapter nos seus componentes para conectar e assinar transações:
+
+```ts
+import { useWalletConnect } from '@kadena/wallet-adapter-react';
+
+const { connect, disconnect, isConnected, connectedWallet } = useWalletConnect();
+
+return (
+  <button onClick={() => connect()}>Conectar Carteira</button>
+);
+```
+
+Uma vez conectado, você poderá chamar `sign`, `quicksign` e muito mais — tudo através da abstração do adapter.
+
+## Passo 4: Inicie o Servidor de Desenvolvimento
+
+```bash
+pnpm dev
+# ou npm run dev / yarn dev
+```
+
+Abra [http://localhost:3000](http://localhost:3000) — seu dApp habilitado para o Snap está rodando agora.
+
+## Passo 5: Use a Faucet da Testnet (Opcional)
+
+Para testar o envio de transações, você precisará de KDA na sua conta da testnet.
+
+👉 [Kadena Testnet Faucet](https://tools.kadena.io/faucet/new)
+
+Cole seu endereço público Kadena (começa com `k:`) e receba KDA gratuitamente.
+
+## Recursos
+
+* 🧪 [Documentação do Kadena Snap SDK](https://docs.mindsend.xyz/sdk)
+* 🧱 [create-kadena-app no GitHub](https://github.com/kadena-community/create-kadena-app)
+* 📦 [@kadena/wallet-adapter-snap no NPM](https://www.npmjs.com/package/@kadena/wallet-adapter-snap)
+
+---
+
+Ao usar o SDK e o wallet adapter, você pode construir rapidamente dApps escaláveis e seguros que se integram perfeitamente com o Snap da Kadena dentro da MetaMask — sem lidar diretamente com chamadas de RPC de baixo nível.

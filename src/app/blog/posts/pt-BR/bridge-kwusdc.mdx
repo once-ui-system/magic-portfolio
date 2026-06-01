@@ -1,0 +1,116 @@
+---
+
+title: "Análise da Ponte kwUSDC e Avaliação do Modelo de Taxas"
+summary: "Exploração aprofundada da ponte Lago kwUSDC em Kadena, incluindo análise de dados de transações e receitas simuladas sob diferentes modelos de taxas."
+publishedAt: "2024-08-06"
+image: "/images/blog/bridge/tvl.png"
+tags: ["DeFi", "Bridge"]
+draft: false
+-----------
+
+<div className="disclaimer-box-red">
+
+**Aviso**: Este artigo inclui uma análise da infraestrutura histórica de DeFi que não está mais ativa. Alguns serviços ou protocolos descritos aqui não estão mais disponíveis.
+
+</div>
+
+<div className="disclaimer-box">
+
+**Aviso Legal (NFA)**: Este artigo apresenta uma pesquisa técnica sobre modelos de taxas de ponte e design de protocolos. Não é um conselho financeiro. As criptomoedas envolvem riscos substanciais – sempre faça sua própria pesquisa antes de tomar qualquer decisão financeira.
+
+</div>
+
+<style jsx>{`
+  .disclaimer-box {
+    border-left: 4px solid #f0ad4e;
+    background-color: rgba(240, 173, 78, 0.1);
+    padding: 1rem;
+    margin: 2rem 0;
+    border-radius: 4px;
+  }
+  .disclaimer-box-red {
+    border-left: 4px solid #d9534f;
+    background-color: rgba(217, 83, 79, 0.1);
+    padding: 1rem;
+    margin: 2rem 0;
+    border-radius: 4px;
+  }
+`}</style>
+
+## Investigando modelos de taxas de ponte em Kadena com os dados do Lago kwUSDC
+
+O principal objetivo desta análise é fazer uma análise exploratória com os dados do kwUSDC do Lago Finance e verificar quantas taxas poderiam ser coletadas de acordo com diferentes modelos de receita.
+
+Usando nossa instância do `chainweb-data`, coletamos dados históricos da blockchain, procurando por eventos disparados do contrato `lago.kwUSDC`, especificamente com interesse nos eventos `MINT` e `BURN`. Nossa amostra consiste em 514 transações de agosto a dezembro de 2022.
+
+### A ascensão e queda do kwUSDC
+
+Começamos realizando uma verificação de sanidade comparando o gráfico de TVL do [DefiLlama](https://defillama.com/protocol/lago-bridge) para o kwUSDC com o nosso conjunto de dados. Estimamos o TVL aqui somando todos os eventos de mint (cunhagem) e subtraindo todos os burns (queimas).
+
+![Valor Total Bloqueado (TVL) do Lago kwUSDC (USD)](/images/blog/bridge/tvl.png)
+
+Parece que nossos resultados são consistentes com o gráfico apresentado lá, mesmo estimando o TVL do protocolo por meio de uma abordagem diferente e independente.
+
+O token kwUSDC (kw significa Kadena wrapped) foi um dos primeiros ativos em ponte em Kadena - lançado em 21 de julho de 2022. Como vimos acima, no pico, o token alcançou quase 300k em TVL antes de uma infeliz sequência de eventos.
+
+Em setembro de 2022, o Lago sofreu uma grande violação de segurança. O ataque foi atribuído a uma vulnerabilidade no contrato inteligente da plataforma, que permitiu que o invasor explorasse o sistema e roubasse fundos da ponte.
+
+O contrato foi pausado por cerca de 2 meses, para auditoria e manutenção. O Lago retomou suas atividades em 9 de novembro. No entanto, eles não se recuperaram do ataque: em 21 de novembro foi anunciado o fim de suas atividades. O Lago Bridge foi definitivamente encerrado em 24 de dezembro de 2022.
+
+Durante o período, 230 contas exclusivas interagiram com o contrato da Ponte Lago queimando (burning) ou cunhando (minting) kwUSDC. Apresentamos algumas estatísticas descritivas das transações abaixo.
+
+**Estatísticas resumidas para eventos MINT e BURN**
+
+<table>
+  <thead>
+    <tr>
+      <th>Evento</th><th>Média</th><th>Mediana</th><th>N transações</th><th>Mínimo</th><th>Máximo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>BURN</td><td>2,582</td><td>234</td><td>161</td><td>0.000002</td><td>29,000</td>
+    </tr>
+    <tr>
+      <td>MINT</td><td>1,218</td><td>231</td><td>353</td><td>0.000002</td><td>62,621</td>
+    </tr>
+  </tbody>
+</table>
+
+Os histogramas resumem as informações da tabela acima. Usamos a escala log10 para acomodar melhor a faixa de valores. Vale a pena mencionar que os valores médios nas operações da ponte parecem ser maiores do que vemos em Carteiras ou DEXes.
+
+![Distribuição das transações kwUSDC (USD)](/images/blog/bridge/hist-txs.png)
+
+No entanto, essa afirmação tem apenas sentido exploratório, sem qualquer significância estatística devido à falta de dados, uma vez que atualmente não existem pontes operando em Kadena.
+
+Com o pico de 300k em TVL, o protocolo alcançou quase 100k USD em volume diário, como vemos abaixo.
+
+![Volumes diários do Lago kwUSDC (USD)](/images/blog/bridge/volume.png)
+
+## O modelo de taxas
+
+As taxas de ponte em criptomoedas referem-se ao custo cobrado para transferir tokens de uma blockchain para outra através de uma ponte. Essas taxas geralmente são pagas na forma da criptomoeda nativa da blockchain de destino e são usadas para compensar os validadores da rede pelo processamento da transação.
+
+É importante considerar o custo da taxa da ponte ao fazer uma transferência entre blockchains, pois isso pode impactar o custo geral e a rentabilidade da transação. O valor da taxa pode variar dependendo da velocidade de processamento desejada e da demanda atual da rede.
+
+### Quanto a ponte lucraria com cada modelo
+
+Estamos interessados aqui em ver quanto lucro a ponte teria durante o período decorrido se estes três modelos diferentes de taxas fossem adotados:
+
+* Taxa fixa (\$0.1): \$51.4
+* Taxa percentual (0.1%): \$846
+* Taxa mínima (\$0.1 ou 0.1% — a que for maior): \$860
+
+O gráfico abaixo mostra o valor cumulativo arrecadado durante o tempo decorrido por meio de cada um dos três modelos.
+
+![Entradas da ponte (USD)](/images/blog/bridge/fee.png)
+
+## Conclusões
+
+Mesmo tendo uma vida curta, a ponte kwUSDC conseguiu ser relevante para o ecossistema Kadena, experimentando um aumento no TVL que só terminou devido a uma infeliz sucessão de eventos. Precauções extras, como auditorias de contratos inteligentes e programas de recompensas por bugs (bug bounty), podem ajudar a proteger os projetos DeFi.
+
+Em relação aos modelos de taxas, o híbrido é o mais rentável. No entanto, mais modelos poderiam ser testados, com parâmetros diferentes, e até mesmo um modelo sem taxas poderia ser considerado, uma vez que incentivos para impulsionar todo o ecossistema são importantes para acelerar a adoção em massa.
+
+## Estudos/desenvolvimentos futuros
+
+* Investigar o lado ETH

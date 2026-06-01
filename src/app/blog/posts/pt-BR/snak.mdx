@@ -1,0 +1,70 @@
+---
+title: "Como a snaK Traz a Kadena para a MetaMask"
+summary: "Explore como a snaK Wallet utiliza os MetaMask Snaps para trazer suporte nativo à Kadena para milhões de usuários por meio de assinaturas seguras, troca de redes e integrações perfeitas para desenvolvedores."
+publishedAt: "2025-06-10"
+image: "/images/projects/snak/snak-architecture.png"
+tags: ["Carteiras", "Kadena"]
+draft: true
+---
+<div className="disclaimer-box">
+
+**Aviso Legal (NFA)**: Esta postagem descreve detalhes técnicos sobre a snaK Wallet e sua integração com a blockchain da Kadena. Destina-se apenas a fins informativos e educacionais. Não é aconselhamento financeiro ou endosso de qualquer token ou estratégia de investimento específica.
+
+</div>
+
+<style jsx>{`
+  .disclaimer-box {
+    border-left: 4px solid #f0ad4e;
+    background-color: rgba(240, 173, 78, 0.1);
+    padding: 1rem;
+    margin: 2rem 0;
+    border-radius: 4px;
+  }
+`}</style>
+
+
+## O que é a snaK?
+
+A **snaK** é uma carteira que adiciona **suporte total à blockchain da Kadena** à MetaMask, permitindo que os usuários gerenciem contas de $KDA, assinem transações, troquem de redes e interajam com faucets de testnet — tudo a partir do conforto da interface de carteira mais popular do mundo.
+
+Ao contrário de extensões de navegador tradicionais ou aplicativos de carteira nativos, os MetaMask Snaps são plugins em sandbox que estendem a funcionalidade da MetaMask em um ambiente seguro e permissionado.
+
+## Por que a Kadena Precisa de um Snap
+
+A Kadena opera em uma arquitetura de **Proof-of-Work multi-chain**, fornecendo escalabilidade e fortes garantias de segurança. Mas até agora, acessar a Kadena através da MetaMask não era possível — a Kadena não usa a EVM ou o formato de endereço do Ethereum.
+
+O Snap snaK preenche essa lacuna. Ele introduz:
+
+- Lógica customizada de gerenciamento de chaves e tratamento de chains
+- Fluxos de RPC e assinatura específicos da Kadena
+- Integração perfeita tanto para testnet quanto para mainnet
+
+## Principais Recursos
+
+- 🔐 **Assinatura Segura**: Suporta `kadena_sign_v1` e `kadena_quicksign_v1` nativamente
+- 🔐 **Suporte à Ledger** para integração com hardware wallets
+- 🔄 **Troca de Redes**: Alterne facilmente entre `mainnet`, `testnet` ou redes personalizadas
+- 🔗 **Compatibilidade Multi-chain**: Interaja com todas as 20 chains da Kadena
+- 🧰 **Pronto para Desenvolvedores**: SDK compatível com o Snap para integração rápida
+
+## Como Funciona
+
+Nos bastidores, a snaK usa uma arquitetura em camadas:
+
+1. **Snap Runtime** (Isolado): Lida com solicitações de permissão e processamento de mensagens
+2. **Roteador de RPC**: Escuta métodos específicos da Kadena e valida payloads
+3. **Mecanismo de Assinatura**: Faz interface com o keyring da MetaMask para produzir assinaturas válidas compatíveis com o Pact
+
+![Arquitetura da snaK](/images/projects/snak/snak-architecture.png)
+
+Mais detalhes técnicos estão disponíveis na [documentação da arquitetura](https://docs.mindsend.xyz/architecture).
+
+## Recursos para Desenvolvedores
+
+Se você está construindo um dApp na Kadena, pode integrar com o Snap em minutos:
+
+- [Configure seu projeto](https://docs.mindsend.xyz/sdk/setup-project)
+- [Conecte e solicite permissões](https://docs.mindsend.xyz/user-guide/connect)
+- [Envie transações e assine](https://docs.mindsend.xyz/user-guide/send-kda)
+
+A snaK é um marco no crescimento do ecossistema da Kadena — e uma base poderosa para futuras integrações de DeFi, DAOs e jogos na rede Kadena.

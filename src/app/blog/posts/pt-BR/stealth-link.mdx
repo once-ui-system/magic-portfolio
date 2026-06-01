@@ -1,0 +1,89 @@
+---
+title: "Stealth Link: Trazendo Doações Focadas em Privacidade para a Solana"
+publishedAt: "2026-02-02"
+summary: "Como construímos uma ferramenta de doação anônima usando o Light Protocol e geradores Blink."
+image: "/images/projects/stealth/stealth.png"
+tags:
+  - "Solana"
+  - "Privacy"
+  - "Blinks"
+  - "Light Protocol"
+team:
+  - name: "Ariel Serranoni"
+    role: "Protocol Engineer"
+    avatar: "/images/og/ariel.jpg"
+    linkedIn: "https://www.linkedin.com/in/ariel-serranoni-1b762815a/"
+  - name: "Francisco Miranda"
+    role: "Full Stack Engineer"
+    avatar: "/images/og/chico.jpg"
+    linkedIn: "https://www.linkedin.com/in/chicodias/"
+---
+
+## O Problema
+Na economia de criadores da Web3, aceitar doações públicas geralmente significa revelar os detalhes da sua carteira (doxxing).
+- **Doações Públicas**: Colocar um endereço SOL na biografia revela o saldo, histórico de transações e patrimônio líquido.
+- **O Dilema "Anon"**: Usuários focados em privacidade não podem aceitar gorjetas porque isso vincula sua persona à sua identidade financeira.
+- **Ferramentas Existentes**: Soluções atuais (geradores de Blink, potes de gorjeta) oferecem zero privacidade on-chain.
+
+## A Solução
+O **Stealth Link** (ex: `stealth.link/donate/ariel.stealth`) atua como um Blink nativo no Twitter/X, unindo a distribuição viral dos Solana Blinks com a privacidade do Light Protocol.
+
+Quando um apoiador faz uma doação:
+
+1. **Frontend**: O Blink constrói uma transação utilizando o **Light Protocol**.
+2. **On-Chain**: O SOL é protegido (comprimido) em um UTXO privado de propriedade do criador.
+3. **Resultado**: Os exploradores mostram `Doador → Light Protocol Pool`. A carteira pessoal do criador nunca recebe uma transferência pública.
+
+O criador ativa o gerenciamento de fundos através de um Dashboard privado, onde pode ver seu saldo protegido e desproteger (sacar) para qualquer carteira nova quando necessário — quebrando completamente o vínculo on-chain.
+
+![Interface Stealth Link](/images/projects/stealth/stealth-1.png)
+
+## Arquitetura
+
+Construímos uma arquitetura de três camadas para lidar com o fluxo de privacidade:
+
+1. **Integração com Twitter/X**: Uma prévia de Blink que se expande para facilitar a doação.
+2. **API do Stealth Link**: Resolve handles `.stealth` e gera a transação de proteção.
+3. **Light Protocol (ZK Compression)**: A camada central que comprime o SOL em um estado protegido.
+
+![Diagrama de Arquitetura](/images/projects/stealth/stealth.png)
+
+## Implementação Técnica
+
+### Protegendo (Recebendo Doações)
+Quando ocorre uma doação, usamos o `LightSystemProgram` para comprimir o ativo:
+
+```typescript
+// A API do Blink constrói esta transação
+const ix = await LightSystemProgram.compress({
+  payer: donorPubkey,
+  toAddress: creatorPubkey, // Destino criptografado
+  lamports: amountLamports,
+  outputStateTree: stateTree,
+});
+```
+
+Isso garante que o SOL entre no pool de compressão e o criador receba a propriedade de uma conta comprimida invisível para os exploradores padrão.
+
+### Desprotegendo (Sacando)
+Para sacar, consultamos as contas comprimidas e as descomprimimos para um novo destino:
+
+```typescript
+// Busca as contas comprimidas do criador via Helius ZK-RPC
+const accounts = await rpc.getCompressedAccountsByOwner(creatorPubkey);
+
+// Descomprime para qualquer destino (carteira nova para privacidade máxima)
+const ix = await LightSystemProgram.decompress({
+  payer: creatorPubkey,
+  toAddress: destinationPubkey, 
+  lamports: totalBalance,
+  inputCompressedAccounts: accounts,
+});
+```
+
+## Stack de Tecnologia
+- **[Light Protocol](https://lightprotocol.com)**: Para compressão ZK e privacidade.
+- **[Solana Blinks](https://docs.dialect.to)**: Para integração com mídias sociais.
+- **[Helius](https://helius.dev)**: Para ZK-RPC e indexação de alto desempenho.
+
+Este projeto representa um passo adiante em tornar a privacidade acessível e fácil de usar em blockchains de alto desempenho.

@@ -1,0 +1,69 @@
+---
+title: "Solana Stealth: Transações com Preservação de Privacidade na Solana"
+publishedAt: "2026-02-01"
+summary: "Uma implementação de alto desempenho de endereços stealth na Solana, permitindo transações privadas com finalização em menos de um segundo."
+images:
+  - "/images/projects/stealth/stealth.png"
+tags:
+  - "Web3"
+  - "Privacy"
+  - "Solana"
+team:
+  - name: "Ariel Serranoni"
+    role: "Engenheiro de Protocolo"
+    avatar: "/images/og/ariel.jpg"
+    linkedIn: "https://www.linkedin.com/in/ariel-serranoni-1b762815a/"
+    achievements:
+      - "Integração de prova de conhecimento zero"
+      - "Otimização do programa SPL Token"
+  - name: "Francisco Miranda"
+    role: "Engenheiro Full Stack"
+    avatar: "/images/og/chico.jpg"
+    linkedIn: "https://www.linkedin.com/in/chicodias/"
+    achievements:
+      - "Implementação do padrão de carteira"
+      - "Indexação RPC de alta velocidade"
+link: "https://github.com/mindsend-datatech/solana-stealth"
+---
+
+## Visão Geral
+O Solana Stealth traz privacidade para a blockchain de alta velocidade da Solana. Ao implementar um protocolo de endereço stealth, permitimos que os usuários recebam tokens sem vincular sua identidade pública à transação. Isso garante a privacidade financeira, mantendo a velocidade e o baixo custo da Solana.
+
+## Principais Recursos
+- **Endereços Stealth**:
+  - O receptor gera um endereço único de uso único para cada transação.
+  - O remetente criptografa os dados da transação, legíveis apenas pelo receptor.
+  - Desacoplamento matemático das identidades do remetente e do receptor.
+
+- **Alto Desempenho**:
+  - Otimizado para o tempo de execução Sealevel da Solana.
+  - Finalização de transação em menos de um segundo.
+  - Uso mínimo do orçamento de computação para rendimento máximo.
+
+- **Suporte a SPL Token**:
+  - Compatibilidade total com tokens SPL (USDC, SOL, etc.).
+  - Integração sem atrito com carteiras existentes.
+
+## Tecnologias Utilizadas
+- **Rust (Anchor Framework)**:
+  - Lógica de contrato inteligente e gerenciamento de estado.
+  - Arquitetura de programa segura e auditada.
+
+- **TypeScript / React**:
+  - Frontend amigável para gerar endereços stealth.
+  - Integração de adaptador de carteira para assinatura perfeita.
+
+- **Criptografia de Curva Elíptica**:
+  - Operações de curva secp256k1 e ed25519 para derivação de endereços.
+  - Troca de chaves Diffie-Hellman para geração de segredo compartilhado.
+
+## Desafios e Aprendizados
+1. **Limites de computação On-Chain**:
+   - A criação de operações criptográficas eficientes dentro do orçamento de computação da Solana foi fundamental.
+   - Utilizamos programas pré-compilados sempre que possível para descarregar matemática cara.
+
+2. **Experiência do Usuário**:
+   - Abstrair a complexidade do gerenciamento de chaves foi essencial para a adoção.
+   - Construímos uma interface de usuário intuitiva que lida com o trabalho pesado da criptografia em segundo plano.
+
+Este projeto ultrapassou os limites do que é possível para privacidade em L1s de alto desempenho.

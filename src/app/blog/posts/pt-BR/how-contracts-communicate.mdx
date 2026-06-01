@@ -1,0 +1,156 @@
+---
+title: "Como Fazer Dois Contratos Pact se Comunicarem"
+summary: "Aprenda como habilitar a comunicação intercontratos de forma segura em Pact usando tabelas de privilégios e capacidades protegidas. Um exemplo prático usando os contratos de staking e agregador da eckoDAO."
+publishedAt: "2025-05-27"
+tags: ["Smart Contracts", "Pact"]
+---
+
+## Introdução
+
+Este guia demonstra como estabelecer uma comunicação segura entre contratos Pact. Usaremos os contratos de staking e agregador da stack da eckoDEX como exemplo. Os respectivos endereços de contrato são `kaddex.aggregator` e `kaddex.staking`, ambos implantados na chain 2.
+
+Para referência:
+
+- 📄 [Contrato do Agregador](https://github.com/eckoDAO-org/smart-contracts/blob/main/dao/aggregator.pact)
+- 📄 [Contrato de Staking](https://github.com/eckoDAO-org/smart-contracts/blob/main/staking/staking.pact)
+
+---
+
+## Contexto
+
+O **contrato do agregador** rastreia o poder de voto, enquanto o **contrato de staking** gerencia as posições de staking dos usuários. Como os usuários ganham poder de voto fazendo staking de tokens KDX, o contrato de staking deve atualizar a tabela interna do agregador. No entanto, contratos Pact não podem chamar capacidades (capabilities) externas ou modificar tabelas estrangeiras diretamente.
+
+Para resolver isso, usamos **imposição de privilégios com guardas (guarded privilege enforcement)**.
+
+---
+
+## Design do Contrato do Agregador
+
+### Schema e Tabela de Privilégios
+
+```pact
+(defschema privilege
+  guards:[guard]
+  action:string)
+
+(deftable privilege-table:{privilege})
+```
+
+### Helper de Avaliação de Guarda
+
+```pact
+(defun or-guard:bool
+    ( a:bool
+      b:guard )
+  (or a (try false (enforce-guard b)))
+)
+```
+
+### Imposição de Privilégios
+
+```pact
+(defun check-privilege:bool (action:string)
+  (with-default-read privilege-table action
+    { 'guards: [] }
+    { 'guards := guards }
+    (fold (or-guard) false guards)
+  )
+)
+
+(defun enforce-privilege:bool (action:string)
+  (let ((privilege-granted (check-privilege action)))
+    (enforce privilege-granted (format "Could not obtain privilege on action {}" [action]))
+  )
+)
+```
+
+### Constantes de Ação
+
+```pact
+(defconst ACTION_AGGREGATE_STAKE:string 'aggregate-stake)
+(defconst ACTION_AGGREGATE_UNSTAKE:string 'aggregate-unstake)
+```
+
+### Concedendo Privilégios
+
+```pact
+(defun grant-privilege:string (g:guard action:string)
+  (with-capability (OPS)
+    (with-default-read privilege-table action
+      {'guards:[],'action:action}
+      {'guards:=guards-read, 'action:=action-read}
+      (write privilege-table action{
+        'guards:(+ guards-read [g]),
+        'action:action
+      })
+    )
+  )
+)
+```
+
+### Operações Privilegiadas
+
+```pact
+(defun aggregate-stake:string (requesting-account:string amount:decimal)
+  (with-capability (PRIVILEGE-GUARD ACTION_AGGREGATE_STAKE)
+    (with-capability (AGGREGATE)
+      ;; update staking-aggregator-table here
+    )
+  )
+)
+
+(defun aggregate-unstake:string (requesting-account:string unstaked-amount:decimal)
+  (with-capability (PRIVILEGE-GUARD ACTION_AGGREGATE_UNSTAKE)
+    (with-capability (AGGREGATE)
+      ;; update staking-aggregator-table here
+    )
+  )
+)
+```
+
+---
+
+## Implementação do Contrato de Staking
+
+### Capacidade Interna para Atualizações
+
+```pact
+(defcap AGGREGATOR_NOTIFY () true)
+
+(defun enforce-aggregator-update () (require-capability (AGGREGATOR_NOTIFY)))
+```
+
+### Definição da Guarda
+
+```pact
+(defun aggregator-guard:guard () (create-user-guard (enforce-aggregator-update)))
+```
+
+### Concessão de Privilégios na Implantação
+
+```pact
+(kaddex.aggregator.grant-privilege (kaddex.staking.aggregator-guard) "aggregate-stake")
+(kaddex.aggregator.grant-privilege (kaddex.staking.aggregator-guard) "aggregate-unstake")
+```
+
+### Realizando a Chamada Intercontratos
+
+```pact
+(with-capability (AGGREGATOR_NOTIFY)
+  (kaddex.aggregator.aggregate-stake account to-add))
+
+(with-capability (AGGREGATOR_NOTIFY)
+  (kaddex.aggregator.aggregate-unstake account unstake-amount))
+```
+
+---
+
+## Resumo
+
+Esta abordagem permite uma ligação segura e de confiança mínima entre os contratos usando:
+
+* **Guardas em uma tabela de privilégios** no contrato do agregador
+* **Capacidades locais no contrato de staking** para impor o acesso
+* **Concessões explícitas durante a implantação**, evitando uma confiança codificada (hard-coded trust)
+
+Este modelo também é usado no [Kadena Cabinet](https://github.com/kadena-community/cabinet/tree/main/pact) para vincular contratos de bonder e poller de forma segura.

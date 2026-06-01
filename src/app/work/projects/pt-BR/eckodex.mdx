@@ -1,0 +1,123 @@
+---
+title: "eckoDEX Algorithmic Multiplier: Dynamic Liquidity Incentives"
+publishedAt: "2023-08-01"
+summary: "A self-adjusting liquidity mining multiplier using stochastic simulations to optimize rewards while mitigating impermanent loss."
+images:
+  - "/images/projects/dex/image-1.png"
+  - "/images/projects/dex/image-2.png"
+  - "/images/projects/dex/image-3.png"
+  - "/images/projects/dex/image.png"
+tags:
+  - "Web3"
+  - "DEX"
+  - "DeFi"
+team:
+  - name: "Ariel Serranoni"
+    role: "Quantitative Developer"
+    avatar: "/images/og/ariel.jpg"
+    linkedIn: "https://www.linkedin.com/in/ariel-serranoni-1b762815a/"
+    achievements:
+      - "Stochastic process modeling"
+      - "Convex optimization frameworks"
+  - name: "Francisco Miranda"
+    role: "Data Scientist"
+    avatar: "/images/og/chico.jpg"
+    linkedIn: "https://www.linkedin.com/in/chicodias/"
+    achievements:
+      - "Brownian motion simulations"
+      - "Sigmoid activation tuning"
+---
+
+
+<div className="disclaimer-box-red">
+
+**Aviso**: Este artigo inclui uma análise de infraestrutura DeFi histórica que não está mais ativa. Alguns serviços ou protocolos descritos aqui não estão mais disponíveis.
+
+</div>
+
+
+<div className="disclaimer-box">
+
+**Isenção de Responsabilidade (NFA)**: Esta publicação é apenas para fins educacionais. Não constitui aconselhamento financeiro. Sempre faça sua própria pesquisa antes de se envolver em atividades relacionadas a blockchain ou criptomoedas.
+
+</div>
+
+<style jsx>{`
+  .disclaimer-box {
+    border-left: 4px solid #f0ad4e;
+    background-color: rgba(240, 173, 78, 0.1);
+    padding: 1rem;
+    margin: 2rem 0;
+    border-radius: 4px;
+  }
+  .disclaimer-box-red {
+    border-left: 4px solid #d9534f;
+    background-color: rgba(217, 83, 79, 0.1);
+    padding: 1rem;
+    margin: 2rem 0;
+    border-radius: 4px;
+  }
+`}</style>
+
+
+
+## Visão Geral
+Desenvolvemos um multiplicador adaptativo de mineração de liquidez para a eckoDEX que ajusta dinamicamente as recompensas com base nas condições de mercado em tempo real. Este novo mecanismo utiliza:
+- **Modelagem estocástica** de volatilidade de ativos
+- **Métricas de saúde da pool** (Proporção Volume/TVL)
+- **Fatores de decaimento de tempo** para sustentabilidade de longo prazo
+
+O sistema compensa automaticamente os provedores de liquidez (LPs) por perdas impermanentes (impermanent loss) enquanto evita a superemissão de recompensas.
+
+## Principais Recursos
+- **Multiplicador Autoajustável**:
+  - Curva de resposta baseada em sigmoide limitada entre [0.3, 0.7]
+  - Adaptação em tempo real a:
+    - Volume diluído da pool (Volume/TVL)
+    - Volatilidade da taxa de preço (Δa/b)
+    - Fator de decaimento do tempo desde o lançamento
+
+- **Mitigação de Perda Impermanente**:
+  - Compensa 83-97% do IL por meio de recompensas KDX otimizadas
+  - Curvas de recompensa não lineares evitam manipulação (gaming)
+
+- **Verificado por Monte Carlo**:
+  - 30.000 cenários de pool simulados
+  - Validado através dos pares KDA/BTC, KDA/ETH, KDA/kFRAX
+
+## Tecnologias Utilizadas
+- **Python**:
+  - NumPy/Pandas para modelagem financeira
+  - SciPy para otimização de sigmoide
+  - Simulações de processos estocásticos
+
+- **Pact**:
+  - Lógica do multiplicador on-chain
+  - Cálculos de recompensa verificáveis
+
+- **TypeScript**:
+  - Visualização frontend dos efeitos do multiplicador
+  - Painel de controle em tempo real para LPs
+
+- **C#**:
+  - Pipeline de analytics no backend
+  - Processamento de dados de mercado
+
+## Desafios e Aprendizados
+1. **Modelagem de Volatilidade**:
+   - Descobrimos que a volatilidade da taxa de preço (a/b) é mais preditiva do que a volatilidade individual do ativo
+   - Desenvolvemos um novo mecanismo de ajuste β para a resposta sigmoide
+
+2. **Complexidade de Simulação**:
+   - Movimento Browniano modificado para contabilizar:
+     - Correlações de ativos cruzados
+     - Efeitos de profundidade de liquidez
+     - Padrões de comportamento de arbitradores
+
+3. **Condições de Contorno**:
+   - Combinações convexas implementadas para impor:
+     - Piso mínimo de recompensa (0.3x)
+     - Teto máximo de recompensa (0.7x)
+   - Prevenção da canibalização de recompensas durante alta volatilidade
+
+Este projeto demonstra como a modelagem estocástica avançada pode criar mecanismos de incentivo DeFi sustentáveis.

@@ -111,7 +111,7 @@ function getMDXData(dir: string) {
   });
 }
 
-export function getPosts(customPath = ["", "", "", ""]) {
-  const postsDir = path.join(process.cwd(), ...customPath);
+export function getPosts(customPath = ["", "", "", ""], locale = "en") {
+  const postsDir = path.join(process.cwd(), ...customPath, locale);
   return getMDXData(postsDir);
 }

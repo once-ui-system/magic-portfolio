@@ -1,0 +1,362 @@
+---
+
+title: "Implementando um Leilão de Vickrey na Kadena usando Pact"
+summary: "Um passo a passo de como implementar um leilão de Vickrey simplificado na blockchain Kadena usando a linguagem de smart contracts Pact."
+publishedAt: "2024-10-10"
+tags: ["Smart Contracts"]
+draft: true
+
+---
+
+Nesta postagem, exploraremos uma implementação básica de um leilão no estilo Vickrey na blockchain Kadena usando Pact. Embora não seja perfeitamente equivalente ao seu homólogo teórico devido a limitações como lances não selados e centralização, este exemplo demonstra conceitos essenciais e serve como base para melhorias.
+
+Iremos passo a passo, examinando os principais esquemas e métodos com explicações.
+
+---
+
+## Configuração do Módulo e Namespace
+
+Primeiro, definimos o namespace e um keyset para controle de governança:
+
+```lisp
+(namespace (read-msg 'ns))
+
+(define-keyset "gov"
+  (read-keyset "gov"))
+```
+
+Isso garante que o módulo tenha o namespace adequado e estabelece um keyset no estilo multisig chamado `gov` que pode controlar funções privilegiadas.
+
+## Declaração do Módulo e Importações
+
+Em seguida, declaramos o módulo e importamos o módulo `coin` para transferências de tokens:
+
+```lisp
+(module vickery-auction 'gov
+  (use coin)
+```
+
+O módulo é governado pelo keyset `gov` e utilizará as funções do `coin` para manipulação de saldos.
+
+## Definições de Capabilities
+
+Agora vamos definir as capabilities que controlam o acesso a funcionalidades específicas:
+
+```lisp
+(defcap SELLER (seller-guard:guard)
+  (enforce-guard seller-guard))
+
+(defcap BIDDER (bidder-guard:guard)
+  (enforce-guard bidder-guard))
+
+(defcap GOV ()
+  (enforce-keyset (read-keyset "gov")))
+
+(defcap TIME (auction:string) true)
+```
+
+* `SELLER`: Usada para restringir a criação de leilões ao vendedor designado.
+* `BIDDER`: Garante que apenas a parte licitante possa enviar lances em seu nome.
+* `GOV`: Reservada para ações de nível de governança.
+* `TIME`: Marcador para aplicar o tempo do leilão (ainda não implementado).
+
+A seguir, exploraremos os esquemas que representam os leilões e os lances.
+
+Vamos agora examinar as definições da estrutura de dados — os **esquemas** — que são fundamentais para organizar o estado on-chain do leilão.
+
+---
+
+## Esquema do Leilão
+
+Este esquema define como um leilão é armazenado no sistema:
+
+```lisp
+(defschema auction
+  auction-seller:string
+  seller-guard:guard
+  auction-account:string
+  floor-value:decimal
+  starting-time:time
+  ending-time:time
+  first-bid:decimal
+  second-bid:decimal
+  current-winner:string)
+```
+
+### Detalhamento:
+
+* `auction-seller`: Identificador de quem criou o leilão.
+* `seller-guard`: Guard de controle de acesso para ações privilegiadas do vendedor.
+* `auction-account`: Conta onde os tokens são depositados (hash gerado automaticamente).
+* `floor-value`: Valor mínimo de lance permitido.
+* `starting-time` / `ending-time`: Limites de tempo do leilão.
+* `first-bid` / `second-bid`: Os dois maiores lances recebidos até agora (usados para a lógica de Vickrey).
+* `current-winner`: Acompanha o licitante com o lance mais alto.
+
+Nós os armazenamos usando uma tabela:
+
+```lisp
+(deftable auctions-table:{auction})
+```
+
+---
+
+## Esquema do Lance
+
+Os lances enviados para cada leilão são registrados em uma estrutura separada:
+
+```lisp
+(defschema bid-schema
+  auction:string
+  bidder-account:string
+  bidder-guard:guard
+  bid-value:decimal
+  bid-status:bool)
+```
+
+### Detalhamento:
+
+* `auction`: O leilão ao qual este lance pertence.
+* `bidder-account`: Conta na Kadena fazendo o lance.
+* `bidder-guard`: Guard que autoriza o licitante.
+* `bid-value`: O valor real do lance.
+* `bid-status`: Se o lance está vencendo atualmente (não totalmente usado nesta versão).
+
+E a definição da tabela:
+
+```lisp
+(deftable bids-table:{bid-schema})
+```
+
+Com essas duas tabelas, temos armazenamento persistente para todos os estados do leilão e lances enviados.
+
+Em seguida, veremos a função `create-auction` que permite a um vendedor inicializar um leilão.
+
+Vamos agora dar uma olhada no primeiro método chave do contrato: `create-auction`.
+
+---
+
+## Função de Criação de Leilão
+
+Esta função permite que um vendedor inicialize um novo leilão com alguns parâmetros essenciais:
+
+```lisp
+(defun create-auction (auction-id:string
+                       auction-seller:string
+                       duration:decimal
+                       seller-guard:guard
+                       floor-value:decimal)
+```
+
+### Parâmetros:
+
+* `auction-id`: Um identificador único para o leilão.
+* `auction-seller`: O nome do vendedor (usado na conta do leilão).
+* `duration`: Duração pretendida para o leilão em dias (embora não diretamente usada).
+* `seller-guard`: A guard que controlará as capabilities de nível `SELLER`.
+* `floor-value`: O lance mínimo permitido.
+
+---
+
+### Por Dentro da Função
+
+```lisp
+(with-capability (SELLER seller-guard)
+  (insert auctions-table auction-id
+    { 'auction-seller: auction-seller
+    , 'auction-account: (hash (format "{}.{}" [auction-id auction-seller]))
+    , 'seller-guard: seller-guard
+    , 'floor-value: floor-value
+    , 'starting-time: (at 'block-time (chain-data))
+    , 'ending-time: (add-time (at 'block-time (chain-data)) (days 10))
+    , 'first-bid: 0.0
+    , 'second-bid: 0.0
+    , 'current-winner: "me" }))
+```
+
+### Explicação:
+
+* A capability `SELLER` é aplicada para garantir que apenas usuários autorizados possam criar leilões.
+* Construímos uma nova entrada na `auctions-table` usando os valores fornecidos.
+* A conta do leilão é derivada deterministicamente a partir do ID do leilão e do nome do vendedor.
+* O cronograma usa o `block-time` do `chain-data` para definir a janela do leilão.
+* Os valores iniciais para os principais lances e o vencedor são definidos como marcadores.
+
+> **Nota**: A duração é passada, mas não usada para calcular o `ending-time`; um período fixo de 10 dias está codificado (hardcoded). Isso poderia ser melhorado multiplicando a `duration` fornecida pelo usuário via `(days duration)`.
+
+
+Continuando com a explicação, vamos detalhar a função **`bid`** — a lógica central para enviar e gerenciar lances em um leilão.
+
+---
+
+## Função de Envio de Lance
+
+```lisp
+(defun bid (auction:string
+            bidder-account:string
+            bidder-guard:guard
+            bid-value:decimal)
+```
+
+### Parâmetros:
+
+* `auction`: O ID do leilão para dar o lance.
+* `bidder-account`: A string da conta do licitante.
+* `bidder-guard`: A guard que controla o acesso às capabilities do licitante.
+* `bid-value`: O valor (em KDA) que o licitante está disposto a oferecer.
+
+---
+
+### Lógica Passo a Passo
+
+```lisp
+(with-read auctions-table auction
+  { 'auction-account := auction-account
+  , 'first-bid := first-bid
+  , 'second-bid := second-bid}
+```
+
+Lemos a `auctions-table` para obter:
+
+* A conta onde os lances devem ser depositados.
+* Os dois maiores lances atuais.
+
+---
+
+```lisp
+(with-capability (BIDDER bidder-guard)
+  (insert bids-table (hash (format "{}.{}" [auction bidder-account]))
+    { 'auction: auction
+    , 'bidder-account: (at 'sender (chain-data))
+    , 'bidder-guard: bidder-guard
+    , 'bid-value: bid-value
+    , 'bid-status: false })
+```
+
+* Garante que apenas o licitante real possa chamar esta função.
+* Insere um novo registro na `bids-table` com as informações do lance.
+* O `bid-status` é inicializado como `false`, potencialmente para ser atualizado na resolução.
+
+---
+
+```lisp
+  (coin.transfer-create 'bidder-account 'auction-account bid-value)
+```
+
+* Transfere o valor do lance do licitante para a conta do leilão (isso usa o módulo `coin`).
+
+---
+
+### Atualizando o Placar
+
+```lisp
+  (cond
+    ((and (> bid-value second-bid) (< bid-value first-bid))
+      (update auctions-table auction {"second-bid": bid-value}))
+    ((> bid-value first-bid)
+      (update auctions-table auction {
+        "second-bid": first-bid,
+        "first-bid": bid-value,
+        "current-winner": bidder-account }))
+    true)
+```
+
+Esta lógica atualiza:
+
+* O segundo lance se o novo lance estiver entre os dois maiores atuais.
+* Tanto o primeiro quanto o segundo se ele ultrapassar o mais alto.
+* `current-winner` é atualizado para refletir o novo líder.
+
+---
+
+> 🔎 **Nota**: O comentário `TODO: Previous winner is now a loser!` indica que o reembolso do licitante principal anterior ainda não foi implementado — uma característica crítica para leilões justos.
+
+Continuando com a **lógica de resolução do leilão**, vamos agora examinar a função `resolve-auction` (atualmente comentada). Esta função é essencial para finalizar o leilão: determinar o vencedor, emitir o pagamento e, idealmente, desencadear a entrega do item.
+
+---
+
+## Resolução do Leilão (lógica comentada)
+
+```lisp
+;; (defun resolve-auction (auction:string)
+;;    (with-capability (TIME)
+;;      (let* ((auction-bids (select bids-table ['auction, 'bidder-account, 'bid-value, 'bid-status]
+;;                          (where 'auction (= auction))))
+;;             (winner (at auctions-table auction 'current-winner))
+;;             (paid-value (at auctions-table auction 'second-bid)))
+;;     (with-capability (GOV)
+;;       (coin.transfer (at auctions-table auction 'auction-account) winner)
+;;       (item.transfer))) ;; Create transfer functions! We may need to require the item to respect some interface
+;;      ))
+```
+
+---
+
+### Detalhamento Linha por Linha
+
+#### Assinatura da Função:
+
+```lisp
+(defun resolve-auction (auction:string)
+```
+
+Recebe uma string de ID de `auction` como entrada, identificando o leilão a ser resolvido.
+
+---
+
+#### Aplicando o Tempo (planejado):
+
+```lisp
+(with-capability (TIME)
+```
+
+Uma capability de marcador que idealmente garantiria que o tempo de término do leilão tivesse passado. Isso ainda não é totalmente aplicado, mas é um bom gancho para lógica baseada em tempo.
+
+---
+
+#### Lendo o Lance Vencedor:
+
+```lisp
+(let* ((auction-bids (select bids-table [...] ...))
+       (winner (at auctions-table auction 'current-winner))
+       (paid-value (at auctions-table auction 'second-bid)))
+```
+
+* `auction-bids`: Seleciona todos os lances para o leilão.
+* `winner`: Recupera o vencedor atual armazenado no leilão.
+* `paid-value`: Recupera o segundo maior lance, que se torna o preço pago — combinando com a lógica do leilão de Vickrey.
+
+---
+
+#### Realizando Transferências:
+
+```lisp
+(with-capability (GOV)
+  (coin.transfer (at auctions-table auction 'auction-account) winner)
+  (item.transfer))
+```
+
+* Transfere o valor do segundo maior lance para o vencedor (precisa de uma lógica de pagamento adequada).
+* Chama um `item.transfer` de esboço, indicando que a lógica de entrega do item precisa ser construída.
+
+---
+
+> ⚠️ **Nota:** A função ainda não está implementada porque:
+>
+> * Não há módulo `item` definindo propriedade ou transferência.
+> * Os reembolsos para os licitantes perdedores não são processados.
+> * Não há salvaguarda para resolver antes do término do leilão.
+
+---
+
+Na próxima seção, podemos propor melhorias para bloqueio de tempo, reembolsos de licitantes e aplicação de períodos de validade do leilão. Me avise quando prosseguir.
+
+Continuando com a **lógica de resolução do leilão**, vamos agora examinar a função `resolve-auction` (atualmente comentada). Esta função é essencial para finalizar o leilão: determinar o vencedor, emitir o pagamento e, idealmente, desencadear a entrega do item.
+
+---
+
+## Conclusão
+
+Embora a função de resolução do leilão ainda seja um esboço, a implementação atual captura a lógica central de um leilão de Vickrey simplificado. Para uso em produção, recursos adicionais como selagem de lances, lógica de reembolso, aplicação de tempo e entrega de itens precisariam ser totalmente implementados.
+
+Essa implementação estabelece as bases para testar mecânicas de leilão on-chain usando Pact.

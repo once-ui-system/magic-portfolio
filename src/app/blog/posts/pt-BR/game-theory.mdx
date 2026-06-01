@@ -1,0 +1,124 @@
+---
+title: "Notas e Simulações sobre Teoria dos Jogos Algorítmica"
+summary: "Uma visão geral dos conceitos fundamentais da teoria dos jogos através de exemplos do mundo real, modelos de leilão e simulações — com referências à série de palestras de Tim Roughgarden."
+publishedAt: "2024-10-01"
+tags: ["Game Theory"]
+draft: true
+---
+
+## Introdução
+
+A teoria dos jogos algorítmica encontra-se na interseção da ciência da computação, economia e comportamento estratégico. Ela fornece as bases para projetar mecanismos robustos em sistemas do mundo real — desde leilões e mercados de anúncios até protocolos de blockchain e sistemas de votação.
+
+Este artigo resume os principais insights das palestras fundamentais sobre a teoria dos jogos de Tim Roughgarden, combinando-os com exemplos ilustrativos e simulações. Quer você esteja explorando o design de mecanismos para DeFi, entendendo incentivos em sistemas digitais ou apenas curioso sobre a tomada de decisões estratégicas, esta visão geral estabelece as bases para uma exploração mais profunda.
+
+
+## O Exemplo do Badminton nas Olimpíadas
+
+- **Formato do Torneio**: 16 equipes divididas em 4 grupos de 4. Formato de todos contra todos.
+- **Objetivo dos Participantes**: Alcançar a classificação mais alta possível.
+- **Objetivo do Organizador**: Garantir que todas as partidas sejam disputadas com esforço máximo.
+- **O Que Aconteceu**: Algumas equipes perderam propositalmente partidas para manipular os confrontos eliminatórios. [Veja as notícias reais](https://www.youtube.com/watch?v=hdK4vPz0qaI). Resultado: desclassificações.
+
+> Lição: Um design de mecanismo deficiente permitiu um baixo desempenho estratégico.
+
+---
+
+## Paradoxo de Braess
+
+- **Conceito**: Adicionar um novo caminho em uma rede (por exemplo, uma estrada) pode aumentar o congestionamento total.
+- **Exemplo**: Abordado na Aula 3.
+
+---
+
+## Visão Geral de Leilões
+
+Para entender melhor a interação estratégica na economia e nos sistemas digitais, a teoria dos leilões fornece uma estrutura ideal. Aqui está um breve passo a passo dos tipos e propriedades essenciais dos leilões — preparando o terreno para nossa próxima postagem, onde implementaremos um desses modelos no Pact.
+
+- **Bem**: O item que está sendo vendido
+- **Vendedor**: Proprietário do bem
+- **Licitantes (Bidders)**: Compradores com avaliações privadas
+
+### Tipos Comuns
+
+- Item único
+- Lance selado (Sealed-bid)
+- Utilidade quase-linear (valor - preço)
+
+### Leilão de Primeiro Preço
+
+- O licitante com o lance mais alto ganha
+- Paga o próprio lance
+
+### Leilão de Segundo Preço (Vickrey)
+
+- O licitante com o lance mais alto ganha
+- Paga o segundo lance mais alto
+
+### Leilões Compatíveis com Incentivos de Estratégia Dominante (DSIC)
+
+**Definição**: Um leilão DSIC garante que **fazer o lance com sua verdadeira avaliação é sempre ideal**, independentemente das ações dos outros.
+
+### Leilões Incríveis (Awesome Auctions)
+
+Um leilão é **incrível** se ele é:
+
+- DSIC
+- Socialmente eficiente: <LatexRenderer children="\sum_{i=1}^n v_i x_i" />
+
+
+- Computacionalmente eficiente: <LatexRenderer>O(n)</LatexRenderer>
+
+**Fato**: O leilão de Vickrey é incrível.
+
+### Vickrey é DSIC — Ideia de Prova
+
+Seja o licitante <LatexRenderer>{"i"}</LatexRenderer> com avaliação <LatexRenderer>{"v_i"}</LatexRenderer>, e defina
+
+<LatexRenderer>{"B = \\max_{j \\neq i} b_j"}</LatexRenderer>
+
+Utilidade do licitante <LatexRenderer>{"i"}</LatexRenderer>
+
+<LatexRenderer displayMode>
+  {"\\text{utilidade} = \\begin{cases} 0 & \\text{se } b_i < B \\\\ v_i - B & \\text{se } b_i \\geq B \\end{cases}"}
+</LatexRenderer>
+
+Um lance honesto (verdadeiro) sempre maximiza essa utilidade.
+
+---
+
+## Estudo de Caso: Leilões de Busca Patrocinada
+
+**Contexto**: Leilões em tempo real para espaços de anúncios em motores de busca.
+
+- **Bens**: Posições de anúncios (slots)
+- **CTR**: Taxa de cliques (click-through rate) por slot
+- **Objetivo**: Atribuir slots para maximizar o valor total
+
+### Estratégia de Design
+
+- Presumir lances verdadeiros
+- Alocar slots para maximizar o excedente social
+- Definir preços para ser DSIC
+
+Resultado: Leilões de busca patrocinada eficientes e compatíveis com incentivos.
+
+---
+
+## Notas Completas das Aulas e Vídeos
+
+**Curso:**
+
+- [Aula 1: vídeo](https://youtu.be/TM_QFmQU_VA?list=PLEGCF-WLh2RJBqmxvZ0_ie-mleCFhi2N4) | [notas](http://timroughgarden.org/f13/l/l1.pdf)
+
+- [Aula 2: vídeo](https://www.youtube.com/watch?v=z1QZqYuiGa8&list=PLEGCF-WLh2RJBqmxvZ0_ie-mleCFhi2N4&index=) | [notas](http://timroughgarden.org/f13/l/l2.pdf)
+
+- [Aula 3: vídeo](https://youtu.be/9qZwchMuslk?list=PLEGCF-WLh2RJBqmxvZ0_ie-mleCFhi2N4) | [notas](http://timroughgarden.org/f13/l/l3.pdf)
+
+- [Notas Completas com Exercícios](http://timroughgarden.org/f13/f13.pdf?utm_source=pocket_mylist)
+
+- [Canal do YouTube do Tim Roughgarden](https://www.youtube.com/channel/UCcH4Ga14Y4ELFKrEYM1vXCg)
+
+---
+
+Isso conclui nossa turnê conceitual. No próximo artigo, traremos a teoria para a prática criando uma implementação simplificada do leilão de Vickrey no Pact, a linguagem de contratos inteligentes do Kadena. Fique atento.

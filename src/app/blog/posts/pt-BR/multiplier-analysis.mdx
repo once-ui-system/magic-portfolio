@@ -1,0 +1,233 @@
+---
+title: "Análise do Multiplicador da EckoDEX"
+summary: "Análise aprofundada do modelo de incentivo de provisão de liquidez da EckoDEX, explorando a mecânica do multiplicador, escalonamento de recompensas e comportamento de LP a longo prazo usando ferramentas de análise de dados R."
+publishedAt: "2022-10-06"
+image: "/images/projects/dex/image-1.png"
+tags: ["DeFi", "Kadena"]
+---
+
+<div className="disclaimer-box-red">
+
+**Aviso**: Este artigo inclui uma análise de infraestrutura DeFi histórica que não está mais ativa. Alguns serviços ou protocolos aqui descritos não estão mais disponíveis.
+
+</div>
+
+<div className="disclaimer-box">
+
+**Isenção de Responsabilidade (Não é Dica Financeira)**: Este artigo apresenta uma pesquisa técnica sobre modelos de taxas em pontes (bridges) e design de protocolos. Não é um aconselhamento financeiro. Criptomoedas envolvem risco substancial – sempre faça sua própria pesquisa antes de tomar qualquer decisão financeira.
+
+</div>
+
+<style jsx>{`
+  .disclaimer-box {
+    border-left: 4px solid #f0ad4e;
+    background-color: rgba(240, 173, 78, 0.1);
+    padding: 1rem;
+    margin: 2rem 0;
+    border-radius: 4px;
+  }
+  .disclaimer-box-red {
+    border-left: 4px solid #d9534f;
+    background-color: rgba(217, 83, 79, 0.1);
+    padding: 1rem;
+    margin: 2rem 0;
+    border-radius: 4px;
+  }
+`}</style>
+
+---
+
+A EckoDEX, a exchange descentralizada sem taxas de gás da Kadena, introduziu um Multiplicador Algorítmico como parte de seu programa de Liquidity Mining 2.0. Este mecanismo inovador ajusta dinamicamente as recompensas para os provedores de liquidez (LPs) com base nas condições do mercado, equilibrando incentivos atraentes com a emissão sustentável de tokens.
+
+O pool de liquidez da EckoDEX é o primeiro na Kadena a usar dados do mundo real para ajustar programaticamente as recompensas ao longo do tempo, preservando a atratividade do pool em meio às flutuações do mercado.
+
+Neste artigo, explicamos como a Liquidity Mining 2.0 da EckoDEX é capaz de dar recompensas atraentes aos LPs para mitigar a perda impermanente (impermanent loss), sem comprometer os detentores de longo prazo (holders), mantendo as emissões de tokens limitadas.
+
+
+## Como obtemos os dados
+
+Em sistemas de blockchain, **eventos** são funções especiais de contratos que emitem dados de transações para o log da blockchain. Esses eventos servem como notificações sobre mudanças de estado em contratos inteligentes, permitindo que aplicativos rastreiem e analisem a atividade histórica do pool ao longo do tempo.
+
+Usando nossa instância do `chainweb-data`, coletamos dados de todas as transações da EckoDEX desde o lançamento, de 1º de agosto a 20 de setembro de 2022. Obtivemos o volume e a volatilidade para todos os pares de tokens disponíveis na DEX com duas abordagens diferentes que vamos explicar aqui: via eventos de SWAP e UPDATE no chainweb da chain 2.
+
+
+### Eventos de SWAP: Rastreado a Atividade de Negociação
+
+Analisamos 116.469 transações de swap para entender os padrões de negociação. Cada swap emite um evento estruturado contendo:
+
+```pact
+(kaddex.exchange.SWAP
+  sender,       # Conta que iniciou o swap
+  receiver,     # Conta receptora (frequentemente a mesma do remetente)
+  amount-in,    # Quantidade do token de entrada
+  token-in,     # Contrato do token de entrada
+  amount-out,   # Quantidade do token de saída
+  token-out     # Contrato do token de saída
+)
+```
+
+Principais detalhes técnicos:
+- Eventos são emitidos on-chain e indexados via Chainweb-data
+- Todos os swaps envolvem KDA como entrada ou saída
+- O volume é calculado em termos de KDA primeiro e, em seguida, convertido para USD
+- Os eventos contêm carimbos de data/hora precisos para análise temporal
+
+Usando esses parâmetros, é bastante direto obter o volume para cada par de tokens usando seu valor em KDA. Como todos os pares são cotados contra KDA, basta acumular o valor em KDA de um swap que resultará no volume do token.
+Definindo $a_i$, $i =\{1, ..., n\}$ como:
+
+<LatexRenderer displayMode>{`a_i = \\begin{cases} 
+  \\text{amount-in, se token-in é KDA},\\\\
+  \\text{amount-out, se token-out é KDA}.
+\\end{cases} \\\\
+volume = \\sum_{i=1}^n a_i`}</LatexRenderer>
+
+A fórmula calcula os volumes denominados em KDA. Para mitigar a volatilidade diária, o algoritmo do multiplicador aplica uma média móvel de 7 dias a essas métricas de volume.
+
+A visualização abaixo revela vários padrões-chave de negociação desde o lançamento:
+
+<iframe width="650" height="700" frameborder="0" scrolling="no" src="//chart-studio.plotly.com/~chicodias/3.embed"></iframe>
+
+
+Observações principais:
+1. **Concentração de negociação**: KDA domina o volume, seguido por stablecoins
+2. **Trajetória de crescimento**: Aumento constante nos volumes diários em todos os pares
+3. **Correlações de mercado**: Picos de volume se correlacionam com grandes movimentos do mercado
+4. **Adoção de tokens**: Novas listagens mostram um acúmulo gradual de volume
+
+Interações ao passar o mouse (hover) revelam:
+- Valores exatos em USD para cada dia
+- Detalhamento por par de tokens
+- Porcentagem do volume total
+
+### Eventos de UPDATE
+
+141.594 atualizações
+Esses eventos são emitidos quando o Valor Total Bloqueado (TVL) de um pool muda. Isso acontece quando um usuário troca um token, adiciona ou remove liquidez em um Pool de Liquidez. Como seus parâmetros temos o par (por exemplo `coin:eckoDEX.kdx`) e suas respectivas quantidades.
+
+```(eckoDEX.exchange.UPDATE pair amount-token1 amount-token2)```
+
+Para recuperar as taxas de preço, usamos o TWAP (Preços Médios Ponderados no Tempo), visando minimizar o impacto de grandes ordens, resultando em melhorias na estimativa de preço.
+
+<p>
+  Seja <LatexRenderer>{`t_i`}</LatexRenderer> o intervalo de tempo entre os eventos de atualização <LatexRenderer>{`i`}</LatexRenderer> e <LatexRenderer>{`i+1`}</LatexRenderer>.
+</p>
+
+<LatexRenderer displayMode>
+  {`\\text{price\\_rate}_{i+1} = \\sum_{i=1}^{n} t_i \\cdot \\frac{\\text{amount\\_token1}_i}{\\text{amount\\_token2}_i}`}
+</LatexRenderer>
+
+Usando as taxas de preços de um dia, calculamos a volatilidade do par usando o desvio padrão móvel dos últimos 7 dias.
+
+O gráfico acima mostra a volatilidade de todos os pares na EckoDEX desde suas respectivas listagens. Note que a volatilidade é um parâmetro sem escala, o que significa que não tem unidade de medida.
+
+<iframe width="650" height="700" frameborder="0" scrolling="no" src="//chart-studio.plotly.com/~chicodias/5.embed"></iframe>
+
+## Volume Diluído
+
+Para nos livrarmos da escala no volume também, usamos o **volume diluído** ($dv$), que é simplesmente o volume dividido pelo TVL do pool. Isso tem uma interpretação direta e também torna sua matemática mais fácil como veremos.
+
+<LatexRenderer displayMode>{`dv = \\frac{\\text{volume}}{\\text{TVL}}`}</LatexRenderer>
+
+Aqui temos o volume diluído para os tokens atualmente disponíveis na EckoDEX.
+
+<iframe width="650" height="700" frameborder="0" scrolling="no" src="//chart-studio.plotly.com/~chicodias/7.embed"></iframe>
+
+## Perda Impermanente (Impermanent Loss)
+
+A Perda Impermanente é um custo de oportunidade provocado pela diferença entre colocar liquidez em um pool versus simplesmente guardar (holdar) os tokens.
+Usamos a fórmula fornecida [aqui](https://medium.com/auditless/how-to-calculate-impermanent-loss-full-derivation-803e8b2497b7).
+Sendo $k$ uma determinada mudança nas taxas de preço entre dois dias consecutivos, estimamos a perda impermanente como:
+
+<LatexRenderer displayMode>{`IL(k) = \\frac{2 \\sqrt{k}}{1+k} - 1`}</LatexRenderer>
+
+É importante notar que esta abordagem só nos permite estimar a perda impermanente em relação às mudanças diárias. Se usarmos uma janela de tempo estreita, com dados horários por exemplo, as variações na taxa de preço poderiam ser maiores.
+
+Mas esse fenômeno é mitigado pelo fato de que um Provedor de Liquidez só enfrenta a Perda Impermanente quando remove sua posição de liquidez. Ainda mais, a proporção de preço do pool vai mudar continuamente e pode até voltar para a mesma taxa que era quando a liquidez foi provida. Neste caso, a Perda Impermanente seria completamente evitada.
+
+<iframe width="650" height="700" frameborder="0" scrolling="no" src="//chart-studio.plotly.com/~chicodias/21.embed"></iframe>
+
+Em vez de fornecer um valor inicial, aqui nós estimamos a perda impermanente comparando as recompensas obtidas ao longo do dia anterior e a diferença entre o TVL do pool em USD e quanto as quantidades no TVL valeriam em USD naquele momento.
+
+Já que todas as estimativas foram calculadas usando os valores em KDA dentro do pool, nós estamos levando em conta apenas as variações do lado dos tokens, ou seja, não estamos considerando a própria variação de preço do KDA, como de costume quando se trabalha com perda impermanente.
+
+## Obtendo recompensas do pool
+
+Obtemos as recompensas brutas diárias do pool (sem o multiplicador) multiplicando o volume do pool pela sua taxa de transação ($0.0025$). Comparando isso com a perda impermanente, temos uma maneira de medir quando um pool se torna muito volátil para gerar retornos.
+
+<iframe width="650" height="700" frameborder="0" scrolling="no" src="//chart-studio.plotly.com/~chicodias/19.embed"></iframe>
+
+A tokenomics do KDX introduz uma camada adicional através do mecanismo do multiplicador. Esta função permite que o pool KDA:KDX distribua recompensas ampliadas, com os LPs recebendo seus incentivos em tokens KDX. Este design melhora significativamente a APR (Taxa Percentual Anual) efetiva para os participantes.
+
+Na tentativa de incentivar os Provedores de Liquidez iniciais, desde o nosso lançamento o multiplicador está definido para seu valor mais alto: 4.0. Para se aprofundar mais, leia o (artigo)[link] do Mandrake e do Ronaldinho.
+
+## Recapitulação Rápida do z
+
+O valor de Z inserido na função Sigmoide é a parte que obtemos usando dados reais. Nós estimamos $z$ com a fórmula:
+
+<LatexRenderer displayMode>{`z = \\frac{(5 \\times volatility - 2 \\times diluted_volume)}{10,000}`}</LatexRenderer>
+
+Usando os dados observados, este é o multiplicador algorítmico para o pool KDA:KDX que teríamos com os valores de $z$ observados. No entanto, observe que atualmente a DEX está executando um multiplicador bruto de 4x, como uma campanha inicial para incentivar Provedores de Liquidez.
+
+Agora, contabilizando as emissões brutas de KDX que havíamos deixado de fora da análise anterior, somos capazes de comparar as emissões com o atual multiplicador de 4x e o que teríamos obtido através do multiplicador algorítmico.
+
+<iframe width="650" height="700" frameborder="0" scrolling="no" src="//chart-studio.plotly.com/~chicodias/15.embed"></iframe>
+
+
+Recompensas KDX cumulativas ao longo do tempo
+
+<iframe width="650" height="700" frameborder="0" scrolling="no" src="//chart-studio.plotly.com/~chicodias/17.embed"></iframe>
+
+## Implicações Econômicas dos Cronogramas de Emissão
+
+Nossa análise de 1.818 transações de cunhagem (minting) revela como as emissões de recompensa impactam a economia mais ampla do KDX:
+
+**Dinâmicas de Oferta**
+- Emissões atuais: ~25.000 KDX/dia (multiplicador de 4x)
+- Alvo algorítmico: ~18.000 KDX/dia (baseado no modelo)
+- A diferença representa um incentivo de crescimento de curto prazo
+
+**Efeitos de Mercado**
+- Emissões controladas ajudam a manter o valor do token
+- O multiplicador se ajusta à atividade de negociação automaticamente
+- Sustentabilidade a longo prazo vs incentivos a curto prazo
+
+**Considerações para os Holders**
+- A taxa de emissão afeta a pressão da inflação
+- O mecanismo do multiplicador cria curvas de oferta previsíveis
+- O protocolo pode ajustar parâmetros via governança
+
+<iframe width="650" height="700" frameborder="0" scrolling="no" src="//chart-studio.plotly.com/~chicodias/13.embed"></iframe>
+
+<iframe width="650" height="700" frameborder="0" scrolling="no" src="//chart-studio.plotly.com/~chicodias/9.embed"></iframe>
+
+
+
+## Principais Conclusões e Direções Futuras
+
+**Descobertas Validadas**
+1. O algoritmo do multiplicador equilibra com sucesso:
+   - Incentivos de liquidez (mais altos durante a volatilidade)
+   - Sustentabilidade da tokenomics (mais baixos durante períodos calmos)
+2. O atual multiplicador de 4x fornece fortes incentivos de inicialização
+3. O modelo prevê com precisão as necessidades de emissão com base na atividade do mercado
+
+**Benefícios de Implementação**
+- O ajuste dinâmico reduz a governança manual
+- Cálculo transparente usando dados on-chain
+- Distribuição justa com base na contribuição
+
+**Próximos Passos**
+1. Expandir para pares de negociação adicionais
+2. Desenvolver controles de governança para parâmetros
+3. Criar painéis (dashboards) de usuários mostrando multiplicadores em tempo real
+4. Pesquisar ajustes adaptativos de coeficientes
+
+Esta análise demonstra como a EckoDEX combina ciência de dados rigorosa com inovação em finanças descentralizadas para criar incentivos sustentáveis de liquidez.
+
+A estimativa do volume e das taxas de preços por meio de eventos blockchain nos deu uma abordagem mais ampla para lidar com a perda impermanente, calculando-a para o pool inteiro, em vez de usar valores fixos como ponto de partida. Para um usuário obter uma estimativa de seu desempenho no pool, ele pode apenas dividir o TVL estimado por sua participação no pool.
+
+Se a EckoDAO desejar, no futuro a DEX também poderá ter o multiplicador para outros tokens, caso a eleição para uma proposta específica seja bem-sucedida. Aqui está uma estimativa dos multiplicadores para os outros pools, bem como para Kaddex KDX.
+
+<iframe width="650" height="700" frameborder="0" scrolling="no" src="//chart-studio.plotly.com/~chicodias/11.embed"></iframe>
+
+<iframe width="650" height="700" frameborder="0" scrolling="no" src="//chart-studio.plotly.com/~chicodias/23.embed"></iframe>

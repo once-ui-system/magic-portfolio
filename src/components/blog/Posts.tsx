@@ -11,6 +11,7 @@ interface PostsProps {
   aspectRatio?: string;
   marginBottom?: SpacingToken;
   imageHeight?: string;
+  locale?: string;
 }
 
 export function Posts({
@@ -22,8 +23,9 @@ export function Posts({
   aspectRatio,
   marginBottom = "40",
   imageHeight,
+  locale = "en",
 }: PostsProps) {
-  let allBlogs = getPosts(["src", "app", "blog", "posts"]);
+  let allBlogs = getPosts(["src", "app", "blog", "posts"], locale);
 
   // Exclude by slug (exact match)
   if (exclude.length) {

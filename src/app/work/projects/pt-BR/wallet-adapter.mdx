@@ -1,0 +1,74 @@
+---
+title: "Kadena Wallet Adapter: Unificando Integrações de Carteira para KDA"
+publishedAt: "2025-06-09"
+summary: "Um framework que padroniza as interações de carteira em todo o ecossistema Kadena, reduzindo a fragmentação e melhorando a experiência do desenvolvedor."
+images:
+  - "/images/projects/adapter/adapter.png"
+tags:
+  - "Web3"
+  - "Wallets"
+  - "Framework"
+  - "DX"
+team:
+  - name: "Ariel Serranoni"
+    role: "Desenvolvedor Web3"
+    avatar: "/images/og/ariel.jpg"
+    linkedIn: "https://www.linkedin.com/in/ariel-serranoni-1b762815a/"
+    achievements:
+      - "Mestrado em Ciências (MSc) em Otimização Matemática"
+      - "Bacharel em Matemática Aplicada"
+  - name: "Francisco Miranda"
+    role: "Desenvolvedor Web3"
+    avatar: "/images/og/chico.jpg"
+    linkedIn: "https://www.linkedin.com/in/chicodias/"
+    achievements:
+      - "MBA em Engenharia de Software"
+      - "Bacharel em Estatística e Ciência de Dados"
+---
+
+**Visão Geral**
+
+À medida que o ecossistema Kadena amadureceu, várias carteiras surgiram - cada uma com sua própria lógica de conexão, formatos de assinatura e idiossincrasias. Essa fragmentação tornou trabalhoso para os desenvolvedores de dApp integrar mais de uma carteira, levando a uma lógica duplicada e UX inconsistente.
+
+Para resolver isso, desenvolvemos uma **interface de adaptador de carteira padronizada**. Inspirado pelo Web3Modal e outras ferramentas de multi-carteira, nosso sistema abstrai detalhes específicos da carteira por meio de uma interface TypeScript limpa e uma arquitetura de adaptador unificada.
+
+**Principais Recursos**
+
+* **API Padronizada:** Uma única interface para todas as carteiras Kadena
+* **Segurança de Tipos:** Tipagem estrita garante confiabilidade
+* **Design Modular:** Facilmente expansível para novas carteiras
+* **Event Hooks:** Escute por mudanças de rede/conta com facilidade
+
+**Integração WalletConnect**
+
+O WalletConnect representou um desafio único devido ao seu modelo de comunicação baseado em sessão. Implementamos um wrapper provider para alinhar seu formato de solicitação com a interface do nosso adaptador:
+
+**Experiência do Desenvolvedor**
+
+Os dApps agora podem suportar várias carteiras com alterações mínimas na lógica da aplicação.
+
+**Tecnologias Utilizadas**
+
+* **TypeScript:** Arquitetura central e interfaces
+* **WalletConnect:** Suporte móvel e sessões baseadas em QR
+* **GitHub:** Desenvolvimento de código aberto, impulsionado pela comunidade
+
+**Desafios e Aprendizados**
+
+* **Alinhando APIs:** Cada carteira tinha diferenças sutis em sua implementação JSON-RPC
+* **Estado da Sessão:** Lidar com reconexões e expiração de sessão em diferentes carteiras
+* **Tratamento de Erros:** Projetar a propagação de erros previsível e consistente
+
+**Impacto**
+
+* **Melhoria da UX:** Os usuários podem trocar de carteiras sem esforço
+* **Produtividade Dev:** Integração única para todas as carteiras
+* **Crescimento do Ecossistema:** Diminui a barreira de entrada para novos desenvolvedores de dApp
+
+**O que vem a seguir**
+
+* Adicionar suporte para integração do MetaMask Snap
+* Melhorar os fluxos de integração (onboarding) mobile
+* Construir hooks React compostáveis para integração de frontend mais próxima
+
+Explore o [repositório no GitHub](https://github.com/kadena-community/kadena.js/tree/main/packages/libs/wallet-adapter-core) e contribua hoje!

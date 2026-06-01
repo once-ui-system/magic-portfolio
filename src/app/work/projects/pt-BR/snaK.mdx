@@ -1,0 +1,64 @@
+---
+title: "snaK: Kadena's MetaMask Snap"
+publishedAt: "2025-06-10"
+summary: "Um Snap para o MetaMask que traz suporte completo à blockchain Kadena, permitindo o gerenciamento de contas KDA, transações, troca de redes e utilitários de testnet."
+images:
+  - "/images/projects/snak/snak.png"
+  - "/images/projects/snak/snak-architecture.png"
+tags:
+  - "Web3"
+  - "Wallets"
+  - "Kadena"
+team:
+  - name: "Francisco Miranda"
+    role: "Desenvolvedor Web3"
+    avatar: "/images/og/chico.jpg"
+    linkedIn: "https://www.linkedin.com/in/chicodias/"
+    achievements:
+      - "MBA em Engenharia de Software"
+      - "Bacharel em Estatística e Ciência de Dados"
+  - name: "Ariel Serranoni"
+    role: "Desenvolvedor Web3"
+    avatar: "/images/og/ariel.jpg"
+    linkedIn: "https://www.linkedin.com/in/ariel-serranoni-1b762815a/"
+    achievements:
+      - "Mestrado em Ciências (MSc) em Otimização Matemática"
+      - "Bacharel em Matemática Aplicada"
+---
+
+**Visão Geral**
+
+O snaK é um MetaMask Snap que ativa a funcionalidade nativa da blockchain Kadena (KDA) dentro do MetaMask. Ele permite que os usuários gerenciem contas KDA,
+enviem e recebam tokens, troquem de redes e interajam com dapps nativos da Kadena, tudo sem precisar instalar mais uma extensão no seu
+navegador já sobrecarregado.
+
+**Principais Recursos**
+
+- **Gerenciamento de Tokens e Contas:** [Envie tokens KDA](https://docs.mindsend.xyz/user-guide/send-kda) e faça a autocustódia de múltiplas contas na chainweb;
+- **Suporte a Testnet:** [Acesse faucets](https://docs.mindsend.xyz/user-guide/faucet) para tokens de teste e teste seus dApps em ambientes abertos;
+- **Suporte completo a dapps:** Interaja com qualquer dapp da Kadena;
+- **Sem pacotes extras:** Nenhuma dependência extra é necessária além da conexão padrão `window.ethereum`.
+
+**Tecnologias Utilizadas**
+
+- **MetaMask Snaps SDK:** Ambiente de execução permissionado personalizado dentro do MetaMask;
+- **Kadena SDK (kadena.js):** Usado para serializar/desserializar código Pact e lidar com fluxos de assinatura;
+- **TypeScript, Nextjs e Vercel:** Desenvolvimento e hospedagem da interface do usuário (UI) do snaK;
+- **Pact:** Linguagem de contratos inteligentes da Kadena que impulsiona as interações na cadeia;
+- **MdBook + GitHub Pages:** Documentação e portal para desenvolvedores.
+
+**Desafios e Insights**
+
+- **Gerenciamento Cross-Chain:** Interação unificada em todas as 20 cadeias da Kadena com interface móvel para finalização de transações cross-chain;
+- **Restrições de Permissão do Snap:** Considerar as limitações do sandbox do Snap para fornecer fluxos de assinatura robustos;
+- **Compatibilidade com dApps:** Manipuladores RPC extensíveis construídos para suportar WalletConnect e integrações de dApps personalizadas.
+
+**Conquistas**
+
+- **Primeira Integração do MetaMask para Kadena:** Forneceu acesso à Chainweb da Kadena para toda a base de usuários do Metamask;
+- **Onboarding Perfeito para Desenvolvedores:** Oferece [configuração clara do SDK](https://docs.mindsend.xyz/sdk/setup-project) e [guias de integração do Snap](https://docs.mindsend.xyz/sdk/integrate-snap) para dApps;
+- **Design com Foco em Segurança:** Aproveita o modelo de execução isolado do MetaMask com permissões estritas e validação.
+
+**Para Desenvolvedores**
+
+Para um mergulho técnico mais profundo, visite a [documentação da arquitetura do snaK](https://docs.mindsend.xyz/architecture).
