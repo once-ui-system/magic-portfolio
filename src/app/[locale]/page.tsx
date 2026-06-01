@@ -10,7 +10,8 @@ import {
   Flex,
   Button,
 } from "@once-ui-system/core";
-import { home, about, person, baseURL, routes, work, blog } from "@/resources";
+import { getDictionary } from "@/resources/content";
+import { baseURL, routes } from "@/resources";
 import { Projects } from "@/components/work/Projects";
 import { Posts } from "@/components/blog/Posts";
 import { Hero } from "@/components/Hero";
@@ -18,7 +19,10 @@ import { Mailchimp } from "@/components";
 import { LiveGithub } from "@/components/LiveGithub";
 import { getPosts } from "@/utils/utils";
 
-export async function generateMetadata() {
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const { home } = getDictionary(locale);
+
   return Meta.generate({
     title: home.title,
     description: home.description,
@@ -28,8 +32,12 @@ export async function generateMetadata() {
   });
 }
 
-export default function Home() {
-  const allProjects = getPosts(["src", "app", "work", "projects"]);
+export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const dict = getDictionary(locale);
+  const { home, about, person, work, blog } = dict;
+  
+  const allProjects = getPosts(["src", "app", "work", "projects"], locale);
 
   return (
     <Column maxWidth="l" horizontal="center">
@@ -47,9 +55,10 @@ export default function Home() {
         }}
       />
 
-      <Hero />
+      <Hero dict={dict} />
 
       <Column fillWidth gap="32" paddingY="32" paddingX="l">
+
         <Column fillWidth gap="32">
           <Row fillWidth horizontal="between" vertical="end" paddingX="l">
             <Heading as="h2" variant="display-strong-s">
@@ -83,7 +92,7 @@ export default function Home() {
               </Button>
             </Row>
             <Flex fillWidth paddingX="20">
-              <Posts range={[1, 4]} columns="2" thumbnail={false} />
+              <Posts range={[1, 4]} columns="2" thumbnail={false} locale={locale} />
             </Flex>
           </Column>
         )}

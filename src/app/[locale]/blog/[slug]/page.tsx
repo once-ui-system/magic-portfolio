@@ -22,24 +22,28 @@ import React from "react";
 import { Posts } from "@/components/blog/Posts";
 import { ShareSection } from "@/components/blog/ShareSection";
 
-export async function generateStaticParams(): Promise<{ slug: string }[]> {
-  const posts = getPosts(["src", "app", "blog", "posts"]);
-  return posts.map((post) => ({
-    slug: post.slug,
-  }));
+export async function generateStaticParams() {
+  const postsEn = getPosts(["src", "app", "blog", "posts"], "en");
+  const postsPt = getPosts(["src", "app", "blog", "posts"], "pt-BR");
+  
+  return [
+    ...postsEn.map((post) => ({ locale: "en", slug: post.slug })),
+    ...postsPt.map((post) => ({ locale: "pt-BR", slug: post.slug }))
+  ];
 }
 
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ slug: string | string[] }>;
+  params: Promise<{ slug: string | string[]; locale: string }>;
 }): Promise<Metadata> {
   const routeParams = await params;
+  const locale = routeParams.locale;
   const slugPath = Array.isArray(routeParams.slug)
     ? routeParams.slug.join("/")
     : routeParams.slug || "";
 
-  const posts = getPosts(["src", "app", "blog", "posts"]);
+  const posts = getPosts(["src", "app", "blog", "posts"], locale);
   let post = posts.find((post) => post.slug === slugPath);
 
   if (!post) return {};
@@ -53,13 +57,14 @@ export async function generateMetadata({
   });
 }
 
-export default async function Blog({ params }: { params: Promise<{ slug: string | string[] }> }) {
+export default async function Blog({ params }: { params: Promise<{ slug: string | string[]; locale: string }> }) {
   const routeParams = await params;
+  const locale = routeParams.locale;
   const slugPath = Array.isArray(routeParams.slug)
     ? routeParams.slug.join("/")
     : routeParams.slug || "";
 
-  let post = getPosts(["src", "app", "blog", "posts"]).find((post) => post.slug === slugPath);
+  let post = getPosts(["src", "app", "blog", "posts"], locale).find((post) => post.slug === slugPath);
 
   if (!post) {
     notFound();

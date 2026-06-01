@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { routes, protectedRoutes } from "@/resources";
 import { Flex, Spinner, Button, Heading, Column, PasswordInput } from "@once-ui-system/core";
-import NotFound from "@/app/not-found";
+import NotFound from "@/app/[locale]/not-found";
 
 interface RouteGuardProps {
   children: React.ReactNode;
@@ -29,13 +29,22 @@ const RouteGuard: React.FC<RouteGuardProps> = ({ children }) => {
       const checkRouteEnabled = () => {
         if (!pathname) return false;
 
-        if (pathname in routes) {
-          return routes[pathname as keyof typeof routes];
+        let cleanPathname = pathname;
+        const locales = ['/en', '/pt-BR'];
+        for (const locale of locales) {
+          if (cleanPathname === locale || cleanPathname.startsWith(`${locale}/`)) {
+            cleanPathname = cleanPathname.replace(locale, "") || "/";
+            break;
+          }
+        }
+
+        if (cleanPathname in routes) {
+          return routes[cleanPathname as keyof typeof routes];
         }
 
         const dynamicRoutes = ["/blog", "/work"] as const;
         for (const route of dynamicRoutes) {
-          if (pathname?.startsWith(route) && routes[route]) {
+          if (cleanPathname?.startsWith(route) && routes[route]) {
             return true;
           }
         }

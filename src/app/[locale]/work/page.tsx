@@ -1,9 +1,13 @@
 import { Column, Heading, Meta, Schema, RevealFx, Text } from "@once-ui-system/core";
-import { baseURL, about, person, work } from "@/resources";
+import { baseURL } from "@/resources";
+import { getDictionary } from "@/resources/content";
 import { Projects } from "@/components/work/Projects";
 import { getPosts } from "@/utils/utils";
 
-export async function generateMetadata() {
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const { work } = getDictionary(locale);
+
   return Meta.generate({
     title: work.title,
     description: work.description,
@@ -13,8 +17,12 @@ export async function generateMetadata() {
   });
 }
 
-export default function Work() {
-  const allProjects = getPosts(["src", "app", "work", "projects"]);
+export default async function Work({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const dict = getDictionary(locale);
+  const { work, person, about } = dict;
+
+  const allProjects = getPosts(["src", "app", "work", "projects"], locale);
 
   return (
     <Column maxWidth="l" fillWidth paddingX="l" paddingTop="56" gap="56">

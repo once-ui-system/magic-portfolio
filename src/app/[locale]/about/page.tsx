@@ -14,12 +14,16 @@ import {
     RevealFx,
     Flex,
 } from "@once-ui-system/core";
-import { baseURL, about, person, social } from "@/resources";
+import { getDictionary } from "@/resources/content";
+import { baseURL, social } from "@/resources";
 import TableOfContents from "@/components/about/TableOfContents";
 import styles from "@/components/about/about.module.scss";
 import React from "react";
 
-export async function generateMetadata() {
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
+    const { about } = getDictionary(locale);
+    
     return Meta.generate({
         title: about.title,
         description: about.description,
@@ -29,7 +33,11 @@ export async function generateMetadata() {
     });
 }
 
-export default function About() {
+export default async function About({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
+    const dict = getDictionary(locale);
+    const { about, person } = dict;
+
     const structure = [
         {
             title: about.intro.title,

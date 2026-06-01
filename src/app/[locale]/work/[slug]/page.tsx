@@ -21,24 +21,28 @@ import { ScrollToHash, CustomMDX } from "@/components";
 import { Metadata } from "next";
 import { Projects } from "@/components/work/Projects";
 
-export async function generateStaticParams(): Promise<{ slug: string }[]> {
-  const posts = getPosts(["src", "app", "work", "projects"]);
-  return posts.map((post) => ({
-    slug: post.slug,
-  }));
+export async function generateStaticParams() {
+  const postsEn = getPosts(["src", "app", "work", "projects"], "en");
+  const postsPt = getPosts(["src", "app", "work", "projects"], "pt-BR");
+  
+  return [
+    ...postsEn.map((post) => ({ locale: "en", slug: post.slug })),
+    ...postsPt.map((post) => ({ locale: "pt-BR", slug: post.slug }))
+  ];
 }
 
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ slug: string | string[] }>;
+  params: Promise<{ slug: string | string[]; locale: string }>;
 }): Promise<Metadata> {
   const routeParams = await params;
+  const locale = routeParams.locale;
   const slugPath = Array.isArray(routeParams.slug)
     ? routeParams.slug.join("/")
     : routeParams.slug || "";
 
-  const posts = getPosts(["src", "app", "work", "projects"]);
+  const posts = getPosts(["src", "app", "work", "projects"], locale);
   let post = posts.find((post) => post.slug === slugPath);
 
   if (!post) return {};
@@ -55,14 +59,15 @@ export async function generateMetadata({
 export default async function Project({
   params,
 }: {
-  params: Promise<{ slug: string | string[] }>;
+  params: Promise<{ slug: string | string[]; locale: string }>;
 }) {
   const routeParams = await params;
+  const locale = routeParams.locale;
   const slugPath = Array.isArray(routeParams.slug)
     ? routeParams.slug.join("/")
     : routeParams.slug || "";
 
-  let allProjects = getPosts(["src", "app", "work", "projects"]);
+  let allProjects = getPosts(["src", "app", "work", "projects"], locale);
   let post = allProjects.find((post) => post.slug === slugPath);
 
   if (!post) {
