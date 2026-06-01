@@ -7,9 +7,8 @@ import {
   Button,
   Avatar
 } from "@once-ui-system/core";
-import { home, about, person } from "@/resources";
-
-export function Hero() {
+export function Hero({ dict }: { dict: any }) {
+  const { home, about, person } = dict;
   return (
     <section
       style={{

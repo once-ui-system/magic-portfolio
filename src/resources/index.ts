@@ -8,6 +8,7 @@ export {
   blog,
   work,
   gallery,
+  getDictionary,
 } from "./content";
 
 export {

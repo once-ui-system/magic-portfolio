@@ -10,4 +10,5 @@ export { ScrollToHash } from "@/components/ScrollToHash";
 export { ThemeToggle } from "@/components/ThemeToggle";
 export { CustomMDX } from "@/components/mdx";
 export { LiveGithub } from "@/components/LiveGithub";
+export { LanguageToggle } from "@/components/LanguageToggle";
 
