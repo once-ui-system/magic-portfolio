@@ -5,7 +5,7 @@ const person: Person = {
   firstName: "Mindsend",
   lastName: "Datatech",
   name: "Mindsend Datatech",
-  role: "Building real solutions for the decentralized web",
+  role: "Applied engineering and data science team building robust software, AI integrations, and digital infrastructure.",
   avatar: "/images/avatar.png",
   email: "info@mindsend.xyz",
   location: "America/Sao_Paulo", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
@@ -41,7 +41,7 @@ const home: Home = {
   title: `${person.name}`,
   description:
     `${person.name}`,
-  headline: <>Powering the Web3 revolution with full-cycle development </>,
+  headline: <>Just beyond human </>,
   featured: {
     display: false,
     title: (
@@ -53,8 +53,8 @@ const home: Home = {
   },
   subline: (
     <>
-      Transforming complex technologies into accessible, seamless solutions for
-      the decentralized world{" "}
+      Transforming complex challenges into accessible, seamless solutions for
+      frontier technologies{" "}
     </>
   ),
 };
@@ -81,17 +81,15 @@ const about: About = {
     description: (
       <div style={{ display: 'flex', flexDirection: 'column', gap: '32' }}>
         <Text variant="body-default-l" onBackground="neutral-strong" style={{ fontSize: '1.5rem', lineHeight: '1.6', margin: 0 }}>
-          We are a Web3-focused development team that designs, builds, and
-          maintains robust blockchain solutions. From infrastructure to
-          user-facing applications, we’ve helped shape core components of the
-          Kadena ecosystem—contributing to some of its most impactful and widely
-          used tools.
+          We are an applied engineering and data science team focused on building robust, scalable
+          software and AI integrations for modern systems. With deep technical foundations across infrastructure,
+          backend development, and data architecture, we turn complex challenges into
+          streamlined, production-ready solutions.
         </Text>
         <Text variant="body-default-l" onBackground="neutral-strong" style={{ fontSize: '1.5rem', lineHeight: '1.6', margin: 0 }}>
-          Our mission is simple: to deliver practical, secure, and scalable
-          products that meet the needs of modern decentralized systems,
-          transforming complex technologies into accessible, seamless solutions
-          for the decentralized world.
+          Our objective is to deliver practical, secure digital infrastructure that scales.
+          Whether designing data pipelines, developing applications, or deploying machine learning models,
+          our focus remains on engineering excellence and sustainable software architecture.
         </Text>
       </div>
     ),
@@ -103,11 +101,11 @@ const about: About = {
       {
         company: "Ariel Serranoni",
         timeframe: " ",
-        role: "Co-founder, Applied Mathematician, and Web3 Engineer",
+        role: "Co-founder, Applied Mathematician & Software Engineer",
         linkedin: "https://www.linkedin.com/in/ariel-serranoni-1b762815a/",
         github: "https://github.com/aserranoni/",
         achievements: [
-          "Ariel is an applied mathematician with a Master’s in Computer Science and a strong track record designing, implementing, and managing Web3 systems. With deep technical foundations and a hands-on approach, he thrives in the fast-moving blockchain space—adapting quickly to new technologies and pushing the boundaries of what’s possible in decentralized architecture.",
+          "Ariel is an applied mathematician with a Master’s in Computer Science and a strong background in software architecture. With solid mathematical foundations, he focuses on designing, building, and scaling complex backend infrastructure, decentralized protocols, and modern Web applications.",
         ],
         images: [
           {
@@ -121,11 +119,11 @@ const about: About = {
       {
         company: "Francisco Miranda",
         timeframe: " ",
-        role: "Co-founder, Data Scientist, and Web3 Engineer",
+        role: "Co-founder, Data Scientist & Software Engineer",
         linkedin: "https://www.linkedin.com/in/chicodias/",
         github: "https://github.com/chicodias",
         achievements: [
-          "Francisco brings consistency and curiosity to every project. With a background in Statistics and Data Science and an ongoing MBA in Software Engineering, he excels in infrastructure, networking, and backend development. A disciplined engineer and proactive team player, Francisco is the one who’s always up-to-date and always digging into the docs.",
+          "Francisco brings analytical rigor and a systematic approach to software development. With a background in Statistics and Data Science and an ongoing MBA in Software Engineering, he excels at structuring data pipelines, designing backend infrastructure, and bridging analytical models with production-ready applications.",
         ],
         images: [
           {
@@ -259,8 +257,8 @@ const about: About = {
 const blog: Blog = {
   path: "/blog",
   label: "Blog",
-  title: "Building on the edge of Web3",
-  description: `Insights, deep dives, and lessons from ${person.name} on building decentralized systems, infrastructure, and real-world blockchain applications.`,
+  title: "Building at the edge of technology",
+  description: `Insights, deep dives, and lessons from ${person.name} on building AI integrations, infrastructure, and real-world software applications.`,
   // Create new blog posts by adding a new .mdx file to app/blog/posts
   // All posts will be listed on the /blog route
 };
@@ -269,7 +267,7 @@ const work: Work = {
   path: "/work",
   label: "Work",
   title: `Projects – ${person.name}`,
-  description: `Web3 projects by ${person.name}`,
+  description: `Projects by ${person.name}`,
   // Create new project pages by adding a new .mdx file to app/blog/posts
   // All projects will be listed on the /home and /work routes
 };

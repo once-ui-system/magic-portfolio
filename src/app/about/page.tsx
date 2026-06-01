@@ -338,40 +338,59 @@ export default function About() {
                                 >
                                     {about.technical.title}
                                 </Heading>
-                                <Flex fillWidth gap="24" wrap horizontal="start" s={{ horizontal: 'center' }}>
-                                    {about.technical.skills.map((skill, index) => (
-                                        <a
-                                            key={`${skill.title}-${index}`}
-                                            href={skill.link}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            style={{ textDecoration: 'none' }}
-                                        >
-                                            <Flex
-                                                padding="12"
-                                                radius="m"
-                                                background="neutral-alpha-weak"
-                                                border="neutral-alpha-weak"
-                                                center
-                                                className="stack-icon-container"
-                                                style={{
-                                                    width: '80px',
-                                                    height: '80px',
-                                                    transition: 'all 0.3s ease'
-                                                }}
-                                            >
-                                                {skill.images && skill.images.length > 0 && (
-                                                    <Media
-                                                        src={skill.images[0].src}
-                                                        alt={skill.images[0].alt}
-                                                        width={48}
-                                                        height={48}
-                                                        className="stack-icon"
-                                                    />
-                                                )}
-                                            </Flex>
-                                        </a>
-                                    ))}
+                                <Flex fillWidth direction="column" gap="40">
+                                    {[
+                                        { name: "AI & Data Science", items: ["Python", "R"] },
+                                        { name: "Frontend", items: ["TypeScript", "Next.js", "TailwindCSS"] },
+                                        { name: "Backend & Cloud", items: ["C#", "PostgreSQL", "MongoDB", "Vercel", "Linux", "Docker"] },
+                                        { name: "Blockchain & Web3", items: ["Pact", "Solidity", "WalletConnect"] },
+                                        { name: "Tools", items: ["Github", "Git"] }
+                                    ].map((category) => {
+                                        const categorySkills = about.technical.skills.filter(skill => category.items.includes(skill.title));
+                                        if (categorySkills.length === 0) return null;
+                                        return (
+                                            <Column key={category.name} gap="24" fillWidth>
+                                                <Text variant="heading-strong-m" onBackground="neutral-weak" style={{ textTransform: "uppercase", letterSpacing: "0.05em" }}>
+                                                    {category.name}
+                                                </Text>
+                                                <Flex gap="24" wrap horizontal="start" s={{ horizontal: 'center' }}>
+                                                    {categorySkills.map((skill, index) => (
+                                                        <a
+                                                            key={`${skill.title}-${index}`}
+                                                            href={skill.link}
+                                                            target="_blank"
+                                                            rel="noopener noreferrer"
+                                                            style={{ textDecoration: 'none' }}
+                                                        >
+                                                            <Flex
+                                                                padding="12"
+                                                                radius="m"
+                                                                background="neutral-alpha-weak"
+                                                                border="neutral-alpha-weak"
+                                                                center
+                                                                className="stack-icon-container"
+                                                                style={{
+                                                                    width: '80px',
+                                                                    height: '80px',
+                                                                    transition: 'all 0.3s ease'
+                                                                }}
+                                                            >
+                                                                {skill.images && skill.images.length > 0 && (
+                                                                    <Media
+                                                                        src={skill.images[0].src}
+                                                                        alt={skill.images[0].alt}
+                                                                        width={48}
+                                                                        height={48}
+                                                                        className="stack-icon"
+                                                                    />
+                                                                )}
+                                                            </Flex>
+                                                        </a>
+                                                    ))}
+                                                </Flex>
+                                            </Column>
+                                        );
+                                    })}
                                 </Flex>
                             </Column>
                         </RevealFx>

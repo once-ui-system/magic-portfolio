@@ -15,6 +15,7 @@ import { Projects } from "@/components/work/Projects";
 import { Posts } from "@/components/blog/Posts";
 import { Hero } from "@/components/Hero";
 import { Mailchimp } from "@/components";
+import { LiveGithub } from "@/components/LiveGithub";
 import { getPosts } from "@/utils/utils";
 
 export async function generateMetadata() {
@@ -45,47 +46,49 @@ export default function Home() {
           image: `${baseURL}${person.avatar}`,
         }}
       />
-      
+
       <Hero />
 
       <Column fillWidth gap="32" paddingY="32" paddingX="l">
         <Column fillWidth gap="32">
-            <Row fillWidth horizontal="between" vertical="end" paddingX="l">
-                <Heading as="h2" variant="display-strong-s">
-                    Featured Projects
-                </Heading>
-                <Button
-                    href={work.path}
-                    variant="secondary"
-                    size="s"
-                    suffixIcon="arrowRight"
-                >
-                    View all
-                </Button>
-            </Row>
-            <Projects posts={allProjects} range={[1, 6]} display="grid" />
+          <Row fillWidth horizontal="between" vertical="end" paddingX="l">
+            <Heading as="h2" variant="display-strong-s">
+              Featured Projects
+            </Heading>
+            <Button
+              href={work.path}
+              variant="secondary"
+              size="s"
+              suffixIcon="arrowRight"
+            >
+              View all
+            </Button>
+          </Row>
+          <Projects posts={allProjects} range={[1, 6]} display="grid" />
         </Column>
 
         {routes["/blog"] && (
-            <Column fillWidth gap="40">
-                <Row fillWidth horizontal="between" vertical="end" paddingX="l">
-                    <Heading as="h2" variant="display-strong-s">
-                        Latest from the blog
-                    </Heading>
-                    <Button
-                        href={blog.path}
-                        variant="secondary"
-                        size="s"
-                        suffixIcon="arrowRight"
-                    >
-                        View all
-                    </Button>
-                </Row>
-                <Flex fillWidth paddingX="20">
-                <Posts range={[1, 4]} columns="2" thumbnail={false} />
-                </Flex>
-            </Column>
+          <Column fillWidth gap="40">
+            <Row fillWidth horizontal="between" vertical="end" paddingX="l">
+              <Heading as="h2" variant="display-strong-s">
+                Latest from the blog
+              </Heading>
+              <Button
+                href={blog.path}
+                variant="secondary"
+                size="s"
+                suffixIcon="arrowRight"
+              >
+                View all
+              </Button>
+            </Row>
+            <Flex fillWidth paddingX="20">
+              <Posts range={[1, 4]} columns="2" thumbnail={false} />
+            </Flex>
+          </Column>
         )}
+
+        <LiveGithub />
 
         <Mailchimp />
       </Column>
