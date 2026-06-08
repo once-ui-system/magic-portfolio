@@ -1,10 +1,10 @@
 ---
-title: "Saga Indexer"
-publishedAt: "2024-05-01"
-summary: "High-performance blockchain data indexer."
-image: "/images/projects/sagaindexer.jpg"
+title: "SagaIndexer"
+publishedAt: "2026-06-08"
+summary: "A high-performance microservices system for monitoring Uniswap V3 Concentrated Liquidity Pools on Ethereum."
+image: "/images/projects/sagaindexer.png"
 images:
-  - "/images/projects/sagaindexer.jpg"
+  - "/images/projects/sagaindexer.png"
 team:
   - name: "Mindsend Datatech"
     role: "Engineering"
@@ -12,8 +12,41 @@ team:
     linkedIn: "https://www.linkedin.com/"
 ---
 
-# Saga Indexer
+# SagaIndexer - DeFi Liquidity Monitor
 
-The **Saga Indexer** is a high-performance data extraction and processing service designed to index blockchain state efficiently.
+The **SagaIndexer** is a high-performance microservices system tailored to monitor Uniswap V3 Concentrated Liquidity Pools on Ethereum. It was developed as part of an MBA thesis at USP/Esalq (Final Version 2026).
 
-More details to be added.
+## Architecture Overview
+
+The system is built on a highly resilient, event-driven microservices architecture utilizing the **Saga Pattern** for distributed transactions and robust Circuit Breakers to prevent cascading failures.
+
+### 1. Tracker Service (Indexer)
+Subscribes to Uniswap V3 pool events directly from the Ethereum blockchain.
+* **Features:** Decoding of Swap, Mint, and Burn events, checkpoint-based indexing resumption (12-block intervals), multi-pool tracking, and a gRPC API for fast event querying.
+* **Tech Stack:** go-ethereum, SQLite, gRPC.
+
+### 2. Analytics Service
+Computes real-time, on-chain financial metrics from the indexed pool events.
+* **Features:** Time-Weighted Average Price (TWAP) calculation, tick-range liquidity distribution aggregation, and overarching pool statistics like volume, fees, and event counts.
+* **Tech Stack:** gRPC, Redis (for high-speed caching).
+
+### 3. Saga Orchestrator
+The central coordinator managing distributed transactions with high fault tolerance.
+* **Features:** Circuit Breaker mechanism to halt requests during downstream failures, Saga Pattern to gracefully handle compensating transactions when errors occur, and intelligent Retry Logic with exponential backoff.
+
+### 4. Auth & Security Services
+Secures the entire internal ecosystem.
+* **Auth Service:** Handles zero-trust user authentication, JWT access tokens (HS256), session management, and bcrypt password hashing.
+* **API Gateway (KrakenD):** The single entry point for all external REST requests, enforcing JWT validation, per-client rate limiting, and CORS routing. All internal communication is secured via mTLS.
+
+## Academic Context & Research Topics
+Developed as a formal thesis project for the MBA at USP/Esalq (Universidade de São Paulo - Escola Superior de Agricultura Luiz de Queiroz). This platform served as the basis to explore several advanced software engineering research topics:
+
+* **Microservices Architecture & Domain-Driven Design (DDD)**
+* **Event Sourcing**
+* **Circuit Breaker & Saga Patterns for Distributed Transactions**
+* **gRPC vs REST Performance Benchmarks**
+* **Zero-Trust Security Models**
+
+## Observability
+The platform heavily relies on **Prometheus and Grafana** to maintain deep system observability, surfacing crucial metrics regarding HTTP/gRPC request latencies, Uniswap pool block syncing lag, circuit breaker states, and Go runtime heap allocations. Special dashboards are provisioned to monitor DeFi-specific metrics such as Impermanent Loss and Realized Volatility.

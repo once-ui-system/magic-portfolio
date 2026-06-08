@@ -1,10 +1,10 @@
 ---
-title: "Saga Indexer"
-publishedAt: "2024-05-01"
-summary: "High-performance blockchain data indexer."
-image: "/images/projects/sagaindexer.jpg"
+title: "SagaIndexer"
+publishedAt: "2026-06-08"
+summary: "Um sistema de microsserviços de alta performance para monitoramento de Pools de Liquidez Concentrada da Uniswap V3 no Ethereum."
+image: "/images/projects/sagaindexer.png"
 images:
-  - "/images/projects/sagaindexer.jpg"
+  - "/images/projects/sagaindexer.png"
 team:
   - name: "Mindsend Datatech"
     role: "Engineering"
@@ -12,8 +12,41 @@ team:
     linkedIn: "https://www.linkedin.com/"
 ---
 
-# Saga Indexer
+# SagaIndexer - Monitor de Liquidez DeFi
 
-O **Saga Indexer** é um serviço de extração e processamento de dados de alto desempenho projetado para indexar o estado da blockchain com eficiência.
+O **SagaIndexer** é um sistema de microsserviços de alta performance projetado para monitorar Pools de Liquidez Concentrada da Uniswap V3 na rede Ethereum. Foi desenvolvido como parte de uma tese de MBA na USP/Esalq (Versão Final 2026).
 
-Mais detalhes a serem adicionados.
+## Visão Geral da Arquitetura
+
+O sistema foi construído em uma arquitetura de microsserviços altamente resiliente e orientada a eventos, utilizando o **Saga Pattern** para transações distribuídas e Circuit Breakers robustos para prevenir falhas em cascata.
+
+### 1. Serviço Tracker (Indexador)
+Inscreve-se diretamente nos eventos de pools da Uniswap V3 na blockchain Ethereum.
+* **Funcionalidades:** Decodificação de eventos Swap, Mint e Burn, retomada de indexação baseada em checkpoints (intervalos de 12 blocos), suporte a múltiplos pools e uma API gRPC para consultas rápidas de eventos.
+* **Stack Tecnológica:** go-ethereum, SQLite, gRPC.
+
+### 2. Serviço de Analytics
+Calcula métricas financeiras on-chain em tempo real a partir dos eventos indexados.
+* **Funcionalidades:** Cálculo de Preço Médio Ponderado pelo Tempo (TWAP), agregação de distribuição de liquidez por faixa de tick, e estatísticas globais do pool como volume, taxas e contagem de eventos.
+* **Stack Tecnológica:** gRPC, Redis (para cache de alta velocidade).
+
+### 3. Saga Orchestrator
+O coordenador central gerenciando transações distribuídas com alta tolerância a falhas.
+* **Funcionalidades:** Mecanismo de Circuit Breaker para interromper requisições durante falhas de serviços dependentes, Saga Pattern para lidar graciosamente com transações de compensação na ocorrência de erros, e Lógica de Retentativa (Retry) com backoff exponencial.
+
+### 4. Serviços de Autenticação e Segurança
+Garantem a segurança de todo o ecossistema interno.
+* **Auth Service:** Lida com autenticação de usuários baseada em zero-trust, tokens de acesso JWT (HS256), gerenciamento de sessão e hash de senhas utilizando bcrypt.
+* **API Gateway (KrakenD):** O ponto único de entrada para todas as requisições REST externas, aplicando validação JWT, limitação de taxa (rate limiting) por cliente e roteamento CORS. Toda comunicação interna é assegurada via mTLS.
+
+## Contexto Acadêmico e Tópicos de Pesquisa
+Desenvolvido como projeto formal de tese para o MBA da USP/Esalq (Universidade de São Paulo - Escola Superior de Agricultura Luiz de Queiroz). Esta plataforma serviu como base para explorar diversos tópicos avançados de pesquisa em engenharia de software:
+
+* **Arquitetura de Microsserviços & Domain-Driven Design (DDD)**
+* **Event Sourcing**
+* **Padrões Circuit Breaker & Saga para Transações Distribuídas**
+* **Benchmarks de Performance: gRPC vs REST**
+* **Modelo de Segurança Zero-Trust**
+
+## Observabilidade
+A plataforma conta com um forte suporte de **Prometheus e Grafana** para manter uma observabilidade profunda do sistema, apresentando métricas cruciais referentes a latências de requisições HTTP/gRPC, atraso (lag) de sincronização de blocos dos pools da Uniswap, estados dos circuit breakers e alocações de heap em tempo de execução na linguagem Go. Dashboards especiais são provisionados para monitorar métricas específicas de DeFi, como Perda Impermanente (Impermanent Loss) e Volatilidade Realizada.
