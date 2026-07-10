@@ -77,3 +77,25 @@
 .streaktap-wide {
   max-width: 1100px;
 }
+
+/* Single line-height for all body copy — was 1.5/1.55/1.6 scattered
+   per-component with no meaningful difference between them. */
+.streaktap-body-copy {
+  line-height: 1.6;
+}
+
+/* Shared tap/hover feedback for interactive text and controls. */
+.streaktap-tap {
+  display: inline-flex;
+  transition: opacity 150ms ease, transform 150ms ease;
+}
+
+.streaktap-tap:hover {
+  opacity: 0.7;
+  transform: translateY(-1px);
+}
+
+.streaktap-tap:active {
+  opacity: 0.55;
+  transform: translateY(0);
+}

@@ -1,5 +1,6 @@
 import { Column, Heading, Row, Text } from "@once-ui-system/core";
 import { landing } from "@/resources";
+import { ScrollReveal } from "./ScrollReveal";
 
 const List = ({
   label,
@@ -24,7 +25,7 @@ const List = ({
           key={item}
           gap="12"
           vertical="start"
-          style={{ lineHeight: 1.55 }}
+          className="streaktap-body-copy"
         >
           <Text
             onBackground="neutral-weak"
@@ -48,12 +49,18 @@ const List = ({
 export const FeaturesGrid = () => {
   return (
     <Column fillWidth gap="64">
-      <Heading as="h2" wrap="balance" className="streaktap-display-m">
-        What it does. And what it doesn't.
-      </Heading>
+      <ScrollReveal translateY={8}>
+        <Heading as="h2" wrap="balance" className="streaktap-display">
+          What it does. And what it doesn't.
+        </Heading>
+      </ScrollReveal>
       <Row fillWidth gap="80" s={{ direction: "column", gap: "48" }}>
-        <List label="Does" items={landing.features.does} marker="+" />
-        <List label="Doesn't" items={landing.features.doesnt} marker="—" />
+        <ScrollReveal translateY={12} style={{ flex: 1 }}>
+          <List label="Does" items={landing.features.does} marker="+" />
+        </ScrollReveal>
+        <ScrollReveal translateY={12} delay={0.08} style={{ flex: 1 }}>
+          <List label="Doesn't" items={landing.features.doesnt} marker="—" />
+        </ScrollReveal>
       </Row>
     </Column>
   );

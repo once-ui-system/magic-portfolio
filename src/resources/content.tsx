@@ -44,13 +44,41 @@ const home: Home = {
 /**
  * App Store URL — search for `apps.apple.com/app/streaktap` to update.
  */
-const appStoreUrl = "https://apps.apple.com/app/streaktap";
+const appStoreUrl = "https://apps.apple.com/app/streaktap/id6769443048";
 
 const landing = {
   tagline: "The simplest way to build a habit.",
   eyebrow: "For iOS",
   appStoreUrl,
   heroImage: "/images/hero-phone.png",
+
+  widgets: {
+    heading: "On your home screen. Not just in the app.",
+    subline:
+      "Add a StreakTap widget and see today's habits without opening anything.",
+    items: [
+      {
+        image: "/images/widget-1.png",
+        caption: "Small widget — today's streaks at a glance",
+      },
+      {
+        image: "/images/widget-2.png",
+        caption: "Medium widget — multiple habits in one view",
+      },
+      {
+        image: "/images/widget-3.png",
+        caption: "Large widget — full list with streak counts",
+      },
+      {
+        image: "/images/widget-4.png",
+        caption: "Lock screen widget — a single habit, always visible",
+      },
+      {
+        image: "/images/widget-5.png",
+        caption: "Lock screen widget — streak count only",
+      },
+    ],
+  },
 
   steps: [
     {

@@ -4,6 +4,7 @@ import {
   Hero,
   Steps,
   FeaturesGrid,
+  Widgets,
   Philosophy,
   FAQ,
   FinalCTA,
@@ -61,6 +62,17 @@ export default function Home() {
       >
         <Column fillWidth className="streaktap-wide">
           <FeaturesGrid />
+        </Column>
+      </Column>
+
+      <Column
+        fillWidth
+        horizontal="center"
+        paddingX="24"
+        className="streaktap-section"
+      >
+        <Column fillWidth className="streaktap-wide">
+          <Widgets />
         </Column>
       </Column>
 

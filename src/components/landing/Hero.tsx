@@ -33,7 +33,7 @@ export const Hero = () => {
             onBackground="neutral-weak"
             wrap="balance"
             variant="body-default-xl"
-            style={{ lineHeight: 1.5 }}
+            className="streaktap-body-copy"
           >
             {home.subline}
           </Text>
@@ -41,7 +41,7 @@ export const Hero = () => {
         <RevealFx translateY="8" delay={0.25}>
           <Row gap="24" vertical="center" s={{ direction: "column", horizontal: "start" }}>
             <AppStoreBadge />
-            <SmartLink href="#how-it-works">
+            <SmartLink href="#how-it-works" className="streaktap-tap">
               <Text variant="body-default-m" onBackground="neutral-weak">
                 See how it works ↓
               </Text>

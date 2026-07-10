@@ -1,3 +1,6 @@
+"use client";
+
+import { useTheme } from "@once-ui-system/core";
 import { appStoreUrl } from "@/resources";
 
 type AppStoreBadgeProps = {
@@ -6,10 +9,14 @@ type AppStoreBadgeProps = {
 };
 
 export const AppStoreBadge = ({
-  theme = "light",
+  theme,
   href = appStoreUrl,
 }: AppStoreBadgeProps) => {
-  const isDark = theme === "dark";
+  // Apple's badge is designed as either all-black (on light surfaces) or
+  // all-white (on dark surfaces) — it must flip with the site's actual
+  // resolved theme, not just default to light, or it disappears in dark mode.
+  const { resolvedTheme } = useTheme();
+  const isDark = (theme ?? resolvedTheme) === "dark";
   const bg = isDark ? "#FFFFFF" : "#000000";
   const fg = isDark ? "#000000" : "#FFFFFF";
 
@@ -19,8 +26,8 @@ export const AppStoreBadge = ({
       aria-label="Download on the App Store"
       target="_blank"
       rel="noopener noreferrer"
+      className="streaktap-tap"
       style={{
-        display: "inline-flex",
         alignItems: "center",
         gap: "10px",
         padding: "10px 18px",
@@ -30,7 +37,6 @@ export const AppStoreBadge = ({
         borderRadius: "10px",
         textDecoration: "none",
         fontFamily: "var(--font-body), -apple-system, system-ui, sans-serif",
-        transition: "opacity 120ms ease",
       }}
     >
       <svg

@@ -1,8 +1,10 @@
 export { AppStoreBadge } from "./AppStoreBadge";
 export { PhoneFrame } from "./PhoneFrame";
+export { ScrollReveal } from "./ScrollReveal";
 export { Hero } from "./Hero";
 export { Steps } from "./Steps";
 export { FeaturesGrid } from "./FeaturesGrid";
+export { Widgets } from "./Widgets";
 export { Philosophy } from "./Philosophy";
 export { FAQ } from "./FAQ";
 export { FinalCTA } from "./FinalCTA";
