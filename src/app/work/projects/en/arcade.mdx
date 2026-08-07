@@ -1,0 +1,54 @@
+---
+title: "Arcade: High-Fidelity Prediction Market on Arc (Circle L1)"
+publishedAt: "2026-08-07"
+summary: "A decentralized prediction market built on Arc Testnet (Circle L1) using CPMM Automated Market Makers and featuring a cyberpunk dark mode aesthetic."
+image: "/images/projects/arcade.png"
+images:
+  - "/images/projects/arcade.png"
+tags:
+  - "Web3"
+  - "DeFi"
+  - "L1"
+team:
+  - name: "Francisco Miranda"
+    role: "Web3 Developer"
+    avatar: "/images/og/chico.jpg"
+    linkedIn: "https://www.linkedin.com/in/chicodias/"
+    achievements:
+      - "MBA in Software Engineering"
+      - "Bachelor's in Statistics and Data Science"
+---
+
+# Arcade - Prediction Market
+
+**Arcade** is a high-fidelity, decentralized prediction market Proof of Concept (PoC) custom-built on the **Arc Testnet (Circle L1)**. The platform features a unique cyberpunk dark mode aesthetic and utilizes a Constant Product Market Maker (CPMM) to ensure continuous liquidity for prediction shares.
+
+## Key Features
+
+- **Automated Market Maker (AMM):** Implements a Constant Product Market Maker (CPMM) algorithm to calculate odds and offer continuous trading liquidity for YES/NO outcomes.
+- **Circle L1 Integration:** Built natively for the Arc Testnet, utilizing USDC as the primary collateral currency for predicting.
+- **High-Fidelity Cyberpunk UI:** Custom design system utilizing Rajdhani and Inter typography with a dark mode-only theme (Void Black and Neon Cyan) built using Framer Motion and GSAP.
+- **Factory Contract Architecture:** Utilizes a Factory pattern to allow permissionless creation of new prediction markets for real-world events.
+
+## Architecture & Technology Stack
+
+The platform is split into three main components:
+
+### 1. Smart Contracts
+The core logic resides in Solidity smart contracts deployed on Arc.
+* **PredictionMarket.sol:** Manages pool liquidity, share trading, collateral staking (USDC), and outcome resolution.
+* **MarketFactory.sol:** Standardizes and automates prediction market deployment.
+* **Testing & Tools:** 100% test coverage using Foundry (unit tests, integration tests, and fuzzing for AMM invariants).
+
+### 2. Indexer
+Tracks on-chain events emitted by the Factory and individual prediction pools to provide fast queries to the frontend.
+* **Tech Stack:** Node.js, Custom Event Indexer.
+
+### 3. Frontend Application
+A responsive, high-performance web interface designed for real-time portfolio tracking and seamless wallet connection.
+* **Tech Stack:** Next.js, Framer Motion, GSAP, TailwindCSS.
+
+## Deployed Contracts (Arc Testnet)
+
+- **MarketFactory:** `0xBf5A6Ae384d72D3D9ad2bef5C2290E5Dbae92130`
+- **MockUSDC:** `0x089c3F0409FA211e775d21cd12dC71992713b89D`

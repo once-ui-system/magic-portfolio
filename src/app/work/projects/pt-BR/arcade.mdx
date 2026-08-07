@@ -1,0 +1,54 @@
+---
+title: "Arcade: Mercado de Predição de Alta Fidelidade na Arc (Circle L1)"
+publishedAt: "2026-08-07"
+summary: "Um mercado de predição descentralizado construído na Arc Testnet (Circle L1) usando AMM de Produto Constante (CPMM) e interface com estética cyberpunk."
+image: "/images/projects/arcade.png"
+images:
+  - "/images/projects/arcade.png"
+tags:
+  - "Web3"
+  - "DeFi"
+  - "L1"
+team:
+  - name: "Francisco Miranda"
+    role: "Desenvolvedor Web3"
+    avatar: "/images/og/chico.jpg"
+    linkedIn: "https://www.linkedin.com/in/chicodias/"
+    achievements:
+      - "MBA em Engenharia de Software"
+      - "Bacharel em Estatística e Ciência de Dados"
+---
+
+# Arcade - Mercado de Predição
+
+O **Arcade** é um Proof of Concept (PoC) de mercado de predição descentralizado de alta fidelidade, construído sob medida na rede **Arc Testnet (Circle L1)**. A plataforma apresenta uma estética cyberpunk exclusiva em modo escuro e utiliza um Formador de Mercado Automatizado de Produto Constante (CPMM) para garantir liquidez contínua para as cotas de predição.
+
+## Principais Funcionalidades
+
+- **Formador de Mercado Automatizado (AMM):** Implementa o algoritmo de CPMM para calcular probabilidades e oferecer liquidez contínua para negociação de cotas de SIM/NÃO.
+- **Integração nativa Circle L1:** Desenvolvido nativamente para a Arc Testnet, utilizando USDC como a moeda principal de colateral para as predições.
+- **UI Cyberpunk de Alta Fidelidade:** Sistema de design personalizado usando as fontes Rajdhani e Inter, com um tema exclusivo em modo escuro (Void Black e Neon Cyan) construído com Framer Motion e GSAP.
+- **Arquitetura de Contrato Factory:** Utiliza o padrão Factory para permitir a criação descentralizada de novos mercados de predição para eventos do mundo real.
+
+## Arquitetura & Stack de Tecnologias
+
+A plataforma está dividida em três componentes principais:
+
+### 1. Smart Contracts
+A lógica principal reside em smart contracts escritos em Solidity e implantados na Arc.
+* **PredictionMarket.sol:** Gerencia a liquidez do pool, negociação de cotas, colateral de USDC e resolução de resultados.
+* **MarketFactory.sol:** Padroniza e automatiza a implantação de novos mercados de predição.
+* **Testes & Ferramentas:** 100% de cobertura de testes usando Foundry (testes unitários, testes de integração e fuzzing de invariantes do AMM).
+
+### 2. Indexador
+Rastreia eventos on-chain emitidos pela Factory e pools individuais de predição para fornecer consultas rápidas para o frontend.
+* **Stack:** Node.js, Indexador customizado de Eventos.
+
+### 3. Aplicação Frontend
+Interface web responsiva de alta performance projetada para monitoramento de portfólio em tempo real e conexão de carteira Web3.
+* **Stack:** Next.js, Framer Motion, GSAP, TailwindCSS.
+
+## Contratos Implantados (Arc Testnet)
+
+- **MarketFactory:** `0xBf5A6Ae384d72D3D9ad2bef5C2290E5Dbae92130`
+- **MockUSDC:** `0x089c3F0409FA211e775d21cd12dC71992713b89D`
