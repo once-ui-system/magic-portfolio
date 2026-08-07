@@ -457,7 +457,7 @@
   resolved "https://registry.npmjs.org/@next/swc-win32-x64-msvc/-/swc-win32-x64-msvc-16.1.6.tgz"
   integrity sha512-NRfO39AIrzBnixKbjuo2YiYhB6o9d8v/ymU9m/Xk8cyVk+k7XylniXkHwjs4s70wedVffc6bQNbufk5v0xEm0A==
 
-"@once-ui-system/core@latest":
+"@once-ui-system/core@^1.5.6":
   version "1.5.6"
   resolved "https://registry.npmjs.org/@once-ui-system/core/-/core-1.5.6.tgz"
   integrity sha512-2uqVobVY8Pf2kz58WVuxI5Q0+eSUJefSszlRg+qpuitIv1NVb3JvThkVQ+iSxoR/hLFw1t/RrvIPivTjDctNIw==
