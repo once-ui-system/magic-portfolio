@@ -94,7 +94,7 @@ export default async function About({ params }: { params: Promise<{ locale: stri
                 className="about-main-row"
                 fillWidth
                 gap="xl"
-                s={{ direction: "column", horizontal: 'start', gap: '0', padding: '1rem' }}
+                s={{ direction: "column", horizontal: 'start', gap: '0', padding: '16' }}
                 horizontal="center"
                 vertical="start"
                 background="surface"
