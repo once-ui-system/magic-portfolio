@@ -1,7 +1,7 @@
 ---
-title: "Construindo o Arcade: Um Mercado de Predição Cyberpunk na Arc L1 da Circle"
+title: "Construindo o Arcade: Detalhes Técnicos de um Mercado de Predição na L1"
 publishedAt: "2026-08-07"
-summary: "Uma análise detalhada sobre o desenvolvimento de um mercado de predição descentralizado usando testes de fuzzing no Foundry, CPMM e indexadores customizados na Arc L1."
+summary: "Uma análise técnica do desenvolvimento de um mercado de predição descentralizado na Arc Testnet, utilizando AMM de Produto Constante, testes de fuzzing no Foundry e indexação de eventos em tempo real."
 image: "/images/projects/arcade.png"
 tags:
   - "Web3"
@@ -15,49 +15,57 @@ team:
     linkedIn: "https://www.linkedin.com/in/chicodias/"
 ---
 
-## A Visão: Mercados de Predição de Alta Fidelidade com Estética Cyberpunk
+## Visão Geral Técnica
 
-Os mercados de predição tradicionais geralmente sofrem com dois grandes problemas: a alta latência na execução e liquidação de negociações e a liquidez fragmentada ou escassa.
+Os mercados de predição permitem que os usuários negociem com base no resultado de eventos futuros. Este post examina a implementação arquitetônica e matemática do **Arcade**, uma Prova de Conceito (PoC) de mercado de predição implantada na **Arc Testnet (Circle L1)**. O sistema utiliza um Formador de Mercado de Produto Constante (CPMM) para fornecer liquidez contínua, contratos inteligentes escritos em Solidity, um indexador customizado em Node.js para rastreamento de eventos e uma interface Next.js com tema cyberpunk.
 
-Com o surgimento da rede **Arc L1 Testnet (Circle L1)**, identificamos uma oportunidade de construir uma Prova de Conceito (PoC) de mercado de predição de alta fidelidade (**Arcade**) que resolve esses desafios. O Arcade combina um design cyberpunk responsivo (tema Void Black e Neon Cyan) com um modelo de Formador de Mercado de Produto Constante (CPMM) para fornecer liquidez automatizada e contínua para cotas de eventos reais.
-
-![Interface do Arcade Prediction Market](/images/projects/arcade.png)
+![Interface do Arcade](/images/projects/arcade.png)
 
 ---
 
-## Arquitetura Técnica & Fluxo de Dados
+## Arquitetura do Sistema
 
-O Arcade é composto por três camadas interconectadas projetadas para entregar transações quase instantâneas e liquidez profunda:
+A arquitetura da plataforma foi projetada para lidar com negociações com latência mínima, garantindo que os detalhes de portfólio dos usuários e os preços dos mercados sejam atualizados em tempo real.
 
 ```mermaid
 graph TD
-    User[Usuário Web3] -->|1. Negocia Cotas / Deposita USDC| Frontend[Next.js + Tailwind / GSAP]
-    Frontend -->|2. Transações Web3| Contracts[PredictionMarket.sol / factory]
-    Contracts -->|3. Emite Logs e Eventos| Indexer[Indexer Customizado Node.js]
-    Indexer -->|4. Consultas JSON-RPC de Alta Velocidade| Frontend
+    User[Cliente Web3] -->|Negocia Cotas / Deposita USDC| Frontend[Next.js + Tailwind / GSAP]
+    Frontend -->|Gráficos e Consultas API| Indexer[Indexer de Eventos Node.js]
+    Frontend -->|Executa Transação| Contracts[Contratos Inteligentes Solidity]
+    Contracts -->|Emite Eventos| Indexer
 ```
 
 ---
 
-## 1. Mecânica do Formador de Mercado de Produto Constante (CPMM)
+## 1. Mecânica do Formador de Mercado Automatizado (AMM)
 
-Nos mercados de predição tradicionais, os livros de ofertas (order books) podem resultar em negociações não executadas por falta de contraparte. O Arcade mitiga isso representando os resultados das predições (por exemplo, SIM e NÃO) como cotas de tokens ERC-20 dentro de um pool de liquidez AMM. Utilizamos uma variação do **Formador de Mercado de Produto Constante** (invariante $x \cdot y = k$) onde:
+Nos mercados de predição tradicionais baseados em livro de ofertas, eventos de baixo volume podem sofrer com falta de liquidez e spreads altos. O Arcade resolve isso utilizando um **Formador de Mercado de Produto Constante** ($x \cdot y = k$) para facilitar trocas de cotas contínuas e instantâneas.
 
-*   $x$ representa a quantidade de cotas de **SIM** (YES) no pool.
-*   $y$ representa a quantidade de cotas de **NÃO** (NO) no pool.
+Dentro de cada pool de predição:
+*   $x$ representa a reserva de cotas de **SIM** (YES).
+*   $y$ represents a reserva de cotas de **NÃO** (NO).
 *   $k$ é o produto constante.
 
-Quando um usuário adquire cotas, ele deposita USDC como garantia. O contrato emite quantidades equivalentes de cotas de SIM e NÃO, entrega as cotas do resultado escolhido ao usuário e vende as cotas restantes para o pool de liquidez, mantendo a invariante matemática intacta.
+### Colateralização e Emissão de Cotas
+Todas as posições são totalmente colateralizadas por USDC. Quando um usuário deseja comprar cotas:
+1.  O usuário deposita $1$ USDC no contrato.
+2.  O contrato emite $1$ cota de SIM e $1$ cota de NÃO (respaldadas pelo $1$ USDC).
+3.  Dependendo da predição do usuário, um tipo de cota é devolvido ao usuário e o outro tipo é vendido para o pool de liquidez da AMM para manter a invariante do produto constante.
+
+### Cálculos de Preço
+O preço de mercado de cada resultado representa a probabilidade implícita de o evento ocorrer. O preço de uma cota de SIM é calculado a partir das reservas de ambos os resultados:
 
 <LatexRenderer displayMode>{`\\text{Preço}_{\\text{SIM}} = \\frac{y}{x + y}`}</LatexRenderer>
 
-Isso garante que a probabilidade implícita dos resultados sempre some 1 (ou 100%), gerando um ecossistema matematicamente equilibrado e autoajustável.
+À medida que os usuários compram cotas de SIM, as reservas de SIM do pool diminuem e as reservas de NÃO aumentam, deslocando automaticamente o preço para cima para refletir a nova demanda do mercado.
+
+![Interface de Negociação](/images/projects/arcade/market.png)
 
 ---
 
-## 2. Smart Contracts em Solidity & Padrão Factory
+## 2. Padrão Factory & Contratos em Solidity
 
-Para tornar a criação de novos mercados de predição totalmente descentralizada, sem permissão e padronizada, implementamos o padrão de projeto Factory:
+Para permitir a criação sem permissão de novos mercados de predição, o sistema implementa uma estrutura de contrato Factory. Isso desacopla o registro de implantação da lógica de pools individuais.
 
 ```solidity
 // SPDX-License-Identifier: MIT
@@ -84,48 +92,54 @@ contract MarketFactory {
 }
 ```
 
-Cada contrato `PredictionMarket` implantado custodia os colaterais em USDC, gerencia os saldos dos pools, calcula taxas e derrapagens (slippage) de swaps e distribui os pagamentos aos detentores das cotas vencedoras após a resolução do evento por um oráculo.
+Cada contrato `PredictionMarket` é responsável por:
+*   Garantir cálculos de derrapagem (slippage) e limites de troca.
+*   Custodiar o colateral de USDC de forma segura.
+*   Distribuir os pagamentos aos vencedores após a resolução do mercado pelo proprietário.
+
+![Interface de Criação de Mercado](/images/projects/arcade/create.png)
 
 ---
 
-## 3. Testes de Invariantes com Fuzzing no Foundry
+## 3. Testes de Invariantes via Foundry Fuzzing
 
-Como as contas matemáticas de CPMM lidam com trocas diretas de ativos, pequenos erros de arredondamento poderiam teoricamente ser explorados para drenar fundos dos pools. Para garantir a segurança máxima, criamos uma suíte completa de testes usando a ferramenta **Foundry**.
-
-Além de testes unitários tradicionais, integramos **testes de fuzzing** para testar as invariantes sob condições extremas:
+Como os pools baseados em CPMM dependem de cálculos de divisões e multiplicações matemáticas na máquina virtual da Ethereum (EVM), erros de arredondamento poderiam potencialmente resultar em perda de fundos. Implementamos **testes de fuzzing** no Foundry para validar as invariantes do AMM sob valores arbitrários de transação.
 
 ```solidity
 function testFuzz_CPMM_Invariants(uint256 buyAmount) public {
-    // Restringe os inputs para faixas de valores realistas
+    // Restringe os inputs gerados para faixas realistas de transação
     vm.assume(buyAmount > 100 && buyAmount < 1_000_000 * 10**6);
     
-    // Captura estado anterior
+    // Armazena a invariante k pré-transação
     uint256 initialK = market.x() * market.y();
     
-    // Executa a simulação da compra
+    // Executa a transação simulada
     vm.prank(user);
     market.buyYesShares(buyAmount);
     
-    // Assegura que o produto k final é maior ou igual ao inicial (por arredondamentos)
+    // Valida que o produto constante final não diminuiu
     uint256 finalK = market.x() * market.y();
-    assertGe(finalK, initialK, "Constante k do produto violada!");
+    assertGe(finalK, initialK, "Invariante do produto constante violada!");
 }
 ```
-
-Isso garante que, independentemente do volume de negociação, o pool permaneça financeiramente estável e os usuários nunca possam retirar mais USDC do que possuem direito.
 
 ---
 
 ## 4. Indexação de Eventos em Tempo Real
 
-Para fornecer uma interface com tempo de resposta imediato, o frontend não faz consultas pesadas diretamente nos smart contracts da blockchain. Em vez disso, executamos um **indexador em Node.js** dedicado que:
+Para exibir gráficos interativos de flutuação de preço e a lista de portfólios atualizada, a aplicação utiliza um indexador Node.js personalizado. Fazer consultas diretas na RPC do blockchain para logs históricos é ineficiente.
 
-1.  Se inscreve nos eventos de `MarketCreated` e negociações emitidos pelos nós RPC da Arc L1.
-2.  Persiste esses logs em um banco de dados estruturado.
-3.  Fornece rotas de API rápidas para o frontend renderizar o histórico de volume, liquidez acumulada e gráficos de flutuação de probabilidade instantaneamente.
+O indexador:
+1.  Escuta logs de swap e criação emitidos pelos nós RPC da Arc L1.
+2.  Analisa e armazena os dados em um banco de dados local.
+3.  Fornece rotas de API otimizadas que servem dados históricos de volume e trajetórias de preço para o frontend.
+
+![Interface do Portfólio](/images/projects/arcade/portfolio.png)
 
 ---
 
-## Conclusão
+## Stack de Tecnologias
 
-Combinando a rapidez de confirmação da **Arc L1 (Circle)** com um modelo de **AMM de Produto Constante** e testes automatizados robustos, o Arcade demonstra como as plataformas de mercados de predição modernas podem ser: rápidas, seguras, líquidas e imersivas.
+-   **Smart Contracts:** Solidity, Foundry (Fuzzing / Testes de invariantes).
+-   **Frontend:** Next.js (TypeScript), Framer Motion, GSAP, TailwindCSS.
+-   **Indexer:** Node.js, Esquema personalizado de indexação de eventos.
