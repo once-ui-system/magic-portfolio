@@ -27,29 +27,30 @@ Os mercados de predição permitem que os usuários negociem com base no resulta
 
 A arquitetura da plataforma foi projetada para lidar com negociações com latência mínima, garantindo que os detalhes de portfólio dos usuários e os preços dos mercados sejam atualizados em tempo real.
 
-```mermaid
-graph TD
-    User[Cliente Web3] -->|Negocia Cotas / Deposita USDC| Frontend[Next.js + Tailwind / GSAP]
-    Frontend -->|Gráficos e Consultas API| Indexer[Indexer de Eventos Node.js]
-    Frontend -->|Executa Transação| Contracts[Contratos Inteligentes Solidity]
-    Contracts -->|Emite Eventos| Indexer
+```text
+[Cliente Web3] ──(Negocia Cotas / Deposita USDC)──> [Smart Contracts Solidity]
+       │                                                     │
+(Consultas API)                                        (Emite Eventos)
+       │                                                     │
+       ▼                                                     ▼
+[Next.js Frontend] <──────(JSON-RPC de Alta Velocidade)────── [Node.js Indexer]
 ```
 
 ---
 
 ## 1. Mecânica do Formador de Mercado Automatizado (AMM)
 
-Nos mercados de predição tradicionais baseados em livro de ofertas, eventos de baixo volume podem sofrer com falta de liquidez e spreads altos. O Arcade resolve isso utilizando um **Formador de Mercado de Produto Constante** ($x \cdot y = k$) para facilitar trocas de cotas contínuas e instantâneas.
+Nos mercados de predição tradicionais baseados em livro de ofertas, eventos de baixo volume podem sofrer com falta de liquidez e spreads altos. O Arcade resolve isso utilizando um **Formador de Mercado de Produto Constante** (<LatexRenderer>{`x \\\\cdot y = k`}</LatexRenderer>) para facilitar trocas de cotas contínuas e instantâneas.
 
 Dentro de cada pool de predição:
-*   $x$ representa a reserva de cotas de **SIM** (YES).
-*   $y$ represents a reserva de cotas de **NÃO** (NO).
-*   $k$ é o produto constante.
+*   <LatexRenderer>{`x`}</LatexRenderer> representa a reserva de cotas de **SIM** (YES).
+*   <LatexRenderer>{`y`}</LatexRenderer> representa a reserva de cotas de **NÃO** (NO).
+*   <LatexRenderer>{`k`}</LatexRenderer> é o produto constante.
 
 ### Colateralização e Emissão de Cotas
 Todas as posições são totalmente colateralizadas por USDC. Quando um usuário deseja comprar cotas:
-1.  O usuário deposita $1$ USDC no contrato.
-2.  O contrato emite $1$ cota de SIM e $1$ cota de NÃO (respaldadas pelo $1$ USDC).
+1.  O usuário deposita <LatexRenderer>{`1`}</LatexRenderer> USDC no contrato.
+2.  O contrato emite <LatexRenderer>{`1`}</LatexRenderer> cota de SIM e <LatexRenderer>{`1`}</LatexRenderer> cota de NÃO (respaldadas por <LatexRenderer>{`1`}</LatexRenderer> USDC).
 3.  Dependendo da predição do usuário, um tipo de cota é devolvido ao usuário e o outro tipo é vendido para o pool de liquidez da AMM para manter a invariante do produto constante.
 
 ### Cálculos de Preço

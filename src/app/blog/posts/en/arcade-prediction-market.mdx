@@ -27,29 +27,30 @@ Prediction markets allow users to trade on the outcome of future events. This po
 
 The platform architecture is designed to handle trades with minimal latency while ensuring that user portfolio details and market prices update in real time.
 
-```mermaid
-graph TD
-    User[Web3 Client] -->|Swaps USDC / Trades Shares| Frontend[Next.js + Tailwind / GSAP]
-    Frontend -->|Queries API / Charts| Indexer[Node.js Event Indexer]
-    Frontend -->|Executes Transaction| Contracts[Solidity Smart Contracts]
-    Contracts -->|Emits Events| Indexer
+```text
+[Web3 Client] ──(Swaps USDC / Trades Shares)──> [Solidity Smart Contracts]
+      │                                                   │
+  (Queries API)                                     (Emits Events)
+      │                                                   │
+      ▼                                                   ▼
+[Next.js Frontend] <──────(High-speed JSON-RPC)────── [Node.js Indexer]
 ```
 
 ---
 
 ## 1. Automated Market Maker (AMM) Mechanics
 
-In traditional order-book prediction markets, low-volume events can suffer from illiquidity and wide spreads. Arcade solves this by using a **Constant Product Market Maker** ($x \cdot y = k$) to facilitate continuous, instant share swaps.
+In traditional order-book prediction markets, low-volume events can suffer from illiquidity and wide spreads. Arcade solves this by using a **Constant Product Market Maker** (<LatexRenderer>{`x \\\\cdot y = k`}</LatexRenderer>) to facilitate continuous, instant share swaps.
 
 Inside each prediction pool:
-*   $x$ represents the reserve of **YES** shares.
-*   $y$ represents the reserve of **NO** shares.
-*   $k$ is the constant product.
+*   <LatexRenderer>{`x`}</LatexRenderer> represents the reserve of **YES** shares.
+*   <LatexRenderer>{`y`}</LatexRenderer> represents the reserve of **NO** shares.
+*   <LatexRenderer>{`k`}</LatexRenderer> is the constant product.
 
 ### Collateralization and Share Minting
 All bets are fully collateralized by USDC. When a user wishes to buy shares:
-1.  The user deposits $1$ USDC to the contract.
-2.  The contract mints $1$ YES share and $1$ NO share (backed by the $1$ USDC).
+1.  The user deposits <LatexRenderer>{`1`}</LatexRenderer> USDC to the contract.
+2.  The contract mints <LatexRenderer>{`1`}</LatexRenderer> YES share and <LatexRenderer>{`1`}</LatexRenderer> NO share (backed by <LatexRenderer>{`1`}</LatexRenderer> USDC).
 3.  Depending on the user's prediction, one type of share is returned to the user, and the other is swapped into the AMM liquidity pool to maintain the constant product invariant.
 
 ### Pricing Calculations
