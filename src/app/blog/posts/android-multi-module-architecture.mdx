@@ -1,0 +1,199 @@
+---
+title: "Android System Design: Multi-Module Architecture — Building Android Apps That Scale"
+publishedAt: "2024-05-20"
+summary: "As Android applications grow, so does their complexity. What starts as a simple app with a few screens often evolves into hundreds of features, dozens of developers, and millions of lines of code. Without proper modularization, build times become painfully slow, merge conflicts increase, testing becomes difficult, and maintaining the codebase turns into a nightmare."
+images:
+  - "/images/blog/android-multi-module/cover.png"
+---
+
+# Android System Design: Multi-Module Architecture — Building Android Apps That Scale
+
+As Android applications grow, so does their complexity. What starts as a simple app with a few screens often evolves into hundreds of features, dozens of developers, and millions of lines of code. Without proper modularization, build times become painfully slow, merge conflicts increase, testing becomes difficult, and maintaining the codebase turns into a nightmare.
+
+This is where Multi-Module Architecture comes in.
+
+In this article, we’ll explore what multi-module architecture is, why modern Android teams use it, different module types, dependency rules, common architectures, best practices, pitfalls, and how companies like Google, Airbnb, and Netflix organize large Android applications.
+
+## What is Multi-Module Architecture?
+
+A module is an independent unit of code that can be compiled, tested, and reused separately.
+
+Instead of placing everything inside a single app module:
+
+```text
+app/
+    activities/
+    fragments/
+    viewmodels/
+    repository/
+    database/
+    network/
+    utils/
+```
+
+we divide the application into multiple independent modules.
+
+**Example:**
+- `app`
+- `core-ui`
+- `core-network`
+- `core-database`
+- `core-model`
+- `core-common`
+- `feature-home`
+- `feature-profile`
+- `feature-search`
+- `feature-payment`
+- `feature-settings`
+
+Each module has a single responsibility. This follows one of the most important software engineering principles: **High cohesion and low coupling.**
+
+## Why Multi-Module?
+
+Large Android projects suffer from several problems.
+
+### 1. Slow Build Times
+
+In a monolithic project:
+`Small change -> Entire app recompiles`
+
+Even changing a single utility class can trigger recompilation of thousands of files.
+
+With modules:
+`Changed module -> Only affected modules compile`
+
+This significantly reduces incremental build times.
+
+### 2. Better Team Collaboration
+
+Imagine 30 Android developers working together.
+
+**Single module:** Everyone edits `app/`. 
+Result: merge conflicts, difficult code ownership, accidental changes.
+
+**Multi-module:** 
+- Home Team -> `feature-home`
+- Payments Team -> `feature-payment`
+- Profile Team -> `feature-profile`
+
+Each team owns its module.
+
+### 3. Better Encapsulation
+
+Modules expose only their public APIs. Internal implementation stays hidden.
+
+**Feature A**
+- *Public API*: `LoadProfile()`
+- *Private*: Repository, Database, Network, Cache
+
+Other modules cannot access private implementation.
+
+### 4. Reusability
+
+Core modules can be reused by multiple features.
+
+Example:
+`feature-home`, `feature-payment`, `feature-profile` all point to `core-network`.
+Only one networking implementation exists.
+
+### 5. Faster Testing
+
+Testing only one module is much faster than testing the entire application.
+```bash
+./gradlew :feature-payment:test
+```
+instead of
+```bash
+./gradlew test
+```
+
+## Types of Modules
+
+Let’s understand each module.
+
+### 1. App Module
+This is the application’s entry point.
+**Responsibilities:** Application class, Navigation, Dependency Injection initialization, App configuration, Launch Activity. It should contain almost no business logic.
+
+### 2. Feature Modules
+Each feature gets its own module.
+**Advantages:** isolated development, isolated testing, independent ownership.
+
+### 3. Core Modules
+Shared by every feature (e.g., `core-network`, `core-ui`, `core-model`).
+
+### 4. Data Module
+Contains repositories, local database, remote APIs, caching.
+
+### 5. Domain Module
+Contains business rules (UseCases). The domain should never know Android exists. No Context, Activity, Fragment, Retrofit, or Room.
+
+## Example Dependency Flow
+
+`UI -> ViewModel -> Use Case -> Repository -> Data Source -> Network`
+Every layer has one responsibility.
+
+## Dependency Direction
+
+A common mistake is allowing every module to depend on every other module, causing circular dependencies.
+Instead: `Feature -> Domain -> Data -> Core`
+Dependencies always flow downward.
+
+## Feature-to-Feature Communication
+
+Features should not directly depend on each other.
+Instead: `Home -> Navigator Interface -> App Module -> Profile`
+Navigation should happen through contracts or navigation interfaces.
+
+## API vs Implementation Dependency
+
+Gradle provides two important keywords.
+
+- `implementation`: Hidden dependency. Consumers cannot access internal classes. Preferred option.
+- `api`: Exposes dependency transitively. Every module depending on yours also receives this dependency. Use sparingly.
+
+## Dynamic Feature Modules
+
+Google Play supports downloading features on demand.
+Benefits: smaller APK, faster installation, reduced storage.
+Ideal for: rarely used features, premium features, country-specific functionality.
+
+## Build Performance
+
+Suppose a project has 120 modules. You modify `core-ui`. Gradle recompiles `core-ui` and dependent modules instead of rebuilding all 120 modules. This is why modularization dramatically improves productivity.
+
+## Dependency Injection in Multi-Module
+
+Each feature owns its dependencies (e.g., `HomeModule`, `PaymentModule`). Shared objects live in core modules. The app module assembles everything.
+
+## Testing Benefits
+
+Unit tests remain isolated. Mock implementations are easier to provide. CI pipelines can even execute tests module by module.
+
+## Build Variants
+
+Modules also simplify product flavors (Free, Paid, Enterprise). Different modules can be included for each variant.
+
+## Common Mistakes
+
+- **Creating Too Many Modules:** Not every package deserves a module.
+- **Circular Dependencies:** Make builds fragile and tightly couple features.
+- **Overusing api:** Exposes every dependency transitively.
+- **Putting Everything in core:** The core module should contain only truly shared functionality.
+
+## Best Practices
+
+- Design modules around business features, not technical layers.
+- Minimize dependencies between modules.
+- Prefer `implementation` over `api`.
+- Use interfaces to communicate across modules.
+- Place business logic in the domain layer.
+- Continuously monitor build times.
+
+## When Should You Modularize?
+
+A single-module application is often sufficient for prototypes, small apps, or solo developers. Consider multiple modules when multiple developers are involved, the codebase grows, build times bottleneck, or features need independent testing.
+
+## Final Thoughts
+
+Multi-module architecture is about creating clear boundaries, improving maintainability, enabling parallel development, and keeping large Android applications scalable. The goal is not to have the most modules — it’s to have the right ones.

@@ -2,49 +2,28 @@ import { About, Blog, Gallery, Home, Newsletter, Person, Social, Work } from "@/
 import { Line, Row, Text } from "@once-ui-system/core";
 
 const person: Person = {
-  firstName: "Selene",
-  lastName: "Yu",
-  name: `Selene Yu`,
-  role: "Design Engineer",
-  avatar: "/images/avatar.jpg",
-  email: "example@gmail.com",
-  location: "Asia/Jakarta", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
-  languages: ["English", "Bahasa"], // optional: Leave the array empty if you don't want to display languages
-  locale: "en", // BCP 47 language tag for the HTML lang attribute, e.g., 'en', 'ja', 'zh-TW'
+  firstName: "Kamalakannan",
+  lastName: "B",
+  name: `Kamalakannan B`,
+  role: "Senior Android Developer",
+  avatar: "/images/avatar_final.jpg",
+  email: "srikannan101@gmail.com",
+  location: "Asia/Kolkata", 
+  languages: ["English", "Telugu", "Tamil"], 
+  locale: "en", 
 };
 
 const newsletter: Newsletter = {
-  display: true,
+  display: false,
   title: <>Subscribe to {person.firstName}'s Newsletter</>,
-  description: <>My weekly newsletter about creativity and engineering</>,
+  description: <>My weekly newsletter about Android development</>,
 };
 
 const social: Social = [
-  // Links are automatically displayed.
-  // Import new icons in /once-ui/icons.ts
-  // Set essentials: true for links you want to show on the about page
-  {
-    name: "GitHub",
-    icon: "github",
-    link: "https://github.com/once-ui-system",
-    essential: true,
-  },
   {
     name: "LinkedIn",
     icon: "linkedin",
-    link: "https://www.linkedin.com/company/once-ui/",
-    essential: true,
-  },
-  {
-    name: "Instagram",
-    icon: "instagram",
-    link: "https://www.instagram.com/once_ui/",
-    essential: false,
-  },
-  {
-    name: "Threads",
-    icon: "threads",
-    link: "https://www.threads.com/@once_ui",
+    link: "https://www.linkedin.com/in/kamalakannan-b-2ab92b75/",
     essential: true,
   },
   {
@@ -61,24 +40,23 @@ const home: Home = {
   label: "Home",
   title: `${person.name}'s Portfolio`,
   description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Building bridges between design and code</>,
+  headline: <>Delivering production-grade Android apps at scale</>,
   featured: {
     display: true,
     title: (
       <Row gap="12" vertical="center">
-        <strong className="ml-4">Once UI</strong>{" "}
+        <strong className="ml-4">Retail Banking App</strong>{" "}
         <Line background="brand-alpha-strong" vert height="20" />
         <Text marginRight="4" onBackground="brand-medium">
           Featured work
         </Text>
       </Row>
     ),
-    href: "/work/building-once-ui-a-customizable-design-system",
+    href: "/work/retail-banking-amsterdam",
   },
   subline: (
     <>
-      I'm {person.firstName}, a {person.role.toLowerCase()} at{" "}
-      <Text as="span" size="xl" weight="strong">ONCE UI</Text>, where I craft intuitive <br /> user experiences. After hours, I build my own projects.
+      I'm {person.firstName}, a {person.role.toLowerCase()} with 11 years of experience specialising in fintech, banking applications, IoT, and video streaming.
     </>
   ),
 };
@@ -87,7 +65,7 @@ const about: About = {
   path: "/about",
   label: "About",
   title: `About – ${person.name}`,
-  description: `Meet ${person.name}, ${person.role} from ${person.location}`,
+  description: `Meet ${person.name}, ${person.role}`,
   tableOfContent: {
     display: true,
     subItems: false,
@@ -96,7 +74,7 @@ const about: About = {
     display: true,
   },
   calendar: {
-    display: true,
+    display: false,
     link: "https://cal.com",
   },
   intro: {
@@ -104,131 +82,129 @@ const about: About = {
     title: "Introduction",
     description: (
       <>
-        {person.firstName} is a {person.location.split("/")[1]?.replace("_", " ")}-based {person.role.toLowerCase()} with a passion for transforming complex challenges
-        into simple, elegant design solutions. Their work spans digital interfaces, interactive
-        experiences, and the convergence of design and technology.
+        {person.firstName} is a Hyderabad-based {person.role.toLowerCase()} with 11 years of experience specialising in fintech, banking applications, IoT, and video streaming. He has a proven track record of delivering production-grade apps at scale, working with major clients like Backbase, DBS Bank, and Schneider Electrics.
       </>
     ),
   },
   work: {
-    display: true, // set to false to hide this section
+    display: true,
     title: "Work Experience",
     experiences: [
       {
-        company: "FLY",
-        timeframe: "2022 - Present",
-        role: "Senior Design Engineer",
+        company: "Backbase",
+        location: "Hyderabad",
+        timeframe: "May 2025 - Present",
+        role: "Senior Android Developer",
         achievements: [
-          <>
-            Redesigned the UI/UX for the FLY platform, resulting in a 20% increase in user
-            engagement and 30% faster load times.
-          </>,
-          <>
-            Spearheaded the integration of AI tools into design workflows, enabling designers to
-            iterate 50% faster.
-          </>,
+          <>Developed and maintained core modules — Onboarding, Cards, Savings, and Insurance — for CIH Bank's retail banking app built on the Backbase platform, serving over 2 million users in Morocco.</>,
+          <>Architected features using Kotlin, MVVM, and Clean Architecture with KOIN for dependency injection and Jetpack components including ViewModel and Coroutines.</>,
+          <>Improved app stability by actively working on crash rate reduction and ANR fixes.</>,
+          <>Leveraged AI-assisted development tools (GitHub Copilot, Cursor) to accelerate feature delivery.</>,
         ],
-        images: [
-          // optional: leave the array empty if you don't want to display images
-          {
-            src: "/images/projects/project-01/cover-01.jpg",
-            alt: "Once UI Project",
-            width: 16,
-            height: 9,
-          },
-        ],
+        images: [],
       },
       {
-        company: "Creativ3",
-        timeframe: "2018 - 2022",
-        role: "Lead Designer",
+        company: "DBS Bank",
+        location: "Singapore",
+        timeframe: "August 2022 - April 2025",
+        role: "Senior Android Developer",
         achievements: [
-          <>
-            Developed a design system that unified the brand across multiple platforms, improving
-            design consistency by 40%.
-          </>,
-          <>
-            Led a cross-functional team to launch a new product line, contributing to a 15% increase
-            in overall company revenue.
-          </>,
+          <>Contributed to the DBS Digibank app (1M+ downloads) serving users across Singapore and Indonesia.</>,
+          <>Implemented Jetpack components — ViewModel, Dagger Hilt and Coroutines — replacing legacy RxJava patterns.</>,
+          <>Led the Java to Kotlin migration for the Bank & Earn module and implemented multi-module architecture.</>,
+          <>Delivered a measurable performance improvement by reducing screen load time from 11 seconds to 7 seconds for a key user flow.</>,
+        ],
+        images: [],
+      },
+      {
+        company: "Schneider Electrics Pvt Ltd",
+        location: "Bangalore",
+        timeframe: "April 2019 - July 2022",
+        role: "Senior Android Developer",
+        achievements: [
+          <>Involved in the designing the Architecture of the App and developed an app from scratch with MVVM architecture pattern & Jetpack components.</>,
+          <>Worked on developing BLE sdk for android that communicate with the Schneider IOT devices.</>,
+          <>Integrated Firebase Analytics, authentication, notifications in the App.</>,
+        ],
+        images: [],
+      },
+      {
+        company: "Ray IOT Solutions",
+        location: "Bangalore",
+        timeframe: "Jan 2018 - Apr 2019",
+        role: "Senior Android Developer",
+        achievements: [
+          <>Single handedly developed an app from scratch and released the app in production.</>,
+          <>Collaborated with UX designers and backend engineers throughout the project.</>,
+        ],
+        images: [],
+      },
+      {
+        company: "VVDN Tech Pvt Ltd",
+        location: "Gurgaon",
+        timeframe: "June 2015 - Aug 2017",
+        role: "Android Developer",
+        achievements: [
+          <>Built Android application with Java language & XML for all the projects.</>,
+          <>Worked on Video Streaming & Wi-Fi Bluetooth Applications that has IOT device communication.</>,
         ],
         images: [],
       },
     ],
   },
   studies: {
-    display: true, // set to false to hide this section
+    display: true, 
     title: "Studies",
     institutions: [
       {
-        name: "University of Jakarta",
-        description: <>Studied software engineering.</>,
-      },
-      {
-        name: "Build the Future",
-        description: <>Studied online marketing and personal branding.</>,
+        name: "Sri Shakthi Institute of Engineering & technology",
+        description: <>BE - CSE (2011 - 2015), Coimbatore</>,
       },
     ],
   },
   technical: {
-    display: true, // set to false to hide this section
+    display: true, 
     title: "Technical skills",
     skills: [
       {
-        title: "Figma",
+        title: "Android Development",
         description: (
-          <>Able to prototype in Figma with Once UI with unnatural speed.</>
+          <>Extensive experience in building Android applications using modern architectures and tools.</>
         ),
         tags: [
-          {
-            name: "Figma",
-            icon: "figma",
-          },
+          { name: "Kotlin", icon: "dev" },
+          { name: "Java", icon: "dev" },
+          { name: "Compose", icon: "dev" },
+          { name: "MVVM", icon: "dev" },
         ],
-        // optional: leave the array empty if you don't want to display images
-        images: [
-          {
-            src: "/images/projects/project-01/cover-02.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-          {
-            src: "/images/projects/project-01/cover-03.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-        ],
+        images: [],
       },
       {
-        title: "Next.js",
+        title: "Libraries & Tools",
         description: (
-          <>Building next gen apps with Next.js + Once UI + Supabase.</>
+          <>Proficient with various Android libraries for networking, DI, and asynchronous programming.</>
         ),
         tags: [
-          {
-            name: "JavaScript",
-            icon: "javascript",
-          },
-          {
-            name: "Next.js",
-            icon: "nextjs",
-          },
-          {
-            name: "Supabase",
-            icon: "supabase",
-          },
+          { name: "Coroutines", icon: "dev" },
+          { name: "Dagger-Hilt", icon: "dev" },
+          { name: "Koin", icon: "dev" },
+          { name: "Retrofit", icon: "dev" },
+          { name: "RoomDB", icon: "dev" },
         ],
-        // optional: leave the array empty if you don't want to display images
-        images: [
-          {
-            src: "/images/projects/project-01/cover-04.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
+        images: [],
+      },
+      {
+        title: "IoT & Video Streaming",
+        description: (
+          <>Extensive experience integrating IoT devices via BLE/Bluetooth and building video streaming capabilities in Android.</>
+        ),
+        tags: [
+          { name: "IoT", icon: "dev" },
+          { name: "BLE / Bluetooth", icon: "dev" },
+          { name: "Wi-Fi", icon: "dev" },
+          { name: "Media Player", icon: "dev" },
         ],
+        images: [],
       },
     ],
   },
@@ -237,19 +213,15 @@ const about: About = {
 const blog: Blog = {
   path: "/blog",
   label: "Blog",
-  title: "Writing about design and tech...",
+  title: "Writing about Android and tech...",
   description: `Read what ${person.name} has been up to recently`,
-  // Create new blog posts by adding a new .mdx file to app/blog/posts
-  // All posts will be listed on the /blog route
 };
 
 const work: Work = {
   path: "/work",
   label: "Work",
   title: `Projects – ${person.name}`,
-  description: `Design and dev projects by ${person.name}`,
-  // Create new project pages by adding a new .mdx file to app/blog/posts
-  // All projects will be listed on the /home and /work routes
+  description: `Android projects by ${person.name}`,
 };
 
 const gallery: Gallery = {
@@ -257,8 +229,6 @@ const gallery: Gallery = {
   label: "Gallery",
   title: `Photo gallery – ${person.name}`,
   description: `A photo collection by ${person.name}`,
-  // Images by https://lorant.one
-  // These are placeholder images, replace with your own
   images: [
     {
       src: "/images/gallery/horizontal-1.jpg",
@@ -267,36 +237,6 @@ const gallery: Gallery = {
     },
     {
       src: "/images/gallery/vertical-4.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
-    {
-      src: "/images/gallery/horizontal-3.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/vertical-1.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
-    {
-      src: "/images/gallery/vertical-2.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
-    {
-      src: "/images/gallery/horizontal-2.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/horizontal-4.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/vertical-3.jpg",
       alt: "image",
       orientation: "vertical",
     },

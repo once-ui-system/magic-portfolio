@@ -8,6 +8,10 @@ const withMDX = mdx({
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   pageExtensions: ["ts", "tsx", "md", "mdx"],
+  devIndicators: {
+    buildActivity: false,
+    appIsrStatus: false,
+  },
   transpilePackages: ["next-mdx-remote"],
   images: {
     remotePatterns: [

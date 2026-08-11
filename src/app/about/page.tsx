@@ -215,7 +215,7 @@ export default function About() {
                         {experience.company}
                       </Text>
                       <Text variant="heading-default-xs" onBackground="neutral-weak">
-                        {experience.timeframe}
+                        {experience.location ? `${experience.location} • ` : ""}{experience.timeframe}
                       </Text>
                     </Row>
                     <Text variant="body-default-s" onBackground="brand-weak" marginBottom="m">
