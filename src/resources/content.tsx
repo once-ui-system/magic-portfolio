@@ -42,25 +42,38 @@ const homeEn: Home = {
   image: "https://opengraph.b-cdn.net/production/images/c53b648f-c423-4882-b67f-b10117ea61e5.jpg?token=-m4wfD7XKjkhxfcKZRbRrPyQYbCEX3VdsTSShF51NbY&height=630&width=1200&expires=33295179384",
   label: "Home",
   title: `${personEn.name}`,
-  description: `${personEn.name}`,
-  headline: <>Just beyond human </>,
+  description:
+    "Mindsend Datatech — consulting for wallets, indexers, and grant-ready infrastructure on Solana, Ethereum, Cosmos, and Sui.",
+  headline: <>Ship wallets, indexers, and grant-ready infrastructure on living chains.</>,
   featured: {
     display: false,
     title: <>Recent project: <strong className="ml-4">Kadena Cabinet</strong></>,
     href: "/work/cabinet",
   },
-  subline: <>Transforming complex challenges into accessible, seamless solutions for frontier technologies{" "}</>,
+  subline: (
+    <>
+      Consulting for Solana, Ethereum/L2s, Cosmos, and Sui. Past Kadena work is
+      proof we ship, not the product. Book a slot or email.
+    </>
+  ),
 };
 
 const homePt: Home = {
   ...homeEn,
-  headline: <>Além dos limites humanos</>,
+  description:
+    "Mindsend Datatech — consultoria para wallets, indexadores e infraestrutura pronta para grants em Solana, Ethereum, Cosmos e Sui.",
+  headline: <>Entregue wallets, indexadores e infraestrutura pronta para grants em chains vivas.</>,
   featured: {
     display: false,
     title: <>Projeto recente: <strong className="ml-4">Kadena Cabinet</strong></>,
     href: "/work/cabinet",
   },
-  subline: <>Transformando desafios complexos em soluções acessíveis e eficientes para tecnologias de fronteira{" "}</>,
+  subline: (
+    <>
+      Consultoria para Solana, Ethereum/L2s, Cosmos e Sui. O trabalho na Kadena é
+      prova de que entregamos, não o produto. Agende um horário ou escreva.
+    </>
+  ),
 };
 
 const aboutEn: About = {
@@ -77,10 +90,18 @@ const aboutEn: About = {
     description: (
       <div style={{ display: 'flex', flexDirection: 'column', gap: '32' }}>
         <Text variant="body-default-l" onBackground="neutral-strong" style={{ fontSize: '1.5rem', lineHeight: '1.6', margin: 0 }}>
-          We are an applied engineering and data science team focused on building robust, scalable software and AI integrations for modern systems. With deep technical foundations across infrastructure, backend development, and data architecture, we turn complex challenges into streamlined, production-ready solutions.
+          We are a Web3-focused development team that designs, builds, and
+          maintains robust blockchain solutions. From infrastructure to
+          user-facing applications, we have helped shape core components of the
+          Kadena ecosystem—contributing to some of its most impactful and widely
+          used tools. That Kadena work is prior art and a case study: proof we
+          ship, not our current offering.
         </Text>
         <Text variant="body-default-l" onBackground="neutral-strong" style={{ fontSize: '1.5rem', lineHeight: '1.6', margin: 0 }}>
-          Our objective is to deliver practical, secure digital infrastructure that scales. Whether designing data pipelines, developing applications, or deploying machine learning models, our focus remains on engineering excellence and sustainable software architecture.
+          Our mission is simple: to deliver practical, secure, and scalable
+          products that meet the needs of modern decentralized systems,
+          transforming complex technologies into accessible, seamless solutions
+          for the decentralized world.
         </Text>
       </div>
     ),
@@ -149,10 +170,16 @@ const aboutPt: About = {
     description: (
       <div style={{ display: 'flex', flexDirection: 'column', gap: '32' }}>
         <Text variant="body-default-l" onBackground="neutral-strong" style={{ fontSize: '1.5rem', lineHeight: '1.6', margin: 0 }}>
-          Somos uma equipe de engenharia aplicada e ciência de dados focada na construção de software escalável e robusto, e integrações de IA para sistemas modernos. Com profundas bases técnicas em infraestrutura, desenvolvimento backend e arquitetura de dados, transformamos desafios complexos em soluções eficientes e prontas para produção.
+          Somos uma equipe de desenvolvimento focada em Web3 que projeta, constrói
+          e mantém soluções blockchain robustas. Da infraestrutura às aplicações
+          para o usuário, ajudamos a formar componentes centrais do ecossistema
+          Kadena — contribuição que é prior art e estudo de caso: prova de que
+          entregamos, não o produto atual.
         </Text>
         <Text variant="body-default-l" onBackground="neutral-strong" style={{ fontSize: '1.5rem', lineHeight: '1.6', margin: 0 }}>
-          Nosso objetivo é fornecer infraestrutura digital prática e segura que seja escalável. Seja projetando pipelines de dados, desenvolvendo aplicativos ou implantando modelos de aprendizado de máquina, nosso foco permanece na excelência em engenharia e na arquitetura de software sustentável.
+          Nossa missão é simples: entregar produtos práticos, seguros e escaláveis
+          para sistemas descentralizados modernos, transformando tecnologias
+          complexas em soluções acessíveis para o mundo descentralizado.
         </Text>
       </div>
     ),

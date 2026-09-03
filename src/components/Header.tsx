@@ -51,6 +51,7 @@ export const Header = () => {
   // Strip locale from pathname for 'selected' matching
   const strippedPathname = pathname.replace(`/${locale}`, "") || "/";
   const getLocalizedPath = (path: string) => path === "/" ? `/${locale}` : `/${locale}${path}`;
+  const bookLabel = locale === "pt-BR" ? "Agendar" : "Book";
 
   return (
     <>
@@ -154,6 +155,21 @@ export const Header = () => {
                   </Row>
                 </>
               )}
+              <Row s={{ hide: true }}>
+                <ToggleButton
+                  prefixIcon="calendar"
+                  href={about.calendar.link}
+                  label={bookLabel}
+                  selected={false}
+                />
+              </Row>
+              <Row hide s={{ hide: false }}>
+                <ToggleButton
+                  prefixIcon="calendar"
+                  href={about.calendar.link}
+                  selected={false}
+                />
+              </Row>
               {routes["/gallery"] && (
                 <>
                   <Row s={{ hide: true }}>

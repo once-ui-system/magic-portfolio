@@ -5,24 +5,25 @@ import {
   Heading,
   Text,
   Button,
-  Avatar
+  Avatar,
+  Flex
 } from "@once-ui-system/core";
-export function Hero({ dict }: { dict: any }) {
+
+export function Hero({ dict, locale = "en" }: { dict: any; locale?: string }) {
   const { home, about, person } = dict;
+  const bookLabel = locale === "pt-BR" ? "Agende um horário" : "Book a slot";
+
   return (
     <section
       style={{
         width: '100%',
-        height: '100vh',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
         position: 'relative',
         zIndex: 1,
-        marginTop: '-80px',
-        padding: 0,
-        margin: '-80px 0 0 0'
+        padding: '80px 24px 32px',
       }}
     >
       <RevealFx
@@ -47,12 +48,11 @@ export function Hero({ dict }: { dict: any }) {
           </div>
           <Heading
             wrap="balance"
-            variant="display-strong-xl"
+            variant="display-strong-l"
             style={{
               color: "var(--neutral-on-background-strong)",
               margin: 0,
-              fontSize: "4rem",
-              maxWidth: "100%",
+              maxWidth: "18ch",
               lineHeight: "1.2",
               textShadow: "0 0 40px var(--brand-alpha-medium)",
               whiteSpace: "normal",
@@ -64,11 +64,11 @@ export function Hero({ dict }: { dict: any }) {
 
           <Text
             wrap="balance"
-            variant="heading-default-xl"
+            variant="heading-default-l"
             onBackground="neutral-weak"
             style={{
               margin: 0,
-              maxWidth: "800px"
+              maxWidth: "720px"
             }}
           >
             {home.subline}
@@ -77,27 +77,46 @@ export function Hero({ dict }: { dict: any }) {
       </RevealFx>
 
       <RevealFx
-        paddingTop="48"
+        paddingTop="32"
         delay={0.4}
         horizontal="center"
       >
-        <Button
-          id="about"
-          data-border="rounded"
-          href={about.path}
-          variant="secondary"
-          size="l"
-          suffixIcon="arrowRight"
-          className="hero-cta-button"
-          style={{
-            border: '2px solid var(--hero-button-color, #39ff64)',
-            color: 'var(--hero-button-color, #39ff64)',
-            background: 'transparent',
-            transition: 'all 0.3s ease'
-          }}
-        >
-          About Us
-        </Button>
+        <Flex gap="16" horizontal="center" wrap>
+          <Button
+            id="book"
+            data-border="rounded"
+            href={about.calendar.link}
+            variant="secondary"
+            size="l"
+            prefixIcon="calendar"
+            className="hero-cta-button"
+            style={{
+              border: '2px solid var(--hero-button-color, #39ff64)',
+              color: 'var(--hero-button-color, #39ff64)',
+              background: 'transparent',
+              transition: 'all 0.3s ease'
+            }}
+          >
+            {bookLabel}
+          </Button>
+          <Button
+            id="email"
+            data-border="rounded"
+            href={`mailto:${person.email}`}
+            variant="secondary"
+            size="l"
+            prefixIcon="email"
+            className="hero-cta-button"
+            style={{
+              border: '2px solid var(--hero-button-color, #39ff64)',
+              color: 'var(--hero-button-color, #39ff64)',
+              background: 'transparent',
+              transition: 'all 0.3s ease'
+            }}
+          >
+            {person.email}
+          </Button>
+        </Flex>
       </RevealFx>
     </section>
   );

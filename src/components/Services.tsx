@@ -1,68 +1,81 @@
 "use client";
 
-import { Flex, Heading, Text, Grid, Icon } from "@once-ui-system/core";
+import { Flex, Heading, Text, Grid, Button } from "@once-ui-system/core";
 
-const servicesList = [
-    {
-        title: "Blockchain Development",
-        description: "End-to-end dApp conceptualization, smart contract engineering, and secure on-chain deployment.",
-        icon: "code"
-    },
-    {
-        title: "Smart Contracts",
-        description: "Robust, audited contracts in Pact and Solidity, ensuring safety and efficiency for DeFi and NFT protocols.",
-        icon: "file"
-    },
-    {
-        title: "Web3 Infrastructure",
-        description: "Scalable node management, indexing solutions, and high-performance backend architecture.",
-        icon: "server"
-    }
-];
+const copy = {
+  en: {
+    heading: "What we ship",
+    cards: [
+      {
+        title: "Wallet / snap-style integrations",
+        description:
+          "Connect, sign, and account flows for dApps on living chains. Packaged for grants and retainers, not a price list.",
+      },
+      {
+        title: "DEX / on-chain indexer standup",
+        description:
+          "Self-hostable ingest, decode, TWAP and liquidity APIs. Same packaging: grants first, consulting to deliver.",
+      },
+    ],
+    book: "Book a slot",
+  },
+  "pt-BR": {
+    heading: "O que entregamos",
+    cards: [
+      {
+        title: "Integrações de wallet / estilo snap",
+        description:
+          "Fluxos de conexão, assinatura e contas para dApps em chains vivas. Empacotado para grants e retainers, não uma tabela de preços.",
+      },
+      {
+        title: "Standup de indexer DEX / on-chain",
+        description:
+          "Ingestão auto-hospedável, decode, TWAP e APIs de liquidez. Mesmo empacotamento: grants primeiro, consultoria para entregar.",
+      },
+    ],
+    book: "Agende um horário",
+  },
+};
 
-export const Services = () => {
-    return (
-        <Flex
-            fillWidth paddingTop="104" paddingX="l"
-            direction="column" horizontal="center" gap="l">
+export const Services = ({ dict, locale = "en" }: { dict: any; locale?: string }) => {
+  const bookHref = dict.about.calendar.link;
+  const emailHref = "mailto:" + dict.person.email;
+  const t = locale === "pt-BR" ? copy["pt-BR"] : copy.en;
 
-            <Heading as="h2" variant="display-default-s" marginBottom="m">
-                Our Expertise
+  return (
+    <Flex fillWidth paddingTop="64" paddingX="l" direction="column" horizontal="center" gap="l">
+      <Heading as="h2" variant="display-default-s" marginBottom="m">
+        {t.heading}
+      </Heading>
+      <Grid columns={2} m={{ columns: 1 }} s={{ columns: 1 }} fillWidth gap="24">
+        {t.cards.map((card) => (
+          <Flex
+            key={card.title}
+            fillWidth
+            padding="l"
+            border="neutral-medium"
+            radius="l"
+            direction="column"
+            gap="m"
+            background="surface"
+          >
+            <Heading as="h3" variant="display-default-xs">
+              {card.title}
             </Heading>
-
-            <Grid
-                columns={3}
-                m={{ columns: 1 }}
-                s={{ columns: 1 }}
-                fillWidth
-                gap="24">
-                {servicesList.map((service, index) => (
-                    <Flex
-                        key={index}
-                        fillWidth
-                        padding="l"
-                        border="neutral-medium"
-                        radius="l"
-                        direction="column"
-                        gap="s"
-                        background="surface">
-                        <Flex
-                            width="48" height="48"
-                            horizontal="center" vertical="center"
-                            radius="m"
-                            background="neutral-weak">
-                            {/* Placeholder for icon, assuming 'Icon' component handles string names or we need to map them */}
-                            <Icon name={service.icon} size="m" />
-                        </Flex>
-                        <Heading as="h3" variant="display-default-xs">
-                            {service.title}
-                        </Heading>
-                        <Text variant="body-default-s" onBackground="neutral-weak">
-                            {service.description}
-                        </Text>
-                    </Flex>
-                ))}
-            </Grid>
-        </Flex>
-    );
+            <Text variant="body-default-s" onBackground="neutral-weak">
+              {card.description}
+            </Text>
+            <Flex gap="8" wrap paddingTop="8">
+              <Button href={bookHref} variant="primary" size="s" prefixIcon="calendar">
+                {t.book}
+              </Button>
+              <Button href={emailHref} variant="secondary" size="s" prefixIcon="email">
+                {dict.person.email}
+              </Button>
+            </Flex>
+          </Flex>
+        ))}
+      </Grid>
+    </Flex>
+  );
 };
