@@ -12,7 +12,7 @@ export {
 
 export {
   display,
-  mailchimp,
+  newsletterForm,
   routes,
   protectedRoutes,
   baseURL,

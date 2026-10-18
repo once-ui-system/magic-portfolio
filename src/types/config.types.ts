@@ -119,10 +119,10 @@ export type EffectsConfig = {
 };
 
 /**
- * Mailchimp configuration for newsletter forms.
+ * Newsletter signup form, backed by an Aveiro embed form.
  */
-export type MailchimpConfig = {
-  action: string;
+export type NewsletterFormConfig = {
+  aveiroEmbedId: string;
   effects: EffectsConfig;
 };
 
@@ -169,7 +169,7 @@ export type SocialSharingConfig = {
  */
 export type OnceUIConfig = {
   display: DisplayConfig;
-  mailchimp: MailchimpConfig;
+  newsletterForm: NewsletterFormConfig;
   routes: RoutesConfig;
   protectedRoutes: ProtectedRoutesConfig;
   baseURL: string;

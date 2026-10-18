@@ -68,6 +68,10 @@ Docs available at: [docs.once-ui.com](https://docs.once-ui.com/docs/magic-portfo
 - Set up password protection for URLs
 - Write math in posts with LaTeX between `$$` signs, rendered with KaTeX
 
+### Newsletter
+- Signups from the home page and blog go straight into your [Aveiro](https://www.aveiro.app) audience, where you also write and send the newsletter
+- Create an embed form in Aveiro under Audience → Embed and paste its public ID as `aveiroEmbedId` in `src/resources/once-ui.config.ts`
+
 ### Localization
 - A localized, earlier version of Magic Portfolio is available with the next-intl library
 - To use localization, switch to the [`localization-(Once-UI-0.4.2)`](https://github.com/once-ui-system/magic-portfolio/tree/localization-%28Once-UI-0.4.2%29) branch
