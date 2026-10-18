@@ -12,6 +12,7 @@ import {
   HiOutlineDocument,
   HiOutlineGlobeAsiaAustralia,
   HiOutlineRocketLaunch,
+  HiSparkles,
 } from "react-icons/hi2";
 
 import {
@@ -20,6 +21,7 @@ import {
   PiGridFourDuotone,
   PiBookBookmarkDuotone,
   PiImageDuotone,
+  PiPaletteDuotone,
 } from "react-icons/pi";
 
 import { SiJavascript, SiNextdotjs, SiFigma, SiSupabase } from "react-icons/si";
@@ -42,6 +44,8 @@ import {
 export const iconLibrary = {
   arrowUpRight: HiArrowUpRight,
   arrowRight: HiArrowRight,
+  sparkle: HiSparkles,
+  palette: PiPaletteDuotone,
   email: HiEnvelope,
   globe: HiOutlineGlobeAsiaAustralia,
   person: PiUserCircleDuotone,

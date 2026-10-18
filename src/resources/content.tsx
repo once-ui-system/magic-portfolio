@@ -81,9 +81,18 @@ const home: Home = {
       <Text as="span" className="font-xl" weight="strong">
         ONCE UI
       </Text>
-      , where I craft intuitive <br /> user experiences. After hours, I build my own projects.
+      , where I craft intuitive user experiences. After hours, I build my own projects.
     </>
   ),
+  availability: "Open to new projects",
+  ticker: [
+    "Design systems",
+    "Interface design",
+    "Prototyping",
+    "Front-end engineering",
+    "Motion",
+    "Developer experience",
+  ],
 };
 
 const about: About = {

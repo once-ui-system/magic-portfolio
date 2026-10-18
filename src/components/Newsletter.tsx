@@ -56,7 +56,7 @@ export const Newsletter: React.FC<React.ComponentProps<typeof Column>> = ({ ...f
       horizontal="center"
       align="center"
       background="surface"
-      border="neutral-alpha-weak"
+      border
       {...flex}
     >
       <Background
@@ -138,7 +138,7 @@ export const Newsletter: React.FC<React.ComponentProps<typeof Column>> = ({ ...f
             else setSubmitted(true);
           }}
         >
-          <Row fillWidth maxWidth="24rem" s={{ direction: "column" }} gap="8">
+          <Row maxWidth="24rem" s={{ direction: "column" }} gap="8">
             <Input
               id="newsletter-email"
               name="email"

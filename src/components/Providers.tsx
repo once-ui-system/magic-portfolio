@@ -18,6 +18,7 @@ import { LayoutProvider } from "@once-ui-system/core/next";
 import type { ChartMode, ChartVariant } from "@once-ui-system/core/data";
 import { style, dataStyle } from "../resources";
 import { iconLibrary } from "../resources/icons";
+import { AestheticProvider } from "./aesthetic/AestheticProvider";
 
 export function Providers({ children }: { children: React.ReactNode }) {
   return (
@@ -46,9 +47,11 @@ export function Providers({ children }: { children: React.ReactNode }) {
             line: dataStyle.tick.line,
           }}
         >
-          <ToastProvider>
-            <IconProvider icons={iconLibrary}>{children}</IconProvider>
-          </ToastProvider>
+          <AestheticProvider>
+            <ToastProvider>
+              <IconProvider icons={iconLibrary}>{children}</IconProvider>
+            </ToastProvider>
+          </AestheticProvider>
         </DataThemeProvider>
       </ThemeProvider>
     </LayoutProvider>
