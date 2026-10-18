@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import "katex/dist/katex.min.css";
 import { getPosts } from "@/utils/utils";
 import {
   Meta,
@@ -71,6 +72,7 @@ export default async function Project({
   const avatars =
     post.metadata.team?.map((person) => ({
       src: person.avatar,
+      "aria-label": person.name,
     })) || [];
 
   return (

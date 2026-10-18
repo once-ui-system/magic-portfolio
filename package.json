@@ -16,15 +16,18 @@
     "classnames": "^2.5.1",
     "cookie": "^1.0.2",
     "gray-matter": "^4.0.3",
+    "katex": "^0.16.47",
     "lint-staged": "^16.1.5",
     "next": "^16.0.10",
     "next-mdx-remote": "^6.0.0",
+    "prismjs": "^1.30.0",
     "react": "^19.2.4",
     "react-dom": "^19.2.3",
     "react-icons": "^5.5.0",
+    "rehype-katex": "^7.0.1",
+    "remark-math": "^6.0.0",
     "sass": "^1.86.3",
-    "transliteration": "^2.3.5",
-    "prismjs": "^1.30.0"
+    "transliteration": "^2.3.5"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",

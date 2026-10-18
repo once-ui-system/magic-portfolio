@@ -116,11 +116,18 @@ export function ShareSection({ title, url }: ShareSectionProps) {
             size="s"
             href={platform.generateUrl(title, url)}
             prefixIcon={platform.icon}
+            aria-label={`Share on ${platform.name}`}
           />
         ))}
 
         {socialSharing.platforms.copyLink && (
-          <Button variant="secondary" size="s" onClick={handleCopy} prefixIcon="openLink" />
+          <Button
+            variant="secondary"
+            size="s"
+            onClick={handleCopy}
+            prefixIcon="openLink"
+            aria-label="Copy link"
+          />
         )}
       </Row>
     </Row>

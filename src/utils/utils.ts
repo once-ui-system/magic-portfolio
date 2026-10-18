@@ -69,6 +69,8 @@ function getMDXData(dir: string) {
 }
 
 export function getPosts(customPath = ["", "", "", ""]) {
-  const postsDir = path.join(process.cwd(), ...customPath);
+  // Posts are read at build time. The ignore comment keeps Next from tracing
+  // the whole project (images and video included) into every server function.
+  const postsDir = path.join(/* turbopackIgnore: true */ process.cwd(), ...customPath);
   return getMDXData(postsDir);
 }

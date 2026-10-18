@@ -37,7 +37,12 @@ export function Posts({
       {displayedBlogs.length > 0 && (
         <Grid columns={columns} s={{ columns: 1 }} fillWidth marginBottom="40" gap="16">
           {displayedBlogs.map((post) => (
-            <Post key={post.slug} post={post} thumbnail={thumbnail} direction={direction} />
+            <Post
+              key={post.slug}
+              post={{ slug: post.slug, metadata: post.metadata }}
+              thumbnail={thumbnail}
+              direction={direction}
+            />
           ))}
         </Grid>
       )}

@@ -93,7 +93,7 @@ export default function About() {
             flex={3}
             horizontal="center"
           >
-            <Avatar src={person.avatar} size="xl" />
+            <Avatar src={person.avatar} size="xl" aria-label={person.name} />
             <Row gap="8" vertical="center">
               <Icon onBackground="accent-weak" name="globe" />
               {person.location}
@@ -139,6 +139,7 @@ export default function About() {
                   data-border="rounded"
                   variant="secondary"
                   icon="chevronRight"
+                  aria-label="Schedule a call"
                 />
               </Row>
             )}
@@ -187,6 +188,7 @@ export default function About() {
                               href={item.link}
                               icon={item.icon}
                               variant="secondary"
+                              aria-label={item.name}
                             />
                           </Row>
                         </React.Fragment>

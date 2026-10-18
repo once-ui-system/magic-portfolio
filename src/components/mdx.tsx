@@ -1,6 +1,8 @@
 import { MDXRemote, MDXRemoteProps } from "next-mdx-remote/rsc";
 import React, { ReactNode } from "react";
 import { slugify as transliterate } from "transliteration";
+import remarkMath from "remark-math";
+import rehypeKatex from "rehype-katex";
 
 import {
   Heading,
@@ -211,7 +213,15 @@ type CustomMDXProps = MDXRemoteProps & {
 export function CustomMDX(props: CustomMDXProps) {
   return (
     <MDXRemote
-      options={{ blockJS: false }}
+      options={{
+        blockJS: false,
+        // Math between $$ and $$ (inline or on its own lines), rendered with KaTeX
+        // at build time. Single dollars stay plain text, so prices are safe.
+        mdxOptions: {
+          remarkPlugins: [[remarkMath, { singleDollarTextMath: false }]],
+          rehypePlugins: [rehypeKatex],
+        },
+      }}
       {...props}
       components={{ ...components, ...(props.components || {}) }}
     />
