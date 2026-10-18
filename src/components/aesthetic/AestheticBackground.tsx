@@ -85,7 +85,8 @@ export function AestheticBackground() {
     >
       {pattern && <Pattern pattern={pattern} />}
       {fx === "blobs" && (
-        <Column position="absolute" top="0" left="0" fillWidth height="80vh" opacity={60}>
+        // Pulled up by half its height so only the lower half of the glow shows at the top.
+        <Column position="absolute" top="-40vh" left="0" fillWidth height="80vh" opacity={60}>
           <BlobFx seed={7} style={{ transform: "rotate(180deg)" }} />
         </Column>
       )}
