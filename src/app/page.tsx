@@ -109,13 +109,23 @@ export default function Home() {
           <Row fillWidth paddingRight="64">
             <Line maxWidth={48} />
           </Row>
-          <Row fillWidth gap="24" marginTop="40" s={{ direction: "column" }}>
-            <Row flex={1} paddingLeft="l" paddingTop="24">
+          <Row
+            fillWidth
+            gap="24"
+            marginTop="40"
+            s={{ direction: "column", marginTop: "16", gap: "8" }}
+          >
+            <Row
+              flex={1}
+              paddingLeft="l"
+              paddingTop="24"
+              s={{ paddingLeft: "16", paddingTop: "8" }}
+            >
               <Heading as="h2" variant="display-strong-xs" wrap="balance">
                 Latest from the blog
               </Heading>
             </Row>
-            <Row flex={3} paddingX="20">
+            <Row flex={3} paddingX="20" s={{ paddingX: "0" }}>
               <Posts range={[1, 2]} columns="2" />
             </Row>
           </Row>

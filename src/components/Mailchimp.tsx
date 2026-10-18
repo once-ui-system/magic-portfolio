@@ -111,7 +111,9 @@ export const Mailchimp: React.FC<React.ComponentProps<typeof Column>> = ({ ...fl
               setError(message);
               return;
             }
-            setSubmitted(true);
+            // Swap in the confirmation after the browser has sent the form:
+            // a form removed during its submit event is never sent.
+            setTimeout(() => setSubmitted(true));
           }}
         >
           <Row fillWidth maxWidth={24} s={{ direction: "column" }} gap="8">

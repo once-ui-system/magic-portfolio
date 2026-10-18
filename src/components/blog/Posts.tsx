@@ -35,7 +35,13 @@ export function Posts({
   return (
     <>
       {displayedBlogs.length > 0 && (
-        <Grid columns={columns} s={{ columns: 1 }} fillWidth marginBottom="40" gap="16">
+        <Grid
+          columns={columns}
+          s={{ columns: 1, marginBottom: "8" }}
+          fillWidth
+          marginBottom="40"
+          gap="16"
+        >
           {displayedBlogs.map((post) => (
             <Post
               key={post.slug}
