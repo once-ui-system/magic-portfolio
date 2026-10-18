@@ -1,7 +1,5 @@
 import {
   BorderStyle,
-  ChartMode,
-  ChartVariant,
   NeutralColor,
   ScalingSize,
   Schemes,
@@ -11,6 +9,7 @@ import {
   Theme,
   TransitionStyle,
 } from "@once-ui-system/core";
+import type { ChartMode, ChartVariant } from "@once-ui-system/core/data";
 import { NextFontWithVariable } from "next/dist/compiled/@next/font";
 
 /**

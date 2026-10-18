@@ -9,7 +9,7 @@ import {
   Column,
   Flex,
   Meta,
-  opacity,
+  Opacity,
   RevealFx,
   SpacingToken,
 } from "@once-ui-system/core";
@@ -123,7 +123,7 @@ export default async function RootLayout({
               }}
               gradient={{
                 display: effects.gradient.display,
-                opacity: effects.gradient.opacity as opacity,
+                opacity: effects.gradient.opacity as Opacity,
                 x: effects.gradient.x,
                 y: effects.gradient.y,
                 width: effects.gradient.width,
@@ -134,20 +134,20 @@ export default async function RootLayout({
               }}
               dots={{
                 display: effects.dots.display,
-                opacity: effects.dots.opacity as opacity,
+                opacity: effects.dots.opacity as Opacity,
                 size: effects.dots.size as SpacingToken,
                 color: effects.dots.color,
               }}
               grid={{
                 display: effects.grid.display,
-                opacity: effects.grid.opacity as opacity,
+                opacity: effects.grid.opacity as Opacity,
                 color: effects.grid.color,
                 width: effects.grid.width,
                 height: effects.grid.height,
               }}
               lines={{
                 display: effects.lines.display,
-                opacity: effects.lines.opacity as opacity,
+                opacity: effects.lines.opacity as Opacity,
                 size: effects.lines.size as SpacingToken,
                 thickness: effects.lines.thickness,
                 angle: effects.lines.angle,

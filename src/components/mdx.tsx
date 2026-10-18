@@ -7,7 +7,6 @@ import {
   HeadingLink,
   Text,
   InlineCode,
-  CodeBlock,
   TextProps,
   MediaProps,
   Accordion,
@@ -26,6 +25,7 @@ import {
   ListItem,
   Line,
 } from "@once-ui-system/core";
+import { CodeBlock } from "@once-ui-system/core/code";
 
 type CustomLinkProps = React.AnchorHTMLAttributes<HTMLAnchorElement> & {
   href: string;
@@ -209,5 +209,11 @@ type CustomMDXProps = MDXRemoteProps & {
 };
 
 export function CustomMDX(props: CustomMDXProps) {
-  return <MDXRemote options={{ blockJS: false }} {...props} components={{ ...components, ...(props.components || {}) }} />;
+  return (
+    <MDXRemote
+      options={{ blockJS: false }}
+      {...props}
+      components={{ ...components, ...(props.components || {}) }}
+    />
+  );
 }

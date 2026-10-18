@@ -200,7 +200,7 @@ export interface About extends BasePageConfig {
       /** Skill tags */
       tags?: Array<{
         name: string;
-        icon?: string;
+        icon?: IconName;
       }>;
       /** Images related to the skill */
       images?: Array<{
