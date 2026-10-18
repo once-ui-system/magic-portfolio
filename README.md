@@ -56,9 +56,15 @@ Docs available at: [docs.once-ui.com](https://docs.once-ui.com/docs/magic-portfo
 - RSS feed at `/api/rss`
 - Automatic schema and metadata generation based on the content file
 
+### Aesthetics
+- Five complete looks, switched with one line (`aesthetic` in `src/resources/once-ui.config.ts`): Classic, Editorial, Swiss, Aurora and Terminal
+- Each one sets the Once UI theme, fonts, page background and home page layout; copy a preset in `src/resources/aesthetics.ts` to make your own
+- Modular home page: heroes (centered, statement, split, terminal), a ticker, work (stack, index, bento) and posts (grid, list), reordered or swapped with `homeSections`
+- Effects from Once UI: reveal, tilt, holographic card, typing, blobs and particles. Want WebGL backgrounds? Drop a [Once UI Pro effect](https://once-ui.com/effects) into `src/components/aesthetic/ProEffect.tsx`
+- An optional switcher (`display.aestheticSwitcher`) lets visitors try every aesthetic
+
 ### Design
 - Responsive layout optimized for all screen sizes
-- Timeless design without heavy animations and motion
 - Endless customization options through [data attributes](https://once-ui.com/docs/theming)
 
 ### Content

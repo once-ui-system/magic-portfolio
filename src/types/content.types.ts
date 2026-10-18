@@ -107,6 +107,10 @@ export interface Home extends BasePageConfig {
   };
   /** The sub text which appears below the headline */
   subline: React.ReactNode;
+  /** A status line shown by the statement and split heroes, e.g. "Open to new projects". Leave empty to hide it. */
+  availability?: string;
+  /** Words for the ticker section and the terminal hero, e.g. what you do or tools you use */
+  ticker?: string[];
 }
 
 /**
