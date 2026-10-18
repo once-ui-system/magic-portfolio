@@ -60,7 +60,7 @@ export function WorkBento({ range }: WorkBentoProps) {
                   horizontal="between"
                   background="surface"
                   backdropBlur="m"
-                  borderTop="neutral-alpha-weak"
+                  borderTop
                 >
                   <Column gap="4">
                     <Text

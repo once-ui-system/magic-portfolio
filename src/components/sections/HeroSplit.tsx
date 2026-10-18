@@ -51,7 +51,7 @@ export function HeroSplit() {
         <RevealFx delay={300} horizontal="start" paddingTop="8">
           <Row gap="12" wrap>
             {routes["/work"] && (
-              <Button href="/work" variant="primary" size="m" weight="default" arrowIcon>
+              <Button href="/work" size="m" weight="default" arrowIcon>
                 See work
               </Button>
             )}
@@ -63,7 +63,7 @@ export function HeroSplit() {
           </Row>
         </RevealFx>
       </Column>
-      <Column flex={5} fillWidth maxWidth="24rem" s={{ maxWidth: "20rem" }}>
+      <Column flex={5} maxWidth="24rem" s={{ maxWidth: "20rem" }}>
         <RevealFx translateY="16" delay={150}>
           <TiltFx fillWidth radius="xl" intensity={0.6}>
             <HoloFx fillWidth radius="xl" overflow="hidden">
@@ -87,7 +87,7 @@ export function HeroSplit() {
                   horizontal="between"
                   background="surface"
                   backdropBlur="m"
-                  borderTop="neutral-alpha-weak"
+                  borderTop
                 >
                   <Column gap="4">
                     <Text textVariant="heading-strong-s">{person.name}</Text>

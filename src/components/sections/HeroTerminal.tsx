@@ -76,7 +76,7 @@ export function HeroTerminal() {
       <RevealFx delay={300} horizontal="start">
         <Row gap="12" wrap>
           {routes["/work"] && (
-            <Button href="/work" variant="primary" size="m" weight="default">
+            <Button href="/work" size="m" weight="default">
               ls ./work
             </Button>
           )}

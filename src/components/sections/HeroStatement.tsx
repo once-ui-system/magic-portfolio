@@ -61,7 +61,7 @@ export function HeroStatement() {
           </Column>
           <Row gap="12" wrap>
             {routes["/about"] && (
-              <Button href={about.path} variant="primary" size="m" weight="default">
+              <Button href={about.path} size="m" weight="default">
                 <Row gap="8" vertical="center">
                   {about.avatar.display && (
                     <Avatar
