@@ -16,12 +16,12 @@ The feedback component is used to display critical information to visitors.
     radius="none"
     topRadius="l"
     codeHeight={24}
-    preview={<Feedback icon title="Feedback element" variant="success" description="Longer description of the feedback message." marginBottom="24"/>}
+    preview={<Feedback showIcon title="Feedback element" variant="success" description="Longer description of the feedback message." marginBottom="24"/>}
     codes={[
       {
         code:
 `<Feedback
-    icon
+    showIcon
     variant="success"
     title="Feedback element"
     description="Longer description of the feedback message."
@@ -578,6 +578,24 @@ SmartLink provides an enhanced way to link to internal and external resources. Y
     <Button href="https://once-ui.com/docs/smart-link" weight="default" label="View on Once UI" size="s" variant="tertiary" suffixIcon="chevronRight"/>
 </Row>
 </Column>
+
+## Math
+
+Write formulas in LaTeX between double dollar signs. Inline, $$E = mc^2$$ sits in the sentence; on lines of their own, they render as a centered block:
+
+$$
+\mathcal{L} = \frac{1}{N} \sum_{k=1}^{N} \left| z_k - \bar{z}_k \right|
+$$
+
+```markdown
+Inline, $$E = mc^2$$ sits in the sentence.
+
+$$
+\mathcal{L} = \frac{1}{N} \sum_{k=1}^{N} \left| z_k - \bar{z}_k \right|
+$$
+```
+
+Single dollar signs stay plain text, so prices like $20 are safe.
 
 ## Custom components
 

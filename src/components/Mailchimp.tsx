@@ -2,50 +2,30 @@
 
 import { mailchimp, newsletter } from "@/resources";
 import { Button, Heading, Input, Text, Background, Column, Row } from "@once-ui-system/core";
-import { opacity, SpacingToken } from "@once-ui-system/core";
+import { Opacity, SpacingToken } from "@once-ui-system/core";
 import { useState } from "react";
 
-function debounce<T extends (...args: any[]) => void>(func: T, delay: number): T {
-  let timeout: ReturnType<typeof setTimeout>;
-  return ((...args: Parameters<T>) => {
-    clearTimeout(timeout);
-    timeout = setTimeout(() => func(...args), delay);
-  }) as T;
+// Mailchimp's bot trap: a hidden field named after the list (b_<u>_<id>),
+// read from the form action so it follows whichever list you point it at.
+function honeypotName(action: string): string | undefined {
+  try {
+    const params = new URL(action).searchParams;
+    const u = params.get("u");
+    const id = params.get("id");
+    return u && id ? `b_${u}_${id}` : undefined;
+  } catch {
+    return undefined;
+  }
 }
 
+const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 export const Mailchimp: React.FC<React.ComponentProps<typeof Column>> = ({ ...flex }) => {
-  const [email, setEmail] = useState<string>("");
   const [error, setError] = useState<string>("");
-  const [touched, setTouched] = useState<boolean>(false);
+  const [submitted, setSubmitted] = useState<boolean>(false);
 
-  const validateEmail = (email: string): boolean => {
-    if (email === "") {
-      return true;
-    }
-
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailPattern.test(email);
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    setEmail(value);
-
-    if (!validateEmail(value)) {
-      setError("Please enter a valid email address.");
-    } else {
-      setError("");
-    }
-  };
-
-  const debouncedHandleChange = debounce(handleChange, 2000);
-
-  const handleBlur = () => {
-    setTouched(true);
-    if (!validateEmail(email)) {
-      setError("Please enter a valid email address.");
-    }
-  };
+  const validate = (value: string): string =>
+    value === "" || emailPattern.test(value) ? "" : "Please enter a valid email address.";
 
   if (newsletter.display === false) return null;
 
@@ -73,7 +53,7 @@ export const Mailchimp: React.FC<React.ComponentProps<typeof Column>> = ({ ...fl
         }}
         gradient={{
           display: mailchimp.effects.gradient.display,
-          opacity: mailchimp.effects.gradient.opacity as opacity,
+          opacity: mailchimp.effects.gradient.opacity as Opacity,
           x: mailchimp.effects.gradient.x,
           y: mailchimp.effects.gradient.y,
           width: mailchimp.effects.gradient.width,
@@ -84,20 +64,20 @@ export const Mailchimp: React.FC<React.ComponentProps<typeof Column>> = ({ ...fl
         }}
         dots={{
           display: mailchimp.effects.dots.display,
-          opacity: mailchimp.effects.dots.opacity as opacity,
+          opacity: mailchimp.effects.dots.opacity as Opacity,
           size: mailchimp.effects.dots.size as SpacingToken,
           color: mailchimp.effects.dots.color,
         }}
         grid={{
           display: mailchimp.effects.grid.display,
-          opacity: mailchimp.effects.grid.opacity as opacity,
+          opacity: mailchimp.effects.grid.opacity as Opacity,
           color: mailchimp.effects.grid.color,
           width: mailchimp.effects.grid.width,
           height: mailchimp.effects.grid.height,
         }}
         lines={{
           display: mailchimp.effects.lines.display,
-          opacity: mailchimp.effects.lines.opacity as opacity,
+          opacity: mailchimp.effects.lines.opacity as Opacity,
           size: mailchimp.effects.lines.size as SpacingToken,
           thickness: mailchimp.effects.lines.thickness,
           angle: mailchimp.effects.lines.angle,
@@ -112,73 +92,62 @@ export const Mailchimp: React.FC<React.ComponentProps<typeof Column>> = ({ ...fl
           {newsletter.description}
         </Text>
       </Column>
-      <form
-        style={{
-          width: "100%",
-          display: "flex",
-          justifyContent: "center",
-        }}
-        action={mailchimp.action}
-        method="post"
-        id="mc-embedded-subscribe-form"
-        name="mc-embedded-subscribe-form"
-      >
-        <Row
-          id="mc_embed_signup_scroll"
-          fillWidth
-          maxWidth={24}
-          s={{ direction: "column" }}
-          gap="8"
+      {submitted ? (
+        <Text variant="body-default-m" onBackground="brand-medium" role="status">
+          Almost done: check your inbox to confirm your subscription.
+        </Text>
+      ) : (
+        <form
+          style={{ width: "100%", display: "flex", justifyContent: "center" }}
+          action={mailchimp.action}
+          method="post"
+          target="_blank"
+          noValidate
+          onSubmit={(e) => {
+            const email = String(new FormData(e.currentTarget).get("EMAIL") ?? "");
+            const message = email ? validate(email) : "Please enter your email address.";
+            if (message) {
+              e.preventDefault();
+              setError(message);
+              return;
+            }
+            // Swap in the confirmation after the browser has sent the form:
+            // a form removed during its submit event is never sent.
+            setTimeout(() => setSubmitted(true));
+          }}
         >
-          <Input
-            formNoValidate
-            id="mce-EMAIL"
-            name="EMAIL"
-            type="email"
-            placeholder="Email"
-            required
-            onChange={(e) => {
-              if (error) {
-                handleChange(e);
-              } else {
-                debouncedHandleChange(e);
-              }
-            }}
-            onBlur={handleBlur}
-            errorMessage={error}
-          />
-          <div style={{ display: "none" }}>
-            <input
-              type="checkbox"
-              readOnly
-              name="group[3492][1]"
-              id="mce-group[3492]-3492-0"
-              value=""
-              checked
+          <Row fillWidth maxWidth={24} s={{ direction: "column" }} gap="8">
+            <Input
+              id="mce-EMAIL"
+              name="EMAIL"
+              type="email"
+              label="Email"
+              autoComplete="email"
+              required
+              onChange={(e) => {
+                if (error) setError(validate(e.target.value));
+              }}
+              onBlur={(e) => setError(validate(e.target.value))}
+              errorMessage={error}
             />
-          </div>
-          <div id="mce-responses" className="clearfalse">
-            <div className="response" id="mce-error-response" style={{ display: "none" }}></div>
-            <div className="response" id="mce-success-response" style={{ display: "none" }}></div>
-          </div>
-          <div aria-hidden="true" style={{ position: "absolute", left: "-5000px" }}>
-            <input
-              type="text"
-              readOnly
-              name="b_c1a5a210340eb6c7bff33b2ba_0462d244aa"
-              tabIndex={-1}
-              value=""
-            />
-          </div>
-          <div className="clear">
+            {honeypotName(mailchimp.action) && (
+              <input
+                type="text"
+                name={honeypotName(mailchimp.action)}
+                tabIndex={-1}
+                defaultValue=""
+                aria-hidden="true"
+                style={{ position: "absolute", left: "-5000px" }}
+              />
+            )}
             <Row height="48" vertical="center">
-              <Button id="mc-embedded-subscribe" value="Subscribe" size="m" fillWidth>
+              <Button type="submit" size="m" fillWidth>
                 Subscribe
               </Button>
             </Row>
-          </div>
-        </Row>
-      </form>
+          </Row>
+        </form>
+      )}
     </Column>
   );
 };

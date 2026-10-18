@@ -70,12 +70,12 @@ export default function Home() {
               {home.headline}
             </Heading>
           </RevealFx>
-          <RevealFx translateY="8" delay={0.2} fillWidth horizontal="center" paddingBottom="32">
+          <RevealFx translateY="8" delay={200} fillWidth horizontal="center" paddingBottom="32">
             <Text wrap="balance" onBackground="neutral-weak" variant="heading-default-xl">
               {home.subline}
             </Text>
           </RevealFx>
-          <RevealFx paddingTop="12" delay={0.4} horizontal="center" paddingLeft="12">
+          <RevealFx paddingTop="12" delay={400} horizontal="center" paddingLeft="12">
             <Button
               id="about"
               data-border="rounded"
@@ -92,6 +92,7 @@ export default function Home() {
                     style={{ marginLeft: "-0.75rem" }}
                     src={person.avatar}
                     size="m"
+                    aria-hidden
                   />
                 )}
                 {about.title}
@@ -100,7 +101,7 @@ export default function Home() {
           </RevealFx>
         </Column>
       </Column>
-      <RevealFx translateY="16" delay={0.6}>
+      <RevealFx translateY="16" delay={600}>
         <Projects range={[1, 1]} />
       </RevealFx>
       {routes["/blog"] && (
@@ -108,13 +109,23 @@ export default function Home() {
           <Row fillWidth paddingRight="64">
             <Line maxWidth={48} />
           </Row>
-          <Row fillWidth gap="24" marginTop="40" s={{ direction: "column" }}>
-            <Row flex={1} paddingLeft="l" paddingTop="24">
+          <Row
+            fillWidth
+            gap="24"
+            marginTop="40"
+            s={{ direction: "column", marginTop: "16", gap: "8" }}
+          >
+            <Row
+              flex={1}
+              paddingLeft="l"
+              paddingTop="24"
+              s={{ paddingLeft: "16", paddingTop: "8" }}
+            >
               <Heading as="h2" variant="display-strong-xs" wrap="balance">
                 Latest from the blog
               </Heading>
             </Row>
-            <Row flex={3} paddingX="20">
+            <Row flex={3} paddingX="20" s={{ paddingX: "0" }}>
               <Posts range={[1, 2]} columns="2" />
             </Row>
           </Row>

@@ -33,8 +33,13 @@ export function Projects({ range, exclude }: ProjectsProps) {
           images={post.metadata.images}
           title={post.metadata.title}
           description={post.metadata.summary}
-          content={post.content}
-          avatars={post.metadata.team?.map((member) => ({ src: member.avatar })) || []}
+          hasContent={post.content.trim() !== ""}
+          avatars={
+            post.metadata.team?.map((member) => ({
+              src: member.avatar,
+              "aria-label": member.name,
+            })) || []
+          }
           link={post.metadata.link || ""}
         />
       ))}
