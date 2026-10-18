@@ -5,15 +5,8 @@ import "@/resources/custom.css";
 import type { Viewport } from "next";
 import classNames from "classnames";
 
-import {
-  Background,
-  Column,
-  Flex,
-  Meta,
-  Opacity,
-  RevealFx,
-  SpacingToken,
-} from "@once-ui-system/core";
+import { Background, Column, Flex, Meta, Opacity, SpacingToken } from "@once-ui-system/core";
+import { RevealFx } from "@once-ui-system/fx";
 import { Footer, Header, RouteGuard, Providers } from "@/components";
 import { baseURL, effects, fonts, style, dataStyle, home, person } from "@/resources";
 
@@ -125,18 +118,18 @@ export default async function RootLayout({
           <RevealFx fill position="absolute">
             <Background
               mask={{
-                x: effects.mask.x,
-                y: effects.mask.y,
-                radius: effects.mask.radius,
+                x: `${effects.mask.x}%`,
+                y: `${effects.mask.y}%`,
+                radius: `${effects.mask.radius}vh`,
                 cursor: effects.mask.cursor,
               }}
               gradient={{
                 display: effects.gradient.display,
                 opacity: effects.gradient.opacity as Opacity,
-                x: effects.gradient.x,
-                y: effects.gradient.y,
-                width: effects.gradient.width,
-                height: effects.gradient.height,
+                x: `${effects.gradient.x}%`,
+                y: `${effects.gradient.y}%`,
+                width: `${effects.gradient.width}%`,
+                height: `${effects.gradient.height}%`,
                 tilt: effects.gradient.tilt,
                 colorStart: effects.gradient.colorStart,
                 colorEnd: effects.gradient.colorEnd,

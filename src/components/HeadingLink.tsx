@@ -20,13 +20,13 @@ export const HeadingLink: React.FC<HeadingLinkProps> = ({ id, level, children, s
     navigator.clipboard.writeText(url).then(
       () => {
         addToast({
-          variant: "success",
+          tone: "success",
           message: "Link copied to clipboard.",
         });
       },
       () => {
         addToast({
-          variant: "danger",
+          tone: "danger",
           message: "Failed to copy link.",
         });
       },
@@ -53,7 +53,7 @@ export const HeadingLink: React.FC<HeadingLinkProps> = ({ id, level, children, s
       vertical="center"
       gap="4"
     >
-      <Heading className={styles.text} id={id} variant={variant} as={asTag}>
+      <Heading className={styles.text} id={id} textVariant={variant} as={asTag}>
         {children}
       </Heading>
       <IconButton

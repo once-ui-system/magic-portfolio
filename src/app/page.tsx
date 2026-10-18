@@ -3,14 +3,14 @@ import {
   Text,
   Button,
   Avatar,
-  RevealFx,
   Column,
-  Badge,
+  Tag,
   Row,
   Schema,
   Meta,
   Line,
 } from "@once-ui-system/core";
+import { RevealFx } from "@once-ui-system/fx";
 import { home, about, person, baseURL, routes } from "@/resources";
 import { Newsletter } from "@/components";
 import { Projects } from "@/components/work/Projects";
@@ -52,7 +52,8 @@ export default function Home() {
               paddingBottom="32"
               paddingLeft="12"
             >
-              <Badge
+              <Tag
+                variant="announce"
                 background="brand-alpha-weak"
                 paddingX="12"
                 paddingY="4"
@@ -62,16 +63,16 @@ export default function Home() {
                 href={home.featured.href}
               >
                 <Row paddingY="2">{home.featured.title}</Row>
-              </Badge>
+              </Tag>
             </RevealFx>
           )}
           <RevealFx translateY="4" fillWidth horizontal="center" paddingBottom="16">
-            <Heading wrap="balance" variant="display-strong-l">
+            <Heading wrap="balance" textVariant="display-strong-l">
               {home.headline}
             </Heading>
           </RevealFx>
           <RevealFx translateY="8" delay={200} fillWidth horizontal="center" paddingBottom="32">
-            <Text wrap="balance" onBackground="neutral-weak" variant="heading-default-xl">
+            <Text wrap="balance" onBackground="neutral-weak" textVariant="heading-default-xl">
               {home.subline}
             </Text>
           </RevealFx>
@@ -107,7 +108,7 @@ export default function Home() {
       {routes["/blog"] && (
         <Column fillWidth gap="24" marginBottom="l">
           <Row fillWidth paddingRight="64">
-            <Line maxWidth={48} />
+            <Line maxWidth="48rem" />
           </Row>
           <Row
             fillWidth
@@ -121,7 +122,7 @@ export default function Home() {
               paddingTop="24"
               s={{ paddingLeft: "16", paddingTop: "8" }}
             >
-              <Heading as="h2" variant="display-strong-xs" wrap="balance">
+              <Heading as="h2" textVariant="display-strong-xs" wrap="balance">
                 Latest from the blog
               </Heading>
             </Row>
@@ -130,7 +131,7 @@ export default function Home() {
             </Row>
           </Row>
           <Row fillWidth paddingLeft="64" horizontal="end">
-            <Line maxWidth={48} />
+            <Line maxWidth="48rem" />
           </Row>
         </Column>
       )}

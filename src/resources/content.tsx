@@ -78,7 +78,7 @@ const home: Home = {
   subline: (
     <>
       I'm {person.firstName}, a {person.role.toLowerCase()} at{" "}
-      <Text as="span" size="xl" weight="strong">
+      <Text as="span" className="font-xl" weight="strong">
         ONCE UI
       </Text>
       , where I craft intuitive <br /> user experiences. After hours, I build my own projects.

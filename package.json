@@ -12,7 +12,8 @@
   "dependencies": {
     "@mdx-js/loader": "^3.1.0",
     "@next/mdx": "^16.0.10",
-    "@once-ui-system/core": "^2.1.0",
+    "@once-ui-system/core": "file:vendor/once-ui/once-ui-system-core-3.0.0-beta.0.tgz",
+    "@once-ui-system/fx": "file:vendor/once-ui/once-ui-system-fx-3.0.0-beta.0.tgz",
     "classnames": "^2.5.1",
     "cookie": "^1.0.2",
     "gray-matter": "^4.0.3",
