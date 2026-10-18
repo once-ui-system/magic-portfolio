@@ -1,0 +1,51 @@
+# Preview flow: finished work lands on `preview` (deployed to a stable preview
+# URL), Lorant approves demos, and preview ships to main once every PR on it
+# is approved. Rules for contributors: PREVIEW.md.
+#
+#   push to main      -> bring preview up to main, then refresh the Ship gate
+#   push to preview   -> refresh the Ship gate (status + Ship PR checklist)
+#   PR label changes  -> refresh the Ship gate
+name: Preview
+
+on:
+  push:
+    branches: [main, preview]
+  pull_request:
+    types: [labeled, unlabeled, closed]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+  statuses: write
+  issues: write
+
+# Runs queue rather than cancel: each one re-reads the whole state.
+concurrency:
+  group: preview-flow
+  cancel-in-progress: false
+
+jobs:
+  flow:
+    name: Sync and Ship gate
+    # Template copies ("Use this template", forks) skip this: it is for this repo only.
+    if: github.repository == 'once-ui-system/magic-portfolio' && (github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository)
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Run
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+          mode=gate
+          if [ "${{ github.event_name }}" = push ] && [ "${{ github.ref_name }}" = main ]; then mode=sync; fi
+          if [ "${{ github.event_name }}" = workflow_dispatch ]; then mode=all; fi
+          node .github/scripts/preview-flow.mjs "$mode"

@@ -1,0 +1,3 @@
+{
+  "ignoreCommand": "[ \"$VERCEL_GIT_REPO_OWNER\" = \"once-ui-system\" ] && [ \"$VERCEL_GIT_COMMIT_REF\" != \"main\" ] && [ \"$VERCEL_GIT_COMMIT_REF\" != \"preview\" ]"
+}

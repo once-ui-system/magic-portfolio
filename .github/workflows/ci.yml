@@ -1,0 +1,30 @@
+# Typecheck, Biome and a production build on every pull request. Vercel only
+# builds main and preview, so this is the check a PR has before it merges.
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main, preview]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  check:
+    name: Typecheck and build
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - run: npx tsc --noEmit
+      - run: npx next build
