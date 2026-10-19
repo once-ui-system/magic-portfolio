@@ -2,6 +2,9 @@ import { getPosts } from "@/utils/utils";
 import { baseURL, blog, person } from "@/resources";
 import { NextResponse } from "next/server";
 
+// Built once with the site, like the posts it lists.
+export const dynamic = "force-static";
+
 export async function GET() {
   const posts = getPosts(["src", "app", "blog", "posts"]);
 

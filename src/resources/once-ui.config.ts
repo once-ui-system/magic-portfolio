@@ -3,7 +3,7 @@ import {
   DisplayConfig,
   EffectsConfig,
   FontsConfig,
-  MailchimpConfig,
+  NewsletterFormConfig,
   ProtectedRoutesConfig,
   RoutesConfig,
   SameAsConfig,
@@ -14,7 +14,7 @@ import {
 import { home, person, social } from "./content";
 
 // IMPORTANT: Replace with your own domain address - it's used for SEO in meta tags and schema
-const baseURL: string = "https://demo.magic-portfolio.com";
+const baseURL: string = "https://magic-portfolio-demo.vercel.app";
 
 const routes: RoutesConfig = {
   "/": true,
@@ -140,8 +140,11 @@ const effects: EffectsConfig = {
   },
 };
 
-const mailchimp: MailchimpConfig = {
-  action: "https://url/subscribe/post?parameters",
+// Newsletter signups go straight into your Aveiro audience (https://www.aveiro.app),
+// where you can write and send the newsletter too. In Aveiro, open Audience → Embed,
+// create a form, add this site's domain to its allowed sites and paste the form's public ID here.
+const newsletterForm: NewsletterFormConfig = {
+  aveiroEmbedId: "",
   effects: {
     mask: {
       cursor: true,
@@ -218,7 +221,7 @@ const socialSharing: SocialSharingConfig = {
 
 export {
   display,
-  mailchimp,
+  newsletterForm,
   routes,
   protectedRoutes,
   baseURL,

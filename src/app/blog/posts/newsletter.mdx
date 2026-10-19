@@ -1,0 +1,109 @@
+---
+title: "Collect newsletter signups with Aveiro"
+summary: "Connect the newsletter block to Aveiro and write your newsletter in the same place your subscribers land."
+publishedAt: "2026-10-18"
+tag: "Magic Portfolio"
+---
+
+The newsletter block on your home page and blog sends every signup straight into your [Aveiro](https://www.aveiro.app) audience. Aveiro is where you then write, send and measure the newsletter itself, so there is no list to export or sync.
+
+## Create an embed form
+
+Sign up for [Aveiro](https://www.aveiro.app), open **Audience → Embed** and create a form. Add your portfolio's domain to the form's allowed sites, then copy the form's public ID.
+
+## Connect it to your portfolio
+
+Paste the public ID into the `newsletterForm` object. Signups go to Aveiro directly from the page, with no new tab and no redirect.
+
+<CodeBlock
+    highlight="2"
+    codes={[
+  {
+    code:
+`const newsletterForm: NewsletterFormConfig = {
+  aveiroEmbedId: "your-embed-form-id",
+  effects: {
+    ...
+  },
+};`,
+    language: "tsx",
+    label: "src/resources/once-ui.config.ts"
+  }
+]} />
+
+## Newsletter content
+
+You can change the headline and description in `content.tsx`, or hide the block with `display: false`.
+
+<CodeBlock
+    highlight="2"
+    codes={[
+  {
+    code:
+`const newsletter: Newsletter = {
+  display: true,
+  title: <>Subscribe to {person.firstName}'s Newsletter</>,
+  description: <>My weekly newsletter about creativity and engineering</>,
+};`,
+    language: "tsx",
+    label: "src/resources/content.tsx"
+  }
+]} />
+
+## Background effect
+
+The block's background is set in the same `newsletterForm` object. Turn the gradient, dots, lines and grid on or off and tune how they look.
+
+<CodeBlock
+    codeHeight={24}
+    marginBottom="16"
+    codes={[
+  {
+    code:
+`const newsletterForm: NewsletterFormConfig = {
+  aveiroEmbedId: "your-embed-form-id",
+  effects: {
+    mask: {
+      cursor: true,
+      x: 50,
+      y: 0,
+      radius: 100,
+    },
+    gradient: {
+      display: true,
+      opacity: 90,
+      x: 50,
+      y: 0,
+      width: 50,
+      height: 50,
+      tilt: 0,
+      colorStart: "accent-background-strong",
+      colorEnd: "static-transparent",
+    },
+    dots: {
+      display: true,
+      opacity: 20,
+      size: "2",
+      color: "brand-on-background-weak",
+    },
+    grid: {
+      display: false,
+      opacity: 100,
+      color: "neutral-alpha-medium",
+      width: "0.25rem",
+      height: "0.25rem",
+    },
+    lines: {
+      display: false,
+      opacity: 100,
+      color: "neutral-alpha-medium",
+      size: "16",
+      thickness: 1,
+      angle: 90,
+    },
+  },
+};`,
+    language: "tsx",
+    label: "src/resources/once-ui.config.ts"
+  }
+]} />
