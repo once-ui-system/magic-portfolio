@@ -56,25 +56,25 @@ export const Newsletter: React.FC<React.ComponentProps<typeof Column>> = ({ ...f
       horizontal="center"
       align="center"
       background="surface"
-      border="neutral-alpha-weak"
+      border
       {...flex}
     >
       <Background
         top="0"
         position="absolute"
         mask={{
-          x: newsletterForm.effects.mask.x,
-          y: newsletterForm.effects.mask.y,
-          radius: newsletterForm.effects.mask.radius,
+          x: `${newsletterForm.effects.mask.x}%`,
+          y: `${newsletterForm.effects.mask.y}%`,
+          radius: `${newsletterForm.effects.mask.radius}vh`,
           cursor: newsletterForm.effects.mask.cursor,
         }}
         gradient={{
           display: newsletterForm.effects.gradient.display,
           opacity: newsletterForm.effects.gradient.opacity as Opacity,
-          x: newsletterForm.effects.gradient.x,
-          y: newsletterForm.effects.gradient.y,
-          width: newsletterForm.effects.gradient.width,
-          height: newsletterForm.effects.gradient.height,
+          x: `${newsletterForm.effects.gradient.x}%`,
+          y: `${newsletterForm.effects.gradient.y}%`,
+          width: `${newsletterForm.effects.gradient.width}%`,
+          height: `${newsletterForm.effects.gradient.height}%`,
           tilt: newsletterForm.effects.gradient.tilt,
           colorStart: newsletterForm.effects.gradient.colorStart,
           colorEnd: newsletterForm.effects.gradient.colorEnd,
@@ -102,15 +102,20 @@ export const Newsletter: React.FC<React.ComponentProps<typeof Column>> = ({ ...f
         }}
       />
       <Column maxWidth="xs" horizontal="center">
-        <Heading marginBottom="s" variant="display-strong-xs">
+        <Heading marginBottom="s" textVariant="display-strong-xs">
           {newsletter.title}
         </Heading>
-        <Text wrap="balance" marginBottom="l" variant="body-default-l" onBackground="neutral-weak">
+        <Text
+          wrap="balance"
+          marginBottom="l"
+          textVariant="body-default-l"
+          onBackground="neutral-weak"
+        >
           {newsletter.description}
         </Text>
       </Column>
       {submitted ? (
-        <Text variant="body-default-m" onBackground="brand-medium" role="status">
+        <Text textVariant="body-default-m" onBackground="brand-medium" role="status">
           Thanks for subscribing!
         </Text>
       ) : (
@@ -133,7 +138,7 @@ export const Newsletter: React.FC<React.ComponentProps<typeof Column>> = ({ ...f
             else setSubmitted(true);
           }}
         >
-          <Row fillWidth maxWidth={24} s={{ direction: "column" }} gap="8">
+          <Row maxWidth="24rem" s={{ direction: "column" }} gap="8">
             <Input
               id="newsletter-email"
               name="email"

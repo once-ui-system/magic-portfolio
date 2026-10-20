@@ -1,83 +1,72 @@
 ---
 title: "Styling your portfolio"
-summary: "Magic Portfolio's styling is based on Once UI's customization through data-attributes."
+summary: "Pick an aesthetic, fine-tune its theme, rearrange the home page or build a look of your own."
 image: "/images/gallery/horizontal-3.jpg"
-publishedAt: "2025-04-21"
+publishedAt: "2026-10-18"
 tag: "Magic Portfolio"
 ---
 
-## Global style
+## Pick an aesthetic
 
-Magic Portfolio's styling is based on Once UI's customization through data-attributes. You can generate a custom color palette for brand, accent and neutral colors on [Once UI](https://once-ui.com/customize) where you'll find instructions on how to apply it.
+An aesthetic is a complete look: Once UI theme, fonts, page background and home page layout. Magic Portfolio ships five: Classic, Editorial, Swiss, Aurora and Terminal. Choose one with a single line.
 
 <CodeBlock
     marginBottom="16"
     codes={[
   {
     code:
-`theme:       'dark',         // dark | light
-neutral:     'gray',         // sand | gray | slate
-brand:       'blue',         // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan
-accent:      'indigo',       // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan
-solid:       'contrast',     // color | contrast
-solidStyle:  'flat',         // flat | plastic
-border:      'playful',      // rounded | playful | conservative
-surface:     'translucent',  // filled | translucent
-transition:  'all',          // all | micro | macro
-scaling:     '100',          // 90 | 95 | 100 | 105 | 110`, 
+`// classic | editorial | swiss | aurora | terminal
+const aesthetic: AestheticName = "editorial";`,
     language: "tsx",
-    label: "src/app/resources/config.js"
+    label: "src/resources/once-ui.config.ts",
+    highlight: "2"
   }
 ]} />
 
-## Background effect
+The demo shows a picker that lets visitors try every aesthetic. Turn it off on your own site with `aestheticSwitcher: false` in the `display` object.
 
-There's a pre-configured background in `layout.tsx` that you can modify in the config file. Set graphic elements such as gradient, dots, lines, and grid and configure their appearance.
+## Fine-tune the theme
+
+Anything in `styleOverrides` wins over the aesthetic's own choices. You can generate a custom color palette on [Once UI](https://once-ui.com/customize).
 
 <CodeBlock
-    codeHeight={24}
     marginBottom="16"
     codes={[
   {
     code:
-`const effects = {
-    mask: {
-      cursor: false,
-      x: 50,
-      y: 0,
-      radius: 100
-    },
-    gradient: {
-      display: true,
-      x: 50,
-      y: -25,
-      width: 100,
-      height: 100,
-      tilt: 0,
-      colorStart: 'accent-background-strong',
-      colorEnd: 'static-transparent',
-      opacity: 50
-    },
-    dots: {
-      display: true,
-      size: 2,
-      color: 'brand-on-background-weak',
-      opacity: 20
-    },
-    lines: {
-      display: false,
-      color: 'neutral-alpha-weak',
-      opacity: 100
-    },
-    grid: {
-      display: false,
-      color: 'neutral-alpha-weak',
-      opacity: 100,
-      width: 'var(--static-space-32)',
-      height: 'var(--static-space-32)'
-    }
-}`, 
+`const styleOverrides: Partial<StyleConfig> = {
+  theme: "system", // dark | light | system
+  brand: "cyan", // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan
+  border: "rounded", // rounded | playful | conservative | sharp
+};`,
     language: "tsx",
-    label: "src/app/resources/config.js"
+    label: "src/resources/once-ui.config.ts"
   }
 ]} />
+
+## Rearrange the home page
+
+The home page is built from sections, and each aesthetic has its own list. Set `homeSections` to reorder, remove or swap them.
+
+<CodeBlock
+    marginBottom="16"
+    codes={[
+  {
+    code:
+`const homeSections: HomeSection[] = [
+  { type: "hero", variant: "split" }, // centered | statement | split | terminal
+  { type: "ticker" },
+  { type: "work", variant: "bento" }, // stack | index | bento
+  { type: "posts", variant: "list", range: [1, 4] }, // grid | list
+  { type: "newsletter" },
+];`,
+    language: "tsx",
+    label: "src/resources/once-ui.config.ts"
+  }
+]} />
+
+## Make your own aesthetic
+
+Copy a preset in `src/resources/aesthetics.ts` and change it: colors and shapes in `style`, fonts from `src/resources/fonts.ts`, the page `background` (gradient, dots, grid, lines, plus blobs or particles) and the `home` sections. Add it to the `aesthetics` object and it shows up in the picker too.
+
+Want a WebGL background? [Once UI Pro effects](https://once-ui.com/effects) such as Silk and Prism Glow drop into `src/components/aesthetic/ProEffect.tsx`.

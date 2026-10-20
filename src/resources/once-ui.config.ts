@@ -1,8 +1,8 @@
 import {
+  Aesthetic,
   DataStyleConfig,
   DisplayConfig,
-  EffectsConfig,
-  FontsConfig,
+  HomeSection,
   NewsletterFormConfig,
   ProtectedRoutesConfig,
   RoutesConfig,
@@ -12,6 +12,7 @@ import {
   StyleConfig,
 } from "@/types";
 import { home, person, social } from "./content";
+import { aesthetics, type AestheticName } from "./aesthetics";
 
 // IMPORTANT: Replace with your own domain address - it's used for SEO in meta tags and schema
 const baseURL: string = "https://magic-portfolio-demo.vercel.app";
@@ -28,6 +29,9 @@ const display: DisplayConfig = {
   location: true,
   time: true,
   themeSwitcher: true,
+  // Shows a picker that lets visitors try every aesthetic. Handy for a demo,
+  // usually off on a real portfolio.
+  aestheticSwitcher: true,
 };
 
 // Enable password protection on selected routes
@@ -36,53 +40,34 @@ const protectedRoutes: ProtectedRoutesConfig = {
   "/work/automate-design-handovers-with-a-figma-to-code-pipeline": true,
 };
 
-// Import and set font for each variant
-import { Geist } from "next/font/google";
-import { Geist_Mono } from "next/font/google";
+// The look of the whole site: classic | editorial | swiss | aurora | terminal
+// Each one sets colors, fonts, background and home page layout (see aesthetics.ts).
+const aesthetic: AestheticName = "editorial";
 
-const heading = Geist({
-  variable: "--font-heading",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const body = Geist({
-  variable: "--font-body",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const label = Geist({
-  variable: "--font-label",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const code = Geist_Mono({
-  variable: "--font-code",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const fonts: FontsConfig = {
-  heading: heading,
-  body: body,
-  label: label,
-  code: code,
+// Fine-tune the aesthetic: anything set here wins over its choices.
+const styleOverrides: Partial<StyleConfig> = {
+  theme: "system", // dark | light | system
+  // neutral: "gray", // sand | gray | slate | mint | rose | dusk
+  // brand: "cyan", // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan
+  // accent: "red", // same options as brand
+  // solid: "contrast", // color | contrast | inverse
+  // solidStyle: "flat", // flat | plastic
+  // border: "playful", // rounded | playful | conservative | sharp
+  // surface: "translucent", // filled | translucent
+  // transition: "all", // all | micro | macro | none
+  // scaling: "100", // 90 | 95 | 100 | 105 | 110
 };
 
-// default customization applied to the HTML in the main layout.tsx
+// Reorder, remove or swap home page sections. Leave empty to use the aesthetic's own.
+// Example: [{ type: "hero", variant: "split" }, { type: "work", variant: "index" }]
+const homeSections: HomeSection[] = [];
+
+const activeAesthetic: Aesthetic = aesthetics[aesthetic];
+
 const style: StyleConfig = {
-  theme: "system", // dark | light | system
-  neutral: "gray", // sand | gray | slate | mint | rose | dusk | custom
-  brand: "cyan", // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan | custom
-  accent: "red", // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan | custom
-  solid: "contrast", // color | contrast
-  solidStyle: "flat", // flat | plastic
-  border: "playful", // rounded | playful | conservative | sharp
-  surface: "translucent", // filled | translucent
-  transition: "all", // all | micro | macro
-  scaling: "100", // 90 | 95 | 100 | 105 | 110
+  theme: "system",
+  ...activeAesthetic.style,
+  ...styleOverrides,
 };
 
 const dataStyle: DataStyleConfig = {
@@ -96,47 +81,6 @@ const dataStyle: DataStyleConfig = {
     fill: "var(--neutral-on-background-weak)",
     fontSize: 11,
     line: false,
-  },
-};
-
-const effects: EffectsConfig = {
-  mask: {
-    cursor: false,
-    x: 50,
-    y: 0,
-    radius: 100,
-  },
-  gradient: {
-    display: false,
-    opacity: 100,
-    x: 50,
-    y: 60,
-    width: 100,
-    height: 50,
-    tilt: 0,
-    colorStart: "accent-background-strong",
-    colorEnd: "page-background",
-  },
-  dots: {
-    display: true,
-    opacity: 40,
-    size: "2",
-    color: "brand-background-strong",
-  },
-  grid: {
-    display: false,
-    opacity: 100,
-    color: "neutral-alpha-medium",
-    width: "0.25rem",
-    height: "0.25rem",
-  },
-  lines: {
-    display: false,
-    opacity: 100,
-    color: "neutral-alpha-weak",
-    size: "16",
-    thickness: 1,
-    angle: 45,
   },
 };
 
@@ -225,11 +169,13 @@ export {
   routes,
   protectedRoutes,
   baseURL,
-  fonts,
+  aesthetic,
+  activeAesthetic,
+  homeSections,
+  styleOverrides,
   style,
   schema,
   sameAs,
   socialSharing,
-  effects,
   dataStyle,
 };

@@ -16,9 +16,8 @@ Sign up for [Aveiro](https://www.aveiro.app), open **Audience → Embed** and cr
 Paste the public ID into the `newsletterForm` object. Signups go to Aveiro directly from the page, with no new tab and no redirect.
 
 <CodeBlock
-    highlight="2"
     codes={[
-  {
+  { highlight: "2",
     code:
 `const newsletterForm: NewsletterFormConfig = {
   aveiroEmbedId: "your-embed-form-id",
@@ -36,9 +35,8 @@ Paste the public ID into the `newsletterForm` object. Signups go to Aveiro direc
 You can change the headline and description in `content.tsx`, or hide the block with `display: false`.
 
 <CodeBlock
-    highlight="2"
     codes={[
-  {
+  { highlight: "2",
     code:
 `const newsletter: Newsletter = {
   display: true,
@@ -55,7 +53,7 @@ You can change the headline and description in `content.tsx`, or hide the block 
 The block's background is set in the same `newsletterForm` object. Turn the gradient, dots, lines and grid on or off and tune how they look.
 
 <CodeBlock
-    codeHeight={24}
+    codeHeight="24rem"
     marginBottom="16"
     codes={[
   {

@@ -15,14 +15,14 @@ The feedback component is used to display critical information to visitors.
 <CodeBlock
     radius="none"
     topRadius="l"
-    codeHeight={24}
-    preview={<Feedback showIcon title="Feedback element" variant="success" description="Longer description of the feedback message." marginBottom="24"/>}
+    codeHeight="24rem"
+    preview={<Feedback showIcon title="Feedback element" tone="success" description="Longer description of the feedback message." marginBottom="24"/>}
     codes={[
       {
         code:
 `<Feedback
     showIcon
-    variant="success"
+    tone="success"
     title="Feedback element"
     description="Longer description of the feedback message."
 />`,
@@ -46,37 +46,33 @@ Tables are used to display data in a structured format.
     topRadius="l"
     preview={
     <Table 
-      data={{
-        headers: [
-          { content: "Name", key: "name", sortable: true },
-          { content: "Type", key: "type", sortable: true },
-          { content: "Description", key: "description" }
-        ],
-        rows: [
-          ["title", "string", "The title of the document"],
-          ["summary", "string", "A brief summary of the document content"],
-          ["updatedAt", "string", "The date when the document was last updated"],
-          ["navLabel", "string", "The label used in navigation menus"]
-        ]
-      }}
+      columns={[
+        { header: "Name", key: "name", sortable: true },
+        { header: "Type", key: "type", sortable: true },
+        { header: "Description", key: "description" }
+      ]}
+      rows={[
+        ["title", "string", "The title of the document"],
+        ["summary", "string", "A brief summary of the document content"],
+        ["updatedAt", "string", "The date when the document was last updated"],
+        ["navLabel", "string", "The label used in navigation menus"]
+      ]}
     />}
     codes={[
       {
         code:
 `<Table 
-    data={{
-      headers: [
-        { content: "Name", key: "name", sortable: true },
-        { content: "Type", key: "type", sortable: true },
-        { content: "Description", key: "description" }
-      ],
-      rows: [
-        ["title", "string", "The title of the document"],
-        ["summary", "string", "A brief summary of the document content"],
-        ["updatedAt", "string", "The date when the document was last updated"],
-        ["navLabel", "string", "The label used in navigation menus"]
-      ]
-    }}
+  columns={[
+    { header: "Name", key: "name", sortable: true },
+    { header: "Type", key: "type", sortable: true },
+    { header: "Description", key: "description" }
+  ]}
+  rows={[
+    ["title", "string", "The title of the document"],
+    ["summary", "string", "A brief summary of the document content"],
+    ["updatedAt", "string", "The date when the document was last updated"],
+    ["navLabel", "string", "The label used in navigation menus"]
+  ]}
 />`,
         language: "tsx",
         label: "Table"
@@ -140,7 +136,7 @@ The `InlineCode` is another Once UI component that you can access either through
 <CodeBlock
     radius="none"
     topRadius="l"
-    codeHeight={24}
+    codeHeight="24rem"
     preview={
     <InlineCode>
         const x = 10;
@@ -178,15 +174,15 @@ Accordions are used to toggle between hiding and showing content.
         items={[
           {
             title: "Section 1",
-            content: <Text variant="body-default-s" onBackground="neutral-weak">This is the content for section 1. You can include any components here.</Text>
+            content: <Text textVariant="body-default-s" onBackground="neutral-weak">This is the content for section 1. You can include any components here.</Text>
           },
           {
             title: "Section 2",
-            content: <Text variant="body-default-s" onBackground="neutral-weak">This is the content for section 2. Accordions are great for FAQs and other expandable content.</Text>
+            content: <Text textVariant="body-default-s" onBackground="neutral-weak">This is the content for section 2. Accordions are great for FAQs and other expandable content.</Text>
           },
           {
             title: "Section 3",
-            content: <Text variant="body-default-s" onBackground="neutral-weak">This is the content for section 3. They help save space by hiding content until needed.</Text>
+            content: <Text textVariant="body-default-s" onBackground="neutral-weak">This is the content for section 3. They help save space by hiding content until needed.</Text>
           }
         ]}
       />
@@ -228,7 +224,7 @@ Buttons are used to trigger actions or navigate to other pages.
 <CodeBlock
     radius="none"
     topRadius="l"
-    codeHeight={24}
+    codeHeight="24rem"
     preview={
     <Row gap="8" marginBottom="16" marginTop="8">
       <Button variant="primary" label="Primary" />
@@ -265,7 +261,7 @@ Cards are used to group related content and actions.
     <Row fillWidth horizontal="center">
       <Card
         href=" "
-        maxWidth={20}
+        maxWidth="20rem"
         radius="l-4"
         direction="column"
         padding="4"
@@ -273,10 +269,10 @@ Cards are used to group related content and actions.
       >
         <Media src="/images/projects/project-01/cover-01.jpg" aspectRatio="16/9" radius="l" sizes="400px" />
         <Column fillWidth padding="12" gap="8" horizontal="start">
-          <Text variant="heading-strong-m" onBackground="neutral-strong" align="left">
+          <Text textVariant="heading-strong-m" onBackground="neutral-strong" align="left">
             Card Title
           </Text>
-          <Text variant="body-default-s" onBackground="neutral-weak" align="left">
+          <Text textVariant="body-default-s" onBackground="neutral-weak" align="left">
             This is a description of the card. It can contain multiple lines of text.
           </Text>
         </Column>
@@ -288,17 +284,17 @@ Cards are used to group related content and actions.
         code:
 `<Card
     href=" "
-    maxWidth={20}
+    maxWidth="20rem"
     radius="l-4"
     direction="column"
     padding="4"
   >
     <Media src="/images/projects/project-01/cover-01.jpg" aspectRatio="16/9" radius="l" sizes="400px" />
     <Column fillWidth padding="12" gap="8" horizontal="start">
-      <Text variant="heading-strong-m" onBackground="neutral-strong" align="left">
+      <Text textVariant="heading-strong-m" onBackground="neutral-strong" align="left">
         Card Title
       </Text>
-      <Text variant="body-default-s" onBackground="neutral-weak" align="left">
+      <Text textVariant="body-default-s" onBackground="neutral-weak" align="left">
         This is a description of the card. It can contain multiple lines of text.
       </Text>
     </Column>
@@ -321,7 +317,7 @@ Icons are used to visually represent actions, objects, or concepts. For instruct
 <CodeBlock
     radius="none"
     topRadius="l"
-    codeHeight={24}
+    codeHeight="24rem"
     preview={<Row gap="24" wrap>
       <Icon name="rocket" onBackground="danger-medium" size="m" />
       <Icon name="close" size="m" />
@@ -386,7 +382,7 @@ The Flex component is accessible as `Column` and `Row` and can handle a wide ran
         <Row padding="8">Row Item</Row>
       </Column>
     </Row>}
-    codeHeight={24}
+    codeHeight="24rem"
     codes={[
       {
         code:
@@ -456,7 +452,7 @@ Use the grid to construct responsive grid layouts. It can be styled similarly to
         <Text>Grid Item</Text>
       </Column>
     </Grid>}
-    codeHeight={24}
+    codeHeight="24rem"
     codes={[
       {
         code:
@@ -503,7 +499,7 @@ Media provides an optimized way to display images. Access it with the `Media` co
 <CodeBlock
     radius="none"
     topRadius="l"
-    codeHeight={24}
+    codeHeight="24rem"
     preview={<Media src="/images/projects/project-01/cover-01.jpg" alt="Example image" sizes="640px" aspectRatio="16/9" radius="l" />}
     codes={[
       {
@@ -531,7 +527,7 @@ You can also use it to embed YouTube videos.
 <CodeBlock
     radius="none"
     topRadius="l"
-    codeHeight={24}
+    codeHeight="24rem"
     preview={<Media src="https://www.youtube.com/watch?v=TQT_FSdxbC8" alt="Example video" aspectRatio="16/9" radius="l" />}
     codes={[
       {
@@ -603,9 +599,8 @@ Since Magic Portfolio is based on Once UI, you can use all the components provid
 
 <CodeBlock
     marginBottom="16" marginTop="8"
-    highlight="2"
     codes={[
-      {
+      { highlight: "2",
         code:
 `const components = {
     // Add new components

@@ -5,17 +5,48 @@ import "@/resources/custom.css";
 import type { Viewport } from "next";
 import classNames from "classnames";
 
-import {
-  Background,
-  Column,
-  Flex,
-  Meta,
-  Opacity,
-  RevealFx,
-  SpacingToken,
-} from "@once-ui-system/core";
+import { Column, Flex, Meta } from "@once-ui-system/core";
 import { Footer, Header, RouteGuard, Providers } from "@/components";
-import { baseURL, effects, fonts, style, dataStyle, home, person } from "@/resources";
+import { AestheticBackground } from "@/components/aesthetic/AestheticBackground";
+import { AestheticStyles } from "@/components/aesthetic/AestheticStyles";
+import { AestheticSwitcher } from "@/components/aesthetic/AestheticSwitcher";
+import {
+  aesthetic,
+  baseURL,
+  dataStyle,
+  display,
+  fontFamilies,
+  aesthetics,
+  home,
+  person,
+  style,
+  styleOverrides,
+} from "@/resources";
+
+// Theme attributes of every aesthetic (with styleOverrides applied), so the
+// theme script can restore a visitor's pick before the first paint.
+function aestheticAttributes() {
+  const { theme: _theme, ...overrides } = styleOverrides;
+  return Object.fromEntries(
+    Object.entries(aesthetics).map(([name, preset]) => {
+      const merged = { ...preset.style, ...overrides };
+      return [
+        name,
+        {
+          brand: merged.brand,
+          accent: merged.accent,
+          neutral: merged.neutral,
+          solid: merged.solid,
+          "solid-style": merged.solidStyle,
+          border: merged.border,
+          surface: merged.surface,
+          transition: merged.transition,
+          scaling: merged.scaling,
+        },
+      ];
+    }),
+  );
+}
 
 export async function generateMetadata() {
   return Meta.generate({
@@ -45,15 +76,12 @@ export default async function RootLayout({
       suppressHydrationWarning
       as="html"
       lang={person.locale ?? "en"}
+      data-aesthetic={aesthetic}
       fillWidth
-      className={classNames(
-        fonts.heading.variable,
-        fonts.body.variable,
-        fonts.label.variable,
-        fonts.code.variable,
-      )}
+      className={classNames(Object.values(fontFamilies).map((font) => font.variable))}
     >
       <head>
+        <AestheticStyles />
         <script
           id="theme-init"
           dangerouslySetInnerHTML={{
@@ -90,6 +118,21 @@ export default async function RootLayout({
                     return themeValue;
                   };
                   
+                  // With the aesthetic switcher on, restore the visitor's last pick
+                  ${
+                    display.aestheticSwitcher
+                      ? `
+                  const savedAesthetic = localStorage.getItem('data-aesthetic');
+                  const aestheticStyles = ${JSON.stringify(aestheticAttributes())};
+                  if (savedAesthetic && aestheticStyles[savedAesthetic]) {
+                    root.setAttribute('data-aesthetic', savedAesthetic);
+                    Object.entries(aestheticStyles[savedAesthetic]).forEach(([key, value]) => {
+                      root.setAttribute('data-' + key, value);
+                    });
+                  }`
+                      : ""
+                  }
+
                   // Apply saved theme
                   const savedTheme = localStorage.getItem('data-theme');
                   const resolvedTheme = resolveTheme(savedTheme);
@@ -122,49 +165,9 @@ export default async function RootLayout({
           padding="0"
           horizontal="center"
         >
-          <RevealFx fill position="absolute">
-            <Background
-              mask={{
-                x: effects.mask.x,
-                y: effects.mask.y,
-                radius: effects.mask.radius,
-                cursor: effects.mask.cursor,
-              }}
-              gradient={{
-                display: effects.gradient.display,
-                opacity: effects.gradient.opacity as Opacity,
-                x: effects.gradient.x,
-                y: effects.gradient.y,
-                width: effects.gradient.width,
-                height: effects.gradient.height,
-                tilt: effects.gradient.tilt,
-                colorStart: effects.gradient.colorStart,
-                colorEnd: effects.gradient.colorEnd,
-              }}
-              dots={{
-                display: effects.dots.display,
-                opacity: effects.dots.opacity as Opacity,
-                size: effects.dots.size as SpacingToken,
-                color: effects.dots.color,
-              }}
-              grid={{
-                display: effects.grid.display,
-                opacity: effects.grid.opacity as Opacity,
-                color: effects.grid.color,
-                width: effects.grid.width,
-                height: effects.grid.height,
-              }}
-              lines={{
-                display: effects.lines.display,
-                opacity: effects.lines.opacity as Opacity,
-                size: effects.lines.size as SpacingToken,
-                thickness: effects.lines.thickness,
-                angle: effects.lines.angle,
-                color: effects.lines.color,
-              }}
-            />
-          </RevealFx>
+          <AestheticBackground />
           <Flex fillWidth minHeight="16" s={{ hide: true }} />
+          {display.aestheticSwitcher && <AestheticSwitcher />}
           <Header />
           <Flex as="main" zIndex={0} fillWidth padding="l" horizontal="center" flex={1}>
             <Flex horizontal="center" fillWidth minHeight="0">

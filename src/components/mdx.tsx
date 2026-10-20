@@ -109,7 +109,7 @@ function createParagraph({ children }: TextProps) {
   return (
     <Text
       style={{ lineHeight: "175%" }}
-      variant="body-default-m"
+      textVariant="body-default-m"
       onBackground="neutral-medium"
       marginTop="8"
       marginBottom="12"

@@ -74,3 +74,12 @@ export function getPosts(customPath = ["", "", "", ""]) {
   const postsDir = path.join(/* turbopackIgnore: true */ process.cwd(), ...customPath);
   return getMDXData(postsDir);
 }
+
+/** Posts newest first, optionally cut to `range` (1-based, inclusive): [1, 3] is the newest three. */
+export function getSortedPosts(customPath: string[], range?: [number, number?]) {
+  const sorted = getPosts(customPath).sort(
+    (a, b) =>
+      new Date(b.metadata.publishedAt).getTime() - new Date(a.metadata.publishedAt).getTime(),
+  );
+  return range ? sorted.slice(range[0] - 1, range[1] ?? sorted.length) : sorted;
+}

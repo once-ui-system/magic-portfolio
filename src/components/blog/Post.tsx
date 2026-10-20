@@ -42,7 +42,7 @@ export default function Post({ post, thumbnail, direction }: PostProps) {
       )}
       <Row fillWidth>
         <Column
-          maxWidth={28}
+          maxWidth="28rem"
           paddingY="24"
           paddingX="l"
           gap="20"
@@ -52,17 +52,17 @@ export default function Post({ post, thumbnail, direction }: PostProps) {
           <Row gap="24" vertical="center">
             <Row vertical="center" gap="16">
               <Avatar src={person.avatar} size="s" aria-label={person.name} />
-              <Text variant="label-default-s">{person.name}</Text>
+              <Text textVariant="label-default-s">{person.name}</Text>
             </Row>
-            <Text variant="body-default-xs" onBackground="neutral-weak">
+            <Text textVariant="body-default-xs" onBackground="neutral-weak">
               {formatDate(post.metadata.publishedAt, false)}
             </Text>
           </Row>
-          <Text variant="heading-strong-l" wrap="balance">
+          <Text textVariant="heading-strong-l" wrap="balance">
             {post.metadata.title}
           </Text>
           {post.metadata.tag && (
-            <Text variant="label-strong-s" onBackground="neutral-weak">
+            <Text textVariant="label-strong-s" onBackground="neutral-weak">
               {post.metadata.tag}
             </Text>
           )}

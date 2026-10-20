@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { routes, protectedRoutes } from "@/resources";
-import { Flex, Spinner, Button, Heading, Column, PasswordInput } from "@once-ui-system/core";
+import { Flex, Spinner, Button, Heading, Column, Input } from "@once-ui-system/core";
 import NotFound from "@/app/not-found";
 
 interface RouteGuardProps {
@@ -90,17 +90,18 @@ const RouteGuard: React.FC<RouteGuardProps> = ({ children }) => {
 
   if (isPasswordRequired && !isAuthenticated) {
     return (
-      <Column paddingY="128" maxWidth={24} gap="24" center>
+      <Column paddingY="128" maxWidth="24rem" gap="24" center>
         <Heading align="center" wrap="balance">
           This page is password protected
         </Heading>
         <Column fillWidth gap="8" horizontal="center">
-          <PasswordInput
+          <Input
             id="password"
             label="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             errorMessage={error}
+            type="password"
           />
           <Button onClick={handlePasswordSubmit}>Submit</Button>
         </Column>

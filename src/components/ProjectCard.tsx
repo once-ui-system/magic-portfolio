@@ -50,7 +50,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
       >
         {title && (
           <Flex flex={5}>
-            <Heading as="h2" wrap="balance" variant="heading-strong-xl">
+            <Heading as="h2" wrap="balance" textVariant="heading-strong-xl">
               {title}
             </Heading>
           </Flex>
@@ -59,7 +59,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
           <Column flex={7} gap="16">
             {avatars?.length > 0 && <AvatarGroup avatars={avatars} size="m" reverse />}
             {description?.trim() && (
-              <Text wrap="balance" variant="body-default-s" onBackground="neutral-weak">
+              <Text wrap="balance" textVariant="body-default-s" onBackground="neutral-weak">
                 {description}
               </Text>
             )}
@@ -70,7 +70,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
                   style={{ margin: "0", width: "fit-content" }}
                   href={href}
                 >
-                  <Text variant="body-default-s">Read case study</Text>
+                  <Text textVariant="body-default-s">Read case study</Text>
                 </SmartLink>
               )}
               {link && (
@@ -79,7 +79,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
                   style={{ margin: "0", width: "fit-content" }}
                   href={link}
                 >
-                  <Text variant="body-default-s">View project</Text>
+                  <Text textVariant="body-default-s">View project</Text>
                 </SmartLink>
               )}
             </Flex>

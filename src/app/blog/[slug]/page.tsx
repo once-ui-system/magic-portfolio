@@ -73,7 +73,7 @@ export default async function Blog({ params }: { params: Promise<{ slug: string 
 
   return (
     <Row fillWidth>
-      <Row maxWidth={12} m={{ hide: true }} />
+      <Row maxWidth="12rem" m={{ hide: true }} />
       <Row fillWidth horizontal="center">
         <Column as="section" maxWidth="m" horizontal="center" gap="l" paddingTop="24">
           <Schema
@@ -96,15 +96,15 @@ export default async function Blog({ params }: { params: Promise<{ slug: string 
           />
           <Column maxWidth="s" gap="16" horizontal="center" align="center">
             <SmartLink href="/blog">
-              <Text variant="label-strong-m">Blog</Text>
+              <Text textVariant="label-strong-m">Blog</Text>
             </SmartLink>
-            <Text variant="body-default-xs" onBackground="neutral-weak" marginBottom="12">
+            <Text textVariant="body-default-xs" onBackground="neutral-weak" marginBottom="12">
               {post.metadata.publishedAt && formatDate(post.metadata.publishedAt)}
             </Text>
-            <Heading variant="display-strong-m">{post.metadata.title}</Heading>
+            <Heading textVariant="display-strong-m">{post.metadata.title}</Heading>
             {post.metadata.subtitle && (
               <Text
-                variant="body-default-l"
+                textVariant="body-default-l"
                 onBackground="neutral-weak"
                 align="center"
                 style={{ fontStyle: "italic" }}
@@ -116,7 +116,7 @@ export default async function Blog({ params }: { params: Promise<{ slug: string 
           <Row marginBottom="32" horizontal="center">
             <Row gap="16" vertical="center">
               <Avatar size="s" src={person.avatar} aria-label={person.name} />
-              <Text variant="label-default-m" onBackground="brand-weak">
+              <Text textVariant="label-default-m" onBackground="brand-weak">
                 {person.name}
               </Text>
             </Row>
@@ -142,7 +142,7 @@ export default async function Blog({ params }: { params: Promise<{ slug: string 
 
           <Column fillWidth gap="40" horizontal="center" marginTop="40">
             <Line maxWidth="40" />
-            <Text as="h2" id="recent-posts" variant="heading-strong-xl" marginBottom="24">
+            <Text as="h2" id="recent-posts" textVariant="heading-strong-xl" marginBottom="24">
               Recent posts
             </Text>
             <Posts exclude={[post.slug]} range={[1, 2]} columns="2" thumbnail direction="column" />
@@ -151,7 +151,7 @@ export default async function Blog({ params }: { params: Promise<{ slug: string 
         </Column>
       </Row>
       <Column
-        maxWidth={12}
+        maxWidth="12rem"
         paddingLeft="40"
         fitHeight
         position="sticky"
