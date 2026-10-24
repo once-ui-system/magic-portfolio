@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import "katex/dist/katex.min.css";
 import { getPosts } from "@/utils/utils";
+import { canViewPath } from "@/utils/pageAccessServer";
 import {
   Meta,
   Schema,
@@ -67,6 +68,11 @@ export default async function Project({
 
   if (!post) {
     notFound();
+  }
+
+  // Password-protected: render nothing without access (RouteGuard shows the form).
+  if (!(await canViewPath(`${work.path}/${post.slug}`))) {
+    return null;
   }
 
   const avatars =
