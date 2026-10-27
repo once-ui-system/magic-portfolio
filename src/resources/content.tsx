@@ -93,6 +93,20 @@ const home: Home = {
     "Motion",
     "Developer experience",
   ],
+  contact: {
+    title: "Have a project in mind?",
+    description: "I'm open to new collaborations. Say hi and tell me what you're building.",
+    links: ["Email", "LinkedIn", "GitHub"],
+  },
+  // Headings of the gallery and featured posts sections
+  galleryMarquee: {
+    title: "Gallery",
+    linkLabel: "All photos",
+  },
+  featuredPosts: {
+    title: "Writing",
+    linkLabel: "All posts",
+  },
 };
 
 const about: About = {

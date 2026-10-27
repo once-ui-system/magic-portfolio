@@ -132,7 +132,9 @@ const aurora: Aesthetic = {
   home: [
     { type: "hero", variant: "split" },
     { type: "work", variant: "bento" },
-    { type: "posts", variant: "grid", range: [1, 2] },
+    { type: "gallery", variant: "marquee" },
+    { type: "posts", variant: "featured", range: [1, 4] },
+    { type: "contact" },
     { type: "newsletter" },
   ],
 };

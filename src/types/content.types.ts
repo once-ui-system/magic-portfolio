@@ -1,5 +1,5 @@
-import { IconName } from "@/resources/icons";
-import { zones } from "tzdata";
+import type { IconName } from "@/resources/icons";
+import type { zones } from "tzdata";
 
 /**
  * IANA time zone string (e.g., 'Asia/Calcutta', 'Europe/Vienna').
@@ -111,6 +111,25 @@ export interface Home extends BasePageConfig {
   availability?: string;
   /** Words for the ticker section and the terminal hero, e.g. what you do or tools you use */
   ticker?: string[];
+  /** The contact section: a short invitation plus buttons for your social links */
+  contact?: {
+    title: React.ReactNode;
+    description?: React.ReactNode;
+    /** Names from `social` to show as buttons, in this order. Leave empty to show the essential ones. */
+    links?: string[];
+  };
+  /** Heading of the gallery section. Defaults: `gallery.label`, link "All photos" */
+  galleryMarquee?: {
+    title?: string;
+    /** The link to /gallery */
+    linkLabel?: string;
+  };
+  /** Heading of the "featured" posts section. Defaults: "Writing", link "All posts" */
+  featuredPosts?: {
+    title?: string;
+    /** The link to /blog */
+    linkLabel?: string;
+  };
 }
 
 /**
