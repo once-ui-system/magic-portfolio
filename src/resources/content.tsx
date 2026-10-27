@@ -250,6 +250,10 @@ const blog: Blog = {
   description: `Read what ${person.name} has been up to recently`,
   // Create new blog posts by adding a new .mdx file to app/blog/posts
   // All posts will be listed on the /blog route
+  // Read counts beside the date on posts and projects (features.viewCounts)
+  viewCounts: {
+    reads: (formatted, count) => `${formatted} ${count === 1 ? "read" : "reads"}`,
+  },
 };
 
 const work: Work = {

@@ -17,6 +17,7 @@ import {
 } from "@once-ui-system/core";
 import { baseURL, about, blog, person } from "@/resources";
 import { formatDate } from "@/utils/formatDate";
+import { ViewCount } from "@/components/blog/ViewCount";
 import { getPosts } from "@/utils/utils";
 import { Metadata } from "next";
 import React from "react";
@@ -98,9 +99,12 @@ export default async function Blog({ params }: { params: Promise<{ slug: string 
             <SmartLink href="/blog">
               <Text textVariant="label-strong-m">Blog</Text>
             </SmartLink>
-            <Text textVariant="body-default-xs" onBackground="neutral-weak" marginBottom="12">
-              {post.metadata.publishedAt && formatDate(post.metadata.publishedAt)}
-            </Text>
+            <Row gap="8" vertical="center" horizontal="center" marginBottom="12">
+              <Text textVariant="body-default-xs" onBackground="neutral-weak">
+                {post.metadata.publishedAt && formatDate(post.metadata.publishedAt)}
+              </Text>
+              <ViewCount slug={post.slug} />
+            </Row>
             <Heading textVariant="display-strong-m">{post.metadata.title}</Heading>
             {post.metadata.subtitle && (
               <Text

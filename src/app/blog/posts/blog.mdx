@@ -65,6 +65,10 @@ You can use custom components in MDX files, but you need to import them first in
 
 As you can see, the `Table` and `CodeBlock` components are already imported and available for use. You can add more by simply importing them to this file and passing them to the `components` object.
 
+## Read counts
+
+Posts and projects can show how many people read them, next to the date. The counts are stored in [Upstash Redis](https://upstash.com), so this is off by default: set `viewCounts: true` in the `features` object in `src/resources/once-ui.config.ts`, and add `UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN` to your environment (see `.env.example` and the README). Without them nothing is shown. Change the wording with `viewCounts.reads` in the `blog` object in `src/resources/content.tsx`.
+
 ## Hot reload
 
 Hot reload of MDX files is currently not supported, but we're working on it.

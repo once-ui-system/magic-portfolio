@@ -2,6 +2,7 @@ import {
   Aesthetic,
   DataStyleConfig,
   DisplayConfig,
+  FeaturesConfig,
   HomeSection,
   NewsletterFormConfig,
   ProtectedRoutesConfig,
@@ -163,6 +164,13 @@ const socialSharing: SocialSharingConfig = {
   },
 };
 
+// Optional features. Each key switches one feature on or off; see the comment on each.
+const features: FeaturesConfig = {
+  // Read counts on posts and projects. Needs Upstash Redis: see .env.example and the README.
+  // Default: false
+  viewCounts: false,
+};
+
 export {
   display,
   newsletterForm,
@@ -178,4 +186,5 @@ export {
   sameAs,
   socialSharing,
   dataStyle,
+  features,
 };

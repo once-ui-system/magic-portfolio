@@ -155,6 +155,15 @@ export type SocialSharingConfig = {
   };
 };
 
+/** Opt-in quality-of-life features. Each key switches one feature on or off. */
+export type FeaturesConfig = {
+  /**
+   * Read counts on posts and projects, stored in Upstash Redis (see .env.example). Default false.
+   * Without Redis env it renders nothing, except in `next dev`, which counts in memory.
+   */
+  viewCounts?: boolean;
+};
+
 /**
  * Top-level config types for once-ui.config.js
  */
@@ -171,4 +180,5 @@ export type OnceUIConfig = {
   sameAs: SameAsConfig;
   socialSharing: SocialSharingConfig;
   dataStyle: DataStyleConfig;
+  features: FeaturesConfig;
 };
