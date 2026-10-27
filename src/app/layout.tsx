@@ -7,6 +7,7 @@ import classNames from "classnames";
 
 import { Column, Flex, Meta } from "@once-ui-system/core";
 import { Footer, Header, RouteGuard, Providers } from "@/components";
+import { ServerRendered } from "@/components/ServerRendered";
 import { AestheticBackground } from "@/components/aesthetic/AestheticBackground";
 import { AestheticStyles } from "@/components/aesthetic/AestheticStyles";
 import { AestheticSwitcher } from "@/components/aesthetic/AestheticSwitcher";
@@ -82,78 +83,81 @@ export default async function RootLayout({
     >
       <head>
         <AestheticStyles />
-        <script
-          id="theme-init"
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                try {
-                  const root = document.documentElement;
-                  const defaultTheme = 'system';
+        {/* Its server copy runs before the first paint; see ServerRendered */}
+        <ServerRendered>
+          <script
+            id="theme-init"
+            dangerouslySetInnerHTML={{
+              __html: `
+                (function() {
+                  try {
+                    const root = document.documentElement;
+                    const defaultTheme = 'system';
                   
-                  // Set defaults from config
-                  const config = ${JSON.stringify({
-                    brand: style.brand,
-                    accent: style.accent,
-                    neutral: style.neutral,
-                    solid: style.solid,
-                    "solid-style": style.solidStyle,
-                    border: style.border,
-                    surface: style.surface,
-                    transition: style.transition,
-                    scaling: style.scaling,
-                    "viz-style": dataStyle.variant,
-                  })};
+                    // Set defaults from config
+                    const config = ${JSON.stringify({
+                      brand: style.brand,
+                      accent: style.accent,
+                      neutral: style.neutral,
+                      solid: style.solid,
+                      "solid-style": style.solidStyle,
+                      border: style.border,
+                      surface: style.surface,
+                      transition: style.transition,
+                      scaling: style.scaling,
+                      "viz-style": dataStyle.variant,
+                    })};
                   
-                  // Apply default values
-                  Object.entries(config).forEach(([key, value]) => {
-                    root.setAttribute('data-' + key, value);
-                  });
-                  
-                  // Resolve theme
-                  const resolveTheme = (themeValue) => {
-                    if (!themeValue || themeValue === 'system') {
-                      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-                    }
-                    return themeValue;
-                  };
-                  
-                  // With the aesthetic switcher on, restore the visitor's last pick
-                  ${
-                    display.aestheticSwitcher
-                      ? `
-                  const savedAesthetic = localStorage.getItem('data-aesthetic');
-                  const aestheticStyles = ${JSON.stringify(aestheticAttributes())};
-                  if (savedAesthetic && aestheticStyles[savedAesthetic]) {
-                    root.setAttribute('data-aesthetic', savedAesthetic);
-                    Object.entries(aestheticStyles[savedAesthetic]).forEach(([key, value]) => {
+                    // Apply default values
+                    Object.entries(config).forEach(([key, value]) => {
                       root.setAttribute('data-' + key, value);
                     });
-                  }`
-                      : ""
-                  }
-
-                  // Apply saved theme
-                  const savedTheme = localStorage.getItem('data-theme');
-                  const resolvedTheme = resolveTheme(savedTheme);
-                  root.setAttribute('data-theme', resolvedTheme);
                   
-                  // Apply any saved style overrides
-                  const styleKeys = Object.keys(config);
-                  styleKeys.forEach(key => {
-                    const value = localStorage.getItem('data-' + key);
-                    if (value) {
-                      root.setAttribute('data-' + key, value);
+                    // Resolve theme
+                    const resolveTheme = (themeValue) => {
+                      if (!themeValue || themeValue === 'system') {
+                        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                      }
+                      return themeValue;
+                    };
+                  
+                    // With the aesthetic switcher on, restore the visitor's last pick
+                    ${
+                      display.aestheticSwitcher
+                        ? `
+                    const savedAesthetic = localStorage.getItem('data-aesthetic');
+                    const aestheticStyles = ${JSON.stringify(aestheticAttributes())};
+                    if (savedAesthetic && aestheticStyles[savedAesthetic]) {
+                      root.setAttribute('data-aesthetic', savedAesthetic);
+                      Object.entries(aestheticStyles[savedAesthetic]).forEach(([key, value]) => {
+                        root.setAttribute('data-' + key, value);
+                      });
+                    }`
+                        : ""
                     }
-                  });
-                } catch (e) {
-                  console.error('Failed to initialize theme:', e);
-                  document.documentElement.setAttribute('data-theme', 'dark');
-                }
-              })();
-            `,
-          }}
-        />
+
+                    // Apply saved theme
+                    const savedTheme = localStorage.getItem('data-theme');
+                    const resolvedTheme = resolveTheme(savedTheme);
+                    root.setAttribute('data-theme', resolvedTheme);
+                  
+                    // Apply any saved style overrides
+                    const styleKeys = Object.keys(config);
+                    styleKeys.forEach(key => {
+                      const value = localStorage.getItem('data-' + key);
+                      if (value) {
+                        root.setAttribute('data-' + key, value);
+                      }
+                    });
+                  } catch (e) {
+                    console.error('Failed to initialize theme:', e);
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                  }
+                })();
+              `,
+            }}
+          />
+        </ServerRendered>
       </head>
       <Providers>
         <Column

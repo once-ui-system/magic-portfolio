@@ -1,12 +1,13 @@
 import { Avatar, Button, Column, Heading, Row, Tag, Text } from "@once-ui-system/core";
 import { RevealFx } from "@once-ui-system/fx";
 import { about, home, person } from "@/resources";
+import { isRouteEnabled } from "@/utils/routes";
 
 export function HeroCentered() {
   return (
     <Column fillWidth horizontal="center" gap="m">
       <Column maxWidth="s" horizontal="center" align="center">
-        {home.featured.display && (
+        {home.featured.display && isRouteEnabled(home.featured.href) && (
           <RevealFx
             fillWidth
             horizontal="center"
@@ -38,29 +39,31 @@ export function HeroCentered() {
             {home.subline}
           </Text>
         </RevealFx>
-        <RevealFx paddingTop="12" delay={400} horizontal="center" paddingLeft="12">
-          <Button
-            data-border="rounded"
-            href={about.path}
-            variant="secondary"
-            size="m"
-            weight="default"
-            arrowIcon
-          >
-            <Row gap="8" vertical="center" paddingRight="4">
-              {about.avatar.display && (
-                <Avatar
-                  marginRight="8"
-                  style={{ marginLeft: "-0.75rem" }}
-                  src={person.avatar}
-                  size="m"
-                  aria-hidden
-                />
-              )}
-              {about.title}
-            </Row>
-          </Button>
-        </RevealFx>
+        {isRouteEnabled(about.path) && (
+          <RevealFx paddingTop="12" delay={400} horizontal="center" paddingLeft="12">
+            <Button
+              data-border="rounded"
+              href={about.path}
+              variant="secondary"
+              size="m"
+              weight="default"
+              arrowIcon
+            >
+              <Row gap="8" vertical="center" paddingRight="4">
+                {about.avatar.display && (
+                  <Avatar
+                    marginRight="8"
+                    style={{ marginLeft: "-0.75rem" }}
+                    src={person.avatar}
+                    size="m"
+                    aria-hidden
+                  />
+                )}
+                {about.title}
+              </Row>
+            </Button>
+          </RevealFx>
+        )}
       </Column>
     </Column>
   );

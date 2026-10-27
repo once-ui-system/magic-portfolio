@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import { isRouteEnabled } from "@/utils/routes";
 import "katex/dist/katex.min.css";
 import { getPosts } from "@/utils/utils";
 import {
@@ -23,6 +24,9 @@ import { Metadata } from "next";
 import { Projects } from "@/components/work/Projects";
 
 export async function generateStaticParams(): Promise<{ slug: string }[]> {
+  // A section switched off in `routes` builds no pages; every slug returns 404.
+  if (!isRouteEnabled("/work")) return [];
+
   const posts = getPosts(["src", "app", "work", "projects"]);
   return posts.map((post) => ({
     slug: post.slug,
@@ -65,7 +69,7 @@ export default async function Project({
 
   let post = getPosts(["src", "app", "work", "projects"]).find((post) => post.slug === slugPath);
 
-  if (!post) {
+  if (!post || !isRouteEnabled("/work")) {
     notFound();
   }
 
