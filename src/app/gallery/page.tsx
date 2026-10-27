@@ -1,6 +1,7 @@
 import { Flex, Meta, Schema } from "@once-ui-system/core";
 import GalleryView from "@/components/gallery/GalleryView";
 import { baseURL, gallery, person } from "@/resources";
+import { canonicalAlternates } from "@/utils/seo";
 
 export async function generateMetadata() {
   return Meta.generate({
@@ -9,6 +10,7 @@ export async function generateMetadata() {
     baseURL: baseURL,
     image: `/api/og/generate?title=${encodeURIComponent(gallery.title)}`,
     path: gallery.path,
+    alternates: canonicalAlternates(gallery.path),
   });
 }
 

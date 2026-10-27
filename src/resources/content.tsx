@@ -250,6 +250,11 @@ const blog: Blog = {
   description: `Read what ${person.name} has been up to recently`,
   // Create new blog posts by adding a new .mdx file to app/blog/posts
   // All posts will be listed on the /blog route
+  // The line under a post's title, next to its date
+  postMeta: {
+    updated: "Updated",
+    readingTime: (minutes) => `${minutes} min read`,
+  },
 };
 
 const work: Work = {

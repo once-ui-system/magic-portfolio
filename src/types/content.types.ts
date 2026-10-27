@@ -225,7 +225,15 @@ export interface About extends BasePageConfig {
  * Blog page configuration.
  * @description Configuration for the Blog page, including metadata and navigation label.
  */
-export interface Blog extends BasePageConfig {}
+export interface Blog extends BasePageConfig {
+  /** The line under a post's title, next to its date */
+  postMeta?: {
+    /** Before the date of the last revision (front matter `updatedAt`). Default "Updated" */
+    updated?: string;
+    /** Reading time (`features.readingTime`). Default: minutes => `${minutes} min read` */
+    readingTime?: (minutes: number) => string;
+  };
+}
 
 /**
  * Work/projects page configuration.

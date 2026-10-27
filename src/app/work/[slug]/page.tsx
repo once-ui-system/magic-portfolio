@@ -2,8 +2,6 @@ import { notFound } from "next/navigation";
 import "katex/dist/katex.min.css";
 import { getPosts } from "@/utils/utils";
 import {
-  Meta,
-  Schema,
   AvatarGroup,
   Button,
   Column,
@@ -16,11 +14,13 @@ import {
   Avatar,
   Line,
 } from "@once-ui-system/core";
-import { baseURL, about, person, work } from "@/resources";
+import { work } from "@/resources";
 import { formatDate } from "@/utils/formatDate";
 import { ScrollToHash, CustomMDX } from "@/components";
 import { Metadata } from "next";
 import { Projects } from "@/components/work/Projects";
+import { ArticleSchema } from "@/components/seo";
+import { articleMetadata } from "@/utils/seo";
 
 export async function generateStaticParams(): Promise<{ slug: string }[]> {
   const posts = getPosts(["src", "app", "work", "projects"]);
@@ -44,12 +44,13 @@ export async function generateMetadata({
 
   if (!post) return {};
 
-  return Meta.generate({
+  return articleMetadata({
     title: post.metadata.title,
     description: post.metadata.summary,
-    baseURL: baseURL,
-    image: post.metadata.image || `/api/og/generate?title=${post.metadata.title}`,
     path: `${work.path}/${post.slug}`,
+    image: post.metadata.image,
+    publishedAt: post.metadata.publishedAt,
+    updatedAt: post.metadata.updatedAt,
   });
 }
 
@@ -77,22 +78,20 @@ export default async function Project({
 
   return (
     <Column as="section" maxWidth="m" horizontal="center" gap="l">
-      <Schema
-        as="blogPosting"
-        baseURL={baseURL}
+      <ArticleSchema
+        as="CreativeWork"
         path={`${work.path}/${post.slug}`}
         title={post.metadata.title}
         description={post.metadata.summary}
         datePublished={post.metadata.publishedAt}
-        dateModified={post.metadata.publishedAt}
+        dateModified={post.metadata.updatedAt}
         image={
           post.metadata.image || `/api/og/generate?title=${encodeURIComponent(post.metadata.title)}`
         }
-        author={{
-          name: person.name,
-          url: `${baseURL}${about.path}`,
-          image: `${baseURL}${person.avatar}`,
-        }}
+        breadcrumbs={[
+          { name: work.label, path: work.path },
+          { name: post.metadata.title, path: `${work.path}/${post.slug}` },
+        ]}
       />
       <Column maxWidth="s" gap="16" horizontal="center" align="center">
         <SmartLink href="/work">

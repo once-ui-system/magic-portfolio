@@ -13,6 +13,8 @@ type Metadata = {
   title: string;
   subtitle?: string;
   publishedAt: string;
+  /** Last meaningful edit (front matter `updatedAt`). Falls back to `publishedAt` where a date is needed. */
+  updatedAt?: string;
   summary: string;
   image?: string;
   images: string[];
@@ -43,6 +45,7 @@ function readMDXFile(filePath: string) {
     title: data.title || "",
     subtitle: data.subtitle || "",
     publishedAt: data.publishedAt,
+    updatedAt: data.updatedAt || undefined,
     summary: data.summary || "",
     image: data.image || "",
     images: data.images || [],
@@ -82,4 +85,19 @@ export function getSortedPosts(customPath: string[], range?: [number, number?]) 
       new Date(b.metadata.publishedAt).getTime() - new Date(a.metadata.publishedAt).getTime(),
   );
   return range ? sorted.slice(range[0] - 1, range[1] ?? sorted.length) : sorted;
+}
+
+/** Words a reader actually reads: MDX imports, JSX tags and link targets don't count. */
+export function countWords(content: string) {
+  return content
+    .replace(/^(import|export)\s.*$/gm, "")
+    .replace(/<[^>]*>/g, " ")
+    .replace(/\]\([^)]*\)/g, "]")
+    .split(/\s+/)
+    .filter((word) => /[\p{L}\p{N}]/u.test(word)).length;
+}
+
+/** Reading time in whole minutes at 200 words a minute, never less than one. */
+export function readingTime(content: string) {
+  return Math.max(1, Math.ceil(countWords(content) / 200));
 }
