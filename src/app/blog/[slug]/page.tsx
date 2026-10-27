@@ -15,13 +15,15 @@ import {
   Media,
   Line,
 } from "@once-ui-system/core";
-import { baseURL, about, blog, person } from "@/resources";
+import { baseURL, about, blog, person, work, features, routes } from "@/resources";
 import { formatDate } from "@/utils/formatDate";
 import { getPosts } from "@/utils/utils";
 import { Metadata } from "next";
 import React from "react";
 import { Posts } from "@/components/blog/Posts";
 import { ShareSection } from "@/components/blog/ShareSection";
+import { ProjectLinkCard } from "@/components/work/ProjectLinkCard";
+import { getProjectCover, getProjectsForPost } from "@/utils/projects";
 
 export async function generateStaticParams(): Promise<{ slug: string }[]> {
   const posts = getPosts(["src", "app", "blog", "posts"]);
@@ -70,6 +72,13 @@ export default async function Blog({ params }: { params: Promise<{ slug: string 
     post.metadata.team?.map((person) => ({
       src: person.avatar,
     })) || [];
+
+  // Projects that list this post under `related` in their front matter. They link to /work and
+  // pair with "Related writing" on /blog, so both routes have to be on.
+  const fromProjects =
+    (features.relatedWriting ?? true) && routes["/blog"] !== false && routes["/work"] !== false
+      ? getProjectsForPost(post.slug)
+      : [];
 
   return (
     <Row fillWidth>
@@ -139,6 +148,21 @@ export default async function Blog({ params }: { params: Promise<{ slug: string 
           </Column>
 
           <ShareSection title={post.metadata.title} url={`${baseURL}${blog.path}/${post.slug}`} />
+
+          {fromProjects.length > 0 && (
+            <Column fillWidth maxWidth="s" gap="8">
+              {fromProjects.map((project) => (
+                <ProjectLinkCard
+                  key={project.slug}
+                  href={`${work.path}/${project.slug}`}
+                  label={work.relatedWriting?.fromProject ?? "From the project"}
+                  title={project.metadata.title}
+                  image={getProjectCover(project.metadata.images)}
+                  icon="rocket"
+                />
+              ))}
+            </Column>
+          )}
 
           <Column fillWidth gap="40" horizontal="center" marginTop="40">
             <Line maxWidth="40" />

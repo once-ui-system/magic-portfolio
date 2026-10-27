@@ -155,6 +155,17 @@ export type SocialSharingConfig = {
   };
 };
 
+/** Opt-in quality-of-life features. Each key switches one feature on or off. */
+export type FeaturesConfig = {
+  /**
+   * "Related writing" on project pages, from the project's front matter `related: [post slugs]`,
+   * and a "From the project" card back on those posts. Default true.
+   */
+  relatedWriting?: boolean;
+  /** Previous and next project cards at the end of project pages, in /work order. Default true. */
+  projectNavigation?: boolean;
+};
+
 /**
  * Top-level config types for once-ui.config.js
  */
@@ -171,4 +182,5 @@ export type OnceUIConfig = {
   sameAs: SameAsConfig;
   socialSharing: SocialSharingConfig;
   dataStyle: DataStyleConfig;
+  features: FeaturesConfig;
 };

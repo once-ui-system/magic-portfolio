@@ -2,6 +2,7 @@ import {
   Aesthetic,
   DataStyleConfig,
   DisplayConfig,
+  FeaturesConfig,
   HomeSection,
   NewsletterFormConfig,
   ProtectedRoutesConfig,
@@ -163,6 +164,14 @@ const socialSharing: SocialSharingConfig = {
   },
 };
 
+// Optional features. Each key switches one feature on or off; see the comment on each.
+const features: FeaturesConfig = {
+  // "Related writing" on project pages and "From the project" on the posts they list. Default: true
+  relatedWriting: true,
+  // Previous / next project at the end of each project page. Default: true
+  projectNavigation: true,
+};
+
 export {
   display,
   newsletterForm,
@@ -178,4 +187,5 @@ export {
   sameAs,
   socialSharing,
   dataStyle,
+  features,
 };
