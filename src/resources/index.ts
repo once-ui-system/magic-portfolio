@@ -3,6 +3,7 @@ export {
   person,
   social,
   newsletter,
+  backToTop,
   home,
   about,
   blog,
@@ -25,6 +26,7 @@ export {
   sameAs,
   socialSharing,
   dataStyle,
+  features,
 } from "./once-ui.config";
 
 export { aesthetics, type AestheticName } from "./aesthetics";

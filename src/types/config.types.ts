@@ -20,6 +20,8 @@ export type DisplayConfig = {
   time: boolean;
   themeSwitcher: boolean;
   aestheticSwitcher: boolean;
+  /** Slide the header away while scrolling down; it returns on scroll up. Off in the sample. */
+  hideHeaderOnScroll: boolean;
 };
 
 /**
@@ -155,6 +157,12 @@ export type SocialSharingConfig = {
   };
 };
 
+/** Opt-in quality-of-life features. Each key switches one feature on or off. */
+export type FeaturesConfig = {
+  /** Floating button that scrolls back to the top of long pages. Default true. */
+  backToTop?: boolean;
+};
+
 /**
  * Top-level config types for once-ui.config.js
  */
@@ -171,4 +179,5 @@ export type OnceUIConfig = {
   sameAs: SameAsConfig;
   socialSharing: SocialSharingConfig;
   dataStyle: DataStyleConfig;
+  features: FeaturesConfig;
 };

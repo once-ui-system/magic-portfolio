@@ -1,0 +1,38 @@
+@use "./breakpoints.scss" as breakpoints;
+
+.backToTop {
+    transition: opacity 220ms ease-out, transform 220ms ease-out;
+
+    &[data-visible="false"] {
+        opacity: 0;
+        transform: translateY(var(--static-space-16));
+        pointer-events: none;
+    }
+
+    // Phones: the menu bar is at the bottom, so sit just above it.
+    @media (max-width: breakpoints.$s) {
+        &.backToTop {
+            right: var(--static-space-16);
+            bottom: calc(var(--static-space-80) + var(--static-space-16) + env(safe-area-inset-bottom, 0px));
+        }
+    }
+}
+
+// With display.hideHeaderOnScroll on, the button leaves and returns with the header.
+:global(html[data-chrome-hidden="true"]) .backToTop {
+    opacity: 0;
+    transform: translateY(var(--static-space-16));
+    pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .backToTop,
+    .backToTop[data-visible="false"],
+    :global(html[data-chrome-hidden="true"]) .backToTop {
+        transform: none;
+    }
+}
+
+:global(html[data-transition="none"]) .backToTop {
+    transition: none;
+}

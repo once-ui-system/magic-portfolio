@@ -1,6 +1,7 @@
 import { IconType } from "react-icons";
 
 import {
+  HiArrowUp,
   HiArrowUpRight,
   HiOutlineLink,
   HiArrowTopRightOnSquare,
@@ -42,6 +43,7 @@ import {
 } from "react-icons/fa6";
 
 export const iconLibrary = {
+  arrowUp: HiArrowUp,
   arrowUpRight: HiArrowUpRight,
   arrowRight: HiArrowRight,
   sparkle: HiSparkles,

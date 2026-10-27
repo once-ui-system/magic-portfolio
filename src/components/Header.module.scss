@@ -1,5 +1,27 @@
 @use "./breakpoints.scss" as breakpoints;
 
+.position {
+    transition: transform 220ms ease-out, opacity 220ms ease-out;
+}
+
+.fade {
+    transition: opacity 220ms ease-out;
+}
+
+// display.hideHeaderOnScroll: the header slides away while scrolling down and returns on
+// scroll up. useChromeVisibility sets the attribute on <html>.
+:global(html[data-chrome-hidden="true"]) {
+    .position {
+        transform: translateY(calc(-100% - var(--static-space-16)));
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .fade {
+        opacity: 0;
+    }
+}
+
 .mask {
     pointer-events: none;
     backdrop-filter: blur(0.5rem);
@@ -15,8 +37,29 @@
         bottom: calc(var(--static-space-24) + env(safe-area-inset-bottom, 0px));
     }
 
+    // The menu bar sits at the bottom on phones, so it slides down instead.
+    :global(html[data-chrome-hidden="true"]) .position {
+        transform: translateY(
+            calc(100% + var(--static-space-24) + env(safe-area-inset-bottom, 0px))
+        );
+    }
+
     .mask {
         transform: rotate(180deg);
         bottom: 0;
+    }
+}
+
+// Reduced motion: the header fades out and back in place instead of sliding.
+@media (prefers-reduced-motion: reduce) {
+    :global(html[data-chrome-hidden="true"]) .position {
+        transform: none;
+    }
+}
+
+:global(html[data-transition="none"]) {
+    .position,
+    .fade {
+        transition: none;
     }
 }
