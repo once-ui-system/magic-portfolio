@@ -86,6 +86,29 @@ Social links are rendered on the `/about` page and in the footer based on the ar
   }
 ]} />
 
+### Footer
+
+The footer is one row by default: copyright, the Once UI attribution and your social icons. Set `variant: "columns"` for a fuller footer with your name, role and local time (from `person.location`) next to link columns for your enabled pages and social links. Rename or hide the built-in columns with `pages` and `connect`, and add your own with `columns`.
+
+<CodeBlock
+    marginBottom="16"
+    codes={[
+  {
+    code:
+`const footer: Footer = {
+  variant: "columns", // minimal | columns
+  localTime: true,
+  pages: { display: true, title: "Pages" }, // your enabled pages
+  connect: { display: true, title: "Connect" }, // your social links
+  columns: [
+    { title: "Elsewhere", links: [{ label: "Newsletter", href: "/blog" }] },
+  ],
+};`,
+    language: "tsx",
+    label: "src/resources/content.tsx"
+  }
+]} />
+
 ### Pages
 
 Each page have it's own object that manages the personalized content, such as headings, subheadings, images and dynamic data.

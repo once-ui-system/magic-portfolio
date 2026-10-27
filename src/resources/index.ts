@@ -3,6 +3,7 @@ export {
   person,
   social,
   newsletter,
+  footer,
   home,
   about,
   blog,
