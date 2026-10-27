@@ -2,6 +2,7 @@ import {
   Aesthetic,
   DataStyleConfig,
   DisplayConfig,
+  FeaturesConfig,
   HomeSection,
   NewsletterFormConfig,
   ProtectedRoutesConfig,
@@ -163,6 +164,12 @@ const socialSharing: SocialSharingConfig = {
   },
 };
 
+// Optional features. Each key switches one feature on or off; see the comment on each.
+const features: FeaturesConfig = {
+  // Thin progress bar at the top of blog posts and project pages. Default: true
+  readingProgress: true,
+};
+
 export {
   display,
   newsletterForm,
@@ -178,4 +185,5 @@ export {
   sameAs,
   socialSharing,
   dataStyle,
+  features,
 };

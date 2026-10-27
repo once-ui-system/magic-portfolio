@@ -155,6 +155,12 @@ export type SocialSharingConfig = {
   };
 };
 
+/** Opt-in quality-of-life features. Each key switches one feature on or off. */
+export type FeaturesConfig = {
+  /** Thin progress bar at the top of blog posts and project pages. Default true. */
+  readingProgress?: boolean;
+};
+
 /**
  * Top-level config types for once-ui.config.js
  */
@@ -171,4 +177,5 @@ export type OnceUIConfig = {
   sameAs: SameAsConfig;
   socialSharing: SocialSharingConfig;
   dataStyle: DataStyleConfig;
+  features: FeaturesConfig;
 };
