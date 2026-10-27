@@ -1,8 +1,8 @@
 import { MDXRemote, MDXRemoteProps } from "next-mdx-remote/rsc";
 import React, { ReactNode } from "react";
-import { slugify as transliterate } from "transliteration";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
+import { rehypeHeadingIds, slugify } from "@/utils/rehypeHeadingIds";
 
 import {
   Heading,
@@ -28,6 +28,7 @@ import {
   Line,
 } from "@once-ui-system/core";
 import { CodeBlock } from "@once-ui-system/core/code";
+import { textOf } from "@once-ui-system/core/mdx";
 
 type CustomLinkProps = React.AnchorHTMLAttributes<HTMLAnchorElement> & {
   href: string;
@@ -79,20 +80,14 @@ function createImage({ alt, src, ...props }: MediaProps & { src: string }) {
   );
 }
 
-function slugify(str: string): string {
-  const strWithAnd = str.replace(/&/g, " and "); // Replace & with 'and'
-  return transliterate(strWithAnd, {
-    lowercase: true,
-    separator: "-", // Replace spaces with -
-  }).replace(/\-\-+/g, "-"); // Replace multiple - with single -
-}
-
 function createHeading(as: "h1" | "h2" | "h3" | "h4" | "h5" | "h6") {
   const CustomHeading = ({
     children,
+    id,
     ...props
-  }: Omit<React.ComponentProps<typeof HeadingLink>, "as" | "id">) => {
-    const slug = slugify(children as string);
+  }: Omit<React.ComponentProps<typeof HeadingLink>, "as" | "id"> & { id?: string }) => {
+    // rehypeHeadingIds sets a unique id on every Markdown heading; the text is the fallback.
+    const slug = id || slugify(textOf(children));
     return (
       <HeadingLink marginTop="24" marginBottom="12" as={as} id={slug} {...props}>
         {children}
@@ -219,7 +214,7 @@ export function CustomMDX(props: CustomMDXProps) {
         // at build time. Single dollars stay plain text, so prices are safe.
         mdxOptions: {
           remarkPlugins: [[remarkMath, { singleDollarTextMath: false }]],
-          rehypePlugins: [rehypeKatex],
+          rehypePlugins: [rehypeHeadingIds, rehypeKatex],
         },
       }}
       {...props}
