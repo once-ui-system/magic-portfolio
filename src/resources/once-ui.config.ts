@@ -8,11 +8,13 @@ import {
   RoutesConfig,
   SameAsConfig,
   SchemaConfig,
+  SeoConfig,
   SocialSharingConfig,
   StyleConfig,
 } from "@/types";
 import { home, person, social } from "./content";
 import { aesthetics, type AestheticName } from "./aesthetics";
+import { aiSearchBots, aiTrainingBots } from "./aiCrawlers";
 
 // IMPORTANT: Replace with your own domain address - it's used for SEO in meta tags and schema
 const baseURL: string = "https://magic-portfolio-demo.vercel.app";
@@ -163,6 +165,26 @@ const socialSharing: SocialSharingConfig = {
   },
 };
 
+// What AI tools may read. Password-protected and switched-off pages are never included.
+const seo: SeoConfig = {
+  // /llms.txt is a plain-text guide to your site for AI assistants. fullText adds
+  // /llms-full.txt with the full text of every project and post. Set either to false to 404 it.
+  llmsTxt: {
+    enabled: true,
+    fullText: true,
+  },
+  // Which AI crawlers robots.txt lets in. Search bots answer questions and link back to you;
+  // training bots collect text to train models. Regular search engines are always allowed.
+  aiCrawlers: {
+    search: true,
+    training: false,
+    // The user agents each switch covers. Add or remove names, e.g.
+    // [...aiSearchBots, "YouBot"], or replace a list with your own.
+    searchBots: aiSearchBots,
+    trainingBots: aiTrainingBots,
+  },
+};
+
 export {
   display,
   newsletterForm,
@@ -178,4 +200,5 @@ export {
   sameAs,
   socialSharing,
   dataStyle,
+  seo,
 };

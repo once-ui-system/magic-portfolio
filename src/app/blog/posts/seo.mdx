@@ -43,3 +43,32 @@ Social sharing images (open-graph and twitter) are automatically generated with 
 />
 
 The above declaration generates the social image with the title of the page. You can use a static image by replacing the `ogImage` value with a path to an image in the `public` directory.
+
+## AI assistants
+
+Magic Portfolio serves `/llms.txt`, a plain-text guide to your site for AI assistants, and `/llms-full.txt` with the full text of your posts and projects. Both are built from your content, and password-protected or switched-off pages are left out. `robots.txt` lets AI search bots in, since they answer questions and link back to you, and keeps AI training bots out. Change any of this in the `seo` object:
+
+<CodeBlock
+    marginBottom="16"
+    codes={[
+      {
+        code:
+`const seo: SeoConfig = {
+  llmsTxt: {
+    enabled: true, // false: /llms.txt and /llms-full.txt return 404
+    fullText: true, // false: only /llms-full.txt returns 404
+  },
+  aiCrawlers: {
+    search: true, // let AI search bots in
+    training: false, // keep AI training bots out
+    searchBots: [...aiSearchBots, "YouBot"], // add or remove user agents
+    trainingBots: aiTrainingBots,
+  },
+};`,
+        language: "tsx",
+        label: "src/resources/once-ui.config.ts"
+      }
+    ]}
+/>
+
+The default bot lists live in `src/resources/aiCrawlers.ts`. Leave `searchBots` or `trainingBots` out to use them as they are.
