@@ -225,7 +225,13 @@ export interface About extends BasePageConfig {
  * Blog page configuration.
  * @description Configuration for the Blog page, including metadata and navigation label.
  */
-export interface Blog extends BasePageConfig {}
+export interface Blog extends BasePageConfig {
+  /** The contents list above posts and projects on phones (`features.mobileToc`) */
+  mobileToc?: {
+    /** Title of the folded list. Default "On this page" */
+    title?: string;
+  };
+}
 
 /**
  * Work/projects page configuration.

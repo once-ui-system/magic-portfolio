@@ -65,6 +65,10 @@ You can use custom components in MDX files, but you need to import them first in
 
 As you can see, the `Table` and `CodeBlock` components are already imported and available for use. You can add more by simply importing them to this file and passing them to the `components` object.
 
+## Contents on phones
+
+On phones and tablets, posts and project pages show a folded "On this page" list above the article, the same list as the sidebar on larger screens. Project pages also get that sidebar. Turn either off in the `features` object in `src/resources/once-ui.config.ts` with `mobileToc: false` or `projectToc: false`, and change the list's title with `mobileToc.title` in the `blog` object in `src/resources/content.tsx`.
+
 ## Hot reload
 
 Hot reload of MDX files is currently not supported, but we're working on it.

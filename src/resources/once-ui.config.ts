@@ -2,6 +2,7 @@ import {
   Aesthetic,
   DataStyleConfig,
   DisplayConfig,
+  FeaturesConfig,
   HomeSection,
   NewsletterFormConfig,
   ProtectedRoutesConfig,
@@ -163,6 +164,14 @@ const socialSharing: SocialSharingConfig = {
   },
 };
 
+// Optional features. Each key switches one feature on or off; see the comment on each.
+const features: FeaturesConfig = {
+  // "On this page" list that folds open above posts and projects on phones. Default: true
+  mobileToc: true,
+  // "On this page" sidebar on project pages, like the one on blog posts. Default: true
+  projectToc: true,
+};
+
 export {
   display,
   newsletterForm,
@@ -178,4 +187,5 @@ export {
   sameAs,
   socialSharing,
   dataStyle,
+  features,
 };

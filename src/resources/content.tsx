@@ -250,6 +250,10 @@ const blog: Blog = {
   description: `Read what ${person.name} has been up to recently`,
   // Create new blog posts by adding a new .mdx file to app/blog/posts
   // All posts will be listed on the /blog route
+  // Contents list above posts and projects on phones (features.mobileToc)
+  mobileToc: {
+    title: "On this page",
+  },
 };
 
 const work: Work = {

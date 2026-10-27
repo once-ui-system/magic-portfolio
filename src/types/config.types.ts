@@ -155,6 +155,14 @@ export type SocialSharingConfig = {
   };
 };
 
+/** Opt-in quality-of-life features. Each key switches one feature on or off. */
+export type FeaturesConfig = {
+  /** "On this page" list that folds open above posts and projects on phones. Default true. */
+  mobileToc?: boolean;
+  /** "On this page" sidebar on project pages, like the one on blog posts. Default true. */
+  projectToc?: boolean;
+};
+
 /**
  * Top-level config types for once-ui.config.js
  */
@@ -171,4 +179,5 @@ export type OnceUIConfig = {
   sameAs: SameAsConfig;
   socialSharing: SocialSharingConfig;
   dataStyle: DataStyleConfig;
+  features: FeaturesConfig;
 };
