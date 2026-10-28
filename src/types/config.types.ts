@@ -155,6 +155,12 @@ export type SocialSharingConfig = {
   };
 };
 
+/** Opt-in quality-of-life features. Each key switches one feature on or off. */
+export type FeaturesConfig = {
+  /** Briefly highlight the heading or element a #link lands on. Default true. */
+  hashHighlight?: boolean;
+};
+
 /**
  * What the site tells search engines beyond meta tags.
  */
@@ -182,4 +188,5 @@ export type OnceUIConfig = {
   socialSharing: SocialSharingConfig;
   dataStyle: DataStyleConfig;
   seo: SeoConfig;
+  features: FeaturesConfig;
 };

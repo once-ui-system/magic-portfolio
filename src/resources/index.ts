@@ -26,6 +26,7 @@ export {
   socialSharing,
   dataStyle,
   seo,
+  features,
 } from "./once-ui.config";
 
 export { aesthetics, type AestheticName } from "./aesthetics";
