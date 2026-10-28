@@ -18,11 +18,12 @@ import {
   Line,
   Tag,
 } from "@once-ui-system/core";
-import { baseURL, about, person, work } from "@/resources";
+import { baseURL, about, features, person, work } from "@/resources";
 import { formatDate } from "@/utils/formatDate";
 import { ScrollToHash, CustomMDX } from "@/components";
 import { Metadata } from "next";
 import { Projects } from "@/components/work/Projects";
+import { ReadingProgress } from "@/components/blog/ReadingProgress";
 
 // Only the slugs built below exist: anything else (a draft in production, a
 // mistyped URL) is a real 404 instead of a not-found page served with 200.
@@ -108,6 +109,7 @@ export default async function Project({
           image: `${baseURL}${person.avatar}`,
         }}
       />
+      {(features.readingProgress ?? true) && <ReadingProgress />}
       <Column maxWidth="s" gap="16" horizontal="center" align="center">
         {post.metadata.draft && (
           <Tag tone="warning" prefixIcon="eyeOff" label="Draft · only visible in development" />
@@ -140,7 +142,7 @@ export default async function Project({
       {post.metadata.images.length > 0 && (
         <Media priority aspectRatio="16 / 9" radius="m" alt="image" src={post.metadata.images[0]} />
       )}
-      <Column style={{ margin: "auto" }} as="article" maxWidth="xs">
+      <Column style={{ margin: "auto" }} as="article" maxWidth="xs" data-post-body>
         <CustomMDX source={post.content} />
       </Column>
       <Column fillWidth gap="40" horizontal="center" marginTop="40">

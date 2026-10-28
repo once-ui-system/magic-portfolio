@@ -1,0 +1,13 @@
+// Grows from the left edge; the scale is set from ReadingProgress on every animation frame
+.bar {
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 0.12s linear;
+    will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .bar {
+        transition: none;
+    }
+}

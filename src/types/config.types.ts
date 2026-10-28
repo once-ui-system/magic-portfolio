@@ -159,6 +159,8 @@ export type SocialSharingConfig = {
 export type FeaturesConfig = {
   /** Briefly highlight the heading or element a #link lands on. Default true. */
   hashHighlight?: boolean;
+  /** Thin progress bar at the top of blog posts and project pages. Default true. */
+  readingProgress?: boolean;
 };
 
 /**

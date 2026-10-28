@@ -178,6 +178,8 @@ const seo: SeoConfig = {
 const features: FeaturesConfig = {
   // Briefly highlight the heading a #link lands on. Default: true
   hashHighlight: true,
+  // Thin progress bar at the top of blog posts and project pages. Default: true
+  readingProgress: true,
 };
 
 export {
