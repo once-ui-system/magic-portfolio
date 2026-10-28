@@ -250,6 +250,11 @@ const blog: Blog = {
   description: `Read what ${person.name} has been up to recently`,
   // Create new blog posts by adding a new .mdx file to app/blog/posts
   // All posts will be listed on the /blog route
+  // The offer to jump back into a post or project (features.resumeReading)
+  resumeReading: {
+    prompt: "Pick up where you left off?",
+    action: "Continue",
+  },
 };
 
 const work: Work = {

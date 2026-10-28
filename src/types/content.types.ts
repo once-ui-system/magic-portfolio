@@ -225,7 +225,15 @@ export interface About extends BasePageConfig {
  * Blog page configuration.
  * @description Configuration for the Blog page, including metadata and navigation label.
  */
-export interface Blog extends BasePageConfig {}
+export interface Blog extends BasePageConfig {
+  /** The offer to jump back on posts and project pages (`features.resumeReading`) */
+  resumeReading?: {
+    /** The question in the toast. Default "Pick up where you left off?" */
+    prompt?: string;
+    /** The button that jumps back. Default "Continue" */
+    action?: string;
+  };
+}
 
 /**
  * Work/projects page configuration.
