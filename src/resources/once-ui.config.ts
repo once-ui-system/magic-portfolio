@@ -198,6 +198,12 @@ const features: FeaturesConfig = {
   backToTop: true,
   // ⌘K / Ctrl+K command palette, with a search button in the header. Default: true
   search: true,
+  // Thin bar at the top of the window while a page loads. It holds still with reduced motion.
+  // Default: true
+  navigationProgress: true,
+  // Short fade of the page content after each navigation. Skipped with reduced motion, and
+  // when style.transition is "none" or "micro". Default: true
+  routeTransition: true,
 };
 
 export {

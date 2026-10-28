@@ -12,6 +12,7 @@ import { AestheticBackground } from "@/components/aesthetic/AestheticBackground"
 import { AestheticStyles } from "@/components/aesthetic/AestheticStyles";
 import { AestheticSwitcher } from "@/components/aesthetic/AestheticSwitcher";
 import { buildSearchIndex } from "@/utils/searchIndex";
+import { NavigationProgress } from "@/components/motion";
 import {
   aesthetic,
   baseURL,
@@ -144,6 +145,7 @@ export default async function RootLayout({
           horizontal="center"
         >
           <AestheticBackground />
+          {(features.navigationProgress ?? true) && <NavigationProgress />}
           <Flex fillWidth minHeight="16" s={{ hide: true }} />
           {display.aestheticSwitcher && <AestheticSwitcher />}
           <Header searchEntries={(features.search ?? true) ? buildSearchIndex() : undefined} />

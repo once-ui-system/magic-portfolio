@@ -69,6 +69,10 @@ The home page is built from sections, and each aesthetic has its own list. Set `
 
 Set `display.hideHeaderOnScroll: true` in `src/resources/once-ui.config.ts` to slide the header away while visitors scroll down; it comes back as soon as they scroll up. A small button in the corner takes them back to the top of long pages. Remove it with `backToTop: false` in the `features` object, and change its label with `backToTop.label` in `src/resources/content.tsx`.
 
+## Page transitions
+
+When a page takes a moment to load, a thin bar in the brand colour runs along the top of the window, and each new page fades in briefly. Both respect reduced motion, and the fade also follows `transition` in `styleOverrides`. Turn them off with `navigationProgress: false` or `routeTransition: false` in the `features` object in `src/resources/once-ui.config.ts`.
+
 ## Make your own aesthetic
 
 Copy a preset in `src/resources/aesthetics.ts` and change it: colors and shapes in `style`, fonts from `src/resources/fonts.ts`, the page `background` (gradient, dots, grid, lines, plus blobs or particles) and the `home` sections. Add it to the `aesthetics` object and it shows up in the picker too.

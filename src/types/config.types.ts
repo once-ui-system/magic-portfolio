@@ -177,6 +177,10 @@ export type FeaturesConfig = {
   backToTop?: boolean;
   /** ⌘K / Ctrl+K palette: pages, posts, projects, actions and social links. Default true. */
   search?: boolean;
+  /** Thin bar at the top of the window while a page loads. Default true. */
+  navigationProgress?: boolean;
+  /** Short fade of the page content after each navigation. Default true. */
+  routeTransition?: boolean;
 };
 
 /**
