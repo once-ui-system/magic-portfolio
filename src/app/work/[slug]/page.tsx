@@ -15,6 +15,7 @@ import {
   Row,
   Avatar,
   Line,
+  Tag,
 } from "@once-ui-system/core";
 import { baseURL, about, person, work } from "@/resources";
 import { formatDate } from "@/utils/formatDate";
@@ -22,8 +23,12 @@ import { ScrollToHash, CustomMDX } from "@/components";
 import { Metadata } from "next";
 import { Projects } from "@/components/work/Projects";
 
+// Only the slugs built below exist: anything else (a draft in production, a
+// mistyped URL) is a real 404 instead of a not-found page served with 200.
+export const dynamicParams = false;
+
 export async function generateStaticParams(): Promise<{ slug: string }[]> {
-  const posts = getPosts(["src", "app", "work", "projects"]);
+  const posts = getPosts(["src", "app", "work", "projects"], { includeDrafts: true });
   return posts.map((post) => ({
     slug: post.slug,
   }));
@@ -39,7 +44,7 @@ export async function generateMetadata({
     ? routeParams.slug.join("/")
     : routeParams.slug || "";
 
-  const posts = getPosts(["src", "app", "work", "projects"]);
+  const posts = getPosts(["src", "app", "work", "projects"], { includeDrafts: true });
   let post = posts.find((post) => post.slug === slugPath);
 
   if (!post) return {};
@@ -50,6 +55,9 @@ export async function generateMetadata({
     baseURL: baseURL,
     image: post.metadata.image || `/api/og/generate?title=${post.metadata.title}`,
     path: `${work.path}/${post.slug}`,
+    // Drafts only render in `next dev`, but keep them out of search all the same
+    noindex: post.metadata.draft,
+    nofollow: post.metadata.draft,
   });
 }
 
@@ -63,7 +71,9 @@ export default async function Project({
     ? routeParams.slug.join("/")
     : routeParams.slug || "";
 
-  let post = getPosts(["src", "app", "work", "projects"]).find((post) => post.slug === slugPath);
+  let post = getPosts(["src", "app", "work", "projects"], { includeDrafts: true }).find(
+    (post) => post.slug === slugPath,
+  );
 
   if (!post) {
     notFound();
@@ -95,6 +105,9 @@ export default async function Project({
         }}
       />
       <Column maxWidth="s" gap="16" horizontal="center" align="center">
+        {post.metadata.draft && (
+          <Tag tone="warning" prefixIcon="eyeOff" label="Draft · only visible in development" />
+        )}
         <SmartLink href="/work">
           <Text textVariant="label-strong-m">Projects</Text>
         </SmartLink>

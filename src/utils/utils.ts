@@ -19,6 +19,8 @@ type Metadata = {
   tag?: string;
   team: Team[];
   link?: string;
+  /** `draft: true` in front matter: only rendered by `next dev`, never built for production. */
+  draft: boolean;
 };
 
 import { notFound } from "next/navigation";
@@ -49,6 +51,7 @@ function readMDXFile(filePath: string) {
     tag: data.tag || [],
     team: data.team || [],
     link: data.link || "",
+    draft: data.draft === true,
   };
 
   return { metadata, content };
@@ -68,11 +71,21 @@ function getMDXData(dir: string) {
   });
 }
 
-export function getPosts(customPath = ["", "", "", ""]) {
+/** Drafts can be previewed while running `next dev`; production builds never include them. */
+export const showDrafts = process.env.NODE_ENV === "development";
+
+/**
+ * Posts or projects in a folder. Drafts are left out, so lists, the sitemap and
+ * the RSS feed never show them. Pages pass `includeDrafts` to open a draft by
+ * its URL, which only works in `next dev`.
+ */
+export function getPosts(customPath = ["", "", "", ""], { includeDrafts = false } = {}) {
   // Posts are read at build time. The ignore comment keeps Next from tracing
   // the whole project (images and video included) into every server function.
   const postsDir = path.join(/* turbopackIgnore: true */ process.cwd(), ...customPath);
-  return getMDXData(postsDir);
+  return getMDXData(postsDir).filter(
+    (post) => !post.metadata.draft || (includeDrafts && showDrafts),
+  );
 }
 
 /** Posts newest first, optionally cut to `range` (1-based, inclusive): [1, 3] is the newest three. */
