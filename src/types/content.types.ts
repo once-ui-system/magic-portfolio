@@ -108,6 +108,35 @@ export type Social = Array<{
 }>;
 
 /**
+ * Footer configuration.
+ * @description Pick the footer's layout. Every variant keeps the Once UI attribution line.
+ */
+export type Footer = {
+  /**
+   * `minimal`: one row with the copyright, the attribution and your social icons.
+   * `columns`: your name and role, local time and link columns above that row.
+   */
+  variant: "minimal" | "columns";
+  /** Show the time where you are (from `person.location`) in the columns footer */
+  localTime?: boolean;
+  /** The column of your enabled pages in the columns footer. Default: shown, titled "Pages" */
+  pages?: {
+    display?: boolean;
+    title?: string;
+  };
+  /** The column of your social links in the columns footer. Default: shown, titled "Connect" */
+  connect?: {
+    display?: boolean;
+    title?: string;
+  };
+  /** Extra link columns after Pages and Connect in the columns footer */
+  columns?: Array<{
+    title: string;
+    links: Array<{ label: string; href: string }>;
+  }>;
+};
+
+/**
  * Base interface for page configuration with common properties.
  */
 export interface BasePageConfig {

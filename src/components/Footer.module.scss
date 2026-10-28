@@ -5,3 +5,14 @@
         text-align: center;
     }
 }
+
+// Doubled to outrank Once UI's `a:not(.button)` link colour.
+.link.link {
+    color: var(--neutral-on-background-medium);
+    transition: var(--transition-micro-medium);
+
+    &:hover,
+    &:focus-visible {
+        color: var(--neutral-on-background-strong);
+    }
+}

@@ -1,4 +1,4 @@
-import { About, BackToTop, Blog, Gallery, Home, Newsletter, Person, Social, Work, Search } from "@/types";
+import { About, BackToTop, Blog, Gallery, Home, Newsletter, Person, Social, Work, Search, Footer } from "@/types";
 import { Line, Row, Text } from "@once-ui-system/core";
 
 const person: Person = {
@@ -76,6 +76,15 @@ const social: Social = [
     essential: true,
   },
 ];
+
+const footer: Footer = {
+  variant: "minimal", // minimal | columns
+  // The columns footer lists your enabled pages and social links. These apply to it only:
+  localTime: true,
+  pages: { display: true, title: "Pages" },
+  connect: { display: true, title: "Connect" },
+  columns: [],
+};
 
 const home: Home = {
   path: "/",
@@ -418,4 +427,4 @@ const gallery: Gallery = {
   ],
 };
 
-export { person, social, newsletter, backToTop, home, about, blog, work, gallery, search };
+export { person, social, newsletter, backToTop, home, about, blog, work, gallery, search, footer };

@@ -5,6 +5,7 @@ export {
   newsletter,
   backToTop,
   search,
+  footer,
   home,
   about,
   blog,
