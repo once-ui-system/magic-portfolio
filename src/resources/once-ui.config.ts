@@ -2,6 +2,7 @@ import {
   Aesthetic,
   DataStyleConfig,
   DisplayConfig,
+  FeaturesConfig,
   HomeSection,
   NewsletterFormConfig,
   ProtectedRoutesConfig,
@@ -163,6 +164,13 @@ const socialSharing: SocialSharingConfig = {
   },
 };
 
+// Optional features. Each key switches one feature on or off; see the comment on each.
+const features: FeaturesConfig = {
+  // Images in posts and projects open in the photo viewer (gallery.viewer in content.tsx), with
+  // the other images of the page. false enlarges one image at a time. Default: true
+  imageZoom: true,
+};
+
 export {
   display,
   newsletterForm,
@@ -178,4 +186,5 @@ export {
   sameAs,
   socialSharing,
   dataStyle,
+  features,
 };

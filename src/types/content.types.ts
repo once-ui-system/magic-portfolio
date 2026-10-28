@@ -225,7 +225,13 @@ export interface About extends BasePageConfig {
  * Blog page configuration.
  * @description Configuration for the Blog page, including metadata and navigation label.
  */
-export interface Blog extends BasePageConfig {}
+export interface Blog extends BasePageConfig {
+  /** Images in posts and projects that open in the photo viewer (`features.imageZoom`) */
+  imageZoom?: {
+    /** Name of an image's button. Default: alt => (alt ? `View larger: ${alt}` : "View image larger") */
+    open?: (alt: string) => string;
+  };
+}
 
 /**
  * Work/projects page configuration.

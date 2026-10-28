@@ -155,6 +155,12 @@ export type SocialSharingConfig = {
   };
 };
 
+/** Opt-in quality-of-life features. Each key switches one feature on or off. */
+export type FeaturesConfig = {
+  /** Images in posts and projects open in the photo viewer, with the other images of the page. Default true. */
+  imageZoom?: boolean;
+};
+
 /**
  * Top-level config types for once-ui.config.js
  */
@@ -171,4 +177,5 @@ export type OnceUIConfig = {
   sameAs: SameAsConfig;
   socialSharing: SocialSharingConfig;
   dataStyle: DataStyleConfig;
+  features: FeaturesConfig;
 };

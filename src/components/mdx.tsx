@@ -28,6 +28,8 @@ import {
   Line,
 } from "@once-ui-system/core";
 import { CodeBlock } from "@once-ui-system/core/code";
+import { ZoomableMedia } from "@/components/gallery/ZoomableMedia";
+import { features } from "@/resources";
 
 type CustomLinkProps = React.AnchorHTMLAttributes<HTMLAnchorElement> & {
   href: string;
@@ -64,19 +66,20 @@ function createImage({ alt, src, ...props }: MediaProps & { src: string }) {
     return null;
   }
 
-  return (
-    <Media
-      marginTop="8"
-      marginBottom="16"
-      enlarge
-      radius="m"
-      border="neutral-alpha-medium"
-      sizes="(max-width: 960px) 100vw, 960px"
-      alt={alt}
-      src={src}
-      {...props}
-    />
-  );
+  const shared = {
+    marginTop: "8",
+    marginBottom: "16",
+    radius: "m",
+    border: "neutral-alpha-medium",
+    sizes: "(max-width: 960px) 100vw, 960px",
+    alt,
+    src,
+  } as const;
+
+  // The photo viewer, with every image of the post as a set (features.imageZoom)
+  if (features.imageZoom ?? true) return <ZoomableMedia {...shared} {...props} />;
+
+  return <Media {...shared} enlarge {...props} />;
 }
 
 function slugify(str: string): string {

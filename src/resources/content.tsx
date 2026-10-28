@@ -250,6 +250,11 @@ const blog: Blog = {
   description: `Read what ${person.name} has been up to recently`,
   // Create new blog posts by adding a new .mdx file to app/blog/posts
   // All posts will be listed on the /blog route
+  // Images in posts and projects that open in the photo viewer (features.imageZoom).
+  // The viewer's own text is in gallery.viewer.labels
+  imageZoom: {
+    open: (alt) => (alt ? `View larger: ${alt}` : "View image larger"),
+  },
 };
 
 const work: Work = {
