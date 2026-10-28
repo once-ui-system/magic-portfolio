@@ -1,4 +1,6 @@
 import { Column, Heading, Meta, Schema } from "@once-ui-system/core";
+import { notFound } from "next/navigation";
+import { isRouteEnabled } from "@/utils/routes";
 import { baseURL, about, person, work } from "@/resources";
 import { Projects } from "@/components/work/Projects";
 
@@ -13,6 +15,8 @@ export async function generateMetadata() {
 }
 
 export default function Work() {
+  if (!isRouteEnabled("/work")) notFound();
+
   return (
     <Column maxWidth="m" paddingTop="24">
       <Schema

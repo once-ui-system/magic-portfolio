@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import { isRouteEnabled } from "@/utils/routes";
 import "katex/dist/katex.min.css";
 import { CustomMDX, ScrollToHash } from "@/components";
 import {
@@ -29,6 +30,9 @@ import { ShareSection } from "@/components/blog/ShareSection";
 export const dynamicParams = false;
 
 export async function generateStaticParams(): Promise<{ slug: string }[]> {
+  // A section switched off in `routes` builds no pages; every slug returns 404.
+  if (!isRouteEnabled("/blog")) return [];
+
   const posts = getPosts(["src", "app", "blog", "posts"], { includeDrafts: true });
   return posts.map((post) => ({
     slug: post.slug,
@@ -72,7 +76,7 @@ export default async function Blog({ params }: { params: Promise<{ slug: string 
     (post) => post.slug === slugPath,
   );
 
-  if (!post) {
+  if (!post || !isRouteEnabled("/blog")) {
     notFound();
   }
 

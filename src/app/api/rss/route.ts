@@ -1,11 +1,17 @@
 import { getPosts } from "@/utils/utils";
 import { baseURL, blog, person } from "@/resources";
 import { NextResponse } from "next/server";
+import { isRouteEnabled } from "@/utils/routes";
 
 // Built once with the site, like the posts it lists.
 export const dynamic = "force-static";
 
 export async function GET() {
+  // No feed while the blog is switched off in `routes`.
+  if (!isRouteEnabled("/blog")) {
+    return new NextResponse("Not found", { status: 404 });
+  }
+
   const posts = getPosts(["src", "app", "blog", "posts"]);
 
   // Sort posts by date (newest first)

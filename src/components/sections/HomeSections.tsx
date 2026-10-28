@@ -3,6 +3,7 @@ import { Newsletter } from "@/components";
 import { Projects } from "@/components/work/Projects";
 import { aesthetic, aesthetics, display, homeSections, type AestheticName } from "@/resources";
 import type { HomeSection } from "@/types";
+import { isRouteEnabled } from "@/utils/routes";
 import { HeroCentered } from "./HeroCentered";
 import { HeroSplit } from "./HeroSplit";
 import { HeroStatement } from "./HeroStatement";
@@ -34,8 +35,17 @@ function Section({ section }: { section: HomeSection }) {
   }
 }
 
+// Sections that list posts or projects link into /blog or /work, so they leave the home page
+// when that route is switched off in `routes`.
+function linksToEnabledRoute(section: HomeSection) {
+  if (section.type === "work") return isRouteEnabled("/work");
+  if (section.type === "posts") return isRouteEnabled("/blog");
+  return true;
+}
+
 function sectionsFor(name: AestheticName): HomeSection[] {
-  return homeSections.length > 0 ? homeSections : aesthetics[name].home;
+  const sections = homeSections.length > 0 ? homeSections : aesthetics[name].home;
+  return sections.filter(linksToEnabledRoute);
 }
 
 /**

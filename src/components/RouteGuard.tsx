@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-import { routes, protectedRoutes } from "@/resources";
+import { protectedRoutes } from "@/resources";
+import { isCheckedOnServer, isRouteEnabled } from "@/utils/routes";
 import { Flex, Spinner, Button, Heading, Column, Input } from "@once-ui-system/core";
 import NotFound from "@/app/not-found";
 
@@ -10,56 +11,31 @@ interface RouteGuardProps {
   children: React.ReactNode;
 }
 
+// Everything is decided during render, so the server ships the real page content instead of a
+// spinner. Only password-protected pages wait for the auth check.
 const RouteGuard: React.FC<RouteGuardProps> = ({ children }) => {
   const pathname = usePathname();
-  const [isRouteEnabled, setIsRouteEnabled] = useState(false);
-  const [isPasswordRequired, setIsPasswordRequired] = useState(false);
+  const isPasswordRequired = !!protectedRoutes[pathname as keyof typeof protectedRoutes];
   const [password, setPassword] = useState("");
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  // The auth result is kept per path, so it never carries over to another protected page.
+  const [auth, setAuth] = useState<{ path: string; ok: boolean } | null>(null);
   const [error, setError] = useState<string | undefined>(undefined);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const performChecks = async () => {
-      setLoading(true);
-      setIsRouteEnabled(false);
-      setIsPasswordRequired(false);
-      setIsAuthenticated(false);
+    if (!isPasswordRequired) return;
 
-      const checkRouteEnabled = () => {
-        if (!pathname) return false;
+    let cancelled = false;
+    fetch("/api/check-auth")
+      .then((response) => response.ok)
+      .catch(() => false)
+      .then((ok) => {
+        if (!cancelled) setAuth({ path: pathname, ok });
+      });
 
-        if (pathname in routes) {
-          return routes[pathname as keyof typeof routes];
-        }
-
-        const dynamicRoutes = ["/blog", "/work"] as const;
-        for (const route of dynamicRoutes) {
-          if (pathname?.startsWith(route) && routes[route]) {
-            return true;
-          }
-        }
-
-        return false;
-      };
-
-      const routeEnabled = checkRouteEnabled();
-      setIsRouteEnabled(routeEnabled);
-
-      if (protectedRoutes[pathname as keyof typeof protectedRoutes]) {
-        setIsPasswordRequired(true);
-
-        const response = await fetch("/api/check-auth");
-        if (response.ok) {
-          setIsAuthenticated(true);
-        }
-      }
-
-      setLoading(false);
+    return () => {
+      cancelled = true;
     };
-
-    performChecks();
-  }, [pathname]);
+  }, [pathname, isPasswordRequired]);
 
   const handlePasswordSubmit = async () => {
     const response = await fetch("/api/authenticate", {
@@ -69,14 +45,20 @@ const RouteGuard: React.FC<RouteGuardProps> = ({ children }) => {
     });
 
     if (response.ok) {
-      setIsAuthenticated(true);
+      setAuth({ path: pathname, ok: true });
       setError(undefined);
     } else {
       setError("Incorrect password");
     }
   };
 
-  if (loading) {
+  // Switched-off pages that check `routes` on the server already render the 404 page with a 404
+  // status, so they pass through. Any other switched-off path (a page you added) gets it here.
+  if (!isRouteEnabled(pathname) && !isCheckedOnServer(pathname)) {
+    return <NotFound />;
+  }
+
+  if (isPasswordRequired && auth?.path !== pathname) {
     return (
       <Flex fillWidth paddingY="128" horizontal="center">
         <Spinner />
@@ -84,11 +66,7 @@ const RouteGuard: React.FC<RouteGuardProps> = ({ children }) => {
     );
   }
 
-  if (!isRouteEnabled) {
-    return <NotFound />;
-  }
-
-  if (isPasswordRequired && !isAuthenticated) {
+  if (isPasswordRequired && !auth?.ok) {
     return (
       <Column paddingY="128" maxWidth="24rem" gap="24" center>
         <Heading align="center" wrap="balance">

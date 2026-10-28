@@ -16,6 +16,8 @@ import { baseURL, about, person, social } from "@/resources";
 import TableOfContents from "@/components/about/TableOfContents";
 import styles from "@/components/about/about.module.scss";
 import React from "react";
+import { notFound } from "next/navigation";
+import { isRouteEnabled } from "@/utils/routes";
 
 export async function generateMetadata() {
   return Meta.generate({
@@ -28,6 +30,8 @@ export async function generateMetadata() {
 }
 
 export default function About() {
+  if (!isRouteEnabled("/about")) notFound();
+
   const structure = [
     {
       title: about.intro.title,

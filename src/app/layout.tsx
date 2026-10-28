@@ -7,6 +7,7 @@ import classNames from "classnames";
 
 import { Column, Flex, Meta, ThemeInit } from "@once-ui-system/core";
 import { Footer, Header, RouteGuard, Providers } from "@/components";
+import { ServerRendered } from "@/components/ServerRendered";
 import { AestheticBackground } from "@/components/aesthetic/AestheticBackground";
 import { AestheticStyles } from "@/components/aesthetic/AestheticStyles";
 import { AestheticSwitcher } from "@/components/aesthetic/AestheticSwitcher";
@@ -118,14 +119,17 @@ export default async function RootLayout({
     >
       <head>
         <AestheticStyles />
-        <ThemeInit config={style} dataStyle={dataStyle} />
-        {initScript && (
-          <script
-            id="theme-init-extras"
-            // biome-ignore lint/security/noDangerouslySetInnerHtml: runs before the first paint; the payload is our own config
-            dangerouslySetInnerHTML={{ __html: initScript }}
-          />
-        )}
+        {/* Their server copy runs before the first paint; see ServerRendered */}
+        <ServerRendered>
+          <ThemeInit config={style} dataStyle={dataStyle} />
+          {initScript && (
+            <script
+              id="theme-init-extras"
+              // biome-ignore lint/security/noDangerouslySetInnerHtml: runs before the first paint; the payload is our own config
+              dangerouslySetInnerHTML={{ __html: initScript }}
+            />
+          )}
+        </ServerRendered>
       </head>
       <Providers>
         <Column
