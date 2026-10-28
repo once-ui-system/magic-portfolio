@@ -1,4 +1,4 @@
-import { About, Blog, Gallery, Home, Newsletter, Person, Social, Work } from "@/types";
+import { About, BackToTop, Blog, Gallery, Home, Newsletter, Person, Social, Work } from "@/types";
 import { Line, Row, Text } from "@once-ui-system/core";
 
 const person: Person = {
@@ -17,6 +17,11 @@ const newsletter: Newsletter = {
   display: true,
   title: <>Subscribe to {person.firstName}'s Newsletter</>,
   description: <>My weekly newsletter about creativity and engineering</>,
+};
+
+// The floating button that scrolls back up (features.backToTop in once-ui.config.ts)
+const backToTop: BackToTop = {
+  label: "Back to top",
 };
 
 const social: Social = [
@@ -341,4 +346,4 @@ const gallery: Gallery = {
   ],
 };
 
-export { person, social, newsletter, home, about, blog, work, gallery };
+export { person, social, newsletter, backToTop, home, about, blog, work, gallery };

@@ -20,6 +20,8 @@ export type DisplayConfig = {
   time: boolean;
   themeSwitcher: boolean;
   aestheticSwitcher: boolean;
+  /** Slide the header away while scrolling down; it returns on scroll up. Off in the sample. */
+  hideHeaderOnScroll: boolean;
 };
 
 /**
@@ -171,6 +173,8 @@ export type FeaturesConfig = {
   quoteShare?: boolean;
   /** Topic chips above the blog listing that filter posts by their tag. Default true. */
   tagFilter?: boolean;
+  /** Floating button that scrolls back to the top of long pages. Default true. */
+  backToTop?: boolean;
 };
 
 /**

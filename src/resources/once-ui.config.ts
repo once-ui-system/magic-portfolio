@@ -34,6 +34,9 @@ const display: DisplayConfig = {
   // Shows a picker that lets visitors try every aesthetic. Handy for a demo,
   // usually off on a real portfolio.
   aestheticSwitcher: true,
+  // Slides the header away while scrolling down a page and brings it back on scroll up.
+  // Default: false
+  hideHeaderOnScroll: false,
 };
 
 // Enable password protection on selected routes
@@ -191,6 +194,8 @@ const features: FeaturesConfig = {
   quoteShare: true,
   // Topic chips above the blog listing that filter posts by their tag. Default: true
   tagFilter: true,
+  // Floating button that scrolls back to the top of long pages. Default: true
+  backToTop: true,
 };
 
 export {

@@ -49,6 +49,15 @@ export type Newsletter = {
 };
 
 /**
+ * Back-to-top button.
+ * @description The floating button that scrolls back up; switch it with `features.backToTop`.
+ */
+export type BackToTop = {
+  /** Its tooltip and accessible name. Default "Back to top" */
+  label?: string;
+};
+
+/**
  * Social link configuration.
  */
 export type Social = Array<{

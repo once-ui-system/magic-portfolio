@@ -6,7 +6,7 @@ import type { Viewport } from "next";
 import classNames from "classnames";
 
 import { Column, Flex, Meta, ThemeInit } from "@once-ui-system/core";
-import { Footer, Header, RouteGuard, Providers } from "@/components";
+import { BackToTop, Footer, Header, RouteGuard, Providers } from "@/components";
 import { ServerRendered } from "@/components/ServerRendered";
 import { AestheticBackground } from "@/components/aesthetic/AestheticBackground";
 import { AestheticStyles } from "@/components/aesthetic/AestheticStyles";
@@ -16,6 +16,7 @@ import {
   baseURL,
   dataStyle,
   display,
+  features,
   fontFamilies,
   aesthetics,
   home,
@@ -151,6 +152,7 @@ export default async function RootLayout({
             </Flex>
           </Flex>
           <Footer />
+          {(features.backToTop ?? true) && <BackToTop />}
         </Column>
       </Providers>
     </Flex>

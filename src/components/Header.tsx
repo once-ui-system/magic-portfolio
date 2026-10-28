@@ -8,6 +8,7 @@ import { Fade, Flex, Line, Row, ToggleButton } from "@once-ui-system/core";
 import { routes, display, person, about, blog, work, gallery } from "@/resources";
 import type { IconName } from "@/resources/icons";
 import { ThemeToggle } from "./ThemeToggle";
+import { useChromeVisibility } from "./useChromeVisibility";
 import styles from "./Header.module.scss";
 
 type TimeDisplayProps = {
@@ -54,11 +55,20 @@ const navItems: { href: keyof typeof routes; icon: IconName; label: string }[] =
 
 export const Header = () => {
   const pathname = usePathname() ?? "";
+  useChromeVisibility(display.hideHeaderOnScroll);
 
   return (
     <>
-      <Fade s={{ hide: true }} fillWidth position="fixed" height="80" zIndex={9} />
       <Fade
+        className={styles.fade}
+        s={{ hide: true }}
+        fillWidth
+        position="fixed"
+        height="80"
+        zIndex={9}
+      />
+      <Fade
+        className={styles.fade}
         hide
         s={{ hide: false }}
         fillWidth

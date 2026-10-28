@@ -3,6 +3,7 @@ export {
   person,
   social,
   newsletter,
+  backToTop,
   home,
   about,
   blog,
