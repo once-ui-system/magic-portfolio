@@ -234,6 +234,9 @@ const features: FeaturesConfig = {
   // Like button on posts and projects. Needs Upstash Redis: see .env.example and the README.
   // Default: false
   likes: false,
+  // Images in posts and projects open in the photo viewer (gallery.viewer in content.tsx), with
+  // the other images of the page. false enlarges one image at a time. Default: true
+  imageZoom: true,
 };
 
 export {

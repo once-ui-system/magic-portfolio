@@ -317,6 +317,11 @@ export interface Blog extends BasePageConfig {
     /** Its accessible name. Default: "Like this post, 3 likes" */
     label?: (count: number, kind: "post" | "project") => string;
   };
+  /** Images in posts and projects that open in the photo viewer (`features.imageZoom`) */
+  imageZoom?: {
+    /** Name of an image's button. Default: alt => (alt ? `View larger: ${alt}` : "View image larger") */
+    open?: (alt: string) => string;
+  };
 }
 
 /**

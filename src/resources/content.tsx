@@ -309,6 +309,11 @@ const blog: Blog = {
   likes: {
     label: (count, kind) => `Like this ${kind}, ${count} ${count === 1 ? "like" : "likes"}`,
   },
+  // Images in posts and projects that open in the photo viewer (features.imageZoom).
+  // The viewer's own text is in gallery.viewer.labels
+  imageZoom: {
+    open: (alt) => (alt ? `View larger: ${alt}` : "View image larger"),
+  },
 };
 
 const work: Work = {

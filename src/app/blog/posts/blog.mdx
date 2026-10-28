@@ -41,6 +41,16 @@ You can use MDX to write the content of your posts. It helps you write rich and 
 
 Add `draft: true` to the frontmatter to keep a post unpublished. While you run `npm run dev`, open its URL to preview it with a Draft label. It stays out of the post lists, the sitemap and the RSS feed, and production builds leave it out entirely, so its URL returns a 404.
 
+## Images
+
+Images written in Markdown open in the photo viewer when tapped or clicked, together with every other image in the post, so readers can swipe through them, pinch to zoom and close with Back. Images inside links and small ones such as icons stay as they are. Set `features.imageZoom` to `false` in `once-ui.config.ts` to enlarge one image at a time instead.
+
+![A ridge in the snow](/images/gallery/vertical-4.jpg)
+
+![Mountains above the clouds](/images/gallery/horizontal-1.jpg)
+
+![A peak at sunrise](/images/gallery/horizontal-3.jpg)
+
 ## Custom components
 
 You can use custom components in MDX files, but you need to import them first in the `src/components/mdx.tsx` file.

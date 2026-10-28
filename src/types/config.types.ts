@@ -200,6 +200,8 @@ export type FeaturesConfig = {
    * Without Redis env it renders nothing, except in `next dev`, which keeps likes in memory.
    */
   likes?: boolean;
+  /** Images in posts and projects open in the photo viewer, with the other images of the page. Default true. */
+  imageZoom?: boolean;
 };
 
 /**
