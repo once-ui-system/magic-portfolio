@@ -13,6 +13,7 @@ import {
   HiOutlineGlobeAsiaAustralia,
   HiOutlineRocketLaunch,
   HiSparkles,
+  HiHeart,
 } from "react-icons/hi2";
 
 import {
@@ -66,6 +67,7 @@ export const iconLibrary = {
   arrowUpRightFromSquare: HiArrowTopRightOnSquare,
   document: HiOutlineDocument,
   rocket: HiOutlineRocketLaunch,
+  heartFilled: HiHeart,
   javascript: SiJavascript,
   nextjs: SiNextdotjs,
   supabase: SiSupabase,

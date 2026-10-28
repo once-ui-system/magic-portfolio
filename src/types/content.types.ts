@@ -225,7 +225,13 @@ export interface About extends BasePageConfig {
  * Blog page configuration.
  * @description Configuration for the Blog page, including metadata and navigation label.
  */
-export interface Blog extends BasePageConfig {}
+export interface Blog extends BasePageConfig {
+  /** The like button on posts and project pages (`features.likes`) */
+  likes?: {
+    /** Its accessible name. Default: "Like this post, 3 likes" */
+    label?: (count: number, kind: "post" | "project") => string;
+  };
+}
 
 /**
  * Work/projects page configuration.

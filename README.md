@@ -78,6 +78,13 @@ Docs available at: [docs.once-ui.com](https://docs.once-ui.com/docs/magic-portfo
 - Signups from the home page and blog go straight into your [Aveiro](https://www.aveiro.app) audience, where you also write and send the newsletter
 - Create an embed form in Aveiro under Audience → Embed and paste its public ID as `aveiroEmbedId` in `src/resources/once-ui.config.ts`
 
+### Likes
+- Optional like button on posts and projects. Off by default: set `features.likes` to `true` in `src/resources/once-ui.config.ts`
+- Likes live in [Upstash Redis](https://upstash.com). On Vercel, add the Upstash integration (Storage → Upstash → Redis) and connect it to the project; elsewhere, copy `UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN` from the Upstash console into your env (see `.env.example`). Posts are prerendered, so redeploy after adding the env
+- Without Redis env the button renders nothing in production. `next dev` keeps likes in memory, so you can try it locally
+- Only the production deployment writes (`VERCEL_ENV=production` on Vercel, `NODE_ENV=production` elsewhere); local dev and preview deployments connected to that Redis only read it (the in-memory store of `next dev` without Redis env does accept writes)
+- One like per visitor per post, tracked by an anonymous random id in an httpOnly cookie (`vid`). Requests from other sites are refused, each IP is rate limited, and password-protected pages only accept likes from visitors who unlocked them. Mention the cookie in your privacy notice if you have one
+
 ### Localization
 - A localized, earlier version of Magic Portfolio is available with the next-intl library
 - To use localization, switch to the [`localization-(Once-UI-0.4.2)`](https://github.com/once-ui-system/magic-portfolio/tree/localization-%28Once-UI-0.4.2%29) branch
