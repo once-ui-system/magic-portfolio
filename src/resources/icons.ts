@@ -15,6 +15,7 @@ import {
   HiOutlineRocketLaunch,
   HiOutlineRss,
   HiSparkles,
+  HiHeart,
 } from "react-icons/hi2";
 
 import {
@@ -70,6 +71,7 @@ export const iconLibrary = {
   document: HiOutlineDocument,
   rocket: HiOutlineRocketLaunch,
   rss: HiOutlineRss,
+  heartFilled: HiHeart,
   javascript: SiJavascript,
   nextjs: SiNextdotjs,
   supabase: SiSupabase,

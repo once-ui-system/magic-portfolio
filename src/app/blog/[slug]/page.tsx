@@ -31,6 +31,7 @@ import { ResumeReading } from "@/components/blog/ResumeReading";
 import { QuoteShare } from "@/components/blog/QuoteShare";
 import { ProjectLinkCard } from "@/components/work/ProjectLinkCard";
 import { getProjectCover, getProjectsForPost } from "@/utils/projects";
+import { LikeButton } from "@/components/blog/LikeButton";
 
 // Only the slugs built below exist: anything else (a draft in production, a
 // mistyped URL) is a real 404 instead of a not-found page served with 200.
@@ -199,6 +200,8 @@ export default async function Blog({ params }: { params: Promise<{ slug: string 
           <Column as="article" maxWidth="s" data-post-body>
             <CustomMDX source={post.content} />
           </Column>
+
+          <LikeButton slug={post.slug} fillWidth />
 
           <ShareSection title={post.metadata.title} url={`${baseURL}${blog.path}/${post.slug}`} />
           {(features.quoteShare ?? true) && (

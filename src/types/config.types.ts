@@ -195,6 +195,11 @@ export type FeaturesConfig = {
    * Without Redis env it renders nothing, except in `next dev`, which counts in memory.
    */
   viewCounts?: boolean;
+  /**
+   * Like button on posts and projects, stored in Upstash Redis (see .env.example). Default false.
+   * Without Redis env it renders nothing, except in `next dev`, which keeps likes in memory.
+   */
+  likes?: boolean;
 };
 
 /**

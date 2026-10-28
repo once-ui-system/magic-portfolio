@@ -99,6 +99,10 @@ The blog page shows a chip for every `tag` used in your posts' frontmatter, with
 
 Posts and projects can show how many people read them, next to the date. The counts are stored in [Upstash Redis](https://upstash.com), so this is off by default: set `viewCounts: true` in the `features` object in `src/resources/once-ui.config.ts`, and add `UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN` to your environment (see `.env.example` and the README). Without them nothing is shown. Change the wording with `viewCounts.reads` in the `blog` object in `src/resources/content.tsx`.
 
+## Likes
+
+Posts and projects can have a like button with a count. Likes are stored in [Upstash Redis](https://upstash.com), so this is off by default: set `likes: true` in the `features` object in `src/resources/once-ui.config.ts`, and add `UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN` to your environment (see `.env.example` and the README). Without them the button doesn't show. Change its accessible name with `likes.label` in the `blog` object in `src/resources/content.tsx`.
+
 ## Hot reload
 
 Hot reload of MDX files is currently not supported, but we're working on it.

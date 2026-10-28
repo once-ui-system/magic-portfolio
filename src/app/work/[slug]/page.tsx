@@ -33,6 +33,7 @@ import { articleMetadata } from "@/utils/seo";
 import Post from "@/components/blog/Post";
 import { ProjectLinkCard } from "@/components/work/ProjectLinkCard";
 import { getProjectCover, getProjectNeighbours, getRelatedPosts } from "@/utils/projects";
+import { LikeButton } from "@/components/blog/LikeButton";
 
 // Only the slugs built below exist: anything else (a draft in production, a
 // mistyped URL) is a real 404 instead of a not-found page served with 200.
@@ -179,6 +180,7 @@ export default async function Project({
           <Column style={{ margin: "auto" }} as="article" maxWidth="xs" data-post-body>
             <CustomMDX source={post.content} />
           </Column>
+          <LikeButton slug={post.slug} kind="work" fillWidth />
           {(features.quoteShare ?? true) && (
             <QuoteShare title={post.metadata.title} url={`${baseURL}${work.path}/${post.slug}`} />
           )}

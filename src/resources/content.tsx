@@ -305,6 +305,10 @@ const blog: Blog = {
   viewCounts: {
     reads: (formatted, count) => `${formatted} ${count === 1 ? "read" : "reads"}`,
   },
+  // The like button on posts and projects (features.likes)
+  likes: {
+    label: (count, kind) => `Like this ${kind}, ${count} ${count === 1 ? "like" : "likes"}`,
+  },
 };
 
 const work: Work = {

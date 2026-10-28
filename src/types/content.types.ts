@@ -312,6 +312,11 @@ export interface Blog extends BasePageConfig {
     /** The count, already shortened ("1.2k"), and the exact number. Default: "12 reads" */
     reads?: (formatted: string, count: number) => string;
   };
+  /** The like button on posts and project pages (`features.likes`) */
+  likes?: {
+    /** Its accessible name. Default: "Like this post, 3 likes" */
+    label?: (count: number, kind: "post" | "project") => string;
+  };
 }
 
 /**

@@ -231,6 +231,9 @@ const features: FeaturesConfig = {
   // Read counts on posts and projects. Needs Upstash Redis: see .env.example and the README.
   // Default: false
   viewCounts: false,
+  // Like button on posts and projects. Needs Upstash Redis: see .env.example and the README.
+  // Default: false
+  likes: false,
 };
 
 export {
