@@ -5,7 +5,7 @@ import "@/resources/custom.css";
 import type { Viewport } from "next";
 import classNames from "classnames";
 
-import { Column, Flex, Meta } from "@once-ui-system/core";
+import { Column, Flex, Meta, ThemeInit } from "@once-ui-system/core";
 import { Footer, Header, RouteGuard, Providers } from "@/components";
 import { AestheticBackground } from "@/components/aesthetic/AestheticBackground";
 import { AestheticStyles } from "@/components/aesthetic/AestheticStyles";
@@ -24,7 +24,7 @@ import {
 } from "@/resources";
 
 // Theme attributes of every aesthetic (with styleOverrides applied), so the
-// theme script can restore a visitor's pick before the first paint.
+// init script can restore a visitor's pick before the first paint.
 function aestheticAttributes() {
   const { theme: _theme, ...overrides } = styleOverrides;
   return Object.fromEntries(
@@ -46,6 +46,40 @@ function aestheticAttributes() {
       ];
     }),
   );
+}
+
+// Runs right after Once UI's ThemeInit, which paints the configured theme and style first.
+function themeInitExtras() {
+  const parts: string[] = [];
+
+  // Once UI's ThemeProvider follows the device when no theme is saved, which would undo a light
+  // or dark default on hydration. Saving the default as the visitor's choice keeps it, and the
+  // theme switcher still changes it.
+  if (style.theme !== "system") {
+    parts.push(`if (!localStorage.getItem('data-theme')) {
+      localStorage.setItem('data-theme', ${JSON.stringify(style.theme)});
+    }`);
+  }
+
+  // With the aesthetic switcher on, restore the visitor's last pick.
+  if (display.aestheticSwitcher) {
+    parts.push(`const saved = localStorage.getItem('data-aesthetic');
+    const styles = ${JSON.stringify(aestheticAttributes())};
+    if (saved && styles[saved]) {
+      root.setAttribute('data-aesthetic', saved);
+      Object.entries(styles[saved]).forEach(([key, value]) => {
+        root.setAttribute('data-' + key, value);
+      });
+    }`);
+  }
+
+  if (!parts.length) return null;
+  return `(function() {
+  try {
+    const root = document.documentElement;
+    ${parts.join("\n    ")}
+  } catch (e) {}
+})();`;
 }
 
 export async function generateMetadata() {
@@ -71,6 +105,8 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const initScript = themeInitExtras();
+
   return (
     <Flex
       suppressHydrationWarning
@@ -82,78 +118,14 @@ export default async function RootLayout({
     >
       <head>
         <AestheticStyles />
-        <script
-          id="theme-init"
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                try {
-                  const root = document.documentElement;
-                  const defaultTheme = 'system';
-                  
-                  // Set defaults from config
-                  const config = ${JSON.stringify({
-                    brand: style.brand,
-                    accent: style.accent,
-                    neutral: style.neutral,
-                    solid: style.solid,
-                    "solid-style": style.solidStyle,
-                    border: style.border,
-                    surface: style.surface,
-                    transition: style.transition,
-                    scaling: style.scaling,
-                    "viz-style": dataStyle.variant,
-                  })};
-                  
-                  // Apply default values
-                  Object.entries(config).forEach(([key, value]) => {
-                    root.setAttribute('data-' + key, value);
-                  });
-                  
-                  // Resolve theme
-                  const resolveTheme = (themeValue) => {
-                    if (!themeValue || themeValue === 'system') {
-                      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-                    }
-                    return themeValue;
-                  };
-                  
-                  // With the aesthetic switcher on, restore the visitor's last pick
-                  ${
-                    display.aestheticSwitcher
-                      ? `
-                  const savedAesthetic = localStorage.getItem('data-aesthetic');
-                  const aestheticStyles = ${JSON.stringify(aestheticAttributes())};
-                  if (savedAesthetic && aestheticStyles[savedAesthetic]) {
-                    root.setAttribute('data-aesthetic', savedAesthetic);
-                    Object.entries(aestheticStyles[savedAesthetic]).forEach(([key, value]) => {
-                      root.setAttribute('data-' + key, value);
-                    });
-                  }`
-                      : ""
-                  }
-
-                  // Apply saved theme
-                  const savedTheme = localStorage.getItem('data-theme');
-                  const resolvedTheme = resolveTheme(savedTheme);
-                  root.setAttribute('data-theme', resolvedTheme);
-                  
-                  // Apply any saved style overrides
-                  const styleKeys = Object.keys(config);
-                  styleKeys.forEach(key => {
-                    const value = localStorage.getItem('data-' + key);
-                    if (value) {
-                      root.setAttribute('data-' + key, value);
-                    }
-                  });
-                } catch (e) {
-                  console.error('Failed to initialize theme:', e);
-                  document.documentElement.setAttribute('data-theme', 'dark');
-                }
-              })();
-            `,
-          }}
-        />
+        <ThemeInit config={style} dataStyle={dataStyle} />
+        {initScript && (
+          <script
+            id="theme-init-extras"
+            // biome-ignore lint/security/noDangerouslySetInnerHtml: runs before the first paint; the payload is our own config
+            dangerouslySetInnerHTML={{ __html: initScript }}
+          />
+        )}
       </head>
       <Providers>
         <Column
