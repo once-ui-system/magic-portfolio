@@ -1,0 +1,62 @@
+.loading,
+.done {
+    transform-origin: left center;
+    will-change: transform, opacity;
+}
+
+// Grows quickly to 30%, then creeps towards 90% and waits there for the page.
+.loading {
+    transform: scaleX(0.3);
+    animation:
+        progress-in 200ms ease-out both,
+        progress-trickle 8000ms cubic-bezier(0.1, 0.6, 0.2, 1) 200ms forwards;
+}
+
+.done {
+    transform: scaleX(1);
+    opacity: 0;
+    transition:
+        transform 200ms ease-out,
+        opacity 200ms ease-out 150ms;
+}
+
+@keyframes progress-in {
+    from {
+        opacity: 0;
+        transform: scaleX(0);
+    }
+    to {
+        opacity: 1;
+        transform: scaleX(0.3);
+    }
+}
+
+@keyframes progress-trickle {
+    from {
+        transform: scaleX(0.3);
+    }
+    to {
+        transform: scaleX(0.9);
+    }
+}
+
+// Reduced motion, or style.transition "none": the bar still says a page is loading, but holds
+// still and disappears without animating.
+@mixin still {
+    .loading {
+        animation: none;
+        transform: scaleX(0.6);
+    }
+
+    .done {
+        transition: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    @include still;
+}
+
+:global(html[data-transition="none"]) {
+    @include still;
+}

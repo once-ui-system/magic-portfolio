@@ -10,11 +10,13 @@ import { Footer, Header, RouteGuard, Providers } from "@/components";
 import { AestheticBackground } from "@/components/aesthetic/AestheticBackground";
 import { AestheticStyles } from "@/components/aesthetic/AestheticStyles";
 import { AestheticSwitcher } from "@/components/aesthetic/AestheticSwitcher";
+import { NavigationProgress } from "@/components/motion";
 import {
   aesthetic,
   baseURL,
   dataStyle,
   display,
+  features,
   fontFamilies,
   aesthetics,
   home,
@@ -166,6 +168,7 @@ export default async function RootLayout({
           horizontal="center"
         >
           <AestheticBackground />
+          {(features.navigationProgress ?? true) && <NavigationProgress />}
           <Flex fillWidth minHeight="16" s={{ hide: true }} />
           {display.aestheticSwitcher && <AestheticSwitcher />}
           <Header />

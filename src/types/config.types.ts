@@ -155,6 +155,14 @@ export type SocialSharingConfig = {
   };
 };
 
+/** Opt-in quality-of-life features. Each key switches one feature on or off. */
+export type FeaturesConfig = {
+  /** Thin bar at the top of the window while a page loads. Default true. */
+  navigationProgress?: boolean;
+  /** Short fade of the page content after each navigation. Default true. */
+  routeTransition?: boolean;
+};
+
 /**
  * Top-level config types for once-ui.config.js
  */
@@ -171,4 +179,5 @@ export type OnceUIConfig = {
   sameAs: SameAsConfig;
   socialSharing: SocialSharingConfig;
   dataStyle: DataStyleConfig;
+  features: FeaturesConfig;
 };

@@ -2,6 +2,7 @@ import {
   Aesthetic,
   DataStyleConfig,
   DisplayConfig,
+  FeaturesConfig,
   HomeSection,
   NewsletterFormConfig,
   ProtectedRoutesConfig,
@@ -163,6 +164,16 @@ const socialSharing: SocialSharingConfig = {
   },
 };
 
+// Optional features. Each key switches one feature on or off; see the comment on each.
+const features: FeaturesConfig = {
+  // Thin bar at the top of the window while a page loads. It holds still with reduced motion.
+  // Default: true
+  navigationProgress: true,
+  // Short fade of the page content after each navigation. Skipped with reduced motion, and
+  // when style.transition is "none" or "micro". Default: true
+  routeTransition: true,
+};
+
 export {
   display,
   newsletterForm,
@@ -178,4 +189,5 @@ export {
   sameAs,
   socialSharing,
   dataStyle,
+  features,
 };
