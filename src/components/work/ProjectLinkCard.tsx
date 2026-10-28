@@ -41,7 +41,7 @@ export function ProjectLinkCard({
       {...flex}
     >
       {image && (
-        <Row width="8rem" style={{ flexShrink: 0 }}>
+        <Row width="8rem" minWidth="8rem">
           <Media
             src={image}
             alt=""

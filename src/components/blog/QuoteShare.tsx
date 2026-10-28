@@ -45,7 +45,8 @@ const labels = {
 
 const attributed = (quote: string) => `"${quote}" — ${person.name}`;
 
-// The platforms from socialSharing that can carry a quote as text; copy is copyLink
+// The platforms from socialSharing that can carry a quote as text; copy is copyLink. LinkedIn is
+// left out: its documented share URL only takes a link, not prefilled text.
 const quoteActions: QuoteAction[] = [
   {
     key: "x",
@@ -53,14 +54,6 @@ const quoteActions: QuoteAction[] = [
     label: "X",
     share: (quote, _title, url) =>
       `https://twitter.com/intent/tweet?text=${encodeURIComponent(attributed(clip(quote, X_QUOTE_CHARS)))}&url=${encodeURIComponent(url)}`,
-  },
-  {
-    key: "linkedin",
-    icon: "linkedin",
-    label: "LinkedIn",
-    // share-offsite only takes a URL; the feed composer accepts prefilled text
-    share: (quote, _title, url) =>
-      `https://www.linkedin.com/feed/?shareActive=true&text=${encodeURIComponent(`${attributed(quote)}\n\n${url}`)}`,
   },
   {
     key: "whatsapp",

@@ -128,7 +128,7 @@ export default function About() {
                 fitWidth
                 border="brand-alpha-medium"
                 background="brand-alpha-weak"
-                data-border="rounded"
+                themeBorder="rounded"
                 radius="l"
                 padding="4"
                 gap="8"

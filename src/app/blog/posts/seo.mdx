@@ -61,7 +61,7 @@ The gallery describes itself to search engines: an `ImageGallery` with every pho
 
 ## AI assistants
 
-Magic Portfolio serves `/llms.txt`, a plain-text guide to your site for AI assistants, and `/llms-full.txt` with the full text of your posts and projects. Both are built from your content, and password-protected or switched-off pages are left out. `robots.txt` lets AI search bots in, since they answer questions and link back to you, and keeps AI training bots out. Change any of this in the `seo` object:
+Magic Portfolio serves `/llms.txt`, a plain-text guide to your site for AI assistants, and `/llms-full.txt` with the full text of your posts and projects. Both are built from your content, and password-protected or switched-off pages are left out. `robots.txt` lets AI search bots and AI training bots in by default; set `training: false` to keep training bots out while search bots, which answer questions and link back to you, stay allowed. Change any of this in the `seo` object:
 
 <CodeBlock
     marginBottom="16"
@@ -75,7 +75,7 @@ Magic Portfolio serves `/llms.txt`, a plain-text guide to your site for AI assis
   },
   aiCrawlers: {
     search: true, // let AI search bots in
-    training: false, // keep AI training bots out
+    training: true, // false keeps AI training bots out
     searchBots: [...aiSearchBots, "YouBot"], // add or remove user agents
     trainingBots: aiTrainingBots,
   },

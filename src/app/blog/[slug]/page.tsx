@@ -141,7 +141,7 @@ export default async function Blog({ params }: { params: Promise<{ slug: string 
             <SmartLink href="/blog">
               <Text textVariant="label-strong-m">Blog</Text>
             </SmartLink>
-            <Row gap="8" wrap vertical="center" horizontal="center" marginBottom="12">
+            <Row gap="8" wrap center marginBottom="12">
               <Text textVariant="body-default-xs" onBackground="neutral-weak">
                 {publishedAt && <time dateTime={publishedAt}>{formatDate(publishedAt)}</time>}
               </Text>
@@ -209,7 +209,7 @@ export default async function Blog({ params }: { params: Promise<{ slug: string 
           )}
 
           {fromProjects.length > 0 && (
-            <Column fillWidth maxWidth="s" gap="8">
+            <Column maxWidth="s" gap="8">
               {fromProjects.map((project) => (
                 <ProjectLinkCard
                   key={project.slug}

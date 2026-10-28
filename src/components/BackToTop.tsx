@@ -35,17 +35,17 @@ export const BackToTop = () => {
     };
   }, []);
 
-  // Styled like the header's menu, corners included (data-border, as on the header). On phones it
+  // Styled like the header's menu, corners included (themeBorder, as on the header). On phones it
   // sits above the menu bar at the bottom.
   return (
     <Row
-      data-border="rounded"
+      themeBorder="rounded"
       position="fixed"
       bottom="24"
       right="24"
       zIndex={9}
       background="page"
-      border="neutral-alpha-weak"
+      border
       radius="m-4"
       shadow="l"
       padding="4"

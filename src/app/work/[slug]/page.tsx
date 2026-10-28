@@ -142,7 +142,7 @@ export default async function Project({
             <SmartLink href="/work">
               <Text textVariant="label-strong-m">Projects</Text>
             </SmartLink>
-            <Row gap="8" vertical="center" horizontal="center" marginBottom="12">
+            <Row gap="8" center marginBottom="12">
               <Text textVariant="body-default-xs" onBackground="neutral-weak">
                 {post.metadata.publishedAt && formatDate(post.metadata.publishedAt)}
               </Text>

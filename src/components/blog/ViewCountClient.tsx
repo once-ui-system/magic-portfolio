@@ -54,11 +54,9 @@ export function ViewCountClient({ slug, kind }: ViewCountClientProps) {
     <Row
       gap="8"
       vertical="center"
-      style={{
-        opacity: count === null ? 0 : 1,
-        transition: "var(--transition-micro-medium)",
-        minWidth: "10ch",
-      }}
+      opacity={count === null ? 0 : 100}
+      transition="micro-medium"
+      minWidth="10ch"
     >
       <Text textVariant="body-default-xs" onBackground="neutral-weak" aria-hidden="true">
         ·

@@ -187,7 +187,8 @@ const seo: SeoConfig = {
   // training bots collect text to train models. Regular search engines are always allowed.
   aiCrawlers: {
     search: true,
-    training: false,
+    // true (the default) lets training bots in; false keeps them out
+    training: true,
     // The user agents each switch covers. Add or remove names, e.g.
     // [...aiSearchBots, "YouBot"], or replace a list with your own.
     searchBots: aiSearchBots,

@@ -27,15 +27,15 @@ export function PostsFeatured({ range = [1, 4] }: PostsFeaturedProps) {
         <Column flex={3}>
           <Card
             href={`${blog.path}/${featured.slug}`}
-            fillWidth
-            fillHeight={!cover}
+            fillWidth={!!cover}
+            fill={!cover}
             direction="column"
             vertical={cover ? undefined : "end"}
             gap="20"
             padding={cover ? "4" : "24"}
             radius="l-4"
             background={cover ? "transparent" : "surface"}
-            border={cover ? "transparent" : "neutral-alpha-weak"}
+            border={cover ? "transparent" : true}
             transition="micro-medium"
           >
             {cover && (
@@ -44,7 +44,7 @@ export function PostsFeatured({ range = [1, 4] }: PostsFeaturedProps) {
                 alt=""
                 aspectRatio="16 / 9"
                 radius="l"
-                border="neutral-alpha-weak"
+                border
                 sizes="(max-width: 768px) 100vw, 640px"
               />
             )}

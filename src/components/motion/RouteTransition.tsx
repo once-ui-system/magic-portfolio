@@ -1,6 +1,6 @@
 "use client";
 
-import { Flex } from "@once-ui-system/core";
+import { Row } from "@once-ui-system/core";
 import { usePathname } from "next/navigation";
 import { type ReactNode, useLayoutEffect, useRef, useState } from "react";
 import { isClientNavigation, markHydrated, pageFadeAllowed } from "./motion";
@@ -35,8 +35,8 @@ export function RouteTransition({ children }: { children: ReactNode }) {
 
   // Lays out like the layout's content row it sits in, so pages look exactly as before.
   return (
-    <Flex ref={ref} fillWidth minHeight="0" horizontal="center">
+    <Row ref={ref} fillWidth minHeight="0" horizontal="center">
       {children}
-    </Flex>
+    </Row>
   );
 }
