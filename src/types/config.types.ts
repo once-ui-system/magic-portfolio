@@ -186,13 +186,31 @@ export type FeaturesConfig = {
 };
 
 /**
- * What the site tells search engines beyond meta tags.
+ * What the site tells search engines and AI tools beyond meta tags.
  */
 export type SeoConfig = {
   /** Serve /sitemap-images.xml with the gallery photos and list it in robots.txt. Off makes it 404. */
   imageSitemap: boolean;
   /** Describe the gallery as an ImageGallery in JSON-LD, with creator, credit and copyright per photo. */
   galleryStructuredData: boolean;
+  /** Plain-text guides to the site for AI assistants (https://llmstxt.org). */
+  llmsTxt: {
+    /** Serve /llms.txt: your pages, projects and posts with their summaries. Off makes it 404. */
+    enabled: boolean;
+    /** Also serve /llms-full.txt with the full text of every project and post. Needs `enabled`. */
+    fullText: boolean;
+  };
+  /** Which AI crawlers robots.txt lets in. Regular search engines are always allowed. */
+  aiCrawlers: {
+    /** Let in bots that fetch pages to answer a question or build an AI search index. */
+    search: boolean;
+    /** Let in bots that collect text to train AI models. */
+    training: boolean;
+    /** User agents `search` covers. Defaults to `aiSearchBots` in src/resources/aiCrawlers.ts. */
+    searchBots?: string[];
+    /** User agents `training` covers. Defaults to `aiTrainingBots` in src/resources/aiCrawlers.ts. */
+    trainingBots?: string[];
+  };
 };
 
 /**
