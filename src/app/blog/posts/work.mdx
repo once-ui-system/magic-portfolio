@@ -42,6 +42,10 @@ link: "https://once-ui.com/"
 
 You can use MDX to write the content of your projects. It helps you write rich and dynamic content with minimal code. Some MDX elements will be automatically transformed to Once UI components to integrate better in the design and add additional functionality.
 
+## Drafts
+
+Add `draft: true` to the frontmatter to keep a project unpublished. While you run `npm run dev`, open its URL to preview it with a Draft label. It stays out of the project lists and the sitemap, and production builds leave it out entirely, so its URL returns a 404.
+
 ## Custom components
 
 You can use custom components in MDX files, but you need to import them first in the `src/components/mdx.tsx` file.

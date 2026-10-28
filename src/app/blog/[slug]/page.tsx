@@ -14,6 +14,7 @@ import {
   Avatar,
   Media,
   Line,
+  Tag,
 } from "@once-ui-system/core";
 import { baseURL, about, blog, person } from "@/resources";
 import { formatDate } from "@/utils/formatDate";
@@ -23,8 +24,12 @@ import React from "react";
 import { Posts } from "@/components/blog/Posts";
 import { ShareSection } from "@/components/blog/ShareSection";
 
+// Only the slugs built below exist: anything else (a draft in production, a
+// mistyped URL) is a real 404 instead of a not-found page served with 200.
+export const dynamicParams = false;
+
 export async function generateStaticParams(): Promise<{ slug: string }[]> {
-  const posts = getPosts(["src", "app", "blog", "posts"]);
+  const posts = getPosts(["src", "app", "blog", "posts"], { includeDrafts: true });
   return posts.map((post) => ({
     slug: post.slug,
   }));
@@ -40,7 +45,7 @@ export async function generateMetadata({
     ? routeParams.slug.join("/")
     : routeParams.slug || "";
 
-  const posts = getPosts(["src", "app", "blog", "posts"]);
+  const posts = getPosts(["src", "app", "blog", "posts"], { includeDrafts: true });
   let post = posts.find((post) => post.slug === slugPath);
 
   if (!post) return {};
@@ -51,6 +56,9 @@ export async function generateMetadata({
     baseURL: baseURL,
     image: post.metadata.image || `/api/og/generate?title=${post.metadata.title}`,
     path: `${blog.path}/${post.slug}`,
+    // Drafts only render in `next dev`, but keep them out of search all the same
+    noindex: post.metadata.draft,
+    nofollow: post.metadata.draft,
   });
 }
 
@@ -60,7 +68,9 @@ export default async function Blog({ params }: { params: Promise<{ slug: string 
     ? routeParams.slug.join("/")
     : routeParams.slug || "";
 
-  let post = getPosts(["src", "app", "blog", "posts"]).find((post) => post.slug === slugPath);
+  let post = getPosts(["src", "app", "blog", "posts"], { includeDrafts: true }).find(
+    (post) => post.slug === slugPath,
+  );
 
   if (!post) {
     notFound();
@@ -95,6 +105,9 @@ export default async function Blog({ params }: { params: Promise<{ slug: string 
             }}
           />
           <Column maxWidth="s" gap="16" horizontal="center" align="center">
+            {post.metadata.draft && (
+              <Tag tone="warning" prefixIcon="eyeOff" label="Draft · only visible in development" />
+            )}
             <SmartLink href="/blog">
               <Text textVariant="label-strong-m">Blog</Text>
             </SmartLink>
