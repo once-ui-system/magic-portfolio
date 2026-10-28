@@ -313,7 +313,24 @@ export interface Blog extends BasePageConfig {
  * Work/projects page configuration.
  * @description Configuration for the Work/Projects page, including metadata and navigation label.
  */
-export interface Work extends BasePageConfig {}
+export interface Work extends BasePageConfig {
+  /** Posts a project lists under `related` in its front matter (`features.relatedWriting`) */
+  relatedWriting?: {
+    /** Heading above them on the project page. Default "Related writing" */
+    title?: string;
+    /** Label of the card on each of those posts that links back. Default "From the project" */
+    fromProject?: string;
+  };
+  /** Previous and next project at the end of a project page (`features.projectNavigation`) */
+  projectNavigation?: {
+    /** Name of the links for screen readers. Default "More projects" */
+    label?: string;
+    /** Default "Previous project" */
+    previous?: string;
+    /** Default "Next project" */
+    next?: string;
+  };
+}
 
 /**
  * Gallery page configuration.

@@ -183,6 +183,13 @@ export type FeaturesConfig = {
   routeTransition?: boolean;
   /** "5 min read" next to the date on blog posts. Default true. */
   readingTime?: boolean;
+  /**
+   * "Related writing" on project pages, from the project's front matter `related: [post slugs]`,
+   * and a "From the project" card back on those posts. Default true.
+   */
+  relatedWriting?: boolean;
+  /** Previous and next project cards at the end of project pages, in /work order. Default true. */
+  projectNavigation?: boolean;
 };
 
 /**

@@ -224,6 +224,10 @@ const features: FeaturesConfig = {
   routeTransition: true,
   // "5 min read" next to the date on blog posts. Default: true
   readingTime: true,
+  // "Related writing" on project pages and "From the project" on the posts they list. Default: true
+  relatedWriting: true,
+  // Previous / next project at the end of each project page. Default: true
+  projectNavigation: true,
 };
 
 export {

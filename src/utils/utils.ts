@@ -23,9 +23,20 @@ type Metadata = {
   link?: string;
   /** `draft: true` in front matter: only rendered by `next dev`, never built for production. */
   draft: boolean;
+  /** Projects only: slugs of blog posts shown as "Related writing". */
+  related: string[];
 };
 
 import { notFound } from "next/navigation";
+
+/** Front matter list of strings; anything else (a lone string, numbers, blanks) is dropped. */
+function asTextList(value: unknown): string[] {
+  if (!Array.isArray(value)) return [];
+  return value
+    .filter((item): item is string => typeof item === "string")
+    .map((item) => item.trim())
+    .filter(Boolean);
+}
 
 function getMDXFiles(dir: string) {
   if (!fs.existsSync(dir)) {
@@ -56,6 +67,7 @@ function readMDXFile(filePath: string) {
     team: data.team || [],
     link: data.link || "",
     draft: data.draft === true,
+    related: asTextList(data.related),
   };
 
   return { metadata, content };

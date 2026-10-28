@@ -16,8 +16,9 @@ import {
   Avatar,
   Line,
   Tag,
+  Grid,
 } from "@once-ui-system/core";
-import { baseURL, features, person, work } from "@/resources";
+import { baseURL, features, person, work, routes } from "@/resources";
 import { formatDate } from "@/utils/formatDate";
 import { ScrollToHash, CustomMDX } from "@/components";
 import { Metadata } from "next";
@@ -28,6 +29,9 @@ import { ResumeReading } from "@/components/blog/ResumeReading";
 import { QuoteShare } from "@/components/blog/QuoteShare";
 import { ArticleSchema } from "@/components/seo";
 import { articleMetadata } from "@/utils/seo";
+import Post from "@/components/blog/Post";
+import { ProjectLinkCard } from "@/components/work/ProjectLinkCard";
+import { getProjectCover, getProjectNeighbours, getRelatedPosts } from "@/utils/projects";
 
 // Only the slugs built below exist: anything else (a draft in production, a
 // mistyped URL) is a real 404 instead of a not-found page served with 200.
@@ -97,6 +101,15 @@ export default async function Project({
 
   // The "On this page" sidebar, as on blog posts; the spacer keeps the content centred
   const sidebar = features.projectToc ?? true;
+  // Related posts link into /blog, previous/next into /work: each hides with its route.
+  const relatedPosts =
+    (features.relatedWriting ?? true) && routes["/blog"] !== false
+      ? getRelatedPosts(post.metadata.related)
+      : [];
+  const { previous, next } =
+    (features.projectNavigation ?? true) && routes["/work"] !== false
+      ? getProjectNeighbours(post.slug)
+      : { previous: undefined, next: undefined };
 
   return (
     <Row fillWidth>
@@ -165,6 +178,25 @@ export default async function Project({
           {(features.quoteShare ?? true) && (
             <QuoteShare title={post.metadata.title} url={`${baseURL}${work.path}/${post.slug}`} />
           )}
+          {relatedPosts.length > 0 && (
+            <Column fillWidth gap="40" horizontal="center" marginTop="40">
+              <Line maxWidth="40" />
+              <Heading as="h2" textVariant="heading-strong-xl" marginBottom="24" data-exclude-nav>
+                {work.relatedWriting?.title ?? "Related writing"}
+              </Heading>
+              <Grid
+                columns={relatedPosts.length > 1 ? "2" : "1"}
+                s={{ columns: 1 }}
+                maxWidth={relatedPosts.length > 1 ? undefined : "s"}
+                fillWidth
+                gap="16"
+              >
+                {relatedPosts.map((relatedPost) => (
+                  <Post key={relatedPost.slug} post={relatedPost} thumbnail direction="column" />
+                ))}
+              </Grid>
+            </Column>
+          )}
           <Column fillWidth gap="40" horizontal="center" marginTop="40">
             <Line maxWidth="40" />
             <Heading as="h2" textVariant="heading-strong-xl" marginBottom="24">
@@ -172,6 +204,38 @@ export default async function Project({
             </Heading>
             <Projects exclude={[post.slug]} range={[2]} />
           </Column>
+          {(previous || next) && (
+            <Column
+              as="nav"
+              aria-label={work.projectNavigation?.label ?? "More projects"}
+              fillWidth
+              gap="24"
+              horizontal="center"
+            >
+              <Line maxWidth="40" />
+              <Grid columns="2" s={{ columns: 1 }} fillWidth gap="16" paddingX="l">
+                {previous ? (
+                  <ProjectLinkCard
+                    href={`${work.path}/${previous.slug}`}
+                    label={work.projectNavigation?.previous ?? "Previous project"}
+                    title={previous.metadata.title}
+                    image={getProjectCover(previous.metadata.images)}
+                  />
+                ) : (
+                  <Row s={{ hide: true }} />
+                )}
+                {next && (
+                  <ProjectLinkCard
+                    href={`${work.path}/${next.slug}`}
+                    label={work.projectNavigation?.next ?? "Next project"}
+                    title={next.metadata.title}
+                    image={getProjectCover(next.metadata.images)}
+                    align="end"
+                  />
+                )}
+              </Grid>
+            </Column>
+          )}
           <ScrollToHash />
           {(features.resumeReading ?? true) && <ResumeReading />}
         </Column>

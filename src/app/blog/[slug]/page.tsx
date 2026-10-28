@@ -15,7 +15,7 @@ import {
   Line,
   Tag,
 } from "@once-ui-system/core";
-import { baseURL, blog, features, person } from "@/resources";
+import { baseURL, blog, features, person, work, routes } from "@/resources";
 import { formatDate } from "@/utils/formatDate";
 import { countWords, getPosts, readingTime } from "@/utils/utils";
 import { articleMetadata } from "@/utils/seo";
@@ -28,6 +28,8 @@ import { ReadingProgress } from "@/components/blog/ReadingProgress";
 import { MobileToc } from "@/components/blog/MobileToc";
 import { ResumeReading } from "@/components/blog/ResumeReading";
 import { QuoteShare } from "@/components/blog/QuoteShare";
+import { ProjectLinkCard } from "@/components/work/ProjectLinkCard";
+import { getProjectCover, getProjectsForPost } from "@/utils/projects";
 
 // Only the slugs built below exist: anything else (a draft in production, a
 // mistyped URL) is a real 404 instead of a not-found page served with 200.
@@ -100,6 +102,12 @@ export default async function Blog({ params }: { params: Promise<{ slug: string 
       ·
     </Text>
   );
+  // Projects that list this post under `related` in their front matter. They link to /work and
+  // pair with "Related writing" on /blog, so both routes have to be on.
+  const fromProjects =
+    (features.relatedWriting ?? true) && routes["/blog"] !== false && routes["/work"] !== false
+      ? getProjectsForPost(post.slug)
+      : [];
 
   return (
     <Row fillWidth>
@@ -193,6 +201,21 @@ export default async function Blog({ params }: { params: Promise<{ slug: string 
           <ShareSection title={post.metadata.title} url={`${baseURL}${blog.path}/${post.slug}`} />
           {(features.quoteShare ?? true) && (
             <QuoteShare title={post.metadata.title} url={`${baseURL}${blog.path}/${post.slug}`} />
+          )}
+
+          {fromProjects.length > 0 && (
+            <Column fillWidth maxWidth="s" gap="8">
+              {fromProjects.map((project) => (
+                <ProjectLinkCard
+                  key={project.slug}
+                  href={`${work.path}/${project.slug}`}
+                  label={work.relatedWriting?.fromProject ?? "From the project"}
+                  title={project.metadata.title}
+                  image={getProjectCover(project.metadata.images)}
+                  icon="rocket"
+                />
+              ))}
+            </Column>
           )}
 
           <Column fillWidth gap="40" horizontal="center" marginTop="40">
