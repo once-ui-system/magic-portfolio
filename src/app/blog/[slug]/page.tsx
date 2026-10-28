@@ -20,6 +20,7 @@ import { formatDate } from "@/utils/formatDate";
 import { countWords, getPosts, readingTime } from "@/utils/utils";
 import { articleMetadata } from "@/utils/seo";
 import { ArticleSchema } from "@/components/seo";
+import { ViewCount } from "@/components/blog/ViewCount";
 import { Metadata } from "next";
 import React from "react";
 import { Posts } from "@/components/blog/Posts";
@@ -139,7 +140,7 @@ export default async function Blog({ params }: { params: Promise<{ slug: string 
             <SmartLink href="/blog">
               <Text textVariant="label-strong-m">Blog</Text>
             </SmartLink>
-            <Row gap="8" wrap horizontal="center" marginBottom="12">
+            <Row gap="8" wrap vertical="center" horizontal="center" marginBottom="12">
               <Text textVariant="body-default-xs" onBackground="neutral-weak">
                 {publishedAt && <time dateTime={publishedAt}>{formatDate(publishedAt)}</time>}
               </Text>
@@ -159,6 +160,7 @@ export default async function Blog({ params }: { params: Promise<{ slug: string 
                   </Text>
                 </>
               )}
+              <ViewCount slug={post.slug} />
             </Row>
             <Heading textVariant="display-strong-m">{post.metadata.title}</Heading>
             {post.metadata.subtitle && (

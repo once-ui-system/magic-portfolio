@@ -190,6 +190,11 @@ export type FeaturesConfig = {
   relatedWriting?: boolean;
   /** Previous and next project cards at the end of project pages, in /work order. Default true. */
   projectNavigation?: boolean;
+  /**
+   * Read counts on posts and projects, stored in Upstash Redis (see .env.example). Default false.
+   * Without Redis env it renders nothing, except in `next dev`, which counts in memory.
+   */
+  viewCounts?: boolean;
 };
 
 /**

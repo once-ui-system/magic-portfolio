@@ -301,6 +301,10 @@ const blog: Blog = {
     updated: "Updated",
     readingTime: (minutes) => `${minutes} min read`,
   },
+  // Read counts beside the date on posts and projects (features.viewCounts)
+  viewCounts: {
+    reads: (formatted, count) => `${formatted} ${count === 1 ? "read" : "reads"}`,
+  },
 };
 
 const work: Work = {

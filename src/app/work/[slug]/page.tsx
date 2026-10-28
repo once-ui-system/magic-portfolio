@@ -20,6 +20,7 @@ import {
 } from "@once-ui-system/core";
 import { baseURL, features, person, work, routes } from "@/resources";
 import { formatDate } from "@/utils/formatDate";
+import { ViewCount } from "@/components/blog/ViewCount";
 import { ScrollToHash, CustomMDX } from "@/components";
 import { Metadata } from "next";
 import { Projects } from "@/components/work/Projects";
@@ -140,9 +141,12 @@ export default async function Project({
             <SmartLink href="/work">
               <Text textVariant="label-strong-m">Projects</Text>
             </SmartLink>
-            <Text textVariant="body-default-xs" onBackground="neutral-weak" marginBottom="12">
-              {post.metadata.publishedAt && formatDate(post.metadata.publishedAt)}
-            </Text>
+            <Row gap="8" vertical="center" horizontal="center" marginBottom="12">
+              <Text textVariant="body-default-xs" onBackground="neutral-weak">
+                {post.metadata.publishedAt && formatDate(post.metadata.publishedAt)}
+              </Text>
+              <ViewCount slug={post.slug} kind="work" />
+            </Row>
             <Heading textVariant="display-strong-m">{post.metadata.title}</Heading>
           </Column>
           <Row marginBottom="32" horizontal="center">

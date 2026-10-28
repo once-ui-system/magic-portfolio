@@ -228,6 +228,9 @@ const features: FeaturesConfig = {
   relatedWriting: true,
   // Previous / next project at the end of each project page. Default: true
   projectNavigation: true,
+  // Read counts on posts and projects. Needs Upstash Redis: see .env.example and the README.
+  // Default: false
+  viewCounts: false,
 };
 
 export {

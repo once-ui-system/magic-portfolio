@@ -307,6 +307,11 @@ export interface Blog extends BasePageConfig {
     /** Reading time (`features.readingTime`). Default: minutes => `${minutes} min read` */
     readingTime?: (minutes: number) => string;
   };
+  /** Read counts beside the date on posts and project pages (`features.viewCounts`) */
+  viewCounts?: {
+    /** The count, already shortened ("1.2k"), and the exact number. Default: "12 reads" */
+    reads?: (formatted: string, count: number) => string;
+  };
 }
 
 /**
