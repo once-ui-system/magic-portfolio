@@ -26,7 +26,14 @@ export type PostsVariant =
   /** Cards side by side. */
   | "grid"
   /** Dated rows, like a table of contents. */
-  | "list";
+  | "list"
+  /** The first post as a large card with its cover, the next ones as compact rows beside it. */
+  | "featured";
+
+/** How the gallery appears on the home page. */
+export type GalleryVariant =
+  /** Photos drifting past in a strip that slows down on hover. */
+  "marquee";
 
 /** One block of the home page. Order in the array is order on the page. */
 export type HomeSection =
@@ -36,6 +43,10 @@ export type HomeSection =
   /** `range` picks projects by position, newest first: [1, 1] is the newest only. */
   | { type: "work"; variant: WorkVariant; range?: [number, number?] }
   | { type: "posts"; variant: PostsVariant; range?: [number, number?] }
+  /** Photos from `gallery.images` (content.tsx). `count` caps how many, in gallery order. */
+  | { type: "gallery"; variant: GalleryVariant; count?: number }
+  /** A call to get in touch, from `home.contact` and your `social` links (content.tsx). */
+  | { type: "contact" }
   | { type: "newsletter" };
 
 /** The page background behind every route. */
