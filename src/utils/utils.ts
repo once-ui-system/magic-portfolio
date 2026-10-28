@@ -46,7 +46,8 @@ function readMDXFile(filePath: string) {
     summary: data.summary || "",
     image: data.image || "",
     images: data.images || [],
-    tag: data.tag || [],
+    // One topic per post; anything else (a list, a number) is ignored
+    tag: typeof data.tag === "string" && data.tag.trim() ? data.tag.trim() : undefined,
     team: data.team || [],
     link: data.link || "",
   };

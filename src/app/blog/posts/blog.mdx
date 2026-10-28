@@ -2,7 +2,7 @@
 title: "Create, edit and delete blog posts"
 summary: "Create, edit and delete posts in the blog section of your Magic Portfolio."
 publishedAt: "2025-03-17"
-tag: "Magic Portfolio"
+tag: "Content"
 ---
 
 ## Manage posts
@@ -64,6 +64,10 @@ You can use custom components in MDX files, but you need to import them first in
 />
 
 As you can see, the `Table` and `CodeBlock` components are already imported and available for use. You can add more by simply importing them to this file and passing them to the `components` object.
+
+## Topics
+
+The blog page shows a chip for every `tag` used in your posts' frontmatter, with how many posts each has. Picking one shows only that topic's posts, and the address (`/blog?tag=Guide`) can be shared. The chips only appear once posts cover at least two topics. Turn them off with `tagFilter: false` in the `features` object in `src/resources/once-ui.config.ts`, and change their labels with `tagFilter` in the `blog` object in `src/resources/content.tsx`.
 
 ## Hot reload
 
