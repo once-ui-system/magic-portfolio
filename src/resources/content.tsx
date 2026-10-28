@@ -250,6 +250,15 @@ const blog: Blog = {
   description: `Read what ${person.name} has been up to recently`,
   // Create new blog posts by adding a new .mdx file to app/blog/posts
   // All posts will be listed on the /blog route
+  // The toolbar for sharing a selected passage of a post or project (features.quoteShare)
+  quoteShare: {
+    toolbar: "Share quote",
+    shareOn: (platform) => `Share quote on ${platform}`,
+    copy: "Copy quote",
+    copied: "Quote copied to clipboard",
+    copyFailed: "Couldn't copy the quote",
+    hint: "Quote selected. Press Tab to share it.",
+  },
 };
 
 const work: Work = {

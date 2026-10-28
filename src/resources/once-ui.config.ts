@@ -2,6 +2,7 @@ import {
   Aesthetic,
   DataStyleConfig,
   DisplayConfig,
+  FeaturesConfig,
   HomeSection,
   NewsletterFormConfig,
   ProtectedRoutesConfig,
@@ -163,6 +164,13 @@ const socialSharing: SocialSharingConfig = {
   },
 };
 
+// Optional features. Each key switches one feature on or off; see the comment on each.
+const features: FeaturesConfig = {
+  // Select text in a post or project to copy or share it as a quote. Default: true
+  // Platforms follow socialSharing.platforms below.
+  quoteShare: true,
+};
+
 export {
   display,
   newsletterForm,
@@ -178,4 +186,5 @@ export {
   sameAs,
   socialSharing,
   dataStyle,
+  features,
 };

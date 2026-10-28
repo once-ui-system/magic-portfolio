@@ -65,6 +65,10 @@ You can use custom components in MDX files, but you need to import them first in
 
 As you can see, the `Table` and `CodeBlock` components are already imported and available for use. You can add more by simply importing them to this file and passing them to the `components` object.
 
+## Quote sharing
+
+Select a passage in a post or project to copy it as a quote, or share it on the platforms switched on in `socialSharing.platforms`. Turn it off with `quoteShare: false` in the `features` object in `src/resources/once-ui.config.ts`, and change its labels with `quoteShare` in the `blog` object in `src/resources/content.tsx`.
+
 ## Hot reload
 
 Hot reload of MDX files is currently not supported, but we're working on it.

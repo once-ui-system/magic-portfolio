@@ -225,7 +225,23 @@ export interface About extends BasePageConfig {
  * Blog page configuration.
  * @description Configuration for the Blog page, including metadata and navigation label.
  */
-export interface Blog extends BasePageConfig {}
+export interface Blog extends BasePageConfig {
+  /** The toolbar for sharing a selected passage on posts and project pages (`features.quoteShare`) */
+  quoteShare?: {
+    /** Name of the toolbar for screen readers. Default "Share quote" */
+    toolbar?: string;
+    /** Tooltip of a platform's button. Default: platform => `Share quote on ${platform}` */
+    shareOn?: (platform: string) => string;
+    /** Tooltip of the copy button. Default "Copy quote" */
+    copy?: string;
+    /** Toast after copying. Default "Quote copied to clipboard" */
+    copied?: string;
+    /** Toast when copying fails. Default "Couldn't copy the quote" */
+    copyFailed?: string;
+    /** Announced to screen readers when a passage is selected */
+    hint?: string;
+  };
+}
 
 /**
  * Work/projects page configuration.
