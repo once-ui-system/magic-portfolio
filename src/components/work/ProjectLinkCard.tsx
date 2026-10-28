@@ -48,7 +48,7 @@ export function ProjectLinkCard({
             sizes="160px"
             aspectRatio="16 / 9"
             radius="m"
-            border="neutral-alpha-weak"
+            border
             cursor="interactive"
           />
         </Row>
