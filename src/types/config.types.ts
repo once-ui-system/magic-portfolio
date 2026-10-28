@@ -156,6 +156,16 @@ export type SocialSharingConfig = {
 };
 
 /**
+ * What the site tells search engines beyond meta tags.
+ */
+export type SeoConfig = {
+  /** Serve /sitemap-images.xml with the gallery photos and list it in robots.txt. Off makes it 404. */
+  imageSitemap: boolean;
+  /** Describe the gallery as an ImageGallery in JSON-LD, with creator, credit and copyright per photo. */
+  galleryStructuredData: boolean;
+};
+
+/**
  * Top-level config types for once-ui.config.js
  */
 export type OnceUIConfig = {
@@ -171,4 +181,5 @@ export type OnceUIConfig = {
   sameAs: SameAsConfig;
   socialSharing: SocialSharingConfig;
   dataStyle: DataStyleConfig;
+  seo: SeoConfig;
 };

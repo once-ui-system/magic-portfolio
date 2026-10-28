@@ -43,3 +43,6 @@ Social sharing images (open-graph and twitter) are automatically generated with 
 />
 
 The above declaration generates the social image with the title of the page. You can use a static image by replacing the `ogImage` value with a path to an image in the `public` directory.
+## Gallery in image search
+
+The gallery describes itself to search engines: an `ImageGallery` with every photo's size, your name as creator and credit, and a copyright notice. A separate `/sitemap-images.xml` lists the photos and `robots.txt` points to it. Give a photo a `title` and `year` in `content.tsx` to name and date it, and reword the notice with `gallery.copyrightNotice`. Both switch off in the `seo` block of `once-ui.config.ts`, and neither is served while the gallery is switched off or behind a password.

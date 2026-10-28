@@ -246,5 +246,14 @@ export interface Gallery extends BasePageConfig {
     alt: string;
     /** Image orientation (horizontal/vertical) */
     orientation: string;
+    /** Name of the photo for search engines (`seo.galleryStructuredData`). Defaults to the alt text */
+    title?: string;
+    /** Year the photo was taken, e.g. "2024". Used for its date and copyright notice */
+    year?: string;
   }>;
+  /**
+   * Copyright notice search engines show with each photo (`seo.galleryStructuredData`).
+   * Default: year => `© ${year} ${person.name}`, with the photo's year or the current one
+   */
+  copyrightNotice?: (year: string) => string;
 }

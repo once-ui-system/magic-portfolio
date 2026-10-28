@@ -266,6 +266,8 @@ const gallery: Gallery = {
   label: "Gallery",
   title: `Photo gallery – ${person.name}`,
   description: `A photo collection by ${person.name}`,
+  // Shown by search engines with each photo. year is the photo's year, or the current one
+  copyrightNotice: (year) => `© ${year} ${person.name}`,
   // Images by https://lorant.one
   // These are placeholder images, replace with your own
   images: [
@@ -273,6 +275,9 @@ const gallery: Gallery = {
       src: "/images/gallery/horizontal-1.jpg",
       alt: "image",
       orientation: "horizontal",
+      // Optional: a name and year for search engines
+      title: "Mountains above the clouds",
+      year: "2024",
     },
     {
       src: "/images/gallery/vertical-4.jpg",

@@ -8,6 +8,7 @@ import {
   RoutesConfig,
   SameAsConfig,
   SchemaConfig,
+  SeoConfig,
   SocialSharingConfig,
   StyleConfig,
 } from "@/types";
@@ -163,6 +164,15 @@ const socialSharing: SocialSharingConfig = {
   },
 };
 
+// What the site tells search engines. Password-protected and switched-off pages are never included.
+const seo: SeoConfig = {
+  // /sitemap-images.xml lists your gallery photos for image search, and robots.txt points to it
+  imageSitemap: true,
+  // Structured data on /gallery: each photo with its size, your name as creator and credit,
+  // and a copyright notice (gallery.copyrightNotice in content.tsx)
+  galleryStructuredData: true,
+};
+
 export {
   display,
   newsletterForm,
@@ -178,4 +188,5 @@ export {
   sameAs,
   socialSharing,
   dataStyle,
+  seo,
 };
