@@ -186,6 +186,9 @@ const features: FeaturesConfig = {
   projectToc: true,
   // Offers to jump back to where a reader stopped in a post or project. Default: true
   resumeReading: true,
+  // Select text in a post or project to copy or share it as a quote. Default: true
+  // Platforms follow socialSharing.platforms below.
+  quoteShare: true,
 };
 
 export {

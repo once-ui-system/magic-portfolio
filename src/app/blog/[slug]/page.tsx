@@ -27,6 +27,7 @@ import { ShareSection } from "@/components/blog/ShareSection";
 import { ReadingProgress } from "@/components/blog/ReadingProgress";
 import { MobileToc } from "@/components/blog/MobileToc";
 import { ResumeReading } from "@/components/blog/ResumeReading";
+import { QuoteShare } from "@/components/blog/QuoteShare";
 
 // Only the slugs built below exist: anything else (a draft in production, a
 // mistyped URL) is a real 404 instead of a not-found page served with 200.
@@ -161,6 +162,9 @@ export default async function Blog({ params }: { params: Promise<{ slug: string 
           </Column>
 
           <ShareSection title={post.metadata.title} url={`${baseURL}${blog.path}/${post.slug}`} />
+          {(features.quoteShare ?? true) && (
+            <QuoteShare title={post.metadata.title} url={`${baseURL}${blog.path}/${post.slug}`} />
+          )}
 
           <Column fillWidth gap="40" horizontal="center" marginTop="40">
             <Line maxWidth="40" />

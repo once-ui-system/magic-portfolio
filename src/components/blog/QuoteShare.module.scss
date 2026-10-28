@@ -1,0 +1,24 @@
+// Anchored to the selection's centre: above it by default, below it on touch or near the top edge
+.popover {
+    transform: translate(-50%, -100%);
+    animation: enter 0.15s ease-out both;
+}
+
+.below {
+    transform: translateX(-50%);
+}
+
+@keyframes enter {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .popover {
+        animation: none;
+    }
+}

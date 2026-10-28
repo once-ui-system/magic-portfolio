@@ -27,6 +27,7 @@ import { Projects } from "@/components/work/Projects";
 import { ReadingProgress } from "@/components/blog/ReadingProgress";
 import { MobileToc } from "@/components/blog/MobileToc";
 import { ResumeReading } from "@/components/blog/ResumeReading";
+import { QuoteShare } from "@/components/blog/QuoteShare";
 
 // Only the slugs built below exist: anything else (a draft in production, a
 // mistyped URL) is a real 404 instead of a not-found page served with 200.
@@ -162,6 +163,9 @@ export default async function Project({
           <Column style={{ margin: "auto" }} as="article" maxWidth="xs" data-post-body>
             <CustomMDX source={post.content} />
           </Column>
+          {(features.quoteShare ?? true) && (
+            <QuoteShare title={post.metadata.title} url={`${baseURL}${work.path}/${post.slug}`} />
+          )}
           <Column fillWidth gap="40" horizontal="center" marginTop="40">
             <Line maxWidth="40" />
             <Heading as="h2" textVariant="heading-strong-xl" marginBottom="24">

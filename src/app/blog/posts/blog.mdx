@@ -85,6 +85,10 @@ On phones and tablets, posts and project pages show a folded "On this page" list
 
 Magic Portfolio remembers how far a reader got through a post or project, in their own browser, and on their next visit offers to jump back there. Turn it off with `resumeReading: false` in the `features` object in `src/resources/once-ui.config.ts`, and change the wording with `resumeReading.prompt` and `resumeReading.action` in the `blog` object in `src/resources/content.tsx`.
 
+## Quote sharing
+
+Select a passage in a post or project to copy it as a quote, or share it on the platforms switched on in `socialSharing.platforms`. Turn it off with `quoteShare: false` in the `features` object in `src/resources/once-ui.config.ts`, and change its labels with `quoteShare` in the `blog` object in `src/resources/content.tsx`.
+
 ## Hot reload
 
 Hot reload of MDX files is currently not supported, but we're working on it.

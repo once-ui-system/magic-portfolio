@@ -167,6 +167,8 @@ export type FeaturesConfig = {
   projectToc?: boolean;
   /** Offers to jump back to where a reader stopped in a post or project. Default true. */
   resumeReading?: boolean;
+  /** Select text in a post or project to copy or share it as a quote. Default true. */
+  quoteShare?: boolean;
 };
 
 /**
