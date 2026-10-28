@@ -184,6 +184,8 @@ const features: FeaturesConfig = {
   mobileToc: true,
   // "On this page" sidebar on project pages, like the one on blog posts. Default: true
   projectToc: true,
+  // Offers to jump back to where a reader stopped in a post or project. Default: true
+  resumeReading: true,
 };
 
 export {

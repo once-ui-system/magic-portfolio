@@ -26,6 +26,7 @@ import { Posts } from "@/components/blog/Posts";
 import { ShareSection } from "@/components/blog/ShareSection";
 import { ReadingProgress } from "@/components/blog/ReadingProgress";
 import { MobileToc } from "@/components/blog/MobileToc";
+import { ResumeReading } from "@/components/blog/ResumeReading";
 
 // Only the slugs built below exist: anything else (a draft in production, a
 // mistyped URL) is a real 404 instead of a not-found page served with 200.
@@ -169,6 +170,7 @@ export default async function Blog({ params }: { params: Promise<{ slug: string 
             <Posts exclude={[post.slug]} range={[1, 2]} columns="2" thumbnail direction="column" />
           </Column>
           <ScrollToHash />
+          {(features.resumeReading ?? true) && <ResumeReading />}
         </Column>
       </Row>
       <Column

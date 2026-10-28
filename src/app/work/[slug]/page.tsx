@@ -26,6 +26,7 @@ import { Metadata } from "next";
 import { Projects } from "@/components/work/Projects";
 import { ReadingProgress } from "@/components/blog/ReadingProgress";
 import { MobileToc } from "@/components/blog/MobileToc";
+import { ResumeReading } from "@/components/blog/ResumeReading";
 
 // Only the slugs built below exist: anything else (a draft in production, a
 // mistyped URL) is a real 404 instead of a not-found page served with 200.
@@ -169,6 +170,7 @@ export default async function Project({
             <Projects exclude={[post.slug]} range={[2]} />
           </Column>
           <ScrollToHash />
+          {(features.resumeReading ?? true) && <ResumeReading />}
         </Column>
       </Row>
       {sidebar && (

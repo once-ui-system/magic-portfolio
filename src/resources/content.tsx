@@ -254,6 +254,11 @@ const blog: Blog = {
   mobileToc: {
     title: "On this page",
   },
+  // The offer to jump back into a post or project (features.resumeReading)
+  resumeReading: {
+    prompt: "Pick up where you left off?",
+    action: "Continue",
+  },
 };
 
 const work: Work = {
