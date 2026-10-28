@@ -50,7 +50,8 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
       >
         {title && (
           <Flex flex={5}>
-            <Heading as="h2" wrap="balance" textVariant="heading-strong-xl">
+            {/* A card title, not a section of the page: keep it out of "On this page" */}
+            <Heading as="h2" wrap="balance" textVariant="heading-strong-xl" data-exclude-nav>
               {title}
             </Heading>
           </Flex>

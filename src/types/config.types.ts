@@ -161,6 +161,10 @@ export type FeaturesConfig = {
   hashHighlight?: boolean;
   /** Thin progress bar at the top of blog posts and project pages. Default true. */
   readingProgress?: boolean;
+  /** "On this page" list that folds open above posts and projects on phones. Default true. */
+  mobileToc?: boolean;
+  /** "On this page" sidebar on project pages, like the one on blog posts. Default true. */
+  projectToc?: boolean;
 };
 
 /**

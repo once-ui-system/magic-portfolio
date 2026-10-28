@@ -77,6 +77,10 @@ A link to a heading, such as `/blog/components#table`, lands right on it and bri
 
 A thin bar along the top of the screen fills as a reader works through a post or a project page. Turn it off with `readingProgress: false` in the `features` object in `src/resources/once-ui.config.ts`.
 
+## Contents on phones
+
+On phones and tablets, posts and project pages show a folded "On this page" list above the article, the same list as the sidebar on larger screens. Project pages also get that sidebar. Turn either off in the `features` object in `src/resources/once-ui.config.ts` with `mobileToc: false` or `projectToc: false`, and change the list's title with `mobileToc.title` in the `blog` object in `src/resources/content.tsx`.
+
 ## Hot reload
 
 Hot reload of MDX files is currently not supported, but we're working on it.
