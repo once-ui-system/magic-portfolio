@@ -1,0 +1,170 @@
+@use "../breakpoints.scss" as breakpoints;
+
+// Full-screen layer above everything else on the page (header, toasts)
+.stage {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  outline: none;
+  // All touch input is the viewer's: swipes, pinch, pan. No page scroll, browser zoom or bounce.
+  touch-action: none;
+  overscroll-behavior: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.dialog {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.backdrop {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  background: color-mix(in srgb, var(--page-background) 92%, transparent);
+  backdrop-filter: blur(1.5rem) saturate(1.2);
+  -webkit-backdrop-filter: blur(1.5rem) saturate(1.2);
+  will-change: opacity;
+}
+
+// The invisible box photos fit into; CSS owns the insets, so safe areas come for free
+.fit {
+  position: absolute;
+  top: calc(env(safe-area-inset-top) + 4.5rem);
+  bottom: calc(env(safe-area-inset-bottom) + 7rem);
+  left: calc(env(safe-area-inset-left) + 2rem);
+  right: calc(env(safe-area-inset-right) + 2rem);
+  visibility: hidden;
+  pointer-events: none;
+
+  // Phones, also turned sideways: edge to edge, the controls float over the photo
+  @media (max-width: breakpoints.$s), (max-height: 500px) {
+    top: env(safe-area-inset-top);
+    bottom: env(safe-area-inset-bottom);
+    left: 0;
+    right: 0;
+  }
+}
+
+.track {
+  position: absolute;
+  inset: 0;
+  will-change: transform;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.zoom {
+  position: absolute;
+  transform-origin: center;
+  will-change: transform;
+  cursor: zoom-in;
+  pointer-events: auto;
+}
+
+.frame {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  transform-origin: center;
+  border-radius: var(--radius-m);
+  background: var(--neutral-alpha-weak);
+  box-shadow: var(--shadow-l);
+  will-change: transform;
+
+  @media (max-width: breakpoints.$s), (max-height: 500px) {
+    border-radius: 0;
+    box-shadow: none;
+  }
+}
+
+.placeholder,
+.photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  -webkit-user-drag: none;
+}
+
+.placeholder {
+  filter: blur(0.5rem);
+  transform: scale(1.04);
+}
+
+.photo {
+  opacity: 0;
+  transition: opacity 0.2s ease;
+
+  &[data-loaded="true"] {
+    opacity: 1;
+  }
+}
+
+// Controls: floating pills, hidden while dragging, opening or closing
+.top,
+.bottom {
+  transition: opacity 0.2s ease;
+  pointer-events: auto;
+}
+
+.top {
+  top: calc(env(safe-area-inset-top) + 1rem);
+  right: calc(env(safe-area-inset-right) + 1rem);
+}
+
+// Where the header sits on phones, so it's under the thumb
+.bottom {
+  left: 50%;
+  bottom: calc(env(safe-area-inset-bottom) + var(--static-space-24));
+  transform: translateX(-50%);
+  max-width: calc(100% - 2rem);
+}
+
+.caption {
+  min-width: 6rem;
+  max-width: min(28rem, calc(100vw - 9rem));
+}
+
+.meta {
+  max-width: 100%;
+  font-variant-numeric: tabular-nums;
+}
+
+// Hidden until the open animation has finished. Keyed on "open" rather than "opening": the first
+// paint happens before the phase is set, which flashed the controls in, out and in again.
+.dialog[data-chrome="hidden"] .top,
+.dialog[data-chrome="hidden"] .bottom,
+.stage:not([data-phase="open"]) .top,
+.stage:not([data-phase="open"]) .bottom,
+.stage[data-dragging] .top,
+.stage[data-dragging] .bottom {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.stage[data-zoomed] .zoom {
+  cursor: grab;
+}
+
+.stage[data-zoomed][data-dragging] .zoom {
+  cursor: grabbing;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .photo,
+  .top,
+  .bottom {
+    transition: none;
+  }
+}
