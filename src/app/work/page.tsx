@@ -2,6 +2,7 @@ import { Column, Heading, Meta, Schema } from "@once-ui-system/core";
 import { notFound } from "next/navigation";
 import { isRouteEnabled } from "@/utils/routes";
 import { baseURL, about, person, work } from "@/resources";
+import { canonicalAlternates } from "@/utils/seo";
 import { Projects } from "@/components/work/Projects";
 
 export async function generateMetadata() {
@@ -11,6 +12,7 @@ export async function generateMetadata() {
     baseURL: baseURL,
     image: `/api/og/generate?title=${encodeURIComponent(work.title)}`,
     path: work.path,
+    alternates: canonicalAlternates(work.path),
   });
 }
 

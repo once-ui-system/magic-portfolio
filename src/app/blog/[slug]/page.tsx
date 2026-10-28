@@ -3,8 +3,6 @@ import { isRouteEnabled } from "@/utils/routes";
 import "katex/dist/katex.min.css";
 import { CustomMDX, ScrollToHash } from "@/components";
 import {
-  Meta,
-  Schema,
   Column,
   Heading,
   HeadingNav,
@@ -17,9 +15,11 @@ import {
   Line,
   Tag,
 } from "@once-ui-system/core";
-import { baseURL, about, blog, features, person } from "@/resources";
+import { baseURL, blog, features, person } from "@/resources";
 import { formatDate } from "@/utils/formatDate";
-import { getPosts } from "@/utils/utils";
+import { countWords, getPosts, readingTime } from "@/utils/utils";
+import { articleMetadata } from "@/utils/seo";
+import { ArticleSchema } from "@/components/seo";
 import { Metadata } from "next";
 import React from "react";
 import { Posts } from "@/components/blog/Posts";
@@ -58,12 +58,14 @@ export async function generateMetadata({
 
   if (!post) return {};
 
-  return Meta.generate({
+  return articleMetadata({
     title: post.metadata.title,
     description: post.metadata.summary,
-    baseURL: baseURL,
-    image: post.metadata.image || `/api/og/generate?title=${post.metadata.title}`,
     path: `${blog.path}/${post.slug}`,
+    image: post.metadata.image,
+    publishedAt: post.metadata.publishedAt,
+    updatedAt: post.metadata.updatedAt,
+    tag: typeof post.metadata.tag === "string" ? post.metadata.tag : undefined,
     // Drafts only render in `next dev`, but keep them out of search all the same
     noindex: post.metadata.draft,
     nofollow: post.metadata.draft,
@@ -89,28 +91,37 @@ export default async function Blog({ params }: { params: Promise<{ slug: string 
       src: person.avatar,
     })) || [];
 
+  const { publishedAt, updatedAt } = post.metadata;
+  // Labels from blog.postMeta in content.tsx, with English defaults
+  const updatedLabel = blog.postMeta?.updated ?? "Updated";
+  const readingTimeLabel = blog.postMeta?.readingTime ?? ((minutes) => `${minutes} min read`);
+  const dot = (
+    <Text aria-hidden textVariant="body-default-xs" onBackground="neutral-weak">
+      ·
+    </Text>
+  );
+
   return (
     <Row fillWidth>
       <Row maxWidth="12rem" m={{ hide: true }} />
       <Row fillWidth horizontal="center">
         <Column as="section" maxWidth="m" horizontal="center" gap="l" paddingTop="24">
-          <Schema
-            as="blogPosting"
-            baseURL={baseURL}
+          <ArticleSchema
             path={`${blog.path}/${post.slug}`}
             title={post.metadata.title}
             description={post.metadata.summary}
-            datePublished={post.metadata.publishedAt}
-            dateModified={post.metadata.publishedAt}
+            datePublished={publishedAt}
+            dateModified={updatedAt}
             image={
               post.metadata.image ||
               `/api/og/generate?title=${encodeURIComponent(post.metadata.title)}`
             }
-            author={{
-              name: person.name,
-              url: `${baseURL}${about.path}`,
-              image: `${baseURL}${person.avatar}`,
-            }}
+            section={typeof post.metadata.tag === "string" ? post.metadata.tag : undefined}
+            wordCount={countWords(post.content)}
+            breadcrumbs={[
+              { name: blog.label, path: blog.path },
+              { name: post.metadata.title, path: `${blog.path}/${post.slug}` },
+            ]}
           />
           {(features.readingProgress ?? true) && <ReadingProgress />}
           <Column maxWidth="s" gap="16" horizontal="center" align="center">
@@ -120,9 +131,27 @@ export default async function Blog({ params }: { params: Promise<{ slug: string 
             <SmartLink href="/blog">
               <Text textVariant="label-strong-m">Blog</Text>
             </SmartLink>
-            <Text textVariant="body-default-xs" onBackground="neutral-weak" marginBottom="12">
-              {post.metadata.publishedAt && formatDate(post.metadata.publishedAt)}
-            </Text>
+            <Row gap="8" wrap horizontal="center" marginBottom="12">
+              <Text textVariant="body-default-xs" onBackground="neutral-weak">
+                {publishedAt && <time dateTime={publishedAt}>{formatDate(publishedAt)}</time>}
+              </Text>
+              {updatedAt && updatedAt !== publishedAt && (
+                <>
+                  {dot}
+                  <Text textVariant="body-default-xs" onBackground="neutral-weak">
+                    {updatedLabel} <time dateTime={updatedAt}>{formatDate(updatedAt)}</time>
+                  </Text>
+                </>
+              )}
+              {(features.readingTime ?? true) && (
+                <>
+                  {dot}
+                  <Text textVariant="body-default-xs" onBackground="neutral-weak">
+                    {readingTimeLabel(readingTime(post.content))}
+                  </Text>
+                </>
+              )}
+            </Row>
             <Heading textVariant="display-strong-m">{post.metadata.title}</Heading>
             {post.metadata.subtitle && (
               <Text

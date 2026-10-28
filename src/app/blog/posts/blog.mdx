@@ -31,6 +31,8 @@ tag: "Journal"
     ]}
 />
 
+When you revise a post, add `updatedAt: "YYYY-MM-DD"` to its frontmatter. The post shows "Updated" next to the date, and the new date goes into the open graph tags, the structured data and the sitemap. Posts also show their reading time, at 200 words a minute; turn it off with `readingTime: false` in the `features` object in `src/resources/once-ui.config.ts`. Both labels can be changed with `postMeta` in the `blog` object in `src/resources/content.tsx`.
+
 ## MDX syntax
 
 You can use MDX to write the content of your posts. It helps you write rich and dynamic content with minimal code. Some MDX elements will be automatically transformed to Once UI components to integrate better in the design and add additional functionality.

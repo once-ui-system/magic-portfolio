@@ -181,6 +181,8 @@ export type FeaturesConfig = {
   navigationProgress?: boolean;
   /** Short fade of the page content after each navigation. Default true. */
   routeTransition?: boolean;
+  /** "5 min read" next to the date on blog posts. Default true. */
+  readingTime?: boolean;
 };
 
 /**

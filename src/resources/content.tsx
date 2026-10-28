@@ -296,6 +296,11 @@ const blog: Blog = {
     label: "Filter posts by topic",
     results: (count, tag) => `${count} ${count === 1 ? "post" : "posts"} about ${tag}`,
   },
+  // The line under a post's title, next to its date
+  postMeta: {
+    updated: "Updated",
+    readingTime: (minutes) => `${minutes} min read`,
+  },
 };
 
 const work: Work = {

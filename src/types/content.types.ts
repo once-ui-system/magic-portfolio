@@ -300,6 +300,13 @@ export interface Blog extends BasePageConfig {
     /** Announced to screen readers after picking a topic. Default: "3 posts about Design" */
     results?: (count: number, tag: string) => string;
   };
+  /** The line under a post's title, next to its date */
+  postMeta?: {
+    /** Before the date of the last revision (front matter `updatedAt`). Default "Updated" */
+    updated?: string;
+    /** Reading time (`features.readingTime`). Default: minutes => `${minutes} min read` */
+    readingTime?: (minutes: number) => string;
+  };
 }
 
 /**

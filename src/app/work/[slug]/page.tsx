@@ -3,8 +3,6 @@ import { isRouteEnabled } from "@/utils/routes";
 import "katex/dist/katex.min.css";
 import { getPosts } from "@/utils/utils";
 import {
-  Meta,
-  Schema,
   AvatarGroup,
   Button,
   Column,
@@ -19,7 +17,7 @@ import {
   Line,
   Tag,
 } from "@once-ui-system/core";
-import { baseURL, about, features, person, work } from "@/resources";
+import { baseURL, features, person, work } from "@/resources";
 import { formatDate } from "@/utils/formatDate";
 import { ScrollToHash, CustomMDX } from "@/components";
 import { Metadata } from "next";
@@ -28,6 +26,8 @@ import { ReadingProgress } from "@/components/blog/ReadingProgress";
 import { MobileToc } from "@/components/blog/MobileToc";
 import { ResumeReading } from "@/components/blog/ResumeReading";
 import { QuoteShare } from "@/components/blog/QuoteShare";
+import { ArticleSchema } from "@/components/seo";
+import { articleMetadata } from "@/utils/seo";
 
 // Only the slugs built below exist: anything else (a draft in production, a
 // mistyped URL) is a real 404 instead of a not-found page served with 200.
@@ -58,12 +58,13 @@ export async function generateMetadata({
 
   if (!post) return {};
 
-  return Meta.generate({
+  return articleMetadata({
     title: post.metadata.title,
     description: post.metadata.summary,
-    baseURL: baseURL,
-    image: post.metadata.image || `/api/og/generate?title=${post.metadata.title}`,
     path: `${work.path}/${post.slug}`,
+    image: post.metadata.image,
+    publishedAt: post.metadata.publishedAt,
+    updatedAt: post.metadata.updatedAt,
     // Drafts only render in `next dev`, but keep them out of search all the same
     noindex: post.metadata.draft,
     nofollow: post.metadata.draft,
@@ -102,23 +103,21 @@ export default async function Project({
       {sidebar && <Row maxWidth="12rem" m={{ hide: true }} />}
       <Row fillWidth horizontal="center">
         <Column as="section" maxWidth="m" horizontal="center" gap="l">
-          <Schema
-            as="blogPosting"
-            baseURL={baseURL}
+          <ArticleSchema
+            as="CreativeWork"
             path={`${work.path}/${post.slug}`}
             title={post.metadata.title}
             description={post.metadata.summary}
             datePublished={post.metadata.publishedAt}
-            dateModified={post.metadata.publishedAt}
+            dateModified={post.metadata.updatedAt}
             image={
               post.metadata.image ||
               `/api/og/generate?title=${encodeURIComponent(post.metadata.title)}`
             }
-            author={{
-              name: person.name,
-              url: `${baseURL}${about.path}`,
-              image: `${baseURL}${person.avatar}`,
-            }}
+            breadcrumbs={[
+              { name: work.label, path: work.path },
+              { name: post.metadata.title, path: `${work.path}/${post.slug}` },
+            ]}
           />
           {(features.readingProgress ?? true) && <ReadingProgress />}
           <Column maxWidth="s" gap="16" horizontal="center" align="center">

@@ -13,6 +13,7 @@ import { AestheticStyles } from "@/components/aesthetic/AestheticStyles";
 import { AestheticSwitcher } from "@/components/aesthetic/AestheticSwitcher";
 import { buildSearchIndex } from "@/utils/searchIndex";
 import { NavigationProgress } from "@/components/motion";
+import { SiteSchema } from "@/components/seo";
 import {
   aesthetic,
   baseURL,
@@ -87,13 +88,19 @@ function themeInitExtras() {
 }
 
 export async function generateMetadata() {
-  return Meta.generate({
-    title: home.title,
-    description: home.description,
-    baseURL: baseURL,
-    path: home.path,
-    image: home.image,
-  });
+  return {
+    ...Meta.generate({
+      title: home.title,
+      description: home.description,
+      baseURL: baseURL,
+      path: home.path,
+      image: home.image,
+    }),
+    // Optional: verify the site in Google Search Console (see .env.example)
+    ...(process.env.GOOGLE_SITE_VERIFICATION
+      ? { verification: { google: process.env.GOOGLE_SITE_VERIFICATION } }
+      : {}),
+  };
 }
 
 // viewport-fit=cover lets the bottom menu sit above the home indicator
@@ -122,6 +129,7 @@ export default async function RootLayout({
     >
       <head>
         <AestheticStyles />
+        <SiteSchema />
         {/* Their server copy runs before the first paint; see ServerRendered */}
         <ServerRendered>
           <ThemeInit config={style} dataStyle={dataStyle} />

@@ -6,6 +6,7 @@ import { Posts } from "@/components/blog/Posts";
 import { type TagCount, TagFilter, type TagFilterPost } from "@/components/blog/TagFilter";
 import { getSortedPosts } from "@/utils/utils";
 import { baseURL, blog, features, person, newsletter } from "@/resources";
+import { canonicalAlternates } from "@/utils/seo";
 
 export async function generateMetadata() {
   return Meta.generate({
@@ -14,6 +15,7 @@ export async function generateMetadata() {
     baseURL: baseURL,
     image: `/api/og/generate?title=${encodeURIComponent(blog.title)}`,
     path: blog.path,
+    alternates: canonicalAlternates(blog.path),
   });
 }
 

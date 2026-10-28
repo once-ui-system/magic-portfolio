@@ -204,6 +204,8 @@ const features: FeaturesConfig = {
   // Short fade of the page content after each navigation. Skipped with reduced motion, and
   // when style.transition is "none" or "micro". Default: true
   routeTransition: true,
+  // "5 min read" next to the date on blog posts. Default: true
+  readingTime: true,
 };
 
 export {
