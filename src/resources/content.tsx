@@ -266,48 +266,60 @@ const gallery: Gallery = {
   label: "Gallery",
   title: `Photo gallery – ${person.name}`,
   description: `A photo collection by ${person.name}`,
+  // The full-screen viewer a photo opens in. Set display: false to enlarge one photo at a time instead
+  viewer: {
+    display: true,
+    // ?photo=<file name> in the address bar, so a link opens that photo
+    deepLink: true,
+    // false serves the original files instead of resized copies (saves Vercel image quota)
+    optimizeImages: true,
+    labels: {
+      dialog: "Photo viewer",
+      open: (alt) => `View ${alt}`,
+      close: "Close photo viewer",
+      previous: "Previous photo",
+      next: "Next photo",
+      counter: (current, total) => `Photo ${current} of ${total}`,
+      error: "Couldn't load this photo",
+      retry: "Try again",
+    },
+  },
   // Images by https://lorant.one
   // These are placeholder images, replace with your own
+  // Thumbnails keep each photo's proportions. Add orientation: "horizontal" or "vertical"
+  // to crop one to 16 / 9 or 3 / 4 instead
   images: [
     {
       src: "/images/gallery/horizontal-1.jpg",
       alt: "image",
-      orientation: "horizontal",
     },
     {
       src: "/images/gallery/vertical-4.jpg",
       alt: "image",
-      orientation: "vertical",
     },
     {
       src: "/images/gallery/horizontal-3.jpg",
       alt: "image",
-      orientation: "horizontal",
     },
     {
       src: "/images/gallery/vertical-1.jpg",
       alt: "image",
-      orientation: "vertical",
     },
     {
       src: "/images/gallery/vertical-2.jpg",
       alt: "image",
-      orientation: "vertical",
     },
     {
       src: "/images/gallery/horizontal-2.jpg",
       alt: "image",
-      orientation: "horizontal",
     },
     {
       src: "/images/gallery/horizontal-4.jpg",
       alt: "image",
-      orientation: "horizontal",
     },
     {
       src: "/images/gallery/vertical-3.jpg",
       alt: "image",
-      orientation: "vertical",
     },
   ],
 };

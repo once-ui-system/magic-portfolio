@@ -1,6 +1,7 @@
-import { Flex, Meta, Schema } from "@once-ui-system/core";
 import GalleryView from "@/components/gallery/GalleryView";
 import { baseURL, gallery, person } from "@/resources";
+import { getImageDimensions } from "@/utils/imageDimensions";
+import { Flex, Meta, Schema } from "@once-ui-system/core";
 
 export async function generateMetadata() {
   return Meta.generate({
@@ -12,7 +13,10 @@ export async function generateMetadata() {
   });
 }
 
-export default function Gallery() {
+export default async function Gallery() {
+  // Read from the files at build time, so photos lay out and open at their real proportions
+  const dimensions = await getImageDimensions(gallery.images.map((image) => image.src));
+
   return (
     <Flex maxWidth="l">
       <Schema
@@ -28,7 +32,7 @@ export default function Gallery() {
           image: `${baseURL}${person.avatar}`,
         }}
       />
-      <GalleryView />
+      <GalleryView dimensions={dimensions} />
     </Flex>
   );
 }

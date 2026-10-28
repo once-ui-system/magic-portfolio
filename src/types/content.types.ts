@@ -244,7 +244,53 @@ export interface Gallery extends BasePageConfig {
     src: string;
     /** Image alt text */
     alt: string;
-    /** Image orientation (horizontal/vertical) */
-    orientation: string;
+    /**
+     * Crop the thumbnail to 16 / 9 ("horizontal") or 3 / 4 ("vertical"). Optional: without it,
+     * the thumbnail keeps the photo's own proportions, read from the file in /public.
+     */
+    orientation?: string;
   }>;
+  /** The full-screen photo viewer that opens when a photo is clicked or tapped */
+  viewer?: PhotoViewerConfig;
+}
+
+/**
+ * The full-screen photo viewer (`gallery.viewer`).
+ * @description Swipe, pinch and double-tap zoom, keyboard arrows, and Back to close.
+ */
+export interface PhotoViewerConfig {
+  /** Open photos in the viewer. When false, a click enlarges the single photo, as before. Default true */
+  display: boolean;
+  /** Put the open photo in the address bar (`?photo=<file name>`) so a link opens it. Default true */
+  deepLink?: boolean;
+  /** Name of that address bar parameter. Default "photo" */
+  deepLinkParam?: string;
+  /**
+   * Serve the viewer's photos through Next.js image optimization (resized for each screen).
+   * Set to false to serve the original files instead, e.g. to stay inside Vercel's free image
+   * quota; then keep the files in /public already resized and compressed. Default true
+   */
+  optimizeImages?: boolean;
+  /** Text of the viewer's controls and screen reader announcements */
+  labels?: PhotoViewerLabels;
+}
+
+/** Text of the photo viewer. Each one is optional and falls back to the English default. */
+export interface PhotoViewerLabels {
+  /** Name of the viewer for screen readers. Default "Photo viewer" */
+  dialog?: string;
+  /** Name of a photo's button in the gallery. Default: alt => `View ${alt}` */
+  open?: (alt: string) => string;
+  /** Default "Close photo viewer" */
+  close?: string;
+  /** Default "Previous photo" */
+  previous?: string;
+  /** Default "Next photo" */
+  next?: string;
+  /** Announced on every photo. Default: (current, total) => `Photo ${current} of ${total}` */
+  counter?: (current: number, total: number) => string;
+  /** Shown when a photo fails to load. Default "Couldn't load this photo" */
+  error?: string;
+  /** Button that loads it again. Default "Try again" */
+  retry?: string;
 }
