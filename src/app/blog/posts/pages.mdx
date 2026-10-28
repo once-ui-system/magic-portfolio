@@ -3,7 +3,7 @@ title: "Enable or disable pages for your portfolio"
 summary: "Magic Portfolio's RouteGuard component takes care of conditionally rendering pages based on your settings."
 image: "/images/gallery/horizontal-2.jpg"
 publishedAt: "2025-04-22"
-tag: "Magic Portfolio"
+tag: "Guide"
 ---
 
 ## Enable or disable pages
@@ -27,7 +27,11 @@ Magic Portfolio's `RouteGuard` component takes care of conditionally rendering p
   }
 ]} />
 
-The code above will ensure that the `/gallery` page is not accessible and is not displayed in the navigation.
+The code above will ensure that the `/gallery` page returns a 404 and is not displayed in the navigation.
+
+## Search
+
+Visitors can press ⌘K (Ctrl+K), or `/`, to open a command palette that finds any page switched on in `routes`, every post and project, your social links, and a few actions: switch the theme (with `display.themeSwitcher` on), copy your email address and open the RSS feed (with the blog on). Remove it, and its button in the header, with `search: false` in the `features` object in `src/resources/once-ui.config.ts`. Its group headings and action names are in the `search` object in `src/resources/content.tsx`.
 
 ## Add new pages
 
@@ -52,3 +56,22 @@ When creating a new page, it needs to be added to the `routes` object in the `re
 ]} />
 
 The code above will ensure that the `/music` page is accessible. Users will be able to navigate to it after adding it to the navigation menu in the `components/Header.tsx` file.
+
+To have a page you added return a real 404 status when it's switched off, start it with the same check the built-in pages use:
+
+<CodeBlock
+    marginBottom="16"
+    codes={[
+  {
+    code:
+`import { notFound } from "next/navigation";
+import { isRouteEnabled } from "@/utils/routes";
+
+export default function Music() {
+  if (!isRouteEnabled("/music")) notFound();
+  // ...
+}`,
+    language: "tsx",
+    label: "src/app/music/page.tsx"
+  }
+]} />

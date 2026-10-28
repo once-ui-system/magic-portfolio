@@ -10,6 +10,7 @@ import {
 } from "@once-ui-system/core";
 import { HoloFx, RevealFx, TiltFx } from "@once-ui-system/fx";
 import { about, home, person, routes } from "@/resources";
+import { isRouteEnabled } from "@/utils/routes";
 import { cityFromTimeZone } from "@/utils/cityFromTimeZone";
 
 export function HeroSplit() {
@@ -22,7 +23,7 @@ export function HeroSplit() {
       s={{ direction: "column-reverse", gap: "32", paddingTop: "8" }}
     >
       <Column flex={7} gap="24">
-        {home.featured.display && (
+        {home.featured.display && isRouteEnabled(home.featured.href) && (
           <RevealFx horizontal="start">
             <Tag
               variant="announce"

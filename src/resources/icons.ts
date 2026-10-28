@@ -1,6 +1,7 @@
 import { IconType } from "react-icons";
 
 import {
+  HiArrowUp,
   HiArrowUpRight,
   HiOutlineLink,
   HiArrowTopRightOnSquare,
@@ -12,7 +13,9 @@ import {
   HiOutlineDocument,
   HiOutlineGlobeAsiaAustralia,
   HiOutlineRocketLaunch,
+  HiOutlineRss,
   HiSparkles,
+  HiHeart,
 } from "react-icons/hi2";
 
 import {
@@ -42,6 +45,7 @@ import {
 } from "react-icons/fa6";
 
 export const iconLibrary = {
+  arrowUp: HiArrowUp,
   arrowUpRight: HiArrowUpRight,
   arrowRight: HiArrowRight,
   sparkle: HiSparkles,
@@ -66,6 +70,8 @@ export const iconLibrary = {
   arrowUpRightFromSquare: HiArrowTopRightOnSquare,
   document: HiOutlineDocument,
   rocket: HiOutlineRocketLaunch,
+  rss: HiOutlineRss,
+  heartFilled: HiHeart,
   javascript: SiJavascript,
   nextjs: SiNextdotjs,
   supabase: SiSupabase,

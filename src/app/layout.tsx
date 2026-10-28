@@ -6,15 +6,20 @@ import type { Viewport } from "next";
 import classNames from "classnames";
 
 import { Column, Flex, Meta, ThemeInit } from "@once-ui-system/core";
-import { Footer, Header, RouteGuard, Providers } from "@/components";
+import { BackToTop, Footer, Header, RouteGuard, Providers } from "@/components";
+import { ServerRendered } from "@/components/ServerRendered";
 import { AestheticBackground } from "@/components/aesthetic/AestheticBackground";
 import { AestheticStyles } from "@/components/aesthetic/AestheticStyles";
 import { AestheticSwitcher } from "@/components/aesthetic/AestheticSwitcher";
+import { buildSearchIndex } from "@/utils/searchIndex";
+import { NavigationProgress } from "@/components/motion";
+import { SiteSchema } from "@/components/seo";
 import {
   aesthetic,
   baseURL,
   dataStyle,
   display,
+  features,
   fontFamilies,
   aesthetics,
   home,
@@ -83,13 +88,19 @@ function themeInitExtras() {
 }
 
 export async function generateMetadata() {
-  return Meta.generate({
-    title: home.title,
-    description: home.description,
-    baseURL: baseURL,
-    path: home.path,
-    image: home.image,
-  });
+  return {
+    ...Meta.generate({
+      title: home.title,
+      description: home.description,
+      baseURL: baseURL,
+      path: home.path,
+      image: home.image,
+    }),
+    // Optional: verify the site in Google Search Console (see .env.example)
+    ...(process.env.GOOGLE_SITE_VERIFICATION
+      ? { verification: { google: process.env.GOOGLE_SITE_VERIFICATION } }
+      : {}),
+  };
 }
 
 // viewport-fit=cover lets the bottom menu sit above the home indicator
@@ -118,14 +129,18 @@ export default async function RootLayout({
     >
       <head>
         <AestheticStyles />
-        <ThemeInit config={style} dataStyle={dataStyle} />
-        {initScript && (
-          <script
-            id="theme-init-extras"
-            // biome-ignore lint/security/noDangerouslySetInnerHtml: runs before the first paint; the payload is our own config
-            dangerouslySetInnerHTML={{ __html: initScript }}
-          />
-        )}
+        <SiteSchema />
+        {/* Their server copy runs before the first paint; see ServerRendered */}
+        <ServerRendered>
+          <ThemeInit config={style} dataStyle={dataStyle} />
+          {initScript && (
+            <script
+              id="theme-init-extras"
+              // biome-ignore lint/security/noDangerouslySetInnerHtml: runs before the first paint; the payload is our own config
+              dangerouslySetInnerHTML={{ __html: initScript }}
+            />
+          )}
+        </ServerRendered>
       </head>
       <Providers>
         <Column
@@ -138,15 +153,17 @@ export default async function RootLayout({
           horizontal="center"
         >
           <AestheticBackground />
+          {(features.navigationProgress ?? true) && <NavigationProgress />}
           <Flex fillWidth minHeight="16" s={{ hide: true }} />
           {display.aestheticSwitcher && <AestheticSwitcher />}
-          <Header />
+          <Header searchEntries={(features.search ?? true) ? buildSearchIndex() : undefined} />
           <Flex as="main" zIndex={0} fillWidth padding="l" horizontal="center" flex={1}>
             <Flex horizontal="center" fillWidth minHeight="0">
               <RouteGuard>{children}</RouteGuard>
             </Flex>
           </Flex>
           <Footer />
+          {(features.backToTop ?? true) && <BackToTop />}
         </Column>
       </Providers>
     </Flex>

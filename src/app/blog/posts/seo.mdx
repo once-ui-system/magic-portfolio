@@ -2,7 +2,8 @@
 title: "SEO settings for Magic Portfolio"
 summary: "Manage your Magic Portfolio's SEO settings."
 publishedAt: "2025-04-14"
-tag: "Magic Portfolio"
+updatedAt: "2026-10-27"
+tag: "SEO"
 ---
 
 ## Meta tags
@@ -12,6 +13,16 @@ Magic Portfolio automatically generates meta- and open graph tags for your pages
 ## Schema
 
 Magic Portfolio automatically generates schema tags for your pages based on the `content.js` file.
+
+Every page also carries the site's structured data: the website, and the person (or, with `schema.type: "Organization"`, the organization) from the `schema` and `sameAs` settings in `once-ui.config.ts`. Posts and projects point to them by a stable `@id` and add a breadcrumb trail, the word count and the last-modified date.
+
+## Canonical URLs and the sitemap
+
+Each page declares its canonical URL, built from `baseURL`. The sitemap dates every post and project by `updatedAt` (or `publishedAt`), and the home, blog and work pages by their newest entry.
+
+## Search Console
+
+To verify your site in Google Search Console with the meta tag method, set `GOOGLE_SITE_VERIFICATION` in your `.env` file to the code Google gives you.
 
 ## Open Graph image
 
@@ -46,3 +57,33 @@ The above declaration generates the social image with the title of the page. You
 ## Gallery in image search
 
 The gallery describes itself to search engines: an `ImageGallery` with every photo's size, your name as creator and credit, and a copyright notice. A separate `/sitemap-images.xml` lists the photos and `robots.txt` points to it. Give a photo a `title` and `year` in `content.tsx` to name and date it, and reword the notice with `gallery.copyrightNotice`. Both switch off in the `seo` block of `once-ui.config.ts`, and neither is served while the gallery is switched off or behind a password.
+
+
+## AI assistants
+
+Magic Portfolio serves `/llms.txt`, a plain-text guide to your site for AI assistants, and `/llms-full.txt` with the full text of your posts and projects. Both are built from your content, and password-protected or switched-off pages are left out. `robots.txt` lets AI search bots and AI training bots in by default; set `training: false` to keep training bots out while search bots, which answer questions and link back to you, stay allowed. Change any of this in the `seo` object:
+
+<CodeBlock
+    marginBottom="16"
+    codes={[
+      {
+        code:
+`const seo: SeoConfig = {
+  llmsTxt: {
+    enabled: true, // false: /llms.txt and /llms-full.txt return 404
+    fullText: true, // false: only /llms-full.txt returns 404
+  },
+  aiCrawlers: {
+    search: true, // let AI search bots in
+    training: true, // false keeps AI training bots out
+    searchBots: [...aiSearchBots, "YouBot"], // add or remove user agents
+    trainingBots: aiTrainingBots,
+  },
+};`,
+        language: "tsx",
+        label: "src/resources/once-ui.config.ts"
+      }
+    ]}
+/>
+
+The default bot lists live in `src/resources/aiCrawlers.ts`. Leave `searchBots` or `trainingBots` out to use them as they are.

@@ -20,6 +20,8 @@ export type DisplayConfig = {
   time: boolean;
   themeSwitcher: boolean;
   aestheticSwitcher: boolean;
+  /** Slide the header away while scrolling down; it returns on scroll up. Off in the sample. */
+  hideHeaderOnScroll: boolean;
 };
 
 /**
@@ -155,14 +157,79 @@ export type SocialSharingConfig = {
   };
 };
 
+/** Opt-in quality-of-life features. Each key switches one feature on or off. */
+export type FeaturesConfig = {
+  /** Briefly highlight the heading or element a #link lands on. Default true. */
+  hashHighlight?: boolean;
+  /** Thin progress bar at the top of blog posts and project pages. Default true. */
+  readingProgress?: boolean;
+  /** "On this page" list that folds open above posts and projects on phones. Default true. */
+  mobileToc?: boolean;
+  /** "On this page" sidebar on project pages, like the one on blog posts. Default true. */
+  projectToc?: boolean;
+  /** Offers to jump back to where a reader stopped in a post or project. Default true. */
+  resumeReading?: boolean;
+  /** Select text in a post or project to copy or share it as a quote. Default true. */
+  quoteShare?: boolean;
+  /** Topic chips above the blog listing that filter posts by their tag. Default true. */
+  tagFilter?: boolean;
+  /** Floating button that scrolls back to the top of long pages. Default true. */
+  backToTop?: boolean;
+  /** ⌘K / Ctrl+K palette: pages, posts, projects, actions and social links. Default true. */
+  search?: boolean;
+  /** Thin bar at the top of the window while a page loads. Default true. */
+  navigationProgress?: boolean;
+  /** Short fade of the page content after each navigation. Default true. */
+  routeTransition?: boolean;
+  /** "5 min read" next to the date on blog posts. Default true. */
+  readingTime?: boolean;
+  /**
+   * "Related writing" on project pages, from the project's front matter `related: [post slugs]`,
+   * and a "From the project" card back on those posts. Default true.
+   */
+  relatedWriting?: boolean;
+  /** Previous and next project cards at the end of project pages, in /work order. Default true. */
+  projectNavigation?: boolean;
+  /**
+   * Read counts on posts and projects, stored in Upstash Redis (see .env.example). Default false.
+   * Without Redis env it renders nothing, except in `next dev`, which counts in memory.
+   */
+  viewCounts?: boolean;
+  /**
+   * Like button on posts and projects, stored in Upstash Redis (see .env.example). Default false.
+   * Without Redis env it renders nothing, except in `next dev`, which keeps likes in memory.
+   */
+  likes?: boolean;
+  /** Images in posts and projects open in the photo viewer, with the other images of the page. Default true. */
+  imageZoom?: boolean;
+};
+
 /**
- * What the site tells search engines beyond meta tags.
+ * What the site tells search engines and AI tools beyond meta tags.
  */
 export type SeoConfig = {
   /** Serve /sitemap-images.xml with the gallery photos and list it in robots.txt. Off makes it 404. */
   imageSitemap: boolean;
   /** Describe the gallery as an ImageGallery in JSON-LD, with creator, credit and copyright per photo. */
   galleryStructuredData: boolean;
+  /** Plain-text guides to the site for AI assistants (https://llmstxt.org). */
+  llmsTxt: {
+    /** Serve /llms.txt: your pages, projects and posts with their summaries. Off makes it 404. */
+    enabled: boolean;
+    /** Also serve /llms-full.txt with the full text of every project and post. Needs `enabled`. */
+    fullText: boolean;
+  };
+  /** Which AI crawlers robots.txt lets in. Regular search engines are always allowed. */
+  aiCrawlers: {
+    /** Let in bots that fetch pages to answer a question or build an AI search index. */
+    search: boolean;
+    /** Let in bots that collect text to train AI models. */
+    training: boolean;
+    /** User agents `search` covers. Defaults to `aiSearchBots` in src/resources/aiCrawlers.ts. */
+    searchBots?: string[];
+    /** User agents `training` covers. Defaults to `aiTrainingBots` in src/resources/aiCrawlers.ts. */
+    trainingBots?: string[];
+  };
 };
 
 /**
@@ -182,4 +249,5 @@ export type OnceUIConfig = {
   socialSharing: SocialSharingConfig;
   dataStyle: DataStyleConfig;
   seo: SeoConfig;
+  features: FeaturesConfig;
 };

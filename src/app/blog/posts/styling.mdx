@@ -3,7 +3,7 @@ title: "Styling your portfolio"
 summary: "Pick an aesthetic, fine-tune its theme, rearrange the home page or build a look of your own."
 image: "/images/gallery/horizontal-3.jpg"
 publishedAt: "2026-10-18"
-tag: "Magic Portfolio"
+tag: "Styling"
 ---
 
 ## Pick an aesthetic
@@ -57,13 +57,25 @@ The home page is built from sections, and each aesthetic has its own list. Set `
   { type: "hero", variant: "split" }, // centered | statement | split | terminal
   { type: "ticker" },
   { type: "work", variant: "bento" }, // stack | index | bento
-  { type: "posts", variant: "list", range: [1, 4] }, // grid | list
+  { type: "posts", variant: "list", range: [1, 4] }, // grid | list | featured
+  { type: "gallery", variant: "marquee", count: 8 },
+  { type: "contact" }, // uses home.contact in content.tsx
   { type: "newsletter" },
 ];`,
     language: "tsx",
     label: "src/resources/once-ui.config.ts"
   }
 ]} />
+
+The text of the newer sections lives in the `home` object in `src/resources/content.tsx`: `contact` holds the contact section's title, description and the names of the social links it shows as buttons, and `galleryMarquee` and `featuredPosts` hold the headings and link labels of the gallery and featured posts sections. A section you don't list in `homeSections` (or in the aesthetic's own list) doesn't render.
+
+## Header and back-to-top button
+
+Set `display.hideHeaderOnScroll: true` in `src/resources/once-ui.config.ts` to slide the header away while visitors scroll down; it comes back as soon as they scroll up. A small button in the corner takes them back to the top of long pages. Remove it with `backToTop: false` in the `features` object, and change its label with `backToTop.label` in `src/resources/content.tsx`.
+
+## Page transitions
+
+When a page takes a moment to load, a thin bar in the brand colour runs along the top of the window, and each new page fades in briefly. Both respect reduced motion, and the fade also follows `transition` in `styleOverrides`. Turn them off with `navigationProgress: false` or `routeTransition: false` in the `features` object in `src/resources/once-ui.config.ts`.
 
 ## Make your own aesthetic
 

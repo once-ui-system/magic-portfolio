@@ -1,5 +1,5 @@
-import { IconName } from "@/resources/icons";
-import { zones } from "tzdata";
+import type { IconName } from "@/resources/icons";
+import type { zones } from "tzdata";
 
 /**
  * IANA time zone string (e.g., 'Asia/Calcutta', 'Europe/Vienna').
@@ -49,6 +49,44 @@ export type Newsletter = {
 };
 
 /**
+ * Back-to-top button.
+ * @description The floating button that scrolls back up; switch it with `features.backToTop`.
+ */
+export type BackToTop = {
+  /** Its tooltip and accessible name. Default "Back to top" */
+  label?: string;
+};
+
+/**
+ * Command palette labels.
+ * @description The ⌘K palette (`features.search`). Every label is optional, English by default.
+ */
+export type Search = {
+  /** Accessible name of the palette and its header button. Default "Search" */
+  label?: string;
+  /** Group headings in the results. Posts and projects use `blog.label` and `work.label` */
+  sections?: {
+    /** Default "Pages" */
+    pages?: string;
+    /** Default "Actions" */
+    actions?: string;
+    /** Your social links. Default "Links" */
+    links?: string;
+  };
+  /** Names of the built-in actions */
+  actions?: {
+    /** Default "Switch light or dark theme" */
+    theme?: string;
+    /** Default "Copy email address" */
+    copyEmail?: string;
+    /** Toast after copying. Default "Email address copied." */
+    emailCopied?: string;
+    /** Default "RSS feed" */
+    rss?: string;
+  };
+};
+
+/**
  * Social link configuration.
  */
 export type Social = Array<{
@@ -68,6 +106,35 @@ export type Social = Array<{
   /** Whether this social link is essential and should be displayed on the about page */
   essential?: boolean;
 }>;
+
+/**
+ * Footer configuration.
+ * @description Pick the footer's layout. Every variant keeps the Once UI attribution line.
+ */
+export type Footer = {
+  /**
+   * `minimal`: one row with the copyright, the attribution and your social icons.
+   * `columns`: your name and role, local time and link columns above that row.
+   */
+  variant: "minimal" | "columns";
+  /** Show the time where you are (from `person.location`) in the columns footer */
+  localTime?: boolean;
+  /** The column of your enabled pages in the columns footer. Default: shown, titled "Pages" */
+  pages?: {
+    display?: boolean;
+    title?: string;
+  };
+  /** The column of your social links in the columns footer. Default: shown, titled "Connect" */
+  connect?: {
+    display?: boolean;
+    title?: string;
+  };
+  /** Extra link columns after Pages and Connect in the columns footer */
+  columns?: Array<{
+    title: string;
+    links: Array<{ label: string; href: string }>;
+  }>;
+};
 
 /**
  * Base interface for page configuration with common properties.
@@ -111,6 +178,25 @@ export interface Home extends BasePageConfig {
   availability?: string;
   /** Words for the ticker section and the terminal hero, e.g. what you do or tools you use */
   ticker?: string[];
+  /** The contact section: a short invitation plus buttons for your social links */
+  contact?: {
+    title: React.ReactNode;
+    description?: React.ReactNode;
+    /** Names from `social` to show as buttons, in this order. Leave empty to show the essential ones. */
+    links?: string[];
+  };
+  /** Heading of the gallery section. Defaults: `gallery.label`, link "All photos" */
+  galleryMarquee?: {
+    title?: string;
+    /** The link to /gallery */
+    linkLabel?: string;
+  };
+  /** Heading of the "featured" posts section. Defaults: "Writing", link "All posts" */
+  featuredPosts?: {
+    title?: string;
+    /** The link to /blog */
+    linkLabel?: string;
+  };
 }
 
 /**
@@ -225,13 +311,89 @@ export interface About extends BasePageConfig {
  * Blog page configuration.
  * @description Configuration for the Blog page, including metadata and navigation label.
  */
-export interface Blog extends BasePageConfig {}
+export interface Blog extends BasePageConfig {
+  /** The contents list above posts and projects on phones (`features.mobileToc`) */
+  mobileToc?: {
+    /** Title of the folded list. Default "On this page" */
+    title?: string;
+  };
+  /** The offer to jump back on posts and project pages (`features.resumeReading`) */
+  resumeReading?: {
+    /** The question in the toast. Default "Pick up where you left off?" */
+    prompt?: string;
+    /** The button that jumps back. Default "Continue" */
+    action?: string;
+  };
+  /** The toolbar for sharing a selected passage on posts and project pages (`features.quoteShare`) */
+  quoteShare?: {
+    /** Name of the toolbar for screen readers. Default "Share quote" */
+    toolbar?: string;
+    /** Tooltip of a platform's button. Default: platform => `Share quote on ${platform}` */
+    shareOn?: (platform: string) => string;
+    /** Tooltip of the copy button. Default "Copy quote" */
+    copy?: string;
+    /** Toast after copying. Default "Quote copied to clipboard" */
+    copied?: string;
+    /** Toast when copying fails. Default "Couldn't copy the quote" */
+    copyFailed?: string;
+    /** Announced to screen readers when a passage is selected */
+    hint?: string;
+  };
+  /** The topic chips above the blog listing (`features.tagFilter`) */
+  tagFilter?: {
+    /** The chip that shows every post. Default "All" */
+    all?: string;
+    /** Name of the chip row for screen readers. Default "Filter posts by topic" */
+    label?: string;
+    /** Announced to screen readers after picking a topic. Default: "3 posts about Design" */
+    results?: (count: number, tag: string) => string;
+  };
+  /** The line under a post's title, next to its date */
+  postMeta?: {
+    /** Before the date of the last revision (front matter `updatedAt`). Default "Updated" */
+    updated?: string;
+    /** Reading time (`features.readingTime`). Default: minutes => `${minutes} min read` */
+    readingTime?: (minutes: number) => string;
+  };
+  /** Read counts beside the date on posts and project pages (`features.viewCounts`) */
+  viewCounts?: {
+    /** The count, already shortened ("1.2k"), and the exact number. Default: "12 reads" */
+    reads?: (formatted: string, count: number) => string;
+  };
+  /** The like button on posts and project pages (`features.likes`) */
+  likes?: {
+    /** Its accessible name. Default: "Like this post, 3 likes" */
+    label?: (count: number, kind: "post" | "project") => string;
+  };
+  /** Images in posts and projects that open in the photo viewer (`features.imageZoom`) */
+  imageZoom?: {
+    /** Name of an image's button. Default: alt => (alt ? `View larger: ${alt}` : "View image larger") */
+    open?: (alt: string) => string;
+  };
+}
 
 /**
  * Work/projects page configuration.
  * @description Configuration for the Work/Projects page, including metadata and navigation label.
  */
-export interface Work extends BasePageConfig {}
+export interface Work extends BasePageConfig {
+  /** Posts a project lists under `related` in its front matter (`features.relatedWriting`) */
+  relatedWriting?: {
+    /** Heading above them on the project page. Default "Related writing" */
+    title?: string;
+    /** Label of the card on each of those posts that links back. Default "From the project" */
+    fromProject?: string;
+  };
+  /** Previous and next project at the end of a project page (`features.projectNavigation`) */
+  projectNavigation?: {
+    /** Name of the links for screen readers. Default "More projects" */
+    label?: string;
+    /** Default "Previous project" */
+    previous?: string;
+    /** Default "Next project" */
+    next?: string;
+  };
+}
 
 /**
  * Gallery page configuration.
@@ -244,8 +406,11 @@ export interface Gallery extends BasePageConfig {
     src: string;
     /** Image alt text */
     alt: string;
-    /** Image orientation (horizontal/vertical) */
-    orientation: string;
+    /**
+     * Crop the thumbnail to 16 / 9 ("horizontal") or 3 / 4 ("vertical"). Optional: without it,
+     * the thumbnail keeps the photo's own proportions, read from the file in /public.
+     */
+    orientation?: string;
     /** Name of the photo for search engines (`seo.galleryStructuredData`). Defaults to the alt text */
     title?: string;
     /** Year the photo was taken, e.g. "2024". Used for its date and copyright notice */
@@ -256,4 +421,47 @@ export interface Gallery extends BasePageConfig {
    * Default: year => `© ${year} ${person.name}`, with the photo's year or the current one
    */
   copyrightNotice?: (year: string) => string;
+  /** The full-screen photo viewer that opens when a photo is clicked or tapped */
+  viewer?: PhotoViewerConfig;
+}
+
+/**
+ * The full-screen photo viewer (`gallery.viewer`).
+ * @description Swipe, pinch and double-tap zoom, keyboard arrows, and Back to close.
+ */
+export interface PhotoViewerConfig {
+  /** Open photos in the viewer. When false, a click enlarges the single photo, as before. Default true */
+  display: boolean;
+  /** Put the open photo in the address bar (`?photo=<file name>`) so a link opens it. Default true */
+  deepLink?: boolean;
+  /** Name of that address bar parameter. Default "photo" */
+  deepLinkParam?: string;
+  /**
+   * Serve the viewer's photos through Next.js image optimization (resized for each screen).
+   * Set to false to serve the original files instead, e.g. to stay inside Vercel's free image
+   * quota; then keep the files in /public already resized and compressed. Default true
+   */
+  optimizeImages?: boolean;
+  /** Text of the viewer's controls and screen reader announcements */
+  labels?: PhotoViewerLabels;
+}
+
+/** Text of the photo viewer. Each one is optional and falls back to the English default. */
+export interface PhotoViewerLabels {
+  /** Name of the viewer for screen readers. Default "Photo viewer" */
+  dialog?: string;
+  /** Name of a photo's button in the gallery. Default: alt => `View ${alt}` */
+  open?: (alt: string) => string;
+  /** Default "Close photo viewer" */
+  close?: string;
+  /** Default "Previous photo" */
+  previous?: string;
+  /** Default "Next photo" */
+  next?: string;
+  /** Announced on every photo. Default: (current, total) => `Photo ${current} of ${total}` */
+  counter?: (current: number, total: number) => string;
+  /** Shown when a photo fails to load. Default "Couldn't load this photo" */
+  error?: string;
+  /** Button that loads it again. Default "Try again" */
+  retry?: string;
 }

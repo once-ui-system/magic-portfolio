@@ -13,9 +13,12 @@ import {
   Row,
 } from "@once-ui-system/core";
 import { baseURL, about, person, social } from "@/resources";
+import { canonicalAlternates } from "@/utils/seo";
 import TableOfContents from "@/components/about/TableOfContents";
 import styles from "@/components/about/about.module.scss";
 import React from "react";
+import { notFound } from "next/navigation";
+import { isRouteEnabled } from "@/utils/routes";
 
 export async function generateMetadata() {
   return Meta.generate({
@@ -24,10 +27,13 @@ export async function generateMetadata() {
     baseURL: baseURL,
     image: `/api/og/generate?title=${encodeURIComponent(about.title)}`,
     path: about.path,
+    alternates: canonicalAlternates(about.path),
   });
 }
 
 export default function About() {
+  if (!isRouteEnabled("/about")) notFound();
+
   const structure = [
     {
       title: about.intro.title,
@@ -122,7 +128,8 @@ export default function About() {
                 fitWidth
                 border="brand-alpha-medium"
                 background="brand-alpha-weak"
-                radius="full"
+                themeBorder="rounded"
+                radius="l"
                 padding="4"
                 gap="8"
                 marginBottom="m"

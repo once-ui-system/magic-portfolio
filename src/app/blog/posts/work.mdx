@@ -2,7 +2,7 @@
 title: "Create,edit and delete projects"
 summary: "Create, edit and delete projects in the work section of your Magic Portfolio."
 publishedAt: "2025-04-19"
-tag: "Magic Portfolio"
+tag: "Content"
 ---
 
 ## Manage projects
@@ -31,12 +31,18 @@ team:
     avatar: "/images/avatar.jpg"
     linkedIn: "https://www.linkedin.com/company/once-ui/"
 link: "https://once-ui.com/"
+related:
+  - "quick-start"
 ---`,
         language: "tsx",
         label: "src/app/work/projects/project-1.mdx"
       }
     ]}
 />
+
+## Related writing
+
+List blog post slugs under `related` to show them as "Related writing" on the project page. Each of those posts gets a "From the project" card linking back. Project pages also end with links to the previous and next project, in the same order as the work page. Switch either off with `features.relatedWriting` and `features.projectNavigation` in `src/resources/once-ui.config.ts`, and change their labels with `relatedWriting` and `projectNavigation` in the `work` object in `src/resources/content.tsx`.
 
 ## MDX syntax
 

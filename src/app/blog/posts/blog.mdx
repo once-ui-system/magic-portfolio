@@ -2,7 +2,7 @@
 title: "Create, edit and delete blog posts"
 summary: "Create, edit and delete posts in the blog section of your Magic Portfolio."
 publishedAt: "2025-03-17"
-tag: "Magic Portfolio"
+tag: "Content"
 ---
 
 ## Manage posts
@@ -31,6 +31,8 @@ tag: "Journal"
     ]}
 />
 
+When you revise a post, add `updatedAt: "YYYY-MM-DD"` to its frontmatter. The post shows "Updated" next to the date, and the new date goes into the open graph tags, the structured data and the sitemap. Posts also show their reading time, at 200 words a minute; turn it off with `readingTime: false` in the `features` object in `src/resources/once-ui.config.ts`. Both labels can be changed with `postMeta` in the `blog` object in `src/resources/content.tsx`.
+
 ## MDX syntax
 
 You can use MDX to write the content of your posts. It helps you write rich and dynamic content with minimal code. Some MDX elements will be automatically transformed to Once UI components to integrate better in the design and add additional functionality.
@@ -38,6 +40,16 @@ You can use MDX to write the content of your posts. It helps you write rich and 
 ## Drafts
 
 Add `draft: true` to the frontmatter to keep a post unpublished. While you run `npm run dev`, open its URL to preview it with a Draft label. It stays out of the post lists, the sitemap and the RSS feed, and production builds leave it out entirely, so its URL returns a 404.
+
+## Images
+
+Images written in Markdown open in the photo viewer when tapped or clicked, together with every other image in the post, so readers can swipe through them, pinch to zoom and close with Back. Images inside links and small ones such as icons stay as they are. Set `features.imageZoom` to `false` in `once-ui.config.ts` to enlarge one image at a time instead.
+
+![A ridge in the snow](/images/gallery/vertical-4.jpg)
+
+![Mountains above the clouds](/images/gallery/horizontal-1.jpg)
+
+![A peak at sunrise](/images/gallery/horizontal-3.jpg)
 
 ## Custom components
 
@@ -68,6 +80,38 @@ You can use custom components in MDX files, but you need to import them first in
 />
 
 As you can see, the `Table` and `CodeBlock` components are already imported and available for use. You can add more by simply importing them to this file and passing them to the `components` object.
+
+## Links to headings
+
+A link to a heading, such as `/blog/components#table`, lands right on it and briefly highlights it. Turn the highlight off with `hashHighlight: false` in the `features` object in `src/resources/once-ui.config.ts`; the landing itself always works.
+
+## Reading progress
+
+A thin bar along the top of the screen fills as a reader works through a post or a project page. Turn it off with `readingProgress: false` in the `features` object in `src/resources/once-ui.config.ts`.
+
+## Contents on phones
+
+On phones and tablets, posts and project pages show a folded "On this page" list above the article, the same list as the sidebar on larger screens. Project pages also get that sidebar. Turn either off in the `features` object in `src/resources/once-ui.config.ts` with `mobileToc: false` or `projectToc: false`, and change the list's title with `mobileToc.title` in the `blog` object in `src/resources/content.tsx`.
+
+## Resume reading
+
+Magic Portfolio remembers how far a reader got through a post or project, in their own browser, and on their next visit offers to jump back there. Turn it off with `resumeReading: false` in the `features` object in `src/resources/once-ui.config.ts`, and change the wording with `resumeReading.prompt` and `resumeReading.action` in the `blog` object in `src/resources/content.tsx`.
+
+## Quote sharing
+
+Select a passage in a post or project to copy it as a quote, or share it on the platforms switched on in `socialSharing.platforms`. Turn it off with `quoteShare: false` in the `features` object in `src/resources/once-ui.config.ts`, and change its labels with `quoteShare` in the `blog` object in `src/resources/content.tsx`.
+
+## Topics
+
+The blog page shows a chip for every `tag` used in your posts' frontmatter, with how many posts each has. Picking one shows only that topic's posts, and the address (`/blog?tag=Guide`) can be shared. The chips only appear once posts cover at least two topics. Turn them off with `tagFilter: false` in the `features` object in `src/resources/once-ui.config.ts`, and change their labels with `tagFilter` in the `blog` object in `src/resources/content.tsx`.
+
+## Read counts
+
+Posts and projects can show how many people read them, next to the date. The counts are stored in [Upstash Redis](https://upstash.com), so this is off by default: set `viewCounts: true` in the `features` object in `src/resources/once-ui.config.ts`, and add `UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN` to your environment (see `.env.example` and the README). Without them nothing is shown. Change the wording with `viewCounts.reads` in the `blog` object in `src/resources/content.tsx`.
+
+## Likes
+
+Posts and projects can have a like button with a count. Likes are stored in [Upstash Redis](https://upstash.com), so this is off by default: set `likes: true` in the `features` object in `src/resources/once-ui.config.ts`, and add `UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN` to your environment (see `.env.example` and the README). Without them the button doesn't show. Change its accessible name with `likes.label` in the `blog` object in `src/resources/content.tsx`.
 
 ## Hot reload
 

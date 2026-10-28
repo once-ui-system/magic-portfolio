@@ -2,6 +2,7 @@ import {
   Aesthetic,
   DataStyleConfig,
   DisplayConfig,
+  FeaturesConfig,
   HomeSection,
   NewsletterFormConfig,
   ProtectedRoutesConfig,
@@ -14,6 +15,7 @@ import {
 } from "@/types";
 import { home, person, social } from "./content";
 import { aesthetics, type AestheticName } from "./aesthetics";
+import { aiSearchBots, aiTrainingBots } from "./aiCrawlers";
 
 // IMPORTANT: Replace with your own domain address - it's used for SEO in meta tags and schema
 const baseURL: string = "https://magic-portfolio-demo.vercel.app";
@@ -33,6 +35,9 @@ const display: DisplayConfig = {
   // Shows a picker that lets visitors try every aesthetic. Handy for a demo,
   // usually off on a real portfolio.
   aestheticSwitcher: true,
+  // Slides the header away while scrolling down a page and brings it back on scroll up.
+  // Default: false
+  hideHeaderOnScroll: false,
 };
 
 // Enable password protection on selected routes
@@ -164,13 +169,75 @@ const socialSharing: SocialSharingConfig = {
   },
 };
 
-// What the site tells search engines. Password-protected and switched-off pages are never included.
+// What the site tells search engines and AI tools. Password-protected and switched-off pages
+// are never included.
 const seo: SeoConfig = {
   // /sitemap-images.xml lists your gallery photos for image search, and robots.txt points to it
   imageSitemap: true,
   // Structured data on /gallery: each photo with its size, your name as creator and credit,
   // and a copyright notice (gallery.copyrightNotice in content.tsx)
   galleryStructuredData: true,
+  // /llms.txt is a plain-text guide to your site for AI assistants. fullText adds
+  // /llms-full.txt with the full text of every project and post. Set either to false to 404 it.
+  llmsTxt: {
+    enabled: true,
+    fullText: true,
+  },
+  // Which AI crawlers robots.txt lets in. Search bots answer questions and link back to you;
+  // training bots collect text to train models. Regular search engines are always allowed.
+  aiCrawlers: {
+    search: true,
+    // true (the default) lets training bots in; false keeps them out
+    training: true,
+    // The user agents each switch covers. Add or remove names, e.g.
+    // [...aiSearchBots, "YouBot"], or replace a list with your own.
+    searchBots: aiSearchBots,
+    trainingBots: aiTrainingBots,
+  },
+};
+
+// Optional features. Each key switches one feature on or off; see the comment on each.
+const features: FeaturesConfig = {
+  // Briefly highlight the heading a #link lands on. Default: true
+  hashHighlight: true,
+  // Thin progress bar at the top of blog posts and project pages. Default: true
+  readingProgress: true,
+  // "On this page" list that folds open above posts and projects on phones. Default: true
+  mobileToc: true,
+  // "On this page" sidebar on project pages, like the one on blog posts. Default: true
+  projectToc: true,
+  // Offers to jump back to where a reader stopped in a post or project. Default: true
+  resumeReading: true,
+  // Select text in a post or project to copy or share it as a quote. Default: true
+  // Platforms follow socialSharing.platforms below.
+  quoteShare: true,
+  // Topic chips above the blog listing that filter posts by their tag. Default: true
+  tagFilter: true,
+  // Floating button that scrolls back to the top of long pages. Default: true
+  backToTop: true,
+  // ⌘K / Ctrl+K command palette, with a search button in the header. Default: true
+  search: true,
+  // Thin bar at the top of the window while a page loads. It holds still with reduced motion.
+  // Default: true
+  navigationProgress: true,
+  // Short fade of the page content after each navigation. Skipped with reduced motion, and
+  // when style.transition is "none" or "micro". Default: true
+  routeTransition: true,
+  // "5 min read" next to the date on blog posts. Default: true
+  readingTime: true,
+  // "Related writing" on project pages and "From the project" on the posts they list. Default: true
+  relatedWriting: true,
+  // Previous / next project at the end of each project page. Default: true
+  projectNavigation: true,
+  // Read counts on posts and projects. Needs Upstash Redis: see .env.example and the README.
+  // Default: false
+  viewCounts: false,
+  // Like button on posts and projects. Needs Upstash Redis: see .env.example and the README.
+  // Default: false
+  likes: false,
+  // Images in posts and projects open in the photo viewer (gallery.viewer in content.tsx), with
+  // the other images of the page. false enlarges one image at a time. Default: true
+  imageZoom: true,
 };
 
 export {
@@ -189,4 +256,5 @@ export {
   socialSharing,
   dataStyle,
   seo,
+  features,
 };

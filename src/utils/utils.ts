@@ -13,6 +13,8 @@ type Metadata = {
   title: string;
   subtitle?: string;
   publishedAt: string;
+  /** Last meaningful edit (front matter `updatedAt`). Falls back to `publishedAt` where a date is needed. */
+  updatedAt?: string;
   summary: string;
   image?: string;
   images: string[];
@@ -21,9 +23,20 @@ type Metadata = {
   link?: string;
   /** `draft: true` in front matter: only rendered by `next dev`, never built for production. */
   draft: boolean;
+  /** Projects only: slugs of blog posts shown as "Related writing". */
+  related: string[];
 };
 
 import { notFound } from "next/navigation";
+
+/** Front matter list of strings; anything else (a lone string, numbers, blanks) is dropped. */
+function asTextList(value: unknown): string[] {
+  if (!Array.isArray(value)) return [];
+  return value
+    .filter((item): item is string => typeof item === "string")
+    .map((item) => item.trim())
+    .filter(Boolean);
+}
 
 function getMDXFiles(dir: string) {
   if (!fs.existsSync(dir)) {
@@ -45,13 +58,16 @@ function readMDXFile(filePath: string) {
     title: data.title || "",
     subtitle: data.subtitle || "",
     publishedAt: data.publishedAt,
+    updatedAt: data.updatedAt || undefined,
     summary: data.summary || "",
     image: data.image || "",
     images: data.images || [],
-    tag: data.tag || [],
+    // One topic per post; anything else (a list, a number) is ignored
+    tag: typeof data.tag === "string" && data.tag.trim() ? data.tag.trim() : undefined,
     team: data.team || [],
     link: data.link || "",
     draft: data.draft === true,
+    related: asTextList(data.related),
   };
 
   return { metadata, content };
@@ -95,4 +111,19 @@ export function getSortedPosts(customPath: string[], range?: [number, number?]) 
       new Date(b.metadata.publishedAt).getTime() - new Date(a.metadata.publishedAt).getTime(),
   );
   return range ? sorted.slice(range[0] - 1, range[1] ?? sorted.length) : sorted;
+}
+
+/** Words a reader actually reads: MDX imports, JSX tags and link targets don't count. */
+export function countWords(content: string) {
+  return content
+    .replace(/^(import|export)\s.*$/gm, "")
+    .replace(/<[^>]*>/g, " ")
+    .replace(/\]\([^)]*\)/g, "]")
+    .split(/\s+/)
+    .filter((word) => /[\p{L}\p{N}]/u.test(word)).length;
+}
+
+/** Reading time in whole minutes at 200 words a minute, never less than one. */
+export function readingTime(content: string) {
+  return Math.max(1, Math.ceil(countWords(content) / 200));
 }

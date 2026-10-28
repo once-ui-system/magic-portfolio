@@ -1,5 +1,8 @@
 import { Column, Meta, Schema } from "@once-ui-system/core";
+import { notFound } from "next/navigation";
+import { isRouteEnabled } from "@/utils/routes";
 import { home, about, person, baseURL } from "@/resources";
+import { canonicalAlternates } from "@/utils/seo";
 import { HomeSections } from "@/components/sections/HomeSections";
 
 export async function generateMetadata() {
@@ -8,11 +11,14 @@ export async function generateMetadata() {
     description: home.description,
     baseURL: baseURL,
     path: home.path,
+    alternates: canonicalAlternates(home.path),
     image: home.image,
   });
 }
 
 export default function Home() {
+  if (!isRouteEnabled("/")) notFound();
+
   return (
     <Column maxWidth="m" gap="80" paddingY="12" horizontal="center" s={{ gap: "64" }}>
       <Schema

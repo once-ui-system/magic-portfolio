@@ -1,12 +1,17 @@
-import { Column } from "@once-ui-system/core";
 import { Newsletter } from "@/components";
 import { Projects } from "@/components/work/Projects";
-import { aesthetic, aesthetics, display, homeSections, type AestheticName } from "@/resources";
+import { type AestheticName, aesthetic, aesthetics, display, homeSections } from "@/resources";
 import type { HomeSection } from "@/types";
+import { galleryIsPublic } from "@/utils/gallerySeo";
+import { isRouteEnabled } from "@/utils/routes";
+import { Column } from "@once-ui-system/core";
+import { ContactStrip } from "./ContactStrip";
+import { GalleryMarquee } from "./GalleryMarquee";
 import { HeroCentered } from "./HeroCentered";
 import { HeroSplit } from "./HeroSplit";
 import { HeroStatement } from "./HeroStatement";
 import { HeroTerminal } from "./HeroTerminal";
+import { PostsFeatured } from "./PostsFeatured";
 import { PostsGrid } from "./PostsGrid";
 import { PostsList } from "./PostsList";
 import { Ticker } from "./Ticker";
@@ -28,14 +33,30 @@ function Section({ section }: { section: HomeSection }) {
       return <Projects range={section.range} />;
     case "posts":
       if (section.variant === "list") return <PostsList range={section.range} />;
+      if (section.variant === "featured") return <PostsFeatured range={section.range} />;
       return <PostsGrid range={section.range} />;
+    case "gallery":
+      return <GalleryMarquee count={section.count} />;
+    case "contact":
+      return <ContactStrip />;
     case "newsletter":
       return <Newsletter />;
   }
 }
 
+// Sections that list posts or projects link into /blog or /work, so they leave the home page
+// when that route is switched off in `routes`. The gallery strip leaves while the gallery isn't
+// public (switched off or behind a password).
+function linksToEnabledRoute(section: HomeSection) {
+  if (section.type === "work") return isRouteEnabled("/work");
+  if (section.type === "posts") return isRouteEnabled("/blog");
+  if (section.type === "gallery") return galleryIsPublic();
+  return true;
+}
+
 function sectionsFor(name: AestheticName): HomeSection[] {
-  return homeSections.length > 0 ? homeSections : aesthetics[name].home;
+  const sections = homeSections.length > 0 ? homeSections : aesthetics[name].home;
+  return sections.filter(linksToEnabledRoute);
 }
 
 /**

@@ -27,6 +27,17 @@ function aestheticCss(): string {
     .join("\n");
 }
 
+// The header menu, the aesthetic switcher and a few button rows are rounded pills
+// (data-border="rounded"), which suits soft corners. When the corners in use are "sharp" or
+// "conservative", the pills take their radii from the page instead, so they follow the
+// aesthetic. Use radius="full" for something that must stay round everywhere.
+const radii = ["xs", "s", "m", "l", "xl"].flatMap((size) =>
+  ["", "-nest-4", "-nest-8"].map((nest) => `--radius-${size}${nest}:inherit`),
+);
+const pillCss = `:root:is([data-border="sharp"],[data-border="conservative"]) [data-border="rounded"]{${radii.join(";")}}`;
+
 export function AestheticStyles() {
-  return <style id="aesthetics" dangerouslySetInnerHTML={{ __html: aestheticCss() }} />;
+  return (
+    <style id="aesthetics" dangerouslySetInnerHTML={{ __html: `${aestheticCss()}\n${pillCss}` }} />
+  );
 }
