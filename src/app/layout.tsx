@@ -10,11 +10,13 @@ import { Footer, Header, RouteGuard, Providers } from "@/components";
 import { AestheticBackground } from "@/components/aesthetic/AestheticBackground";
 import { AestheticStyles } from "@/components/aesthetic/AestheticStyles";
 import { AestheticSwitcher } from "@/components/aesthetic/AestheticSwitcher";
+import { buildSearchIndex } from "@/utils/searchIndex";
 import {
   aesthetic,
   baseURL,
   dataStyle,
   display,
+  features,
   fontFamilies,
   aesthetics,
   home,
@@ -168,7 +170,7 @@ export default async function RootLayout({
           <AestheticBackground />
           <Flex fillWidth minHeight="16" s={{ hide: true }} />
           {display.aestheticSwitcher && <AestheticSwitcher />}
-          <Header />
+          <Header searchEntries={(features.search ?? true) ? buildSearchIndex() : undefined} />
           <Flex as="main" zIndex={0} fillWidth padding="l" horizontal="center" flex={1}>
             <Flex horizontal="center" fillWidth minHeight="0">
               <RouteGuard>{children}</RouteGuard>

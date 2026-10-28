@@ -29,6 +29,10 @@ Magic Portfolio's `RouteGuard` component takes care of conditionally rendering p
 
 The code above will ensure that the `/gallery` page is not accessible and is not displayed in the navigation.
 
+## Search
+
+Visitors can press ⌘K (Ctrl+K), or `/`, to open a command palette that finds any page switched on in `routes`, every post and project, your social links, and a few actions: switch the theme (with `display.themeSwitcher` on), copy your email address and open the RSS feed (with the blog on). Remove it, and its button in the header, with `search: false` in the `features` object in `src/resources/once-ui.config.ts`. Its group headings and action names are in the `search` object in `src/resources/content.tsx`.
+
 ## Add new pages
 
 When creating a new page, it needs to be added to the `routes` object in the `resources/config.js` file.

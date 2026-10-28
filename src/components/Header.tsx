@@ -7,6 +7,8 @@ import { Fade, Flex, Line, Row, ToggleButton } from "@once-ui-system/core";
 
 import { routes, display, person, about, blog, work, gallery } from "@/resources";
 import type { IconName } from "@/resources/icons";
+import type { SearchEntry } from "@/utils/searchIndex";
+import { CommandPalette } from "./search";
 import { ThemeToggle } from "./ThemeToggle";
 import styles from "./Header.module.scss";
 
@@ -52,7 +54,12 @@ const navItems: { href: keyof typeof routes; icon: IconName; label: string }[] =
   { href: "/gallery", icon: "gallery", label: gallery.label },
 ];
 
-export const Header = () => {
+type HeaderProps = {
+  /** Posts and projects for the command palette. Leave it out to hide the palette. */
+  searchEntries?: SearchEntry[];
+};
+
+export const Header = ({ searchEntries }: HeaderProps) => {
   const pathname = usePathname() ?? "";
 
   return (
@@ -127,6 +134,12 @@ export const Header = () => {
                       </Row>
                     </Fragment>
                   ),
+              )}
+              {searchEntries && (
+                <>
+                  <Line background="neutral-alpha-medium" vert maxHeight="24" />
+                  <CommandPalette entries={searchEntries} />
+                </>
               )}
               {display.themeSwitcher && (
                 <>
