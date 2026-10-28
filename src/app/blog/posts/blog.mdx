@@ -2,7 +2,7 @@
 title: "Create, edit and delete blog posts"
 summary: "Create, edit and delete posts in the blog section of your Magic Portfolio."
 publishedAt: "2025-03-17"
-tag: "Magic Portfolio"
+tag: "Content"
 ---
 
 ## Manage posts
@@ -88,6 +88,10 @@ Magic Portfolio remembers how far a reader got through a post or project, in the
 ## Quote sharing
 
 Select a passage in a post or project to copy it as a quote, or share it on the platforms switched on in `socialSharing.platforms`. Turn it off with `quoteShare: false` in the `features` object in `src/resources/once-ui.config.ts`, and change its labels with `quoteShare` in the `blog` object in `src/resources/content.tsx`.
+
+## Topics
+
+The blog page shows a chip for every `tag` used in your posts' frontmatter, with how many posts each has. Picking one shows only that topic's posts, and the address (`/blog?tag=Guide`) can be shared. The chips only appear once posts cover at least two topics. Turn them off with `tagFilter: false` in the `features` object in `src/resources/once-ui.config.ts`, and change their labels with `tagFilter` in the `blog` object in `src/resources/content.tsx`.
 
 ## Hot reload
 

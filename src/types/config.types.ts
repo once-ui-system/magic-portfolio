@@ -169,6 +169,8 @@ export type FeaturesConfig = {
   resumeReading?: boolean;
   /** Select text in a post or project to copy or share it as a quote. Default true. */
   quoteShare?: boolean;
+  /** Topic chips above the blog listing that filter posts by their tag. Default true. */
+  tagFilter?: boolean;
 };
 
 /**

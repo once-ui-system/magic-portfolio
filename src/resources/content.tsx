@@ -268,6 +268,12 @@ const blog: Blog = {
     copyFailed: "Couldn't copy the quote",
     hint: "Quote selected. Press Tab to share it.",
   },
+  // Topic chips above the blog listing (features.tagFilter)
+  tagFilter: {
+    all: "All",
+    label: "Filter posts by topic",
+    results: (count, tag) => `${count} ${count === 1 ? "post" : "posts"} about ${tag}`,
+  },
 };
 
 const work: Work = {

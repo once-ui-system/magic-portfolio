@@ -253,6 +253,15 @@ export interface Blog extends BasePageConfig {
     /** Announced to screen readers when a passage is selected */
     hint?: string;
   };
+  /** The topic chips above the blog listing (`features.tagFilter`) */
+  tagFilter?: {
+    /** The chip that shows every post. Default "All" */
+    all?: string;
+    /** Name of the chip row for screen readers. Default "Filter posts by topic" */
+    label?: string;
+    /** Announced to screen readers after picking a topic. Default: "3 posts about Design" */
+    results?: (count: number, tag: string) => string;
+  };
 }
 
 /**

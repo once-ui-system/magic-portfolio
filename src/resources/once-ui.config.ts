@@ -189,6 +189,8 @@ const features: FeaturesConfig = {
   // Select text in a post or project to copy or share it as a quote. Default: true
   // Platforms follow socialSharing.platforms below.
   quoteShare: true,
+  // Topic chips above the blog listing that filter posts by their tag. Default: true
+  tagFilter: true,
 };
 
 export {
