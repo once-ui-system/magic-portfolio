@@ -4,6 +4,7 @@ export {
   social,
   newsletter,
   backToTop,
+  search,
   home,
   about,
   blog,

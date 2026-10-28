@@ -1,4 +1,4 @@
-import { About, BackToTop, Blog, Gallery, Home, Newsletter, Person, Social, Work } from "@/types";
+import { About, BackToTop, Blog, Gallery, Home, Newsletter, Person, Social, Work, Search } from "@/types";
 import { Line, Row, Text } from "@once-ui-system/core";
 
 const person: Person = {
@@ -22,6 +22,23 @@ const newsletter: Newsletter = {
 // The floating button that scrolls back up (features.backToTop in once-ui.config.ts)
 const backToTop: BackToTop = {
   label: "Back to top",
+};
+
+// Labels of the ⌘K command palette (features.search in once-ui.config.ts). Pages, posts and
+// projects use their own labels and titles.
+const search: Search = {
+  label: "Search",
+  sections: {
+    pages: "Pages",
+    actions: "Actions",
+    links: "Links",
+  },
+  actions: {
+    theme: "Switch light or dark theme",
+    copyEmail: "Copy email address",
+    emailCopied: "Email address copied.",
+    rss: "RSS feed",
+  },
 };
 
 const social: Social = [
@@ -346,4 +363,4 @@ const gallery: Gallery = {
   ],
 };
 
-export { person, social, newsletter, backToTop, home, about, blog, work, gallery };
+export { person, social, newsletter, backToTop, home, about, blog, work, gallery, search };

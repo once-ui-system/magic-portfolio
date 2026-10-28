@@ -196,6 +196,8 @@ const features: FeaturesConfig = {
   tagFilter: true,
   // Floating button that scrolls back to the top of long pages. Default: true
   backToTop: true,
+  // ⌘K / Ctrl+K command palette, with a search button in the header. Default: true
+  search: true,
 };
 
 export {

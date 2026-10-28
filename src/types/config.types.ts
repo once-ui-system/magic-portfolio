@@ -175,6 +175,8 @@ export type FeaturesConfig = {
   tagFilter?: boolean;
   /** Floating button that scrolls back to the top of long pages. Default true. */
   backToTop?: boolean;
+  /** ⌘K / Ctrl+K palette: pages, posts, projects, actions and social links. Default true. */
+  search?: boolean;
 };
 
 /**

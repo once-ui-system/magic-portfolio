@@ -58,6 +58,35 @@ export type BackToTop = {
 };
 
 /**
+ * Command palette labels.
+ * @description The ⌘K palette (`features.search`). Every label is optional, English by default.
+ */
+export type Search = {
+  /** Accessible name of the palette and its header button. Default "Search" */
+  label?: string;
+  /** Group headings in the results. Posts and projects use `blog.label` and `work.label` */
+  sections?: {
+    /** Default "Pages" */
+    pages?: string;
+    /** Default "Actions" */
+    actions?: string;
+    /** Your social links. Default "Links" */
+    links?: string;
+  };
+  /** Names of the built-in actions */
+  actions?: {
+    /** Default "Switch light or dark theme" */
+    theme?: string;
+    /** Default "Copy email address" */
+    copyEmail?: string;
+    /** Toast after copying. Default "Email address copied." */
+    emailCopied?: string;
+    /** Default "RSS feed" */
+    rss?: string;
+  };
+};
+
+/**
  * Social link configuration.
  */
 export type Social = Array<{
