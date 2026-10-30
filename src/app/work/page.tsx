@@ -3,13 +3,15 @@ import { baseURL, about, person, work } from "@/resources";
 import { Projects } from "@/components/work/Projects";
 
 export async function generateMetadata() {
-  return Meta.generate({
+  const metadata = Meta.generate({
     title: work.title,
     description: work.description,
     baseURL: baseURL,
     image: `/api/og/generate?title=${encodeURIComponent(work.title)}`,
     path: work.path,
   });
+  // Meta.generate writes a canonical only alongside language alternates.
+  return { ...metadata, alternates: { canonical: metadata.openGraph.url } };
 }
 
 export default function Work() {
