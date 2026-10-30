@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { routes, protectedRoutes } from "@/resources";
 import { Flex, Spinner, Button, Heading, Column, PasswordInput } from "@once-ui-system/core";
 import NotFound from "@/app/not-found";
@@ -12,6 +12,7 @@ interface RouteGuardProps {
 
 const RouteGuard: React.FC<RouteGuardProps> = ({ children }) => {
   const pathname = usePathname();
+  const router = useRouter();
   const [isRouteEnabled, setIsRouteEnabled] = useState(false);
   const [isPasswordRequired, setIsPasswordRequired] = useState(false);
   const [password, setPassword] = useState("");
@@ -71,6 +72,11 @@ const RouteGuard: React.FC<RouteGuardProps> = ({ children }) => {
     if (response.ok) {
       setIsAuthenticated(true);
       setError(undefined);
+      // The server rendered this page without its content; render it again
+      // now that the access cookie is set.
+      router.refresh();
+    } else if (response.status === 429) {
+      setError("Too many attempts, try again later");
     } else {
       setError("Incorrect password");
     }

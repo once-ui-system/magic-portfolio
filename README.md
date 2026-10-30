@@ -40,6 +40,17 @@ src/resources/content.tsx
 Add a new .mdx file to src/app/blog/posts or src/app/work/projects
 ```
 
+### Password-protected pages
+
+List the paths in `protectedRoutes` in `src/resources/once-ui.config.ts`, then set these environment variables (see `.env.example`):
+
+| Variable | |
+|---|---|
+| `PAGE_ACCESS_PASSWORD` | The password visitors enter. |
+| `PAGE_ACCESS_SECRET` | A long random string (for example `openssl rand -base64 32`) that signs the access cookie. Recommended; without it a key derived from the password is used, so changing the password signs everyone out. |
+
+Protection runs on the server: `src/proxy.ts` and the blog and work pages check the signed, HttpOnly cookie that `/api/authenticate` sets (valid for one hour), so a protected page's content is never sent without the password. Password attempts are rate limited per visitor. The page's title, summary and cover still appear in project and post lists.
+
 Magic Portfolio was built with [Once UI](https://once-ui.com) for [Next.js](https://nextjs.org). It requires Node.js 20.9 or later.
 
 ## Documentation

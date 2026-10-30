@@ -18,6 +18,7 @@ import {
 import { baseURL, about, blog, person } from "@/resources";
 import { formatDate } from "@/utils/formatDate";
 import { getPosts } from "@/utils/utils";
+import { canViewPath } from "@/utils/pageAccessServer";
 import { Metadata } from "next";
 import React from "react";
 import { Posts } from "@/components/blog/Posts";
@@ -64,6 +65,11 @@ export default async function Blog({ params }: { params: Promise<{ slug: string 
 
   if (!post) {
     notFound();
+  }
+
+  // Password-protected: render nothing without access (RouteGuard shows the form).
+  if (!(await canViewPath(`${blog.path}/${post.slug}`))) {
+    return null;
   }
 
   const avatars =
