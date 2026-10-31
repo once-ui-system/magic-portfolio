@@ -4,13 +4,15 @@ import { Posts } from "@/components/blog/Posts";
 import { baseURL, blog, person, newsletter } from "@/resources";
 
 export async function generateMetadata() {
-  return Meta.generate({
+  const metadata = Meta.generate({
     title: blog.title,
     description: blog.description,
     baseURL: baseURL,
     image: `/api/og/generate?title=${encodeURIComponent(blog.title)}`,
     path: blog.path,
   });
+  // Meta.generate writes a canonical only alongside language alternates.
+  return { ...metadata, alternates: { canonical: metadata.openGraph.url } };
 }
 
 export default function Blog() {

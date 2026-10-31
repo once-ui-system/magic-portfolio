@@ -18,13 +18,15 @@ import styles from "@/components/about/about.module.scss";
 import React from "react";
 
 export async function generateMetadata() {
-  return Meta.generate({
+  const metadata = Meta.generate({
     title: about.title,
     description: about.description,
     baseURL: baseURL,
     image: `/api/og/generate?title=${encodeURIComponent(about.title)}`,
     path: about.path,
   });
+  // Meta.generate writes a canonical only alongside language alternates.
+  return { ...metadata, alternates: { canonical: metadata.openGraph.url } };
 }
 
 export default function About() {
