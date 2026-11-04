@@ -1,4 +1,4 @@
-import type { About, News, Gallery, Home, Newsletter, Person, Social, Work } from "@/types";
+import type { About, News, Podcast, Gallery, Home, Newsletter, Person, Social, Work } from "@/types";
 import { Line, Logo, Row, Text } from "@once-ui-system/core";
 
 const person: Person = {
@@ -291,6 +291,13 @@ const news: News = {
   // Las fuentes RSS se configuran en src/lib/news/sources.ts
 };
 
+const podcast: Podcast = {
+  path: "/podcast",
+  label: "Apple Slices",
+  title: "Apple Slices — Apple y tecnología en trozos",
+  description: `Trozos de actualidad sobre Apple, inteligencia artificial y desarrollo, grabados por ${person.firstName} ${person.lastName} paseando junto al mar.`,
+};
+
 const work: Work = {
   path: "/work",
   label: "Proyectos",
@@ -336,4 +343,4 @@ const gallery: Gallery = {
   ],
 };
 
-export { person, social, whatsapp, newsletter, home, about, news, work, gallery };
+export { person, social, whatsapp, newsletter, home, about, news, podcast, work, gallery };

@@ -1,0 +1,94 @@
+.panel {
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.input,
+.textarea {
+  width: 100%;
+  padding: var(--static-space-12) var(--static-space-16);
+  border-radius: var(--radius-m);
+  border: 1px solid var(--neutral-alpha-medium);
+  background: var(--neutral-alpha-weak);
+  color: var(--neutral-on-background-strong);
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-body-s);
+  outline: none;
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 84px;
+}
+
+.input:focus,
+.textarea:focus {
+  border-color: var(--brand-alpha-strong);
+}
+
+@media (max-width: 768px) {
+  .input,
+  .textarea {
+    /* Por debajo de 16px, Safari en iOS hace zoom al enfocar el campo. */
+    font-size: 16px;
+  }
+}
+
+.code {
+  font-family: var(--font-family-code);
+  font-size: 24px;
+  letter-spacing: 8px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.dropzone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--static-space-8);
+  width: 100%;
+  padding: var(--static-space-24);
+  border: 1px dashed var(--neutral-alpha-medium);
+  border-radius: var(--radius-l);
+  background: var(--neutral-alpha-weak);
+  cursor: pointer;
+  text-align: center;
+  font-family: inherit;
+  color: inherit;
+  appearance: none;
+  transition: border-color 200ms var(--transition-eased), background 200ms var(--transition-eased);
+}
+
+.dropzone:hover {
+  border-color: var(--brand-alpha-strong);
+  background: var(--brand-alpha-weak);
+}
+
+.hiddenInput {
+  display: none;
+}
+
+.track {
+  width: 100%;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--neutral-alpha-weak);
+  overflow: hidden;
+}
+
+.fill {
+  height: 100%;
+  background: var(--brand-solid-strong);
+  transition: width 150ms var(--transition-eased);
+}
+
+.error {
+  color: var(--danger-on-background-medium, #ff6b6b);
+}
+
+.success {
+  color: var(--success-on-background-medium, #4ade80);
+}

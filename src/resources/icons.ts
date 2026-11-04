@@ -20,6 +20,7 @@ import {
   HiOutlineMagnifyingGlass,
   HiOutlineFire,
   HiPlus,
+  HiOutlineMicrophone,
 } from "react-icons/hi2";
 
 import {
@@ -90,6 +91,7 @@ export const iconLibrary: Record<string, IconType> = {
   fire: HiOutlineFire,
   apple: FaApple,
   plus: HiPlus,
+  microphone: HiOutlineMicrophone,
   react: SiReact,
   typescript: SiTypescript,
   angular: SiAngular,

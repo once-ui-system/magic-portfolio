@@ -38,6 +38,7 @@ const routes: RoutesConfig = {
   "/about": true,
   "/work": true,
   "/noticias": true,
+  "/podcast": true,
   "/gallery": true,
 };
 

@@ -1,5 +1,5 @@
 import { baseURL } from "@/resources";
-import { about, news, gallery, home, person, social, work } from "@/resources/content";
+import { about, news, podcast, gallery, home, person, social, work } from "@/resources/content";
 import { getPosts } from "@/utils/utils";
 
 /**
@@ -62,6 +62,7 @@ ${about.studies.institutions.map((i) => `- ${i.name}`).join("\n")}
 - [${about.label}](${baseURL}${about.path}): experiencia, formación y habilidades
 - [${work.label}](${baseURL}${work.path}): proyectos desarrollados
 - [${news.label}](${baseURL}${news.path}): noticias de Apple, inteligencia artificial y tecnología, agregadas automáticamente desde medios especializados
+- [${podcast.label}](${baseURL}${podcast.path}): episodios de audio comentando la actualidad de Apple y la tecnología
 - [${gallery.label}](${baseURL}${gallery.path}): galería de fotografías
 
 ## Proyectos

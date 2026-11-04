@@ -231,6 +231,12 @@ export interface About extends BasePageConfig {
 export interface News extends BasePageConfig {}
 
 /**
+ * Podcast page configuration.
+ * @description Configuración de la sección de podcast con los episodios de audio.
+ */
+export interface Podcast extends BasePageConfig {}
+
+/**
  * Work/projects page configuration.
  * @description Configuration for the Work/Projects page, including metadata and navigation label.
  */
