@@ -12,7 +12,13 @@ const person = {
   locationLabel: "Morocco",
   email: "oucharroumohameddev@gmail.com",
   phone: "+212 6 30 70 95 65",
-  resume: "/Oucharrou_Mohamed_CV.pdf",
+  resume: {
+    default: "en", // language shown on the main "Download CV" button
+    files: [
+      { lang: "en", label: "English", href: "/trademark/Mohamed_Oucharrou_CV_EN.pdf" },
+      { lang: "fr", label: "Français", href: "/trademark/Mohamed_Oucharrou_CV_FR.pdf" },
+    ],
+  },
   languages: ["English", "French", "Arabic"], // optional: Leave the array empty if you don't want to display languages
 };
 
@@ -70,7 +76,7 @@ const about = {
     subItems: false,
   },
   avatar: {
-    display: true,
+    display: false, // no photo on the About page; location and languages move under the name
   },
   calendar: {
     display: false,

@@ -13,6 +13,7 @@ import {
 import { baseURL } from "@/app/resources";
 import TableOfContents from "@/components/about/TableOfContents";
 import styles from "@/components/about/about.module.scss";
+import { ResumeButtons } from "@/components/ResumeButtons";
 import { person, about, social } from "@/app/resources/content";
 
 export async function generateMetadata() {
@@ -173,6 +174,31 @@ export default function About() {
             >
               {person.role}
             </Text>
+            {!about.avatar.display && (
+              <Flex
+                className={styles.blockAlign}
+                paddingTop="16"
+                gap="16"
+                wrap
+                vertical="center"
+                textVariant="body-default-s"
+                onBackground="neutral-weak"
+              >
+                <Flex gap="8" vertical="center">
+                  <Icon onBackground="accent-weak" name="globe" />
+                  {person.locationLabel}
+                </Flex>
+                {person.languages.length > 0 && (
+                  <Flex wrap gap="8">
+                    {person.languages.map((language, index) => (
+                      <Tag key={index} size="m">
+                        {language}
+                      </Tag>
+                    ))}
+                  </Flex>
+                )}
+              </Flex>
+            )}
             {social.length > 0 && (
               <Flex className={styles.blockAlign} paddingTop="20" paddingBottom="8" gap="8" wrap horizontal="center" fitWidth>
                 {social.map(
@@ -199,15 +225,7 @@ export default function About() {
                         </>
                     ),
                 )}
-                {person.resume && (
-                  <Button
-                    href={person.resume}
-                    prefixIcon="download"
-                    label="Download CV"
-                    size="s"
-                    variant="primary"
-                  />
-                )}
+                <ResumeButtons size="s" />
               </Flex>
             )}
           </Column>

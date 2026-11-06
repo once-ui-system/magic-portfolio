@@ -5,6 +5,7 @@ import { Projects } from "@/components/work/Projects";
 
 import { baseURL, routes } from "@/app/resources";
 import { home, about, person, experience } from "@/app/resources/content";
+import { ResumeButtons } from "@/components/ResumeButtons";
 
 
 export async function generateMetadata() {
@@ -95,16 +96,7 @@ export default function Home() {
                   {about.title}
                 </Flex>
               </Button>
-              {person.resume && (
-                <Button
-                  data-border="rounded"
-                  href={person.resume}
-                  variant="tertiary"
-                  size="m"
-                  prefixIcon="download"
-                  label="Download CV"
-                />
-              )}
+              <ResumeButtons size="m" />
             </Flex>
           </RevealFx>
         </Column>

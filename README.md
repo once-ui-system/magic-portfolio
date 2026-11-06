@@ -50,7 +50,7 @@ Thanks for visiting!
 ## 📄 Pages
 
 - `/` home, `/about`, `/work` (project case studies in `src/app/work/projects/*.mdx`)
-- `/experience` work timeline and education, with CV download (`public/Oucharrou_Mohamed_CV.pdf`)
+- `/experience` work timeline and education, with CV download (EN + FR PDFs in `public/trademark/`, default language set in `person.resume.default`)
 - `/contact` contact details and a mailto-based form (`src/components/Contactform.tsx`)
 
 Routes are toggled in `src/app/resources/config.js`; all text content lives in `src/app/resources/content.js`.

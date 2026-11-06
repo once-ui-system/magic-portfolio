@@ -6,3 +6,4 @@ export { HeadingLink } from "@/components/HeadingLink";
 export { RouteGuard } from "@/components/RouteGuard";
 export { ThemeToggle } from "@/components/ThemeToggle";
 export { ContactForm } from "@/components/Contactform";
+export { ResumeButtons } from "@/components/ResumeButtons";

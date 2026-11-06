@@ -2,6 +2,7 @@ import { Button, Column, Flex, Heading, Icon, Tag, Text } from "@/once-ui/compon
 import { baseURL } from "@/app/resources";
 import { person, about, experience } from "@/app/resources/content";
 import styles from "./experience.module.scss";
+import { ResumeButtons } from "@/components/ResumeButtons";
 
 export async function generateMetadata() {
   const title = experience.title;
@@ -62,18 +63,9 @@ export default function Experience() {
         <Text variant="heading-default-l" onBackground="neutral-weak" wrap="balance">
           {experience.intro}
         </Text>
-        {person.resume && (
-          <Flex paddingTop="8">
-            <Button
-              href={person.resume}
-              prefixIcon="download"
-              label="Download CV (PDF)"
-              size="m"
-              variant="secondary"
-              data-border="rounded"
-            />
-          </Flex>
-        )}
+        <Flex paddingTop="8">
+          <ResumeButtons size="m" label="Download CV" />
+        </Flex>
       </Column>
 
       <Column fillWidth paddingX="l" gap="m">

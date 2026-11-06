@@ -2,6 +2,7 @@ import { Button, Column, Flex, Heading, Icon, Text } from "@/once-ui/components"
 import { baseURL } from "@/app/resources";
 import { person, social, contactPage } from "@/app/resources/content";
 import { ContactForm } from "@/components/Contactform";
+import { ResumeButtons } from "@/components/ResumeButtons";
 
 export async function generateMetadata() {
   const title = contactPage.title;
@@ -107,17 +108,9 @@ export default function Contact() {
                   variant="secondary"
                 />
               ))}
-              {person.resume && (
-                <Button
-                  href={person.resume}
-                  prefixIcon="download"
-                  label="CV"
-                  size="s"
-                  variant="secondary"
-                />
-              )}
             </Flex>
           )}
+          <ResumeButtons size="s" label="CV" />
         </Column>
 
         <Column flex={3}>
