@@ -1,6 +1,6 @@
 # 🧠 Personal Portfolio – OUCHARROU MOHAMED
 
-Welcome to my personal portfolio! I’m a **Software Engineering & AI student**, freelance developer, and passionate problem-solver. This repository showcases my work, projects, and blog posts related to software development, algorithms, artificial intelligence, and web/mobile apps.
+Welcome to my personal portfolio! I’m a **Software Engineering & AI student**, freelance developer, and passionate problem-solver. This repository showcases my work experience and projects: LMS and SaaS platforms, and AI features built on RAG.
 
 ---
 
@@ -44,3 +44,17 @@ Distributed under the **Creative Commons Attribution-NonCommercial 4.0 Internati
 > “Code is like humor. When you have to explain it, it’s bad.” – Cory House
 
 Thanks for visiting!
+
+---
+
+## 📄 Pages
+
+- `/` home, `/about`, `/work` (project case studies in `src/app/work/projects/*.mdx`)
+- `/experience` work timeline and education, with CV download (`public/Oucharrou_Mohamed_CV.pdf`)
+- `/contact` contact details and a mailto-based form (`src/components/Contactform.tsx`)
+
+Routes are toggled in `src/app/resources/config.js`; all text content lives in `src/app/resources/content.js`.
+
+## 🌗 Theme
+
+The default theme is set by `style.theme` in `config.js`. Visitors can switch between light and dark with the toggle in the header; the choice is saved in `localStorage` and applied before first paint by a small inline script in `src/app/layout.tsx`.

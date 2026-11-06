@@ -1,0 +1,39 @@
+---
+title: "ArkonLMS - Multi-tenant LMS with a RAG-based AI layer"
+publishedAt: "2026-09-01"
+summary: "Multi-tenant learning platform (admin, teacher, student) with a multilingual RAG pipeline on PostgreSQL/pgvector, grounded answers with citations and a streaming student copilot. Built during my internship at Arkon Systems LLC."
+images:
+  - "/images/projects/arkonlms/cover-01.png"
+  - "/images/projects/arkonlms/cover-02.png"
+team:
+  - name: "OUCHARROU MOHAMED"
+    role: "Full-Stack & AI Engineering Intern"
+    avatar: "/images/avatar.png"
+    linkedIn: "https://www.linkedin.com/in/oucharrou-mohamed/"
+---
+
+## Overview
+
+ArkonLMS is a multi-tenant Learning Management System built at Arkon Systems LLC (Jul 2026 - Sep 2026, remote). Each tenant gets its own managers, teachers and students, and on top of the classic LMS features the platform ships an AI layer based on Retrieval-Augmented Generation (RAG), so that answers and generated content are always anchored in the course material of that tenant.
+
+## What I built
+
+- **Multi-tenant LMS core**: manager, teacher and student roles, course and content management, isolated per tenant.
+- **Multilingual RAG pipeline (Arabic, French, English)**: course documents are chunked, embedded and stored in PostgreSQL with pgvector. Retrieval uses hybrid search (vector + full-text) merged with Reciprocal Rank Fusion (RRF).
+- **Grounded answers**: a relevance filter drops weak matches and a citation extraction step links every answer back to the source passages, which keeps hallucinations under control.
+- **Student copilot**: chat with streaming responses over Server-Sent Events (SSE) and quiz generation grounded in the course content.
+- **Teacher tools**: assisted generation of lessons and quizzes from the documents a teacher imports.
+
+## Architecture
+
+- **Monorepo** in TypeScript, running on **Bun**
+- **Backend**: ElysiaJS, Drizzle ORM, PostgreSQL + pgvector
+- **Frontend**: React
+- **Infra**: Docker
+
+## Technologies Used
+
+- TypeScript, Bun, ElysiaJS, React
+- PostgreSQL, pgvector, Drizzle ORM
+- LLM integration, embeddings, hybrid search, SSE streaming
+- Docker

@@ -117,7 +117,7 @@ export default function About() {
             <Avatar src={person.avatar} size="xl" />
             <Flex gap="8" vertical="center">
               <Icon onBackground="accent-weak" name="globe" />
-              {person.location}
+              {person.locationLabel}
             </Flex>
             {person.languages.length > 0 && (
               <Flex wrap gap="8">
@@ -198,6 +198,15 @@ export default function About() {
                             />
                         </>
                     ),
+                )}
+                {person.resume && (
+                  <Button
+                    href={person.resume}
+                    prefixIcon="download"
+                    label="Download CV"
+                    size="s"
+                    variant="primary"
+                  />
                 )}
               </Flex>
             )}
@@ -308,6 +317,15 @@ export default function About() {
                     <Text variant="body-default-m" onBackground="neutral-weak">
                       {skill.description}
                     </Text>
+                    {skill.tags && skill.tags.length > 0 && (
+                      <Flex fillWidth paddingTop="8" gap="8" wrap>
+                        {skill.tags.map((tag: string) => (
+                          <Tag key={tag} size="m" variant="neutral">
+                            {tag}
+                          </Tag>
+                        ))}
+                      </Flex>
+                    )}
                     {skill.images && skill.images.length > 0 && (
                       <Flex fillWidth paddingTop="m" gap="12" wrap>
                         {skill.images.map((image, index) => (

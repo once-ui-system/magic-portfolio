@@ -1,0 +1,39 @@
+.timeline {
+  position: relative;
+}
+
+.item {
+  position: relative;
+}
+
+.rail {
+  flex: 0 0 auto;
+  width: 16px;
+  position: relative;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  margin-top: 8px;
+  flex: 0 0 auto;
+}
+
+.line {
+  width: 2px;
+  flex: 1;
+  margin-top: 8px;
+  margin-bottom: -2rem;
+}
+
+.meta {
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .meta {
+    align-items: flex-start;
+    white-space: normal;
+  }
+}

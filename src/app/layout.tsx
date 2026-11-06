@@ -72,6 +72,20 @@ interface RootLayoutProps {
   children: React.ReactNode;
 }
 
+// Runs before React hydrates so the saved theme (or the configured default)
+// is applied without a flash. The data-theme attribute is owned by this script
+// and by ThemeToggle, not by React, so hydration never overwrites it.
+const themeInitScript = `
+(function () {
+  var theme = "${style.theme}";
+  try {
+    var saved = localStorage.getItem("theme");
+    if (saved === "light" || saved === "dark") theme = saved;
+  } catch (e) {}
+  document.documentElement.setAttribute("data-theme", theme);
+})();
+`;
+
 export default async function RootLayout({ children }: RootLayoutProps) {
   return (
     <Flex
@@ -83,10 +97,10 @@ export default async function RootLayout({ children }: RootLayoutProps) {
       data-accent={style.accent}
       data-solid={style.solid}
       data-solid-style={style.solidStyle}
-      data-theme={style.theme}
       data-border={style.border}
       data-surface={style.surface}
       data-transition={style.transition}
+      suppressHydrationWarning
       className={classNames(
         primary.variable,
         secondary ? secondary.variable : "",
@@ -94,8 +108,11 @@ export default async function RootLayout({ children }: RootLayoutProps) {
         code.variable,
       )}
     >
-      <ToastProvider>
-        <Column style={{ minHeight: "100vh" }} as="body" fillWidth margin="0" padding="0">
+      <Column style={{ minHeight: "100vh" }} as="body" fillWidth margin="0" padding="0">
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+        {/* ToastProvider must live inside <body>: it renders the Toaster as a
+            sibling of its children, and a DOM node outside <body> breaks hydration. */}
+        <ToastProvider>
           <Background
             mask={{
               cursor: effects.mask.cursor,
@@ -159,10 +176,10 @@ export default async function RootLayout({ children }: RootLayoutProps) {
             </Flex>
           </Flex>
           <Footer />
-        </Column>
-      </ToastProvider>
-      <SpeedInsights />
-      <Analytics />
+        </ToastProvider>
+        <SpeedInsights />
+        <Analytics />
+      </Column>
     </Flex>
   );
 }

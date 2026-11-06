@@ -4,9 +4,8 @@ const routes = {
   "/": true,
   "/about": true,
   "/work": true,
-  "/blog": true,
-  "/gallery": true,
-  /* "/contact": true, */
+  "/experience": true,
+  "/contact": true,
 };
 
 // Enable password protection on selected routes
@@ -16,7 +15,7 @@ const protectedRoutes = {
 };
 
 const style = {
-  theme: "light", // dark | light
+  theme: "dark", // dark | light (default; visitors can switch with the toggle in the header)
   neutral: "gray", // sand | gray | slate
   brand: "moss", // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan
   accent: "orange", // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan

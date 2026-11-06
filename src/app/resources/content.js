@@ -1,6 +1,4 @@
 import { InlineCode } from "@/once-ui/components";
-import { title } from "process";
-import { display } from "./config";
 
 const person = {
   firstName: "Mohamed",
@@ -8,32 +6,21 @@ const person = {
   get name() {
     return `${this.firstName} ${this.lastName}`;
   },
-  role: "Software Engineer",
+  role: "Full-Stack & AI Software Engineer",
   avatar: "/images/avatar.png",
-  location: "Africa/Morocco", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
-  languages: ["English", "French", "Arabic" ], // optional: Leave the array empty if you don't want to display languages
+  location: "Africa/Casablanca", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
+  locationLabel: "Morocco",
+  email: "oucharroumohameddev@gmail.com",
+  phone: "+212 6 30 70 95 65",
+  resume: "/Oucharrou_Mohamed_CV.pdf",
+  languages: ["English", "French", "Arabic"], // optional: Leave the array empty if you don't want to display languages
 };
 
 const newsletter = {
-  display: true,
+  display: false,
   title: <>Subscribe to {person.firstName}'s Newsletter</>,
-  description: (
-    <>
-      I occasionally write about design, technology, and share thoughts on the intersection of
-      creativity and engineering.
-    </>
-  ),
+  description: <>I occasionally write about software engineering and AI.</>,
 };
-
-const contactInfos ={
-  display: true,
-  title: "Get in touch",
-  description: (
-    <>
-      Have a project in mind or want to collaborate? Send me a message and I'll get back to you as soon as possible.
-    </>
-  )
-}
 
 const social = [
   // Links are automatically displayed.
@@ -56,19 +43,20 @@ const social = [
   {
     name: "Email",
     icon: "email",
-    link: "mailto:oucharroumohemed@gamil.com",
+    link: `mailto:${person.email}`,
   },
 ];
 
 const home = {
   label: "Home",
-  title: `${person.name}'s Portfolio`,
-  description: `Portfolio website showcasing my work as a ${person.role}`,
+  title: `${person.name} | ${person.role}`,
+  description: `Portfolio of ${person.name}, ${person.role}: multi-tenant LMS platforms, SaaS products and RAG-based AI features.`,
   headline: <>MOHAMED OUCHARROU</>,
   subline: (
     <>
-      University student pursuing a Diploma in Software Engineering & Artificial Intelligence Passionate about crafting seamless full-stack 
-      solutions<br/>from intuitive front-end interfaces to robust back-end systems.
+      Final-year Software Engineering & AI student and full-stack developer. I build multi-tenant
+      LMS and SaaS platforms, and lately AI features on top of them: RAG pipelines, hybrid
+      search with pgvector and streaming LLM copilots.
     </>
   ),
 };
@@ -76,7 +64,7 @@ const home = {
 const about = {
   label: "About",
   title: "About me",
-  description: `Meet ${person.name}, ${person.role} from ${person.location}`,
+  description: `Meet ${person.name}, ${person.role} from ${person.locationLabel}`,
   tableOfContent: {
     display: true,
     subItems: false,
@@ -93,62 +81,108 @@ const about = {
     title: "Introduction",
     description: (
       <>
-        I’m a Software Engineering student with a knack for solving problems through code.
-        Currently pursuing my diploma, I thrive in both front-end elegance (think React, JavaScript, and clean UIs) 
-        and back-end logic (Node.js, APIs, and databases).<br/>
-        <br/><br/>When I’m not debugging or studying, you’ll find me experimenting with new frameworks or contributing to open-source projects—because the best way to learn is to build.
-
-<br/><br/><InlineCode>What drives me?</InlineCode><br/>
-⚡ Bridging creativity with functionality to build apps that users love.<br/>
-⚡ The thrill of turning abstract ideas into scalable, real-world solutions.<br/>
-⚡ Collaborating with others to write code that’s as maintainable as it is powerful.<br/>
-
-Let’s connect and create something meaningful!
+        I am a final-year (5th year) engineering student in Software Engineering & Artificial
+        Intelligence at FST Errachidia, and a full-stack developer since 2023. Most of my work has
+        been on learning platforms: I have designed, shipped and maintained several LMS products in
+        production, including multi-tenant SaaS with Stripe billing, RBAC and analytics dashboards.
+        <br />
+        <br />
+        In 2026 I built ArkonLMS at Arkon Systems, an LMS with an AI layer based on RAG: multilingual
+        chunking and embeddings in PostgreSQL/pgvector, hybrid search with RRF fusion, grounded
+        answers with citations, and a streaming student copilot.
+        <br />
+        <br />
+        <InlineCode>What drives me?</InlineCode>
+        <br />
+        ⚡ Owning a product end to end: specs, architecture, development and deployment.
+        <br />
+        ⚡ Making LLM features reliable: grounded answers, citations, fewer hallucinations.
+        <br />
+        ⚡ Clean TypeScript codebases that stay maintainable as they grow.
       </>
     ),
   },
   work: {
-    display: false, // set to false to hide this section
+    display: false, // shown on the dedicated /experience page; set to true to also list it here
     title: "Work Experience",
     experiences: [
       {
-        company: "FLY",
-        timeframe: "2022 - Present",
-        role: "Senior Design Engineer",
+        company: "Arkon Systems LLC",
+        timeframe: "Jul 2026 - Sep 2026",
+        role: "Full-Stack & AI Engineering Intern, ArkonLMS",
+        location: "Remote",
         achievements: [
           <>
-            Redesigned the UI/UX for the FLY platform, resulting in a 20% increase in user
-            engagement and 30% faster load times.
+            Designed and built ArkonLMS, a multi-tenant LMS (admin, teacher, student) with an AI
+            layer based on RAG.
           </>,
           <>
-            Spearheaded the integration of AI tools into design workflows, enabling designers to
-            iterate 50% faster.
+            Built a multilingual RAG pipeline (Arabic, French, English): course material chunking,
+            embeddings stored in PostgreSQL/pgvector, hybrid search with RRF fusion.
+          </>,
+          <>
+            Added a relevance filter and citation extraction so answers stay grounded in the
+            sources and hallucinations are limited.
+          </>,
+          <>
+            Shipped a student copilot with streaming answers (SSE) and quiz generation grounded in
+            course content, plus teacher tools for assisted course and quiz generation.
           </>,
         ],
-        images: [
-          // optional: leave the array empty if you don't want to display images
-          {
-            src: "/images/projects/project-01/cover-01.jpg",
-            alt: "Once UI Project",
-            width: 16,
-            height: 9,
-          },
-        ],
+        skills: ["TypeScript", "Bun", "ElysiaJS", "React", "PostgreSQL", "pgvector", "Drizzle", "Docker"],
+        images: [],
       },
       {
-        company: "Creativ3",
-        timeframe: "2018 - 2022",
-        role: "Lead Designer",
+        company: "NeuralMobi Ltd.",
+        timeframe: "Jul 2025 - Oct 2025",
+        role: "Front-End Developer Intern",
+        location: "Remote",
         achievements: [
-          <>
-            Developed a design system that unified the brand across multiple platforms, improving
-            design consistency by 40%.
-          </>,
-          <>
-            Led a cross-functional team to launch a new product line, contributing to a 15% increase
-            in overall company revenue.
-          </>,
+          <>Developed the FanRadars web administration interface with Vue.js.</>,
+          <>Implemented user rights and roles management (RBAC) and the admin features around it.</>,
+          <>Optimized admin-side performance and security; integrated REST APIs for data management.</>,
         ],
+        skills: ["Vue.js", "REST APIs", "RBAC"],
+        images: [],
+      },
+      {
+        company: "Freelance",
+        timeframe: "2023 - Present",
+        role: "Full-Stack Developer",
+        location: "Remote",
+        achievements: [
+          <>Designed and maintain several LMS platforms running in production.</>,
+          <>
+            Delivered multi-tenant SaaS products with Stripe billing, RBAC and analytics
+            dashboards.
+          </>,
+          <>End-to-end ownership: requirements, architecture, development and deployment.</>,
+        ],
+        skills: ["Next.js", "React", "Node.js", "NestJS", "PostgreSQL", "Stripe", "Supabase"],
+        images: [],
+      },
+      {
+        company: "ATLAS TIMNAY",
+        timeframe: "May 2024 - Jul 2024",
+        role: "Desktop Developer Intern",
+        location: "Morocco",
+        achievements: [
+          <>Developed a Point of Sale (POS) system for a retail business.</>,
+          <>Designed the database schema and the cashier interface.</>,
+        ],
+        skills: ["C#", ".NET", "SQL"],
+        images: [],
+      },
+      {
+        company: "SHOTCOM",
+        timeframe: "Jul 2023 - Aug 2023",
+        role: "Web Developer Intern",
+        location: "Morocco",
+        achievements: [
+          <>Developed a hotel website with an online booking module.</>,
+          <>Implemented availability search, the booking workflow and the admin back-office.</>,
+        ],
+        skills: ["PHP", "MySQL", "HTML/CSS", "JavaScript"],
         images: [],
       },
     ],
@@ -158,12 +192,21 @@ Let’s connect and create something meaningful!
     title: "Studies",
     institutions: [
       {
-        name: "Faculty of Sciences and Techniques - Errachidia",
-        description: <>Software Engineering & Artificial Intelligence <InlineCode>Ongoing</InlineCode>.</>,
+        name: "Faculty of Sciences and Techniques (FST) - Errachidia",
+        description: (
+          <>
+            State Engineering Degree (Diplôme d'Ingénieur d'État), Software Engineering & AI{" "}
+            <InlineCode>2024 - 2027</InlineCode>
+          </>
+        ),
       },
       {
         name: "Higher School of Technology (EST) - Meknes",
-        description: <>DUT Computer science <InlineCode>2024</InlineCode>.</>,
+        description: (
+          <>
+            University Diploma of Technology (DUT), Computer Science <InlineCode>2022 - 2024</InlineCode>
+          </>
+        ),
       },
     ],
   },
@@ -172,122 +215,110 @@ Let’s connect and create something meaningful!
     title: "Technical skills",
     skills: [
       {
-        title: "Front end (Next, React...)",
-        description: <>Build responsive UIs with React/Next.js. Focus on clean code and performance.</>,
-        // optional: leave the array empty if you don't want to display images
+        title: "Languages",
+        description: <>TypeScript, JavaScript, Python, PHP, Java, C#.</>,
+        tags: ["TypeScript", "JavaScript", "Python", "PHP", "Java", "C#"],
+        images: [],
+      },
+      {
+        title: "Frontend",
+        description: (
+          <>
+            React and Next.js first, Vue.js when the project calls for it. TanStack Router, Tailwind
+            CSS, clean responsive UIs.
+          </>
+        ),
+        tags: ["React", "Next.js", "Vue.js", "TanStack Router", "Tailwind CSS", "HTML/CSS"],
         images: [
           {
             src: "/images/projects/next-projects/cover-next-01.png",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-         
-        ],
-      },
-      {
-        title: "Backend (PHP, C#...)",
-        description: <>Develop APIs and services in PHP (Laravel) and C# (.NET).</>,
-        // optional: leave the array empty if you don't want to display images
-        images: [
-          {
-            src: "/images/projects/php/php-01.png",
-            alt: "Project image",
+            alt: "Next.js LMS project",
             width: 16,
             height: 9,
           },
         ],
       },
-      
-      
-     
-
       {
-        title : "Mobile (Flutter)",
-        description: <>Create cross-platform apps with Flutter and Dart.</>,
+        title: "Backend",
+        description: (
+          <>
+            Node.js and Bun runtimes with ElysiaJS, NestJS or Express. REST APIs and multi-tenant
+            SaaS architecture.
+          </>
+        ),
+        tags: ["Node.js", "Bun", "ElysiaJS", "NestJS", "Express", "REST APIs", "Multi-tenant SaaS"],
+        images: [],
+      },
+      {
+        title: "AI",
+        description: (
+          <>
+            RAG pipelines, embeddings, vector and hybrid search with pgvector, LLM integration and
+            SSE streaming.
+          </>
+        ),
+        tags: ["RAG", "Embeddings", "pgvector", "Hybrid search", "LLM integration", "SSE streaming"],
+        images: [],
+      },
+      {
+        title: "Databases",
+        description: <>PostgreSQL as the default, with Drizzle ORM. MySQL, MongoDB and Supabase.</>,
+        tags: ["PostgreSQL", "MySQL", "MongoDB", "Supabase", "Drizzle ORM"],
+        images: [],
+      },
+      {
+        title: "Tools & integrations",
+        description: <>Stripe billing, LTI for LMS integrations, Dialogflow, Git/GitHub and Docker.</>,
+        tags: ["Stripe", "LTI", "Dialogflow", "Git/GitHub", "Docker"],
+        images: [],
+      },
+      {
+        title: "Mobile (Flutter)",
+        description: <>Cross-platform apps with Flutter and Dart.</>,
+        tags: ["Flutter", "Dart"],
         images: [
           {
-            src: "/images/projects/project-01/cover-flutter-01.png",
-            alt: "Project image",
+            src: "/images/projects/flutter-projects/cover-flutter-01.png",
+            alt: "Flutter project",
             width: 16,
             height: 9,
-          }
+          },
         ],
       },
-      
-
     ],
   },
-};
-
-const blog = {
-  label: "Blog",
-  title: "Writing about design and tech...",
-  description: `Read what ${person.name} has been up to recently`,
-  // Create new blog posts by adding a new .mdx file to app/blog/posts
-  // All posts will be listed on the /blog route
 };
 
 const work = {
   label: "Work",
   title: "My projects",
-  description: `Design and dev projects by ${person.name}`,
-  // Create new project pages by adding a new .mdx file to app/blog/posts
+  description: `Software projects by ${person.name}`,
+  // Create new project pages by adding a new .mdx file to app/work/projects
   // All projects will be listed on the /home and /work routes
 };
 
-const gallery = {
-  label: "Gallery",
-  title: "My photo gallery",
-  description: `A photo collection by ${person.name}`,
-  // Images from https://pexels.com
-  images: [
-    {
-      src: "/images/projects/cs-projects/cover-cs-01.png",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/projects/flutter-projects/cover-flutter-01.png",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/projects/flutter-projects/cover-flutter-02.png",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/projects/flutter-projects/cover-flutter-03.png",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/projects/flutter-projects/cover-flutter-04.png",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    
-    {
-      src: "/images/projects/next-projects/cover-next-01.png",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/projects/next-projects/cover-next-02.png",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/projects/next-projects/cover-next-03.png",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    
-    
-    
-  ],
+const experience = {
+  label: "Experience",
+  title: "Experience",
+  description: `Work experience and education of ${person.name}`,
+  intro: (
+    <>
+      Internships and freelance work since 2023, mostly on learning platforms and SaaS products.
+      The full CV is available as a PDF.
+    </>
+  ),
 };
 
+const contactPage = {
+  label: "Contact",
+  title: "Get in touch",
+  description: `Contact ${person.name}`,
+  intro: (
+    <>
+      Have a project in mind, an internship or a job opportunity, or just want to talk about LMS
+      platforms and RAG? Send me a message and I will get back to you as soon as possible.
+    </>
+  ),
+};
 
-export { person, social, newsletter, home, about, blog, work, gallery };
+export { person, social, newsletter, home, about, work, experience, contactPage };

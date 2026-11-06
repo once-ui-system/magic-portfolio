@@ -23,8 +23,11 @@ import {
   HiArrowRight,
   HiOutlineEye,
   HiOutlineEyeSlash,
-  
-
+  HiOutlineSun,
+  HiOutlineMoon,
+  HiOutlineDocumentArrowDown,
+  HiOutlinePhone,
+  HiOutlineMapPin,
 } from "react-icons/hi2";
 
 import {
@@ -33,7 +36,9 @@ import {
   PiGridFourDuotone,
   PiBookBookmarkDuotone,
   PiImageDuotone,
-  PiEnvelopeDuotone 
+  PiEnvelopeDuotone,
+  PiBriefcaseDuotone,
+  PiChatCircleDotsDuotone,
 } from "react-icons/pi";
 
 import { FaDiscord, FaGithub, FaLinkedin, FaXTwitter } from "react-icons/fa6";
@@ -70,5 +75,12 @@ export const iconLibrary: Record<string, IconType> = {
   x: FaXTwitter,
   clipboard: HiClipboard,
   arrowUpRightFromSquare: HiArrowTopRightOnSquare,
-  envelope : PiEnvelopeDuotone ,
+  envelope: PiEnvelopeDuotone,
+  briefcase: PiBriefcaseDuotone,
+  chat: PiChatCircleDotsDuotone,
+  sun: HiOutlineSun,
+  moon: HiOutlineMoon,
+  download: HiOutlineDocumentArrowDown,
+  phone: HiOutlinePhone,
+  mapPin: HiOutlineMapPin,
 };
