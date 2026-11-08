@@ -1,4 +1,5 @@
 import { InlineCode } from "@/once-ui/components";
+import { Fragment } from "react";
 
 const person = {
   firstName: "Mohamed",
@@ -118,22 +119,22 @@ const about = {
         role: "Full-Stack & AI Engineering Intern, ArkonLMS",
         location: "Remote",
         achievements: [
-          <>
+          <Fragment key="arkonlms">
             Designed and built ArkonLMS, a multi-tenant LMS (admin, teacher, student) with an AI
             layer based on RAG.
-          </>,
-          <>
+          </Fragment>,
+          <Fragment key="rag-pipeline">
             Built a multilingual RAG pipeline (Arabic, French, English): course material chunking,
             embeddings stored in PostgreSQL/pgvector, hybrid search with RRF fusion.
-          </>,
-          <>
+          </Fragment>,
+          <Fragment key="relevance-filter">
             Added a relevance filter and citation extraction so answers stay grounded in the
             sources and hallucinations are limited.
-          </>,
-          <>
+          </Fragment>,
+          <Fragment key="student-copilot">
             Shipped a student copilot with streaming answers (SSE) and quiz generation grounded in
             course content, plus teacher tools for assisted course and quiz generation.
-          </>,
+          </Fragment>,
         ],
         skills: ["TypeScript", "Bun", "ElysiaJS", "React", "PostgreSQL", "pgvector", "Drizzle", "Docker"],
         images: [],
@@ -144,9 +145,9 @@ const about = {
         role: "Front-End Developer Intern",
         location: "Remote",
         achievements: [
-          <>Developed the FanRadars web administration interface with Vue.js.</>,
-          <>Implemented user rights and roles management (RBAC) and the admin features around it.</>,
-          <>Optimized admin-side performance and security; integrated REST APIs for data management.</>,
+          <Fragment key="fanradars-interface">Developed the FanRadars web administration interface with Vue.js.</Fragment>,
+          <Fragment key="rbac">Implemented user rights and roles management (RBAC) and the admin features around it.</Fragment>,
+          <Fragment key="rest-apis">Optimized admin-side performance and security; integrated REST APIs for data management.</Fragment>,
         ],
         skills: ["Vue.js", "REST APIs", "RBAC"],
         images: [],
@@ -157,12 +158,12 @@ const about = {
         role: "Full-Stack Developer",
         location: "Remote",
         achievements: [
-          <>Designed and maintain several LMS platforms running in production.</>,
-          <>
+          <Fragment key="lms-platforms">Designed and maintain several LMS platforms running in production.</Fragment>,
+          <Fragment key="saas-products">
             Delivered multi-tenant SaaS products with Stripe billing, RBAC and analytics
             dashboards.
-          </>,
-          <>End-to-end ownership: requirements, architecture, development and deployment.</>,
+          </Fragment>,
+          <Fragment key="end-to-end">End-to-end ownership: requirements, architecture, development and deployment.</Fragment>,
         ],
         skills: ["Next.js", "React", "Node.js", "NestJS", "PostgreSQL", "Stripe", "Supabase"],
         images: [],
@@ -173,8 +174,8 @@ const about = {
         role: "Desktop Developer Intern",
         location: "Morocco",
         achievements: [
-          <>Developed a Point of Sale (POS) system for a retail business.</>,
-          <>Designed the database schema and the cashier interface.</>,
+          <Fragment key="pos-system">Developed a Point of Sale (POS) system for a retail business.</Fragment>,
+          <Fragment key="cashier-interface">Designed the database schema and the cashier interface.</Fragment>,
         ],
         skills: ["C#", ".NET", "SQL"],
         images: [],
@@ -185,8 +186,8 @@ const about = {
         role: "Web Developer Intern",
         location: "Morocco",
         achievements: [
-          <>Developed a hotel website with an online booking module.</>,
-          <>Implemented availability search, the booking workflow and the admin back-office.</>,
+          <Fragment key="hotel-website">Developed a hotel website with an online booking module.</Fragment>,
+          <Fragment key="booking-workflow">Implemented availability search, the booking workflow and the admin back-office.</Fragment>,
         ],
         skills: ["PHP", "MySQL", "HTML/CSS", "JavaScript"],
         images: [],

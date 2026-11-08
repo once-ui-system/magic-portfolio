@@ -43,7 +43,7 @@ export const HeadingLink: React.FC<HeadingLinkProps> = ({ id, level, children, s
   } as const;
 
   const variant = variantMap[level];
-  const asTag = `h${level}` as keyof JSX.IntrinsicElements;
+  const asTag = `h${level}` as React.ElementType;
 
   return (
     <Flex

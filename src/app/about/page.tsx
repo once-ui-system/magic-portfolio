@@ -15,6 +15,7 @@ import TableOfContents from "@/components/about/TableOfContents";
 import styles from "@/components/about/about.module.scss";
 import { ResumeButtons } from "@/components/ResumeButtons";
 import { person, about, social } from "@/app/resources/content";
+import { Fragment, ReactElement } from "react";
 
 export async function generateMetadata() {
   const title = about.title;
@@ -204,10 +205,10 @@ export default function About() {
                 {social.map(
                   (item) =>
                     item.link && (
-                        <>
+                        <Fragment key={item.name}>
                             <Button
                                 className="s-flex-hide"
-                                key={item.name}
+                                
                                 href={item.link}
                                 prefixIcon={item.icon}
                                 label={item.name}
@@ -217,12 +218,12 @@ export default function About() {
                             <IconButton
                                 className="s-flex-show"
                                 size="l"
-                                key={`${item.name}-icon`}
+                                
                                 href={item.link}
                                 icon={item.icon}
                                 variant="secondary"
                             />
-                        </>
+                        </Fragment>
                     ),
                 )}
                 <ResumeButtons size="s" />
@@ -256,7 +257,7 @@ export default function About() {
                       {experience.role}
                     </Text>
                     <Column as="ul" gap="16">
-                      {experience.achievements.map((achievement: JSX.Element, index: number) => (
+                      {experience.achievements.map((achievement: ReactElement, index: number) => (
                         <Text
                           as="li"
                           variant="body-default-m"

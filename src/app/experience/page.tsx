@@ -3,6 +3,7 @@ import { baseURL } from "@/app/resources";
 import { person, about, experience } from "@/app/resources/content";
 import styles from "./experience.module.scss";
 import { ResumeButtons } from "@/components/ResumeButtons";
+import { ReactElement } from "react";
 
 export async function generateMetadata() {
   const title = experience.title;
@@ -110,7 +111,7 @@ export default function Experience() {
                   </Column>
                 </Flex>
                 <Column as="ul" gap="8" paddingTop="8">
-                  {item.achievements.map((achievement: JSX.Element, i: number) => (
+                  {item.achievements.map((achievement: ReactElement, i: number) => (
                     <Text as="li" variant="body-default-m" key={`${item.company}-${i}`}>
                       {achievement}
                     </Text>
